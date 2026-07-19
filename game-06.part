@@ -1,0 +1,107 @@
+py(state.forward).negate();
+  const horizontal = TMP.c.copy(back).multiplyScalar(Math.cos(state.cameraYaw)).addScaledVector(right, Math.sin(state.cameraYaw)).normalize();
+  const distance = state.flying ? 8.2 : 6.6;
+  const offset = horizontal.multiplyScalar(distance * Math.cos(state.cameraPitch)).addScaledVector(up, distance * Math.sin(state.cameraPitch) + 1.4);
+  const desired = TMP.d.copy(ship.position).add(offset);
+  if (snap) camera.position.copy(desired);
+  else camera.position.lerp(desired, 1 - Math.exp(-dt * 5.8));
+  const lookTarget = TMP.a.copy(ship.position).addScaledVector(state.forward, state.flying ? 4.2 : 2.8).addScaledVector(up, .5);
+  camera.up.lerp(up, 1 - Math.exp(-dt * 5)).normalize();
+  camera.lookAt(lookTarget);
+}
+
+function updateObjectives(dt) {
+  let nearest = null;
+  let nearestDistance = Infinity;
+  for (const item of hubObjects) {
+    if (state.scanned.has(item.index)) continue;
+    const angle = state.surfaceNormal.angleTo(item.normal);
+    const surfaceDistance = angle * EARTH_RADIUS;
+    if (surfaceDistance < nearestDistance) {
+      nearestDistance = surfaceDistance;
+      nearest = item;
+    }
+    item.ring.rotation.z += dt * (item === nearest ? 1.7 : .8);
+    item.core.rotation.y += dt * 1.2;
+  }
+  state.nearestHub = nearest;
+  state.nearestDistance = nearestDistance;
+  dom.scanButton.disabled = !(nearest && nearestDistance <= HUB_SCAN_DISTANCE);
+  if (nearest) {
+    dom.missionName.textContent = nearest.hub.name;
+    dom.missionDistance.textContent = `${Math.max(0, nearestDistance * 310).toFixed(0)} km`;
+  } else {
+    dom.missionName.textContent = 'Planet complete';
+    dom.missionDistance.textContent = 'All hubs scanned';
+    dom.scanButton.disabled = true;
+  }
+}
+
+function scanNearestHub() {
+  const item = state.nearestHub;
+  if (!item || state.nearestDistance > HUB_SCAN_DISTANCE || state.scanned.has(item.index)) return;
+  state.scanned.add(item.index);
+  state.score += 500;
+  state.energy = Math.min(100, state.energy + 32);
+  item.beam.material.opacity = .05;
+  item.ring.material.color.setHex(0x7affae);
+  item.core.material.color.setHex(0x8fffb7);
+  item.core.material.emissive.setHex(0x28cf72);
+  showToast(`${item.hub.name} synchronized +500`);
+  if (state.scanned.size === HUBS.length) {
+    state.score += 2500;
+    setTimeout(() => showToast('EARTH NETWORK COMPLETE +2500'), 1200);
+  }
+}
+
+function updateShards(time) {
+  const playerPos = ship.position;
+  for (const shard of shards) {
+    if (state.collected.has(shard.id)) continue;
+    shard.mesh.rotation.y += .02;
+    const lift = .95 + Math.sin(time * .002 + shard.phase) * .14;
+    shard.mesh.position.copy(shard.normal).multiplyScalar(EARTH_RADIUS + lift);
+    if (playerPos.distanceToSquared(shard.mesh.position) < 1.3 * 1.3) {
+      state.collected.add(shard.id);
+      shard.mesh.visible = false;
+      state.score += 25;
+      state.energy = Math.min(100, state.energy + 8);
+    }
+  }
+}
+
+function updateHUD() {
+  dom.hubCount.textContent = `${state.scanned.size}/${HUBS.length}`;
+  dom.energyValue.textContent = `${Math.round(state.energy)}%`;
+  dom.scoreValue.textContent = String(state.score).padStart(4, '0');
+  dom.speedValue.textContent = `${Math.round(Math.abs(state.speed) * 36)} km/h`;
+  dom.altitudeValue.textContent = state.altitude < 1.2 ? `${Math.round(state.altitude * 160)} m` : `${(state.altitude * .72).toFixed(1)} km`;
+  const coord = vectorToLatLon(state.surfaceNormal);
+  const latLabel = `${Math.abs(coord.lat).toFixed(1)}°${coord.lat >= 0 ? 'N' : 'S'}`;
+  const lonLabel = `${Math.abs(coord.lon).toFixed(1)}°${coord.lon >= 0 ? 'E' : 'W'}`;
+  dom.coordinatesValue.textContent = `${latLabel}, ${lonLabel}`;
+}
+
+function animate(time) {
+  const rawDt = state.lastTime ? (time - state.lastTime) / 1000 : 0;
+  state.lastTime = time;
+  const dt = Math.min(rawDt, .05);
+  if (!scene || !camera || !renderer) return;
+
+  if (state.started && !state.paused) {
+    updateMovement(dt);
+    updateCamera(dt);
+    updateObjectives(dt);
+    updateShards(time);
+    updateHUD();
+  }
+
+  if (clouds) {
+    clouds.rotation.y += dt * .012;
+    clouds.material.uniforms.uTime.value = time * .001;
+  }
+  if (sun) {
+    const a = time * 0.000012;
+    sun.position.set(Math.cos(a) * 92, 34 + Math.sin(a * .7) * 24, Math.sin(a) * 92);
+  }
+  renderer.render(scene, c
