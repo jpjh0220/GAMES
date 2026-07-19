@@ -1,0 +1,97 @@
+{ color: 0x8feaff, transparent: true, opacity: .72, side: THREE.DoubleSide, depthWrite: false });
+  const hubMarkerGeo = new THREE.OctahedronGeometry(0.55, 0);
+
+  HUBS.forEach((hub, index) => {
+    const normal = latLonToVector(hub.lat, hub.lon);
+    const group = new THREE.Group();
+    const pos = normal.clone().multiplyScalar(EARTH_RADIUS + 0.5);
+    group.position.copy(pos);
+    group.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+
+    const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.72, 7, 16, 1, true), beamMat.clone());
+    beam.position.y = 3.2;
+    group.add(beam);
+
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.08, 8, 48), ringMat.clone());
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = 0.13;
+    group.add(ring);
+
+    const core = new THREE.Mesh(hubMarkerGeo, new THREE.MeshStandardMaterial({ color: 0xa8f1ff, emissive: 0x3acfff, emissiveIntensity: 1.5, roughness: .28 }));
+    core.position.y = 1.1;
+    group.add(core);
+
+    scene.add(group);
+    hubObjects.push({ hub, group, beam, ring, core, normal, index });
+  });
+
+  createCityInstances();
+}
+
+function createCityInstances() {
+  const rand = seededRandom(99127);
+  const towerCount = HUBS.length * 52;
+  const towerGeo = new THREE.BoxGeometry(0.18, 1, 0.18);
+  const towerMat = new THREE.MeshStandardMaterial({ color: 0x9ecfe1, metalness: .58, roughness: .42, emissive: 0x071b27, emissiveIntensity: .8 });
+  cityTowers = new THREE.InstancedMesh(towerGeo, towerMat, towerCount);
+  cityTowers.instanceMatrix.setUsage(THREE.StaticDrawUsage);
+
+  const treeCount = HUBS.length * 34;
+  const treeGeo = new THREE.ConeGeometry(0.16, 0.72, 6);
+  const treeMat = new THREE.MeshStandardMaterial({ color: 0x3d8b68, roughness: .95 });
+  cityTrees = new THREE.InstancedMesh(treeGeo, treeMat, treeCount);
+
+  let ti = 0;
+  let tri = 0;
+  HUBS.forEach((hub) => {
+    const center = latLonToVector(hub.lat, hub.lon);
+    const { east, forward } = makeTangentBasis(center);
+    for (let i = 0; i < 52; i++) {
+      const angle = rand() * Math.PI * 2;
+      const radial = 0.015 + Math.pow(rand(), .62) * 0.045;
+      const axis = TMP.a.copy(east).multiplyScalar(Math.cos(angle)).addScaledVector(forward, Math.sin(angle)).normalize();
+      const n = center.clone().applyAxisAngle(axis, radial);
+      const h = 0.35 + Math.pow(rand(), 1.8) * 2.4;
+      const width = 0.6 + rand() * 1.1;
+      const pos = n.clone().multiplyScalar(EARTH_RADIUS + h * .5);
+      const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), n);
+      const scale = new THREE.Vector3(width, h, width);
+      TMP.m.compose(pos, q, scale);
+      cityTowers.setMatrixAt(ti++, TMP.m);
+    }
+    for (let i = 0; i < 34; i++) {
+      const angle = rand() * Math.PI * 2;
+      const radial = 0.046 + rand() * 0.04;
+      const axis = TMP.a.copy(east).multiplyScalar(Math.cos(angle)).addScaledVector(forward, Math.sin(angle)).normalize();
+      const n = center.clone().applyAxisAngle(axis, radial);
+      const h = .65 + rand() * .55;
+      const pos = n.clone().multiplyScalar(EARTH_RADIUS + h * .5);
+      const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), n);
+      TMP.m.compose(pos, q, new THREE.Vector3(1, h, 1));
+      cityTrees.setMatrixAt(tri++, TMP.m);
+    }
+  });
+  cityTowers.instanceMatrix.needsUpdate = true;
+  cityTrees.instanceMatrix.needsUpdate = true;
+  scene.add(cityTowers, cityTrees);
+}
+
+function createShards() {
+  const rand = seededRandom(7717);
+  const material = new THREE.MeshStandardMaterial({ color: 0x9cf4ff, emissive: 0x35cbe5, emissiveIntensity: 1.7, metalness: .3, roughness: .2 });
+  const geometry = new THREE.OctahedronGeometry(0.22, 0);
+  for (let i = 0; i < 64; i++) {
+    const y = rand() * 2 - 1;
+    const a = rand() * Math.PI * 2;
+    const s = Math.sqrt(1 - y * y);
+    const normal = new THREE.Vector3(s * Math.cos(a), y, s * Math.sin(a));
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.copy(normal).multiplyScalar(EARTH_RADIUS + 0.85 + rand() * .65);
+    mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+    mesh.rotation.y = rand() * Math.PI;
+    scene.add(mesh);
+    shards.push({ mesh, normal, id: i, phase: rand() * Math.PI * 2 });
+  }
+}
+
+function initializeHeading() {
