@@ -1,0 +1,103 @@
+
+  const basis = makeTangentBasis(state.surfaceNormal);
+  state.forward.copy(basis.forward).normalize();
+}
+
+function applyQuality() {
+  if (!renderer) return;
+  const maxPixelRatio = state.quality === 'quality' ? 1.75 : 1.15;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
+  if (earth) {
+    earth.geometry.dispose();
+    earth.geometry = new THREE.SphereGeometry(EARTH_RADIUS, state.quality === 'quality' ? 128 : 96, state.quality === 'quality' ? 96 : 64);
+  }
+  if (clouds) clouds.visible = state.quality === 'quality' || (window.devicePixelRatio || 1) < 3;
+  if (atmosphere) atmosphere.material.uniformsNeedUpdate = true;
+  resize();
+}
+
+function startGame() {
+  state.started = true;
+  state.paused = false;
+  dom.loadingScreen.classList.remove('visible');
+  dom.hud.classList.remove('hidden');
+  dom.touchControls.classList.remove('hidden');
+  dom.missionCard.classList.remove('hidden');
+  dom.telemetry.classList.remove('hidden');
+  updateOrientationHint();
+  showToast('Reach a hub and tap SCAN');
+}
+
+function setPaused(paused) {
+  if (!state.started) return;
+  state.paused = paused;
+  dom.pauseScreen.classList.toggle('visible', paused);
+  state.input.boost = false;
+  dom.boostButton.classList.remove('active');
+}
+
+function toggleFlight() {
+  state.flying = !state.flying;
+  state.targetAltitude = state.flying ? 4.3 : 0.75;
+  dom.flightButton.querySelector('span').textContent = state.flying ? 'LAND' : 'FLY';
+  showToast(state.flying ? 'Flight mode engaged' : 'Descending to surface');
+}
+
+function updateMovement(dt) {
+  const keyboardThrottle = (keys.has('KeyW') || keys.has('ArrowUp') ? 1 : 0) - (keys.has('KeyS') || keys.has('ArrowDown') ? 1 : 0);
+  const keyboardTurn = (keys.has('KeyA') || keys.has('ArrowLeft') ? -1 : 0) + (keys.has('KeyD') || keys.has('ArrowRight') ? 1 : 0);
+  const throttle = Math.abs(keyboardThrottle) > Math.abs(state.input.throttle) ? keyboardThrottle : state.input.throttle;
+  const turn = Math.abs(keyboardTurn) > Math.abs(state.input.turn) ? keyboardTurn : state.input.turn;
+  const boosting = (state.input.boost || keys.has('ShiftLeft') || keys.has('ShiftRight')) && state.energy > 1;
+
+  const baseMax = state.flying ? 18 : 8.2;
+  const targetSpeed = throttle * baseMax * (boosting ? 1.85 : 1);
+  state.speed = THREE.MathUtils.damp(state.speed, targetSpeed, throttle === 0 ? 5.5 : 3.2, dt);
+
+  if (boosting && Math.abs(state.speed) > 1) {
+    state.energy = Math.max(0, state.energy - dt * 12);
+  } else {
+    state.energy = Math.min(100, state.energy + dt * 4.2);
+  }
+
+  if (Math.abs(turn) > 0.002) {
+    TMP.q.setFromAxisAngle(state.surfaceNormal, -turn * dt * (state.flying ? 1.25 : 1.6));
+    state.forward.applyQuaternion(TMP.q).projectOnPlane(state.surfaceNormal).normalize();
+  }
+
+  if (Math.abs(state.speed) > 0.01) {
+    const angular = (state.speed * dt) / EARTH_RADIUS;
+    const right = TMP.a.crossVectors(state.forward, state.surfaceNormal).normalize();
+    TMP.q.setFromAxisAngle(right, -angular);
+    state.surfaceNormal.applyQuaternion(TMP.q).normalize();
+    state.forward.applyQuaternion(TMP.q).projectOnPlane(state.surfaceNormal).normalize();
+  }
+
+  state.altitude = THREE.MathUtils.damp(state.altitude, state.targetAltitude, 3.6, dt);
+  updateShipTransform(dt, boosting);
+}
+
+function updateShipTransform(dt, boosting = false) {
+  if (!ship) return;
+  const up = state.surfaceNormal;
+  const right = TMP.a.crossVectors(state.forward, up).normalize();
+  const back = TMP.b.copy(state.forward).negate();
+  TMP.m.makeBasis(right, up, back);
+  ship.quaternion.setFromRotationMatrix(TMP.m);
+  ship.position.copy(up).multiplyScalar(EARTH_RADIUS + state.altitude);
+  const bank = THREE.MathUtils.clamp(-state.input.turn * .24, -.24, .24);
+  ship.rotateZ(bank);
+
+  if (thruster) {
+    const intensity = 0.75 + Math.abs(state.speed) * .045 + (boosting ? .7 : 0);
+    thruster.scale.set(1 + intensity * .2, 1 + intensity * .5, 1 + intensity * .2);
+    thruster.material.opacity = .5 + Math.min(.45, intensity * .2);
+  }
+  if (dt > 0) ship.position.addScaledVector(up, Math.sin(performance.now() * .005) * .015);
+}
+
+function updateCamera(dt, snap = false) {
+  if (!camera || !ship) return;
+  const up = state.surfaceNormal;
+  const right = TMP.a.crossVectors(state.forward, up).normalize();
+  const back = TMP.b.co
