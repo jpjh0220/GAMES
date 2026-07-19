@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#06111f" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Earthbound" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Earthbound: Open World Earth</title>
+  </head>
+  <body>
+    <div id="game-shell">
+      <div id="viewport" aria-label="3D Earth game viewport"></div>
+
+      <div id="loading-screen" class="screen-layer visible">
+        <div class="panel intro-panel">
+          <div class="eyebrow">OPEN WORLD EARTH</div>
+          <h1>EARTHBOUND</h1>
+          <p>Roam the whole planet, skim the atmosphere, and scan eight world hubs.</p>
+          <div class="loading-row">
+            <div class="progress-track"><div id="load-progress" class="progress-fill"></div></div>
+            <span id="load-label">Initializing world…</span>
+          </div>
+          <div class="quality-row" role="group" aria-label="Graphics quality">
+            <button type="button" class="quality-button active" data-quality="performance">iPhone</button>
+            <button type="button" class="quality-button" data-quality="quality">High</button>
+          </div>
+          <button type="button" id="play-button" class="primary-button" disabled>Loading</button>
+          <p class="microcopy">Best in landscape. Headphones optional.</p>
+        </div>
+      </div>
+
+      <div id="error-screen" class="screen-layer" role="alert">
+        <div class="panel intro-panel">
+          <div class="eyebrow">DEVICE LIMIT</div>
+          <h1>WebGL 2 required</h1>
+          <p>This build needs a modern iPhone or iPad running a current version of Safari.</p>
+        </div>
+      </div>
+
+      <header id="hud" class="hidden" aria-live="polite">
+        <div class="brand-pill">EARTHBOUND</div>
+        <div class="hud-metrics">
+          <div class="hud-chip"><span>HUBS</span><strong id="hub-count">0/8</strong></div>
+          <div class="hud-chip"><span>ENERGY</span><strong id="energy-value">100%</strong></div>
+          <div class="hud-chip"><span>SCORE</span><strong id="score-value">0000</strong></div>
+        </div>
+        <button type="button" id="pause-button" class="icon-button" aria-label="Pause game">Ⅱ</button>
+      </header>
+
+      <section id="mission-card" class="hidden" aria-live="polite">
+        <span class="mission-label">NEAREST HUB</span>
+        <strong id="mission-name">Seattle</strong>
+        <span id="mission-distance">0.0 km</span>
+      </section>
+
+      <section id="telemetry" class="hidden" aria-label="Player telemetry">
+        <span id="speed-value">0 km/h</span>
+        <span id="altitude-value">120 m</span>
+        <span id="coordinates-value">0.0°, 0.0°</span>
+      </section>
+
+      <div id="portrait-hint" class="hidden">Rotate for the widest view</div>
+
+      <div id="touch-controls" class="hidden" aria-label="Touch controls">
+        <div id="joystick" class="joystick" aria-label="Movement joystick">
+          <div class="joystick-ring"></div>
+          <div id="joystick-knob" class="joystick-knob"></div>
+        </div>
+        <div class="action-stack">
+          <button type="button" id="boost-button" class="action-button boost-button"><span>BOOST</span></button>
+          <button type="button" id="scan-button" class="action-button" disabled><span>SCAN</span></button>
+          <button type="button" id="flight-button" class="action-button"><span>FLY</span></button>
+        </div>
+      </div>
+
+      <div id="toast" class="toast hidden" aria-live="assertive"></div>
+
+      <div id="pause-screen" class="screen-layer">
+        <div class="panel pause-panel">
+          <div class="eyebrow">PAUSED</div>
+          <h2>Earth keeps waiting.</h2>
+          <button type="button" id="resume-button" class="primary-button">Resume</button>
+          <div class="pause-actions">
+            <button type="button" id="reset-camera-button" class="secondary-button">Reset camera</button>
+            <button type="button" id="restart-button" class="secondary-button">Restart mission</button>
+          </div>
+          <p class="controls-copy">Touch: left stick to steer, drag the world to look, BOOST for speed, FLY to change altitude, SCAN near a hub.</p>
+          <p class="controls-copy desktop-only">Keyboard: W/S move, A/D steer, Shift boost, Space fly, E scan.</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
