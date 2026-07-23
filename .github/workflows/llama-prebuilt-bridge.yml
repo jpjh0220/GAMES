@@ -1,0 +1,37 @@
+name: llama.cpp prebuilt bridge
+
+on:
+  pull_request:
+    paths:
+      - '.llama-prebuilt-trigger'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download official Ubuntu x64 llama.cpp release
+        shell: bash
+        run: |
+          set -euxo pipefail
+          API='https://api.github.com/repos/ggml-org/llama.cpp/releases/latest'
+          URL=$(curl -fsSL "$API" | jq -r '.assets[] | select(.name | test("llama-b[0-9]+-bin-ubuntu-x64\\.tar\\.gz$")) | .browser_download_url' | head -n1)
+          test -n "$URL"
+          echo "Downloading $URL"
+          curl -L --fail --retry 5 --retry-all-errors -o llama-cpp-ubuntu-x64.tar.gz "$URL"
+          tar -tzf llama-cpp-ubuntu-x64.tar.gz | grep -E '/llama-(cli|server)$'
+          sha256sum llama-cpp-ubuntu-x64.tar.gz > llama-cpp-ubuntu-x64.tar.gz.sha256
+      - name: Upload runtime
+        uses: actions/upload-artifact@v4
+        with:
+          name: llama-cpp-official-ubuntu-x64
+          path: |
+            llama-cpp-ubuntu-x64.tar.gz
+            llama-cpp-ubuntu-x64.tar.gz.sha256
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
