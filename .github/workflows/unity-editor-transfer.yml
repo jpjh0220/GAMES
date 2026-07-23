@@ -18,7 +18,11 @@ jobs:
     env:
       ARCHIVE_NAME: Unity-6000.3.16f1.tar.xz
       ARCHIVE_URL: https://download.unity3d.com/download_unity/a56f230f6470/LinuxEditorInstaller/Unity-6000.3.16f1.tar.xz
+      ARCHIVE_BYTES: "4501178040"
+      ARCHIVE_SHA256: d2db0e1db5688df99c5c3517a590c4149899588e34e9be0deb49ac949a03082d
       CHUNK_MIB: "300"
+      CHUNK_BYTES: "314572800"
+      CHUNK_COUNT: "15"
       CACHE_KEY: unity-editor-6000.3.16f1-a56f230f6470
     steps:
       - name: Check out transfer branch
@@ -32,7 +36,15 @@ jobs:
           RAW_INDEX="$(tr -d '[:space:]' < unity-transfer/chunk-index.txt)"
           [[ "$RAW_INDEX" =~ ^[0-9]+$ ]] || { echo "Invalid chunk index: $RAW_INDEX" >&2; exit 1; }
           START_INDEX=$((10#$RAW_INDEX))
+          SECOND_INDEX=$((START_INDEX + 1))
+          (( START_INDEX >= 0 && START_INDEX < CHUNK_COUNT )) || { echo "Invalid start chunk $START_INDEX" >&2; exit 1; }
           echo "start=$START_INDEX" >> "$GITHUB_OUTPUT"
+          echo "second=$SECOND_INDEX" >> "$GITHUB_OUTPUT"
+          if (( SECOND_INDEX < CHUNK_COUNT )); then
+            echo "has_second=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_second=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Remove previous temporary transfer artifacts
         env:
@@ -54,83 +66,90 @@ jobs:
           key: ${{ env.CACHE_KEY }}
           fail-on-cache-miss: true
 
-      - name: Create three requested chunks
-        id: parts
+      - name: Validate restored archive metadata
         shell: bash
-        env:
-          START_INDEX: ${{ steps.request.outputs.start }}
         run: |
           set -euo pipefail
           ARCHIVE="/tmp/${ARCHIVE_NAME}"
           [[ -s "$ARCHIVE" ]] || { echo "Validated archive cache was not restored" >&2; exit 1; }
+          [[ "$(stat --printf='%s' "$ARCHIVE")" == "$ARCHIVE_BYTES" ]] || { echo "Archive size mismatch" >&2; exit 1; }
 
-          TOTAL_BYTES="$(stat --printf='%s' "$ARCHIVE")"
-          CHUNK_BYTES=$((CHUNK_MIB * 1024 * 1024))
-          CHUNK_COUNT=$(((TOTAL_BYTES + CHUNK_BYTES - 1) / CHUNK_BYTES))
-          ARCHIVE_SHA="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
+      - name: Create first requested chunk
+        shell: bash
+        env:
+          INDEX: ${{ steps.request.outputs.start }}
+          SLOT: "0"
+        run: |
+          set -euo pipefail
+          ARCHIVE="/tmp/${ARCHIVE_NAME}"
+          OUT_DIR="/tmp/unity-transfer-output-${SLOT}"
+          mkdir -p "$OUT_DIR"
+          PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
+          dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
+          PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
+          PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
+          START=$((INDEX * CHUNK_BYTES))
+          END=$((START + PART_BYTES - 1))
+          printf '%s\n' \
+            "archive_name=${ARCHIVE_NAME}" \
+            "archive_url=${ARCHIVE_URL}" \
+            "archive_bytes=${ARCHIVE_BYTES}" \
+            "archive_sha256=${ARCHIVE_SHA256}" \
+            "chunk_size_bytes=${CHUNK_BYTES}" \
+            "chunk_count=${CHUNK_COUNT}" \
+            "chunk_index=${INDEX}" \
+            "range_start=${START}" \
+            "range_end=${END}" \
+            "part_name=${PART_NAME}" \
+            "part_bytes=${PART_BYTES}" \
+            "part_sha256=${PART_SHA}" > "$OUT_DIR/manifest.txt"
 
-          for SLOT in 0 1 2; do
-            INDEX=$((START_INDEX + SLOT))
-            echo "idx${SLOT}=${INDEX}" >> "$GITHUB_OUTPUT"
-            if (( INDEX >= CHUNK_COUNT )); then
-              echo "has${SLOT}=false" >> "$GITHUB_OUTPUT"
-              continue
-            fi
-            echo "has${SLOT}=true" >> "$GITHUB_OUTPUT"
-
-            OUT_DIR="/tmp/unity-transfer-output-${SLOT}"
-            mkdir -p "$OUT_DIR"
-            PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
-            dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" \
-              bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
-
-            PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
-            PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
-            START=$((INDEX * CHUNK_BYTES))
-            END=$((START + PART_BYTES - 1))
-
-            cat > "$OUT_DIR/manifest.txt" <<EOF
-            archive_name=${ARCHIVE_NAME}
-            archive_url=${ARCHIVE_URL}
-            archive_bytes=${TOTAL_BYTES}
-            archive_sha256=${ARCHIVE_SHA}
-            chunk_size_bytes=${CHUNK_BYTES}
-            chunk_count=${CHUNK_COUNT}
-            chunk_index=${INDEX}
-            range_start=${START}
-            range_end=${END}
-            part_name=${PART_NAME}
-            part_bytes=${PART_BYTES}
-            part_sha256=${PART_SHA}
-            EOF
-          done
+      - name: Create second requested chunk
+        if: steps.request.outputs.has_second == 'true'
+        shell: bash
+        env:
+          INDEX: ${{ steps.request.outputs.second }}
+          SLOT: "1"
+        run: |
+          set -euo pipefail
+          ARCHIVE="/tmp/${ARCHIVE_NAME}"
+          OUT_DIR="/tmp/unity-transfer-output-${SLOT}"
+          mkdir -p "$OUT_DIR"
+          PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
+          dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
+          PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
+          PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
+          START=$((INDEX * CHUNK_BYTES))
+          END=$((START + PART_BYTES - 1))
+          printf '%s\n' \
+            "archive_name=${ARCHIVE_NAME}" \
+            "archive_url=${ARCHIVE_URL}" \
+            "archive_bytes=${ARCHIVE_BYTES}" \
+            "archive_sha256=${ARCHIVE_SHA256}" \
+            "chunk_size_bytes=${CHUNK_BYTES}" \
+            "chunk_count=${CHUNK_COUNT}" \
+            "chunk_index=${INDEX}" \
+            "range_start=${START}" \
+            "range_end=${END}" \
+            "part_name=${PART_NAME}" \
+            "part_bytes=${PART_BYTES}" \
+            "part_sha256=${PART_SHA}" > "$OUT_DIR/manifest.txt"
 
       - name: Upload first chunk
-        if: steps.parts.outputs.has0 == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: unity-editor-transfer-${{ steps.parts.outputs.idx0 }}
+          name: unity-editor-transfer-${{ steps.request.outputs.start }}
           path: /tmp/unity-transfer-output-0/
           compression-level: 0
           retention-days: 1
           if-no-files-found: error
 
       - name: Upload second chunk
-        if: steps.parts.outputs.has1 == 'true'
+        if: steps.request.outputs.has_second == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: unity-editor-transfer-${{ steps.parts.outputs.idx1 }}
+          name: unity-editor-transfer-${{ steps.request.outputs.second }}
           path: /tmp/unity-transfer-output-1/
-          compression-level: 0
-          retention-days: 1
-          if-no-files-found: error
-
-      - name: Upload third chunk
-        if: steps.parts.outputs.has2 == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: unity-editor-transfer-${{ steps.parts.outputs.idx2 }}
-          path: /tmp/unity-transfer-output-2/
           compression-level: 0
           retention-days: 1
           if-no-files-found: error
