@@ -14,7 +14,7 @@ permissions:
 jobs:
   transfer:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     env:
       ARCHIVE_NAME: Unity-6000.3.16f1.tar.xz
       ARCHIVE_URL: https://download.unity3d.com/download_unity/a56f230f6470/LinuxEditorInstaller/Unity-6000.3.16f1.tar.xz
@@ -24,19 +24,15 @@ jobs:
       - name: Check out transfer branch
         uses: actions/checkout@v4
 
-      - name: Read requested chunk
+      - name: Read starting chunk
         id: request
         shell: bash
         run: |
           set -euo pipefail
           RAW_INDEX="$(tr -d '[:space:]' < unity-transfer/chunk-index.txt)"
-          [[ "$RAW_INDEX" =~ ^-?[0-9]+$ ]] || { echo "Invalid chunk index: $RAW_INDEX" >&2; exit 1; }
-          if [[ "$RAW_INDEX" == "-1" ]]; then
-            INDEX=-1
-          else
-            INDEX=$((10#$RAW_INDEX))
-          fi
-          echo "index=$INDEX" >> "$GITHUB_OUTPUT"
+          [[ "$RAW_INDEX" =~ ^[0-9]+$ ]] || { echo "Invalid chunk index: $RAW_INDEX" >&2; exit 1; }
+          START_INDEX=$((10#$RAW_INDEX))
+          echo "start=$START_INDEX" >> "$GITHUB_OUTPUT"
 
       - name: Remove previous temporary transfer artifacts
         env:
@@ -52,71 +48,89 @@ jobs:
               done
 
       - name: Restore validated Unity archive cache
-        if: steps.request.outputs.index != '-1'
-        id: archive-cache
         uses: actions/cache/restore@v4
         with:
           path: /tmp/Unity-6000.3.16f1.tar.xz
           key: ${{ env.CACHE_KEY }}
           fail-on-cache-miss: true
 
-      - name: Create probe artifact
-        if: steps.request.outputs.index == '-1'
-        shell: bash
-        run: |
-          mkdir -p /tmp/unity-transfer-output
-          printf 'GitHub transfer bridge operational\n' > /tmp/unity-transfer-output/probe.txt
-
-      - name: Create requested archive chunk
-        if: steps.request.outputs.index != '-1'
+      - name: Create three requested chunks
+        id: parts
         shell: bash
         env:
-          INDEX: ${{ steps.request.outputs.index }}
+          START_INDEX: ${{ steps.request.outputs.start }}
         run: |
           set -euo pipefail
           ARCHIVE="/tmp/${ARCHIVE_NAME}"
           [[ -s "$ARCHIVE" ]] || { echo "Validated archive cache was not restored" >&2; exit 1; }
 
-          OUT_DIR=/tmp/unity-transfer-output
-          mkdir -p "$OUT_DIR"
           TOTAL_BYTES="$(stat --printf='%s' "$ARCHIVE")"
           CHUNK_BYTES=$((CHUNK_MIB * 1024 * 1024))
           CHUNK_COUNT=$(((TOTAL_BYTES + CHUNK_BYTES - 1) / CHUNK_BYTES))
-          (( INDEX >= 0 && INDEX < CHUNK_COUNT )) || {
-            echo "Chunk index $INDEX is outside 0..$((CHUNK_COUNT - 1))" >&2
-            exit 1
-          }
-
-          PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
-          dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" \
-            bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
-
-          PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
-          PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
           ARCHIVE_SHA="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
-          START=$((INDEX * CHUNK_BYTES))
-          END=$((START + PART_BYTES - 1))
 
-          cat > "$OUT_DIR/manifest.txt" <<EOF
-          archive_name=${ARCHIVE_NAME}
-          archive_url=${ARCHIVE_URL}
-          archive_bytes=${TOTAL_BYTES}
-          archive_sha256=${ARCHIVE_SHA}
-          chunk_size_bytes=${CHUNK_BYTES}
-          chunk_count=${CHUNK_COUNT}
-          chunk_index=${INDEX}
-          range_start=${START}
-          range_end=${END}
-          part_name=${PART_NAME}
-          part_bytes=${PART_BYTES}
-          part_sha256=${PART_SHA}
-          EOF
+          for SLOT in 0 1 2; do
+            INDEX=$((START_INDEX + SLOT))
+            echo "idx${SLOT}=${INDEX}" >> "$GITHUB_OUTPUT"
+            if (( INDEX >= CHUNK_COUNT )); then
+              echo "has${SLOT}=false" >> "$GITHUB_OUTPUT"
+              continue
+            fi
+            echo "has${SLOT}=true" >> "$GITHUB_OUTPUT"
 
-      - name: Upload temporary transfer artifact
+            OUT_DIR="/tmp/unity-transfer-output-${SLOT}"
+            mkdir -p "$OUT_DIR"
+            PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
+            dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" \
+              bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
+
+            PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
+            PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
+            START=$((INDEX * CHUNK_BYTES))
+            END=$((START + PART_BYTES - 1))
+
+            cat > "$OUT_DIR/manifest.txt" <<EOF
+            archive_name=${ARCHIVE_NAME}
+            archive_url=${ARCHIVE_URL}
+            archive_bytes=${TOTAL_BYTES}
+            archive_sha256=${ARCHIVE_SHA}
+            chunk_size_bytes=${CHUNK_BYTES}
+            chunk_count=${CHUNK_COUNT}
+            chunk_index=${INDEX}
+            range_start=${START}
+            range_end=${END}
+            part_name=${PART_NAME}
+            part_bytes=${PART_BYTES}
+            part_sha256=${PART_SHA}
+            EOF
+          done
+
+      - name: Upload first chunk
+        if: steps.parts.outputs.has0 == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: unity-editor-transfer-${{ steps.request.outputs.index }}
-          path: /tmp/unity-transfer-output/
+          name: unity-editor-transfer-${{ steps.parts.outputs.idx0 }}
+          path: /tmp/unity-transfer-output-0/
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Upload second chunk
+        if: steps.parts.outputs.has1 == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-editor-transfer-${{ steps.parts.outputs.idx1 }}
+          path: /tmp/unity-transfer-output-1/
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Upload third chunk
+        if: steps.parts.outputs.has2 == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-editor-transfer-${{ steps.parts.outputs.idx2 }}
+          path: /tmp/unity-transfer-output-2/
           compression-level: 0
           retention-days: 1
           if-no-files-found: error
