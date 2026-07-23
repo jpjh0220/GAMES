@@ -18,7 +18,8 @@ jobs:
     env:
       ARCHIVE_NAME: Unity-6000.3.16f1.tar.xz
       ARCHIVE_URL: https://download.unity3d.com/download_unity/a56f230f6470/LinuxEditorInstaller/Unity-6000.3.16f1.tar.xz
-      CHUNK_MIB: "400"
+      CHUNK_MIB: "300"
+      CACHE_KEY: unity-editor-6000.3.16f1-a56f230f6470
     steps:
       - name: Check out transfer branch
         uses: actions/checkout@v4
@@ -50,6 +51,15 @@ jobs:
                 gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}"
               done
 
+      - name: Restore validated Unity archive cache
+        if: steps.request.outputs.index != '-1'
+        id: archive-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: /tmp/Unity-6000.3.16f1.tar.xz
+          key: ${{ env.CACHE_KEY }}
+          fail-on-cache-miss: true
+
       - name: Create probe artifact
         if: steps.request.outputs.index == '-1'
         shell: bash
@@ -57,58 +67,46 @@ jobs:
           mkdir -p /tmp/unity-transfer-output
           printf 'GitHub transfer bridge operational\n' > /tmp/unity-transfer-output/probe.txt
 
-      - name: Download requested range
+      - name: Create requested archive chunk
         if: steps.request.outputs.index != '-1'
         shell: bash
         env:
           INDEX: ${{ steps.request.outputs.index }}
         run: |
           set -euo pipefail
+          ARCHIVE="/tmp/${ARCHIVE_NAME}"
+          [[ -s "$ARCHIVE" ]] || { echo "Validated archive cache was not restored" >&2; exit 1; }
+
           OUT_DIR=/tmp/unity-transfer-output
           mkdir -p "$OUT_DIR"
+          TOTAL_BYTES="$(stat --printf='%s' "$ARCHIVE")"
           CHUNK_BYTES=$((CHUNK_MIB * 1024 * 1024))
-          START=$((INDEX * CHUNK_BYTES))
-          END=$((START + CHUNK_BYTES - 1))
-          PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
-          HEADER_FILE=/tmp/unity-range.headers
-
-          curl --fail --location --retry 5 --retry-all-errors \
-            --range "${START}-${END}" \
-            --dump-header "$HEADER_FILE" \
-            --output "$OUT_DIR/$PART_NAME" \
-            "$ARCHIVE_URL"
-
-          STATUS="$(awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}' "$HEADER_FILE")"
-          CONTENT_RANGE="$(awk 'BEGIN{IGNORECASE=1} /^content-range:/ {gsub("\r",""); print $2}' "$HEADER_FILE" | tail -1)"
-          [[ "$STATUS" == "206" ]] || { echo "Server did not honor byte range; HTTP $STATUS" >&2; cat "$HEADER_FILE" >&2; exit 1; }
-          [[ "$CONTENT_RANGE" =~ ^bytes[[:space:]]+([0-9]+)-([0-9]+)/([0-9]+)$ ]] || { echo "Invalid Content-Range: $CONTENT_RANGE" >&2; cat "$HEADER_FILE" >&2; exit 1; }
-
-          ACTUAL_START="${BASH_REMATCH[1]}"
-          ACTUAL_END="${BASH_REMATCH[2]}"
-          TOTAL_BYTES="${BASH_REMATCH[3]}"
-          [[ "$ACTUAL_START" == "$START" ]] || { echo "Unexpected range start $ACTUAL_START" >&2; exit 1; }
-
           CHUNK_COUNT=$(((TOTAL_BYTES + CHUNK_BYTES - 1) / CHUNK_BYTES))
-          (( INDEX >= 0 && INDEX < CHUNK_COUNT )) || { echo "Chunk index $INDEX is outside 0..$((CHUNK_COUNT - 1))" >&2; exit 1; }
+          (( INDEX >= 0 && INDEX < CHUNK_COUNT )) || {
+            echo "Chunk index $INDEX is outside 0..$((CHUNK_COUNT - 1))" >&2
+            exit 1
+          }
 
-          EXPECTED_END=$END
-          (( EXPECTED_END >= TOTAL_BYTES )) && EXPECTED_END=$((TOTAL_BYTES - 1))
-          [[ "$ACTUAL_END" == "$EXPECTED_END" ]] || { echo "Unexpected range end $ACTUAL_END; expected $EXPECTED_END" >&2; exit 1; }
+          PART_NAME="${ARCHIVE_NAME}.part-$(printf '%03d' "$INDEX")"
+          dd if="$ARCHIVE" of="$OUT_DIR/$PART_NAME" \
+            bs=1M skip=$((INDEX * CHUNK_MIB)) count="$CHUNK_MIB" status=progress
 
           PART_BYTES="$(stat --printf='%s' "$OUT_DIR/$PART_NAME")"
-          EXPECTED_BYTES=$((EXPECTED_END - START + 1))
-          [[ "$PART_BYTES" == "$EXPECTED_BYTES" ]] || { echo "Unexpected part size $PART_BYTES; expected $EXPECTED_BYTES" >&2; exit 1; }
           PART_SHA="$(sha256sum "$OUT_DIR/$PART_NAME" | awk '{print $1}')"
+          ARCHIVE_SHA="$(sha256sum "$ARCHIVE" | awk '{print $1}')"
+          START=$((INDEX * CHUNK_BYTES))
+          END=$((START + PART_BYTES - 1))
 
           cat > "$OUT_DIR/manifest.txt" <<EOF
           archive_name=${ARCHIVE_NAME}
           archive_url=${ARCHIVE_URL}
           archive_bytes=${TOTAL_BYTES}
+          archive_sha256=${ARCHIVE_SHA}
           chunk_size_bytes=${CHUNK_BYTES}
           chunk_count=${CHUNK_COUNT}
           chunk_index=${INDEX}
           range_start=${START}
-          range_end=${EXPECTED_END}
+          range_end=${END}
           part_name=${PART_NAME}
           part_bytes=${PART_BYTES}
           part_sha256=${PART_SHA}
