@@ -56,7 +56,7 @@ jobs:
           test -s bundle/logs/smoke-test.txt
           grep -qi 'LOCAL MODEL READY' bundle/logs/smoke-test.txt
 
-      - name: Add launch scripts and manifest
+      - name: Add launch scripts and manifests
         shell: bash
         run: |
           set -euo pipefail
@@ -95,11 +95,28 @@ jobs:
             http://127.0.0.1:8080
           TXT
 
-      - name: Upload verified bundle
+      - name: Upload verified model artifact
         uses: actions/upload-artifact@v4
         with:
-          name: root-local-llm-linux-x64
-          path: bundle/
+          name: root-local-llm-model
+          path: |
+            bundle/models/
+            bundle/MODEL_SHA256SUMS.txt
           compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Upload verified runtime artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: root-local-llm-runtime
+          path: |
+            bundle/runtime/
+            bundle/logs/
+            bundle/chat.sh
+            bundle/serve.sh
+            bundle/README.txt
+            bundle/ALL_FILES_SHA256SUMS.txt
+          compression-level: 6
           retention-days: 1
           if-no-files-found: error
