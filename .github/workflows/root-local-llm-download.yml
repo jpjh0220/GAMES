@@ -1,0 +1,104 @@
+name: Root Local LLM Download
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-local-llm-bundle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Prepare bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p bundle/models bundle/runtime bundle/logs
+
+      - name: Download Qwen2.5 0.5B Instruct GGUF
+        shell: bash
+        run: |
+          set -euo pipefail
+          MODEL_URL='https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf?download=true'
+          MODEL='bundle/models/qwen2.5-0.5b-instruct-q4_k_m.gguf'
+          curl --fail --location --retry 5 --retry-delay 3 --output "$MODEL" "$MODEL_URL"
+          echo '74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db  bundle/models/qwen2.5-0.5b-instruct-q4_k_m.gguf' | sha256sum --check
+          test "$(stat -c%s "$MODEL")" -eq 491400032
+          test "$(head -c4 "$MODEL")" = 'GGUF'
+
+      - name: Download current llama.cpp CPU runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          RELEASE_JSON="$(curl --fail --location --retry 5 https://api.github.com/repos/ggml-org/llama.cpp/releases/latest)"
+          ASSET_URL="$(printf '%s' "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("bin-ubuntu-x64\\.tar\\.gz$")) | .browser_download_url' | head -n1)"
+          test -n "$ASSET_URL"
+          curl --fail --location --retry 5 --retry-delay 3 --output /tmp/llama-runtime.tar.gz "$ASSET_URL"
+          tar -xzf /tmp/llama-runtime.tar.gz -C bundle/runtime --strip-components=1
+          LLAMA_CLI="$(find bundle/runtime -type f -name llama-cli | head -n1)"
+          test -x "$LLAMA_CLI"
+          "$LLAMA_CLI" --version | tee bundle/logs/llama-version.txt
+          printf '%s\n' "$ASSET_URL" > bundle/logs/llama-runtime-source.txt
+          sha256sum /tmp/llama-runtime.tar.gz > bundle/logs/llama-runtime-archive.sha256
+
+      - name: Smoke-test local inference
+        shell: bash
+        run: |
+          set -euo pipefail
+          LLAMA_CLI="$(find bundle/runtime -type f -name llama-cli | head -n1)"
+          MODEL='bundle/models/qwen2.5-0.5b-instruct-q4_k_m.gguf'
+          "$LLAMA_CLI" -m "$MODEL" -p 'Reply with exactly: LOCAL MODEL READY' -n 12 -c 512 --temp 0 --no-display-prompt > bundle/logs/smoke-test.txt 2>&1
+          cat bundle/logs/smoke-test.txt
+          grep -qi 'LOCAL MODEL READY' bundle/logs/smoke-test.txt
+
+      - name: Add launch scripts and manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > bundle/chat.sh <<'SH'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          CLI="$(find "$ROOT/runtime" -type f -name llama-cli | head -n1)"
+          MODEL="$ROOT/models/qwen2.5-0.5b-instruct-q4_k_m.gguf"
+          exec "$CLI" -m "$MODEL" -cnv -c 4096 -t 5 "$@"
+          SH
+          cat > bundle/serve.sh <<'SH'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          SERVER="$(find "$ROOT/runtime" -type f -name llama-server | head -n1)"
+          MODEL="$ROOT/models/qwen2.5-0.5b-instruct-q4_k_m.gguf"
+          exec "$SERVER" -m "$MODEL" -c 4096 -t 5 --host 127.0.0.1 --port 8080 "$@"
+          SH
+          chmod +x bundle/chat.sh bundle/serve.sh
+          sha256sum bundle/models/*.gguf > bundle/MODEL_SHA256SUMS.txt
+          find bundle -type f -print0 | sort -z | xargs -0 sha256sum > bundle/ALL_FILES_SHA256SUMS.txt
+          cat > bundle/README.txt <<'TXT'
+          ROOT Local LLM Bundle
+          =====================
+          Model: Qwen2.5-0.5B-Instruct Q4_K_M GGUF
+          Runtime: current llama.cpp Ubuntu x64 CPU release at build time
+
+          Start interactive chat:
+            ./chat.sh
+
+          Start a local OpenAI-compatible server:
+            ./serve.sh
+
+          Server address:
+            http://127.0.0.1:8080
+          TXT
+
+      - name: Upload verified bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: root-local-llm-linux-x64
+          path: bundle/
+          compression-level: 0
+          retention-days: 1
+          if-no-files-found: error
