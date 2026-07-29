@@ -51,8 +51,9 @@ jobs:
           set -euo pipefail
           LLAMA_CLI="$(find bundle/runtime -type f -name llama-cli | head -n1)"
           MODEL='bundle/models/qwen2.5-0.5b-instruct-q4_k_m.gguf'
-          "$LLAMA_CLI" -m "$MODEL" -p 'Reply with exactly: LOCAL MODEL READY' -n 12 -c 512 --temp 0 --no-display-prompt > bundle/logs/smoke-test.txt 2>&1
+          timeout 180 "$LLAMA_CLI" -m "$MODEL" -cnv -st -p 'Reply with exactly: LOCAL MODEL READY' -n 16 -c 512 --temp 0 --no-display-prompt < /dev/null > bundle/logs/smoke-test.txt 2>&1
           cat bundle/logs/smoke-test.txt
+          test -s bundle/logs/smoke-test.txt
           grep -qi 'LOCAL MODEL READY' bundle/logs/smoke-test.txt
 
       - name: Add launch scripts and manifest
