@@ -1,0 +1,112 @@
+name: Sol RS-SDK Expedition V2
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rs-sol-expedition-v2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  expedition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
+      - name: Install
+        run: |
+          cd rs-sdk && bun install --frozen-lockfile
+          cd server/webclient && bun install --frozen-lockfile
+      - name: Build controller
+        working-directory: rs-sdk/server/webclient
+        shell: bash
+        run: |
+          cat > sol-expedition-v2.ts <<'EOF'
+          import { startSession } from './src/lite/session.js';
+          import { BotStateCollector } from './src/bot/StateCollector.js';
+          import { ActionExecutor } from './src/bot/ActionExecutor.js';
+          import type { Client } from './src/client/Client.js';
+          import type { BotWorldState } from './src/bot/types.js';
+          import { appendFile } from 'fs/promises';
+
+          const user=process.env.SOL_USER!,pass=process.env.SOL_PASS!;
+          const log=async(e:string,d?:unknown)=>{const l=`[${new Date().toISOString()}] ${e}${d===undefined?'':' '+JSON.stringify(d)}\n`;process.stdout.write(l);await appendFile('../../sol-expedition-v2.log',l).catch(()=>{});};
+          const session=await startSession({host:'rs-sdk-demo.fly.dev',username:user,password:pass,quiet:false,profanityFilter:true});
+          const client=session.client, collector=new BotStateCollector(client as unknown as Client), executor=new ActionExecutor(client as unknown as Client);executor.setScanProvider(collector);
+          const points=[{name:'Lumbridge goblins',x:3252,z:3230},{name:'Chicken area',x:3237,z:3295},{name:'Cow south gate',x:3253,z:3266},{name:'Cow field',x:3253,z:3290}];
+          let tick=0,next=0,stage=0,actions=0,last:BotWorldState|null=null,arrivalTick=-1;
+          const reached=new Set<string>(),seen=new Set<string>();
+          const act=(a:any,label:string,data:any={})=>{const r=executor.execute(a);actions++;void log(label,{tick,...data,result:r instanceof Promise?'async':r});return r;};
+          const dist=(s:BotWorldState,p:{x:number,z:number})=>Math.hypot(s.player.worldX-p.x,s.player.worldZ-p.z);
+          const stepToward=(s:BotWorldState,p:{x:number,z:number})=>{
+            const dx=p.x-s.player.worldX,dz=p.z-s.player.worldZ,m=Math.max(Math.abs(dx),Math.abs(dz));
+            const scale=m>9?9/m:1;
+            return {x:Math.round(s.player.worldX+dx*scale),z:Math.round(s.player.worldZ+dz*scale)};
+          };
+          await log('BEGIN',{user,mission:'finish entry, then prove bounded navigation across Lumbridge'});
+
+          client.setOnGameTickCallback(()=>{
+            tick++;
+            try{
+              const s=collector.collectState(tick,true) as BotWorldState|null;if(!s?.player)return;last=s;
+              if(tick<=3||tick%20===0)void log('STATE',{tick,stage,pos:[s.player.worldX,s.player.worldZ],hp:[s.player.hp,s.player.maxHp],skills:Object.fromEntries(s.skills.map(v=>[v.name,v.level])),inventory:s.inventory.map(i=>i.name),npcs:s.nearbyNpcs.slice(0,8).map(n=>({name:n.name,d:n.distance,options:n.options}))});
+
+              if(s.dialog?.isOpen){const i=s.dialog.options?.[0]?.index??1;act({type:'clickDialogOption',optionIndex:i,reason:'advance entry dialog'},'DIALOG',{options:s.dialog.options});next=tick+2;return;}
+              if(s.interface?.isOpen){act({type:'closeModal',reason:'clear blocking modal'},'MODAL');next=tick+2;return;}
+              if(tick<next)return;
+
+              // Tutorial Island fast-entry path proven by prior sessions: speak to RuneScape Guide and accept first visible choices.
+              if(s.player.worldX<3150){
+                const guide=s.nearbyNpcs.find(n=>/RuneScape Guide/i.test(n.name)&&n.optionsWithIndex.some(o=>/talk-to/i.test(o.text)));
+                const op=guide?.optionsWithIndex.find(o=>/talk-to/i.test(o.text));
+                if(guide&&op){act({type:'interactNpc',npcIndex:guide.index,optionIndex:op.opIndex,reason:'complete entry sequence'},'ENTRY_TALK');next=tick+5;return;}
+                next=tick+2;return;
+              }
+
+              const p=points[Math.min(stage,points.length-1)],d=dist(s,p);
+              if(d>6){
+                const hop=stepToward(s,p);const r=client.walkTo(hop.x,hop.z,true);client.flush();actions++;
+                void log('HOP',{tick,stage,target:p,from:[s.player.worldX,s.player.worldZ],hop,distance:Number(d.toFixed(1)),result:r});next=tick+5;return;
+              }
+
+              if(!reached.has(p.name)){reached.add(p.name);arrivalTick=tick;void log('ARRIVED',{tick,stage,place:p.name,pos:[s.player.worldX,s.player.worldZ],distance:Number(d.toFixed(1))});}
+
+              // Record what the new area actually exposes.
+              for(const n of s.nearbyNpcs.slice(0,12)){const key=`npc:${p.name}:${n.name}`;if(!seen.has(key)){seen.add(key);void log('DISCOVER_NPC',{area:p.name,name:n.name,options:n.options,distance:n.distance});}}
+              for(const l of s.nearbyLocs.slice(0,12)){if(!l.options?.length)continue;const key=`loc:${p.name}:${l.name}:${l.options.join(',')}`;if(!seen.has(key)){seen.add(key);void log('DISCOVER_LOC',{area:p.name,name:l.name,options:l.options,distance:l.distance});}}
+
+              // Sample a local creature once while dwelling at an area.
+              const creature=s.nearbyNpcs.find(n=>/goblin|chicken|cow/i.test(n.name)&&n.reachable!==false&&n.optionsWithIndex.some(o=>/attack/i.test(o.text)));
+              const attack=creature?.optionsWithIndex.find(o=>/attack/i.test(o.text));
+              if(creature&&attack&&tick-arrivalTick===4){act({type:'interactNpc',npcIndex:creature.index,optionIndex:attack.opIndex,reason:'sample resident creature'},'AREA_COMBAT',{area:p.name,target:creature.name});next=tick+7;return;}
+
+              if(tick-arrivalTick>=12&&stage<points.length-1){stage++;arrivalTick=-1;void log('DEPART',{tick,next:points[stage]});next=tick+2;return;}
+            }catch(e){void log('ERROR',String(e));}
+          });
+
+          await Bun.sleep(150_000);client.setOnGameTickCallback(null);
+          await log('COMPLETE',{ticks:tick,actions,reached:[...reached],final:last?{pos:[last.player.worldX,last.player.worldZ],hp:[last.player.hp,last.player.maxHp],skills:Object.fromEntries(last.skills.map(v=>[v.name,v.level])),inventory:last.inventory.map(i=>({name:i.name,count:i.count}))}:null});
+          session.stop();await session.stopped;
+          EOF
+      - name: Run
+        working-directory: rs-sdk/server/webclient
+        env:
+          SOL_USER: SolV${{ github.run_number }}
+          SOL_PASS: SolV${{ github.run_number }}Pass
+        run: |
+          set -o pipefail
+          bun sol-expedition-v2.ts 2>&1 | tee ../../sol-expedition-v2-console.log
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sol-expedition-v2-${{ github.run_number }}
+          path: |
+            rs-sdk/sol-expedition-v2.log
+            rs-sdk/sol-expedition-v2-console.log
+          if-no-files-found: warn
