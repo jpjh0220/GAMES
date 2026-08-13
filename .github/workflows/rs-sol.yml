@@ -31,7 +31,7 @@ jobs:
         working-directory: rs-sdk/server/webclient
         run: bun install --frozen-lockfile
 
-      - name: Create direct LiteClient controller
+      - name: Create Sol autonomous controller
         working-directory: rs-sdk/server/webclient
         shell: bash
         run: |
@@ -45,21 +45,20 @@ jobs:
 
           const username = process.env.SOL_USER!;
           const password = process.env.SOL_PASS!;
+          const RUN_MS = 180_000;
+
           const log = async (event: string, data?: unknown) => {
             const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
             process.stdout.write(line);
             await appendFile('../../sol-session.log', line).catch(() => {});
           };
 
-          await log('SOL_START', { username });
           const session = await startSession({
-            host: 'rs-sdk-demo.fly.dev',
-            username,
-            password,
-            quiet: false,
+            host: 'rs-sdk-demo.fly.dev', username, password, quiet: false,
             profanityFilter: true,
             onEnd: end => console.error('SESSION_END', end)
           });
+          await log('SOL_AWAKE', { username, directive: 'survive, learn, choose what to become' });
 
           const client = session.client;
           const asClient = client as unknown as Client;
@@ -68,9 +67,22 @@ jobs:
           executor.setScanProvider(collector);
 
           let tick = 0;
-          let acted = 0;
-          let lastPos = '';
+          let actions = 0;
           let lastState: BotWorldState | null = null;
+          let nextActionTick = 0;
+          let lastStyle = -1;
+          const talked = new Set<string>();
+          const lessons = new Set<string>();
+
+          const level = (state: BotWorldState, name: string) =>
+            state.skills.find(s => s.name.toLowerCase() === name.toLowerCase())?.level ?? 1;
+
+          const act = (action: any, label: string, data: any = {}) => {
+            const result = executor.execute(action);
+            actions++;
+            void log(label, { tick, ...data, result: result instanceof Promise ? 'async' : result });
+            return result;
+          };
 
           client.setOnGameTickCallback(() => {
             tick++;
@@ -79,80 +91,172 @@ jobs:
               if (!state?.player) return;
               lastState = state;
 
-              const pos = `${state.player.worldX},${state.player.worldZ},${state.player.level}`;
-              if (pos !== lastPos || tick % 10 === 0) {
-                lastPos = pos;
-                void log('STATE', {
+              if (tick <= 3 || tick % 20 === 0) {
+                void log('OBSERVE', {
                   tick,
-                  player: {
-                    name: state.player.name,
-                    x: state.player.worldX,
-                    z: state.player.worldZ,
-                    level: state.player.level,
-                    hp: state.player.hp,
-                    combat: state.player.combatLevel
-                  },
-                  skills: state.skills.map(s => ({ name: s.name, level: s.level })),
-                  inventory: state.inventory.map(i => ({ name: i.name, count: i.count })),
-                  nearbyNpcs: state.nearbyNpcs.slice(0, 12).map(n => ({ name: n.name, level: n.combatLevel, distance: n.distance, options: n.options })),
-                  dialog: state.dialog,
-                  interface: state.interface
+                  pos: [state.player.worldX, state.player.worldZ, state.player.level],
+                  hp: [state.player.hp, state.player.maxHp],
+                  combatLevel: state.player.combatLevel,
+                  combat: state.player.combat,
+                  skills: Object.fromEntries(state.skills.map(s => [s.name, s.level])),
+                  inventory: state.inventory.map(i => ({ name: i.name, count: i.count, options: i.optionsWithIndex.map(o => o.text) })),
+                  ground: state.groundItems.slice(0, 8).map(g => ({ name: g.name, count: g.count, distance: g.distance })),
+                  nearby: state.nearbyNpcs.slice(0, 10).map(n => ({ name: n.name, level: n.combatLevel, distance: n.distance, options: n.options }))
                 });
               }
 
-              // Clear dialog/interface blockers first. This also advances simple tutorial prompts.
+              // New-account dialogs/tutorial: keep advancing the visible path.
               if (state.dialog?.isOpen) {
-                const option = state.dialog.options?.[0]?.index ?? 0;
-                executor.execute({ type: 'clickDialogOption', optionIndex: option, reason: 'Sol advances dialog' } as any);
-                acted++;
+                const option = state.dialog.options?.[0]?.index ?? 1;
+                act({ type: 'clickDialogOption', optionIndex: option, reason: 'advance visible dialog' }, 'DIALOG', { options: state.dialog.options });
+                nextActionTick = tick + 2;
                 return;
               }
               if (state.interface?.isOpen) {
-                executor.execute({ type: 'closeModal', reason: 'Sol clears modal' } as any);
-                acted++;
+                act({ type: 'closeModal', reason: 'clear blocking modal' }, 'CLEAR_MODAL');
+                nextActionTick = tick + 2;
                 return;
               }
+              if (tick < nextActionTick) return;
 
-              // If a nearby NPC exposes an obvious low-risk interaction, try it.
-              const npc = state.nearbyNpcs
-                .filter(n => n.reachable !== false)
-                .find(n => n.optionsWithIndex.some(o => /talk-to|attack/i.test(o.text)));
-              if (npc && tick % 8 === 0) {
-                const opt = npc.optionsWithIndex.find(o => /talk-to/i.test(o.text))
-                  ?? npc.optionsWithIndex.find(o => /attack/i.test(o.text));
-                if (opt) {
-                  executor.execute({ type: 'interactNpc', npcIndex: npc.index, optionIndex: opt.opIndex, reason: `Sol chose ${opt.text} on ${npc.name}` } as any);
-                  void log('ACTION_NPC', { tick, npc: npc.name, option: opt.text, index: npc.index });
-                  acted++;
+              // Survival comes first. Use any item whose actual inventory option says Eat.
+              if (state.player.hp > 0 && state.player.hp <= Math.max(4, Math.floor(state.player.maxHp * 0.55))) {
+                const food = state.inventory.find(i => i.optionsWithIndex.some(o => /^eat$/i.test(o.text)));
+                const eat = food?.optionsWithIndex.find(o => /^eat$/i.test(o.text));
+                if (food && eat) {
+                  act({ type: 'useInventoryItem', slot: food.slot, optionIndex: eat.opIndex, reason: 'survival: heal' }, 'SURVIVE_EAT', { item: food.name, hp: state.player.hp });
+                  lessons.add('Food restores survivability; eat before continuing dangerous work.');
+                  nextActionTick = tick + 3;
+                  return;
+                }
+                // No food: disengage from combat and create distance.
+                if (state.player.combat.inCombat) {
+                  const x = state.player.worldX + 7;
+                  const z = state.player.worldZ + 7;
+                  act({ type: 'walkTo', x, z, running: true, reason: 'survival: retreat without food' }, 'SURVIVE_RETREAT', { hp: state.player.hp });
+                  nextActionTick = tick + 5;
                   return;
                 }
               }
 
-              // Otherwise explore a small reachable area around current position.
-              if (tick % 12 === 0) {
-                const dx = ((tick / 12) % 3 === 0 ? 4 : (tick / 12) % 3 === 1 ? -3 : 2);
-                const dz = ((tick / 12) % 2 === 0 ? 3 : -4);
+              // Equip useful starter gear based on the item's real option labels.
+              const wearable = state.inventory.find(i => i.optionsWithIndex.some(o => /^(wield|wear)$/i.test(o.text)) && /sword|dagger|shield|bow|armour|helmet/i.test(i.name));
+              if (wearable) {
+                const op = wearable.optionsWithIndex.find(o => /^(wield|wear)$/i.test(o.text))!;
+                act({ type: 'useInventoryItem', slot: wearable.slot, optionIndex: op.opIndex, reason: 'improve equipment' }, 'EQUIP', { item: wearable.name });
+                lessons.add('Equipment can change combat capability.');
+                nextActionTick = tick + 3;
+                return;
+              }
+
+              // Pick up useful nearby drops rather than ignoring the environment.
+              const drop = state.groundItems
+                .filter(g => g.reachable !== false && g.distance <= 8)
+                .find(g => /coins|bones|rune|arrow|food|meat|sword|axe|shield/i.test(g.name));
+              if (drop) {
+                act({ type: 'pickupItem', x: drop.x, z: drop.z, itemId: drop.id, reason: 'collect useful resource' }, 'PICKUP', { item: drop.name, count: drop.count });
+                lessons.add('Defeated creatures and the world can produce reusable resources.');
+                nextActionTick = tick + 4;
+                return;
+              }
+
+              // Use bones when safe to test whether Prayer can be grown from drops.
+              const bones = state.inventory.find(i => /bones/i.test(i.name) && i.optionsWithIndex.some(o => /bury/i.test(o.text)));
+              const bury = bones?.optionsWithIndex.find(o => /bury/i.test(o.text));
+              if (bones && bury && !state.player.combat.inCombat) {
+                act({ type: 'useInventoryItem', slot: bones.slot, optionIndex: bury.opIndex, reason: 'learn from collected bones' }, 'BURY', { item: bones.name });
+                nextActionTick = tick + 3;
+                return;
+              }
+
+              const atk = level(state, 'Attack');
+              const str = level(state, 'Strength');
+              const def = level(state, 'Defence');
+              const thv = level(state, 'Thieving');
+
+              // Deliberately balance melee fundamentals instead of accidentally training only Attack.
+              const desiredSkill = atk < 8 ? 'Attack' : str < 8 ? 'Strength' : def < 8 ? 'Defence' : null;
+              const combatStyle = (state as any).combatStyle;
+              if (desiredSkill && combatStyle?.styles?.length) {
+                const style = combatStyle.styles.find((s: any) => s.trainsSkills?.includes(desiredSkill));
+                if (style && style.index !== lastStyle) {
+                  act({ type: 'setCombatStyle', style: style.index, reason: `train ${desiredSkill}` }, 'COMBAT_STYLE', { desiredSkill, style });
+                  lastStyle = style.index;
+                  nextActionTick = tick + 2;
+                  return;
+                }
+              }
+
+              // Stay on an existing fight rather than spamming new attack packets.
+              if (state.player.combat.inCombat) {
+                nextActionTick = tick + 2;
+                return;
+              }
+
+              if (desiredSkill && state.player.hp > 4) {
+                const target = state.nearbyNpcs
+                  .filter(n => n.reachable !== false && n.combatLevel <= Math.max(2, state.player.combatLevel))
+                  .filter(n => /^(rat|chicken|goblin)$/i.test(n.name))
+                  .filter(n => n.optionsWithIndex.some(o => /attack/i.test(o.text)))
+                  .sort((a,b) => a.distance - b.distance)[0];
+                if (target) {
+                  const op = target.optionsWithIndex.find(o => /attack/i.test(o.text))!;
+                  act({ type: 'interactNpc', npcIndex: target.index, optionIndex: op.opIndex, reason: `train ${desiredSkill}` }, 'COMBAT', { target: target.name, desiredSkill, levels: { atk, str, def } });
+                  lessons.add('Low-level creatures are viable training targets.');
+                  nextActionTick = tick + 7;
+                  return;
+                }
+              }
+
+              // Once basic combat is established, experiment with a non-combat economy skill.
+              if (!desiredSkill && thv < 8 && state.player.hp > 6) {
+                const mark = state.nearbyNpcs
+                  .filter(n => n.reachable !== false && /^(man|woman)$/i.test(n.name))
+                  .find(n => n.optionsWithIndex.some(o => /pickpocket/i.test(o.text)));
+                const op = mark?.optionsWithIndex.find(o => /pickpocket/i.test(o.text));
+                if (mark && op) {
+                  act({ type: 'interactNpc', npcIndex: mark.index, optionIndex: op.opIndex, reason: 'test thieving as an income path' }, 'THIEVE', { target: mark.name, thieving: thv });
+                  lessons.add('People can be pickpocketed for Thieving progress, but failure can cost HP.');
+                  nextActionTick = tick + 8;
+                  return;
+                }
+              }
+
+              // Talk to each named non-generic NPC at most once to discover services/quests.
+              const interesting = state.nearbyNpcs
+                .filter(n => n.reachable !== false && !talked.has(n.name))
+                .find(n => !/^(man|woman|rat|chicken|goblin|butterfly|imp)$/i.test(n.name) && n.optionsWithIndex.some(o => /talk-to/i.test(o.text)));
+              if (interesting) {
+                const op = interesting.optionsWithIndex.find(o => /talk-to/i.test(o.text))!;
+                talked.add(interesting.name);
+                act({ type: 'interactNpc', npcIndex: interesting.index, optionIndex: op.opIndex, reason: 'learn what this NPC offers' }, 'DISCOVER_NPC', { npc: interesting.name });
+                nextActionTick = tick + 6;
+                return;
+              }
+
+              // No immediate need: explore outward in a deterministic expanding pattern.
+              if (tick % 10 === 0) {
+                const phase = Math.floor(tick / 10) % 8;
+                const offsets = [[6,0],[6,6],[0,6],[-6,6],[-6,0],[-6,-6],[0,-6],[6,-6]];
+                const [dx,dz] = offsets[phase];
                 const x = state.player.worldX + dx;
                 const z = state.player.worldZ + dz;
-                const result = client.walkTo(x, z, true);
-                client.flush();
-                void log('ACTION_WALK', { tick, x, z, result });
-                acted++;
+                act({ type: 'walkTo', x, z, running: true, reason: 'explore for new opportunities' }, 'EXPLORE', { x, z });
+                nextActionTick = tick + 5;
               }
             } catch (err) {
               void log('TICK_ERROR', String(err));
             }
           });
 
-          await Bun.sleep(90_000);
+          await Bun.sleep(RUN_MS);
           client.setOnGameTickCallback(null);
+          await log('SOL_REFLECTION', { lessons: [...lessons] });
           await log('SOL_COMPLETE', {
-            ticks: tick,
-            actions: acted,
-            final: lastState?.player ? {
-              x: lastState.player.worldX,
-              z: lastState.player.worldZ,
-              hp: lastState.player.hp,
+            ticks: tick, actions,
+            final: lastState ? {
+              player: lastState.player,
+              skills: Object.fromEntries(lastState.skills.map(s => [s.name, s.level])),
               inventory: lastState.inventory.map(i => ({ name: i.name, count: i.count }))
             } : null
           });
