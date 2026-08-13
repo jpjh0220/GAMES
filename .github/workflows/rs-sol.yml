@@ -1,4 +1,4 @@
-name: Sol RS-SDK Runner
+name: Sol Continuous RS-SDK Runner
 
 on:
   workflow_dispatch:
@@ -9,11 +9,16 @@ on:
 
 permissions:
   contents: read
+  actions: write
+
+concurrency:
+  group: sol-continuous-world
+  cancel-in-progress: false
 
 jobs:
   sol:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 360
     steps:
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
@@ -42,7 +47,8 @@ jobs:
 
           const username = process.env.SOL_USER!;
           const password = process.env.SOL_PASS!;
-          const RUN_MS = 150_000;
+          // Leave five minutes for log upload + runner handoff before GitHub's hard six-hour cutoff.
+          const RUN_MS = 21_300_000;
           const log = async (event: string, data?: unknown) => {
             const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
             process.stdout.write(line);
@@ -74,7 +80,7 @@ jobs:
             return result;
           };
 
-          await log('SOL_AWAKE', { username, directive: 'survive, learn, avoid loops, expand capabilities' });
+          await log('SOL_AWAKE', { username, directive: 'remain alive, learn continuously, avoid loops, expand capabilities indefinitely' });
 
           client.setOnGameTickCallback(() => {
             tick++;
@@ -83,7 +89,7 @@ jobs:
               if (!state?.player) return;
               lastState = state;
 
-              if (tick <= 3 || tick % 25 === 0) {
+              if (tick <= 3 || tick % 100 === 0) {
                 void log('OBSERVE', {
                   tick,
                   pos: [state.player.worldX, state.player.worldZ, state.player.level],
@@ -108,7 +114,7 @@ jobs:
               }
               if (tick < nextActionTick) return;
 
-              // Survival.
+              // Survival always outranks progression.
               if (state.player.hp > 0 && state.player.hp <= Math.max(4, Math.floor(state.player.maxHp * 0.55))) {
                 const food = state.inventory.find(i => i.optionsWithIndex.some(o => /^eat$/i.test(o.text)));
                 const eat = food?.optionsWithIndex.find(o => /^eat$/i.test(o.text));
@@ -125,18 +131,16 @@ jobs:
                 }
               }
 
-              // Pick one preferred starter weapon once; never ping-pong between alternatives.
+              // On a fresh account choose starter equipment once. On persistent handoffs these items are usually already equipped.
               if (!preferredWeaponChosen) {
                 const weapon = state.inventory.find(i => /bronze sword/i.test(i.name)) ?? state.inventory.find(i => /bronze dagger/i.test(i.name));
                 const wield = weapon?.optionsWithIndex.find(o => /^wield$/i.test(o.text));
+                preferredWeaponChosen = true;
                 if (weapon && wield) {
                   act({ type: 'useInventoryItem', slot: weapon.slot, optionIndex: wield.opIndex, reason: 'choose starter weapon once' }, 'EQUIP_WEAPON', { item: weapon.name });
-                  preferredWeaponChosen = true;
-                  lessons.add(`Selected ${weapon.name} as starter weapon instead of repeatedly swapping gear.`);
                   nextActionTick = tick + 3;
                   return;
                 }
-                preferredWeaponChosen = true;
               }
               if (!shieldAttempted) {
                 const shield = state.inventory.find(i => /shield/i.test(i.name));
@@ -149,12 +153,10 @@ jobs:
                 }
               }
 
-              // Collect useful world output.
               const drop = state.groundItems.filter(g => g.reachable !== false && g.distance <= 8)
                 .find(g => /coins|bones|rune|arrow|food|meat|sword|axe|shield/i.test(g.name));
               if (drop) {
                 act({ type: 'pickupItem', x: drop.x, z: drop.z, itemId: drop.id, reason: 'collect useful resource' }, 'PICKUP', { item: drop.name, count: drop.count });
-                lessons.add('Useful drops should be converted into inventory resources.');
                 nextActionTick = tick + 4;
                 return;
               }
@@ -163,7 +165,6 @@ jobs:
               const bury = bones?.optionsWithIndex.find(o => /bury/i.test(o.text));
               if (bones && bury && !state.player.combat.inCombat) {
                 act({ type: 'useInventoryItem', slot: bones.slot, optionIndex: bury.opIndex, reason: 'convert bones to prayer progress' }, 'BURY', { item: bones.name });
-                lessons.add('Bones can be converted into Prayer progress.');
                 nextActionTick = tick + 3;
                 return;
               }
@@ -172,13 +173,23 @@ jobs:
               const str = level(state, 'Strength');
               const def = level(state, 'Defence');
               const thv = level(state, 'Thieving');
-              const desiredSkill = atk < 6 ? 'Attack' : str < 6 ? 'Strength' : def < 6 ? 'Defence' : null;
+              const weakestMelee = [
+                { name: 'Attack', level: atk },
+                { name: 'Strength', level: str },
+                { name: 'Defence', level: def }
+              ].sort((a,b) => a.level - b.level)[0];
+
+              // Continuous curriculum: keep melee roughly balanced instead of stopping at an arbitrary level.
+              // Every ten melee levels, let Thieving catch up to diversify progression/economy.
+              const meleeFloor = Math.min(atk, str, def);
+              const shouldThieve = thv + 4 < meleeFloor && state.player.hp > Math.max(6, Math.floor(state.player.maxHp * 0.7));
+              const desiredSkill = shouldThieve ? null : weakestMelee.name;
               const combatStyle = (state as any).combatStyle;
 
               if (desiredSkill && combatStyle?.styles?.length) {
                 const style = combatStyle.styles.find((s: any) => s.trainsSkills?.includes(desiredSkill));
                 if (style && style.index !== lastStyle) {
-                  act({ type: 'setCombatStyle', style: style.index, reason: `train ${desiredSkill}` }, 'COMBAT_STYLE', { desiredSkill, style: style.name });
+                  act({ type: 'setCombatStyle', style: style.index, reason: `balance ${desiredSkill}` }, 'COMBAT_STYLE', { desiredSkill, style: style.name });
                   lastStyle = style.index;
                   nextActionTick = tick + 2;
                   return;
@@ -190,50 +201,53 @@ jobs:
                 return;
               }
 
-              if (desiredSkill && state.player.hp > 4) {
-                const target = state.nearbyNpcs
-                  .filter(n => n.reachable !== false && n.combatLevel <= Math.max(2, state.player.combatLevel))
-                  .filter(n => /^(rat|chicken|goblin)$/i.test(n.name))
-                  .filter(n => n.optionsWithIndex.some(o => /attack/i.test(o.text)))
-                  .sort((a,b) => a.distance - b.distance)[0];
-                const op = target?.optionsWithIndex.find(o => /attack/i.test(o.text));
-                if (target && op) {
-                  act({ type: 'interactNpc', npcIndex: target.index, optionIndex: op.opIndex, reason: `train ${desiredSkill}` }, 'COMBAT', { target: target.name, desiredSkill, levels: { atk, str, def } });
-                  lessons.add('Low-level enemies provide controlled combat training.');
-                  nextActionTick = tick + 7;
-                  return;
-                }
-              }
-
-              // Test Thieving after melee fundamentals.
-              if (!desiredSkill && thv < 6 && state.player.hp > 6) {
+              if (shouldThieve) {
                 const mark = state.nearbyNpcs.filter(n => n.reachable !== false && /^(man|woman)$/i.test(n.name))
                   .find(n => n.optionsWithIndex.some(o => /pickpocket/i.test(o.text)));
                 const op = mark?.optionsWithIndex.find(o => /pickpocket/i.test(o.text));
                 if (mark && op) {
-                  act({ type: 'interactNpc', npcIndex: mark.index, optionIndex: op.opIndex, reason: 'learn thieving economy' }, 'THIEVE', { target: mark.name, thieving: thv });
-                  lessons.add('Thieving can generate progression and money but carries stun/HP risk.');
+                  act({ type: 'interactNpc', npcIndex: mark.index, optionIndex: op.opIndex, reason: 'keep economy skill near combat progression' }, 'THIEVE', { target: mark.name, thieving: thv, meleeFloor });
                   nextActionTick = tick + 8;
                   return;
                 }
               }
 
+              // Prefer progressively stronger but still controlled combat targets as Sol grows.
+              const attackable = state.nearbyNpcs
+                .filter(n => n.reachable !== false)
+                .filter(n => n.combatLevel > 0 && n.combatLevel <= Math.max(2, state.player.combatLevel + 2))
+                .filter(n => n.optionsWithIndex.some(o => /attack/i.test(o.text)))
+                .filter(n => !/^(man|woman)$/i.test(n.name))
+                .sort((a,b) => {
+                  const aScore = Math.abs(a.combatLevel - Math.max(1, state.player.combatLevel - 2)) * 10 + a.distance;
+                  const bScore = Math.abs(b.combatLevel - Math.max(1, state.player.combatLevel - 2)) * 10 + b.distance;
+                  return aScore - bScore;
+                });
+              const target = attackable[0];
+              const op = target?.optionsWithIndex.find(o => /attack/i.test(o.text));
+              if (target && op && state.player.hp > Math.max(4, Math.floor(state.player.maxHp * 0.6))) {
+                act({ type: 'interactNpc', npcIndex: target.index, optionIndex: op.opIndex, reason: `continuously train weakest melee skill: ${weakestMelee.name}` }, 'COMBAT', { target: target.name, targetLevel: target.combatLevel, desiredSkill: weakestMelee.name, levels: { atk, str, def, thv } });
+                nextActionTick = tick + 7;
+                return;
+              }
+
+              // Discover named NPCs once per runner session whenever combat/economy has no immediate target.
               const interesting = state.nearbyNpcs
                 .filter(n => n.reachable !== false && !talked.has(n.name))
-                .find(n => !/^(man|woman|rat|chicken|goblin|butterfly|imp)$/i.test(n.name) && n.optionsWithIndex.some(o => /talk-to/i.test(o.text)));
+                .find(n => !/^(man|woman|rat|chicken|goblin|butterfly|imp|duck)$/i.test(n.name) && n.optionsWithIndex.some(o => /talk-to/i.test(o.text)));
               if (interesting) {
                 const op = interesting.optionsWithIndex.find(o => /talk-to/i.test(o.text))!;
                 talked.add(interesting.name);
-                act({ type: 'interactNpc', npcIndex: interesting.index, optionIndex: op.opIndex, reason: 'discover services or quests once' }, 'DISCOVER_NPC', { npc: interesting.name });
+                act({ type: 'interactNpc', npcIndex: interesting.index, optionIndex: op.opIndex, reason: 'discover services or quests' }, 'DISCOVER_NPC', { npc: interesting.name });
                 nextActionTick = tick + 6;
                 return;
               }
 
-              // Explore if no higher-priority action exists.
+              // Last resort: try a short route. Failed routes do not stall the session; next tick chooses again.
               if (tick % 10 === 0) {
-                const offsets = [[6,0],[6,6],[0,6],[-6,6],[-6,0],[-6,-6],[0,-6],[6,-6]];
+                const offsets = [[3,0],[0,3],[-3,0],[0,-3],[2,2],[-2,2],[-2,-2],[2,-2]];
                 const [dx,dz] = offsets[Math.floor(tick / 10) % offsets.length];
-                act({ type: 'walkTo', x: state.player.worldX + dx, z: state.player.worldZ + dz, running: true, reason: 'explore for new opportunities' }, 'EXPLORE');
+                act({ type: 'walkTo', x: state.player.worldX + dx, z: state.player.worldZ + dz, running: true, reason: 'search locally for new opportunities' }, 'EXPLORE');
                 nextActionTick = tick + 5;
               }
             } catch (err) {
@@ -243,9 +257,10 @@ jobs:
 
           await Bun.sleep(RUN_MS);
           client.setOnGameTickCallback(null);
-          await log('SOL_REFLECTION', { lessons: [...lessons] });
-          await log('SOL_COMPLETE', {
-            ticks: tick, actions,
+          await log('SOL_HANDOFF', {
+            ticks: tick,
+            actions,
+            lessons: [...lessons],
             final: lastState ? {
               player: lastState.player,
               skills: Object.fromEntries(lastState.skills.map(s => [s.name, s.level])),
@@ -256,11 +271,12 @@ jobs:
           await session.stopped;
           EOF
 
-      - name: Run Sol directly in the game
+      - name: Run persistent Sol in the game
         working-directory: rs-sdk/server/webclient
         env:
-          SOL_USER: Sol${{ github.run_number }}
-          SOL_PASS: run-${{ github.run_id }}-${{ github.run_attempt }}
+          # Reuse the already-created Sol5 account so stats/inventory persist across runner handoffs.
+          SOL_USER: Sol5
+          SOL_PASS: run-31675285392-1
         run: |
           set -o pipefail
           bun sol-lite.ts 2>&1 | tee ../../sol-console.log
@@ -269,8 +285,22 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sol-rs-sdk-session-${{ github.run_number }}
+          name: sol-continuous-${{ github.run_number }}-${{ github.run_attempt }}
           path: |
             rs-sdk/sol-session.log
             rs-sdk/sol-console.log
           if-no-files-found: warn
+
+      - name: Hand Sol to the next runner
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo 'Starting the next Sol runner handoff...'
+          curl --fail-with-body --retry 3 \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol.yml/dispatches \
+            -d '{"ref":"main"}'
