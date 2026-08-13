@@ -23,114 +23,157 @@ jobs:
       - name: Clone RS-SDK
         run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
 
-      - name: Install dependencies
+      - name: Install root dependencies
         working-directory: rs-sdk
         run: bun install --frozen-lockfile
 
-      - name: Create Sol
-        working-directory: rs-sdk
-        run: bun bots/create-bot.ts Sol2040 --no-chat
+      - name: Install webclient dependencies
+        working-directory: rs-sdk/server/webclient
+        run: bun install --frozen-lockfile
 
-      - name: Install Sol autonomous script
-        working-directory: rs-sdk
+      - name: Create direct LiteClient controller
+        working-directory: rs-sdk/server/webclient
         shell: bash
         run: |
-          cat > bots/Sol2040/script.ts <<'EOF'
-          import { runScript } from '../../sdk/runner';
+          cat > sol-lite.ts <<'EOF'
+          import { startSession } from './src/lite/session.js';
+          import { BotStateCollector } from './src/bot/StateCollector.js';
+          import { ActionExecutor } from './src/bot/ActionExecutor.js';
+          import type { Client } from './src/client/Client.js';
+          import type { BotWorldState } from './src/bot/types.js';
           import { appendFile } from 'fs/promises';
 
-          const log = async (msg: string, data?: unknown) => {
-            const line = `[${new Date().toISOString()}] ${msg}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
+          const username = process.env.SOL_USER!;
+          const password = process.env.SOL_PASS!;
+          const log = async (event: string, data?: unknown) => {
+            const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
             process.stdout.write(line);
-            await appendFile('sol-session.log', line).catch(() => {});
+            await appendFile('../../sol-session.log', line).catch(() => {});
           };
 
-          await runScript(async ({ bot, sdk }) => {
-            await log('SOL_BOOT');
-            await bot.skipTutorial();
-            await log('TUTORIAL_DONE');
+          await log('SOL_START', { username });
+          const session = await startSession({
+            host: 'rs-sdk-demo.fly.dev',
+            username,
+            password,
+            quiet: false,
+            profanityFilter: true,
+            onEnd: end => console.error('SESSION_END', end)
+          });
 
-            const started = Date.now();
-            let cycle = 0;
-            let idleCycles = 0;
+          const client = session.client;
+          const asClient = client as unknown as Client;
+          const collector = new BotStateCollector(asClient);
+          const executor = new ActionExecutor(asClient);
+          executor.setScanProvider(collector);
 
-            while (Date.now() - started < 8 * 60_000) {
-              cycle++;
-              await bot.dismissBlockingUI().catch(() => {});
+          let tick = 0;
+          let acted = 0;
+          let lastPos = '';
+          let lastState: BotWorldState | null = null;
 
-              const inv = sdk.getInventory();
-              const equipment = bot.getEquipment();
-              const state = sdk.getState();
-              await log('OBSERVE', {
-                cycle,
-                inventory: inv.map(i => ({ name: i.name, count: i.count })),
-                equipment: equipment.map(i => i.name),
-                nearbyNpcs: ['chicken','goblin','cow','rat','man','woman'].map(name => ({ name, found: !!sdk.findNearbyNpc(new RegExp(`^${name}$`, 'i')) })),
-                nearbyTree: !!sdk.findNearbyLoc(/^tree$/i),
-                stateAvailable: !!state
-              });
+          client.setOnGameTickCallback(() => {
+            tick++;
+            try {
+              const state = collector.collectState(tick, true) as BotWorldState | null;
+              if (!state?.player) return;
+              lastState = state;
 
-              const food = sdk.findInventoryItem(/shrimp|bread|meat|chicken|beef|trout|salmon/i);
-              if (food) {
-                const r = await bot.eatFood(food).catch(e => ({ success: false, message: String(e) }));
-                await log('ACT_EAT', r);
-                if ((r as any)?.success) { idleCycles = 0; continue; }
+              const pos = `${state.player.worldX},${state.player.worldZ},${state.player.level}`;
+              if (pos !== lastPos || tick % 10 === 0) {
+                lastPos = pos;
+                void log('STATE', {
+                  tick,
+                  player: {
+                    name: state.player.name,
+                    x: state.player.worldX,
+                    z: state.player.worldZ,
+                    level: state.player.level,
+                    hp: state.player.hp,
+                    combat: state.player.combatLevel
+                  },
+                  skills: state.skills.map(s => ({ name: s.name, level: s.level })),
+                  inventory: state.inventory.map(i => ({ name: i.name, count: i.count })),
+                  nearbyNpcs: state.nearbyNpcs.slice(0, 12).map(n => ({ name: n.name, level: n.combatLevel, distance: n.distance, options: n.options })),
+                  dialog: state.dialog,
+                  interface: state.interface
+                });
               }
 
-              const ground = await sdk.scanGroundItems().catch(() => [] as any[]);
-              const useful = ground.find((g: any) => /coins|bones|food|meat|axe|sword|shield|rune|arrow/i.test(g.name || ''));
-              if (useful) {
-                const r = await bot.pickupItem(useful).catch(e => ({ success: false, message: String(e) }));
-                await log('ACT_PICKUP', { target: useful.name, result: r });
-                if ((r as any)?.success) { idleCycles = 0; continue; }
+              // Clear dialog/interface blockers first. This also advances simple tutorial prompts.
+              if (state.dialog?.isOpen) {
+                const option = state.dialog.options?.[0]?.index ?? 0;
+                executor.execute({ type: 'clickDialogOption', optionIndex: option, reason: 'Sol advances dialog' } as any);
+                acted++;
+                return;
+              }
+              if (state.interface?.isOpen) {
+                executor.execute({ type: 'closeModal', reason: 'Sol clears modal' } as any);
+                acted++;
+                return;
               }
 
-              const axe = sdk.findInventoryItem(/axe/i);
-              const logs = sdk.findInventoryItem(/logs/i);
-              const tinderbox = sdk.findInventoryItem(/tinderbox/i);
-              const tree = sdk.findNearbyLoc(/^tree$/i);
-
-              if (logs && tinderbox) {
-                const r = await bot.burnLogs(logs).catch(e => ({ success: false, message: String(e) }));
-                await log('ACT_BURN', r);
-                if ((r as any)?.success) { idleCycles = 0; continue; }
+              // If a nearby NPC exposes an obvious low-risk interaction, try it.
+              const npc = state.nearbyNpcs
+                .filter(n => n.reachable !== false)
+                .find(n => n.optionsWithIndex.some(o => /talk-to|attack/i.test(o.text)));
+              if (npc && tick % 8 === 0) {
+                const opt = npc.optionsWithIndex.find(o => /talk-to/i.test(o.text))
+                  ?? npc.optionsWithIndex.find(o => /attack/i.test(o.text));
+                if (opt) {
+                  executor.execute({ type: 'interactNpc', npcIndex: npc.index, optionIndex: opt.opIndex, reason: `Sol chose ${opt.text} on ${npc.name}` } as any);
+                  void log('ACTION_NPC', { tick, npc: npc.name, option: opt.text, index: npc.index });
+                  acted++;
+                  return;
+                }
               }
 
-              if (tree && axe && inv.length < 27) {
-                const r = await bot.chopTree(tree).catch(e => ({ success: false, message: String(e) }));
-                await log('ACT_CHOP', r);
-                if ((r as any)?.success) { idleCycles = 0; continue; }
+              // Otherwise explore a small reachable area around current position.
+              if (tick % 12 === 0) {
+                const dx = ((tick / 12) % 3 === 0 ? 4 : (tick / 12) % 3 === 1 ? -3 : 2);
+                const dz = ((tick / 12) % 2 === 0 ? 3 : -4);
+                const x = state.player.worldX + dx;
+                const z = state.player.worldZ + dz;
+                const result = client.walkTo(x, z, true);
+                client.flush();
+                void log('ACTION_WALK', { tick, x, z, result });
+                acted++;
               }
-
-              const target = sdk.findNearbyNpc(/^chicken$/i) || sdk.findNearbyNpc(/^goblin$/i) || sdk.findNearbyNpc(/^rat$/i) || sdk.findNearbyNpc(/^cow$/i);
-              if (target) {
-                const r = await bot.attack(target, 12_000).catch(e => ({ success: false, message: String(e) }));
-                await log('ACT_ATTACK', { target: target.name, result: r });
-                await bot.waitForIdle(15_000).catch(() => {});
-                idleCycles = 0;
-                continue;
-              }
-
-              idleCycles++;
-              await log('NO_ACTION', { idleCycles });
-              await new Promise(r => setTimeout(r, 1500));
+            } catch (err) {
+              void log('TICK_ERROR', String(err));
             }
+          });
 
-            await log('SOL_SESSION_COMPLETE', { cycles: cycle });
-          }, { timeout: 10 * 60_000 });
+          await Bun.sleep(90_000);
+          client.setOnGameTickCallback(null);
+          await log('SOL_COMPLETE', {
+            ticks: tick,
+            actions: acted,
+            final: lastState?.player ? {
+              x: lastState.player.worldX,
+              z: lastState.player.worldZ,
+              hp: lastState.player.hp,
+              inventory: lastState.inventory.map(i => ({ name: i.name, count: i.count }))
+            } : null
+          });
+          session.stop();
+          await session.stopped;
           EOF
 
-      - name: Run Sol
-        working-directory: rs-sdk
+      - name: Run Sol directly in the game
+        working-directory: rs-sdk/server/webclient
+        env:
+          SOL_USER: Sol${{ github.run_number }}
+          SOL_PASS: run-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           set -o pipefail
-          bun bots/Sol2040/script.ts 2>&1 | tee sol-console.log
+          bun sol-lite.ts 2>&1 | tee ../../sol-console.log
 
       - name: Upload session logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sol-rs-sdk-session
+          name: sol-rs-sdk-session-${{ github.run_number }}
           path: |
             rs-sdk/sol-session.log
             rs-sdk/sol-console.log
