@@ -1,0 +1,137 @@
+name: Sol RS-SDK Runner
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/rs-sol.yml'
+      - 'rs-sol-trigger.txt'
+
+permissions:
+  contents: read
+
+jobs:
+  sol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Clone RS-SDK
+        run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
+
+      - name: Install dependencies
+        working-directory: rs-sdk
+        run: bun install --frozen-lockfile
+
+      - name: Create Sol
+        working-directory: rs-sdk
+        run: bun bots/create-bot.ts Sol2040 --no-chat
+
+      - name: Install Sol autonomous script
+        working-directory: rs-sdk
+        shell: bash
+        run: |
+          cat > bots/Sol2040/script.ts <<'EOF'
+          import { runScript } from '../../sdk/runner';
+          import { appendFile } from 'fs/promises';
+
+          const log = async (msg: string, data?: unknown) => {
+            const line = `[${new Date().toISOString()}] ${msg}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
+            process.stdout.write(line);
+            await appendFile('sol-session.log', line).catch(() => {});
+          };
+
+          await runScript(async ({ bot, sdk }) => {
+            await log('SOL_BOOT');
+            await bot.skipTutorial();
+            await log('TUTORIAL_DONE');
+
+            const started = Date.now();
+            let cycle = 0;
+            let idleCycles = 0;
+
+            while (Date.now() - started < 8 * 60_000) {
+              cycle++;
+              await bot.dismissBlockingUI().catch(() => {});
+
+              const inv = sdk.getInventory();
+              const equipment = bot.getEquipment();
+              const state = sdk.getState();
+              await log('OBSERVE', {
+                cycle,
+                inventory: inv.map(i => ({ name: i.name, count: i.count })),
+                equipment: equipment.map(i => i.name),
+                nearbyNpcs: ['chicken','goblin','cow','rat','man','woman'].map(name => ({ name, found: !!sdk.findNearbyNpc(new RegExp(`^${name}$`, 'i')) })),
+                nearbyTree: !!sdk.findNearbyLoc(/^tree$/i),
+                stateAvailable: !!state
+              });
+
+              const food = sdk.findInventoryItem(/shrimp|bread|meat|chicken|beef|trout|salmon/i);
+              if (food) {
+                const r = await bot.eatFood(food).catch(e => ({ success: false, message: String(e) }));
+                await log('ACT_EAT', r);
+                if ((r as any)?.success) { idleCycles = 0; continue; }
+              }
+
+              const ground = await sdk.scanGroundItems().catch(() => [] as any[]);
+              const useful = ground.find((g: any) => /coins|bones|food|meat|axe|sword|shield|rune|arrow/i.test(g.name || ''));
+              if (useful) {
+                const r = await bot.pickupItem(useful).catch(e => ({ success: false, message: String(e) }));
+                await log('ACT_PICKUP', { target: useful.name, result: r });
+                if ((r as any)?.success) { idleCycles = 0; continue; }
+              }
+
+              const axe = sdk.findInventoryItem(/axe/i);
+              const logs = sdk.findInventoryItem(/logs/i);
+              const tinderbox = sdk.findInventoryItem(/tinderbox/i);
+              const tree = sdk.findNearbyLoc(/^tree$/i);
+
+              if (logs && tinderbox) {
+                const r = await bot.burnLogs(logs).catch(e => ({ success: false, message: String(e) }));
+                await log('ACT_BURN', r);
+                if ((r as any)?.success) { idleCycles = 0; continue; }
+              }
+
+              if (tree && axe && inv.length < 27) {
+                const r = await bot.chopTree(tree).catch(e => ({ success: false, message: String(e) }));
+                await log('ACT_CHOP', r);
+                if ((r as any)?.success) { idleCycles = 0; continue; }
+              }
+
+              const target = sdk.findNearbyNpc(/^chicken$/i) || sdk.findNearbyNpc(/^goblin$/i) || sdk.findNearbyNpc(/^rat$/i) || sdk.findNearbyNpc(/^cow$/i);
+              if (target) {
+                const r = await bot.attack(target, 12_000).catch(e => ({ success: false, message: String(e) }));
+                await log('ACT_ATTACK', { target: target.name, result: r });
+                await bot.waitForIdle(15_000).catch(() => {});
+                idleCycles = 0;
+                continue;
+              }
+
+              idleCycles++;
+              await log('NO_ACTION', { idleCycles });
+              await new Promise(r => setTimeout(r, 1500));
+            }
+
+            await log('SOL_SESSION_COMPLETE', { cycles: cycle });
+          }, { timeout: 10 * 60_000 });
+          EOF
+
+      - name: Run Sol
+        working-directory: rs-sdk
+        run: |
+          set -o pipefail
+          bun bots/Sol2040/script.ts 2>&1 | tee sol-console.log
+
+      - name: Upload session logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sol-rs-sdk-session
+          path: |
+            rs-sdk/sol-session.log
+            rs-sdk/sol-console.log
+          if-no-files-found: warn
