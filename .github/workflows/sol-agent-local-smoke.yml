@@ -1,0 +1,62 @@
+name: Sol Agent Local Teacher Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sol-agent-local-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Install Ollama
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://ollama.com/install.sh | sh
+          nohup env OLLAMA_CONTEXT_LENGTH=8192 ollama serve >/tmp/ollama.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:11434/api/tags >/dev/null && break
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:11434/api/tags >/dev/null
+
+      - name: Pull compact teacher
+        run: ollama pull qwen3:1.7b
+
+      - name: Verify structured agent choice
+        shell: bash
+        run: |
+          set -euo pipefail
+          SCHEMA=$(jq -cn '{
+            type:"object",
+            additionalProperties:false,
+            properties:{
+              goal:{type:"string"},
+              reason:{type:"string"},
+              expected_outcome:{type:"string"},
+              action_id:{type:"string",enum:["talk_man","pickpocket_man","wait"]},
+              memory_note:{type:"string"}
+            },
+            required:["goal","reason","expected_outcome","action_id","memory_note"]
+          }')
+          BODY=$(jq -cn --argjson schema "$SCHEMA" '{
+            model:"qwen3:1.7b",
+            stream:false,
+            think:false,
+            format:$schema,
+            options:{temperature:0.15,num_ctx:4096,num_predict:300},
+            messages:[
+              {role:"system",content:"You are Sol, an autonomous game agent. Choose only from supplied action IDs. Learn from outcomes. Return the schema only."},
+              {role:"user",content:"State: HP 10/10, safe, no combat. Candidate actions: talk_man = Talk-to Man, pickpocket_man = Pickpocket Man, wait = wait. Choose a useful action and explain the expected outcome."}
+            ]
+          }')
+          RESPONSE=$(curl -fsS http://127.0.0.1:11434/api/chat -H 'Content-Type: application/json' -d "$BODY")
+          CONTENT=$(printf '%s' "$RESPONSE" | jq -r '.message.content')
+          printf '%s' "$CONTENT" | jq -e '.goal and .reason and .expected_outcome and .action_id and (.memory_note|type=="string")' >/dev/null
+          echo "Local Qwen teacher structured decision passed."
