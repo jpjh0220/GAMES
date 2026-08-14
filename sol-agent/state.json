@@ -6,17 +6,17 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 181,
-    "teacherChoices": 181,
+    "totalChoices": 191,
+    "teacherChoices": 191,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 180,
-    "totalReward": -49.1,
-    "saves": 36,
-    "shadowPredictions": 45,
+    "completedExperiences": 190,
+    "totalReward": -55.27,
+    "saves": 37,
+    "shadowPredictions": 49,
     "shadowMatches": 5,
     "strategistRefreshes": 4,
-    "strategistFailures": 39
+    "strategistFailures": 48
   },
   "memories": [
     {
@@ -903,6 +903,87 @@
         "z": 3355,
         "level": 0
       }
+    },
+    {
+      "id": "mssps89q-wsf7me",
+      "createdAt": "2026-08-14T08:57:55.934Z",
+      "tick": 3389,
+      "runNumber": 24,
+      "kind": "episode",
+      "text": "AI motor: Open Large door (distance 1). Result: moved; operation rejected. Reward -1.05.",
+      "importance": 1.23,
+      "tags": [
+        "world",
+        "large door",
+        "open"
+      ],
+      "location": {
+        "x": 3108,
+        "z": 3354,
+        "level": 0
+      }
+    },
+    {
+      "id": "msspsiz3-y8xsqi",
+      "createdAt": "2026-08-14T08:58:09.807Z",
+      "tick": 3435,
+      "runNumber": 24,
+      "kind": "episode",
+      "text": "AI motor: Open Wardrobe (distance 3). Result: moved; operation rejected; new: npc:Witch, loc:Bed, loc:Ladder, loc:Piano stool, loc:Piano. Reward -0.32.",
+      "importance": 0.86,
+      "tags": [
+        "world",
+        "wardrobe",
+        "open",
+        "npc witch",
+        "loc bed",
+        "loc ladder",
+        "loc piano stool",
+        "loc piano"
+      ],
+      "location": {
+        "x": 3106,
+        "z": 3355,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssptt0a-uhiq1b",
+      "createdAt": "2026-08-14T08:59:09.466Z",
+      "tick": 3625,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Ozymandias said: \"Tf is this guy yapping about\". Current stance friendly, trust 0.24.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "ozymandias",
+        "friendly"
+      ],
+      "location": {
+        "x": 3106,
+        "z": 3355,
+        "level": 0
+      }
+    },
+    {
+      "id": "msspu0nd-30yloy",
+      "createdAt": "2026-08-14T08:59:19.369Z",
+      "tick": 3646,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Lol real\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "unknown"
+      ],
+      "location": {
+        "x": 3106,
+        "z": 3355,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -1158,54 +1239,54 @@
         "exampleReason": "Explore northeast about 4 tiles to locate the Large door."
       },
       "loc:close:wardrobe": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:48:53.824Z",
+        "lastAt": "2026-08-14T08:59:47.263Z",
         "exampleGoal": "Pursue world",
-        "exampleReason": "To open the wardrobe, which is a useful item for combat training."
+        "exampleReason": "Exploring the east area helps you learn the route."
       },
       "loc:open:wardrobe": {
-        "n": 3,
-        "avgReward": -0.67,
+        "n": 4,
+        "avgReward": -0.5825,
         "positive": 0,
-        "negative": 3,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:54:05.266Z",
+        "negative": 4,
+        "lastReward": -0.32,
+        "lastAt": "2026-08-14T08:58:09.807Z",
         "exampleGoal": "Pursue world",
-        "exampleReason": "Open Wardrobe (distance 1)"
+        "exampleReason": "Open Wardrobe (distance 3)"
       },
       "loc:open:large door": {
-        "n": 2,
+        "n": 3,
         "avgReward": -1.05,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -1.05,
-        "lastAt": "2026-08-14T08:49:50.051Z",
+        "lastAt": "2026-08-14T08:57:55.934Z",
         "exampleGoal": "Pursue world",
-        "exampleReason": "Open Large door (distance 2)"
+        "exampleReason": "To open the Large door (distance 1)"
       },
       "loc:search:wardrobe": {
-        "n": 3,
-        "avgReward": -0.67,
+        "n": 4,
+        "avgReward": -0.6525,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:57:13.029Z",
+        "lastAt": "2026-08-14T08:59:37.072Z",
         "exampleGoal": "Pursue world",
-        "exampleReason": "To open the wardrobe"
+        "exampleReason": "To open the wardrobe (distance 1)"
       },
       "style:accurate:attack": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:56:56.288Z",
+        "lastAt": "2026-08-14T08:59:22.984Z",
         "exampleGoal": "Pursue combat-style",
-        "exampleReason": "Auto-Train Lowest Combat Stat"
+        "exampleReason": "This action trains the Attack stat, which is the most critical stat for combat progression."
       },
       "style:aggressive:strength": {
         "n": 1,
@@ -1216,6 +1297,16 @@
         "lastAt": "2026-08-14T08:57:05.247Z",
         "exampleGoal": "Pursue combat-style",
         "exampleReason": "Auto-Train Lowest Combat Stat"
+      },
+      "style:accurate:ranged": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:58:23.559Z",
+        "exampleGoal": "Pursue combat-style",
+        "exampleReason": "Combat style Accurate: Accurate; trains Ranged"
       }
     },
     "area=388:419:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
@@ -1270,12 +1361,12 @@
         "exampleReason": "Wield Shortbow"
       },
       "inventory:wield:shortbow": {
-        "n": 8,
-        "avgReward": -0.535,
+        "n": 10,
+        "avgReward": -0.548,
         "positive": 0,
-        "negative": 7,
+        "negative": 9,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:56:34.642Z",
+        "lastAt": "2026-08-14T08:58:55.655Z",
         "exampleGoal": "Pursue inventory",
         "exampleReason": "Wield Shortbow"
       },
@@ -1290,14 +1381,14 @@
         "exampleReason": "Explore west about 5 tiles. Result: moved; new: loc:Bed, loc:Ladder."
       },
       "inventory:wield:bronze sq shield": {
-        "n": 8,
+        "n": 10,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 8,
+        "negative": 10,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:56:42.747Z",
+        "lastAt": "2026-08-14T08:59:09.175Z",
         "exampleGoal": "Pursue inventory",
-        "exampleReason": "Wield a bronze sq shield"
+        "exampleReason": "Wield Bronze sq shield"
       },
       "loc:open:large door": {
         "n": 4,
@@ -1397,11 +1488,11 @@
     "ozymandias": {
       "name": "Ozymandias",
       "firstSeenAt": "2026-08-14T08:42:22.353Z",
-      "lastSeenAt": "2026-08-14T08:56:43.060Z",
+      "lastSeenAt": "2026-08-14T08:59:09.466Z",
       "encounters": 1,
       "trust": 0.24,
       "stance": "friendly",
-      "conversations": 10,
+      "conversations": 11,
       "cooperation": 2,
       "suspicion": 0,
       "facts": [
@@ -1414,7 +1505,8 @@
         "Yo kuro u new?",
         "Stasis u seeing this bot spam lol",
         "Yo bro u got any spare gp rn",
-        "Yo u lost or what"
+        "Yo u lost or what",
+        "Tf is this guy yapping about"
       ],
       "questions": [
         "Yo u dropping any gp?",
@@ -1472,17 +1564,22 @@
           "at": "2026-08-14T08:56:43.060Z",
           "direction": "incoming",
           "text": "Yo u lost or what"
+        },
+        {
+          "at": "2026-08-14T08:59:09.466Z",
+          "direction": "incoming",
+          "text": "Tf is this guy yapping about"
         }
       ]
     },
     "oag0azhyi": {
       "name": "Oag0azhyi",
       "firstSeenAt": "2026-08-14T08:44:49.979Z",
-      "lastSeenAt": "2026-08-14T08:56:56.535Z",
+      "lastSeenAt": "2026-08-14T08:59:19.369Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 9,
+      "conversations": 10,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -1492,7 +1589,8 @@
         "Sry focused on my own grind rn :3",
         "Haha yeah",
         "Mhm",
-        "Sup!! :3"
+        "Sup!! :3",
+        "Lol real"
       ],
       "questions": [],
       "lastMessages": [
@@ -1540,6 +1638,11 @@
           "at": "2026-08-14T08:56:56.535Z",
           "direction": "incoming",
           "text": "Sup!! :3"
+        },
+        {
+          "at": "2026-08-14T08:59:19.369Z",
+          "direction": "incoming",
+          "text": "Lol real"
         }
       ]
     }
@@ -1732,12 +1835,12 @@
     },
     "194:209:0": {
       "key": "194:209:0",
-      "x": 3111,
+      "x": 3106,
       "z": 3355,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T08:57:23.289Z",
-      "visits": 929,
+      "lastSeenAt": "2026-08-14T08:59:37.343Z",
+      "visits": 948,
       "npcs": [
         "Tree",
         "Rat",
@@ -1785,7 +1888,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T08:57:28.663Z",
+  "updatedAt": "2026-08-14T08:59:47.263Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -2057,10 +2160,10 @@
         "loc:open:large door",
         "loc:open:wardrobe"
       ],
-      "n": 1,
-      "avgReward": -2.46,
+      "n": 2,
+      "avgReward": -2.215,
       "positive": 0,
-      "lastAt": "2026-08-14T08:49:34.961Z",
+      "lastAt": "2026-08-14T08:58:09.807Z",
       "example": "Wield Shortbow → Open Large door (distance 2) → Open Wardrobe (distance 3)"
     },
     "loc:open:large door > loc:open:wardrobe > loc:open:large door": {
@@ -2405,10 +2508,10 @@
         "inventory:wield:shortbow",
         "inventory:wield:bronze sq shield"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T08:56:42.748Z",
+      "lastAt": "2026-08-14T08:59:09.176Z",
       "example": "Wield Bronze sq shield → Wield Shortbow → Wield Bronze sq shield"
     },
     "inventory:wield:shortbow > inventory:wield:bronze sq shield > style:accurate:attack": {
@@ -2417,10 +2520,10 @@
         "inventory:wield:bronze sq shield",
         "style:accurate:attack"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T08:56:56.288Z",
+      "lastAt": "2026-08-14T08:59:22.984Z",
       "example": "Wield Shortbow → Wield Bronze sq shield → Combat style Punch: Accurate; trains Attack"
     },
     "inventory:wield:bronze sq shield > style:accurate:attack > style:aggressive:strength": {
@@ -2458,6 +2561,90 @@
       "positive": 0,
       "lastAt": "2026-08-14T08:57:28.663Z",
       "example": "Combat style Kick: Aggressive; trains Strength → Search Wardrobe (distance 1) → Open Large door (distance 2)"
+    },
+    "loc:search:wardrobe > loc:open:large door > inventory:wield:shortbow": {
+      "sequence": [
+        "loc:search:wardrobe",
+        "loc:open:large door",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -2.25,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:57:41.847Z",
+      "example": "Search Wardrobe (distance 1) → Open Large door (distance 2) → Wield Shortbow"
+    },
+    "loc:open:large door > inventory:wield:shortbow > loc:open:large door": {
+      "sequence": [
+        "loc:open:large door",
+        "inventory:wield:shortbow",
+        "loc:open:large door"
+      ],
+      "n": 1,
+      "avgReward": -2.7,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:57:55.934Z",
+      "example": "Open Large door (distance 2) → Wield Shortbow → Open Large door (distance 1)"
+    },
+    "loc:open:large door > loc:open:wardrobe > style:accurate:ranged": {
+      "sequence": [
+        "loc:open:large door",
+        "loc:open:wardrobe",
+        "style:accurate:ranged"
+      ],
+      "n": 1,
+      "avgReward": -1.97,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:58:23.559Z",
+      "example": "Open Large door (distance 1) → Open Wardrobe (distance 3) → Combat style Accurate: Accurate; trains Ranged"
+    },
+    "loc:open:wardrobe > style:accurate:ranged > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:open:wardrobe",
+        "style:accurate:ranged",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -1.52,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:58:40.646Z",
+      "example": "Open Wardrobe (distance 3) → Combat style Accurate: Accurate; trains Ranged → Wield Bronze sq shield"
+    },
+    "style:accurate:ranged > inventory:wield:bronze sq shield > inventory:wield:shortbow": {
+      "sequence": [
+        "style:accurate:ranged",
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:58:55.655Z",
+      "example": "Combat style Accurate: Accurate; trains Ranged → Wield Bronze sq shield → Wield Shortbow"
+    },
+    "inventory:wield:bronze sq shield > style:accurate:attack > loc:search:wardrobe": {
+      "sequence": [
+        "inventory:wield:bronze sq shield",
+        "style:accurate:attack",
+        "loc:search:wardrobe"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:59:37.072Z",
+      "example": "Wield Bronze sq shield → Combat style Punch: Accurate; trains Attack → Search Wardrobe (distance 1)"
+    },
+    "style:accurate:attack > loc:search:wardrobe > loc:close:wardrobe": {
+      "sequence": [
+        "style:accurate:attack",
+        "loc:search:wardrobe",
+        "loc:close:wardrobe"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:59:47.263Z",
+      "example": "Combat style Punch: Accurate; trains Attack → Search Wardrobe (distance 1) → Close Wardrobe (distance 1)"
     }
   },
   "discoveries": [
@@ -3000,6 +3187,30 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3109:3354:3108:3354:0",
+      "at": "2026-08-14T08:57:55.934Z",
+      "kind": "route",
+      "text": "Route learned: 3109,3354 → 3108,3354; moved; operation rejected",
+      "location": {
+        "x": 3108,
+        "z": 3354,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3108:3354:3106:3355:0",
+      "at": "2026-08-14T08:58:09.807Z",
+      "kind": "route",
+      "text": "Route learned: 3108,3354 → 3106,3355; moved; operation rejected; new: npc:Witch, loc:Bed, loc:Ladder, loc:Piano stool, loc:Piano",
+      "location": {
+        "x": 3106,
+        "z": 3355,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ]
 }
