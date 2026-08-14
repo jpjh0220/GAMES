@@ -6,15 +6,70 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 1,
-    "teacherChoices": 1,
+    "totalChoices": 9,
+    "teacherChoices": 9,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1,
-    "totalReward": 0.44,
-    "saves": 1
+    "completedExperiences": 9,
+    "totalReward": 3.52,
+    "saves": 2
   },
-  "memories": [],
+  "memories": [
+    {
+      "id": "msskvz4h-8ipif5",
+      "createdAt": "2026-08-14T06:40:52.625Z",
+      "tick": 480,
+      "runNumber": 13,
+      "kind": "strategy",
+      "text": "Learned strategy: Explore north about 5 tiles is usually useful in context hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world; 3 samples, average reward 0.40.",
+      "importance": 1.4,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3115,
+        "z": 3310,
+        "level": 0
+      }
+    },
+    {
+      "id": "msskwtfy-84ket4",
+      "createdAt": "2026-08-14T06:41:31.918Z",
+      "tick": 611,
+      "runNumber": 13,
+      "kind": "strategy",
+      "text": "Learned strategy: Explore north about 5 tiles is usually useful in context hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world; 4 samples, average reward 0.41.",
+      "importance": 1.41,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3115,
+        "z": 3315,
+        "level": 0
+      }
+    },
+    {
+      "id": "msskzc6f-i3nxe2",
+      "createdAt": "2026-08-14T06:43:29.511Z",
+      "tick": 1003,
+      "runNumber": 13,
+      "kind": "strategy",
+      "text": "Learned strategy: Explore north about 5 tiles is usually useful in context hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,social,wait,world; 3 samples, average reward 0.41.",
+      "importance": 1.41,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3116,
+        "z": 3329,
+        "level": 0
+      }
+    }
+  ],
   "policy": {
     "hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Attack|cats=combat-style,explore,wait,world": {
       "walk:north": {
@@ -27,6 +82,30 @@
         "exampleGoal": "Explore north about 5 tiles to find resources or potential combat threats",
         "exampleReason": "The player is at position [3114,3291,0], and exploring north could reveal nearby resources or potential threats. Wheat is present at distance 2, which could be harvested or used for crafting. Moving north may also provide access to new areas or encounters."
       }
+    },
+    "hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world": {
+      "walk:north": {
+        "n": 4,
+        "avgReward": 0.415,
+        "positive": 4,
+        "negative": 0,
+        "lastReward": 0.45,
+        "lastAt": "2026-08-14T06:41:31.918Z",
+        "exampleGoal": "Explore and gather resources to improve survival and combat capabilities",
+        "exampleReason": "There are multiple resources available in the area, such as runes, meat, and shields, which can enhance my abilities. Exploring further could also provide new opportunities to learn and grow."
+      }
+    },
+    "hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,social,wait,world": {
+      "walk:north": {
+        "n": 4,
+        "avgReward": 0.355,
+        "positive": 4,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T06:44:14.229Z",
+        "exampleGoal": "Explore and gather resources while ensuring survival",
+        "exampleReason": "The environment suggests exploring north to find new locations and potential resources, which aligns with the strategy of expanding capabilities and improving health."
+      }
     }
   },
   "relationships": {},
@@ -34,12 +113,15 @@
     "194:205:0": {
       "key": "194:205:0",
       "x": 3114,
-      "z": 3291,
+      "z": 3295,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:38:28.963Z",
-      "lastSeenAt": "2026-08-14T06:38:28.963Z",
-      "visits": 1,
-      "npcs": [],
+      "lastSeenAt": "2026-08-14T06:38:59.510Z",
+      "visits": 2,
+      "npcs": [
+        "Goblin",
+        "Highwayman"
+      ],
       "locs": [
         "Tree stump",
         "Wheat",
@@ -55,9 +137,85 @@
         "Stones",
         "Barrel",
         "Door",
-        "Plough"
+        "Plough",
+        "Daisies",
+        "Boulder"
+      ]
+    },
+    "194:206:0": {
+      "key": "194:206:0",
+      "x": 3115,
+      "z": 3310,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T06:39:34.909Z",
+      "lastSeenAt": "2026-08-14T06:40:52.931Z",
+      "visits": 3,
+      "npcs": [
+        "Highwayman",
+        "Goblin"
+      ],
+      "locs": [
+        "Tree",
+        "Tree stump",
+        "Dead tree",
+        "Daisies",
+        "Signpost",
+        "Bush",
+        "Stones",
+        "Oak",
+        "Boulder",
+        "Wheat",
+        "Mushroom",
+        "Fungus"
+      ]
+    },
+    "194:207:0": {
+      "key": "194:207:0",
+      "x": 3116,
+      "z": 3324,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T06:41:32.203Z",
+      "lastSeenAt": "2026-08-14T06:42:51.107Z",
+      "visits": 3,
+      "npcs": [
+        "Goblin",
+        "Veronica",
+        "Tree"
+      ],
+      "locs": [
+        "Dead tree",
+        "Bush",
+        "Mushroom",
+        "Daisies",
+        "Tree",
+        "Fungus",
+        "Stones",
+        "Oak",
+        "Boulder",
+        "Standing torch"
+      ]
+    },
+    "194:208:0": {
+      "key": "194:208:0",
+      "x": 3116,
+      "z": 3329,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T06:43:29.817Z",
+      "lastSeenAt": "2026-08-14T06:43:29.817Z",
+      "visits": 1,
+      "npcs": [
+        "Veronica",
+        "Tree",
+        "Giant spider"
+      ],
+      "locs": [
+        "Dead tree",
+        "Bush",
+        "Mushroom",
+        "Fungus",
+        "Standing torch"
       ]
     }
   },
-  "updatedAt": "2026-08-14T06:38:59.204Z"
+  "updatedAt": "2026-08-14T06:44:14.229Z"
 }
