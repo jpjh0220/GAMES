@@ -1,0 +1,37 @@
+name: Compile Sol Learning Agent
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sol-agent-compile.yml'
+      - 'sol-live/sol-live.ts'
+      - 'sol-live/agent-brain.ts'
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Clone upstream rs-sdk
+        run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
+      - name: Install dependencies and stage agent
+        run: |
+          cd rs-sdk && bun install --frozen-lockfile
+          cd server/webclient && bun install --frozen-lockfile
+          cp ../../../sol-live/sol-live.ts ./sol-live.ts
+          cp ../../../sol-live/agent-brain.ts ./agent-brain.ts
+          cp ../../../sol-live/viewer.html ./viewer.html
+      - name: Compile exact live entrypoint
+        working-directory: rs-sdk/server/webclient
+        run: |
+          bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
+          test -s /tmp/sol-live-agent.js
+          echo 'Sol learning agent compiled successfully.'
