@@ -1,0 +1,219 @@
+name: Make AI the Sol Player
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sol-ai-player-patch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Make Qwen sole normal controller and Sol a shadow learner
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          p=Path('sol-live/agent-brain.ts')
+          s=p.read_text()
+
+          s=s.replace(
+            "  private lastStudentConfidence = 0;\n  private modelReady = false;",
+            "  private lastStudentConfidence = 0;\n  private lastShadowPrediction: AgentChoice | null = null;\n  private modelReady = false;"
+          )
+
+          s=s.replace(
+            "    // Periodically ask the teacher again even for learned situations to prevent stale habits.\n    if ((this.memory.lifetime.totalChoices + 1) % 6 === 0) return null;\n    this.lastStudentConfidence = best.confidence;",
+            "    this.lastStudentConfidence = best.confidence;"
+          )
+
+          old_decide = '''  async decide(state: BotWorldState, candidates: AgentCandidate[]): Promise<AgentChoice> {
+    this.observeWorld(state);
+    const contextKey = this.contextKey(state, candidates);
+    const student = this.chooseStudent(state, candidates, contextKey);
+    if (student) {
+      this.memory.lifetime.totalChoices++;
+      this.memory.lifetime.studentChoices++;
+      this.lastChoice = student;
+      this.dirty = true;
+      return student;
+    }
+
+    if (!this.modelReady) this.modelReady = await this.checkModel();
+    if (!this.modelReady) {
+      const fallback = candidates.find(c => c.category === 'wait') || candidates[0];
+      if (!fallback) throw new Error('No candidate actions available');
+      const choice: AgentChoice = {
+        source:'student',
+        goal:'Preserve continuity while the teacher model is unavailable',
+        reason:'The local teacher model is unavailable and no learned policy is confident enough, so avoid inventing behavior.',
+        expectedOutcome:'Remain safe until reasoning is available.',
+        actionId:fallback.id,
+        confidence:.1,
+        contextKey,
+        fingerprint:fallback.fingerprint
+      };
+      this.lastChoice = choice;
+      return choice;
+    }
+
+    const teacher = await this.askTeacher(state, candidates, contextKey);
+    this.memory.lifetime.totalChoices++;
+    this.memory.lifetime.teacherChoices++;
+    this.lastChoice = teacher;
+    this.dirty = true;
+    return teacher;
+  }
+'''
+          new_decide = '''  async decide(state: BotWorldState, candidates: AgentCandidate[]): Promise<AgentChoice> {
+    this.observeWorld(state);
+    const contextKey = this.contextKey(state, candidates);
+
+    // Sol's learned policy is a student, never the player. It predicts what it would do
+    // so we can measure imitation/competence, while the AI teacher still chooses the action.
+    this.lastShadowPrediction = this.chooseStudent(state, candidates, contextKey);
+
+    if (!this.modelReady) this.modelReady = await this.checkModel();
+    if (!this.modelReady) throw new Error('AI player unavailable: local teacher model is offline');
+
+    const teacher = await this.askTeacher(state, candidates, contextKey);
+    this.memory.lifetime.totalChoices++;
+    this.memory.lifetime.teacherChoices++;
+    this.lastChoice = teacher;
+    this.dirty = true;
+    return teacher;
+  }
+'''
+          if old_decide not in s:
+            raise SystemExit('decide block not found')
+          s=s.replace(old_decide,new_decide)
+
+          s=s.replace(
+            "    const allowed = candidates.slice(0, 48);",
+            "    const priority = ['dialog','modal','recovery','combat','economy','social','pickup','world','inventory','combat-style','explore','wait'];\n    const allowed: AgentCandidate[] = [];\n    for (const category of priority) {\n      for (const c of candidates.filter(x => x.category === category).slice(0, 3)) {\n        if (!allowed.some(x => x.id === c.id) && allowed.length < 30) allowed.push(c);\n      }\n    }\n    for (const c of candidates) {\n      if (allowed.length >= 30) break;\n      if (!allowed.some(x => x.id === c.id)) allowed.push(c);\n    }"
+          )
+
+          s=s.replace(
+            "      learnedPolicyContext:this.memory.policy[contextKey] || {},\n      actions:allowed.map(c => ({id:c.id,label:c.label,category:c.category,tags:c.tags || []}))",
+            "      learnedPolicyContext:this.memory.policy[contextKey] || {},\n      shadowStudentPrediction:this.lastShadowPrediction ? {actionId:this.lastShadowPrediction.actionId,confidence:this.lastShadowPrediction.confidence,reason:this.lastShadowPrediction.reason} : null,\n      actions:allowed.map(c => ({id:c.id,label:c.label,category:c.category,tags:c.tags || []}))"
+          )
+
+          s=s.replace(
+            "      options:{temperature:.2,num_ctx:8192,num_predict:500},",
+            "      keep_alive:'6h',\n      options:{temperature:.18,num_ctx:4096,num_predict:220},"
+          )
+
+          s=s.replace(
+            "            'You control Sol; the surrounding program only supplies perception, legal action candidates, memory, outcome measurement, and emergency survival reflexes.',",
+            "            'You are the player controlling Sol. You choose every normal gameplay action; the surrounding program only supplies perception, legal action candidates, memory, outcome measurement, and emergency survival reflexes.',\n            'A shadow student policy may predict an action from your prior demonstrations, but it NEVER controls Sol. Treat it as a learning diagnostic, not an instruction.',"
+          )
+          s=s.replace(
+            "            'Avoid loops: if recent measured outcomes show an action is accomplishing nothing or causing harm, choose a different experiment.',",
+            "            'Avoid loops: if recent measured outcomes show an action is accomplishing nothing or causing harm, choose a different experiment.',\n            'Stay active. Do not choose Wait when a useful legal action exists. Prefer movement, interaction, training, resource gathering, communication, or discovery over idle observation.',"
+          )
+
+          old_catch = '''    } catch (err) {
+      this.modelFailures++;
+      if (this.modelFailures >= 3) this.modelReady = false;
+      const fallback = candidates.find(c => c.category === 'wait') || candidates[0];
+      if (!fallback) throw err;
+      return {
+        source:'student',
+        goal:'Remain stable while reasoning recovers',
+        reason:`Teacher inference failed: ${String(err).slice(0,160)}`,
+        expectedOutcome:'Avoid uncontrolled behavior until a valid decision can be produced.',
+        actionId:fallback.id,
+        confidence:.05,
+        contextKey,
+        fingerprint:fallback.fingerprint
+      };
+    }
+'''
+          new_catch = '''    } catch (err) {
+      this.modelFailures++;
+      if (this.modelFailures >= 3) this.modelReady = false;
+      // No scripted/student normal-action fallback: the AI is the player.
+      // Emergency survival remains outside this deliberative path.
+      throw err;
+    }
+'''
+          if old_catch not in s:
+            raise SystemExit('teacher catch block not found')
+          s=s.replace(old_catch,new_catch)
+
+          s=s.replace(
+            "      architecture:'teacher-student',",
+            "      architecture:'ai-player-shadow-learner',"
+          )
+          s=s.replace(
+            "      currentController:this.lastChoice?.source || 'waiting',\n      lastChoice:this.lastChoice,",
+            "      currentController:this.lastChoice?.source === 'teacher' ? 'ai' : 'waiting',\n      lastChoice:this.lastChoice,\n      shadowStudentPrediction:this.lastShadowPrediction,"
+          )
+          p.write_text(s)
+
+          p=Path('sol-live/sol-live.ts')
+          s=p.read_text()
+          wait_line="  add({label:'Wait and observe for a moment',category:'wait',fingerprint:'wait',settleTicks:3,action:{type:'wait',reason:'Observe before acting.'},tags:['observe','patience']});\n\n"
+          if wait_line not in s:
+            raise SystemExit('initial wait candidate not found')
+          s=s.replace(wait_line,'')
+
+          s=s.replace(
+            "  if(state.dialog?.isOpen){\n    for(const o of state.dialog.options?.slice(0,8)||[]) add({label:`Dialog ${o.index}: ${o.text||'(continue)'}`,category:'dialog',fingerprint:`dialog:${o.index}:${norm(o.text||'continue')}`,settleTicks:4,action:{type:'clickDialogOption',optionIndex:o.index,reason:'Choose a dialog response.'},tags:['conversation','dialog',o.text||'continue']});\n    return out;\n  }",
+            "  if(state.dialog?.isOpen){\n    for(const o of state.dialog.options?.slice(0,8)||[]) add({label:`Dialog ${o.index}: ${o.text||'(continue)'}`,category:'dialog',fingerprint:`dialog:${o.index}:${norm(o.text||'continue')}`,settleTicks:4,action:{type:'clickDialogOption',optionIndex:o.index,reason:'Choose a dialog response.'},tags:['conversation','dialog',o.text||'continue']});\n    if(!out.length) add({label:'Wait for dialog state to update',category:'wait',fingerprint:'wait:dialog',settleTicks:2,action:{type:'wait',reason:'Dialog has no actionable response yet.'},tags:['dialog','wait']});\n    return out;\n  }"
+          )
+
+          s=s.replace(
+            "  for(const style of state.combatStyle?.styles||[]) add({label:`Combat style ${style.name}: ${style.type}; trains ${(style.trainsSkills||[]).join(', ')||'unknown'}`,category:'combat-style',fingerprint:`style:${norm(style.type)}:${(style.trainsSkills||[]).join('+').toLowerCase()}`,settleTicks:3,action:{type:'setCombatStyle',style:style.index,reason:`Select ${style.name}.`},tags:['combat-style',style.type,...(style.trainsSkills||[])]});\n\n  return out;",
+            "  for(const style of state.combatStyle?.styles||[]) add({label:`Combat style ${style.name}: ${style.type}; trains ${(style.trainsSkills||[]).join(', ')||'unknown'}`,category:'combat-style',fingerprint:`style:${norm(style.type)}:${(style.trainsSkills||[]).join('+').toLowerCase()}`,settleTicks:3,action:{type:'setCombatStyle',style:style.index,reason:`Select ${style.name}.`},tags:['combat-style',style.type,...(style.trainsSkills||[])]});\n\n  // Waiting is only legal when combat itself requires patience or no other action can be formed.\n  if(p.combat?.inCombat || out.length===0) add({label:'Wait briefly for the current combat/world state',category:'wait',fingerprint:'wait:required',settleTicks:2,action:{type:'wait',reason:'No productive immediate action is safe while the current state resolves.'},tags:['wait','state']});\n\n  return out;"
+          )
+
+          s=s.replace(
+            "await log('SOL_AWAKE',{username,directive,architecture:'local Qwen teacher + outcome-trained student policy',teacherModel:brain.model,runNumber});",
+            "await log('SOL_AWAKE',{username,directive,architecture:'AI player (Qwen) + Sol shadow learner',teacherModel:brain.model,runNumber});"
+          )
+          p.write_text(s)
+          PY
+
+          grep -Fq "architecture:'ai-player-shadow-learner'" sol-live/agent-brain.ts
+          grep -Fq "shadowStudentPrediction" sol-live/agent-brain.ts
+          grep -Fq "AI player unavailable" sol-live/agent-brain.ts
+          grep -Fq "keep_alive:'6h'" sol-live/agent-brain.ts
+          grep -Fq "Waiting is only legal" sol-live/sol-live.ts
+          ! grep -Fq "Learned policy: this action has worked" <(sed -n '/async decide/,/private async askTeacher/p' sol-live/agent-brain.ts)
+
+      - name: Compile against upstream rs-sdk
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://bun.sh/install | bash >/dev/null 2>&1
+          export PATH="$HOME/.bun/bin:$PATH"
+          git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git /tmp/rs-sdk
+          cd /tmp/rs-sdk
+          bun install --frozen-lockfile >/dev/null
+          cd server/webclient
+          bun install --frozen-lockfile >/dev/null
+          cp "$GITHUB_WORKSPACE/sol-live/sol-live.ts" ./sol-live.ts
+          cp "$GITHUB_WORKSPACE/sol-live/agent-brain.ts" ./agent-brain.ts
+          cp "$GITHUB_WORKSPACE/sol-live/viewer.html" ./viewer.html
+          bun build sol-live.ts --target=bun --outfile=/tmp/sol-ai-player.js
+          test -s /tmp/sol-ai-player.js
+
+      - name: Commit and activate AI-player architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sol-live/agent-brain.ts sol-live/sol-live.ts
+          git diff --cached --quiet && exit 0
+          git commit -m '[activate-agent] Make AI sole Sol controller with shadow learner'
+          git push
