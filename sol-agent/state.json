@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1381,
-    "teacherChoices": 1381,
+    "totalChoices": 1391,
+    "teacherChoices": 1391,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1380,
-    "totalReward": 7.01,
-    "saves": 165,
+    "completedExperiences": 1390,
+    "totalReward": 4.01,
+    "saves": 166,
     "shadowPredictions": 700,
     "shadowMatches": 276,
     "strategistRefreshes": 58,
@@ -7279,6 +7279,25 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "mssycux8-64wj68",
+      "createdAt": "2026-08-14T12:57:55.340Z",
+      "tick": 29832,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Close the shop. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "modal",
+        "shop",
+        "agent scrappydoo"
+      ],
+      "location": {
+        "x": 3078,
+        "z": 3248,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10434,45 +10453,45 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 4,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 4,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:37:35.205Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "lastAt": "2026-08-14T12:57:13.348Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:37:30.108Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "lastAt": "2026-08-14T12:57:07.924Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Dialog 1: Toy horseys?"
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
       "shop:buy:toy horsey": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:37:41.517Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
-        "exampleReason": "Buy 1 Toy horseys for about 150"
+        "lastAt": "2026-08-14T12:57:39.123Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
       },
       "shop:sell:coins": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:38:06.442Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "lastAt": "2026-08-14T12:57:45.740Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Sell 1 Coins for about 0"
       },
       "shop:sell:bones": {
@@ -10486,13 +10505,13 @@
         "exampleReason": "Sell 1 Bones for about 0"
       },
       "shop:sell:raw anchovies": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:37:04.622Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "lastAt": "2026-08-14T12:57:51.723Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
       "wait": {
@@ -10530,13 +10549,13 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 1,
-        "avgReward": -0.6,
-        "positive": 0,
+        "n": 2,
+        "avgReward": 0.9,
+        "positive": 1,
         "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:37:09.417Z",
-        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T12:57:55.340Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Close the shop"
       }
     },
@@ -12062,12 +12081,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3076,
-      "z": 3251,
+      "x": 3078,
+      "z": 3248,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T12:38:54.748Z",
-      "visits": 31,
+      "lastSeenAt": "2026-08-14T12:57:52.014Z",
+      "visits": 41,
       "npcs": [
         "Banker",
         "Diango",
@@ -12171,7 +12190,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T12:56:55.350Z",
+  "updatedAt": "2026-08-14T12:57:55.340Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -17375,10 +17394,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 2,
-      "avgReward": -1.8,
+      "n": 3,
+      "avgReward": -1.573,
       "positive": 0,
-      "lastAt": "2026-08-14T12:37:30.108Z",
+      "lastAt": "2026-08-14T12:57:07.924Z",
       "example": "Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
@@ -17387,10 +17406,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:37:35.205Z",
+      "lastAt": "2026-08-14T12:57:13.348Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -17399,10 +17418,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:37:41.517Z",
+      "lastAt": "2026-08-14T12:57:19.624Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
@@ -17411,10 +17430,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:37:47.244Z",
+      "lastAt": "2026-08-14T12:57:26.241Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:buy:toy horsey > shop:sell:coins > shop:buy:toy horsey": {
@@ -17752,21 +17771,69 @@
       "positive": 1,
       "lastAt": "2026-08-14T12:56:55.349Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 7) → Talk-to Diango (level 0, distance 6)"
+    },
+    "npc:attack:dark wizard > npc:talk to:diango > dialog:1:click here to continue": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "npc:talk to:diango",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -0.44,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:57:01.650Z",
+      "example": "Attack Dark wizard (level 7, distance 7) → Talk-to Diango (level 0, distance 6) → Dialog 1: Click here to continue"
+    },
+    "shop:buy:toy horsey > shop:sell:coins > shop:sell:raw anchovies": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:coins",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 2,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:57:51.724Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7"
+    },
+    "shop:sell:coins > shop:sell:raw anchovies > shop:buy:toy horsey": {
+      "sequence": [
+        "shop:sell:coins",
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:57:39.123Z",
+      "example": "Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
+    },
+    "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:coins": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:57:45.740Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
+    },
+    "shop:sell:coins > shop:sell:raw anchovies > modal:close-shop": {
+      "sequence": [
+        "shop:sell:coins",
+        "shop:sell:raw anchovies",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T12:57:55.340Z",
+      "example": "Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7 → Close the shop"
     }
   },
   "discoveries": [
-    {
-      "id": "danger:skeleton:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "danger",
-      "text": "Skeleton observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "resource:tree:195:210:0",
       "at": "2026-08-14T10:30:15.149Z",
@@ -21377,12 +21444,13 @@
       {
         "id": "step-1",
         "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "status": "active"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
         "label": "Explore north about 5 tiles to locate the Net Fishing spot.",
-        "status": "pending"
+        "status": "active"
       },
       {
         "id": "step-3",
