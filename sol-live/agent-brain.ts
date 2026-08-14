@@ -76,6 +76,15 @@ const clamp=(n:number,lo:number,hi:number)=>Math.max(lo,Math.min(hi,n));
 const uniq=<T>(xs:T[])=>[...new Set(xs)];
 const norm=(s:string)=>String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const toks=(s:string)=>new Set(norm(s).split(/\s+/).filter(x=>x.length>2));
+const parseModelJson=(value:unknown)=>{
+  const raw=String(value||'').replace(/^\s*```(?:json)?/i,'').replace(/```\s*$/,'').trim();
+  try{return JSON.parse(raw)}catch{}
+  const start=raw.indexOf('{');if(start<0)throw new Error('model returned no JSON object');
+  let text=raw.slice(start),depth=0,inString=false,escape=false,lastComplete=-1;
+  for(let i=0;i<text.length;i++){const c=text[i];if(escape){escape=false;continue}if(c==='\\'&&inString){escape=true;continue}if(c==='"'){inString=!inString;continue}if(inString)continue;if(c==='{')depth++;else if(c==='}'&&--depth===0){lastComplete=i;break}}
+  if(lastComplete>=0)text=text.slice(0,lastComplete+1);else{text=text.replace(/[,\s:]+$/,'');if(inString)text+='"';text+='}'.repeat(Math.max(1,depth));}
+  return JSON.parse(text);
+};
 
 const freshState=(name:string,directive:string):PersistentState=>({
   version:1,
@@ -305,7 +314,8 @@ export class SolAgentBrain {
   private maybeRefreshStrategy(state:BotWorldState,candidates:AgentCandidate[]){
     // Strategist never runs on startup or every turn. It is deliberately off the motor's critical path.
     const due=this.sessionMotorChoices>=3&&(this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=25);
-    if(!due||this.strategistInFlight||!this.strategistReady)return;
+    if(!due||this.strategistInFlight)return;
+    if(!this.strategistReady){void this.refreshAvailability();return;}
     this.strategistInFlight=true;this.lastStrategySessionChoice=this.sessionMotorChoices;
     void this.askStrategist(state,candidates).then(strategy=>{
       this.strategy=strategy;this.memory.activePlan=strategy;this.memory.lifetime.strategistRefreshes=(this.memory.lifetime.strategistRefreshes||0)+1;this.dirty=true;
@@ -317,7 +327,7 @@ export class SolAgentBrain {
     const p=state.player!;const observation={mission:this.memory.identity.directive,previousPlan:this.strategy,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),recent:this.recentOutcomes.slice(-8).map(o=>[o.candidateLabel,o.reward,o.summary]),relationships:Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,5).map(r=>[r.name,r.stance,r.trust,r.facts.slice(-2)]),discoveries:this.memory.discoveries.slice(-10).map(d=>d.text),knownSequences:Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),categories:uniq(candidates.map(c=>c.category)),repoGuidance:this.retrieveRepoGuidance(state,candidates,3,650)};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},focus:{type:'string'},reason:{type:'string'},risk:{type:'string',enum:['low','balanced','high']},plan:{type:'array',items:{type:'string'},minItems:2,maxItems:6},success_signals:{type:'array',items:{type:'string'},maxItems:5},priorities:{type:'array',items:{type:'string'},maxItems:4},avoid:{type:'array',items:{type:'string'},maxItems:4}},required:['objective','focus','reason','risk','plan','success_signals','priorities','avoid']};
     const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. repoGuidance contains relevant excerpts loaded from the rs-sdk GitHub repository; use it as gameplay/API knowledge. Live state and measured outcomes override stale guidance. Avoid loops, preserve survival, seek useful progression.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(22000)});
-    if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();const j=JSON.parse(raw?.message?.content||'{}');
+    if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);
     const steps=(Array.isArray(j.plan)?j.plan:[]).map((label:any,i:number)=>({id:`step-${i+1}`,label:String(label).slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
     return{objective:String(j.objective||j.focus||'Build durable capability').slice(0,180),focus:String(j.focus||steps[0]?.label||'Explore and progress').slice(0,140),reason:String(j.reason||'Seek measurable progress.').slice(0,240),risk:['low','balanced','high'].includes(j.risk)?j.risk:'balanced',plan:steps,successSignals:Array.isArray(j.success_signals)?j.success_signals.map(String).slice(0,5):[],priorities:Array.isArray(j.priorities)?j.priorities.map(String).slice(0,4):[],avoid:Array.isArray(j.avoid)?j.avoid.map(String).slice(0,4):[],updatedAt:now(),sourceModel:this.strategistModel,failures:0};
   }
@@ -346,7 +356,7 @@ export class SolAgentBrain {
     const schema={type:'object',additionalProperties:false,properties:{action_id:{type:'string',enum:ids},why:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['action_id','why','speech','confidence']};
     try{
       const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:1536,num_predict:96},messages:[{role:'system',content:'You are the AI motor playing Sol. Pick exactly one legal action_id. Follow the active long-term plan when possible. guide is retrieved rs-sdk knowledge; live evidence overrides it. Other players are autonomous: read their chat, remember identity and trust, respond when useful, ask concise questions, cooperate or negotiate when beneficial, and distrust suspicious or contradicted claims. Stay active, avoid failed loops. Keep why under 16 words. speech must be natural and under 80 characters, and empty unless the selected action speaks.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(9000)});
-      if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=JSON.parse(raw?.message?.content||'{}');const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
+      if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,160);const focus=this.strategy?.focus||`Pursue ${c.category}`;
       return{source:'teacher',goal:focus,reason:why,expectedOutcome:`Measure the result of ${c.label}.`.slice(0,180),actionId:c.id,speech:String(j.speech||'').slice(0,80),confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint};
     }catch(err){this.motorFailures++;if(this.motorFailures>=3)this.motorReady=false;throw err;}
