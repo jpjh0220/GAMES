@@ -6,41 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2761,
-    "teacherChoices": 2761,
+    "totalChoices": 2771,
+    "teacherChoices": 2771,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2760,
-    "totalReward": 1023.74,
-    "saves": 304,
-    "shadowPredictions": 1325,
+    "completedExperiences": 2770,
+    "totalReward": 1019.54,
+    "saves": 305,
+    "shadowPredictions": 1328,
     "shadowMatches": 559,
-    "strategistRefreshes": 132,
+    "strategistRefreshes": 133,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst4nsln-46d3lo",
-      "createdAt": "2026-08-14T15:54:23.243Z",
-      "tick": 65125,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 7). Result: +1332 XP; 10 damage dealt; moved 3092,3243 → 3085,3238; execution rejected or failed. Reward 4.33.",
-      "importance": 2.87,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3238,
-        "level": 0
-      }
-    },
     {
       "id": "mst4nsln-n448ge",
       "createdAt": "2026-08-14T15:54:23.243Z",
@@ -8364,6 +8342,26 @@
         "z": 3228,
         "level": 0
       }
+    },
+    {
+      "id": "mst9e0c2-ywaa2a",
+      "createdAt": "2026-08-14T18:06:44.786Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. This plan uses the available 'Bait Fishing spot' and 'Explore' actions to locate the safe fishing location",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
+        "bait fishing spot level 0 distance 1",
+        "explore north about 5 tiles to locate and use the safe fishing location for anchovies"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3228,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -11209,24 +11207,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 132,
-        "avgReward": -0.2361,
+        "n": 135,
+        "avgReward": -0.2442,
         "positive": 11,
-        "negative": 121,
+        "negative": 124,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T18:05:23.086Z",
+        "lastAt": "2026-08-14T18:06:28.802Z",
         "exampleGoal": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
         "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 49,
+        "n": 53,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T18:05:17.699Z",
+        "lastAt": "2026-08-14T18:06:45.017Z",
         "exampleGoal": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
-        "exampleReason": "You can't sell this item to this shop."
+        "exampleReason": "I'm waiting to observe for a moment to gather more information about the fishing spot."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -13189,24 +13187,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,world": {
       "npc:bait:fishing spot": {
-        "n": 22,
-        "avgReward": -0.7554,
+        "n": 24,
+        "avgReward": -0.7424,
         "positive": 0,
-        "negative": 22,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T18:05:12.008Z",
+        "negative": 24,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T18:06:36.917Z",
         "exampleGoal": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
         "exampleReason": "Bait Fishing spot (level 0, distance 1) - Safe fishing location"
       },
       "npc:net:fishing spot": {
-        "n": 27,
-        "avgReward": -0.7647,
+        "n": 28,
+        "avgReward": -0.7588,
         "positive": 0,
-        "negative": 25,
+        "negative": 26,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T18:05:38.103Z",
+        "lastAt": "2026-08-14T18:06:19.204Z",
         "exampleGoal": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
-        "exampleReason": "I have successfully reached the Net Fishing spot (level 0, distance 1) and am ready to start fishing. This action is the most productive as it directly addresses the objective of i"
+        "exampleReason": "I'm using the 'Net Fishing spot (level 0, distance 1)' location for net fishing, which is the first step in identifying safe fishing spots. This action directly contributes to my p"
       },
       "skill:travel:draynor-bank": {
         "n": 12,
@@ -16685,8 +16683,8 @@
       "z": 3228,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T18:05:23.395Z",
-      "visits": 775,
+      "lastSeenAt": "2026-08-14T18:06:37.191Z",
+      "visits": 785,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -16986,7 +16984,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T18:05:38.103Z",
+  "updatedAt": "2026-08-14T18:06:45.017Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21398,10 +21396,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 75,
-      "avgReward": -1.017,
+      "n": 77,
+      "avgReward": -1.025,
       "positive": 7,
-      "lastAt": "2026-08-14T18:05:02.702Z",
+      "lastAt": "2026-08-14T18:06:28.802Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -21446,10 +21444,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 55,
+      "n": 56,
       "avgReward": -1.346,
       "positive": 1,
-      "lastAt": "2026-08-14T18:05:23.086Z",
+      "lastAt": "2026-08-14T18:06:09.303Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21458,10 +21456,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 63,
-      "avgReward": -1.106,
+      "n": 64,
+      "avgReward": -1.11,
       "positive": 5,
-      "lastAt": "2026-08-14T18:05:38.103Z",
+      "lastAt": "2026-08-14T18:06:19.204Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -21614,10 +21612,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 63,
+      "n": 65,
       "avgReward": -1.337,
       "positive": 1,
-      "lastAt": "2026-08-14T18:04:57.301Z",
+      "lastAt": "2026-08-14T18:06:23.706Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21902,10 +21900,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 41,
-      "avgReward": -1.414,
+      "n": 43,
+      "avgReward": -1.411,
       "positive": 0,
-      "lastAt": "2026-08-14T18:05:12.008Z",
+      "lastAt": "2026-08-14T18:06:36.917Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -21914,10 +21912,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 48,
-      "avgReward": -1.4,
+      "n": 50,
+      "avgReward": -1.398,
       "positive": 0,
-      "lastAt": "2026-08-14T18:05:17.699Z",
+      "lastAt": "2026-08-14T18:06:45.017Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > npc:attack:dark wizard": {
@@ -28632,24 +28630,24 @@
     }
   ],
   "activePlan": {
-    "objective": "Identify safe fishing locations and use them for net fishing",
-    "focus": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
-    "reason": "The guide document specifies the 'Net Fishing spot (level 0, distance 1)' as a safe location for net fishing, and",
+    "objective": "Find and use safe fishing locations to obtain anchovies for crafting",
+    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+    "reason": "This plan uses the available 'Bait Fishing spot' and 'Explore' actions to locate the safe fishing location",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
+        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Confirm the location is safe by checking the guide document",
+        "label": "Bait Fishing spot (level 0, distance 1)",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify the location is suitable for net fishing by observing the coordinates provided in the guide document",
+        "label": "Explore north about 5 tiles to locate and use the safe fishing location for anchovies",
         "status": "pending"
       }
     ],
@@ -28657,17 +28655,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use the 'Net Fishing spot (level 0, distance 1)' location for net fishing",
-      "Confirm the location is safe by checking the guide document",
-      "Verify the location is suitable for net fishing by observing the coordinates provided in the guide document"
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+      "Bait Fishing spot (level 0, distance 1)",
+      "Explore north about 5 tiles to locate and use the safe fishing location for anchovies"
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
       "Net Fishing spot (level 0, distance 1)",
-      "Wait and observe for a moment"
+      "Wait and observe for a moment",
+      "Dialog 1: Click here to continue"
     ],
-    "updatedAt": "2026-08-14T18:04:24.363Z",
+    "updatedAt": "2026-08-14T18:06:44.786Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
