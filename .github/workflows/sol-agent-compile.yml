@@ -35,5 +35,7 @@ jobs:
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
           test -s /tmp/sol-live-agent.js
           grep -q 'sol-memory' agent-brain.ts
-          grep -q 'teacher-student' agent-brain.ts
-          echo 'Final Sol teacher-student agent compiled successfully.'
+          grep -q 'ai-player-shadow-learner' agent-brain.ts
+          grep -q 'studentPrediction' agent-brain.ts
+          grep -q 'No scripted normal-action fallback' agent-brain.ts
+          echo 'Sol AI-player + shadow-learner compiled successfully.'
