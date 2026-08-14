@@ -38,6 +38,8 @@ jobs:
           grep -q 'dual-ai-player-shadow-learner' agent-brain.ts
           grep -q 'qwen3:0.6b' agent-brain.ts
           grep -q 'qwen3:1.7b' agent-brain.ts
-          grep -q 'studentPrediction' agent-brain.ts
+          grep -q 'student:this.lastShadowPrediction' agent-brain.ts
           grep -q "currentController:this.motorReady?'ai-motor'" agent-brain.ts
-          echo 'Sol dual-AI player + shadow learner compiled successfully.'
+          grep -q 'num_ctx:1024' agent-brain.ts
+          grep -q 'num_predict:64' agent-brain.ts
+          echo 'Sol compact dual-AI motor + shadow learner compiled successfully.'
