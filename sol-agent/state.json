@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 471,
-    "teacherChoices": 471,
+    "totalChoices": 472,
+    "teacherChoices": 472,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 470,
-    "totalReward": -188.25,
-    "saves": 73,
+    "completedExperiences": 471,
+    "totalReward": -187.9,
+    "saves": 74,
     "shadowPredictions": 233,
     "shadowMatches": 9,
-    "strategistRefreshes": 9,
+    "strategistRefreshes": 10,
     "strategistFailures": 147
   },
   "memories": [
@@ -1684,6 +1684,26 @@
         "z": 3361,
         "level": 2
       }
+    },
+    {
+      "id": "msst1jaq-kifykq",
+      "createdAt": "2026-08-14T10:29:08.978Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the escape draynor manor skill to descend to the ground and prepare for escape",
+        "navigate to the door at 3119 3356 id 1530 using the sdk pathfinder to open the se room door",
+        "navigate to the door at 3123 3360 id 136"
+      ],
+      "location": {
+        "x": 3106,
+        "z": 3361,
+        "level": 2
+      }
     }
   ],
   "policy": {
@@ -2791,6 +2811,16 @@
         "lastAt": "2026-08-14T10:17:13.910Z",
         "exampleGoal": "Explore southeast about 4 tiles to find a mineable rock",
         "exampleReason": "I have successfully used the Shortbow to attack a Ghost (level 19, distance 9) and gained XP. This action is now complete. I will now focus on exploring the surrounding area to fin"
+      },
+      "loc:open:door": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:29:09.112Z",
+        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "exampleReason": "I have successfully opened the door to the first exit. I now proceed to explore further to find the second exit."
       }
     },
     "area=388:420:2|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait,world": {
@@ -3470,11 +3500,11 @@
     "194:210:2": {
       "key": "194:210:2",
       "x": 3106,
-      "z": 3362,
+      "z": 3361,
       "level": 2,
       "firstSeenAt": "2026-08-14T10:16:52.057Z",
-      "lastSeenAt": "2026-08-14T10:22:51.115Z",
-      "visits": 10,
+      "lastSeenAt": "2026-08-14T10:28:46.084Z",
+      "visits": 11,
       "npcs": [
         "Ernest",
         "Professor Oddenstein"
@@ -3495,7 +3525,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:23:00.430Z",
+  "updatedAt": "2026-08-14T10:29:09.113Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7762,23 +7792,23 @@
   ],
   "activePlan": {
     "objective": "Escape Draynor Manor by finding and opening the two key doors to exit.",
-    "focus": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
-    "reason": "This",
+    "focus": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "label": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Climb-down Staircase (distance 1)",
+        "label": "Navigate to the door at (3119, 3356) id:1530 using the SDK pathfinder to open the SE room door.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Open Door (distance 3) - Door at (3119, 3356) id:1530 (connects SE room to warehouse area)",
+        "label": "Navigate to the door at (3123, 3360) id:136",
         "status": "pending"
       }
     ],
@@ -7786,13 +7816,13 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
-      "Climb-down Staircase (distance 1)",
-      "Open Door (distance 3) - Door at (3119, 3356) id:1530 (connects SE room to warehouse area)"
+      "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+      "Navigate to the door at (3119, 3356) id:1530 using the SDK pathfinder to open the SE room door.",
+      "Navigate to the door at (3123, 3360) id:136"
     ],
     "avoid": [],
-    "updatedAt": "2026-08-14T10:17:16.132Z",
+    "updatedAt": "2026-08-14T10:29:08.977Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
