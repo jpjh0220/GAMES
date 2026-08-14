@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 541,
-    "teacherChoices": 541,
+    "totalChoices": 551,
+    "teacherChoices": 551,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 540,
-    "totalReward": -177.79,
-    "saves": 81,
+    "completedExperiences": 550,
+    "totalReward": -178.05,
+    "saves": 82,
     "shadowPredictions": 235,
     "shadowMatches": 10,
-    "strategistRefreshes": 13,
+    "strategistRefreshes": 14,
     "strategistFailures": 147
   },
   "memories": [
@@ -2197,6 +2197,66 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "msstid7k-t9zcat",
+      "createdAt": "2026-08-14T10:42:14.240Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access deposit functionality.. This approach ensures efficient resource management and prepares for travel or escape by maximizing available items in the bank.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access deposit functionality",
+        "deposit all available items using the bank s slot system",
+        "verify that all items have been successfully deposited and the bank is updated accordingly"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msstir33-zl24b3",
+      "createdAt": "2026-08-14T10:42:32.223Z",
+      "tick": 2755,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Bronze sq shield. Result: inventory changed. Reward -0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "store",
+        "bronze sq shield",
+        "agent anduril"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msstj1hx-uquism",
+      "createdAt": "2026-08-14T10:42:45.717Z",
+      "tick": 2800,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Withdraw 1 Coins. Result: inventory changed; +1 coins. Reward 0.1.",
+      "importance": 0.75,
+      "tags": [
+        "bank",
+        "retrieve",
+        "coins",
+        "agent scrappydoo"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -3856,6 +3916,16 @@
         "lastAt": "2026-08-14T10:39:04.017Z",
         "exampleGoal": "Open the bank to deposit items",
         "exampleReason": "Deposit all Coins"
+      },
+      "wait": {
+        "n": 2,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T10:42:52.021Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Wait and observe for a moment"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -3868,6 +3938,16 @@
         "lastAt": "2026-08-14T10:40:13.950Z",
         "exampleGoal": "Open the bank to access deposit slots.",
         "exampleReason": "Deposit all Raw bear meat"
+      },
+      "bank:withdraw:coins": {
+        "n": 2,
+        "avgReward": 0.1,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.1,
+        "lastAt": "2026-08-14T10:42:58.646Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "You have the level to use an axe."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -3882,14 +3962,34 @@
         "exampleReason": "I'm opening the bank to deposit items."
       },
       "bank:withdraw:coins": {
-        "n": 1,
+        "n": 3,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:41:39.461Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
-        "exampleReason": "I am opening the bank to deposit items."
+        "lastAt": "2026-08-14T10:42:25.637Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Bank opened successfully"
+      },
+      "bank:deposit:coins": {
+        "n": 2,
+        "avgReward": -0.1,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.1,
+        "lastAt": "2026-08-14T10:42:17.803Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Deposit all Coins"
+      },
+      "bank:deposit:bronze sq shield": {
+        "n": 2,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:42:32.223Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Deposit all Bronze sq shield"
       }
     }
   },
@@ -4155,8 +4255,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T10:37:46.321Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-14T10:42:46.026Z",
+      "encounters": 6,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -4245,8 +4345,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T10:36:25.033Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T10:42:52.310Z",
+      "encounters": 4,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -4899,8 +4999,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:41:35.215Z",
-      "visits": 45,
+      "lastSeenAt": "2026-08-14T10:42:52.310Z",
+      "visits": 55,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -4908,7 +5008,8 @@
         "Diango",
         "Ned",
         "Jail guard",
-        "Fishing spot"
+        "Fishing spot",
+        "Rat"
       ],
       "locs": [
         "Closed bank booth",
@@ -4944,7 +5045,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:41:39.461Z",
+  "updatedAt": "2026-08-14T10:42:58.646Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7729,21 +7830,129 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:41:39.461Z",
       "example": "Wait and observe for a moment → Deposit all Raw bear meat → Withdraw 1 Coins"
+    },
+    "bank:deposit:raw bear meat > bank:withdraw:coins > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:raw bear meat",
+        "bank:withdraw:coins",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:50.215Z",
+      "example": "Deposit all Raw bear meat → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:withdraw:coins > bank:deposit:coins > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:coins",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:58.011Z",
+      "example": "Withdraw 1 Coins → Deposit all Coins → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:coins > bank:deposit:bronze sq shield > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:bronze sq shield",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:07.619Z",
+      "example": "Deposit all Coins → Deposit all Bronze sq shield → Withdraw 1 Coins"
+    },
+    "bank:deposit:bronze sq shield > bank:withdraw:coins > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:bronze sq shield",
+        "bank:withdraw:coins",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:17.803Z",
+      "example": "Deposit all Bronze sq shield → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:25.637Z",
+      "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:32.223Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Bronze sq shield"
+    },
+    "bank:withdraw:coins > bank:deposit:bronze sq shield > wait": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:bronze sq shield",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:38.825Z",
+      "example": "Withdraw 1 Coins → Deposit all Bronze sq shield → Wait and observe for a moment"
+    },
+    "bank:deposit:bronze sq shield > wait > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:bronze sq shield",
+        "wait",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:45.717Z",
+      "example": "Deposit all Bronze sq shield → Wait and observe for a moment → Withdraw 1 Coins"
+    },
+    "wait > bank:withdraw:coins > wait": {
+      "sequence": [
+        "wait",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:52.021Z",
+      "example": "Wait and observe for a moment → Withdraw 1 Coins → Wait and observe for a moment"
+    },
+    "bank:withdraw:coins > wait > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "wait",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:42:58.646Z",
+      "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     }
   },
   "discoveries": [
-    {
-      "id": "place:stairs:194:210:0",
-      "at": "2026-08-14T10:00:08.540Z",
-      "kind": "place",
-      "text": "Stairs observed near 3107, 3366, level 0.",
-      "location": {
-        "x": 3107,
-        "z": 3366,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:piano stool:194:210:0",
       "at": "2026-08-14T10:00:08.540Z",
@@ -11331,44 +11540,56 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:rat:193:202:0",
+      "at": "2026-08-14T10:42:39.113Z",
+      "kind": "npc",
+      "text": "Rat observed near 3092, 3245, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
-    "objective": "Deposit all coins and rare items in the bank to maximize inventory space.",
-    "focus": "Open the bank to access deposit slots.",
-    "reason": "This approach ensures all items are deposited, maximizing inventory space and preparing for further gameplay objectives.",
+    "objective": "Deposit all items in the bank to maximize resources for travel or escape.",
+    "focus": "Open the bank to access deposit functionality.",
+    "reason": "This approach ensures efficient resource management and prepares for travel or escape by maximizing available items in the bank.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access deposit slots.",
+        "label": "Open the bank to access deposit functionality.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all coins using the bank's item deposit feature.",
+        "label": "Deposit all available items using the bank's slot system.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Deposit all rare items (raw bear meat, raw rat meat, and bronze sq shield) using the bank's item deposit feature.",
+        "label": "Verify that all items have been successfully deposited and the bank is updated accordingly.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully opened"
+      "Bank successfully updated with all items deposited."
     ],
     "priorities": [
-      "Open the bank to access deposit slots.",
-      "Deposit all coins using the bank's item deposit feature.",
-      "Deposit all rare items (raw bear meat, raw rat meat, and bronze sq shield) using the bank's item deposit feature."
+      "Open the bank to access deposit functionality.",
+      "Deposit all available items using the bank's slot system.",
+      "Verify that all items have been successfully deposited and the bank is updated accordingly."
     ],
     "avoid": [
+      "Deposit all Raw bear meat",
       "Deposit all Coins",
-      "Deposit all Chaos rune",
       "Deposit all Bronze sq shield"
     ],
-    "updatedAt": "2026-08-14T10:39:48.294Z",
+    "updatedAt": "2026-08-14T10:42:14.240Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
