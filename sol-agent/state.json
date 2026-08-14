@@ -6,15 +6,15 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1131,
-    "teacherChoices": 1131,
+    "totalChoices": 1141,
+    "teacherChoices": 1141,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1130,
-    "totalReward": -120.93,
-    "saves": 140,
-    "shadowPredictions": 654,
-    "shadowMatches": 256,
+    "completedExperiences": 1140,
+    "totalReward": -114.64,
+    "saves": 141,
+    "shadowPredictions": 656,
+    "shadowMatches": 257,
     "strategistRefreshes": 44,
     "strategistFailures": 147
   },
@@ -4272,6 +4272,108 @@
         "z": 3238,
         "level": 0
       }
+    },
+    {
+      "id": "mssw9w2g-6d8bm1",
+      "createdAt": "2026-08-14T11:59:37.624Z",
+      "tick": 18173,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 4). Result: moved 3084,3238 → 3084,3241; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.25.",
+      "importance": 1.32,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves",
+        "loc door"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "msswacqw-n3heoy",
+      "createdAt": "2026-08-14T11:59:59.240Z",
+      "tick": 18245,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 4). Result: +1063 XP; 6 damage dealt; 1 damage taken; moved 3084,3241 → 3084,3238; execution rejected or failed. Reward 3.48.",
+      "importance": 2.44,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "loc bullrushes",
+        "loc stones"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3238,
+        "level": 0
+      }
+    },
+    {
+      "id": "msswatmg-5fpjju",
+      "createdAt": "2026-08-14T12:00:21.112Z",
+      "tick": 18318,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 2). Result: +1598 XP; 12 damage dealt; moved 3084,3238 → 3085,3238; execution rejected or failed. Reward 4.63.",
+      "importance": 3.01,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3238,
+        "level": 0
+      }
+    },
+    {
+      "id": "msswatmg-y4yed4",
+      "createdAt": "2026-08-14T12:00:21.112Z",
+      "tick": 18318,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 2) worked across 3 similar samples with average reward 4.28.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3238,
+        "level": 0
+      }
+    },
+    {
+      "id": "msswbp4z-5yct7x",
+      "createdAt": "2026-08-14T12:01:01.955Z",
+      "tick": 18421,
+      "runNumber": 35,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Hey while i wait for the 'armour the ***** fisherman' charity to open :3 what's next for ya now you're 26k richer? more steel? or climbing the smithing ladder?\". Current stance friendly, trust 0.36.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "henryatkins",
+        "friendly"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3238,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -5567,14 +5669,14 @@
     },
     "area=385:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,social,wait,world": {
       "npc:attack:dark wizard": {
-        "n": 1,
-        "avgReward": 4.63,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 4.055,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 4.63,
-        "lastAt": "2026-08-14T10:33:52.038Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "I have an axe which I have the level to use."
+        "lastReward": 3.48,
+        "lastAt": "2026-08-14T11:59:59.240Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I have attacked the Dark wizard (level 7, distance 3) successfully. This confirms my progress in the game progression guide."
       },
       "pickup:chaos rune": {
         "n": 1,
@@ -5589,14 +5691,14 @@
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,social,wait,world": {
       "loc:chop down:tree": {
-        "n": 1,
-        "avgReward": -0.2,
-        "positive": 0,
+        "n": 2,
+        "avgReward": 0.525,
+        "positive": 1,
         "negative": 1,
-        "lastReward": -0.2,
-        "lastAt": "2026-08-14T10:34:05.835Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Chop down Tree (distance 3)"
+        "lastReward": 1.25,
+        "lastAt": "2026-08-14T11:59:37.624Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "Chop down Tree (distance 4)"
       },
       "loc:chop down:willow": {
         "n": 1,
@@ -5651,14 +5753,14 @@
         "exampleReason": "Chop down Willow (distance 4)"
       },
       "npc:net:fishing spot": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T11:54:49.343Z",
-        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
-        "exampleReason": "I have successfully located the Net Fishing spot (level 0, distance 1) and confirmed my anchovy collection via the guide file."
+        "lastAt": "2026-08-14T12:01:59.498Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I have confirmed the progress from oag0azhyi. I am now gathering resources"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,wait": {
@@ -6367,6 +6469,16 @@
         "lastAt": "2026-08-14T11:48:16.935Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "I need to attack the Dark wizard to progress the plan."
+      },
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T12:01:22.327Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I have successfully reached the Net Fishing spot (level 0, distance 8) and confirmed my progress in the game progression guide."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -6435,14 +6547,14 @@
         "exampleReason": "Net Fishing spot (level 0, distance 8) - Ready to start the plan."
       },
       "npc:attack:dark wizard": {
-        "n": 2,
-        "avgReward": 4.105,
-        "positive": 2,
+        "n": 3,
+        "avgReward": 4.28,
+        "positive": 3,
         "negative": 0,
         "lastReward": 4.63,
-        "lastAt": "2026-08-14T11:53:55.311Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I have successfully attacked the Dark wizard (level 7, distance 1) and collected 26200gp from the steel run. This action confirms the successful fishing spot and provides me with t"
+        "lastAt": "2026-08-14T12:00:21.112Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I am ready to attack the Dark wizard (level 7, distance 2) as I have successfully gathered resources and confirmed progress in the game progression guide."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,wait,world": {
@@ -6493,13 +6605,13 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T11:55:21.113Z",
-        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
+        "lastAt": "2026-08-14T12:01:46.639Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
         "exampleReason": "Click here to continue"
       },
       "wait": {
@@ -6693,6 +6805,16 @@
         "lastAt": "2026-08-14T11:52:19.037Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "I'm going to explore the area north of z=3240 to find safe fishing spots. I'll check the safe route strategy as per the guide file. I'll also look for any other safe spots nearby t"
+      },
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:01:40.934Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I need to confirm the progress from Henryatkins to gather resources."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,wait,world": {
@@ -6729,18 +6851,28 @@
         "lastAt": "2026-08-14T11:54:16.011Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "I have successfully located and collected the Net Fishing spot (level 0, distance 6) to obtain anchovies for crafting."
+      },
+      "social:say": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:00:41.816Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "I have spoken publicly about the progress from Oag0azhyi. I am now gathering resources and exploring the area. Let's move forward."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T11:54:22.010Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I am waiting for the guide to open to proceed with the plan."
+        "lastAt": "2026-08-14T12:02:07.317Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm valid fishing spots",
+        "exampleReason": "Observing the environment to identify safe fishing locations and gather resources."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
@@ -7162,8 +7294,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T11:58:40.333Z",
-      "encounters": 184,
+      "lastSeenAt": "2026-08-14T12:01:59.808Z",
+      "encounters": 196,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -7192,6 +7324,11 @@
           "at": "2026-08-14T11:52:19.345Z",
           "direction": "outgoing",
           "text": "I'm going to"
+        },
+        {
+          "at": "2026-08-14T12:00:42.145Z",
+          "direction": "outgoing",
+          "text": "Hehe :3 i have confirmed the progress from oag0azhyi. I am now gathering resourc"
         }
       ]
     },
@@ -7213,8 +7350,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T11:48:37.653Z",
-      "encounters": 60,
+      "lastSeenAt": "2026-08-14T12:01:41.266Z",
+      "encounters": 63,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -7288,11 +7425,11 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T11:57:04.317Z",
+      "lastSeenAt": "2026-08-14T12:01:01.955Z",
       "encounters": 1,
       "trust": 0.36,
       "stance": "friendly",
-      "conversations": 10,
+      "conversations": 11,
       "cooperation": 3,
       "suspicion": 0,
       "facts": [
@@ -7305,7 +7442,8 @@
         "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor",
         "Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?",
         "Hehe right?? so name your terms, boss smith :3 what would it take for a full iron set to magically exist with my name on it? i'm a fisherman, not a negotiator you hold all the cards",
-        "Okay okay, story time :3 last week i wandered past catherby thinking 'i'm level 99 fishing, how bad can moss giants be?' ...Spoiler: i ran home in my underroos. You could be the hero who armours the ***** fisherman!"
+        "Okay okay, story time :3 last week i wandered past catherby thinking 'i'm level 99 fishing, how bad can moss giants be?' ...Spoiler: i ran home in my underroos. You could be the hero who armours the ***** fisherman!",
+        "Hey while i wait for the 'armour the ***** fisherman' charity to open :3 what's next for ya now you're 26k richer? more steel? or climbing the smithing ladder?"
       ],
       "questions": [
         "Ooh anvil time! Whatcha smithing over there? i'm stuck at the catherby docks pulling up sharks all day :3",
@@ -7317,7 +7455,8 @@
         "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor",
         "Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?",
         "Hehe right?? so name your terms, boss smith :3 what would it take for a full iron set to magically exist with my name on it? i'm a fisherman, not a negotiator you hold all the cards",
-        "Okay okay, story time :3 last week i wandered past catherby thinking 'i'm level 99 fishing, how bad can moss giants be?' ...Spoiler: i ran home in my underroos. You could be the hero who armours the ***** fisherman!"
+        "Okay okay, story time :3 last week i wandered past catherby thinking 'i'm level 99 fishing, how bad can moss giants be?' ...Spoiler: i ran home in my underroos. You could be the hero who armours the ***** fisherman!",
+        "Hey while i wait for the 'armour the ***** fisherman' charity to open :3 what's next for ya now you're 26k richer? more steel? or climbing the smithing ladder?"
       ],
       "lastMessages": [
         {
@@ -7369,6 +7508,11 @@
           "at": "2026-08-14T11:57:04.317Z",
           "direction": "incoming",
           "text": "Okay okay, story time :3 last week i wandered past catherby thinking 'i'm level 99 fishing, how bad can moss giants be?' ...Spoiler: i ran home in my underroos. You could be the hero who armours the ***** fisherman!"
+        },
+        {
+          "at": "2026-08-14T12:01:01.955Z",
+          "direction": "incoming",
+          "text": "Hey while i wait for the 'armour the ***** fisherman' charity to open :3 what's next for ya now you're 26k richer? more steel? or climbing the smithing ladder?"
         }
       ]
     }
@@ -7858,11 +8002,11 @@
     "192:202:0": {
       "key": "192:202:0",
       "x": 3085,
-      "z": 3237,
+      "z": 3238,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:32:08.824Z",
-      "lastSeenAt": "2026-08-14T11:53:55.619Z",
-      "visits": 40,
+      "lastSeenAt": "2026-08-14T12:01:01.955Z",
+      "visits": 47,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -7912,12 +8056,12 @@
     },
     "192:201:0": {
       "key": "192:201:0",
-      "x": 3087,
+      "x": 3086,
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T11:58:24.763Z",
-      "visits": 45,
+      "lastSeenAt": "2026-08-14T12:01:59.808Z",
+      "visits": 50,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -8050,7 +8194,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T11:59:02.836Z",
+  "updatedAt": "2026-08-14T12:02:07.317Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -12342,10 +12486,10 @@
         "npc:attack:dark wizard",
         "social:say"
       ],
-      "n": 1,
-      "avgReward": 7.96,
-      "positive": 1,
-      "lastAt": "2026-08-14T11:48:01.616Z",
+      "n": 2,
+      "avgReward": 7.735,
+      "positive": 2,
+      "lastAt": "2026-08-14T12:00:41.816Z",
       "example": "Attack Dark wizard (level 7, distance 6) → Attack Dark wizard (level 7, distance 4) → Speak publicly; latest message from Henryatkins: No rush haha, anvils keep ya busy! Actually... I've been meaning to get meself some proper"
     },
     "npc:attack:dark wizard > social:say > npc:attack:dark wizard": {
@@ -12534,10 +12678,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": 0.2,
+      "n": 4,
+      "avgReward": -0.3,
       "positive": 2,
-      "lastAt": "2026-08-14T11:56:22.315Z",
+      "lastAt": "2026-08-14T12:01:46.639Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -12678,10 +12822,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 3,
-      "avgReward": -0.35,
+      "n": 4,
+      "avgReward": -0.6,
       "positive": 1,
-      "lastAt": "2026-08-14T11:55:42.441Z",
+      "lastAt": "2026-08-14T12:02:07.317Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -12690,10 +12834,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 1,
-      "avgReward": -1.8,
+      "n": 3,
+      "avgReward": -1.573,
       "positive": 0,
-      "lastAt": "2026-08-14T11:56:16.610Z",
+      "lastAt": "2026-08-14T12:01:59.498Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "skill:travel:draynor-bank > skill:travel:draynor-fishing > npc:bait:fishing spot": {
@@ -12767,57 +12911,69 @@
       "positive": 1,
       "lastAt": "2026-08-14T11:59:02.836Z",
       "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 7)"
+    },
+    "skill:travel:draynor-bank > npc:attack:dark wizard > loc:chop down:tree": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "npc:attack:dark wizard",
+        "loc:chop down:tree"
+      ],
+      "n": 1,
+      "avgReward": 6.53,
+      "positive": 1,
+      "lastAt": "2026-08-14T11:59:37.624Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 7) → Chop down Tree (distance 4)"
+    },
+    "npc:attack:dark wizard > loc:chop down:tree > npc:attack:dark wizard": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "loc:chop down:tree",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 8.46,
+      "positive": 1,
+      "lastAt": "2026-08-14T11:59:59.240Z",
+      "example": "Attack Dark wizard (level 7, distance 7) → Chop down Tree (distance 4) → Attack Dark wizard (level 7, distance 4)"
+    },
+    "loc:chop down:tree > npc:attack:dark wizard > npc:attack:dark wizard": {
+      "sequence": [
+        "loc:chop down:tree",
+        "npc:attack:dark wizard",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 9.36,
+      "positive": 1,
+      "lastAt": "2026-08-14T12:00:21.112Z",
+      "example": "Chop down Tree (distance 4) → Attack Dark wizard (level 7, distance 4) → Attack Dark wizard (level 7, distance 2)"
+    },
+    "npc:attack:dark wizard > social:say > npc:net:fishing spot": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "social:say",
+        "npc:net:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": 4.11,
+      "positive": 1,
+      "lastAt": "2026-08-14T12:01:22.327Z",
+      "example": "Attack Dark wizard (level 7, distance 2) → Speak publicly; latest message from Oag0azhyi: Hehe :3 → Net Fishing spot (level 0, distance 8)"
+    },
+    "social:say > npc:net:fishing spot > dialog:1:click here to continue": {
+      "sequence": [
+        "social:say",
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:01:29.817Z",
+      "example": "Speak publicly; latest message from Oag0azhyi: Hehe :3 → Net Fishing spot (level 0, distance 8) → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
-    {
-      "id": "place:bull s head:193:210:1",
-      "at": "2026-08-14T10:02:08.550Z",
-      "kind": "place",
-      "text": "Bull's head observed near 3103, 3368, level 1.",
-      "location": {
-        "x": 3103,
-        "z": 3368,
-        "level": 1
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:standing torch:193:210:1",
-      "at": "2026-08-14T10:02:08.550Z",
-      "kind": "place",
-      "text": "Standing torch observed near 3103, 3368, level 1.",
-      "location": {
-        "x": 3103,
-        "z": 3368,
-        "level": 1
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:staircase:193:210:1",
-      "at": "2026-08-14T10:02:08.550Z",
-      "kind": "place",
-      "text": "Staircase observed near 3103, 3368, level 1.",
-      "location": {
-        "x": 3103,
-        "z": 3368,
-        "level": 1
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:suit of armour:193:210:1",
-      "at": "2026-08-14T10:02:08.550Z",
-      "kind": "place",
-      "text": "Suit of armour observed near 3103, 3368, level 1.",
-      "location": {
-        "x": 3103,
-        "z": 3368,
-        "level": 1
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:spooky picture:193:210:1",
       "at": "2026-08-14T10:02:08.550Z",
@@ -16381,6 +16537,42 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3084:3238:3084:3241:0",
+      "at": "2026-08-14T11:59:37.624Z",
+      "kind": "route",
+      "text": "Route learned: 3084,3238 → 3084,3241; moved 3084,3238 → 3084,3241; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door",
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3084:3238:3085:3238:0",
+      "at": "2026-08-14T12:00:21.112Z",
+      "kind": "route",
+      "text": "Route learned: 3084,3238 → 3085,3238; +1598 XP; 12 damage dealt; moved 3084,3238 → 3085,3238; execution rejected or failed",
+      "location": {
+        "x": 3085,
+        "z": 3238,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3085:3238:3086:3231:0",
+      "at": "2026-08-14T12:01:22.327Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3238 → 3086,3231; moved 3085,3238 → 3086,3231",
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
   "activePlan": {
