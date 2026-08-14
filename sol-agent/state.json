@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 501,
-    "teacherChoices": 501,
+    "totalChoices": 511,
+    "teacherChoices": 511,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 500,
-    "totalReward": -173.66,
-    "saves": 77,
+    "completedExperiences": 510,
+    "totalReward": -176.56,
+    "saves": 78,
     "shadowPredictions": 235,
     "shadowMatches": 10,
-    "strategistRefreshes": 11,
+    "strategistRefreshes": 12,
     "strategistFailures": 147
   },
   "memories": [
@@ -2118,6 +2118,45 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "msstbtyl-uqe063",
+      "createdAt": "2026-08-14T10:37:09.357Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to deposit items. This plan ensures all required items are deposited in the bank, following the guide and using the bank slot for efficient item depositing. The steps are executable and observable with the provided actions.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to deposit items",
+        "deposit all raw bear meat using the bank slot",
+        "deposit all bronze sq shields using the bank slot"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msstbu8w-ptp3tn",
+      "createdAt": "2026-08-14T10:37:09.728Z",
+      "tick": 1680,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Coins. Result: inventory changed; -492 coins. Reward -0.9.",
+      "importance": 1.15,
+      "tags": [
+        "bank",
+        "store",
+        "coins"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -3537,12 +3576,12 @@
         "exampleReason": "Deposit all Shortbow"
       },
       "bank:deposit:bronze sq shield": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T10:36:01.912Z",
+        "lastAt": "2026-08-14T10:36:41.244Z",
         "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Bronze sq shield"
       },
@@ -3565,6 +3604,36 @@
         "lastAt": "2026-08-14T10:36:16.947Z",
         "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Body rune"
+      },
+      "bank:deposit:raw bear meat": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:36:49.029Z",
+        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Raw bear meat"
+      },
+      "bank:deposit:earth rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T10:36:59.824Z",
+        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Earth rune"
+      },
+      "bank:deposit:coins": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-14T10:37:09.728Z",
+        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Coins"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
@@ -3577,6 +3646,66 @@
         "lastAt": "2026-08-14T10:36:24.764Z",
         "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Raw bear meat"
+      },
+      "bank:deposit:raw bear meat": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:36:33.447Z",
+        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Raw bear meat"
+      },
+      "bank:deposit:fire rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T10:37:17.856Z",
+        "exampleGoal": "Open the bank to deposit items",
+        "exampleReason": "Deposit all Fire rune"
+      },
+      "bank:deposit:water rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T10:37:24.438Z",
+        "exampleGoal": "Open the bank to deposit items",
+        "exampleReason": "Deposit all Bronze arrow"
+      },
+      "bank:deposit:bronze arrow": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T10:37:31.658Z",
+        "exampleGoal": "Open the bank to deposit items",
+        "exampleReason": "Deposit all Bronze arrow"
+      },
+      "bank:deposit:bronze sq shield": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:37:39.422Z",
+        "exampleGoal": "Open the bank to deposit items",
+        "exampleReason": "Deposit all Bronze sq shield"
+      },
+      "bank:deposit:raw rat meat": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:37:46.052Z",
+        "exampleGoal": "Open the bank to deposit items",
+        "exampleReason": "Deposit all Raw rat meat"
       }
     }
   },
@@ -3842,8 +3971,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T10:32:45.140Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-14T10:37:39.709Z",
+      "encounters": 2,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -3872,8 +4001,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T10:35:10.641Z",
-      "encounters": 8,
+      "lastSeenAt": "2026-08-14T10:37:39.709Z",
+      "encounters": 12,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -3902,8 +4031,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T10:34:47.849Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-14T10:37:39.709Z",
+      "encounters": 5,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -3932,8 +4061,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T10:36:17.254Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-14T10:36:25.033Z",
+      "encounters": 2,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -4571,15 +4700,16 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:36:17.254Z",
-      "visits": 5,
+      "lastSeenAt": "2026-08-14T10:37:39.709Z",
+      "visits": 15,
       "npcs": [
         "Banker",
         "Dark wizard",
         "Aggie",
         "Diango",
         "Ned",
-        "Jail guard"
+        "Jail guard",
+        "Fishing spot"
       ],
       "locs": [
         "Closed bank booth",
@@ -4615,7 +4745,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:36:24.764Z",
+  "updatedAt": "2026-08-14T10:37:46.052Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -6932,21 +7062,129 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:36:24.764Z",
       "example": "Deposit all Chaos rune → Deposit all Air rune → Deposit all Body rune"
+    },
+    "bank:deposit:air rune > bank:deposit:body rune > bank:deposit:raw bear meat": {
+      "sequence": [
+        "bank:deposit:air rune",
+        "bank:deposit:body rune",
+        "bank:deposit:raw bear meat"
+      ],
+      "n": 1,
+      "avgReward": -0.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:36:33.447Z",
+      "example": "Deposit all Air rune → Deposit all Body rune → Deposit all Raw bear meat"
+    },
+    "bank:deposit:body rune > bank:deposit:raw bear meat > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:deposit:body rune",
+        "bank:deposit:raw bear meat",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.56,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:36:41.244Z",
+      "example": "Deposit all Body rune → Deposit all Raw bear meat → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:raw bear meat > bank:deposit:bronze sq shield > bank:deposit:raw bear meat": {
+      "sequence": [
+        "bank:deposit:raw bear meat",
+        "bank:deposit:bronze sq shield",
+        "bank:deposit:raw bear meat"
+      ],
+      "n": 1,
+      "avgReward": -0.24,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:36:49.029Z",
+      "example": "Deposit all Raw bear meat → Deposit all Bronze sq shield → Deposit all Raw bear meat"
+    },
+    "bank:deposit:bronze sq shield > bank:deposit:raw bear meat > bank:deposit:earth rune": {
+      "sequence": [
+        "bank:deposit:bronze sq shield",
+        "bank:deposit:raw bear meat",
+        "bank:deposit:earth rune"
+      ],
+      "n": 1,
+      "avgReward": -0.56,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:36:59.824Z",
+      "example": "Deposit all Bronze sq shield → Deposit all Raw bear meat → Deposit all Earth rune"
+    },
+    "bank:deposit:raw bear meat > bank:deposit:earth rune > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:raw bear meat",
+        "bank:deposit:earth rune",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.38,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:09.728Z",
+      "example": "Deposit all Raw bear meat → Deposit all Earth rune → Deposit all Coins"
+    },
+    "bank:deposit:earth rune > bank:deposit:coins > bank:deposit:fire rune": {
+      "sequence": [
+        "bank:deposit:earth rune",
+        "bank:deposit:coins",
+        "bank:deposit:fire rune"
+      ],
+      "n": 1,
+      "avgReward": -1.7,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:17.856Z",
+      "example": "Deposit all Earth rune → Deposit all Coins → Deposit all Fire rune"
+    },
+    "bank:deposit:coins > bank:deposit:fire rune > bank:deposit:water rune": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:fire rune",
+        "bank:deposit:water rune"
+      ],
+      "n": 1,
+      "avgReward": -1.7,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:24.438Z",
+      "example": "Deposit all Coins → Deposit all Fire rune → Deposit all Water rune"
+    },
+    "bank:deposit:fire rune > bank:deposit:water rune > bank:deposit:bronze arrow": {
+      "sequence": [
+        "bank:deposit:fire rune",
+        "bank:deposit:water rune",
+        "bank:deposit:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -1.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:31.658Z",
+      "example": "Deposit all Fire rune → Deposit all Water rune → Deposit all Bronze arrow"
+    },
+    "bank:deposit:water rune > bank:deposit:bronze arrow > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:deposit:water rune",
+        "bank:deposit:bronze arrow",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.88,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:39.422Z",
+      "example": "Deposit all Water rune → Deposit all Bronze arrow → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:bronze arrow > bank:deposit:bronze sq shield > bank:deposit:raw rat meat": {
+      "sequence": [
+        "bank:deposit:bronze arrow",
+        "bank:deposit:bronze sq shield",
+        "bank:deposit:raw rat meat"
+      ],
+      "n": 1,
+      "avgReward": -0.56,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:37:46.052Z",
+      "example": "Deposit all Bronze arrow → Deposit all Bronze sq shield → Deposit all Raw rat meat"
     }
   },
   "discoveries": [
-    {
-      "id": "place:fireplace:194:210:0",
-      "at": "2026-08-14T10:00:08.540Z",
-      "kind": "place",
-      "text": "Fireplace observed near 3107, 3366, level 0.",
-      "location": {
-        "x": 3107,
-        "z": 3366,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:stairs:194:210:0",
       "at": "2026-08-14T10:00:08.540Z",
@@ -10534,47 +10772,57 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "resource:fishing spot:193:202:0",
+      "at": "2026-08-14T10:36:33.735Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3092, 3245, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
-    "objective": "Secure safe fishing locations in Draynor Village and gather resources",
-    "focus": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-    "reason": "This plan ensures safe fishing location exploration and resource collection, aligning with the guide's recommendations and providing observable evidence through tile exploration",
+    "objective": "Deposit all raw bear meat and bronze sq shields in the bank",
+    "focus": "Open the bank to deposit items",
+    "reason": "This plan ensures all required items are deposited in the bank, following the guide and using the bank slot for efficient item depositing. The steps are executable and observable with the provided actions.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "done",
-        "evidence": "moved 3084,3238 → 3087,3230; new: agent:Ndzq5pll9, npc:Black Knight, loc:Thistle"
+        "label": "Open the bank to deposit items",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate safe fishing spots",
-        "status": "done",
-        "evidence": "moved 3092,3242 → 3087,3248; new: npc:Diango, npc:Aggie, loc:Mystical wall chart, loc:Charms, loc:Chair, loc:Cart"
+        "label": "Deposit all raw bear meat using the bank slot",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Pick up Bones and 4 Coins at the safe fishing spot to collect resources",
-        "status": "active"
+        "label": "Deposit all bronze sq shields using the bank slot",
+        "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Bank successfully"
     ],
     "priorities": [
-      "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-      "Explore north about 5 tiles to locate safe fishing spots",
-      "Pick up Bones and 4 Coins at the safe fishing spot to collect resources"
+      "Open the bank to deposit items",
+      "Deposit all raw bear meat using the bank slot",
+      "Deposit all bronze sq shields using the bank slot"
     ],
     "avoid": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Chop down Dead tree (distance 2)",
-      "Chop down Tree (distance 1)"
+      "Deposit all Raw bear meat",
+      "Deposit all Bronze sq shield",
+      "Deposit all Raw bear meat"
     ],
-    "updatedAt": "2026-08-14T10:33:44.330Z",
+    "updatedAt": "2026-08-14T10:37:09.357Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
