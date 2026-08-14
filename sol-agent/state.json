@@ -6,17 +6,17 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 93,
-    "teacherChoices": 93,
+    "totalChoices": 101,
+    "teacherChoices": 101,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 92,
-    "totalReward": -9.82,
-    "saves": 23,
+    "completedExperiences": 100,
+    "totalReward": -12.69,
+    "saves": 24,
     "shadowPredictions": 4,
     "shadowMatches": 4,
-    "strategistRefreshes": 3,
-    "strategistFailures": 1
+    "strategistRefreshes": 4,
+    "strategistFailures": 2
   },
   "memories": [
     {
@@ -392,6 +392,47 @@
         "z": 3354,
         "level": 0
       }
+    },
+    {
+      "id": "mssoa9nv-0laj0r",
+      "createdAt": "2026-08-14T08:15:58.315Z",
+      "tick": 112,
+      "runNumber": 22,
+      "kind": "episode",
+      "text": "AI motor: Explore northeast about 4 tiles. Result: moved; new: npc:Witch, loc:Piano stool, loc:Piano, loc:Warehouse shelves. Reward 0.81.",
+      "importance": 1.1,
+      "tags": [
+        "explore",
+        "northeast",
+        "npc witch",
+        "loc piano stool",
+        "loc piano",
+        "loc warehouse shelves"
+      ],
+      "location": {
+        "x": 3111,
+        "z": 3357,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssobhbh-x3542l",
+      "createdAt": "2026-08-14T08:16:54.893Z",
+      "tick": 0,
+      "runNumber": 22,
+      "kind": "strategy",
+      "text": "AI strategist: explore. new npc:Witch at Piano stool",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore",
+        "world"
+      ],
+      "location": {
+        "x": 3111,
+        "z": 3357,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -646,6 +687,68 @@
         "exampleGoal": "Pursue explore",
         "exampleReason": "Explore northeast about 4 tiles to locate the Large door."
       }
+    },
+    "area=388:419:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "walk:south": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:16:10.345Z",
+        "exampleGoal": "Pursue explore",
+        "exampleReason": "Explore east about 5 tiles"
+      },
+      "walk:north": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:15:50.528Z",
+        "exampleGoal": "Pursue explore",
+        "exampleReason": "Explore northeast about 4 tiles."
+      },
+      "walk:northeast": {
+        "n": 1,
+        "avgReward": 0.81,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.81,
+        "lastAt": "2026-08-14T08:15:58.315Z",
+        "exampleGoal": "Pursue explore",
+        "exampleReason": "Explore northeast about 4 tiles. Reward 1.4."
+      },
+      "walk:east": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:16:47.573Z",
+        "exampleGoal": "Pursue explore",
+        "exampleReason": "Explore northeast about 4 tiles"
+      },
+      "style:accurate:attack": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:16:33.737Z",
+        "exampleGoal": "Pursue combat-style",
+        "exampleReason": "Combat style Punch: Accurate; trains Attack."
+      },
+      "inventory:wield:shortbow": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T08:17:06.438Z",
+        "exampleGoal": "explore",
+        "exampleReason": "Wield Shortbow"
+      }
     }
   },
   "relationships": {},
@@ -837,18 +940,19 @@
     },
     "194:209:0": {
       "key": "194:209:0",
-      "x": 3108,
-      "z": 3354,
+      "x": 3111,
+      "z": 3357,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T08:15:25.107Z",
-      "visits": 652,
+      "lastSeenAt": "2026-08-14T08:16:57.729Z",
+      "visits": 664,
       "npcs": [
         "Tree",
         "Rat",
         "Veronica",
         "Skeleton",
-        "Witch"
+        "Witch",
+        "Imp"
       ],
       "locs": [
         "Dead tree",
@@ -881,9 +985,11 @@
         "Portrait",
         "Range",
         "Mystical wall chart",
-        "Bench"
+        "Bench",
+        "Piano stool",
+        "Piano"
       ]
     }
   },
-  "updatedAt": "2026-08-14T08:15:35.227Z"
+  "updatedAt": "2026-08-14T08:17:06.438Z"
 }
