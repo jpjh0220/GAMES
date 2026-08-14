@@ -206,7 +206,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   const action={...candidate.action,reason:choice.reason};
   if(action.type==='say'){
     const proposed=(choice.speech?.trim()||'Hello.').slice(0,80);
-    action.message=norm(proposed)===norm(lastPublicSayText)&&tick-lastPublicSayTick<200?`What are you working on, ${action.chatTarget||'friend'}?`:proposed;
+    action.message=proposed;
     lastPublicSayTick=tick;lastPublicSayText=action.message;
     if(action.chatReplyId)answeredChatIds.add(action.chatReplyId);
     const chat:OutgoingChat={id:`out-${runNumber||0}-${tick}`,tick,at:new Date().toISOString(),text:action.message,target:action.chatTarget||null,replyTo:action.chatReplyId||null,status:'submitted'};
