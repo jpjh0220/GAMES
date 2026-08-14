@@ -209,7 +209,7 @@ export class SolAgentBrain {
     const repo = this.opts.githubRepo;
     if (!token || !repo) return;
     try {
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/sol-agent/state.json?ref=main&t=${Date.now()}`, {
+      const res = await fetch(`https://api.github.com/repos/${repo}/contents/sol-agent/state.json?ref=sol-memory&t=${Date.now()}`, {
         headers: {
           'Accept': 'application/vnd.github+json',
           'Authorization': `Bearer ${token}`,
@@ -243,7 +243,7 @@ export class SolAgentBrain {
       const payload: any = {
         message: `Persist Sol learned policy and memory (${this.memory.lifetime.completedExperiences} experiences)`,
         content,
-        branch: 'main'
+        branch: 'sol-memory'
       };
       if (this.githubSha) payload.sha = this.githubSha;
       const res = await fetch(`https://api.github.com/repos/${repo}/contents/sol-agent/state.json`, {
@@ -379,6 +379,7 @@ export class SolAgentBrain {
     if (!stats) return null;
     let best: { c: AgentCandidate; stat: PolicyStat; confidence: number } | null = null;
     for (const c of candidates) {
+      if (c.category === 'say') continue;
       const s = stats[c.fingerprint];
       if (!s || s.n < 3) continue;
       const success = s.positive / Math.max(1, s.n);
