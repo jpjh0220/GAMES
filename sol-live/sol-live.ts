@@ -152,16 +152,16 @@ const openNearestDoorToward=async(target:{x:number;z:number})=>{
   const candidates=(state.nearbyLocs||[]).filter(loc=>{
     const open=loc.optionsWithIndex?.some(o=>/^open$/i.test(o.text));
     const frontDoor=(loc.x===3108||loc.x===3109)&&loc.z===3353;
-    return open&&loc.reachable!==false&&!frontDoor&&loc.level===state.player!.level&&/door|gate/i.test(loc.name);
+    return open&&loc.id!==131&&loc.reachable!==false&&!frontDoor&&loc.level===state.player!.level&&/door|gate/i.test(loc.name);
   }).sort((a,b)=>(a.distance+tileDistance(a,target)*.65)-(b.distance+tileDistance(b,target)*.65));
   const door=candidates[0];if(!door)return false;
   const option=door.optionsWithIndex.find(o=>/^open$/i.test(o.text));if(!option)return false;
-  const result=await dispatchPrimitive(`Open route obstacle ${door.name} at ${door.x},${door.z}`,{type:'interactLoc',x:door.x,z:door.z,locId:door.id,optionIndex:option.opIndex,reason:'Repository-guided navigation opened a verified obstacle.'});
-  await waitTicks(4);return result.success;
+  const started=tick,result=await dispatchPrimitive(`Open route obstacle ${door.name} at ${door.x},${door.z}`,{type:'interactLoc',x:door.x,z:door.z,locId:door.id,optionIndex:option.opIndex,reason:'Repository-guided navigation opened a verified obstacle.'});
+  await waitTicks(4);const blocked=(lastState?.gameMessages||[]).some((m:any)=>Number(m.tick)>started&&/locked|won't open|can't reach/i.test(String(m.text||'')));return result.success&&!blocked;
 };
 
-const walkToward=async(target:{x:number;z:number},radius=2,allowDoors=false)=>{
-  for(let attempt=1;attempt<=7;attempt++){
+const walkToward=async(target:{x:number;z:number},radius=2,allowDoors=false,maxAttempts=7)=>{
+  for(let attempt=1;attempt<=maxAttempts;attempt++){
     const before=position();if(!before)return false;
     const beforeDistance=tileDistance(before,target);if(before.level===0&&beforeDistance<=radius)return true;
     const result=await dispatchPrimitive(`Walk toward ${target.x},${target.z} (attempt ${attempt})`,{type:'walkTo',x:target.x,z:target.z,running:true,reason:'Follow a model-selected verified route.'});
@@ -179,8 +179,18 @@ const openDocumentedDoor=async(x:number,z:number,locId:number)=>{
   const loc=(state.nearbyLocs||[]).find(l=>l.x===x&&l.z===z&&l.level===state.player!.level);
   const open=loc?.optionsWithIndex?.find(o=>/^open$/i.test(o.text));
   if(loc&&!open)return true;
-  const result=await dispatchPrimitive(`Open documented Draynor door at ${x},${z}`,{type:'interactLoc',x,z,locId:loc?.id||locId,optionIndex:open?.opIndex||1,reason:'Use the rs-sdk Draynor Manor escape procedure.'});
-  await waitTicks(4);return result.success;
+  const started=tick,result=await dispatchPrimitive(`Open documented Draynor door at ${x},${z}`,{type:'interactLoc',x,z,locId:loc?.id||locId,optionIndex:open?.opIndex||1,reason:'Use the rs-sdk Draynor Manor escape procedure.'});
+  await waitTicks(4);const blocked=(lastState?.gameMessages||[]).some((m:any)=>Number(m.tick)>started&&/locked|won't open|can't reach/i.test(String(m.text||'')));return result.success&&!blocked;
+};
+
+const crossDocumentedDoor=async(args:{x:number;z:number;id:number;approach:{x:number;z:number};exit:{x:number;z:number};farSide:(p:{x:number;z:number;level:number})=>boolean})=>{
+  const initial=position();if(!initial)return false;if(args.farSide(initial))return true;
+  if(!await walkToward(args.approach,0,false,5))return false;
+  await dispatchPrimitive(`Test whether documented door ${args.x},${args.z} is already open`,{type:'walkTo',x:args.exit.x,z:args.exit.z,running:true,reason:'Verify door state before interacting.'});
+  await waitTicks(5);const afterTest=position();if(afterTest&&args.farSide(afterTest))return true;
+  if(!await walkToward(args.approach,0,false,3))return false;
+  if(!await openDocumentedDoor(args.x,args.z,args.id))return false;
+  return walkToward(args.exit,0,false,5);
 };
 
 const executeWorldSkill=async(action:any)=>{
@@ -190,14 +200,21 @@ const executeWorldSkill=async(action:any)=>{
   procedureInFlight=procedure;let success=false;let message='Procedure failed before completion.';
   try{
     if(skill==='escape-draynor-manor'){
-      success=await walkToward({x:3119,z:3355},1,true)
-        &&await openDocumentedDoor(3119,3356,1530)
-        &&await walkToward({x:3119,z:3358},1,true)
-        &&await walkToward({x:3123,z:3359},1,true)
-        &&await openDocumentedDoor(3123,3360,136)
-        &&await walkToward({x:3123,z:3362},1,true)
-        &&await walkToward({x:3125,z:3370},2,true);
-      const end=position();success=success&&!!end&&(end.x>3124||end.z>3368);message=success?'Reached the Draynor Manor courtyard through both documented east-wing doors.':'Could not verify escape from the manor boundary.';
+      const p0=position();
+      success=!!p0
+        &&(p0.z>=3358||await crossDocumentedDoor({x:3109,z:3358,id:1530,approach:{x:3109,z:3357},exit:{x:3109,z:3359},farSide:p=>p.z>=3358}))
+        &&await walkToward({x:3106,z:3367},0,false,6)
+        &&await crossDocumentedDoor({x:3106,z:3368,id:1530,approach:{x:3106,z:3367},exit:{x:3106,z:3369},farSide:p=>p.z>=3369})
+        &&await walkToward({x:3114,z:3370},0,false,6)
+        &&await walkToward({x:3114,z:3368},0,false,5)
+        &&await walkToward({x:3118,z:3368},0,false,5)
+        &&await walkToward({x:3118,z:3361},0,false,6)
+        &&await walkToward({x:3119,z:3357},0,false,6)
+        &&await crossDocumentedDoor({x:3119,z:3356,id:1530,approach:{x:3119,z:3357},exit:{x:3120,z:3356},farSide:p=>p.x>=3120})
+        &&await walkToward({x:3123,z:3359},0,false,6)
+        &&await crossDocumentedDoor({x:3123,z:3360,id:136,approach:{x:3123,z:3359},exit:{x:3123,z:3361},farSide:p=>p.z>=3361})
+        &&await walkToward({x:3125,z:3369},0,false,6);
+      const end=position();success=success&&!!end&&(end.x>3124||end.z>3368);message=success?'Reached the Draynor Manor courtyard through the verified four-door route.':'Could not verify escape from the manor boundary.';
     }else if(skill==='travel-waypoints'){
       const points=(Array.isArray(action.waypoints)?action.waypoints:[]).map((p:any)=>({x:Number(p[0]??p.x),z:Number(p[1]??p.z)})).filter((p:any)=>Number.isFinite(p.x)&&Number.isFinite(p.z));
       success=points.length>0;
