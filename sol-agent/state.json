@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 751,
-    "teacherChoices": 751,
+    "totalChoices": 761,
+    "teacherChoices": 761,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 750,
-    "totalReward": -182.04,
-    "saves": 102,
-    "shadowPredictions": 352,
-    "shadowMatches": 90,
-    "strategistRefreshes": 24,
+    "completedExperiences": 760,
+    "totalReward": -182.44,
+    "saves": 103,
+    "shadowPredictions": 359,
+    "shadowMatches": 94,
+    "strategistRefreshes": 25,
     "strategistFailures": 147
   },
   "memories": [
@@ -2516,6 +2516,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "mssucle4-vyrb7s",
+      "createdAt": "2026-08-14T11:05:44.524Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank and deposit all coins using the bank slot. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank and deposit all coins using the bank slot",
+        "withdraw 1 chaos rune 1 air rune 1 body rune 1 raw bear meat 1 earth rune 1 fire rune and 1 water rune from the bank slot",
+        "verify that all items have been successfully deposited and withdrawn using the bank slot and confirm the action is complete with observable"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -4177,34 +4197,34 @@
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:withdraw:coins": {
-        "n": 8,
+        "n": 11,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:58:23.523Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
+        "lastAt": "2026-08-14T11:05:17.859Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Withdraw 1 Coins"
       },
       "bank:deposit:coins": {
-        "n": 4,
-        "avgReward": -0.255,
+        "n": 5,
+        "avgReward": -0.304,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -0.3,
-        "lastAt": "2026-08-14T10:58:16.631Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
+        "negative": 3,
+        "lastReward": -0.5,
+        "lastAt": "2026-08-14T11:05:11.217Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Coins"
       },
       "wait": {
-        "n": 5,
+        "n": 7,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T11:03:43.934Z",
+        "lastAt": "2026-08-14T11:05:24.116Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Wait and observe for a moment"
+        "exampleReason": "I need to wait for the bank to open before proceeding"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -4219,22 +4239,22 @@
         "exampleReason": "Deposit all Raw bear meat"
       },
       "bank:withdraw:coins": {
-        "n": 28,
+        "n": 31,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T11:04:38.835Z",
+        "lastAt": "2026-08-14T11:05:44.847Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "bank"
+        "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:coins": {
-        "n": 9,
-        "avgReward": -0.3333,
+        "n": 10,
+        "avgReward": -0.32,
         "positive": 0,
-        "negative": 8,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-14T11:01:19.319Z",
+        "negative": 9,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T11:05:35.815Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Coins"
       },
@@ -4630,8 +4650,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T11:04:32.816Z",
-      "encounters": 37,
+      "lastSeenAt": "2026-08-14T11:05:36.105Z",
+      "encounters": 47,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -5359,8 +5379,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T11:04:32.816Z",
-      "visits": 257,
+      "lastSeenAt": "2026-08-14T11:05:36.105Z",
+      "visits": 267,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5406,7 +5426,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T11:04:38.836Z",
+  "updatedAt": "2026-08-14T11:05:44.847Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -8018,10 +8038,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 20,
-      "avgReward": -0.142,
+      "n": 21,
+      "avgReward": -0.15,
       "positive": 0,
-      "lastAt": "2026-08-14T11:04:25.633Z",
+      "lastAt": "2026-08-14T11:05:11.217Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -8246,10 +8266,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 26,
-      "avgReward": -0.14,
+      "n": 28,
+      "avgReward": -0.141,
       "positive": 0,
-      "lastAt": "2026-08-14T11:04:32.528Z",
+      "lastAt": "2026-08-14T11:05:44.847Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -8306,10 +8326,10 @@
         "wait",
         "bank:withdraw:coins"
       ],
-      "n": 20,
+      "n": 22,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T11:03:50.839Z",
+      "lastAt": "2026-08-14T11:05:31.024Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     },
     "wait > bank:withdraw:coins > bank:withdraw:coins": {
@@ -8318,10 +8338,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:58:51.444Z",
+      "lastAt": "2026-08-14T11:04:58.304Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:coins": {
@@ -8342,10 +8362,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 11,
+      "n": 12,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T11:03:34.910Z",
+      "lastAt": "2026-08-14T11:04:45.404Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:fire rune": {
@@ -8630,10 +8650,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 22,
+      "n": 23,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T11:04:18.140Z",
+      "lastAt": "2026-08-14T11:05:04.636Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:chaos rune": {
@@ -8774,10 +8794,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 1,
-      "avgReward": -0.35,
+      "n": 2,
+      "avgReward": -0.45,
       "positive": 0,
-      "lastAt": "2026-08-14T10:58:29.812Z",
+      "lastAt": "2026-08-14T11:05:24.116Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "wait > bank:withdraw:coins > bank:deposit:coins": {
@@ -8786,10 +8806,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 5,
-      "avgReward": -0.45,
+      "n": 6,
+      "avgReward": -0.417,
       "positive": 0,
-      "lastAt": "2026-08-14T11:03:58.017Z",
+      "lastAt": "2026-08-14T11:05:35.815Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Deposit all Coins"
     }
   },
@@ -12396,41 +12416,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Deposit all Coins in the bank to avoid failed actions",
-    "focus": "Open the bank to access the deposit functionality",
-    "reason": "This approach ensures that the player avoids failed actions and completes the deposit process as required by the guide.",
+    "objective": "Deposit all coins and withdraw necessary items from the bank",
+    "focus": "Open the bank and deposit all coins using the bank slot",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access the deposit functionality",
+        "label": "Open the bank and deposit all coins using the bank slot",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the bank's deposit feature",
+        "label": "Withdraw 1 Chaos rune, 1 Air rune, 1 Body rune, 1 Raw bear meat, 1 Earth rune, 1 Fire rune, and 1 Water rune from the bank slot",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all Coins have been successfully deposited and the failed actions are resolved",
+        "label": "Verify that all items have been successfully deposited and withdrawn using the bank slot and confirm the action is complete with observable ",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully opened and Coins deposited."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Open the bank to access the deposit functionality",
-      "Deposit all Coins using the bank's deposit feature",
-      "Verify that all Coins have been successfully deposited and the failed actions are resolved"
+      "Open the bank and deposit all coins using the bank slot",
+      "Withdraw 1 Chaos rune, 1 Air rune, 1 Body rune, 1 Raw bear meat, 1 Earth rune, 1 Fire rune, and 1 Water rune from the bank slot",
+      "Verify that all items have been successfully deposited and withdrawn using the bank slot and confirm the action is complete with observable "
     ],
     "avoid": [
-      "Wait and observe for a moment",
       "Deposit all Coins",
+      "Wait and observe for a moment",
       "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-14T11:03:40.874Z",
+    "updatedAt": "2026-08-14T11:05:44.524Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
