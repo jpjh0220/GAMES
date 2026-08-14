@@ -88,6 +88,7 @@ export class SolAgentBrain {
   private lastShadowPrediction:AgentChoice|null=null;
   private recentOutcomes:AgentOutcome[]=[];
   private repoKnowledge:{source:string;text:string}[]=[];
+  private blockedFingerprints:string[]=[];
 
   constructor(private readonly opts:{
     name:string;directive:string;motorModel?:string;strategistModel?:string;model?:string;
@@ -209,7 +210,25 @@ export class SolAgentBrain {
     const p=state.player!;const ratio=p.maxHp?p.hp/p.maxHp:1;const hp=ratio<.35?'critical':ratio<.65?'hurt':'healthy';
     const food=(state.inventory||[]).some(i=>i.optionsWithIndex?.some(o=>/^eat$|^drink$/i.test(o.text)))?1:0;
     const cats=uniq(candidates.map(c=>c.category)).sort().slice(0,12).join(',');
-    return`hp=${hp}|combat=${p.combat?.inCombat?1:0}|agents=${(state.nearbyPlayers?.length||0)>0?1:0}|food=${food}|dialog=${state.dialog?.isOpen?1:0}|bank=${state.bank?.isOpen?1:0}|shop=${state.shop?.isOpen?1:0}|cats=${cats}`;
+    const area=`${Math.floor(p.worldX/8)}:${Math.floor(p.worldZ/8)}:${p.level}`;
+    return`area=${area}|hp=${hp}|combat=${p.combat?.inCombat?1:0}|agents=${(state.nearbyPlayers?.length||0)>0?1:0}|food=${food}|dialog=${state.dialog?.isOpen?1:0}|bank=${state.bank?.isOpen?1:0}|shop=${state.shop?.isOpen?1:0}|cats=${cats}`;
+  }
+
+  private antiLoopCandidates(candidates:AgentCandidate[]){
+    const recent=this.recentOutcomes.slice(-10);
+    const blocked=new Set<string>();
+    for(const c of candidates){
+      const attempts=recent.filter(o=>o.choice.fingerprint===c.fingerprint).slice(-4);
+      if(attempts.length<2)continue;
+      const avg=attempts.reduce((n,o)=>n+o.reward,0)/attempts.length;
+      const failures=attempts.filter(o=>o.reward<0||o.rejected).length;
+      if(failures>=2&&avg<0)blocked.add(c.fingerprint);
+    }
+    const last=recent.at(-1);
+    if(last?.reward<0)blocked.add(last.choice.fingerprint);
+    const filtered=candidates.filter(c=>!blocked.has(c.fingerprint));
+    this.blockedFingerprints=[...blocked];
+    return filtered.length?filtered:candidates;
   }
 
   private shadowPrediction(candidates:AgentCandidate[],contextKey:string):AgentChoice|null{
@@ -237,13 +256,13 @@ export class SolAgentBrain {
   }
 
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
-    this.observe(state);const contextKey=this.contextKey(state,candidates);this.lastShadowPrediction=this.shadowPrediction(candidates,contextKey);
+    this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
-    const choice=await this.askMotor(state,candidates,contextKey);
+    const choice=await this.askMotor(state,legal,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
     this.lastChoice=choice;this.dirty=true;
-    this.maybeRefreshStrategy(state,candidates);
+    this.maybeRefreshStrategy(state,legal);
     return choice;
   }
 
@@ -274,7 +293,8 @@ export class SolAgentBrain {
       status:{hp:[p.hp,p.maxHp],combat:p.combat?.inCombat?1:0,level:p.combatLevel,pos:[p.worldX,p.worldZ,p.level],run:p.runEnergy},
       nearbyAgents:(state.nearbyPlayers||[]).slice(0,3).map(x=>[x.name,x.combatLevel,x.distance]),
       memories:this.relevantMemories(state,allowed),
-      recent:this.recentOutcomes.slice(-3).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),
+      recent:this.recentOutcomes.slice(-5).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),
+      blocked:this.blockedFingerprints,
       guide:this.retrieveRepoGuidance(state,allowed,2,360),
       learned:learnedCompact,
       student:this.lastShadowPrediction?[this.lastShadowPrediction.actionId,Number(this.lastShadowPrediction.confidence.toFixed(2))]:null,
@@ -326,6 +346,6 @@ export class SolAgentBrain {
 
   publicState(){
     const contexts=Object.keys(this.memory.policy).length;const learnedActions=Object.values(this.memory.policy).reduce((n,ctx)=>n+Object.values(ctx).filter(s=>s.n>=2&&s.avgReward>.05).length,0);const predictions=this.memory.lifetime.shadowPredictions||0;const matches=this.memory.lifetime.shadowMatches||0;
-    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy,strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,shadowStudentPrediction:this.lastShadowPrediction,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-8),recentOutcomes:this.recentOutcomes.slice(-8)};
+    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy,strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-8),recentOutcomes:this.recentOutcomes.slice(-8)};
   }
 }
