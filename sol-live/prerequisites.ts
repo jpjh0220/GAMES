@@ -157,14 +157,36 @@ export class PrerequisiteTracker {
     return { kept, removed };
   }
 
-  /** Clear a blocker once the requirement is genuinely met. */
-  resolve(skills: Record<string, number>, inventoryNames: string[]) {
+  /**
+   * Clear blockers whose requirement is genuinely met. Returns the ones cleared,
+   * so the caller can pay for the capability that was just acquired.
+   */
+  resolve(skills: Record<string, number>, inventoryNames: string[]): Blocker[] {
     const inv = inventoryNames.map((n) => n.toLowerCase());
+    const cleared: Blocker[] = [];
     for (const [id, b] of [...this.blockers]) {
-      if (b.kind === 'skill' && b.level && (skills[b.requirement] ?? 0) >= b.level) this.blockers.delete(id);
-      if (b.kind === 'item' && inv.some((n) => n.includes(b.requirement.replace(/^an? /, '')))) this.blockers.delete(id);
-      if (b.kind === 'coins' && (skills.__coins ?? 0) > 0) this.blockers.delete(id);
+      const met =
+        (b.kind === 'skill' && !!b.level && (skills[b.requirement] ?? 0) >= b.level) ||
+        (b.kind === 'item' && inv.some((n) => n.includes(b.requirement.replace(/^an? /, '')))) ||
+        (b.kind === 'coins' && (skills.__coins ?? 0) > 0);
+      if (met) {
+        this.blockers.delete(id);
+        cleared.push(b);
+      }
     }
+    return cleared;
+  }
+
+  /**
+   * What clearing this blocker is worth, in reward units.
+   *
+   * Sized against the measured ledger from live run 37: a good Dark-wizard kill
+   * scores ~3.9 and is the only reliably positive action Sol has. Acquiring a
+   * capability is permanent, so it should be competitive with that, scaled by
+   * how much waste the blocker was actually causing (each refusal cost ~-0.6).
+   */
+  static resolutionValue(b: Blocker): number {
+    return Math.min(4, Math.max(1.5, b.hits * 0.4));
   }
 
   /** Prerequisite work the strategist should adopt, most-hit first. */

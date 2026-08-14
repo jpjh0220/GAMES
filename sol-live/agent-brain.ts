@@ -129,6 +129,7 @@ export class SolAgentBrain {
   private gameplayCurriculum='';
   private blockedFingerprints:string[]=[];
   private prereqs=new PrerequisiteTracker();
+  private paidResolutions=new Set<string>();
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
@@ -466,9 +467,25 @@ export class SolAgentBrain {
     const newNpc=[...after.npcNames].filter(x=>!exp.before.npcNames.has(x));const newPlayers=[...after.playerNames].filter(x=>!exp.before.playerNames.has(x));const newLocs=[...after.locNames].filter(x=>!exp.before.locNames.has(x));const coinGain=after.coins-exp.before.coins;const inventoryGain=after.inventoryCount-exp.before.inventoryCount;
     const inventoryChanged=after.inventorySig!==exp.before.inventorySig;const equipmentChanged=after.equipmentSig!==exp.before.equipmentSig;const styleChanged=after.combatStyleSig!==exp.before.combatStyleSig;const executionMessage=executionFailed?String(exp.candidate.action?.executionResult?.message||'').slice(0,420):'';const discovers=/^(explore|navigation-skill|world)$/.test(exp.candidate.category);const configures=/^(inventory|combat-style)$/.test(exp.candidate.category);
     let reward=Math.min(4,xpGain*.02)+levelGain*3+damageDealt*.15+kills*3-damageTaken*.25;if(hpDelta<0)reward+=hpDelta*.15;if(moved)reward+=discovers?.35:.08;if(discovers)reward+=Math.min(1.2,newNpc.length*.2+newLocs.length*.1);if(exp.candidate.category==='social'||exp.candidate.category==='say')reward+=Math.min(.3,newPlayers.length*.15);reward+=clamp(coinGain*.02,-.5,1.5)+clamp(inventoryGain*.08,-.4,.5);if(configures&&equipmentChanged)reward+=.12;if(configures&&styleChanged)reward+=.08;if(rejected)reward-=1.25;if(died)reward-=10;
-    const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0&&!(configures&&(equipmentChanged||styleChanged));if(noProgress)reward-=exp.candidate.category==='wait'?.15:.6;reward=Number(clamp(reward,-10,10).toFixed(3));
+    // CAPABILITY INVESTMENT. Spending coins is penalised above and clearing a
+    // prerequisite paid nothing, so buying a fishing net scored negative even
+    // though it unlocks an entire skill. Pay for the capability, once per
+    // blocker per session so it cannot be farmed by re-breaking it.
+    const skillLevels:Record<string,number>={};
+    for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
+    skillLevels.__coins=after.coins;
+    const clearedNow=this.prereqs.resolve(skillLevels,((state.inventory||[]) as any[]).map(i=>String(i.name||'')));
+    let unlocked:string[]=[];
+    for(const b of clearedNow){
+      if(this.paidResolutions.has(b.id))continue;
+      this.paidResolutions.add(b.id);
+      const value=PrerequisiteTracker.resolutionValue(b);
+      reward+=value;unlocked.push(`${b.requirement} (+${value.toFixed(2)})`);
+      console.log('AGENT_PREREQ_CLEARED',JSON.stringify({requirement:b.requirement,refusals:b.hits,reward:value}));
+    }
+    const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0&&!(configures&&(equipmentChanged||styleChanged))&&!unlocked.length;if(noProgress)reward-=exp.candidate.category==='wait'?.15:.6;reward=Number(clamp(reward,-10,10).toFixed(3));
     const newThings=[...newPlayers.map(x=>`agent:${x}`),...newNpc.slice(0,4).map(x=>`npc:${x}`),...newLocs.slice(0,4).map(x=>`loc:${x}`)];
-    const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?`moved ${exp.before.x},${exp.before.z} → ${after.x},${after.z}`:'',inventoryChanged?'inventory changed':'',equipmentChanged?'equipment changed':'',styleChanged?'combat style changed':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'execution rejected or failed':'',executionMessage?`detail: ${executionMessage}`:'',died?'died/respawned':'',discovers&&newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
+    const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?`moved ${exp.before.x},${exp.before.z} → ${after.x},${after.z}`:'',inventoryChanged?'inventory changed':'',equipmentChanged?'equipment changed':'',styleChanged?'combat style changed':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'execution rejected or failed':'',executionMessage?`detail: ${executionMessage}`:'',died?'died/respawned':'',unlocked.length?`unlocked: ${unlocked.join(', ')}`:'',discovers&&newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
     const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected,inventoryChanged,equipmentChanged,styleChanged,executionFailed};
     this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();return outcome;
   }
