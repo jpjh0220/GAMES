@@ -6,77 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2411,
-    "teacherChoices": 2411,
+    "totalChoices": 2421,
+    "teacherChoices": 2421,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2410,
-    "totalReward": 840.14,
-    "saves": 269,
-    "shadowPredictions": 1167,
+    "completedExperiences": 2420,
+    "totalReward": 834.92,
+    "saves": 270,
+    "shadowPredictions": 1170,
     "shadowMatches": 483,
-    "strategistRefreshes": 113,
+    "strategistRefreshes": 114,
     "strategistFailures": 150
   },
   "memories": [
-    {
-      "id": "mst2dg16-e75fw3",
-      "createdAt": "2026-08-14T14:50:21.162Z",
-      "tick": 52318,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 15 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst2drdt-qza66a",
-      "createdAt": "2026-08-14T14:50:35.873Z",
-      "tick": 52367,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +533 XP; moved 3092,3243 → 3084,3237. Reward 4.08.",
-      "importance": 2.74,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst2drdu-qjfnzn",
-      "createdAt": "2026-08-14T14:50:35.874Z",
-      "tick": 52367,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 8) worked across 12 similar samples with average reward 3.50.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "mst2eop5-wxiw0f",
       "createdAt": "2026-08-14T14:51:19.049Z",
@@ -8422,6 +8364,65 @@
         "z": 3238,
         "level": 0
       }
+    },
+    {
+      "id": "mst6uxsz-wzxzs9",
+      "createdAt": "2026-08-14T16:55:55.811Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Use `talkTo` to interact with Henryatkins NPC.. This plan uses a named repository-tested escape skill (`talkTo`) and ensures observable dialogue responses for confirmation, followed by location interaction.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use talkto to interact with henryatkins npc",
+        "confirm fishing status by checking dialogue responses",
+        "proceed to the next location using interactloc with the correct location id"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst6v81v-i497ck",
+      "createdAt": "2026-08-14T16:56:09.091Z",
+      "tick": 10943,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: moved 3086,3231 → 3086,3230; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "net",
+        "level 0"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst6vnbm-xkzw04",
+      "createdAt": "2026-08-14T16:56:28.882Z",
+      "tick": 11004,
+      "runNumber": 36,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Evening all! Old fisherman here with a genuine offer: raw sharks for smithed armour. Any tier, any smith, fair haggling guaranteed. Catherby docks is where the fish and i live :3\". Current stance cooperative, trust 1.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "henryatkins",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10561,14 +10562,14 @@
         "exampleReason": "I have successfully reached Draynor Bank at 3092,3243 using verified waypoint navigation. I now proceed to explore the area to locate safe fishing spots."
       },
       "npc:bait:fishing spot": {
-        "n": 5,
-        "avgReward": -0.714,
+        "n": 6,
+        "avgReward": -0.695,
         "positive": 0,
-        "negative": 5,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:43:34.581Z",
-        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
-        "exampleReason": "Bait Fishing spot (level 0, distance 1)"
+        "lastAt": "2026-08-14T16:56:50.476Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "Bait Fishing spot (level 0, distance 1) - Safe and accessible."
       },
       "social:say": {
         "n": 1,
@@ -11193,24 +11194,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 82,
-        "avgReward": -0.3436,
+        "n": 85,
+        "avgReward": -0.3526,
         "positive": 6,
-        "negative": 76,
+        "negative": 79,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:55:48.384Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Click here to continue"
+        "lastAt": "2026-08-14T16:57:02.804Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "I'm ready to talk to Henry atkins. Let's start the conversation now."
       },
       "wait": {
-        "n": 12,
+        "n": 13,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T16:09:00.379Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "I am waiting for the net fishing spot to be baited. I will check the coordinates and ensure the safe fishing locations are available before proceeding."
+        "lastAt": "2026-08-14T16:57:16.024Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "I'm waiting to observe for a moment."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,wait": {
@@ -11533,14 +11534,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 22,
+        "n": 24,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T16:08:38.197Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "Wait for a moment to observe for a moment"
+        "lastAt": "2026-08-14T16:56:56.807Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "I'm waiting for Henryatkins to respond to my fishing offer. I need to observe for a moment before proceeding."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
@@ -12157,14 +12158,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
       "npc:net:fishing spot": {
-        "n": 9,
-        "avgReward": -0.79,
+        "n": 11,
+        "avgReward": -0.8073,
         "positive": 0,
-        "negative": 9,
+        "negative": 11,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:43:02.186Z",
-        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
-        "exampleReason": "Net Fishing spot (level 0, distance 1)"
+        "lastAt": "2026-08-14T16:56:28.572Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "I'm fishing right now at catherby - what about you? fisherman, or do you hammer things at an anvil?"
       },
       "npc:attack:dark wizard": {
         "n": 3,
@@ -13159,14 +13160,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,world": {
       "npc:bait:fishing spot": {
-        "n": 2,
-        "avgReward": -0.885,
+        "n": 3,
+        "avgReward": -0.79,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T13:15:34.626Z",
-        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
-        "exampleReason": "Bait Fishing spot (level 0, distance 1) - safe and accessible."
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T16:57:12.986Z",
+        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
+        "exampleReason": "Bait Fishing spot (level 0, distance 1) - Safe and accessible."
       },
       "npc:net:fishing spot": {
         "n": 4,
@@ -15126,8 +15127,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T16:55:39.379Z",
-      "encounters": 251,
+      "lastSeenAt": "2026-08-14T16:57:13.295Z",
+      "encounters": 261,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -15268,15 +15269,14 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T16:53:08.494Z",
+      "lastSeenAt": "2026-08-14T16:56:28.882Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 63,
+      "conversations": 64,
       "cooperation": 23,
       "suspicion": 1,
       "facts": [
-        "Real talk: i window-shopped armour today and nearly fainted at the prices. Smiths, how do you sleep at night with those markups? a humble fisherman just wants a fair deal :3",
         "Curiosity: what gear do the fine adventurers of this realm actually wear into battle? i'm taking notes - a fisherman's wardrobe upgrade is long overdue :3",
         "Quick poll: who here has the highest smithing level? i want to befriend you for entirely self-serving reasons :3",
         "If any smith out there fancies a chat about bars and plates, i'll be around the catherby bank all afternoon. First round of conversation on me :3",
@@ -15295,7 +15295,8 @@
         "Poll for the armour-adjacent: if you could only wear one piece of plate, which would it be and why? i'll start: the boots, so my soggy feet stop squelching :3",
         "Honest question from the fishing boat: do smiths ever smith for the joy of it, or is it always gp gp gp? i'd like to meet the joy kind :3",
         "If any smith is reading this: a fisherman with 1000 sharks is offering a proper trade for an iron armour set. Meet me at catherby docks and let's talk business :3",
-        "Sol5! I'm actually fishing right now at catherby - what about you? fisherman, or do you hammer things at an anvil? :3"
+        "Sol5! I'm actually fishing right now at catherby - what about you? fisherman, or do you hammer things at an anvil? :3",
+        "Evening all! Old fisherman here with a genuine offer: raw sharks for smithed armour. Any tier, any smith, fair haggling guaranteed. Catherby docks is where the fish and i live :3"
       ],
       "questions": [
         "Random gear debate for the dock regulars: with limited bars, what comes first - the sword or the platebody? i say sword, so i can at least wave it at the moss giants menacingly :3",
@@ -15312,11 +15313,6 @@
         "Sol5! I'm actually fishing right now at catherby - what about you? fisherman, or do you hammer things at an anvil? :3"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-14T15:09:58.022Z",
-          "direction": "incoming",
-          "text": "Real talk: i window-shopped armour today and nearly fainted at the prices. Smiths, how do you sleep at night with those markups? a humble fisherman just wants a fair deal :3"
-        },
         {
           "at": "2026-08-14T15:11:07.933Z",
           "direction": "incoming",
@@ -15411,6 +15407,11 @@
           "at": "2026-08-14T16:53:08.494Z",
           "direction": "incoming",
           "text": "Sol5! I'm actually fishing right now at catherby - what about you? fisherman, or do you hammer things at an anvil? :3"
+        },
+        {
+          "at": "2026-08-14T16:56:28.882Z",
+          "direction": "incoming",
+          "text": "Evening all! Old fisherman here with a genuine offer: raw sharks for smithed armour. Any tier, any smith, fair haggling guaranteed. Catherby docks is where the fish and i live :3"
         }
       ]
     },
@@ -16293,11 +16294,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3086,
-      "z": 3231,
+      "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T16:55:39.379Z",
-      "visits": 577,
+      "lastSeenAt": "2026-08-14T16:57:13.295Z",
+      "visits": 587,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -16565,7 +16566,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T16:55:48.385Z",
+  "updatedAt": "2026-08-14T16:57:16.025Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -20977,10 +20978,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 48,
-      "avgReward": -0.905,
+      "n": 49,
+      "avgReward": -0.914,
       "positive": 6,
-      "lastAt": "2026-08-14T16:18:38.794Z",
+      "lastAt": "2026-08-14T16:56:40.576Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -21025,10 +21026,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 35,
-      "avgReward": -1.281,
+      "n": 36,
+      "avgReward": -1.283,
       "positive": 1,
-      "lastAt": "2026-08-14T16:19:00.093Z",
+      "lastAt": "2026-08-14T16:57:02.804Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21049,10 +21050,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 32,
-      "avgReward": -0.688,
+      "n": 33,
+      "avgReward": -0.739,
       "positive": 11,
-      "lastAt": "2026-08-14T16:43:07.301Z",
+      "lastAt": "2026-08-14T16:56:16.877Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -21193,10 +21194,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 41,
-      "avgReward": -1.326,
+      "n": 42,
+      "avgReward": -1.327,
       "positive": 1,
-      "lastAt": "2026-08-14T16:18:33.430Z",
+      "lastAt": "2026-08-14T16:56:34.890Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21205,10 +21206,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 28,
-      "avgReward": -1.348,
+      "n": 30,
+      "avgReward": -1.394,
       "positive": 4,
-      "lastAt": "2026-08-14T16:43:02.186Z",
+      "lastAt": "2026-08-14T16:56:28.572Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "skill:travel:draynor-bank > skill:travel:draynor-fishing > npc:bait:fishing spot": {
@@ -21481,10 +21482,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 25,
-      "avgReward": -1.386,
+      "n": 27,
+      "avgReward": -1.384,
       "positive": 0,
-      "lastAt": "2026-08-14T16:18:49.001Z",
+      "lastAt": "2026-08-14T16:57:12.986Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -21493,10 +21494,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 29,
+      "n": 31,
       "avgReward": -1.335,
       "positive": 0,
-      "lastAt": "2026-08-14T16:18:54.096Z",
+      "lastAt": "2026-08-14T16:57:16.024Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > npc:attack:dark wizard": {
@@ -24297,18 +24298,6 @@
     }
   },
   "discoveries": [
-    {
-      "id": "place:bench:193:203:0",
-      "at": "2026-08-14T15:17:12.750Z",
-      "kind": "place",
-      "text": "Bench observed near 3099, 3250, level 0.",
-      "location": {
-        "x": 3099,
-        "z": 3250,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:cauldron:193:203:0",
       "at": "2026-08-14T15:17:12.750Z",
@@ -27896,48 +27885,57 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3086:3231:3086:3230:0",
+      "at": "2026-08-14T16:56:09.091Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3231 → 3086,3230; moved 3086,3231 → 3086,3230; execution rejected or failed",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
-    "objective": "Locate and utilize safe fishing spots in Draynor Village for level 1 fishing.",
-    "focus": "Plan complete; form the next objective.",
-    "reason": "Execute the current prerequisite and verify it.",
-    "risk": "high",
+    "objective": "Speak with Henryatkins to confirm fishing status and proceed.",
+    "focus": "Use `talkTo` to interact with Henryatkins NPC.",
+    "reason": "This plan uses a named repository-tested escape skill (`talkTo`) and ensures observable dialogue responses for confirmation, followed by location interaction.",
+    "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "status": "done",
-        "evidence": "moved 3084,3236 → 3087,3230; new: loc:Thistle, loc:Oak"
+        "label": "Use `talkTo` to interact with Henryatkins NPC.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north, south, east, and west around the fishing area to locate safe fishing spots.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: npc:Black Knight, loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Confirm fishing status by checking dialogue responses.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Pick up Net Fishing Spot (level 0, distance 5) and Bait Fishing Spot (level 0, distance 5) to complete the",
-        "status": "done",
-        "evidence": "+265 XP; 2 damage dealt; moved 3092,3243 → 3085,3237; execution rejected or failed"
+        "label": "Proceed to the next location using `interactLoc` with the correct location ID.",
+        "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Objective achieved: Speak with"
     ],
     "priorities": [
-      "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-      "Explore north, south, east, and west around the fishing area to locate safe fishing spots.",
-      "Pick up Net Fishing Spot (level 0, distance 5) and Bait Fishing Spot (level 0, distance 5) to complete the"
+      "Use `talkTo` to interact with Henryatkins NPC.",
+      "Confirm fishing status by checking dialogue responses.",
+      "Proceed to the next location using `interactLoc` with the correct location ID."
     ],
     "avoid": [
-      "Chop down Willow (distance 2)",
-      "Dialog 1: Click here to continue",
-      "Chop down Willow (distance 3)"
+      "Chop down Willow (distance 1)",
+      "Speak publicly; latest message from Henryatkins: If any smith is reading this: a fisherman",
+      "Speak publicly; latest message from Henryatkins: Sol5! I'm actually fishing right now at c"
     ],
-    "updatedAt": "2026-08-14T16:50:16.287Z",
+    "updatedAt": "2026-08-14T16:55:55.811Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
