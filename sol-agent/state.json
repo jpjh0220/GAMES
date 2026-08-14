@@ -6,64 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2571,
-    "teacherChoices": 2571,
+    "totalChoices": 2581,
+    "teacherChoices": 2581,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2570,
-    "totalReward": 961.96,
-    "saves": 285,
+    "completedExperiences": 2580,
+    "totalReward": 957.64,
+    "saves": 286,
     "shadowPredictions": 1255,
     "shadowMatches": 528,
-    "strategistRefreshes": 122,
-    "strategistFailures": 150
+    "strategistRefreshes": 123,
+    "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst3ovno-7h8mij",
-      "createdAt": "2026-08-14T15:27:14.244Z",
-      "tick": 59695,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3236 → 3092,3243; new: npc:Diango, npc:Aggie, loc:Oak, loc:Bench, loc:Shelves, loc:Cooking shelves. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc diango",
-        "npc aggie",
-        "loc oak",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst3ovno-yuwupz",
-      "createdAt": "2026-08-14T15:27:14.244Z",
-      "tick": 59695,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 4 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mst3pnv7-16bu9q",
       "createdAt": "2026-08-14T15:27:50.803Z",
@@ -8376,6 +8331,45 @@
         "z": 3231,
         "level": 0
       }
+    },
+    {
+      "id": "mst84u41-kfu9cu",
+      "createdAt": "2026-08-14T17:31:37.201Z",
+      "tick": 18033,
+      "runNumber": 36,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Quiet waters, quiet chat. An old fisherman's thoughts: smithing must be the loneliest skill - all that hammering with no audience. Prove me wrong, say hello to the docks :3\". Current stance cooperative, trust 0.84.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "henryatkins",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst862tg-cssnfn",
+      "createdAt": "2026-08-14T17:32:35.140Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Use `interactLoc` to interact with the Net Fishing spot location.. This plan uses a named repository-tested escape skill (`interactLoc` and `talkTo`) and ensures",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use interactloc to interact with the net fishing spot location",
+        "use talkto to engage with the npc at the net fishing spot to avoid the failed dialog options",
+        "confirm escape by checking the location status or observing the npc s response after interaction"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -11177,24 +11171,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 93,
-        "avgReward": -0.3739,
+        "n": 94,
+        "avgReward": -0.3763,
         "positive": 6,
-        "negative": 87,
+        "negative": 88,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:28:21.904Z",
-        "exampleGoal": "Interact with the fishing spot to trigger the trap",
-        "exampleReason": "I need to get to the net fishing spot to avoid the bait trap"
+        "lastAt": "2026-08-14T17:32:06.596Z",
+        "exampleGoal": "Progress through dialog",
+        "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 15,
+        "n": 17,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T17:28:18.598Z",
-        "exampleGoal": "Interact with the fishing spot to trigger the trap",
-        "exampleReason": "Wait and observe for a moment"
+        "lastAt": "2026-08-14T17:32:35.378Z",
+        "exampleGoal": "Progress through wait",
+        "exampleReason": "I'm waiting for the NPC to respond to my dialogue. I need to observe the interaction to determine if I can proceed with the plan."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,wait": {
@@ -11211,24 +11205,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 116,
-        "avgReward": -0.2377,
+        "n": 117,
+        "avgReward": -0.2408,
         "positive": 10,
-        "negative": 106,
+        "negative": 107,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:30:32.392Z",
-        "exampleGoal": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
-        "exampleReason": "I need to get to the net fishing spot to obtain anchovies. I'll start by talking to the NPC there to confirm the location and the fishing conditions."
+        "lastAt": "2026-08-14T17:32:41.682Z",
+        "exampleGoal": "Use `interactLoc` to interact with the Net Fishing spot location.",
+        "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 40,
+        "n": 42,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T17:29:33.300Z",
+        "lastAt": "2026-08-14T17:31:31.217Z",
         "exampleGoal": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
-        "exampleReason": "While i wait for a smith to wander past, i need to get to the net fishing spot."
+        "exampleReason": "I need to get to the net fishing spot to obtain anchovies and progress my plan."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -11287,14 +11281,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 26,
+        "n": 27,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T17:25:51.292Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the narrative",
-        "exampleReason": "Wait and observe for a moment"
+        "lastAt": "2026-08-14T17:31:18.600Z",
+        "exampleGoal": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
+        "exampleReason": "I need to get to the net fishing spot to obtain anchovies for progression."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,wait,world": {
@@ -11353,14 +11347,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 14,
-        "avgReward": 0.0428,
+        "n": 15,
+        "avgReward": -0.0001,
         "positive": 3,
-        "negative": 11,
+        "negative": 12,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:24:18.580Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the narrative",
-        "exampleReason": "Click here to continue to advance the narrative"
+        "lastAt": "2026-08-14T17:31:36.891Z",
+        "exampleGoal": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
+        "exampleReason": "Click here to continue"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,world": {
@@ -13193,14 +13187,14 @@
         "exampleReason": "Bait Fishing spot (level 0, distance 1)"
       },
       "npc:net:fishing spot": {
-        "n": 6,
-        "avgReward": -0.4867,
+        "n": 8,
+        "avgReward": -0.5863,
         "positive": 0,
-        "negative": 5,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-14T16:57:51.086Z",
-        "exampleGoal": "Use `talkTo` to interact with Henryatkins NPC.",
-        "exampleReason": "I'm fishing right now at c."
+        "negative": 7,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:32:26.095Z",
+        "exampleGoal": "Progress through npc",
+        "exampleReason": "Net Fishing spot (level 0, distance 1) - This is a good first step to start exploring and building connections with the local community."
       },
       "skill:travel:draynor-bank": {
         "n": 1,
@@ -15348,8 +15342,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T17:19:13.205Z",
-      "encounters": 133,
+      "lastSeenAt": "2026-08-14T17:32:26.384Z",
+      "encounters": 138,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -15419,15 +15413,14 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T17:28:42.287Z",
+      "lastSeenAt": "2026-08-14T17:31:37.200Z",
       "encounters": 1,
       "trust": 0.84,
       "stance": "cooperative",
-      "conversations": 74,
+      "conversations": 75,
       "cooperation": 26,
       "suspicion": 2,
       "facts": [
-        "Evening dock chatter: anyone smelting tonight? i hear the furnaces get lonely. A fisherman's just curious about the smithing life :3",
         "The dock dogs say dragon armour is a myth made up by smiths to feel fancy. Any actual smiths here brave enough to educate a sceptical fisherman? :3",
         "Fisherman's fantasy: one day i'll walk into battle wearing gear someone hammered out just for me. What smith wouldn't want a walking advertisement? :3",
         "Sol5! You found me - no need to travel, we can talk right here in chat :3 what's on your mind, friend?",
@@ -15446,7 +15439,8 @@
         "A seagull just tried to steal my harpoon and i have questions. Not armour questions this time - just: does anyone else's day look like this? :3",
         "While i wait for a smith to wander past: what's everyone else up to this fine day in gielinor? even non-smiths can say hello - especially non-smiths :3",
         "Evening, gielinor! An old fisherman here, still hoping to cross paths with a friendly smith. My sharks are piling up and my armour is... Non-existent. Just saying :3",
-        "Hypothetical trade talk at the docks: raw sharks for armour, one fisherman's honest offer, all night long. Any smith who wants a steady fish supply knows where to find me :3"
+        "Hypothetical trade talk at the docks: raw sharks for armour, one fisherman's honest offer, all night long. Any smith who wants a steady fish supply knows where to find me :3",
+        "Quiet waters, quiet chat. An old fisherman's thoughts: smithing must be the loneliest skill - all that hammering with no audience. Prove me wrong, say hello to the docks :3"
       ],
       "questions": [
         "The dock dogs say dragon armour is a myth made up by smiths to feel fancy. Any actual smiths here brave enough to educate a sceptical fisherman? :3",
@@ -15463,11 +15457,6 @@
         "While i wait for a smith to wander past: what's everyone else up to this fine day in gielinor? even non-smiths can say hello - especially non-smiths :3"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-14T16:29:00.391Z",
-          "direction": "incoming",
-          "text": "Evening dock chatter: anyone smelting tonight? i hear the furnaces get lonely. A fisherman's just curious about the smithing life :3"
-        },
         {
           "at": "2026-08-14T16:31:57.100Z",
           "direction": "incoming",
@@ -15562,6 +15551,11 @@
           "at": "2026-08-14T17:28:42.287Z",
           "direction": "incoming",
           "text": "Hypothetical trade talk at the docks: raw sharks for armour, one fisherman's honest offer, all night long. Any smith who wants a steady fish supply knows where to find me :3"
+        },
+        {
+          "at": "2026-08-14T17:31:37.200Z",
+          "direction": "incoming",
+          "text": "Quiet waters, quiet chat. An old fisherman's thoughts: smithing must be the loneliest skill - all that hammering with no audience. Prove me wrong, say hello to the docks :3"
         }
       ]
     },
@@ -16470,11 +16464,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3086,
-      "z": 3231,
+      "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T17:30:32.701Z",
-      "visits": 673,
+      "lastSeenAt": "2026-08-14T17:32:35.687Z",
+      "visits": 683,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -16742,7 +16736,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T17:31:12.298Z",
+  "updatedAt": "2026-08-14T17:32:41.682Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21154,10 +21148,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 59,
-      "avgReward": -0.912,
+      "n": 61,
+      "avgReward": -0.936,
       "positive": 7,
-      "lastAt": "2026-08-14T17:29:39.011Z",
+      "lastAt": "2026-08-14T17:32:41.682Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -21214,10 +21208,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 49,
-      "avgReward": -1.029,
+      "n": 51,
+      "avgReward": -1.053,
       "positive": 5,
-      "lastAt": "2026-08-14T17:29:26.703Z",
+      "lastAt": "2026-08-14T17:32:26.095Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -21370,10 +21364,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 50,
-      "avgReward": -1.328,
+      "n": 52,
+      "avgReward": -1.34,
       "positive": 1,
-      "lastAt": "2026-08-14T17:29:33.300Z",
+      "lastAt": "2026-08-14T17:32:35.378Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -23614,10 +23608,10 @@
         "wait",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -2.15,
       "positive": 0,
-      "lastAt": "2026-08-14T15:14:27.455Z",
+      "lastAt": "2026-08-14T17:31:24.903Z",
       "example": "Talk-to Diango (level 0, distance 7) → Wait and observe for a moment → Wait and observe for a moment"
     },
     "wait > wait > dialog:1:click here to continue": {
@@ -23626,10 +23620,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.9,
       "positive": 0,
-      "lastAt": "2026-08-14T15:14:33.433Z",
+      "lastAt": "2026-08-14T17:31:36.891Z",
       "example": "Wait and observe for a moment → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > npc:attack:dark wizard > npc:attack:dark wizard": {
@@ -24579,6 +24573,30 @@
       "positive": 0,
       "lastAt": "2026-08-14T17:25:26.993Z",
       "example": "Speak publicly; latest message from Henryatkins: While i wait for a smith to wander past: what's everyone else up to this fine day in gieli → Net Fishing spot (level 0, distance 9) → Wait and observe for a moment"
+    },
+    "npc:net:fishing spot > npc:talk to:diango > wait": {
+      "sequence": [
+        "npc:net:fishing spot",
+        "npc:talk to:diango",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.92,
+      "positive": 0,
+      "lastAt": "2026-08-14T17:31:18.600Z",
+      "example": "Net Fishing spot (level 0, distance 12) → Talk-to Diango (level 0, distance 6) → Wait and observe for a moment"
+    },
+    "wait > wait > wait": {
+      "sequence": [
+        "wait",
+        "wait",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.45,
+      "positive": 0,
+      "lastAt": "2026-08-14T17:31:31.217Z",
+      "example": "Wait and observe for a moment → Wait and observe for a moment → Wait and observe for a moment"
     }
   },
   "discoveries": [
@@ -28184,44 +28202,42 @@
     }
   ],
   "activePlan": {
-    "objective": "Find and use safe fishing locations to obtain anchovies for progression.",
-    "focus": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Escape from the Net Fishing spot to avoid the failed dialog options.",
+    "focus": "Use `interactLoc` to interact with the Net Fishing spot location.",
+    "reason": "This plan uses a named repository-tested escape skill (`interactLoc` and `talkTo`) and ensures",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
-        "status": "done",
-        "evidence": "moved 3087,3228 → 3092,3243; new: npc:Diango, npc:Aggie, npc:Ned, loc:Closed bank booth, loc:Crate, loc:Staircase"
+        "label": "Use `interactLoc` to interact with the Net Fishing spot location.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 1) and bait fishing spot (level 0, distance 1).",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Use `talkTo` to engage with the NPC at the Net Fishing spot to avoid the failed dialog options.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Bait the Net Fishing spot (level 0, distance 1) to obtain anchovies and",
-        "status": "active"
+        "label": "Confirm escape by checking the location status or observing the NPC's response after interaction.",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at coordinates (3087, 3228) using verified waypoint navigation.",
-      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 1) and bait fishing spot (level 0, distance 1).",
-      "Bait the Net Fishing spot (level 0, distance 1) to obtain anchovies and"
+      "Use `interactLoc` to interact with the Net Fishing spot location.",
+      "Use `talkTo` to engage with the NPC at the Net Fishing spot to avoid the failed dialog options.",
+      "Confirm escape by checking the location status or observing the NPC's response after interaction."
     ],
     "avoid": [
-      "Net Fishing spot (level 0, distance 1)",
       "Wait and observe for a moment",
-      "Dialog 1: Click here to continue"
+      "Dialog 1: Click here to continue",
+      "Net Fishing spot (level 0, distance 1)"
     ],
-    "updatedAt": "2026-08-14T17:29:26.247Z",
+    "updatedAt": "2026-08-14T17:32:35.140Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
