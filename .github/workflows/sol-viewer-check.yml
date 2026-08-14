@@ -17,7 +17,7 @@ jobs:
           JSON=$(curl --fail --retry 5 --retry-delay 2 -sS "https://raw.githubusercontent.com/jpjh0220/GAMES/main/sol-watch/live.json?$(date +%s)")
           URL=$(printf '%s' "$JSON" | jq -r .url)
           echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "Current endpoint: $URL"
+          echo "Endpoint acquired."
       - name: Verify telemetry health
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
@@ -26,17 +26,28 @@ jobs:
           for i in $(seq 1 30); do
             if HEALTH=$(curl --fail --connect-timeout 5 --max-time 10 -sS "$LIVE_URL/health"); then
               echo "$HEALTH"
-              echo "$HEALTH" | jq -e '.ok == true' >/dev/null
+              echo "$HEALTH" | jq -e '.ok == true and .online == true and (.actionCount|type == "number") and (.sessionStartedAt|type == "string")' >/dev/null
               exit 0
             fi
             sleep 2
           done
           exit 1
-      - name: Verify dashboard
+      - name: Verify expanded live state
+        env:
+          LIVE_URL: ${{ steps.endpoint.outputs.url }}
+        run: |
+          set -euo pipefail
+          STATE=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/state")
+          echo "$STATE" | jq -e '.online == true and (.currentGoal|type == "string") and (.currentWhy|type == "string") and (.movementTrail|type == "array") and (.nearbyPlayers|type == "array") and (.nearbyLocs|type == "array")' >/dev/null
+          echo 'Expanded telemetry verified.'
+      - name: Verify redesigned dashboard
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
           HTML=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/")
-          printf '%s' "$HTML" | grep -q 'SOL // LIVE WORLD OBSERVER'
-          echo 'Dashboard HTML verified.'
+          printf '%s' "$HTML" | grep -q 'SOL // WORLD OBSERVER'
+          printf '%s' "$HTML" | grep -q 'Current objective'
+          printf '%s' "$HTML" | grep -q 'Nearby agents'
+          printf '%s' "$HTML" | grep -q 'Decision stream'
+          echo 'Redesigned dashboard verified.'
