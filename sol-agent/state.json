@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1311,
-    "teacherChoices": 1311,
+    "totalChoices": 1321,
+    "teacherChoices": 1321,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1310,
-    "totalReward": -83.74,
-    "saves": 158,
+    "completedExperiences": 1320,
+    "totalReward": -88.84,
+    "saves": 159,
     "shadowPredictions": 687,
     "shadowMatches": 270,
-    "strategistRefreshes": 53,
+    "strategistRefreshes": 54,
     "strategistFailures": 148
   },
   "memories": [
@@ -6196,6 +6196,26 @@
         "z": 3251,
         "level": 0
       }
+    },
+    {
+      "id": "mssxnp6f-1dwewg",
+      "createdAt": "2026-08-14T12:38:21.495Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Sell 1 Raw anchovies for about 7. This sequence maximizes profit from available items and ensures inventory is updated for further gameplay decisions.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "sell 1 raw anchovies for about 7",
+        "sell 1 bones for about 0",
+        "close the shop to finalize sales and check inventory updates"
+      ],
+      "location": {
+        "x": 3076,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9243,24 +9263,24 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
       "shop:buy:toy horsey": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:36:34.326Z",
+        "lastAt": "2026-08-14T12:37:41.517Z",
         "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
-        "exampleReason": "I want to learn how to interact with the nearby NPC to continue the dialogue. This action will give me a chance to progress in the game and improve my skills."
+        "exampleReason": "Buy 1 Toy horseys for about 150"
       },
       "shop:sell:coins": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:36:26.530Z",
+        "lastAt": "2026-08-14T12:38:06.442Z",
         "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
-        "exampleReason": "I have enough coins to buy a toy horsey for 150 gp"
+        "exampleReason": "Sell 1 Coins for about 0"
       },
       "shop:sell:bones": {
         "n": 2,
@@ -9281,6 +9301,16 @@
         "lastAt": "2026-08-14T12:37:04.622Z",
         "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
+      },
+      "wait": {
+        "n": 2,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T12:38:16.058Z",
+        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "exampleReason": "I'm waiting to observe for a moment to gather information about the NPC's response to my request to continue the dialogue."
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
@@ -9327,6 +9357,38 @@
         "lastAt": "2026-08-14T12:37:19.649Z",
         "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
         "exampleReason": "Talk-to Diango (level 0, distance 1) to continue the dialogue."
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
+      "shop:buy:toy horsey": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:38:00.434Z",
+        "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
+      },
+      "shop:sell:bones": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:38:35.810Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "Shop"
+      },
+      "shop:sell:raw anchovies": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:38:41.531Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "Shop"
       }
     }
   },
@@ -10556,8 +10618,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T12:37:30.419Z",
-      "visits": 18,
+      "lastSeenAt": "2026-08-14T12:38:36.121Z",
+      "visits": 28,
       "npcs": [
         "Banker",
         "Diango",
@@ -10659,7 +10721,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T12:37:35.205Z",
+  "updatedAt": "2026-08-14T12:38:41.531Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -15887,10 +15949,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:36:19.941Z",
+      "lastAt": "2026-08-14T12:37:41.517Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
@@ -15899,10 +15961,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:36:26.530Z",
+      "lastAt": "2026-08-14T12:37:47.244Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:buy:toy horsey > shop:sell:coins > shop:buy:toy horsey": {
@@ -15959,10 +16021,10 @@
         "shop:sell:raw anchovies",
         "shop:sell:bones"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:36:58.647Z",
+      "lastAt": "2026-08-14T12:38:35.810Z",
       "example": "Sell 1 Bones for about 0 → Sell 1 Raw anchovies for about 7 → Sell 1 Bones for about 0"
     },
     "shop:sell:raw anchovies > shop:sell:bones > shop:sell:raw anchovies": {
@@ -15971,10 +16033,10 @@
         "shop:sell:bones",
         "shop:sell:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:37:04.622Z",
+      "lastAt": "2026-08-14T12:38:41.531Z",
       "example": "Sell 1 Raw anchovies for about 7 → Sell 1 Bones for about 0 → Sell 1 Raw anchovies for about 7"
     },
     "shop:sell:bones > shop:sell:raw anchovies > modal:close-shop": {
@@ -16012,6 +16074,66 @@
       "positive": 0,
       "lastAt": "2026-08-14T12:37:24.717Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Dialog 1: Click here to continue"
+    },
+    "shop:buy:toy horsey > shop:sell:coins > wait": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:coins",
+        "wait"
+      ],
+      "n": 2,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:38:16.058Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Wait and observe for a moment"
+    },
+    "shop:sell:coins > wait > shop:buy:toy horsey": {
+      "sequence": [
+        "shop:sell:coins",
+        "wait",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:38:00.434Z",
+      "example": "Sell 1 Coins for about 0 → Wait and observe for a moment → Buy 1 Toy horsey for about 150"
+    },
+    "wait > shop:buy:toy horsey > shop:sell:coins": {
+      "sequence": [
+        "wait",
+        "shop:buy:toy horsey",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:38:06.442Z",
+      "example": "Wait and observe for a moment → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
+    },
+    "shop:sell:coins > wait > shop:sell:bones": {
+      "sequence": [
+        "shop:sell:coins",
+        "wait",
+        "shop:sell:bones"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:38:23.558Z",
+      "example": "Sell 1 Coins for about 0 → Wait and observe for a moment → Sell 1 Bones for about 0"
+    },
+    "wait > shop:sell:bones > shop:sell:raw anchovies": {
+      "sequence": [
+        "wait",
+        "shop:sell:bones",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:38:29.823Z",
+      "example": "Wait and observe for a moment → Sell 1 Bones for about 0 → Sell 1 Raw anchovies for about 7"
     }
   },
   "discoveries": [
@@ -19617,41 +19739,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Talk to the nearby NPC to continue the dialogue",
-    "focus": "Use the `talkTo` method to interact with the nearby NPC",
-    "reason": "The `talkTo` method is available and can be used to interact with the NPC. The `failed` array provides feedback on the interaction outcome, ensuring",
+    "objective": "Sell excess items to maximize profit and improve inventory.",
+    "focus": "Sell 1 Raw anchovies for about 7",
+    "reason": "This sequence maximizes profit from available items and ensures inventory is updated for further gameplay decisions.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use the `talkTo` method to interact with the nearby NPC",
+        "label": "Sell 1 Raw anchovies for about 7",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Wait for the dialog to open and respond to the first dialogue option",
+        "label": "Sell 1 Bones for about 0",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Confirm the interaction was successful by checking the `failed` array for any errors or success messages",
+        "label": "Close the shop to finalize sales and check inventory updates",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Inventory updated with sold items, shop closed, and profit tracked."
     ],
     "priorities": [
-      "Use the `talkTo` method to interact with the nearby NPC",
-      "Wait for the dialog to open and respond to the first dialogue option",
-      "Confirm the interaction was successful by checking the `failed` array for any errors or success messages"
+      "Sell 1 Raw anchovies for about 7",
+      "Sell 1 Bones for about 0",
+      "Close the shop to finalize sales and check inventory updates"
     ],
     "avoid": [
-      "Speak publicly; latest message from Oag0azhyi: Gold mining, lets get shiny",
-      "Talk-to Diango (level 0, distance 3)",
-      "Dialog 1: Click here to continue"
+      "Wait and observe for a moment",
+      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Coins for about 0"
     ],
-    "updatedAt": "2026-08-14T12:36:11.699Z",
+    "updatedAt": "2026-08-14T12:38:21.495Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
