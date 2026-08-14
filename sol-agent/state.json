@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 10,
-    "teacherChoices": 10,
+    "totalChoices": 20,
+    "teacherChoices": 20,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 10,
+    "completedExperiences": 20,
     "totalReward": -3.44,
-    "saves": 2,
+    "saves": 3,
     "shadowPredictions": 0,
     "shadowMatches": 0,
     "strategistRefreshes": 1,
@@ -99,12 +99,12 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 1,
-        "avgReward": -0.54,
+        "n": 3,
+        "avgReward": -0.2467,
         "positive": 0,
         "negative": 1,
-        "lastReward": -0.54,
-        "lastAt": "2026-08-14T21:35:39.026Z",
+        "lastReward": -0.1,
+        "lastAt": "2026-08-14T21:36:52.840Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Coins"
       },
@@ -119,24 +119,54 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:deposit:raw anchovies": {
-        "n": 2,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T21:36:05.124Z",
+        "lastAt": "2026-08-14T21:37:22.249Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:raw anchovies": {
-        "n": 2,
+        "n": 4,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T21:36:11.998Z",
+        "lastAt": "2026-08-14T21:36:25.840Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Withdraw 1 Raw anchovies"
+      },
+      "bank:withdraw:coins": {
+        "n": 2,
+        "avgReward": 0.1,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.1,
+        "lastAt": "2026-08-14T21:36:45.944Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Withdraw 1 Coins"
+      },
+      "bank:withdraw:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T21:36:59.124Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Withdraw 1 Bronze sq shield"
+      },
+      "bank:deposit:bronze sq shield": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T21:37:12.908Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Bronze sq shield"
       }
     }
   },
@@ -159,8 +189,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:36:05.411Z",
-      "encounters": 9,
+      "lastSeenAt": "2026-08-14T21:37:13.215Z",
+      "encounters": 19,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -174,8 +204,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:36:05.411Z",
-      "encounters": 9,
+      "lastSeenAt": "2026-08-14T21:37:13.215Z",
+      "encounters": 19,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -209,8 +239,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:36:05.411Z",
-      "visits": 10,
+      "lastSeenAt": "2026-08-14T21:37:13.215Z",
+      "visits": 20,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -218,7 +248,8 @@
         "Jail guard",
         "Diango",
         "Aggie",
-        "Ned"
+        "Ned",
+        "Black Knight"
       ],
       "locs": [
         "Bank booth",
@@ -350,6 +381,126 @@
       "positive": 0,
       "lastAt": "2026-08-14T21:36:11.998Z",
       "example": "Withdraw 1 Raw anchovies → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:deposit:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:18.900Z",
+      "example": "Deposit all Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.24,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:25.840Z",
+      "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.26,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:32.707Z",
+      "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Coins"
+    },
+    "bank:withdraw:raw anchovies > bank:withdraw:coins > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:coins",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:39.013Z",
+      "example": "Withdraw 1 Raw anchovies → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:45.944Z",
+      "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:52.840Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:bronze sq shield": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:coins",
+        "bank:withdraw:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:59.124Z",
+      "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Bronze sq shield"
+    },
+    "bank:deposit:coins > bank:withdraw:bronze sq shield > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:bronze sq shield",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:37:06.608Z",
+      "example": "Deposit all Coins → Withdraw 1 Bronze sq shield → Deposit all Raw anchovies"
+    },
+    "bank:withdraw:bronze sq shield > bank:deposit:raw anchovies > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:withdraw:bronze sq shield",
+        "bank:deposit:raw anchovies",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:37:12.908Z",
+      "example": "Withdraw 1 Bronze sq shield → Deposit all Raw anchovies → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:raw anchovies > bank:deposit:bronze sq shield > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:deposit:bronze sq shield",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.24,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:37:22.250Z",
+      "example": "Deposit all Raw anchovies → Deposit all Bronze sq shield → Deposit all Raw anchovies"
     }
   },
   "discoveries": [
@@ -808,9 +959,21 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:black knight:193:202:0",
+      "at": "2026-08-14T21:36:39.301Z",
+      "kind": "npc",
+      "text": "Black Knight observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T21:36:11.998Z",
+  "updatedAt": "2026-08-14T21:37:22.250Z",
   "activePlan": {
     "objective": "Verify safe fishing location and collect shrimps/anchovies",
     "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
