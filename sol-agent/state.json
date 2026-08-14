@@ -6,13 +6,13 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 81,
-    "teacherChoices": 81,
+    "totalChoices": 87,
+    "teacherChoices": 87,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 80,
-    "totalReward": -3.63,
-    "saves": 17,
+    "completedExperiences": 86,
+    "totalReward": -6.22,
+    "saves": 18,
     "shadowPredictions": 4,
     "shadowMatches": 4,
     "strategistRefreshes": 3,
@@ -369,6 +369,29 @@
         "z": 3351,
         "level": 0
       }
+    },
+    {
+      "id": "mssn18kv-f3os3h",
+      "createdAt": "2026-08-14T07:40:57.391Z",
+      "tick": 726,
+      "runNumber": 20,
+      "kind": "episode",
+      "text": "AI motor: Open Large door (distance 2). Result: moved; operation rejected; new: npc:Skeleton, loc:Range, loc:Mystical wall chart, loc:Bench. Reward -0.44.",
+      "importance": 0.92,
+      "tags": [
+        "world",
+        "large door",
+        "open",
+        "npc skeleton",
+        "loc range",
+        "loc mystical wall chart",
+        "loc bench"
+      ],
+      "location": {
+        "x": 3108,
+        "z": 3354,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -510,14 +533,24 @@
         "exampleReason": "To investigate the area and gather information about the surroundings."
       },
       "walk:north": {
-        "n": 26,
-        "avgReward": -0.5347,
-        "positive": 2,
-        "negative": 24,
+        "n": 31,
+        "avgReward": -0.5177,
+        "positive": 3,
+        "negative": 28,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T07:39:02.197Z",
+        "lastAt": "2026-08-14T07:49:16.593Z",
         "exampleGoal": "burn logs",
-        "exampleReason": "Explore northeast about 4 tiles."
+        "exampleReason": "Explore north about 5 tiles."
+      },
+      "loc:open:large door": {
+        "n": 1,
+        "avgReward": -0.44,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.44,
+        "lastAt": "2026-08-14T07:40:57.391Z",
+        "exampleGoal": "burn logs",
+        "exampleReason": "Open Large door (distance 2)."
       }
     },
     "hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,social,wait,world": {
@@ -792,17 +825,18 @@
     },
     "194:209:0": {
       "key": "194:209:0",
-      "x": 3109,
-      "z": 3351,
+      "x": 3108,
+      "z": 3354,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T07:38:57.087Z",
-      "visits": 97,
+      "lastSeenAt": "2026-08-14T07:49:13.291Z",
+      "visits": 285,
       "npcs": [
         "Tree",
         "Rat",
         "Veronica",
-        "Skeleton"
+        "Skeleton",
+        "Witch"
       ],
       "locs": [
         "Dead tree",
@@ -832,9 +866,12 @@
         "Boxes",
         "Stool",
         "Corpse",
-        "Portrait"
+        "Portrait",
+        "Range",
+        "Mystical wall chart",
+        "Bench"
       ]
     }
   },
-  "updatedAt": "2026-08-14T07:39:02.197Z"
+  "updatedAt": "2026-08-14T07:49:16.593Z"
 }
