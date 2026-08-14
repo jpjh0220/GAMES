@@ -6,17 +6,17 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 402,
-    "teacherChoices": 402,
+    "totalChoices": 411,
+    "teacherChoices": 411,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 401,
-    "totalReward": -162.77,
-    "saves": 63,
+    "completedExperiences": 410,
+    "totalReward": -160.89,
+    "saves": 64,
     "shadowPredictions": 229,
     "shadowMatches": 6,
     "strategistRefreshes": 4,
-    "strategistFailures": 140
+    "strategistFailures": 143
   },
   "memories": [
     {
@@ -1255,6 +1255,56 @@
         "z": 3355,
         "level": 0
       }
+    },
+    {
+      "id": "msss0842-2h25d2",
+      "createdAt": "2026-08-14T10:00:08.210Z",
+      "tick": 218,
+      "runNumber": 32,
+      "kind": "episode",
+      "text": "AI motor: Execute rs-sdk skill: escape Draynor Manor through the documented east-wing doors to the courtyard. Result: moved 3108,3354 → 3107,3366; execution rejected or failed; new: loc:Grandfather clock, loc:Hat stand, loc:Piano stool, loc:Piano. Reward -0.2.",
+      "importance": 0.8,
+      "tags": [
+        "navigation skill",
+        "escape",
+        "draynor manor",
+        "door",
+        "repository tested",
+        "measurable position",
+        "loc grandfather clock",
+        "loc hat stand",
+        "loc piano stool",
+        "loc piano"
+      ],
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      }
+    },
+    {
+      "id": "msss1ip6-tycb2w",
+      "createdAt": "2026-08-14T10:01:08.586Z",
+      "tick": 419,
+      "runNumber": 32,
+      "kind": "episode",
+      "text": "AI motor: Walk-up Staircase (distance 3). Result: moved 3107,3366 → 3108,3366; new: npc:Tree, loc:Suit of armour, loc:Standing torch, loc:Broken cart wheel, loc:Bull's head. Reward 1.45.",
+      "importance": 1.42,
+      "tags": [
+        "world",
+        "staircase",
+        "walk up",
+        "npc tree",
+        "loc suit of armour",
+        "loc standing torch",
+        "loc broken cart wheel",
+        "loc bull s head"
+      ],
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -1795,6 +1845,98 @@
         "exampleGoal": "Progress through world",
         "exampleReason": "I will open the large door to the east wing of Draynor Manor to proceed with my plan."
       }
+    },
+    "area=388:419:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,say,wait,world": {
+      "skill:escape-draynor-manor": {
+        "n": 1,
+        "avgReward": -0.2,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T10:00:08.210Z",
+        "exampleGoal": "Progress through navigation-skill",
+        "exampleReason": "I will execute the skill to escape Draynor Manor through the east-wing doors to the c."
+      }
+    },
+    "area=388:420:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,say,wait,world": {
+      "inventory:wield:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:00:29.569Z",
+        "exampleGoal": "Progress through inventory",
+        "exampleReason": "I have acquired the Bronze sq shield, which is a useful item for my combat style."
+      }
+    },
+    "area=388:420:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,say,wait,world": {
+      "loc:open:door": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T10:00:49.939Z",
+        "exampleGoal": "Progress through world",
+        "exampleReason": "I will open the Door (distance 1) to proceed with the escape plan."
+      },
+      "loc:walk up:staircase": {
+        "n": 1,
+        "avgReward": 1.45,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.45,
+        "lastAt": "2026-08-14T10:01:08.586Z",
+        "exampleGoal": "Progress through world",
+        "exampleReason": "I will walk up the Staircase to check for any potential hazards or traps before exploring further."
+      }
+    },
+    "area=388:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,wait,world": {
+      "inventory:wield:shortbow": {
+        "n": 2,
+        "avgReward": 0.2,
+        "positive": 2,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:01:54.725Z",
+        "exampleGoal": "Progress through inventory",
+        "exampleReason": "Wield Shortbow"
+      },
+      "inventory:wield:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:01:42.435Z",
+        "exampleGoal": "Progress through inventory",
+        "exampleReason": "I will first check my inventory to ensure I have the necessary items for the next steps."
+      }
+    },
+    "area=388:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
+      "npc:attack:ghost": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T10:02:08.242Z",
+        "exampleGoal": "Progress through combat",
+        "exampleReason": "Attack Ghost (level 19, distance 10)"
+      }
+    },
+    "area=387:421:1|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:02:27.459Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "I will first explore the area to gather information before taking any action."
+      }
     }
   },
   "relationships": {
@@ -2029,8 +2171,8 @@
     "sparcmac": {
       "name": "Sparcmac",
       "firstSeenAt": "2026-08-14T09:59:03.194Z",
-      "lastSeenAt": "2026-08-14T09:59:03.194Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-14T10:00:50.248Z",
+      "encounters": 5,
       "combatLevel": 126,
       "trust": 0,
       "stance": "unknown",
@@ -2234,8 +2376,8 @@
       "z": 3354,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T09:59:03.194Z",
-      "visits": 1271,
+      "lastSeenAt": "2026-08-14T09:59:25.952Z",
+      "visits": 1272,
       "npcs": [
         "Tree",
         "Rat",
@@ -2281,9 +2423,126 @@
         "Bed",
         "Ladder"
       ]
+    },
+    "194:210:0": {
+      "key": "194:210:0",
+      "x": 3107,
+      "z": 3366,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T10:00:08.540Z",
+      "lastSeenAt": "2026-08-14T10:00:50.248Z",
+      "visits": 3,
+      "npcs": [
+        "Skeleton",
+        "Witch",
+        "Rat"
+      ],
+      "locs": [
+        "Door",
+        "Boxes",
+        "Portrait",
+        "Candles",
+        "Staircase",
+        "Bench",
+        "Barrel",
+        "Spooky picture",
+        "Chair",
+        "Crate",
+        "Stool",
+        "Corpse",
+        "Wardrobe",
+        "Mystical wall chart",
+        "Table",
+        "Statue",
+        "Grandfather clock",
+        "Study desk",
+        "Dead tree",
+        "Hat stand",
+        "Fireplace",
+        "Stairs",
+        "Piano stool",
+        "Bookcase",
+        "Range",
+        "Fungus",
+        "Piano",
+        "Lever",
+        "Charms",
+        "Large door"
+      ]
+    },
+    "194:210:1": {
+      "key": "194:210:1",
+      "x": 3108,
+      "z": 3366,
+      "level": 1,
+      "firstSeenAt": "2026-08-14T10:01:08.835Z",
+      "lastSeenAt": "2026-08-14T10:01:55.036Z",
+      "visits": 4,
+      "npcs": [
+        "Ghost"
+      ],
+      "locs": [
+        "Staircase",
+        "Spooky picture",
+        "Candles",
+        "Suit of armour",
+        "Wardrobe",
+        "Statue",
+        "Standing torch",
+        "Door",
+        "Chair",
+        "Table",
+        "Broken cart wheel",
+        "Mystical wall chart",
+        "Bull's head",
+        "Bookshelves",
+        "Smashed chair",
+        "Corpse",
+        "Crate",
+        "Portrait",
+        "Mirror",
+        "Boxes",
+        "Bed",
+        "Bath screen",
+        "Bathroom table"
+      ]
+    },
+    "193:210:1": {
+      "key": "193:210:1",
+      "x": 3103,
+      "z": 3368,
+      "level": 1,
+      "firstSeenAt": "2026-08-14T10:02:08.550Z",
+      "lastSeenAt": "2026-08-14T10:02:08.550Z",
+      "visits": 1,
+      "npcs": [
+        "Ghost"
+      ],
+      "locs": [
+        "Wardrobe",
+        "Chair",
+        "Table",
+        "Statue",
+        "Candles",
+        "Bull's head",
+        "Standing torch",
+        "Staircase",
+        "Suit of armour",
+        "Spooky picture",
+        "Broken cart wheel",
+        "Mystical wall chart",
+        "Corpse",
+        "Door",
+        "Smashed chair",
+        "Crate",
+        "Portrait",
+        "Boxes",
+        "Bed",
+        "Bookshelves"
+      ]
     }
   },
-  "updatedAt": "2026-08-14T09:59:25.640Z",
+  "updatedAt": "2026-08-14T10:02:27.460Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -2711,10 +2970,10 @@
         "inventory:wield:bronze sq shield",
         "inventory:wield:shortbow"
       ],
-      "n": 28,
-      "avgReward": -1.495,
-      "positive": 0,
-      "lastAt": "2026-08-14T09:55:44.517Z",
+      "n": 29,
+      "avgReward": -1.423,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:01:54.725Z",
       "example": "Wield Shortbow → Wield Bronze sq shield → Wield Shortbow"
     },
     "loc:close:wardrobe > loc:open:wardrobe > loc:close:wardrobe": {
@@ -3664,6 +3923,90 @@
       "positive": 0,
       "lastAt": "2026-08-14T09:55:19.327Z",
       "example": "Explore north about 5 tiles → Wield Shortbow → Wield Bronze sq shield"
+    },
+    "loc:open:large door > skill:escape-draynor-manor > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:open:large door",
+        "skill:escape-draynor-manor",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:00:29.569Z",
+      "example": "Open Large door (distance 1) → Execute rs-sdk skill: escape Draynor Manor through the documented east-wing doors to the courtyard → Wield Bronze sq shield"
+    },
+    "skill:escape-draynor-manor > inventory:wield:bronze sq shield > loc:open:door": {
+      "sequence": [
+        "skill:escape-draynor-manor",
+        "inventory:wield:bronze sq shield",
+        "loc:open:door"
+      ],
+      "n": 1,
+      "avgReward": -0.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:00:49.939Z",
+      "example": "Execute rs-sdk skill: escape Draynor Manor through the documented east-wing doors to the courtyard → Wield Bronze sq shield → Open Door (distance 1)"
+    },
+    "inventory:wield:bronze sq shield > loc:open:door > loc:walk up:staircase": {
+      "sequence": [
+        "inventory:wield:bronze sq shield",
+        "loc:open:door",
+        "loc:walk up:staircase"
+      ],
+      "n": 1,
+      "avgReward": 1.05,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:01:08.586Z",
+      "example": "Wield Bronze sq shield → Open Door (distance 1) → Walk-up Staircase (distance 3)"
+    },
+    "loc:open:door > loc:walk up:staircase > inventory:wield:shortbow": {
+      "sequence": [
+        "loc:open:door",
+        "loc:walk up:staircase",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": 1.05,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:01:20.530Z",
+      "example": "Open Door (distance 1) → Walk-up Staircase (distance 3) → Wield Shortbow"
+    },
+    "loc:walk up:staircase > inventory:wield:shortbow > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:walk up:staircase",
+        "inventory:wield:shortbow",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": 1.85,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:01:42.435Z",
+      "example": "Walk-up Staircase (distance 3) → Wield Shortbow → Wield Bronze sq shield"
+    },
+    "inventory:wield:bronze sq shield > inventory:wield:shortbow > npc:attack:ghost": {
+      "sequence": [
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:shortbow",
+        "npc:attack:ghost"
+      ],
+      "n": 1,
+      "avgReward": 0.48,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:02:08.242Z",
+      "example": "Wield Bronze sq shield → Wield Shortbow → Attack Ghost (level 19, distance 8)"
+    },
+    "inventory:wield:shortbow > npc:attack:ghost > walk:north": {
+      "sequence": [
+        "inventory:wield:shortbow",
+        "npc:attack:ghost",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": 0.63,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:02:27.460Z",
+      "example": "Wield Shortbow → Attack Ghost (level 19, distance 8) → Explore north about 5 tiles"
     }
   },
   "discoveries": [
@@ -4266,6 +4609,990 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3108:3354:3107:3366:0",
+      "at": "2026-08-14T10:00:08.210Z",
+      "kind": "route",
+      "text": "Route learned: 3108,3354 → 3107,3366; moved 3108,3354 → 3107,3366; execution rejected or failed; new: loc:Grandfather clock, loc:Hat stand, loc:Piano stool, loc:Piano",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "danger:skeleton:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "danger",
+      "text": "Skeleton observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:witch:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "npc",
+      "text": "Witch observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:rat:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "npc",
+      "text": "Rat observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Door observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boxes:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Boxes observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Portrait observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Candles observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Staircase observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Bench observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Barrel observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spooky picture:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Spooky picture observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Chair observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Crate observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Stool observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:corpse:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Corpse observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Table observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Statue observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:grandfather clock:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Grandfather clock observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:study desk:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Study desk observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:dead tree:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "resource",
+      "text": "Dead tree observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:hat stand:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Hat stand observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fireplace:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Fireplace observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stairs:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Stairs observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:piano stool:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Piano stool observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookcase:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Bookcase observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:range:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "resource",
+      "text": "Range observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fungus:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Fungus observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:piano:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Piano observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:lever:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Lever observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:charms:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Charms observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:large door:194:210:0",
+      "at": "2026-08-14T10:00:08.540Z",
+      "kind": "place",
+      "text": "Large door observed near 3107, 3366, level 0.",
+      "location": {
+        "x": 3107,
+        "z": 3366,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3107:3366:3108:3366:1",
+      "at": "2026-08-14T10:01:08.586Z",
+      "kind": "route",
+      "text": "Route learned: 3107,3366 → 3108,3366; moved 3107,3366 → 3108,3366; new: npc:Tree, loc:Suit of armour, loc:Standing torch, loc:Broken cart wheel, loc:Bull's head",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:ghost:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "npc",
+      "text": "Ghost observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Staircase observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spooky picture:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Spooky picture observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Candles observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:suit of armour:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Suit of armour observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Statue observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Door observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Chair observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Table observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broken cart wheel:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Broken cart wheel observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bull s head:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Bull's head observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookshelves:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Bookshelves observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:smashed chair:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Smashed chair observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:corpse:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Corpse observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Crate observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Portrait observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mirror:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Mirror observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boxes:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Boxes observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bed:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Bed observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bath screen:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Bath screen observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bathroom table:194:210:1",
+      "at": "2026-08-14T10:01:08.835Z",
+      "kind": "place",
+      "text": "Bathroom table observed near 3108, 3366, level 1.",
+      "location": {
+        "x": 3108,
+        "z": 3366,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3108:3366:3104:3370:1",
+      "at": "2026-08-14T10:02:08.242Z",
+      "kind": "route",
+      "text": "Route learned: 3108,3366 → 3104,3370; moved 3108,3366 → 3104,3370",
+      "location": {
+        "x": 3104,
+        "z": 3370,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:ghost:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "npc",
+      "text": "Ghost observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Chair observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Table observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Statue observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Candles observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bull s head:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Bull's head observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Staircase observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:suit of armour:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Suit of armour observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spooky picture:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Spooky picture observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broken cart wheel:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Broken cart wheel observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:corpse:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Corpse observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Door observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:smashed chair:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Smashed chair observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Crate observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Portrait observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boxes:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Boxes observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bed:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Bed observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookshelves:193:210:1",
+      "at": "2026-08-14T10:02:08.550Z",
+      "kind": "place",
+      "text": "Bookshelves observed near 3103, 3368, level 1.",
+      "location": {
+        "x": 3103,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3101:3364:3100:3368:1",
+      "at": "2026-08-14T10:02:27.460Z",
+      "kind": "route",
+      "text": "Route learned: 3101,3364 → 3100,3368; moved 3101,3364 → 3100,3368",
+      "location": {
+        "x": 3100,
+        "z": 3368,
+        "level": 1
+      },
+      "confidence": 0.75
     }
   ]
 }
