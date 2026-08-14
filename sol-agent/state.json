@@ -6,15 +6,15 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 200,
-    "teacherChoices": 200,
+    "totalChoices": 210,
+    "teacherChoices": 210,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 200,
-    "totalReward": 18.18,
-    "saves": 21,
-    "shadowPredictions": 117,
-    "shadowMatches": 50,
+    "completedExperiences": 210,
+    "totalReward": 23.79,
+    "saves": 22,
+    "shadowPredictions": 120,
+    "shadowMatches": 53,
     "strategistRefreshes": 11,
     "strategistFailures": 0
   },
@@ -662,6 +662,84 @@
         "z": 3227,
         "level": 0
       }
+    },
+    {
+      "id": "msthql4s-8dq4fq",
+      "createdAt": "2026-08-14T22:00:28.540Z",
+      "tick": 5120,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Dialog 1: Click here to continue worked across 9 similar samples with average reward 0.73.",
+      "importance": 1.73,
+      "tags": [
+        "dialog",
+        "dialog 1 click here to continue"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthqxu3-fjlgfz",
+      "createdAt": "2026-08-14T22:00:45.003Z",
+      "tick": 5175,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Dialog 1: Click here to continue worked across 10 similar samples with average reward 0.60.",
+      "importance": 1.6,
+      "tags": [
+        "dialog",
+        "dialog 1 click here to continue"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthr9n9-d9xvls",
+      "createdAt": "2026-08-14T22:01:00.309Z",
+      "tick": 5226,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Dialog 1: Click here to continue worked across 11 similar samples with average reward 0.76.",
+      "importance": 1.76,
+      "tags": [
+        "dialog",
+        "dialog 1 click here to continue"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthrih8-zcogkv",
+      "createdAt": "2026-08-14T22:01:11.756Z",
+      "tick": 5264,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 7). Result: +1330 XP; 10 damage dealt; moved 3087,3227 → 3085,3234; execution rejected or failed. Reward 4.33.",
+      "importance": 2.87,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent scrappydoo",
+        "npc diango",
+        "loc closed bank booth",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3234,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -945,14 +1023,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 8,
-        "avgReward": 0.525,
-        "positive": 3,
-        "negative": 5,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:00:13.230Z",
+        "n": 11,
+        "avgReward": 0.7636,
+        "positive": 5,
+        "negative": 6,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T22:01:00.309Z",
         "exampleGoal": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
-        "exampleReason": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+        "exampleReason": "Dialog 1: Click here to continue"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
@@ -969,14 +1047,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,wait,world": {
       "npc:bait:fishing spot": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T21:56:38.410Z",
-        "exampleGoal": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
-        "exampleReason": "Bait Fishing spot (level 0, distance 1)"
+        "lastAt": "2026-08-14T22:00:39.002Z",
+        "exampleGoal": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
+        "exampleReason": "Bait Fishing spot (level 0, distance 4)"
       },
       "social:say": {
         "n": 1,
@@ -989,12 +1067,12 @@
         "exampleReason": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
       },
       "npc:net:fishing spot": {
-        "n": 1,
-        "avgReward": -1.17,
+        "n": 2,
+        "avgReward": -0.885,
         "positive": 0,
-        "negative": 1,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T22:00:06.304Z",
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:00:54.296Z",
         "exampleGoal": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
         "exampleReason": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
       }
@@ -1021,6 +1099,16 @@
         "lastAt": "2026-08-14T21:57:17.099Z",
         "exampleGoal": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
         "exampleReason": "I feel weakened."
+      },
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T22:01:22.519Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk-to Diango (level 0, distance 15)"
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -1094,14 +1182,50 @@
         "exampleGoal": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
         "exampleReason": "I'm waiting for the NPC to open the bank, deposit coins, and withdraw funds. I'll observe for a moment."
       }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 4.33,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 4.33,
+        "lastAt": "2026-08-14T22:01:11.756Z",
+        "exampleGoal": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
+        "exampleReason": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+      }
+    },
+    "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
+      "social:say": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:01:41.727Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I'm ready to speak with Oag0azhyi. I'll start by confirming my progress and sharing my current location."
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:01:48.031Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Click here to continue"
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:57:06.001Z",
-      "encounters": 140,
+      "lastSeenAt": "2026-08-14T22:01:41.994Z",
+      "encounters": 143,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -1120,14 +1244,19 @@
           "at": "2026-08-14T21:56:54.035Z",
           "direction": "outgoing",
           "text": "World, i'm ready to open the bank, deposit all raw anchovies, and withdraw the r"
+        },
+        {
+          "at": "2026-08-14T22:01:41.994Z",
+          "direction": "outgoing",
+          "text": "Oag0azhyi: 'smelting steel bars now, right here at al k. I'm ready to talk.'"
         }
       ]
     },
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:00:06.633Z",
-      "encounters": 197,
+      "lastSeenAt": "2026-08-14T22:01:12.044Z",
+      "encounters": 205,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -1157,8 +1286,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:00:06.633Z",
-      "encounters": 197,
+      "lastSeenAt": "2026-08-14T22:01:12.044Z",
+      "encounters": 205,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -1233,8 +1362,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T22:00:06.633Z",
-      "encounters": 69,
+      "lastSeenAt": "2026-08-14T22:01:12.044Z",
+      "encounters": 77,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -1368,18 +1497,19 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3087,
-      "z": 3234,
+      "x": 3085,
+      "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-14T21:58:49.834Z",
-      "visits": 9,
+      "lastSeenAt": "2026-08-14T22:01:22.808Z",
+      "visits": 11,
       "npcs": [
         "Dark wizard",
         "Banker",
         "Diango",
         "Fishing spot",
-        "Black Knight"
+        "Black Knight",
+        "Aggie"
       ],
       "locs": [
         "Tree",
@@ -1412,7 +1542,11 @@
         "Mirror",
         "Barrel",
         "Pile of rope",
-        "Fireplace"
+        "Fireplace",
+        "Standing torch",
+        "Cauldron",
+        "Mystical wall chart",
+        "Charms"
       ]
     },
     "192:201:0": {
@@ -1421,8 +1555,8 @@
       "z": 3227,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-14T22:00:06.633Z",
-      "visits": 17,
+      "lastSeenAt": "2026-08-14T22:01:00.637Z",
+      "visits": 24,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -1449,6 +1583,53 @@
         "Bush",
         "Closed bank booth",
         "Oak"
+      ]
+    },
+    "192:203:0": {
+      "key": "192:203:0",
+      "x": 3082,
+      "z": 3248,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T22:01:41.994Z",
+      "lastSeenAt": "2026-08-14T22:01:41.994Z",
+      "visits": 1,
+      "npcs": [
+        "Diango",
+        "Banker",
+        "Dark wizard",
+        "Aggie"
+      ],
+      "locs": [
+        "Market stall",
+        "Tree",
+        "Crate",
+        "Stool",
+        "Fern",
+        "Bench",
+        "Table",
+        "Bank table",
+        "Shelves",
+        "Plant",
+        "Wardrobe",
+        "Broom",
+        "Mirror",
+        "Staircase",
+        "Cooking shelves",
+        "Barrel",
+        "Standing torch",
+        "Cauldron",
+        "Bank booth",
+        "Closed bank booth",
+        "Door",
+        "Bank notice board",
+        "Willow",
+        "Mystical wall chart",
+        "Charms",
+        "Daisies",
+        "Oak",
+        "Rock",
+        "Chair",
+        "Cart"
       ]
     }
   },
@@ -2191,10 +2372,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 4,
-      "avgReward": -0.443,
-      "positive": 2,
-      "lastAt": "2026-08-14T22:00:13.230Z",
+      "n": 5,
+      "avgReward": -0.114,
+      "positive": 3,
+      "lastAt": "2026-08-14T22:01:00.309Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -2203,10 +2384,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 1,
-      "avgReward": -1.8,
+      "n": 2,
+      "avgReward": -2.085,
       "positive": 0,
-      "lastAt": "2026-08-14T21:56:38.410Z",
+      "lastAt": "2026-08-14T22:00:23.140Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -2215,10 +2396,10 @@
         "npc:bait:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 3,
       "avgReward": 1.2,
-      "positive": 1,
-      "lastAt": "2026-08-14T21:56:43.835Z",
+      "positive": 3,
+      "lastAt": "2026-08-14T22:00:45.003Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > social:say": {
@@ -2364,6 +2545,78 @@
       "positive": 1,
       "lastAt": "2026-08-14T22:00:06.304Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
+    },
+    "npc:bait:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
+      "sequence": [
+        "npc:bait:fishing spot",
+        "dialog:1:click here to continue",
+        "npc:bait:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:00:39.002Z",
+      "example": "Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
+    },
+    "npc:bait:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
+      "sequence": [
+        "npc:bait:fishing spot",
+        "dialog:1:click here to continue",
+        "npc:net:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:00:54.297Z",
+      "example": "Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
+    },
+    "npc:net:fishing spot > dialog:1:click here to continue > npc:attack:dark wizard": {
+      "sequence": [
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 6.13,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:01:11.756Z",
+      "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7)"
+    },
+    "dialog:1:click here to continue > npc:attack:dark wizard > npc:talk to:diango": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "npc:attack:dark wizard",
+        "npc:talk to:diango"
+      ],
+      "n": 1,
+      "avgReward": 6.81,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:01:22.519Z",
+      "example": "Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7) → Talk-to Diango (level 0, distance 15)"
+    },
+    "npc:attack:dark wizard > npc:talk to:diango > social:say": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "npc:talk to:diango",
+        "social:say"
+      ],
+      "n": 1,
+      "avgReward": 3.81,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:01:41.728Z",
+      "example": "Attack Dark wizard (level 7, distance 7) → Talk-to Diango (level 0, distance 15) → Speak publicly; latest message from Oag0azhyi: Smelting steel bars now, right here at al kharid :3"
+    },
+    "npc:talk to:diango > social:say > dialog:1:click here to continue": {
+      "sequence": [
+        "npc:talk to:diango",
+        "social:say",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:01:48.031Z",
+      "example": "Talk-to Diango (level 0, distance 15) → Speak publicly; latest message from Oag0azhyi: Smelting steel bars now, right here at al kharid :3 → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
@@ -3698,29 +3951,524 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3227:3085:3234:0",
+      "at": "2026-08-14T22:01:11.756Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3227 → 3085,3234; +1330 XP; 10 damage dealt; moved 3087,3227 → 3085,3234; execution rejected or failed",
+      "location": {
+        "x": 3085,
+        "z": 3234,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3085:3234:3085:3243:0",
+      "at": "2026-08-14T22:01:22.520Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3234 → 3085,3243; moved 3085,3234 → 3085,3243",
+      "location": {
+        "x": 3085,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:aggie:192:202:0",
+      "at": "2026-08-14T22:01:22.808Z",
+      "kind": "npc",
+      "text": "Aggie observed near 3085, 3245, level 0.",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:192:202:0",
+      "at": "2026-08-14T22:01:22.808Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3085, 3245, level 0.",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cauldron:192:202:0",
+      "at": "2026-08-14T22:01:22.808Z",
+      "kind": "place",
+      "text": "Cauldron observed near 3085, 3245, level 0.",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:192:202:0",
+      "at": "2026-08-14T22:01:22.808Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3085, 3245, level 0.",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:charms:192:202:0",
+      "at": "2026-08-14T22:01:22.808Z",
+      "kind": "place",
+      "text": "Charms observed near 3085, 3245, level 0.",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:diango:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "npc",
+      "text": "Diango observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Banker observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:dark wizard:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:aggie:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "npc",
+      "text": "Aggie observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:market stall:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Market stall observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Tree observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Crate observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Stool observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Fern observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Bench observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Table observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:shelves:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Shelves observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Plant observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broom:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Broom observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mirror:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Mirror observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Staircase observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cooking shelves:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Cooking shelves observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Barrel observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cauldron:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Cauldron observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Door observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:willow:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Willow observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:charms:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Charms observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Daisies observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Oak observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "resource",
+      "text": "Rock observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Chair observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cart:192:203:0",
+      "at": "2026-08-14T22:01:41.994Z",
+      "kind": "place",
+      "text": "Cart observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T22:00:13.230Z",
+  "updatedAt": "2026-08-14T22:01:48.031Z",
   "activePlan": {
     "objective": "Talk to the NPC to progress the dialogue and avoid failed interactions.",
-    "focus": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
+    "focus": "Plan complete; form the next objective.",
     "reason": "This plan uses a named repository-tested escape skill (`talk",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
         "label": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
-        "status": "active"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
         "label": "Confirm the dialog is open by checking the `failed` list for 'Dialog 1: Click here to continue'.",
-        "status": "pending"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-3",
         "label": "Perform the action `Dialog 1: Click here to continue` to advance the dialogue and avoid failed interactions.",
-        "status": "pending"
+        "status": "done",
+        "evidence": "+1330 XP; 10 damage dealt; moved 3087,3227 → 3085,3234; execution rejected or failed"
       }
     ],
     "successSignals": [
