@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 661,
-    "teacherChoices": 661,
+    "totalChoices": 671,
+    "teacherChoices": 671,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 660,
-    "totalReward": -180.6,
-    "saves": 93,
-    "shadowPredictions": 276,
-    "shadowMatches": 37,
-    "strategistRefreshes": 19,
+    "completedExperiences": 670,
+    "totalReward": -180.22,
+    "saves": 94,
+    "shadowPredictions": 282,
+    "shadowMatches": 43,
+    "strategistRefreshes": 20,
     "strategistFailures": 147
   },
   "memories": [
@@ -2357,6 +2357,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "mssu0cef-fhlct7",
+      "createdAt": "2026-08-14T10:56:12.999Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access deposit functionality.. This approach ensures all items are deposited, maximizing inventory space and improving gameplay efficiency.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access deposit functionality",
+        "deposit all coins using the bank s deposit feature",
+        "deposit remaining items e g runes arrows meat using the bank s deposit functionality"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -3826,24 +3846,24 @@
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:coins": {
-        "n": 3,
-        "avgReward": -0.4333,
+        "n": 4,
+        "avgReward": -0.455,
         "positive": 0,
-        "negative": 3,
-        "lastReward": -0.2,
-        "lastAt": "2026-08-14T10:49:34.047Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
+        "negative": 4,
+        "lastReward": -0.52,
+        "lastAt": "2026-08-14T10:56:44.532Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:withdraw:coins": {
-        "n": 7,
+        "n": 11,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:54:38.536Z",
-        "exampleGoal": "Open the bank to deposit items",
-        "exampleReason": "bank"
+        "lastAt": "2026-08-14T10:57:05.811Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Withdraw 1 Coins"
       },
       "wait": {
         "n": 17,
@@ -4112,14 +4132,14 @@
         "exampleReason": "I'm opening the bank to deposit items."
       },
       "bank:withdraw:coins": {
-        "n": 32,
+        "n": 37,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:55:47.262Z",
-        "exampleGoal": "Open the bank to deposit items",
-        "exampleReason": "Bank opened successfully"
+        "lastAt": "2026-08-14T10:56:33.727Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "bank"
       },
       "bank:deposit:coins": {
         "n": 12,
@@ -5179,8 +5199,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:55:54.142Z",
-      "visits": 167,
+      "lastSeenAt": "2026-08-14T10:56:59.241Z",
+      "visits": 177,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5226,7 +5246,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:55:57.119Z",
+  "updatedAt": "2026-08-14T10:57:05.811Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7838,10 +7858,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 9,
-      "avgReward": -0.133,
+      "n": 10,
+      "avgReward": -0.152,
       "positive": 0,
-      "lastAt": "2026-08-14T10:53:34.919Z",
+      "lastAt": "2026-08-14T10:56:44.532Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -8066,10 +8086,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 10,
-      "avgReward": -0.1,
+      "n": 11,
+      "avgReward": -0.12,
       "positive": 0,
-      "lastAt": "2026-08-14T10:53:41.245Z",
+      "lastAt": "2026-08-14T10:56:51.445Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -8150,10 +8170,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 12,
-      "avgReward": -0.1,
+      "n": 14,
+      "avgReward": -0.108,
       "positive": 0,
-      "lastAt": "2026-08-14T10:55:47.262Z",
+      "lastAt": "2026-08-14T10:56:58.913Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > wait": {
@@ -8450,10 +8470,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 6,
+      "n": 11,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T10:55:19.645Z",
+      "lastAt": "2026-08-14T10:57:05.811Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:chaos rune": {
@@ -8498,10 +8518,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 5,
-      "avgReward": -0.35,
+      "n": 6,
+      "avgReward": -0.333,
       "positive": 0,
-      "lastAt": "2026-08-14T10:55:40.610Z",
+      "lastAt": "2026-08-14T10:56:05.860Z",
       "example": "Wait and observe for a moment → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:shortbow": {
@@ -12192,41 +12212,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Deposit all Coins in the bank",
-    "focus": "Open the bank to deposit items",
-    "reason": "This objective uses a named repository-tested escape or travel skill (bank) and ensures observable evidence through deposit success verification.",
+    "objective": "Deposit all coins and other items in the bank to maximize inventory space.",
+    "focus": "Open the bank to access deposit functionality.",
+    "reason": "This approach ensures all items are deposited, maximizing inventory space and improving gameplay efficiency.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to deposit items",
+        "label": "Open the bank to access deposit functionality.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the bank slot",
+        "label": "Deposit all coins using the bank's deposit feature.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all Coins have been successfully deposited",
+        "label": "Deposit remaining items (e.g., runes, arrows, meat) using the bank's deposit functionality.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully opened and Coins deposited"
+      "Bank successfully opened and items deposited."
     ],
     "priorities": [
-      "Open the bank to deposit items",
-      "Deposit all Coins using the bank slot",
-      "Verify that all Coins have been successfully deposited"
+      "Open the bank to access deposit functionality.",
+      "Deposit all coins using the bank's deposit feature.",
+      "Deposit remaining items (e.g., runes, arrows, meat) using the bank's deposit functionality."
     ],
     "avoid": [
-      "Wait and observe for a moment",
       "Deposit all Coins",
+      "Wait and observe for a moment",
       "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-14T10:54:03.238Z",
+    "updatedAt": "2026-08-14T10:56:12.999Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
