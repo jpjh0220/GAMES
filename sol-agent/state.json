@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 462,
-    "teacherChoices": 462,
+    "totalChoices": 467,
+    "teacherChoices": 467,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 461,
-    "totalReward": -187,
-    "saves": 71,
-    "shadowPredictions": 229,
+    "completedExperiences": 466,
+    "totalReward": -189.65,
+    "saves": 72,
+    "shadowPredictions": 230,
     "shadowMatches": 6,
-    "strategistRefreshes": 8,
+    "strategistRefreshes": 9,
     "strategistFailures": 147
   },
   "memories": [
@@ -1641,6 +1641,49 @@
         "z": 3361,
         "level": 1
       }
+    },
+    {
+      "id": "msssm99g-2mgmyw",
+      "createdAt": "2026-08-14T10:17:16.132Z",
+      "tick": 0,
+      "runNumber": 34,
+      "kind": "strategy",
+      "text": "AI strategist: Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente. This",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "execute rs sdk skill escape draynor manor by descending to ground first then use the documente",
+        "climb down staircase distance 1",
+        "open door distance 3 door at 3119 3356 id 1530 connects se room to warehouse area"
+      ],
+      "location": {
+        "x": 3105,
+        "z": 3364,
+        "level": 2
+      }
+    },
+    {
+      "id": "mssspfj5-7zc0mc",
+      "createdAt": "2026-08-14T10:19:44.225Z",
+      "tick": 575,
+      "runNumber": 34,
+      "kind": "episode",
+      "text": "AI motor: Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors. Result: execution rejected or failed. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "navigation skill",
+        "escape",
+        "draynor manor",
+        "staircase",
+        "door",
+        "repository tested",
+        "measurable position"
+      ],
+      "location": {
+        "x": 3106,
+        "z": 3361,
+        "level": 2
+      }
     }
   ],
   "policy": {
@@ -2749,6 +2792,40 @@
         "exampleGoal": "Explore southeast about 4 tiles to find a mineable rock",
         "exampleReason": "I have successfully used the Shortbow to attack a Ghost (level 19, distance 9) and gained XP. This action is now complete. I will now focus on exploring the surrounding area to fin"
       }
+    },
+    "area=388:420:2|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait,world": {
+      "loc:open:door": {
+        "n": 2,
+        "avgReward": 0.35,
+        "positive": 2,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:20:03.127Z",
+        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "exampleReason": "Open Door (distance 1)"
+      },
+      "skill:escape-draynor-manor": {
+        "n": 2,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:22:23.493Z",
+        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "exampleReason": "I am executing the skill to explore the east wing doors. I will check the coordinates for the two key doors to ensure they are accessible. I will also observe the surroundings to i"
+      }
+    },
+    "area=388:420:2|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "loc:open:door": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:19:53.796Z",
+        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "exampleReason": "Open Door (distance 0)"
+      }
     }
   },
   "relationships": {
@@ -3392,13 +3469,16 @@
     },
     "194:210:2": {
       "key": "194:210:2",
-      "x": 3105,
-      "z": 3364,
+      "x": 3106,
+      "z": 3361,
       "level": 2,
       "firstSeenAt": "2026-08-14T10:16:52.057Z",
-      "lastSeenAt": "2026-08-14T10:16:52.057Z",
-      "visits": 1,
-      "npcs": [],
+      "lastSeenAt": "2026-08-14T10:20:03.414Z",
+      "visits": 6,
+      "npcs": [
+        "Ernest",
+        "Professor Oddenstein"
+      ],
       "locs": [
         "Barrel",
         "Staircase",
@@ -3415,7 +3495,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:17:13.911Z",
+  "updatedAt": "2026-08-14T10:22:23.494Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -5348,6 +5428,54 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:13:46.009Z",
       "example": "Explore southeast about 4 tiles → Wield Shortbow → Attack Ghost (level 19, distance 6)"
+    },
+    "style:accurate:ranged > loc:open:door > skill:escape-draynor-manor": {
+      "sequence": [
+        "style:accurate:ranged",
+        "loc:open:door",
+        "skill:escape-draynor-manor"
+      ],
+      "n": 1,
+      "avgReward": -2.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:19:44.225Z",
+      "example": "Combat style Accurate: Accurate; trains Ranged → Open Door (distance 3) → Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors"
+    },
+    "loc:open:door > skill:escape-draynor-manor > loc:open:door": {
+      "sequence": [
+        "loc:open:door",
+        "skill:escape-draynor-manor",
+        "loc:open:door"
+      ],
+      "n": 1,
+      "avgReward": -1.15,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:19:53.796Z",
+      "example": "Open Door (distance 3) → Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors → Open Door (distance 0)"
+    },
+    "skill:escape-draynor-manor > loc:open:door > loc:open:door": {
+      "sequence": [
+        "skill:escape-draynor-manor",
+        "loc:open:door",
+        "loc:open:door"
+      ],
+      "n": 1,
+      "avgReward": -1.15,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:20:03.127Z",
+      "example": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors → Open Door (distance 0) → Open Door (distance 1)"
+    },
+    "loc:open:door > loc:open:door > skill:escape-draynor-manor": {
+      "sequence": [
+        "loc:open:door",
+        "loc:open:door",
+        "skill:escape-draynor-manor"
+      ],
+      "n": 1,
+      "avgReward": -1.15,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:22:23.494Z",
+      "example": "Open Door (distance 0) → Open Door (distance 1) → Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors"
     }
   },
   "discoveries": [
@@ -7558,28 +7686,87 @@
         "level": 2
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:ernest:194:210:2",
+      "at": "2026-08-14T10:17:14.202Z",
+      "kind": "npc",
+      "text": "Ernest observed near 3105, 3364, level 2.",
+      "location": {
+        "x": 3105,
+        "z": 3364,
+        "level": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:professor oddenstein:194:210:2",
+      "at": "2026-08-14T10:17:14.202Z",
+      "kind": "npc",
+      "text": "Professor Oddenstein observed near 3105, 3364, level 2.",
+      "location": {
+        "x": 3105,
+        "z": 3364,
+        "level": 2
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3105:3364:3106:3361:2",
+      "at": "2026-08-14T10:17:23.206Z",
+      "kind": "route",
+      "text": "Route learned: 3105,3364 → 3106,3361; moved 3105,3364 → 3106,3361",
+      "location": {
+        "x": 3106,
+        "z": 3361,
+        "level": 2
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3106:3361:3106:3362:2",
+      "at": "2026-08-14T10:19:53.796Z",
+      "kind": "route",
+      "text": "Route learned: 3106,3361 → 3106,3362; moved 3106,3361 → 3106,3362",
+      "location": {
+        "x": 3106,
+        "z": 3362,
+        "level": 2
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3106:3362:3106:3361:2",
+      "at": "2026-08-14T10:20:03.127Z",
+      "kind": "route",
+      "text": "Route learned: 3106,3362 → 3106,3361; moved 3106,3362 → 3106,3361",
+      "location": {
+        "x": 3106,
+        "z": 3361,
+        "level": 2
+      },
+      "confidence": 0.75
     }
   ],
   "activePlan": {
-    "objective": "Mine a rock to increase XP and inventory",
-    "focus": "Explore southeast about 4 tiles to find a mineable rock",
-    "reason": "The player is at a mining location with a rock nearby. Using the Shortbow to attack a Ghost provides XP, and mining the rock increases inventory items.",
+    "objective": "Escape Draynor Manor by finding and opening the two key doors to exit.",
+    "focus": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+    "reason": "This",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore southeast about 4 tiles to find a mineable rock",
-        "status": "done",
-        "evidence": "moved 3099,3365 → 3103,3361; new: loc:Bed, loc:Bookshelves"
-      },
-      {
-        "id": "step-2",
-        "label": "Use the Shortbow to attack a Ghost (level 19, distance 9) to gain XP",
+        "label": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Climb-down Staircase (distance 1)",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Mine the rock using the Shortbow to increase XP and inventory",
+        "label": "Open Door (distance 3) - Door at (3119, 3356) id:1530 (connects SE room to warehouse area)",
         "status": "pending"
       }
     ],
@@ -7587,17 +7774,13 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore southeast about 4 tiles to find a mineable rock",
-      "Use the Shortbow to attack a Ghost (level 19, distance 9) to gain XP",
-      "Mine the rock using the Shortbow to increase XP and inventory"
+      "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+      "Climb-down Staircase (distance 1)",
+      "Open Door (distance 3) - Door at (3119, 3356) id:1530 (connects SE room to warehouse area)"
     ],
-    "avoid": [
-      "Explore north about 5 tiles",
-      "Explore west about 5 tiles",
-      "Explore north about 5 tiles"
-    ],
-    "updatedAt": "2026-08-14T10:13:09.824Z",
+    "avoid": [],
+    "updatedAt": "2026-08-14T10:17:16.132Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 2
   }
 }
