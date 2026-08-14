@@ -6,13 +6,13 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 17,
-    "teacherChoices": 17,
+    "totalChoices": 21,
+    "teacherChoices": 21,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 16,
-    "totalReward": 4.05,
-    "saves": 4
+    "completedExperiences": 20,
+    "totalReward": 5.53,
+    "saves": 5
   },
   "memories": [
     {
@@ -143,14 +143,24 @@
     },
     "hp=hurt|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world": {
       "wait": {
-        "n": 3,
+        "n": 5,
         "avgReward": 0,
         "positive": 0,
         "negative": 0,
         "lastReward": 0,
-        "lastAt": "2026-08-14T06:50:19.939Z",
+        "lastAt": "2026-08-14T06:53:22.900Z",
         "exampleGoal": "Remain stable while reasoning recovers",
         "exampleReason": "Teacher inference failed: TimeoutError: The operation timed out."
+      },
+      "walk:north": {
+        "n": 2,
+        "avgReward": 0.74,
+        "positive": 2,
+        "negative": 0,
+        "lastReward": 0.56,
+        "lastAt": "2026-08-14T06:51:51.109Z",
+        "exampleGoal": "Explore north about 5 tiles",
+        "exampleReason": "Recent outcomes show exploration north is effective, and it provides new locations for further investigation."
       }
     }
   },
@@ -269,12 +279,12 @@
     },
     "195:208:0": {
       "key": "195:208:0",
-      "x": 3127,
-      "z": 3337,
+      "x": 3128,
+      "z": 3341,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:47:15.725Z",
-      "lastSeenAt": "2026-08-14T06:49:34.021Z",
-      "visits": 4,
+      "lastSeenAt": "2026-08-14T06:51:05.502Z",
+      "visits": 6,
       "npcs": [
         "Tree",
         "Veronica",
@@ -298,9 +308,39 @@
         "Stairs",
         "Nettles",
         "Oak",
-        "Tree"
+        "Tree",
+        "Tree stump"
+      ]
+    },
+    "195:209:0": {
+      "key": "195:209:0",
+      "x": 3128,
+      "z": 3345,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T06:51:51.415Z",
+      "lastSeenAt": "2026-08-14T06:52:37.301Z",
+      "visits": 2,
+      "npcs": [
+        "Tree",
+        "Giant spider"
+      ],
+      "locs": [
+        "Dead tree",
+        "Mushroom",
+        "Bush",
+        "Fungus",
+        "Warehouse shelves",
+        "Nettles",
+        "Chair",
+        "Crate",
+        "Door",
+        "Table",
+        "Stairs",
+        "Barrel",
+        "Sacks",
+        "Tree stump"
       ]
     }
   },
-  "updatedAt": "2026-08-14T06:50:19.939Z"
+  "updatedAt": "2026-08-14T06:53:22.900Z"
 }
