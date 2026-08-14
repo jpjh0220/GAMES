@@ -13,8 +13,6 @@ permissions:
 
 concurrency:
   group: sol-continuous-world
-  # Only the explicit activation commit preempts the old scripted controller.
-  # Normal pushes and self-handoffs preserve the active Sol session.
   cancel-in-progress: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[activate-agent]') }}
 
 jobs:
@@ -47,39 +45,37 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL https://ollama.com/install.sh | sh
-          nohup env OLLAMA_CONTEXT_LENGTH=8192 ollama serve > sol-ollama.log 2>&1 &
+          nohup env OLLAMA_CONTEXT_LENGTH=4096 ollama serve > sol-ollama.log 2>&1 &
           echo $! > sol-ollama.pid
           for i in $(seq 1 45); do
-            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null; then
-              exit 0
-            fi
+            if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null; then exit 0; fi
             sleep 1
           done
           cat sol-ollama.log
           exit 1
 
-      - name: Restore local teacher model cache
+      - name: Restore local AI model cache
         uses: actions/cache@v4
         with:
           path: ~/.ollama/models
-          key: sol-qwen3-1.7b-v1
+          key: sol-qwen3-dual-0.6b-1.7b-v1
 
-      - name: Prepare local teacher model
+      - name: Prepare dual AI models
         shell: bash
         run: |
           set -euo pipefail
+          ollama pull qwen3:0.6b
           ollama pull qwen3:1.7b
+          ollama list | grep -q 'qwen3:0.6b'
           ollama list | grep -q 'qwen3:1.7b'
-          echo 'Local Qwen teacher is ready.'
+          echo 'Fast motor AI and strategist AI are ready.'
 
       - name: Start public spectator tunnel
         id: tunnel
         shell: bash
         run: |
           set -euo pipefail
-          curl -fL --retry 4 --retry-delay 2 \
-            -o /tmp/cloudflared \
-            https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          curl -fL --retry 4 --retry-delay 2 -o /tmp/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
           chmod +x /tmp/cloudflared
           nohup /tmp/cloudflared tunnel --url http://127.0.0.1:8787 --no-autoupdate > sol-tunnel.log 2>&1 &
           echo $! > sol-tunnel.pid
@@ -89,10 +85,7 @@ jobs:
             [ -n "$URL" ] && break
             sleep 1
           done
-          if [ -z "$URL" ]; then
-            cat sol-tunnel.log
-            exit 1
-          fi
+          if [ -z "$URL" ]; then cat sol-tunnel.log; exit 1; fi
           echo "url=$URL" >> "$GITHUB_OUTPUT"
           echo "Spectator tunnel: $URL"
 
@@ -104,23 +97,13 @@ jobs:
         run: |
           set -euo pipefail
           NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          JSON=$(jq -cn \
-            --arg url "$LIVE_URL" \
-            --arg updatedAt "$NOW" \
-            --argjson runNumber "$GITHUB_RUN_NUMBER" \
-            --argjson runId "$GITHUB_RUN_ID" \
-            '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol5",controller:"teacher-student",teacher:"qwen3:1.7b"}')
+          JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol5",controller:"dual-ai-player-shadow-learner",motor:"qwen3:0.6b",strategist:"qwen3:1.7b"}')
           CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
           SHA=$(gh api "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" --jq .sha 2>/dev/null || true)
           if [ -n "$SHA" ]; then
-            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" \
-              -f message="Update Sol live spectator endpoint" \
-              -f content="$CONTENT" \
-              -f sha="$SHA" >/dev/null
+            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" -f message="Update Sol live spectator endpoint" -f content="$CONTENT" -f sha="$SHA" >/dev/null
           else
-            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" \
-              -f message="Create Sol live spectator endpoint" \
-              -f content="$CONTENT" >/dev/null
+            gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" -f message="Create Sol live spectator endpoint" -f content="$CONTENT" >/dev/null
           fi
           echo "$JSON"
 
@@ -154,10 +137,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          curl --fail-with-body --retry 3 \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol-live.yml/dispatches" \
-            -d '{"ref":"main"}'
+          curl --fail-with-body --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GH_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol-live.yml/dispatches" -d '{"ref":"main"}'
