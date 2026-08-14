@@ -6,64 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2611,
-    "teacherChoices": 2611,
+    "totalChoices": 2621,
+    "teacherChoices": 2621,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2610,
-    "totalReward": 953.89,
-    "saves": 289,
-    "shadowPredictions": 1267,
-    "shadowMatches": 534,
-    "strategistRefreshes": 124,
+    "completedExperiences": 2620,
+    "totalReward": 947.89,
+    "saves": 290,
+    "shadowPredictions": 1268,
+    "shadowMatches": 535,
+    "strategistRefreshes": 125,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst3v8ck-4ykblf",
-      "createdAt": "2026-08-14T15:32:10.628Z",
-      "tick": 60683,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Chop down Tree (distance 4). Result: moved 3084,3238 → 3084,3241; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.25.",
-      "importance": 1.32,
-      "tags": [
-        "world",
-        "tree",
-        "chop down",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3241,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst3vp8q-e0k5vs",
-      "createdAt": "2026-08-14T15:32:32.522Z",
-      "tick": 60756,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 3). Result: +1595 XP; 12 damage dealt; moved 3084,3241 → 3085,3239; execution rejected or failed. Reward 4.63.",
-      "importance": 3.01,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mst3vp8q-dbbedj",
       "createdAt": "2026-08-14T15:32:32.522Z",
@@ -8362,6 +8317,44 @@
         "z": 3247,
         "level": 0
       }
+    },
+    {
+      "id": "mst8edv6-8xnatm",
+      "createdAt": "2026-08-14T17:39:02.706Z",
+      "tick": 19521,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Close the shop worked across 7 similar samples with average reward 0.69.",
+      "importance": 1.69,
+      "tags": [
+        "modal",
+        "modal close shop"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3250,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst8f5st-ibrtfz",
+      "createdAt": "2026-08-14T17:39:38.909Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Use `fletchLogs` to craft arrow shafts with the first product offered. This plan uses a named repository-tested escape or travel skill (`fletchLogs`) and ensures observable evidence through inventory checks and combat",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use fletchlogs to craft arrow shafts with the first product offered",
+        "verify the successful crafting by checking the inventory for arrow shafts",
+        "confirm the progress in the game by checking the combat level and inventory updates"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3250,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12793,14 +12786,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
       "shop:buy:toy horsey": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:59:25.645Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "exampleReason": "Buy 1 Toy horsey for about 150"
+        "lastAt": "2026-08-14T17:39:45.908Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Buy 1 Toy horseys?"
       },
       "shop:sell:coins": {
         "n": 1,
@@ -12813,48 +12806,48 @@
         "exampleReason": "Sell 1 Coins for about 0"
       },
       "shop:sell:raw anchovies": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:59:37.946Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "lastAt": "2026-08-14T17:39:52.195Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 6,
-        "avgReward": 0.9,
+        "n": 7,
+        "avgReward": 0.6857,
         "positive": 3,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:40:28.006Z",
+        "lastAt": "2026-08-14T17:39:02.706Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Close the shop"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
       "npc:talk to:diango": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:24:23.819Z",
-        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
-        "exampleReason": "Talk to Diango (level 0, distance 1) to exchange some anchovies for the general store."
+        "lastAt": "2026-08-14T17:39:17.679Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to gain access to the next step."
       },
       "npc:trade:diango": {
-        "n": 2,
-        "avgReward": -0.885,
+        "n": 3,
+        "avgReward": -0.79,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T13:02:01.349Z",
-        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
-        "exampleReason": "Talk-to Diango (level 0, distance 2)"
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:38:58.194Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to gain access to the next step."
       },
       "skill:travel:draynor-fishing": {
         "n": 1,
@@ -12879,13 +12872,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
       "shop:sell:raw anchovies": {
-        "n": 5,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 5,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:06:37.290Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC located at position [3086, 3231, 0].",
+        "lastAt": "2026-08-14T17:38:44.090Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
       "shop:buy:toy horsey": {
@@ -14195,24 +14188,24 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 10,
+        "n": 12,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 10,
+        "negative": 12,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:38:18.589Z",
+        "lastAt": "2026-08-14T17:39:39.292Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 5,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 5,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:39:40.890Z",
+        "lastAt": "2026-08-14T17:39:31.501Z",
         "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I need to speak with Henry atkins to continue the dialogue with the npc."
+        "exampleReason": "I need to continue the dialogue to proceed with the next step."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
@@ -14331,13 +14324,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 1,
-        "avgReward": 2.4,
+        "n": 2,
+        "avgReward": 0.9,
         "positive": 1,
-        "negative": 0,
-        "lastReward": 2.4,
-        "lastAt": "2026-08-14T15:28:37.643Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 using verified waypoint navigation",
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:38:48.895Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Close the shop"
       }
     },
@@ -15272,8 +15265,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T17:38:32.404Z",
-      "encounters": 328,
+      "lastSeenAt": "2026-08-14T17:38:44.379Z",
+      "encounters": 330,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -16532,8 +16525,8 @@
       "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T17:38:32.404Z",
-      "visits": 234,
+      "lastSeenAt": "2026-08-14T17:39:46.238Z",
+      "visits": 244,
       "npcs": [
         "Banker",
         "Diango",
@@ -16762,7 +16755,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T17:38:38.406Z",
+  "updatedAt": "2026-08-14T17:39:52.195Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21966,10 +21959,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 11,
-      "avgReward": -1.06,
+      "n": 12,
+      "avgReward": -1.122,
       "positive": 2,
-      "lastAt": "2026-08-14T17:38:03.885Z",
+      "lastAt": "2026-08-14T17:39:31.501Z",
       "example": "Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
@@ -21978,10 +21971,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:06:18.372Z",
+      "lastAt": "2026-08-14T17:39:39.292Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -21990,10 +21983,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:40:00.069Z",
+      "lastAt": "2026-08-14T17:39:45.908Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
@@ -22110,10 +22103,10 @@
         "npc:talk to:diango",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": -0.99,
+      "n": 4,
+      "avgReward": -1.192,
       "positive": 1,
-      "lastAt": "2026-08-14T13:00:10.616Z",
+      "lastAt": "2026-08-14T17:39:23.101Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "shop:buy:toy horsey > shop:sell:coins > wait": {
@@ -22458,10 +22451,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 3,
-      "avgReward": -2.18,
+      "n": 4,
+      "avgReward": -2.085,
       "positive": 0,
-      "lastAt": "2026-08-14T13:02:07.351Z",
+      "lastAt": "2026-08-14T17:39:02.706Z",
       "example": "Close the shop → Trade Diango (level 0, distance 2) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:diango": {
@@ -22470,10 +22463,10 @@
         "modal:close-shop",
         "npc:talk to:diango"
       ],
-      "n": 1,
-      "avgReward": -2.94,
+      "n": 2,
+      "avgReward": -2.37,
       "positive": 0,
-      "lastAt": "2026-08-14T12:58:48.752Z",
+      "lastAt": "2026-08-14T17:39:17.679Z",
       "example": "Trade Diango (level 0, distance 2) → Close the shop → Talk-to Diango (level 0, distance 1)"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:sell:raw anchovies": {
@@ -23838,10 +23831,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 14,
+      "n": 15,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:38:32.116Z",
+      "lastAt": "2026-08-14T17:39:52.195Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -23862,10 +23855,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 12,
+      "n": 13,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:40:20.803Z",
+      "lastAt": "2026-08-14T17:38:44.090Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
@@ -23874,10 +23867,10 @@
         "shop:sell:raw anchovies",
         "modal:close-shop"
       ],
-      "n": 14,
-      "avgReward": -0.729,
+      "n": 15,
+      "avgReward": -0.8,
       "positive": 4,
-      "lastAt": "2026-08-14T17:07:01.605Z",
+      "lastAt": "2026-08-14T17:38:48.895Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Close the shop"
     },
     "modal:close-shop > npc:talk to:diango > wait": {
@@ -24623,6 +24616,18 @@
       "positive": 0,
       "lastAt": "2026-08-14T17:31:31.217Z",
       "example": "Wait and observe for a moment → Wait and observe for a moment → Wait and observe for a moment"
+    },
+    "shop:sell:raw anchovies > modal:close-shop > npc:trade:diango": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "modal:close-shop",
+        "npc:trade:diango"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T17:38:58.194Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Trade Diango (level 0, distance 1)"
     }
   },
   "discoveries": [
@@ -28228,44 +28233,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Talk to the NPC to progress the dialogue and gain access to the next step.",
-    "focus": "Plan complete; form the next objective.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Craft arrow shafts using fletchLogs to progress in the game",
+    "focus": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+    "reason": "This plan uses a named repository-tested escape or travel skill (`fletchLogs`) and ensures observable evidence through inventory checks and combat",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
-        "status": "done",
-        "evidence": "moved 3087,3227 → 3092,3243; new: agent:Anduril, npc:Diango, npc:Ned, loc:Closed bank booth, loc:Crate, loc:Staircase"
+        "label": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Wait for the dialogue to open by checking the `failed` array for completed dialogues.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Verify the successful crafting by checking the inventory for arrow shafts",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Interact with the next location object using `async interactLoc(target: NearbyLoc \\| string \\| RegExp, option: number \\| string \\| RegExp =",
-        "status": "done",
-        "evidence": "moved 3087,3230 → 3092,3243; new: agent:Zemogemmae4b, npc:Diango, loc:Crate, loc:Staircase, loc:Bench, loc:Shelves"
+        "label": "Confirm the progress in the game by checking the combat level and inventory updates",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
-      "Wait for the dialogue to open by checking the `failed` array for completed dialogues.",
-      "Interact with the next location object using `async interactLoc(target: NearbyLoc \\| string \\| RegExp, option: number \\| string \\| RegExp ="
+      "Use `fletchLogs` to craft arrow shafts with the first product offered",
+      "Verify the successful crafting by checking the inventory for arrow shafts",
+      "Confirm the progress in the game by checking the combat level and inventory updates"
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
-      "Net Fishing spot (level 0, distance 1)",
-      "Wait and observe for a moment"
+      "Close the shop",
+      "Talk-to Diango (level 0, distance 1)",
+      "Dialog 1: Click here to continue"
     ],
-    "updatedAt": "2026-08-14T17:36:30.923Z",
+    "updatedAt": "2026-08-14T17:39:38.909Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
