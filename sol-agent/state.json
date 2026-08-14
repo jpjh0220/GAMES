@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 432,
-    "teacherChoices": 432,
+    "totalChoices": 441,
+    "teacherChoices": 441,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 431,
-    "totalReward": -169.2,
-    "saves": 67,
+    "completedExperiences": 440,
+    "totalReward": -176.4,
+    "saves": 68,
     "shadowPredictions": 229,
     "shadowMatches": 6,
-    "strategistRefreshes": 4,
+    "strategistRefreshes": 6,
     "strategistFailures": 147
   },
   "memories": [
@@ -1403,6 +1403,102 @@
         "z": 3371,
         "level": 1
       }
+    },
+    {
+      "id": "msssc1l8-yu7u05",
+      "createdAt": "2026-08-14T10:09:19.628Z",
+      "tick": 0,
+      "runNumber": 33,
+      "kind": "strategy",
+      "text": "AI strategist: Explore west about 4 tiles to locate Varrock West bank. This plan uses a named repository-tested escape skill (Open Wardrobe) and provides observable evidence through exploration and location verification.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore west about 4 tiles to locate varrock west bank",
+        "open wardrobe distance 3 to access the location",
+        "verify location by checking coordinates in the guide file"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3371,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssc5i5-rzyycj",
+      "createdAt": "2026-08-14T10:09:24.701Z",
+      "tick": 86,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Attack Ghost (level 19, distance 7). Result: execution rejected or failed. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "combat",
+        "ghost",
+        "attack",
+        "level 19"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3371,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssd2uo-18kfdf",
+      "createdAt": "2026-08-14T10:10:07.920Z",
+      "tick": 230,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Explore south about 5 tiles. Result: execution rejected or failed. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "explore",
+        "south"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssdbew-7awj29",
+      "createdAt": "2026-08-14T10:10:19.016Z",
+      "tick": 267,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Explore east about 5 tiles. Result: execution rejected or failed. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "explore",
+        "east"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssdiy9-2aadvj",
+      "createdAt": "2026-08-14T10:10:28.785Z",
+      "tick": 0,
+      "runNumber": 33,
+      "kind": "strategy",
+      "text": "AI strategist: Use Wield Bronze sq shield to prepare for mining. The player has the necessary equipment and is in a position to mine a rock. The guide provides the correct action for mining, and the player should execute it to gain XP and inventory items.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use wield bronze sq shield to prepare for mining",
+        "explore east about 5 tiles to locate a mineable rock",
+        "mine the rock using the guide s action to gain xp and inventory items"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -2245,6 +2341,96 @@
         "exampleGoal": "Progress through explore",
         "exampleReason": "Exploring the area north about 5 tiles will help identify potential locations or resources. I will continue to observe and gather information as needed."
       }
+    },
+    "area=388:421:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,wait,world": {
+      "npc:attack:ghost": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:09:24.701Z",
+        "exampleGoal": "Explore west about 4 tiles to locate Varrock West bank",
+        "exampleReason": "I am preparing to attack a Ghost at level 19 with a distance of 7. This will give me an opportunity to gain XP and potentially improve my combat skills."
+      },
+      "walk:south": {
+        "n": 1,
+        "avgReward": 0.75,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.75,
+        "lastAt": "2026-08-14T10:09:41.217Z",
+        "exampleGoal": "Explore west about 4 tiles to locate Varrock West bank",
+        "exampleReason": "Exploring south about 5 tiles is the next step to locate Varrock West bank. I will continue exploring in the south to gather more information about the coordinates."
+      }
+    },
+    "area=388:421:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:09:32.514Z",
+        "exampleGoal": "Explore west about 4 tiles to locate Varrock West bank",
+        "exampleReason": "Exploring the north 5 tiles will help locate Varrock West bank coordinates."
+      }
+    },
+    "area=389:421:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,wait,world": {
+      "walk:south": {
+        "n": 1,
+        "avgReward": 0.75,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.75,
+        "lastAt": "2026-08-14T10:09:50.207Z",
+        "exampleGoal": "Explore west about 4 tiles to locate Varrock West bank",
+        "exampleReason": "Exploring south about 5 tiles has confirmed the location as the Bathroom table, Bath screen, Portrait, and Bath. This is a key location for navigation."
+      }
+    },
+    "area=389:421:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "walk:south": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:09:58.599Z",
+        "exampleGoal": "Explore west about 4 tiles to locate Varrock West bank",
+        "exampleReason": "Exploring south about 5 tiles has moved me to the location of the Bathroom table, Bath screen, Portrait, and Bath pipes. I can now proceed to the next step in the plan to navigate "
+      }
+    },
+    "area=388:419:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,wait,world": {
+      "walk:south": {
+        "n": 2,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:10:30.122Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "Exploring south about 5 tiles is a good first step. It should give you some insight into the area and help you identify potential resources or obstacles. Let's proceed with that ac"
+      },
+      "walk:east": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:10:19.016Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "Exploring east about 5 tiles is the next step to progress. It provides a good chance to discover nearby resources or improve your inventory."
+      },
+      "inventory:wield:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:10:37.326Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "Wield Bronze sq shield to prepare for mining"
+      }
     }
   },
   "relationships": {
@@ -2780,12 +2966,12 @@
     },
     "194:210:1": {
       "key": "194:210:1",
-      "x": 3104,
-      "z": 3371,
+      "x": 3115,
+      "z": 3368,
       "level": 1,
       "firstSeenAt": "2026-08-14T10:01:08.835Z",
-      "lastSeenAt": "2026-08-14T10:08:59.261Z",
-      "visits": 5,
+      "lastSeenAt": "2026-08-14T10:09:50.514Z",
+      "visits": 10,
       "npcs": [
         "Ghost"
       ],
@@ -2812,7 +2998,9 @@
         "Boxes",
         "Bed",
         "Bath screen",
-        "Bathroom table"
+        "Bathroom table",
+        "Bath",
+        "Bath pipes"
       ]
     },
     "193:210:1": {
@@ -2848,9 +3036,44 @@
         "Bed",
         "Bookshelves"
       ]
+    },
+    "194:209:1": {
+      "key": "194:209:1",
+      "x": 3104,
+      "z": 3356,
+      "level": 1,
+      "firstSeenAt": "2026-08-14T10:09:58.926Z",
+      "lastSeenAt": "2026-08-14T10:10:30.428Z",
+      "visits": 4,
+      "npcs": [
+        "Ghost"
+      ],
+      "locs": [
+        "Smashed chair",
+        "Corpse",
+        "Broken cart wheel",
+        "Crate",
+        "Mystical wall chart",
+        "Boxes",
+        "Standing torch",
+        "Statue",
+        "Staircase",
+        "Door",
+        "Portrait",
+        "Table",
+        "Chair",
+        "Wardrobe",
+        "Candles",
+        "Bed",
+        "Spooky picture",
+        "Suit of armour",
+        "Bookshelves",
+        "Bull's head",
+        "Mirror"
+      ]
     }
   },
-  "updatedAt": "2026-08-14T10:09:12.412Z",
+  "updatedAt": "2026-08-14T10:10:37.326Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -4507,6 +4730,90 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:06:18.421Z",
       "example": "Combat style Rapid: Rapid; trains Ranged → Attack Ghost (level 19, distance 6) → Combat style Accurate: Accurate; trains Ranged"
+    },
+    "walk:north > npc:attack:ghost > walk:north": {
+      "sequence": [
+        "walk:north",
+        "npc:attack:ghost",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -5.55,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:09:32.514Z",
+      "example": "Explore north about 5 tiles → Attack Ghost (level 19, distance 7) → Explore north about 5 tiles"
+    },
+    "npc:attack:ghost > walk:north > walk:south": {
+      "sequence": [
+        "npc:attack:ghost",
+        "walk:north",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -2.95,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:09:41.217Z",
+      "example": "Attack Ghost (level 19, distance 7) → Explore north about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:north > walk:south > walk:south": {
+      "sequence": [
+        "walk:north",
+        "walk:south",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -0.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:09:50.207Z",
+      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:south > walk:south > walk:south": {
+      "sequence": [
+        "walk:south",
+        "walk:south",
+        "walk:south"
+      ],
+      "n": 2,
+      "avgReward": 0.55,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:10:07.920Z",
+      "example": "Explore south about 5 tiles → Explore south about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:south > walk:south > walk:east": {
+      "sequence": [
+        "walk:south",
+        "walk:south",
+        "walk:east"
+      ],
+      "n": 1,
+      "avgReward": -3.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:10:19.016Z",
+      "example": "Explore south about 5 tiles → Explore south about 5 tiles → Explore east about 5 tiles"
+    },
+    "walk:south > walk:east > walk:south": {
+      "sequence": [
+        "walk:south",
+        "walk:east",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -5.55,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:10:30.122Z",
+      "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:east > walk:south > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "walk:east",
+        "walk:south",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -3.5,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:10:37.326Z",
+      "example": "Explore east about 5 tiles → Explore south about 5 tiles → Wield Bronze sq shield"
     }
   },
   "discoveries": [
@@ -6165,6 +6472,369 @@
         "level": 1
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3104:3371:3112:3371:1",
+      "at": "2026-08-14T10:09:41.218Z",
+      "kind": "route",
+      "text": "Route learned: 3104,3371 → 3112,3371; moved 3104,3371 → 3112,3371; new: loc:Bathroom table, loc:Bath screen, loc:Portrait, loc:Bath",
+      "location": {
+        "x": 3112,
+        "z": 3371,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "place:bath:194:210:1",
+      "at": "2026-08-14T10:09:41.523Z",
+      "kind": "place",
+      "text": "Bath observed near 3114, 3370, level 1.",
+      "location": {
+        "x": 3114,
+        "z": 3370,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bath pipes:194:210:1",
+      "at": "2026-08-14T10:09:41.523Z",
+      "kind": "place",
+      "text": "Bath pipes observed near 3114, 3370, level 1.",
+      "location": {
+        "x": 3114,
+        "z": 3370,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3104:3366:3114:3367:1",
+      "at": "2026-08-14T10:09:50.207Z",
+      "kind": "route",
+      "text": "Route learned: 3104,3366 → 3114,3367; moved 3104,3366 → 3114,3367; new: loc:Bath screen, loc:Bathroom table, loc:Bath, loc:Bath pipes",
+      "location": {
+        "x": 3114,
+        "z": 3367,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3104:3361:3104:3356:1",
+      "at": "2026-08-14T10:09:58.599Z",
+      "kind": "route",
+      "text": "Route learned: 3104,3361 → 3104,3356; moved 3104,3361 → 3104,3356",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:ghost:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "npc",
+      "text": "Ghost observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:smashed chair:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Smashed chair observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:corpse:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Corpse observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broken cart wheel:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Broken cart wheel observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Crate observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boxes:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Boxes observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Statue observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Staircase observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Door observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Portrait observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Table observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Chair observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Candles observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bed:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Bed observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spooky picture:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Spooky picture observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:suit of armour:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Suit of armour observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookshelves:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Bookshelves observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bull s head:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Bull's head observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mirror:194:209:1",
+      "at": "2026-08-14T10:09:58.926Z",
+      "kind": "place",
+      "text": "Mirror observed near 3104, 3356, level 1.",
+      "location": {
+        "x": 3104,
+        "z": 3356,
+        "level": 1
+      },
+      "confidence": 0.7
     }
-  ]
+  ],
+  "activePlan": {
+    "objective": "Mine a rock to increase XP and inventory",
+    "focus": "Use Wield Bronze sq shield to prepare for mining",
+    "reason": "The player has the necessary equipment and is in a position to mine a rock. The guide provides the correct action for mining, and the player should execute it to gain XP and inventory items.",
+    "risk": "balanced",
+    "plan": [
+      {
+        "id": "step-1",
+        "label": "Use Wield Bronze sq shield to prepare for mining",
+        "status": "active"
+      },
+      {
+        "id": "step-2",
+        "label": "Explore east about 5 tiles to locate a mineable rock",
+        "status": "pending"
+      },
+      {
+        "id": "step-3",
+        "label": "Mine the rock using the guide's action to gain XP and inventory items",
+        "status": "pending"
+      }
+    ],
+    "successSignals": [
+      "Observed position, inventory, XP, combat, or dialog change."
+    ],
+    "priorities": [
+      "Use Wield Bronze sq shield to prepare for mining",
+      "Explore east about 5 tiles to locate a mineable rock",
+      "Mine the rock using the guide's action to gain XP and inventory items"
+    ],
+    "avoid": [
+      "Attack Ghost (level 19, distance 7)",
+      "Explore north about 5 tiles",
+      "Explore south about 5 tiles"
+    ],
+    "updatedAt": "2026-08-14T10:10:28.785Z",
+    "sourceModel": "qwen3:1.7b",
+    "failures": 1
+  }
 }
