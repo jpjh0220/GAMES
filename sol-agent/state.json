@@ -6,14 +6,14 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 150,
-    "teacherChoices": 150,
+    "totalChoices": 160,
+    "teacherChoices": 160,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 150,
-    "totalReward": -3.95,
-    "saves": 16,
-    "shadowPredictions": 103,
+    "completedExperiences": 160,
+    "totalReward": -4.27,
+    "saves": 17,
+    "shadowPredictions": 105,
     "shadowMatches": 46,
     "strategistRefreshes": 8,
     "strategistFailures": 0
@@ -220,6 +220,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msthgrfg-t36q5v",
+      "createdAt": "2026-08-14T21:52:50.140Z",
+      "tick": 3592,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Raw anchovies. Result: inventory changed. Reward -0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "store",
+        "raw anchovies",
+        "agent orehound"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -329,14 +349,14 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T21:50:25.240Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "I'm waiting to observe for a moment to ensure I'm ready to proceed with my plan."
+        "lastAt": "2026-08-14T21:51:51.908Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "I need to wait for the bank to open before proceeding with the deposit process."
       },
       "bank:withdraw:chaos rune": {
         "n": 1,
@@ -361,34 +381,44 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
       "bank:deposit:raw anchovies": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T21:50:32.150Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "Deposit all Raw anchovies"
+        "lastAt": "2026-08-14T21:52:50.140Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "I'm opening the bank to access the deposit functionality. I need to find the banker NPC or booth to proceed with depositing items. I'll start by opening the bank to access the depo"
       },
       "bank:withdraw:coins": {
-        "n": 5,
+        "n": 9,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T21:50:46.834Z",
+        "lastAt": "2026-08-14T21:52:10.815Z",
         "exampleGoal": "Open the bank to access the deposit functionality.",
-        "exampleReason": "I'm opening the bank to access the deposit functionality."
+        "exampleReason": "I am opening the bank to access the deposit functionality."
       },
       "bank:deposit:coins": {
-        "n": 2,
-        "avgReward": -0.25,
+        "n": 3,
+        "avgReward": -0.3333,
         "positive": 0,
-        "negative": 1,
-        "lastReward": -0.1,
-        "lastAt": "2026-08-14T21:50:07.533Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "I have successfully opened the bank and accessed deposit functionality. I will proceed with depositing all coins to avoid failed actions."
+        "negative": 2,
+        "lastReward": -0.5,
+        "lastAt": "2026-08-14T21:52:17.993Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "I have successfully opened the bank to access the deposit functionality. I now proceed to deposit all coins and raw anchovies as per the plan."
+      },
+      "bank:withdraw:raw anchovies": {
+        "n": 2,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T21:52:39.028Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "I have successfully deposited all Raw anchovies in the bank to avoid failed actions."
       }
     }
   },
@@ -396,8 +426,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:51:26.435Z",
-      "encounters": 104,
+      "lastSeenAt": "2026-08-14T21:52:39.315Z",
+      "encounters": 114,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -411,8 +441,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:51:26.435Z",
-      "encounters": 149,
+      "lastSeenAt": "2026-08-14T21:52:39.315Z",
+      "encounters": 159,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -426,8 +456,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:51:26.435Z",
-      "encounters": 149,
+      "lastSeenAt": "2026-08-14T21:52:39.315Z",
+      "encounters": 159,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -486,8 +516,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T21:51:26.435Z",
-      "encounters": 21,
+      "lastSeenAt": "2026-08-14T21:52:39.315Z",
+      "encounters": 31,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -521,8 +551,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:51:26.435Z",
-      "visits": 150,
+      "lastSeenAt": "2026-08-14T21:52:39.315Z",
+      "visits": 160,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -814,10 +844,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 10,
-      "avgReward": -0.18,
+      "n": 11,
+      "avgReward": -0.191,
       "positive": 0,
-      "lastAt": "2026-08-14T21:48:39.624Z",
+      "lastAt": "2026-08-14T21:52:17.993Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -862,10 +892,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T21:48:33.626Z",
+      "lastAt": "2026-08-14T21:52:10.815Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -934,10 +964,10 @@
         "wait",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 3,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T21:49:45.618Z",
+      "lastAt": "2026-08-14T21:51:59.142Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     },
     "wait > bank:withdraw:coins > bank:deposit:coins": {
@@ -1023,6 +1053,78 @@
       "positive": 0,
       "lastAt": "2026-08-14T21:51:26.106Z",
       "example": "Deposit all Chaos rune → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > wait": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.15,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:51:39.313Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Wait and observe for a moment"
+    },
+    "wait > bank:withdraw:coins > wait": {
+      "sequence": [
+        "wait",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:51:51.908Z",
+      "example": "Wait and observe for a moment → Withdraw 1 Coins → Wait and observe for a moment"
+    },
+    "wait > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "wait",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:52:04.234Z",
+      "example": "Wait and observe for a moment → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:coins",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.32,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:52:28.229Z",
+      "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Raw anchovies"
+    },
+    "bank:deposit:coins > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.34,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:52:39.028Z",
+      "example": "Deposit all Coins → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:52:50.140Z",
+      "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Deposit all Raw anchovies"
     }
   },
   "discoveries": [
@@ -1495,7 +1597,7 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T21:51:33.303Z",
+  "updatedAt": "2026-08-14T21:52:50.140Z",
   "activePlan": {
     "objective": "Deposit all coins and raw anchovies in the bank to avoid failed actions.",
     "focus": "Open the bank to access the deposit functionality.",
