@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 441,
-    "teacherChoices": 441,
+    "totalChoices": 451,
+    "teacherChoices": 451,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 440,
-    "totalReward": -176.4,
-    "saves": 68,
+    "completedExperiences": 450,
+    "totalReward": -179.21,
+    "saves": 69,
     "shadowPredictions": 229,
     "shadowMatches": 6,
-    "strategistRefreshes": 6,
+    "strategistRefreshes": 7,
     "strategistFailures": 147
   },
   "memories": [
@@ -1499,6 +1499,66 @@
         "z": 3356,
         "level": 1
       }
+    },
+    {
+      "id": "msssecol-qqqv3w",
+      "createdAt": "2026-08-14T10:11:07.317Z",
+      "tick": 428,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Attack Ghost (level 19, distance 6). Result: moved 3104,3361 → 3103,3360; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "combat",
+        "ghost",
+        "attack",
+        "level 19"
+      ],
+      "location": {
+        "x": 3103,
+        "z": 3360,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssevf1-9566h4",
+      "createdAt": "2026-08-14T10:11:31.597Z",
+      "tick": 509,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Attack Ghost (level 19, distance 5). Result: moved 3103,3365 → 3101,3364; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "combat",
+        "ghost",
+        "attack",
+        "level 19"
+      ],
+      "location": {
+        "x": 3101,
+        "z": 3364,
+        "level": 1
+      }
+    },
+    {
+      "id": "msssfcoi-ub8jb2",
+      "createdAt": "2026-08-14T10:11:53.970Z",
+      "tick": 0,
+      "runNumber": 33,
+      "kind": "strategy",
+      "text": "AI strategist: Explore west about 5 tiles to locate Varrock West bank.. This plan uses observable actions like exploring and opening wardrobe, which provide clear evidence of progress. The staircase climb offers",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore west about 5 tiles to locate varrock west bank",
+        "open wardrobe distance 4 to access items and items in the wardrobe",
+        "climb up staircase distance 3 to reach the top and view the location clearly"
+      ],
+      "location": {
+        "x": 3101,
+        "z": 3364,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -2110,14 +2170,14 @@
     },
     "area=388:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
       "npc:attack:ghost": {
-        "n": 1,
-        "avgReward": 0.08,
+        "n": 2,
+        "avgReward": -0.545,
         "positive": 0,
-        "negative": 0,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-14T10:02:08.242Z",
-        "exampleGoal": "Progress through combat",
-        "exampleReason": "Attack Ghost (level 19, distance 10)"
+        "negative": 1,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T10:11:07.317Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "I am preparing to attack the Ghost at 19 level with a distance of 10 tiles away. I will use the combat style 'Ranged' to maximize damage and ensure accuracy."
       }
     },
     "area=387:421:1|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
@@ -2244,14 +2304,34 @@
     },
     "area=387:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "walk:north": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.35,
-        "positive": 1,
+        "positive": 2,
         "negative": 0,
         "lastReward": 0.35,
-        "lastAt": "2026-08-14T10:03:53.250Z",
-        "exampleGoal": "Progress through explore",
-        "exampleReason": "Explore north about 5 tiles"
+        "lastAt": "2026-08-14T10:12:02.238Z",
+        "exampleGoal": "Explore west about 5 tiles to locate Varrock West bank.",
+        "exampleReason": "Exploring the south about 5 tiles will help locate Varrock West bank coordinates."
+      },
+      "style:accurate:ranged": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T10:11:42.722Z",
+        "exampleGoal": "Progress through combat-style",
+        "exampleReason": "I am currently focusing on improving my combat style to be more accurate and efficient. I will train in combat style Accurate, which will help me improve my accuracy and reduce the"
+      },
+      "style:rapid:ranged": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T10:11:54.114Z",
+        "exampleGoal": "Progress through combat-style",
+        "exampleReason": "I am preparing for combat style, which is a key part of my training. This action will help me improve my combat skills and readiness for potential encounters."
       }
     },
     "area=387:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait": {
@@ -2422,14 +2502,58 @@
         "exampleReason": "Exploring east about 5 tiles is the next step to progress. It provides a good chance to discover nearby resources or improve your inventory."
       },
       "inventory:wield:bronze sq shield": {
+        "n": 2,
+        "avgReward": -0.2,
+        "positive": 1,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T10:10:44.218Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "Wield Bronze sq shield"
+      },
+      "inventory:wield:shortbow": {
         "n": 1,
         "avgReward": 0.2,
         "positive": 1,
         "negative": 0,
         "lastReward": 0.2,
-        "lastAt": "2026-08-14T10:10:37.326Z",
+        "lastAt": "2026-08-14T10:10:50.503Z",
         "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
-        "exampleReason": "Wield Bronze sq shield to prepare for mining"
+        "exampleReason": "Wield Shortbow"
+      }
+    },
+    "area=388:419:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:10:57.393Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "Exploring north about 5 tiles to locate a nearby mineable rock."
+      }
+    },
+    "area=387:420:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-14T10:11:21.418Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "Explore north about 5 tiles"
+      },
+      "npc:attack:ghost": {
+        "n": 1,
+        "avgReward": -1.17,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T10:11:31.597Z",
+        "exampleGoal": "Use Wield Bronze sq shield to prepare for mining",
+        "exampleReason": "I am preparing to attack the Ghost at 5 meters away. I will check if the attack is successful and then proceed with the mining action."
       }
     }
   },
@@ -2966,12 +3090,12 @@
     },
     "194:210:1": {
       "key": "194:210:1",
-      "x": 3115,
-      "z": 3368,
+      "x": 3104,
+      "z": 3361,
       "level": 1,
       "firstSeenAt": "2026-08-14T10:01:08.835Z",
-      "lastSeenAt": "2026-08-14T10:09:50.514Z",
-      "visits": 10,
+      "lastSeenAt": "2026-08-14T10:10:57.699Z",
+      "visits": 11,
       "npcs": [
         "Ghost"
       ],
@@ -3005,12 +3129,12 @@
     },
     "193:210:1": {
       "key": "193:210:1",
-      "x": 3100,
-      "z": 3362,
+      "x": 3101,
+      "z": 3364,
       "level": 1,
       "firstSeenAt": "2026-08-14T10:02:08.550Z",
-      "lastSeenAt": "2026-08-14T10:06:18.730Z",
-      "visits": 21,
+      "lastSeenAt": "2026-08-14T10:11:54.440Z",
+      "visits": 27,
       "npcs": [
         "Ghost"
       ],
@@ -3043,8 +3167,8 @@
       "z": 3356,
       "level": 1,
       "firstSeenAt": "2026-08-14T10:09:58.926Z",
-      "lastSeenAt": "2026-08-14T10:10:30.428Z",
-      "visits": 4,
+      "lastSeenAt": "2026-08-14T10:10:50.810Z",
+      "visits": 7,
       "npcs": [
         "Ghost"
       ],
@@ -3073,7 +3197,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:10:37.326Z",
+  "updatedAt": "2026-08-14T10:12:02.239Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -4401,10 +4525,10 @@
         "inventory:wield:shortbow",
         "walk:north"
       ],
-      "n": 12,
-      "avgReward": -1.659,
+      "n": 13,
+      "avgReward": -1.535,
       "positive": 0,
-      "lastAt": "2026-08-14T09:55:27.426Z",
+      "lastAt": "2026-08-14T10:10:57.393Z",
       "example": "Wield Bronze sq shield → Wield Shortbow → Explore north about 5 tiles"
     },
     "inventory:wield:shortbow > walk:north > inventory:wield:bronze sq shield": {
@@ -4557,10 +4681,10 @@
         "npc:attack:ghost",
         "style:accurate:ranged"
       ],
-      "n": 1,
+      "n": 3,
       "avgReward": -1.42,
       "positive": 0,
-      "lastAt": "2026-08-14T10:02:53.224Z",
+      "lastAt": "2026-08-14T10:11:42.722Z",
       "example": "Explore north about 5 tiles → Attack Ghost (level 19, distance 7) → Combat style Accurate: Accurate; trains Ranged"
     },
     "npc:attack:ghost > style:accurate:ranged > npc:attack:ghost": {
@@ -4677,10 +4801,10 @@
         "style:rapid:ranged",
         "walk:north"
       ],
-      "n": 1,
-      "avgReward": 0.51,
+      "n": 2,
+      "avgReward": 0.17,
       "positive": 1,
-      "lastAt": "2026-08-14T10:05:28.945Z",
+      "lastAt": "2026-08-14T10:12:02.238Z",
       "example": "Combat style Accurate: Accurate; trains Ranged → Combat style Rapid: Rapid; trains Ranged → Explore north about 5 tiles"
     },
     "style:rapid:ranged > walk:north > npc:attack:ghost": {
@@ -4814,6 +4938,78 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:10:37.326Z",
       "example": "Explore east about 5 tiles → Explore south about 5 tiles → Wield Bronze sq shield"
+    },
+    "walk:south > inventory:wield:bronze sq shield > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "walk:south",
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -2.25,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:10:44.218Z",
+      "example": "Explore south about 5 tiles → Wield Bronze sq shield → Wield Bronze sq shield"
+    },
+    "inventory:wield:bronze sq shield > inventory:wield:bronze sq shield > inventory:wield:shortbow": {
+      "sequence": [
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:10:50.503Z",
+      "example": "Wield Bronze sq shield → Wield Bronze sq shield → Wield Shortbow"
+    },
+    "inventory:wield:shortbow > walk:north > npc:attack:ghost": {
+      "sequence": [
+        "inventory:wield:shortbow",
+        "walk:north",
+        "npc:attack:ghost"
+      ],
+      "n": 1,
+      "avgReward": -0.62,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:11:07.317Z",
+      "example": "Wield Shortbow → Explore north about 5 tiles → Attack Ghost (level 19, distance 6)"
+    },
+    "npc:attack:ghost > style:accurate:ranged > walk:north": {
+      "sequence": [
+        "npc:attack:ghost",
+        "style:accurate:ranged",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.42,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:11:21.418Z",
+      "example": "Attack Ghost (level 19, distance 6) → Combat style Accurate: Accurate; trains Ranged → Explore north about 5 tiles"
+    },
+    "style:accurate:ranged > walk:north > npc:attack:ghost": {
+      "sequence": [
+        "style:accurate:ranged",
+        "walk:north",
+        "npc:attack:ghost"
+      ],
+      "n": 1,
+      "avgReward": -1.42,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:11:31.597Z",
+      "example": "Combat style Accurate: Accurate; trains Ranged → Explore north about 5 tiles → Attack Ghost (level 19, distance 5)"
+    },
+    "npc:attack:ghost > style:accurate:ranged > style:rapid:ranged": {
+      "sequence": [
+        "npc:attack:ghost",
+        "style:accurate:ranged",
+        "style:rapid:ranged"
+      ],
+      "n": 1,
+      "avgReward": -1.69,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:11:54.114Z",
+      "example": "Attack Ghost (level 19, distance 5) → Combat style Accurate: Accurate; trains Ranged → Combat style Rapid: Rapid; trains Ranged"
     }
   },
   "discoveries": [
@@ -6796,27 +6992,75 @@
         "level": 1
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3104:3356:3104:3361:1",
+      "at": "2026-08-14T10:10:57.393Z",
+      "kind": "route",
+      "text": "Route learned: 3104,3356 → 3104,3361; moved 3104,3356 → 3104,3361",
+      "location": {
+        "x": 3104,
+        "z": 3361,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3104:3361:3103:3360:1",
+      "at": "2026-08-14T10:11:07.317Z",
+      "kind": "route",
+      "text": "Route learned: 3104,3361 → 3103,3360; moved 3104,3361 → 3103,3360; execution rejected or failed",
+      "location": {
+        "x": 3103,
+        "z": 3360,
+        "level": 1
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3103:3360:3103:3365:1",
+      "at": "2026-08-14T10:11:21.418Z",
+      "kind": "route",
+      "text": "Route learned: 3103,3360 → 3103,3365; moved 3103,3360 → 3103,3365",
+      "location": {
+        "x": 3103,
+        "z": 3365,
+        "level": 1
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3103:3365:3101:3364:1",
+      "at": "2026-08-14T10:11:31.597Z",
+      "kind": "route",
+      "text": "Route learned: 3103,3365 → 3101,3364; moved 3103,3365 → 3101,3364; execution rejected or failed",
+      "location": {
+        "x": 3101,
+        "z": 3364,
+        "level": 1
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
-    "objective": "Mine a rock to increase XP and inventory",
-    "focus": "Use Wield Bronze sq shield to prepare for mining",
-    "reason": "The player has the necessary equipment and is in a position to mine a rock. The guide provides the correct action for mining, and the player should execute it to gain XP and inventory items.",
+    "objective": "Navigate to Varrock West bank using key coordinates and explore nearby areas.",
+    "focus": "Explore west about 5 tiles to locate Varrock West bank.",
+    "reason": "This plan uses observable actions like exploring and opening wardrobe, which provide clear evidence of progress. The staircase climb offers",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use Wield Bronze sq shield to prepare for mining",
+        "label": "Explore west about 5 tiles to locate Varrock West bank.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore east about 5 tiles to locate a mineable rock",
+        "label": "Open Wardrobe (distance 4) to access items and items in the wardrobe.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Mine the rock using the guide's action to gain XP and inventory items",
+        "label": "Climb-up Staircase (distance 3) to reach the top and view the location clearly.",
         "status": "pending"
       }
     ],
@@ -6824,17 +7068,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use Wield Bronze sq shield to prepare for mining",
-      "Explore east about 5 tiles to locate a mineable rock",
-      "Mine the rock using the guide's action to gain XP and inventory items"
+      "Explore west about 5 tiles to locate Varrock West bank.",
+      "Open Wardrobe (distance 4) to access items and items in the wardrobe.",
+      "Climb-up Staircase (distance 3) to reach the top and view the location clearly."
     ],
     "avoid": [
-      "Attack Ghost (level 19, distance 7)",
-      "Explore north about 5 tiles",
-      "Explore south about 5 tiles"
+      "Attack Ghost (level 19, distance 6)",
+      "Combat style Accurate: Accurate; trains Ranged",
+      "Attack Ghost (level 19, distance 5)"
     ],
-    "updatedAt": "2026-08-14T10:10:28.785Z",
+    "updatedAt": "2026-08-14T10:11:53.970Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
