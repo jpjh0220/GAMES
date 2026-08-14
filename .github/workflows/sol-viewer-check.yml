@@ -30,29 +30,30 @@ jobs:
           for i in $(seq 1 45); do
             if HEALTH=$(curl --fail --connect-timeout 5 --max-time 10 -sS "$LIVE_URL/health"); then
               echo "$HEALTH"
-              echo "$HEALTH" | jq -e '.ok == true and .online == true and (.actionCount|type == "number") and (.sessionStartedAt|type == "string")' >/dev/null
+              echo "$HEALTH" | jq -e '.ok == true and .online == true and (.actionCount|type == "number") and (.sessionStartedAt|type == "string") and (.runNumber|type == "number")' >/dev/null
               exit 0
             fi
             sleep 2
           done
           exit 1
-      - name: Verify live world state
+      - name: Verify expanded cockpit telemetry
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
           STATE=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/state")
-          echo "$STATE" | jq -e '.online == true and (.currentGoal|type == "string") and (.currentWhy|type == "string") and (.movementTrail|type == "array") and (.nearbyPlayers|type == "array") and (.nearbyNpcs|type == "array") and (.nearbyLocs|type == "array") and (.combatStyle|type == "object")' >/dev/null
-          echo 'Live world telemetry verified.'
-      - name: Verify cinematic spectator UI
+          echo "$STATE" | jq -e '.online == true and (.currentGoal|type == "string") and (.currentWhy|type == "string") and (.movementTrail|type == "array") and (.nearbyPlayers|type == "array") and (.nearbyNpcs|type == "array") and (.nearbyLocs|type == "array") and (.combatStyle|type == "object") and (.equipment|type == "array") and (.combatEvents|type == "array") and (.gameMessages|type == "array") and (.recentDialogs|type == "array") and (.worldUi|type == "object")' >/dev/null
+          echo 'Cockpit telemetry verified.'
+      - name: Verify spectator cockpit UI
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
           HTML=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/")
           printf '%s' "$HTML" | grep -q 'SOL // WORLD SPECTATOR'
-          printf '%s' "$HTML" | grep -q 'Live isometric view'
-          printf '%s' "$HTML" | grep -q 'Current objective'
-          printf '%s' "$HTML" | grep -q 'Decision timeline'
-          printf '%s' "$HTML" | grep -q 'minimap'
-          echo 'Cinematic spectator UI verified.'
+          printf '%s' "$HTML" | grep -q 'Since your last visit'
+          printf '%s' "$HTML" | grep -q 'CINEMATIC'
+          printf '%s' "$HTML" | grep -q 'COMMS'
+          printf '%s' "$HTML" | grep -q 'damageLayer'
+          printf '%s' "$HTML" | grep -q 'mobileNav'
+          echo 'Spectator cockpit UI verified.'
