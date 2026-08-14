@@ -1,6 +1,7 @@
 AI-player architecture activation marker.
-Qwen controls every normal action.
-Sol's learned policy observes, predicts, and learns but does not execute normal actions.
-Active motor design: qwen3:0.6b compact action selector; qwen3:1.7b strategist delayed off critical path.
-Activation: compact-motor-v2.
-Anti-loop candidate suppression: active; repeated negative actions are blocked and alternatives required.
+Qwen3 1.7B controls the entire gameplay decision loop.
+The model chooses goals, movement, combat, recovery, inventory, exploration, NPC interactions, and public speech.
+The runtime exposes executable rs-sdk actions and validates the selected action exists; heuristics do not rank or veto choices.
+No emergency reflex overrides model decisions.
+The shadow learner observes and predicts but does not control gameplay.
+Activation: model-sovereign-v1.
