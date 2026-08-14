@@ -1,6 +1,7 @@
 import type { BotWorldState } from './src/bot/types.js';
 import { readdir, readFile } from 'fs/promises';
 import { join, basename } from 'path';
+import { PrerequisiteTracker } from './prerequisites.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -105,6 +106,9 @@ export class SolAgentBrain {
   private lastSaveAt=0;
   private persistenceLoaded=false;
   private persistenceLoadedAt:string|null=null;
+  private loadOutcome:'pending'|'loaded'|'absent'|'malformed'|'error'|'unconfigured'='pending';
+  private loadError:string|null=null;
+  private saveBlockedLogged=false;
   private lastSaveSucceededAt:string|null=null;
   private lastSaveError:string|null=null;
   private saveFailures=0;
@@ -124,6 +128,7 @@ export class SolAgentBrain {
   private repoKnowledge:{source:string;text:string}[]=[];
   private gameplayCurriculum='';
   private blockedFingerprints:string[]=[];
+  private prereqs=new PrerequisiteTracker();
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
@@ -214,10 +219,11 @@ export class SolAgentBrain {
   }
 
   private async load(){
-    if(!this.opts.githubToken||!this.opts.githubRepo)return;
+    if(!this.opts.githubToken||!this.opts.githubRepo){this.loadOutcome='unconfigured';console.warn('AGENT_MEMORY_LOAD_SKIPPED unconfigured');return;}
     try{
       const r=await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json?ref=sol-memory&t=${Date.now()}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.opts.githubToken}`,'X-GitHub-Api-Version':'2022-11-28'}});
-      if(r.status===404)return;if(!r.ok)throw new Error(`memory load ${r.status}`);
+      if(r.status===404){this.loadOutcome='absent';console.warn('AGENT_MEMORY_LOAD_ABSENT no archive on sol-memory yet');return;}
+      if(!r.ok)throw new Error(`memory load ${r.status}`);
       const body:any=await r.json();this.githubSha=body.sha||null;
       const parsed=JSON.parse(Buffer.from(String(body.content||'').replace(/\n/g,''),'base64').toString('utf8'));
       if(parsed?.version===1&&parsed?.identity&&parsed?.lifetime){
@@ -226,13 +232,24 @@ export class SolAgentBrain {
         this.memory.lifetime.strategistRefreshes??=0;this.memory.lifetime.strategistFailures??=0;
         this.memory.memories||=[];this.memory.policy||={};this.memory.relationships||={};this.memory.places||={};this.memory.sequences||={};this.memory.discoveries||=[];this.strategy=this.memory.activePlan||null;
         for(const [key,r] of Object.entries(this.memory.relationships)){const x:any=r;x.trust??=0;x.stance??='unknown';x.conversations??=0;x.cooperation??=0;x.suspicion??=0;x.facts??=[];x.questions??=[];x.lastMessages??=[];this.memory.relationships[key]=x;}
-        this.persistenceLoaded=true;this.persistenceLoadedAt=now();this.lastSaveError=null;
+        this.persistenceLoaded=true;this.persistenceLoadedAt=now();this.loadOutcome='loaded';this.lastSaveError=null;
+        console.log('AGENT_MEMORY_LOADED',JSON.stringify({experiences:this.memory.lifetime?.completedExperiences,memories:this.memory.memories?.length,policies:Object.keys(this.memory.policy||{}).length}));
+      }else{
+        this.loadOutcome='malformed';this.loadError=`unexpected shape: version=${String(parsed?.version)} identity=${!!parsed?.identity} lifetime=${!!parsed?.lifetime}`;
+        console.warn('AGENT_MEMORY_LOAD_MALFORMED',this.loadError);
       }
-    }catch(err){this.lastSaveError=`load: ${String(err).slice(0,240)}`;console.warn('AGENT_MEMORY_LOAD_FAILED',String(err));}
+    }catch(err){this.loadOutcome='error';this.loadError=String(err).slice(0,240);this.lastSaveError=`load: ${String(err).slice(0,240)}`;console.warn('AGENT_MEMORY_LOAD_FAILED',String(err));}
   }
 
   async save(force=false){
     if(!this.opts.githubToken||!this.opts.githubRepo||!this.dirty)return false;
+    // An archive exists but we could not read it. Writing now would replace accumulated
+    // cross-run learning with this run's cold-start numbers. Refuse until a human resolves it.
+    if(!this.persistenceLoaded&&this.loadOutcome!=='absent'){
+      if(!this.saveBlockedLogged){this.saveBlockedLogged=true;console.error('AGENT_MEMORY_SAVE_BLOCKED',JSON.stringify({loadOutcome:this.loadOutcome,loadError:this.loadError,reason:'refusing to overwrite an archive that failed to load'}));}
+      this.lastSaveError=`save blocked: archive present but load ${this.loadOutcome}`;
+      return false;
+    }
     if(!force&&Date.now()-this.lastSaveAt<5*60_000&&this.memory.lifetime.completedExperiences%10!==0)return false;
     if(this.saveInFlight)return force?await this.saveInFlight:false;
     this.saveInFlight=this.persistWithRetry();
@@ -277,6 +294,7 @@ export class SolAgentBrain {
     for(const m of (state.gameMessages||[]) as any[]){
       const text=String(m.text||'').trim(),sender=String(m.sender||'').trim();if(!text)continue;
       const id=`${m.observationId??''}:${m.tick??''}:${sender}:${text}`;if(this.seenMessages.has(id))continue;this.seenMessages.add(id);if(this.seenMessages.size>500)this.seenMessages=new Set([...this.seenMessages].slice(-300));
+      for(const b of this.prereqs.observe(text,Number(m.tick)||0))console.log('AGENT_PREREQ_LEARNED',JSON.stringify({requirement:b.requirement,level:b.level,evidence:b.evidence,subgoal:b.subgoal}));
       const incoming=!m.fromSelf&&!!sender,person=norm(incoming?sender:this.opts.name);if(incoming&&person){
         const old=this.memory.relationships[person]||{name:sender,firstSeenAt:t,lastSeenAt:t,encounters:1,combatLevel:undefined,trust:0,stance:'unknown',conversations:0,cooperation:0,suspicion:0,facts:[],questions:[],lastMessages:[]};
         const helpful=/\b(help|guide|give|spare|need|try|use|find|at|near|buy|sell)\b/i.test(text),risky=/\b(scam|kill|attack|steal|lure|trust me|drop all)\b/i.test(text);
@@ -320,6 +338,12 @@ export class SolAgentBrain {
     }
     const last=recent.at(-1);
     if(last?.reward<0)blocked.add(last.choice.fingerprint);
+    // Engine-stated prerequisites. Clear any that are now satisfied, then bar the rest.
+    const skillLevels:Record<string,number>={};
+    for(const s of (state.skills||[]) as any[])skillLevels[String(s.name||'').toLowerCase()]=Number(s.level)||0;
+    skillLevels.__coins=Number((state.inventory||[]).find((i:any)=>/coins/i.test(i.name))?.count||0);
+    this.prereqs.resolve(skillLevels,((state.inventory||[]) as any[]).map(i=>String(i.name||'')));
+    for(const c of candidates){const b=this.prereqs.isBlocked(c.fingerprint);if(b)blocked.add(c.fingerprint);}
     const filtered=candidates.filter(c=>!blocked.has(c.fingerprint));
     this.blockedFingerprints=[...blocked];
     return filtered.length?filtered:candidates;
@@ -478,7 +502,7 @@ export class SolAgentBrain {
     const contexts=Object.keys(this.memory.policy).length;const learnedActions=Object.values(this.memory.policy).reduce((n,ctx)=>n+Object.values(ctx).filter(s=>s.n>=2&&s.avgReward>.05).length,0);const predictions=this.memory.lifetime.shadowPredictions||0;const matches=this.memory.lifetime.shadowMatches||0;
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
-    const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
+    const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,loadOutcome:this.loadOutcome,loadError:this.loadError,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
     return{architecture:'model-sovereign-gameplay-with-execution-validation',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,lastStrategistError:this.lastStrategistError,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }
