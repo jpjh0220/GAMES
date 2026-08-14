@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 320,
-    "teacherChoices": 320,
+    "totalChoices": 330,
+    "teacherChoices": 330,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 320,
-    "totalReward": 81.65,
-    "saves": 33,
-    "shadowPredictions": 139,
-    "shadowMatches": 70,
-    "strategistRefreshes": 17,
+    "completedExperiences": 330,
+    "totalReward": 76.88,
+    "saves": 34,
+    "shadowPredictions": 145,
+    "shadowMatches": 73,
+    "strategistRefreshes": 18,
     "strategistFailures": 0
   },
   "memories": [
@@ -1966,6 +1966,26 @@
         "z": 3228,
         "level": 0
       }
+    },
+    {
+      "id": "mstip526-0g80e1",
+      "createdAt": "2026-08-14T22:27:20.670Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.. This plan uses the 'Safe Fishing Locations' guide and focuses on practicing safe fishing techniques, ensuring observable evidence through inventory and combat log verification.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the safe fishing locations guide to locate and confirm safe fishing spots",
+        "practice safe fishing techniques by interacting with the bait and observing the fish",
+        "verify successful fishing by confirming the catch and noting the location coordinates in the inventory or combat log"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -2309,14 +2329,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 25,
-        "avgReward": 0.1199,
+        "n": 28,
+        "avgReward": 0.0428,
         "positive": 6,
-        "negative": 19,
+        "negative": 22,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:26:06.296Z",
+        "lastAt": "2026-08-14T22:27:13.241Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "I'm ready to explore the area. Let's find some ore :3."
+      },
+      "wait": {
+        "n": 4,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T22:27:31.201Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.",
+        "exampleReason": "I'm waiting to observe for a moment."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
@@ -3005,12 +3035,12 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,world": {
       "npc:net:fishing spot": {
-        "n": 3,
-        "avgReward": -0.79,
+        "n": 4,
+        "avgReward": -0.885,
         "positive": 0,
-        "negative": 3,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:26:17.095Z",
+        "negative": 4,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T22:26:38.107Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "I'm ready to explore the area. Let's find some ore :3."
       },
@@ -3023,6 +3053,16 @@
         "lastAt": "2026-08-14T22:24:14.399Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I've successfully navigated to Draynor Bank at 3092,3243 using verified waypoint navigation. This action contributes to my progress in the objective of exploring and gathering reso"
+      },
+      "npc:bait:fishing spot": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:27:25.806Z",
+        "exampleGoal": "Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.",
+        "exampleReason": "Bait Fishing spot (level 0, distance 1) is the best spot to start your fishing trip."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
@@ -3093,8 +3133,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:26:06.624Z",
-      "encounters": 273,
+      "lastSeenAt": "2026-08-14T22:27:26.134Z",
+      "encounters": 283,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -3154,8 +3194,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:26:06.624Z",
-      "encounters": 273,
+      "lastSeenAt": "2026-08-14T22:27:26.134Z",
+      "encounters": 283,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -3260,8 +3300,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T22:26:06.624Z",
-      "encounters": 145,
+      "lastSeenAt": "2026-08-14T22:27:26.134Z",
+      "encounters": 155,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -3548,11 +3588,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3087,
-      "z": 3228,
+      "z": 3227,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-14T22:26:06.624Z",
-      "visits": 59,
+      "lastSeenAt": "2026-08-14T22:27:26.134Z",
+      "visits": 69,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -4573,10 +4613,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 1,
-      "avgReward": -0.67,
+      "n": 3,
+      "avgReward": -1.313,
       "positive": 0,
-      "lastAt": "2026-08-14T21:59:43.842Z",
+      "lastAt": "2026-08-14T22:26:44.112Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 2) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > wait > dialog:1:click here to continue": {
@@ -4585,10 +4625,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": 2.33,
+      "n": 3,
+      "avgReward": -0.313,
       "positive": 1,
-      "lastAt": "2026-08-14T21:59:53.101Z",
+      "lastAt": "2026-08-14T22:26:49.800Z",
       "example": "Net Fishing spot (level 0, distance 2) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -4597,10 +4637,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 3,
-      "avgReward": -0.54,
+      "n": 4,
+      "avgReward": -0.885,
       "positive": 1,
-      "lastAt": "2026-08-14T22:26:17.095Z",
+      "lastAt": "2026-08-14T22:26:38.108Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -5485,10 +5525,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 4,
-      "avgReward": -1.01,
+      "n": 5,
+      "avgReward": -1.078,
       "positive": 0,
-      "lastAt": "2026-08-14T22:26:06.296Z",
+      "lastAt": "2026-08-14T22:27:13.241Z",
       "example": "Bait Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -5497,10 +5537,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 1,
+      "n": 3,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T22:23:33.606Z",
+      "lastAt": "2026-08-14T22:27:25.807Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -5509,10 +5549,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 2,
+      "n": 4,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T22:25:26.703Z",
+      "lastAt": "2026-08-14T22:27:31.201Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -8410,46 +8450,44 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-14T22:26:17.095Z",
+  "updatedAt": "2026-08-14T22:27:31.202Z",
   "activePlan": {
-    "objective": "Locate and use safe fishing spots in Draynor Village for level 1 fishing.",
-    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Identify safe fishing locations and practice safe fishing techniques.",
+    "focus": "Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.",
+    "reason": "This plan uses the 'Safe Fishing Locations' guide and focuses on practicing safe fishing techniques, ensuring observable evidence through inventory and combat log verification.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: agent:Un5wc8p3r, agent:Yr8wc2n6q, agent:Gpgather1, loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 13).",
-        "status": "done",
-        "evidence": "moved 3087,3228 → 3087,3233; new: loc:Closed bank booth, loc:Market stall"
+        "label": "Practice safe fishing techniques by interacting with the bait and observing the fish.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Use the Net Fishing spot (level 0, distance 13) to catch Shrimp/anchovies for level 1 fishing.",
-        "status": "active"
+        "label": "Verify successful fishing by confirming the catch and noting the location coordinates in the inventory or combat log.",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 13).",
-      "Use the Net Fishing spot (level 0, distance 13) to catch Shrimp/anchovies for level 1 fishing."
+      "Use the 'Safe Fishing Locations' guide to locate and confirm safe fishing spots.",
+      "Practice safe fishing techniques by interacting with the bait and observing the fish.",
+      "Verify successful fishing by confirming the catch and noting the location coordinates in the inventory or combat log."
     ],
     "avoid": [
       "Dialog 1: Click here to continue",
-      "Net Fishing spot (level 0, distance 1)",
-      "Dialog 1: Click here to continue"
+      "Bait Fishing spot (level 0, distance 1)",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-14T22:24:38.013Z",
+    "updatedAt": "2026-08-14T22:27:20.670Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
