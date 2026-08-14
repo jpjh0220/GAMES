@@ -6,78 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1771,
-    "teacherChoices": 1771,
+    "totalChoices": 1781,
+    "teacherChoices": 1781,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1770,
-    "totalReward": 307.78,
-    "saves": 204,
-    "shadowPredictions": 842,
+    "completedExperiences": 1780,
+    "totalReward": 308.27,
+    "saves": 205,
+    "shadowPredictions": 848,
     "shadowMatches": 342,
     "strategistRefreshes": 79,
     "strategistFailures": 149
   },
   "memories": [
-    {
-      "id": "mssw3asg-7xh66x",
-      "createdAt": "2026-08-14T11:54:30.112Z",
-      "tick": 17127,
-      "runNumber": 35,
-      "kind": "relationship",
-      "text": "Henryatkins said: \"26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor\". Current stance friendly, trust 0.24.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "henryatkins",
-        "friendly"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mssw3grr-c4q7fh",
-      "createdAt": "2026-08-14T11:54:37.863Z",
-      "tick": 0,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "AI strategist: Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).. This",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "use the bronze sq shield to travel to draynor village coordinates 3087 3230",
-        "interact with the net bait at draynor village to catch shrimps anchovies",
-        "return to the starting position and confirm successful collection of shrimps anchovies in the inventory"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mssw46rb-3gx905",
-      "createdAt": "2026-08-14T11:55:11.543Z",
-      "tick": 17286,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: +1 level(s). Reward 2.4.",
-      "importance": 1.9,
-      "tags": [
-        "npc",
-        "fishing spot",
-        "net",
-        "level 0"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "mssw4yio-6f4fi8",
       "createdAt": "2026-08-14T11:55:47.520Z",
@@ -8720,6 +8661,73 @@
         "z": 3230,
         "level": 0
       }
+    },
+    {
+      "id": "mst1ji8n-z0nny2",
+      "createdAt": "2026-08-14T14:27:04.343Z",
+      "tick": 47662,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3230 → 3092,3243; new: npc:Jail guard, npc:Ned, npc:Diango, npc:Aggie, loc:Crate, loc:Staircase. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc jail guard",
+        "npc ned",
+        "npc diango",
+        "npc aggie",
+        "loc crate",
+        "loc staircase",
+        "loc bench",
+        "loc shelves"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst1jy75-crp2fh",
+      "createdAt": "2026-08-14T14:27:25.025Z",
+      "tick": 47731,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Use Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242; execution rejected or failed; new: npc:Ned. Reward -0.7.",
+      "importance": 1.05,
+      "tags": [
+        "world",
+        "bank booth",
+        "use",
+        "npc ned"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst1l3vo-cnolas",
+      "createdAt": "2026-08-14T14:28:19.044Z",
+      "tick": 47911,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Close the bank. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "modal",
+        "bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10239,14 +10247,14 @@
         "exampleReason": "Deposit all Raw bear meat"
       },
       "bank:deposit:coins": {
-        "n": 25,
-        "avgReward": -0.3689,
+        "n": 26,
+        "avgReward": -0.3701,
         "positive": 0,
-        "negative": 24,
-        "lastReward": -0.2,
-        "lastAt": "2026-08-14T11:38:17.238Z",
-        "exampleGoal": "Open the bank to access the deposit functionality.",
-        "exampleReason": "Deposit all Coins"
+        "negative": 25,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T14:27:52.006Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I've successfully deposited all raw anchovies. This is a measurable progress towards gathering resources in Draynor Bank."
       },
       "bank:withdraw:coins": {
         "n": 83,
@@ -10349,13 +10357,13 @@
         "exampleReason": "Deposit 1 Water rune"
       },
       "bank:deposit:fire rune": {
-        "n": 2,
-        "avgReward": -0.08,
+        "n": 3,
+        "avgReward": -0.1867,
         "positive": 0,
-        "negative": 0,
-        "lastReward": -0.08,
-        "lastAt": "2026-08-14T11:38:32.229Z",
-        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T14:28:05.850Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Fire rune"
       },
       "bank:withdraw:earth rune": {
@@ -10387,6 +10395,16 @@
         "lastAt": "2026-08-14T11:39:28.639Z",
         "exampleGoal": "Open the bank to access the deposit functionality.",
         "exampleReason": "Close the bank"
+      },
+      "bank:deposit:raw anchovies": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T14:27:59.251Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Raw anchovies"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
@@ -10559,6 +10577,26 @@
         "lastAt": "2026-08-14T11:27:52.637Z",
         "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
         "exampleReason": "Withdraw 1 Bronze sq shield"
+      },
+      "bank:deposit:raw anchovies": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T14:28:12.741Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Raw anchovies"
+      },
+      "modal:close-bank": {
+        "n": 1,
+        "avgReward": 2.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T14:28:19.044Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Close the bank"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -12319,6 +12357,16 @@
         "lastAt": "2026-08-14T14:26:48.752Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I need to verify my arrival at the Draynor Bank location to ensure I'm on the correct waypoint."
+      },
+      "loc:use:bank booth": {
+        "n": 1,
+        "avgReward": -0.7,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.7,
+        "lastAt": "2026-08-14T14:27:25.025Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Use Bank booth (distance 1) to gather resources in Draynor Bank."
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -12887,6 +12935,16 @@
         "lastAt": "2026-08-14T14:11:43.055Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "I need to locate and utilize safe fishing spots in Draynor Village to progress. I will explore north about 5 tiles to find a suitable spot."
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-14T14:27:04.343Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I need to navigate to Draynor Bank at 3092,3243 to gather resources."
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
@@ -13476,6 +13534,28 @@
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I have verified the waypoint navigation at Draynor Bank, which is the first step in locating safe fishing locations. This action sets the foundation for further exploration and pre"
       }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T14:27:43.334Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "You feel weakened."
+      },
+      "dialog:1:i d like to access my bank account please": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T14:27:38.223Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I'd like to access my bank account, please."
+      }
     }
   },
   "relationships": {
@@ -13781,8 +13861,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T14:19:23.212Z",
-      "encounters": 68,
+      "lastSeenAt": "2026-08-14T14:28:13.071Z",
+      "encounters": 70,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -14973,8 +15053,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T14:25:36.441Z",
-      "visits": 354,
+      "lastSeenAt": "2026-08-14T14:26:49.028Z",
+      "visits": 355,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -15066,11 +15146,11 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T14:26:30.113Z",
-      "visits": 674,
+      "lastSeenAt": "2026-08-14T14:28:13.071Z",
+      "visits": 683,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -15158,7 +15238,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T14:26:48.753Z",
+  "updatedAt": "2026-08-14T14:28:19.045Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -19858,10 +19938,10 @@
         "skill:travel:draynor-fishing",
         "skill:travel:draynor-bank"
       ],
-      "n": 17,
-      "avgReward": 4.421,
-      "positive": 17,
-      "lastAt": "2026-08-14T14:25:51.415Z",
+      "n": 18,
+      "avgReward": 4.55,
+      "positive": 18,
+      "lastAt": "2026-08-14T14:27:04.343Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to the Draynor fishing area at 3087,3230 and verify arrival → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "skill:travel:draynor-fishing > skill:travel:draynor-bank > npc:attack:dark wizard": {
@@ -21495,57 +21575,117 @@
       "positive": 1,
       "lastAt": "2026-08-14T14:21:26.213Z",
       "example": "Talk-to Diango (level 0, distance 15) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 6)"
+    },
+    "skill:travel:draynor-fishing > skill:travel:draynor-bank > loc:use:bank booth": {
+      "sequence": [
+        "skill:travel:draynor-fishing",
+        "skill:travel:draynor-bank",
+        "loc:use:bank booth"
+      ],
+      "n": 1,
+      "avgReward": 4.7,
+      "positive": 1,
+      "lastAt": "2026-08-14T14:27:25.025Z",
+      "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Use Bank booth (distance 1)"
+    },
+    "skill:travel:draynor-bank > loc:use:bank booth > dialog:1:click here to continue": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "loc:use:bank booth",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 0.25,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:27:31.644Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Use Bank booth (distance 1) → Dialog 1: Click here to continue"
+    },
+    "loc:use:bank booth > dialog:1:click here to continue > dialog:1:i d like to access my bank account please": {
+      "sequence": [
+        "loc:use:bank booth",
+        "dialog:1:click here to continue",
+        "dialog:1:i d like to access my bank account please"
+      ],
+      "n": 1,
+      "avgReward": -1.9,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:27:38.223Z",
+      "example": "Use Bank booth (distance 1) → Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please."
+    },
+    "dialog:1:click here to continue > dialog:1:i d like to access my bank account please > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:27:43.334Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue"
+    },
+    "dialog:1:i d like to access my bank account please > dialog:1:click here to continue > bank:deposit:coins": {
+      "sequence": [
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:27:52.007Z",
+      "example": "Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue → Deposit all Coins"
+    },
+    "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:raw anchovies": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "bank:deposit:coins",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:27:59.251Z",
+      "example": "Dialog 1: Click here to continue → Deposit all Coins → Deposit all Raw anchovies"
+    },
+    "bank:deposit:coins > bank:deposit:raw anchovies > bank:deposit:fire rune": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:raw anchovies",
+        "bank:deposit:fire rune"
+      ],
+      "n": 1,
+      "avgReward": -0.88,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:28:05.850Z",
+      "example": "Deposit all Coins → Deposit all Raw anchovies → Deposit all Fire rune"
+    },
+    "bank:deposit:raw anchovies > bank:deposit:fire rune > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:deposit:fire rune",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.56,
+      "positive": 0,
+      "lastAt": "2026-08-14T14:28:12.741Z",
+      "example": "Deposit all Raw anchovies → Deposit all Fire rune → Deposit all Raw anchovies"
+    },
+    "bank:deposit:fire rune > bank:deposit:raw anchovies > modal:close-bank": {
+      "sequence": [
+        "bank:deposit:fire rune",
+        "bank:deposit:raw anchovies",
+        "modal:close-bank"
+      ],
+      "n": 1,
+      "avgReward": 1.92,
+      "positive": 1,
+      "lastAt": "2026-08-14T14:28:19.045Z",
+      "example": "Deposit all Fire rune → Deposit all Raw anchovies → Close the bank"
     }
   },
   "discoveries": [
-    {
-      "id": "route:3087:3239:3092:3243:0",
-      "at": "2026-08-14T11:44:58.325Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3239 → 3092,3243; moved 3087,3239 → 3092,3243; new: npc:Ned, npc:Aggie, loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:boulder:193:202:0",
-      "at": "2026-08-14T11:44:58.613Z",
-      "kind": "place",
-      "text": "Boulder observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:plant:193:202:0",
-      "at": "2026-08-14T11:44:58.613Z",
-      "kind": "place",
-      "text": "Plant observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3243:3087:3238:0",
-      "at": "2026-08-14T11:45:33.405Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3087,3238; +798 XP; 6 damage dealt; moved 3092,3243 → 3087,3238; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
     {
       "id": "route:3087:3238:3092:3243:0",
       "at": "2026-08-14T11:45:58.010Z",
@@ -25094,6 +25234,54 @@
       "location": {
         "x": 3086,
         "z": 3241,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3243:3092:3242:0",
+      "at": "2026-08-14T14:27:25.025Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3092,3242; moved 3092,3243 → 3092,3242; execution rejected or failed; new: npc:Ned",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "npc:black knight:193:202:0",
+      "at": "2026-08-14T14:27:43.623Z",
+      "kind": "npc",
+      "text": "Black Knight observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:193:202:0",
+      "at": "2026-08-14T14:27:52.337Z",
+      "kind": "place",
+      "text": "Boulder observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:193:202:0",
+      "at": "2026-08-14T14:27:59.561Z",
+      "kind": "place",
+      "text": "Plant observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
         "level": 0
       },
       "confidence": 0.7
