@@ -1,0 +1,99 @@
+name: Teach Sol from rs-sdk repository
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sol-repo-knowledge-patch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  teach:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Add repository knowledge retrieval
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sol-live/agent-brain.ts')
+          s=p.read_text()
+
+          if "from 'fs/promises'" not in s:
+              s=s.replace("import type { BotWorldState } from './src/bot/types.js';\n", "import type { BotWorldState } from './src/bot/types.js';\nimport { readdir, readFile } from 'fs/promises';\nimport { join, basename } from 'path';\n")
+
+          s=s.replace(
+              "  private recentOutcomes:AgentOutcome[]=[];\n",
+              "  private recentOutcomes:AgentOutcome[]=[];\n  private repoKnowledge:{source:string;text:string}[]=[];\n"
+          )
+
+          s=s.replace(
+              "  async init(){\n    await this.load();\n    await this.refreshAvailability();\n  }\n\n  private async refreshAvailability(){",
+              "  async init(){\n    await this.load();\n    await this.loadRepoKnowledge();\n    await this.refreshAvailability();\n  }\n\n  private async loadRepoKnowledge(){\n    const root=join(process.cwd(),'..','..');\n    const files:{path:string;source:string}[]=[];\n    try{\n      const dir=join(root,'learnings');\n      for(const name of await readdir(dir)){if(name.endsWith('.md'))files.push({path:join(dir,name),source:`learnings/${name}`});}\n    }catch(err){console.warn('RS_KNOWLEDGE_LEARNINGS_FAILED',String(err));}\n    for(const [rel,path] of [['README.md',join(root,'README.md')],['sdk/API.md',join(root,'sdk','API.md')]] as const)files.push({path,source:rel});\n    const segments:{source:string;text:string}[]=[];\n    for(const file of files){\n      try{\n        const raw=await readFile(file.path,'utf8');\n        const parts=raw.split(/\\n(?=#{1,4}\\s)/g);\n        for(const part of parts){\n          const clean=part.replace(/```[\\s\\S]*?```/g,m=>m.slice(0,900)).replace(/\\s+/g,' ').trim();\n          if(clean.length<40)continue;\n          for(let i=0;i<clean.length;i+=1200){const chunk=clean.slice(i,i+1400);if(chunk.length>=40)segments.push({source:file.source,text:chunk});}\n        }\n      }catch(err){console.warn('RS_KNOWLEDGE_FILE_FAILED',file.source,String(err));}\n    }\n    this.repoKnowledge=segments.slice(0,700);\n    console.log('RS_REPO_KNOWLEDGE_READY',JSON.stringify({segments:this.repoKnowledge.length,sources:new Set(this.repoKnowledge.map(x=>x.source)).size}));\n  }\n\n  private retrieveRepoGuidance(state:BotWorldState,candidates:AgentCandidate[],limit=2,maxChars=380){\n    if(!this.repoKnowledge.length)return [];\n    const p=state.player;\n    const query=[\n      this.strategy?.focus||'',\n      ...(state.skills||[]).filter(x=>x.level<15).map(x=>x.name),\n      ...(state.inventory||[]).slice(0,12).map(x=>x.name),\n      ...(state.nearbyNpcs||[]).slice(0,10).map(x=>x.name),\n      ...(state.nearbyLocs||[]).slice(0,12).map(x=>x.name),\n      ...candidates.slice(0,12).flatMap(c=>[c.category,c.label,...(c.tags||[])])\n    ].join(' ');\n    const q=toks(query);\n    return this.repoKnowledge.map((seg,i)=>{\n      const st=toks(`${basename(seg.source,'.md')} ${seg.text}`);let overlap=0;for(const t of q)if(st.has(t))overlap++;\n      const exact=[...q].some(t=>t.length>5&&seg.text.toLowerCase().includes(t))?1:0;\n      const api=seg.source==='sdk/API.md'?.3:0;\n      return{seg,score:overlap*2+exact+api+i/100000};\n    }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>`${x.seg.source}: ${x.seg.text.slice(0,maxChars)}`);\n  }\n\n  private async refreshAvailability(){"
+          )
+
+          s=s.replace(
+              "categories:uniq(candidates.map(c=>c.category))};",
+              "categories:uniq(candidates.map(c=>c.category)),repoGuidance:this.retrieveRepoGuidance(state,candidates,3,650)};"
+          )
+          s=s.replace(
+              "content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. Use outcomes, avoid loops, preserve survival, seek useful progression.'",
+              "content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. repoGuidance contains relevant excerpts loaded from the rs-sdk GitHub repository; use it as gameplay/API knowledge. Live state and measured outcomes override stale guidance. Avoid loops, preserve survival, seek useful progression.'"
+          )
+
+          s=s.replace(
+              "      recent:this.recentOutcomes.slice(-3).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),\n      learned:learnedCompact,",
+              "      recent:this.recentOutcomes.slice(-3).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),\n      guide:this.retrieveRepoGuidance(state,allowed,2,360),\n      learned:learnedCompact,"
+          )
+          s=s.replace(
+              "content:'You are the AI motor playing Sol. Pick exactly one legal action_id. Sol is only learning from you and never controls you. Stay active; do not idle if another action exists. Avoid recently failed actions. Use strategy if present. Keep why under 12 words. speech empty unless speaking.'",
+              "content:'You are the AI motor playing Sol. Pick exactly one legal action_id. guide contains relevant rs-sdk repository guidance; use it when choosing, but trust live state and measured outcomes if they conflict. Sol is only learning from you and never controls you. Stay active; do not idle if another action exists. Avoid recently failed actions. Use strategy if present. Keep why under 12 words. speech empty unless speaking.'"
+          )
+
+          s=s.replace(
+              "placeCount:Object.keys(this.memory.places).length,lifetime:this.memory.lifetime",
+              "placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,lifetime:this.memory.lifetime"
+          )
+
+          required=["loadRepoKnowledge","retrieveRepoGuidance","repoGuidance:this.retrieveRepoGuidance","guide:this.retrieveRepoGuidance","repoKnowledgeSegments:this.repoKnowledge.length"]
+          for needle in required:
+              if needle not in s: raise SystemExit(f'missing patch marker: {needle}')
+          p.write_text(s)
+          PY
+
+      - name: Compile against current upstream rs-sdk
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git /tmp/rs-sdk
+          cd /tmp/rs-sdk
+          bun install --frozen-lockfile >/dev/null
+          cd server/webclient
+          bun install --frozen-lockfile >/dev/null
+          cp "$GITHUB_WORKSPACE/sol-live/sol-live.ts" ./sol-live.ts
+          cp "$GITHUB_WORKSPACE/sol-live/agent-brain.ts" ./agent-brain.ts
+          cp "$GITHUB_WORKSPACE/sol-live/viewer.html" ./viewer.html
+          bun build sol-live.ts --target=bun --outfile=/tmp/sol-repo-aware.js
+          test -s /tmp/sol-repo-aware.js
+          grep -q 'RS_REPO_KNOWLEDGE_READY' agent-brain.ts
+          grep -q 'repoKnowledgeSegments' agent-brain.ts
+
+      - name: Commit and activate repository-aware AI
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sol-live/agent-brain.ts
+          git diff --cached --quiet && exit 0
+          git commit -m '[activate-agent] Teach Sol AI from rs-sdk repository knowledge'
+          git push
