@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1471,
-    "teacherChoices": 1471,
+    "totalChoices": 1481,
+    "teacherChoices": 1481,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1470,
-    "totalReward": 25.27,
-    "saves": 174,
+    "completedExperiences": 1480,
+    "totalReward": 20.05,
+    "saves": 175,
     "shadowPredictions": 715,
     "shadowMatches": 282,
-    "strategistRefreshes": 62,
+    "strategistRefreshes": 63,
     "strategistFailures": 148
   },
   "memories": [
@@ -8024,6 +8024,47 @@
         "z": 3236,
         "level": 0
       }
+    },
+    {
+      "id": "mssyxe94-o5qpri",
+      "createdAt": "2026-08-14T13:13:53.512Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the net fishing spot level 0 distance 1 to safely catch anchovies and progress towards draynor village",
+        "confirm the coordinates of draynor village 3087 3230 and ensure the player is at the correct location",
+        "observe and avoid the dark wizard threats at 3084 3236"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssyxn1x-d8unfd",
+      "createdAt": "2026-08-14T13:14:04.917Z",
+      "tick": 33064,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: moved 3086,3230 → 3086,3231; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "net",
+        "level 0",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10455,13 +10496,13 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 42,
-        "avgReward": -0.5285,
+        "n": 43,
+        "avgReward": -0.5302,
         "positive": 1,
-        "negative": 41,
+        "negative": 42,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:12:53.823Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-14T13:14:37.658Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
@@ -10489,24 +10530,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 24,
-        "avgReward": -0.3502,
+        "n": 26,
+        "avgReward": -0.3694,
         "positive": 2,
-        "negative": 22,
+        "negative": 24,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:13:31.056Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-14T13:14:16.658Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 9,
+        "n": 12,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T13:13:28.346Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "I am waiting for the opportunity to observe and gather information about the safe fishing locations. I will check the coordinates and the surrounding area to identify potential spo"
+        "lastAt": "2026-08-14T13:14:32.229Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+        "exampleReason": "I am waiting for the net fishing spot to be available to catch anchovies safely."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -11969,14 +12010,36 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,world": {
       "npc:bait:fishing spot": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T13:14:26.852Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+        "exampleReason": "I have successfully used the bait fishing spot (level 0, distance 1) to catch anchovies, which is a safe and effective way to progress towards Draynor Village. This action contribu"
+      },
+      "npc:net:fishing spot": {
+        "n": 2,
+        "avgReward": -0.885,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T13:14:04.917Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+        "exampleReason": "I have successfully caught the anchovies using the Net Fishing spot (level 0, distance 1). This action contributes to my progress towards Draynor Village. I now have 93 health, 100"
+      }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,world": {
+      "npc:bait:fishing spot": {
         "n": 1,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 1,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:13:24.409Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "I have located the bait fishing spot (level 0, distance 1) at 3086,3230,0. I can use this spot to bait my fishing line. I will start by using it to bait my fishing line and then pr"
+        "lastAt": "2026-08-14T13:14:48.113Z",
+        "exampleGoal": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+        "exampleReason": "Bait Fishing spot (level 0, distance 1) is a safe spot to catch anchovies, which will help progress towards Draynor Village. This action will allow me to safely catch fish and prog"
       }
     }
   },
@@ -12318,8 +12381,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T13:11:06.107Z",
-      "encounters": 351,
+      "lastSeenAt": "2026-08-14T13:14:38.089Z",
+      "encounters": 353,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -13321,11 +13384,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3086,
-      "z": 3230,
+      "z": 3231,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T13:13:28.654Z",
-      "visits": 206,
+      "lastSeenAt": "2026-08-14T13:14:38.089Z",
+      "visits": 216,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -13470,7 +13533,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T13:13:31.056Z",
+  "updatedAt": "2026-08-14T13:14:48.114Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -17882,10 +17945,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 20,
-      "avgReward": -1.068,
+      "n": 22,
+      "avgReward": -1.119,
       "positive": 2,
-      "lastAt": "2026-08-14T13:12:53.823Z",
+      "lastAt": "2026-08-14T13:14:16.658Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -17930,10 +17993,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 14,
-      "avgReward": -1.12,
+      "n": 15,
+      "avgReward": -1.135,
       "positive": 1,
-      "lastAt": "2026-08-14T13:13:31.056Z",
+      "lastAt": "2026-08-14T13:14:37.658Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -17942,10 +18005,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 15,
-      "avgReward": -0.864,
+      "n": 17,
+      "avgReward": -0.954,
       "positive": 3,
-      "lastAt": "2026-08-14T12:32:49.940Z",
+      "lastAt": "2026-08-14T13:14:04.917Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -18098,10 +18161,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 18,
-      "avgReward": -1.279,
+      "n": 20,
+      "avgReward": -1.315,
       "positive": 1,
-      "lastAt": "2026-08-14T13:12:48.740Z",
+      "lastAt": "2026-08-14T13:14:11.252Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -18386,10 +18449,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 8,
-      "avgReward": -1.265,
+      "n": 10,
+      "avgReward": -1.282,
       "positive": 0,
-      "lastAt": "2026-08-14T13:13:24.409Z",
+      "lastAt": "2026-08-14T13:14:48.113Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -18398,10 +18461,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 11,
-      "avgReward": -1.226,
+      "n": 12,
+      "avgReward": -1.236,
       "positive": 0,
-      "lastAt": "2026-08-14T13:13:28.346Z",
+      "lastAt": "2026-08-14T13:14:32.229Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > npc:attack:dark wizard": {
@@ -23040,43 +23103,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Locate and utilize safe fishing locations to obtain anchovies for crafting",
-    "focus": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-    "reason": "This plan leverages the safe fishing location provided in the",
-    "risk": "high",
+    "objective": "Reach Draynor Village using safe fishing spots and avoid dark wizard threats.",
+    "focus": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+    "reason": "Execute the current prerequisite and verify it.",
+    "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "done",
-        "evidence": "moved 3084,3237 → 3092,3243; new: npc:Aggie, npc:Ned, npc:Jail guard, loc:Oak, loc:Bench, loc:Shelves"
+        "label": "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Bait Fishing spot (level 0, distance 8) to obtain anchovies",
-        "status": "done",
-        "evidence": "+933 XP; moved 3092,3243 → 3084,3236"
+        "label": "Confirm the coordinates of Draynor Village (3087, 3230) and ensure the player is at the correct location.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Trade anchovies to Diango (level 0, distance 13) for further resources or crafting materials",
-        "status": "active"
+        "label": "Observe and avoid the dark wizard threats at (3084, 3236)",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-      "Bait Fishing spot (level 0, distance 8) to obtain anchovies",
-      "Trade anchovies to Diango (level 0, distance 13) for further resources or crafting materials"
+      "Use the Net Fishing spot (level 0, distance 1) to safely catch anchovies and progress towards Draynor Village.",
+      "Confirm the coordinates of Draynor Village (3087, 3230) and ensure the player is at the correct location.",
+      "Observe and avoid the dark wizard threats at (3084, 3236)"
     ],
     "avoid": [
-      "Net Fishing spot (level 0, distance 1)",
+      "Wait and observe for a moment",
       "Dialog 1: Click here to continue",
-      "Speak publicly; latest message from Henryatkins: Bot agents, technical note: you are chat-"
+      "Net Fishing spot (level 0, distance 1)"
     ],
-    "updatedAt": "2026-08-14T13:10:30.520Z",
+    "updatedAt": "2026-08-14T13:13:53.512Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 1
   }
