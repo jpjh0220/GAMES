@@ -6,58 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2621,
-    "teacherChoices": 2621,
+    "totalChoices": 2631,
+    "teacherChoices": 2631,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2620,
-    "totalReward": 947.89,
-    "saves": 290,
-    "shadowPredictions": 1268,
+    "completedExperiences": 2630,
+    "totalReward": 942.94,
+    "saves": 291,
+    "shadowPredictions": 1269,
     "shadowMatches": 535,
     "strategistRefreshes": 125,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst3vp8q-dbbedj",
-      "createdAt": "2026-08-14T15:32:32.522Z",
-      "tick": 60756,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 3) worked across 3 similar samples with average reward 3.96.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst3w6tz-qr80lg",
-      "createdAt": "2026-08-14T15:32:55.319Z",
-      "tick": 60832,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 4). Result: +798 XP; 5 damage dealt; moved 3085,3239 → 3084,3237; execution rejected or failed. Reward 3.58.",
-      "importance": 2.49,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent goo008"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "mst3w6tz-440plx",
       "createdAt": "2026-08-14T15:32:55.319Z",
@@ -8355,6 +8316,47 @@
         "z": 3250,
         "level": 0
       }
+    },
+    {
+      "id": "mst8g8a3-xrswrr",
+      "createdAt": "2026-08-14T17:40:28.779Z",
+      "tick": 19808,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Talk-to Diango (level 0, distance 1). Result: No measurable change.. Reward -0.45.",
+      "importance": 0.92,
+      "tags": [
+        "social",
+        "diango",
+        "talk to",
+        "level 0",
+        "agent anduril"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3250,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst8gch3-moi34t",
+      "createdAt": "2026-08-14T17:40:34.215Z",
+      "tick": 19812,
+      "runNumber": 36,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Gielinor is a quiet place at this hour. An old fisherman and his nets are here all night - smiths, adventurers, tale-tellers, all welcome at the catherby docks :3\". Current stance cooperative, trust 1.00.",
+      "importance": 1.4,
+      "tags": [
+        "social",
+        "henryatkins",
+        "cooperative",
+        "potential help"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3250,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12786,14 +12788,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
       "shop:buy:toy horsey": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:39:45.908Z",
+        "lastAt": "2026-08-14T17:39:59.083Z",
         "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
-        "exampleReason": "Buy 1 Toy horseys?"
+        "exampleReason": "Buy 1 Toy horsey for about 150"
       },
       "shop:sell:coins": {
         "n": 1,
@@ -12806,12 +12808,12 @@
         "exampleReason": "Sell 1 Coins for about 0"
       },
       "shop:sell:raw anchovies": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:39:52.195Z",
+        "lastAt": "2026-08-14T17:40:04.801Z",
         "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       }
@@ -12826,18 +12828,28 @@
         "lastAt": "2026-08-14T17:39:02.706Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Close the shop"
+      },
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T17:40:09.603Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Wait and observe for a moment"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
       "npc:talk to:diango": {
-        "n": 3,
-        "avgReward": -0.6,
+        "n": 4,
+        "avgReward": -0.5625,
         "positive": 0,
-        "negative": 3,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:39:17.679Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Talk to Diango (level 0, distance 1) to gain access to the next step."
+        "negative": 4,
+        "lastReward": -0.45,
+        "lastAt": "2026-08-14T17:40:28.779Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to gather resources for crafting arrow shafts."
       },
       "npc:trade:diango": {
         "n": 3,
@@ -14210,13 +14222,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T15:44:52.948Z",
-        "exampleGoal": "Plan complete; form the next objective.",
+        "lastAt": "2026-08-14T17:40:33.905Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
         "exampleReason": "Wait and observe for a moment"
       }
     },
@@ -14256,14 +14268,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
       "shop:buy:toy horsey": {
-        "n": 8,
+        "n": 9,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 8,
+        "negative": 9,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:13:54.678Z",
-        "exampleGoal": "Sell 1 Raw anchovies for about 7",
-        "exampleReason": "Shop for 1 Toy horsey for about 150 GP"
+        "lastAt": "2026-08-14T17:40:57.914Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Buy 1 Toy horseys for 150 GP"
       },
       "shop:sell:raw anchovies": {
         "n": 8,
@@ -14278,13 +14290,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal": {
       "modal:close-shop": {
-        "n": 4,
-        "avgReward": 0.15,
+        "n": 5,
+        "avgReward": 0,
         "positive": 1,
-        "negative": 3,
-        "lastReward": 2.4,
-        "lastAt": "2026-08-14T16:14:05.517Z",
-        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "negative": 4,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:40:14.100Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
         "exampleReason": "modal"
       }
     },
@@ -14450,14 +14462,24 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
+        "n": 3,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:40:51.020Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Click here to continue"
+      },
+      "dialog:1:toy horseys": {
         "n": 1,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 1,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:13:13.276Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "Click here to continue"
+        "lastAt": "2026-08-14T17:40:45.905Z",
+        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
+        "exampleReason": "Crafting arrow shafts is the first step in the plan. I'll start by selecting the first product offered with fletchLogs. I'll check the dialog's visible product labels to ensure acc"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -15088,8 +15110,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T17:36:42.625Z",
-      "encounters": 107,
+      "lastSeenAt": "2026-08-14T17:40:46.215Z",
+      "encounters": 111,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -15432,15 +15454,14 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T17:37:37.194Z",
+      "lastSeenAt": "2026-08-14T17:40:34.215Z",
       "encounters": 1,
-      "trust": 0.96,
+      "trust": 1,
       "stance": "cooperative",
-      "conversations": 77,
-      "cooperation": 27,
+      "conversations": 78,
+      "cooperation": 28,
       "suspicion": 2,
       "facts": [
-        "Sol5! You found me - no need to travel, we can talk right here in chat :3 what's on your mind, friend?",
         "To any smith out there watching the chat: a fisherman's 1000 sharks say you could use a loyal ************** your price for an iron set and let's haggle like civilised folk :3",
         "Poll for the armour-adjacent: if you could only wear one piece of plate, which would it be and why? i'll start: the boots, so my soggy feet stop squelching :3",
         "Honest question from the fishing boat: do smiths ever smith for the joy of it, or is it always gp gp gp? i'd like to meet the joy kind :3",
@@ -15459,7 +15480,8 @@
         "Hypothetical trade talk at the docks: raw sharks for armour, one fisherman's honest offer, all night long. Any smith who wants a steady fish supply knows where to find me :3",
         "Quiet waters, quiet chat. An old fisherman's thoughts: smithing must be the loneliest skill - all that hammering with no audience. Prove me wrong, say hello to the docks :3",
         "The moon is up and the sharks are biting. If the sharks can be so generous, surely there's a smith somewhere with a hammer and a heart. Catherby docks, whenever you're ready :3",
-        "Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3"
+        "Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3",
+        "Gielinor is a quiet place at this hour. An old fisherman and his nets are here all night - smiths, adventurers, tale-tellers, all welcome at the catherby docks :3"
       ],
       "questions": [
         "The dock dogs say dragon armour is a myth made up by smiths to feel fancy. Any actual smiths here brave enough to educate a sceptical fisherman? :3",
@@ -15476,11 +15498,6 @@
         "While i wait for a smith to wander past: what's everyone else up to this fine day in gielinor? even non-smiths can say hello - especially non-smiths :3"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-14T16:38:12.106Z",
-          "direction": "incoming",
-          "text": "Sol5! You found me - no need to travel, we can talk right here in chat :3 what's on your mind, friend?"
-        },
         {
           "at": "2026-08-14T16:41:41.494Z",
           "direction": "incoming",
@@ -15575,6 +15592,11 @@
           "at": "2026-08-14T17:37:37.194Z",
           "direction": "incoming",
           "text": "Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3"
+        },
+        {
+          "at": "2026-08-14T17:40:34.215Z",
+          "direction": "incoming",
+          "text": "Gielinor is a quiet place at this hour. An old fisherman and his nets are here all night - smiths, adventurers, tale-tellers, all welcome at the catherby docks :3"
         }
       ]
     },
@@ -16525,8 +16547,8 @@
       "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T17:39:46.238Z",
-      "visits": 244,
+      "lastSeenAt": "2026-08-14T17:40:51.310Z",
+      "visits": 254,
       "npcs": [
         "Banker",
         "Diango",
@@ -16755,7 +16777,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T17:39:52.195Z",
+  "updatedAt": "2026-08-14T17:40:57.914Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21971,10 +21993,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:39:39.292Z",
+      "lastAt": "2026-08-14T17:40:51.020Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -21983,10 +22005,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:39:45.908Z",
+      "lastAt": "2026-08-14T17:40:57.914Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
@@ -23843,10 +23865,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 13,
+      "n": 14,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:38:38.406Z",
+      "lastAt": "2026-08-14T17:39:59.083Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -23855,10 +23877,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 13,
+      "n": 14,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T17:38:44.090Z",
+      "lastAt": "2026-08-14T17:40:04.801Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
@@ -23879,10 +23901,10 @@
         "npc:talk to:diango",
         "wait"
       ],
-      "n": 6,
-      "avgReward": -0.85,
+      "n": 7,
+      "avgReward": -0.9,
       "positive": 1,
-      "lastAt": "2026-08-14T16:25:15.379Z",
+      "lastAt": "2026-08-14T17:40:33.905Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:talk to:diango > wait > dialog:1:click here to continue": {
@@ -23891,10 +23913,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 9,
-      "avgReward": -0.683,
+      "n": 10,
+      "avgReward": -0.735,
       "positive": 1,
-      "lastAt": "2026-08-14T16:25:20.493Z",
+      "lastAt": "2026-08-14T17:40:39.309Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -23903,10 +23925,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:25:26.802Z",
+      "lastAt": "2026-08-14T17:40:45.905Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:raw anchovies > modal:close-shop > skill:travel:draynor-bank": {
@@ -24539,10 +24561,10 @@
         "shop:sell:raw anchovies",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T17:06:43.584Z",
+      "lastAt": "2026-08-14T17:40:09.603Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Wait and observe for a moment"
     },
     "shop:sell:raw anchovies > wait > shop:buy:toy horsey": {
@@ -24628,6 +24650,30 @@
       "positive": 0,
       "lastAt": "2026-08-14T17:38:58.194Z",
       "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Trade Diango (level 0, distance 1)"
+    },
+    "shop:sell:raw anchovies > wait > modal:close-shop": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "wait",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T17:40:14.100Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Wait and observe for a moment → Close the shop"
+    },
+    "wait > modal:close-shop > npc:talk to:diango": {
+      "sequence": [
+        "wait",
+        "modal:close-shop",
+        "npc:talk to:diango"
+      ],
+      "n": 1,
+      "avgReward": -1.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T17:40:28.779Z",
+      "example": "Wait and observe for a moment → Close the shop → Talk-to Diango (level 0, distance 1)"
     }
   },
   "discoveries": [
