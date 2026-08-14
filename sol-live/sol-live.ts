@@ -119,7 +119,10 @@ const server=Bun.serve({
     const path=new URL(req.url).pathname;
     const headers={'Cache-Control':'no-store','Access-Control-Allow-Origin':'*'};
     if(path==='/state') return Response.json(snapshot,{headers});
-    if(path==='/health') return Response.json({ok:true,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,learnedActions:snapshot.agent?.learnedActions??0,memoryCount:snapshot.agent?.memoryCount??0,persistence:snapshot.agent?.persistence??null},{headers});
+    if(path==='/health'){
+      const ready=!!snapshot.online&&!!snapshot.inGame&&!!snapshot.player&&snapshot.agent?.motorOnline===true;
+      return Response.json({ok:ready,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,learnedActions:snapshot.agent?.learnedActions??0,memoryCount:snapshot.agent?.memoryCount??0,persistence:snapshot.agent?.persistence??null},{status:ready?200:503,headers});
+    }
     return new Response(viewerHtml,{headers:{...headers,'Content-Type':'text/html; charset=utf-8'}});
   }
 });
@@ -160,18 +163,40 @@ const openNearestDoorToward=async(target:{x:number;z:number})=>{
   await waitTicks(4);const blocked=(lastState?.gameMessages||[]).some((m:any)=>Number(m.tick)>started&&/locked|won't open|can't reach/i.test(String(m.text||'')));return result.success&&!blocked;
 };
 
-const walkToward=async(target:{x:number;z:number},radius=2,allowDoors=false,maxAttempts=7)=>{
+const walkToward=async(target:{x:number;z:number;level?:number},radius=2,allowDoors=false,maxAttempts=7)=>{
+  const desiredLevel=target.level??position()?.level??0;
   for(let attempt=1;attempt<=maxAttempts;attempt++){
     const before=position();if(!before)return false;
-    const beforeDistance=tileDistance(before,target);if(before.level===0&&beforeDistance<=radius)return true;
+    const beforeDistance=tileDistance(before,target);if(before.level===desiredLevel&&beforeDistance<=radius)return true;
     const result=await dispatchPrimitive(`Walk toward ${target.x},${target.z} (attempt ${attempt})`,{type:'walkTo',x:target.x,z:target.z,running:true,reason:'Follow a model-selected verified route.'});
     await waitTicks(7);
     const after=position();if(!after)return false;
-    const afterDistance=tileDistance(after,target);if(after.level===0&&afterDistance<=radius)return true;
+    const afterDistance=tileDistance(after,target);if(after.level===desiredLevel&&afterDistance<=radius)return true;
     const progressed=afterDistance<beforeDistance-.75;
     if(!result.success||!progressed){if(allowDoors&&await openNearestDoorToward(target)){continue;}if(!result.success)return false;}
   }
-  const end=position();return !!end&&end.level===0&&tileDistance(end,target)<=radius;
+  const end=position();return !!end&&end.level===desiredLevel&&tileDistance(end,target)<=radius;
+};
+
+const descendManorToGround=async()=>{
+  for(let attempt=1;attempt<=4;attempt++){
+    const p=position();if(!p)return false;if(p.level===0)return true;
+    const transition=p.level===2
+      ?{level:2,x:3105,z:3363,id:1740,approach:{x:3104,z:3363,level:2},option:/climb-down/i}
+      :p.level===1
+        ?{level:1,x:3108,z:3364,id:1731,approach:{x:3107,z:3364,level:1},option:/walk-down/i}
+        :null;
+    if(!transition)return false;
+    if(!await walkToward(transition.approach,2,true,10))continue;
+    const state=lastState;
+    const loc=(state?.nearbyLocs||[]).find(l=>l.level===transition.level&&l.x===transition.x&&l.z===transition.z&&l.id===transition.id);
+    const option=loc?.optionsWithIndex?.find(o=>transition.option.test(o.text));
+    const result=await dispatchPrimitive(`Descend Draynor Manor staircase from level ${transition.level}`,{type:'interactLoc',x:transition.x,z:transition.z,locId:transition.id,optionIndex:option?.opIndex||1,reason:'Execute the model-selected manor escape by returning to the ground floor.'});
+    await waitTicks(10);
+    const after=position();if(result.success&&after&&after.level<transition.level)continue;
+    await openNearestDoorToward(transition.approach);
+  }
+  return position()?.level===0;
 };
 
 const openDocumentedDoor=async(x:number,z:number,locId:number)=>{
@@ -200,8 +225,9 @@ const executeWorldSkill=async(action:any)=>{
   procedureInFlight=procedure;let success=false;let message='Procedure failed before completion.';
   try{
     if(skill==='escape-draynor-manor'){
+      success=await descendManorToGround();
       const p0=position();
-      success=!!p0
+      success=success&&!!p0
         &&(p0.z>=3358||await crossDocumentedDoor({x:3109,z:3358,id:1530,approach:{x:3109,z:3357},exit:{x:3109,z:3359},farSide:p=>p.z>=3358}))
         &&await walkToward({x:3106,z:3367},0,false,6)
         &&await crossDocumentedDoor({x:3106,z:3368,id:1530,approach:{x:3106,z:3367},exit:{x:3106,z:3369},farSide:p=>p.z>=3369})
@@ -259,8 +285,8 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
     return out;
   }
 
-  const insideDraynorManor=p.level===0&&p.worldX>=3095&&p.worldX<=3124&&p.worldZ>=3345&&p.worldZ<=3368;
-  if(insideDraynorManor) add({label:'Execute rs-sdk skill: escape Draynor Manor through the documented east-wing doors to the courtyard',category:'navigation-skill',fingerprint:'skill:escape-draynor-manor',settleTicks:18,action:{type:'worldSkill',skill:'escape-draynor-manor'},tags:['escape','draynor-manor','door','repository-tested','measurable-position']});
+  const insideDraynorManor=(p.level===0&&p.worldX>=3095&&p.worldX<=3124&&p.worldZ>=3345&&p.worldZ<=3368)||(p.level>0&&p.level<=2&&p.worldX>=3092&&p.worldX<=3128&&p.worldZ>=3344&&p.worldZ<=3376);
+  if(insideDraynorManor) add({label:`Execute rs-sdk skill: escape Draynor Manor${p.level>0?' by descending to ground first':''}, then use the documented east-wing doors`,category:'navigation-skill',fingerprint:'skill:escape-draynor-manor',settleTicks:18,action:{type:'worldSkill',skill:'escape-draynor-manor'},tags:['escape','draynor-manor','staircase','door','repository-tested','measurable-position']});
 
   const distance=(x:number,z:number)=>Math.hypot(p.worldX-x,p.worldZ-z);
   if(!insideDraynorManor&&p.level===0&&distance(3092,3243)>6&&distance(3092,3243)<230){

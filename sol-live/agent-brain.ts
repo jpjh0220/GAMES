@@ -416,13 +416,14 @@ export class SolAgentBrain {
     const motorObservation={
       plan:this.strategy?{objective:this.strategy.objective,active:this.strategy.plan?.find(x=>x.status==='active')?.label||this.strategy.focus}:null,
       state:observation.status,
+      urgentSkill:allowed.find(c=>c.fingerprint==='skill:escape-draynor-manor')?.label||null,
       recent:observation.recent.slice(-3),
       chat:observation.recentChat.slice(-3),
       guide:this.currentGuidance.slice(0,2).map(x=>x.slice(0,360)),
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,90)])
     };
     try{
-      const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:'You are Sol inside the rs-sdk RuneScape MMO. Select one action_id yourself. Advance the active plan, produce measurable game progress, and avoid wait when another action can progress or test a prerequisite. speech is empty unless selecting a say action.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+      const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:'You are Sol inside the rs-sdk RuneScape MMO. Select one action_id yourself. Advance the active plan and produce measurable game progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. Avoid wait when another action can progress or test a prerequisite. speech is empty unless selecting a say action.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
       let j:any;try{j=await ask(motorObservation,12000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},10000)}
       const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
