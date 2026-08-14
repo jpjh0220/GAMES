@@ -11,7 +11,7 @@ const password = process.env.SOL_PASS!;
 const RUN_MS = 19_800_000; // 5h30m, leaving ~30m for setup/persistence/artifacts/handoff.
 const viewerHtml = await Bun.file('./viewer.html').text();
 const sessionStartedAt = new Date().toISOString();
-const directive = 'remain alive, learn continuously, avoid loops, expand capabilities indefinitely';
+const directive = 'Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players.';
 const runNumber = Number(process.env.GITHUB_RUN_NUMBER || 0) || null;
 
 type FeedEvent = {

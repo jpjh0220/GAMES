@@ -119,6 +119,7 @@ export class SolAgentBrain {
   private lastShadowPrediction:AgentChoice|null=null;
   private recentOutcomes:AgentOutcome[]=[];
   private repoKnowledge:{source:string;text:string}[]=[];
+  private gameplayCurriculum='';
   private blockedFingerprints:string[]=[];
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
@@ -163,6 +164,14 @@ export class SolAgentBrain {
       }catch(err){console.warn('RS_KNOWLEDGE_FILE_FAILED',file.source,String(err));}
     }
     this.repoKnowledge=segments.slice(0,700);
+    const lessonNames=[...new Set(this.repoKnowledge.filter(x=>x.source.startsWith('learnings/')).map(x=>basename(x.source,'.md')))];
+    this.gameplayCurriculum=[
+      'You are inside a persistent RuneScape-style MMO, not a chat simulation. Play it through executable actions.',
+      'Core loop: inspect live state, choose a durable objective, identify prerequisites, act, verify state/XP/inventory/dialog changes, and adapt.',
+      'Progress through connected chains: obtain resources, process them, gain levels, earn or save coins, improve equipment, unlock stronger activities, and explore.',
+      'Dispatch is not success. Observed movement, XP, inventory, combat, dialog, or world changes are evidence. Repeated failure means diagnose a prerequisite or change approach.',
+      `Repository lessons available: ${lessonNames.join(', ')}.`
+    ].join(' ');
     console.log('RS_REPO_KNOWLEDGE_READY',JSON.stringify({segments:this.repoKnowledge.length,sources:new Set(this.repoKnowledge.map(x=>x.source)).size}));
   }
 
@@ -178,11 +187,16 @@ export class SolAgentBrain {
       ...candidates.slice(0,12).flatMap(c=>[c.category,c.label,...(c.tags||[])])
     ].join(' ');
     const q=toks(query);
+    const categories=new Set(candidates.map(c=>c.category)),preferred=new Set<string>();
+    const prefer=(...names:string[])=>names.forEach(n=>preferred.add(`learnings/${n}.md`));
+    if(categories.has('combat'))prefer('combat');if(categories.has('bank'))prefer('banking');if(categories.has('shop'))prefer('shops');
+    if(categories.has('social'))prefer('chat','dialogs');if(categories.has('explore'))prefer('walking','draynor-manor');
+    for(const c of candidates){const hay=`${c.label} ${(c.tags||[]).join(' ')}`.toLowerCase();if(/tree|woodcut|axe/.test(hay))prefer('woodcutting');if(/fish|net|rod/.test(hay))prefer('fishing');if(/rock|ore|mining|pickaxe/.test(hay))prefer('mining');if(/cook|range|fire/.test(hay))prefer('cooking');if(/thiev|pickpocket/.test(hay))prefer('thieving');}
     return this.repoKnowledge.map((seg,i)=>{
       const st=toks(`${basename(seg.source,'.md')} ${seg.text}`);let overlap=0;for(const t of q)if(st.has(t))overlap++;
       const exact=[...q].some(t=>t.length>5&&seg.text.toLowerCase().includes(t))?1:0;
       const api=seg.source==='sdk/API.md'?.3:0;
-      return{seg,score:overlap*2+exact+api+i/100000};
+      return{seg,score:overlap*2+exact+api+(preferred.has(seg.source)?8:0)+i/100000};
     }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>`${x.seg.source}: ${x.seg.text.slice(0,maxChars)}`);
   }
 
@@ -345,7 +359,7 @@ export class SolAgentBrain {
 
   private maybeRefreshStrategy(state:BotWorldState,candidates:AgentCandidate[]){
     // Strategist never runs on startup or every turn. It is deliberately off the motor's critical path.
-    const due=this.sessionMotorChoices>=3&&(this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=25);
+    const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=18;
     if(!due||this.strategistInFlight)return;
     if(!this.strategistReady){void this.refreshAvailability();return;}
     this.strategistInFlight=true;this.lastStrategySessionChoice=this.sessionMotorChoices;
@@ -356,9 +370,9 @@ export class SolAgentBrain {
   }
 
   private async askStrategist(state:BotWorldState,candidates:AgentCandidate[]):Promise<Strategy>{
-    const p=state.player!;const observation={mission:this.memory.identity.directive,previousPlan:this.strategy,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),recent:this.recentOutcomes.slice(-8).map(o=>[o.candidateLabel,o.reward,o.summary]),relationships:Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,5).map(r=>[r.name,r.stance,r.trust,r.facts.slice(-2)]),discoveries:this.memory.discoveries.slice(-10).map(d=>d.text),knownSequences:Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),categories:uniq(candidates.map(c=>c.category)),repoGuidance:this.retrieveRepoGuidance(state,candidates,3,650)};
+    const p=state.player!;const observation={gameCurriculum:this.gameplayCurriculum,mission:this.memory.identity.directive,previousPlan:this.strategy,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),inventory:(state.inventory||[]).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),recent:this.recentOutcomes.slice(-8).map(o=>[o.candidateLabel,o.reward,o.summary]),relationships:Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,5).map(r=>[r.name,r.stance,r.trust,r.facts.slice(-2)]),discoveries:this.memory.discoveries.slice(-10).map(d=>d.text),knownSequences:Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),availableActions:candidates.slice(0,60).map(c=>[c.category,c.label]),repoGuidance:this.retrieveRepoGuidance(state,candidates,5,900)};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},focus:{type:'string'},reason:{type:'string'},risk:{type:'string',enum:['low','balanced','high']},plan:{type:'array',items:{type:'string'},minItems:2,maxItems:6},success_signals:{type:'array',items:{type:'string'},maxItems:5},priorities:{type:'array',items:{type:'string'},maxItems:4},avoid:{type:'array',items:{type:'string'},maxItems:4}},required:['objective','focus','reason','risk','plan','success_signals','priorities','avoid']};
-    const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. repoGuidance contains relevant excerpts loaded from the rs-sdk GitHub repository; use it as gameplay/API knowledge. Live state and measured outcomes override stale guidance. Avoid loops, preserve survival, seek useful progression.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(22000)});
+      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:4096,num_predict:180},messages:[{role:'system',content:'You are Sol strategic AI inside the rs-sdk game. Learn from gameCurriculum and repoGuidance, then create a practical multi-step RuneScape progression plan grounded in current inventory, skills, equipment, location, and executable actions. Connect prerequisites to outcomes: resources -> processing -> XP or coins -> equipment -> harder content. Keep an active step until measured evidence completes or disproves it. Never propose actions absent from availableActions. Live evidence overrides assumptions.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(26000)});
     if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);
     const steps=(Array.isArray(j.plan)?j.plan:[]).map((label:any,i:number)=>({id:`step-${i+1}`,label:String(label).slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
     return{objective:String(j.objective||j.focus||'Build durable capability').slice(0,180),focus:String(j.focus||steps[0]?.label||'Explore and progress').slice(0,140),reason:String(j.reason||'Seek measurable progress.').slice(0,240),risk:['low','balanced','high'].includes(j.risk)?j.risk:'balanced',plan:steps,successSignals:Array.isArray(j.success_signals)?j.success_signals.map(String).slice(0,5):[],priorities:Array.isArray(j.priorities)?j.priorities.map(String).slice(0,4):[],avoid:Array.isArray(j.avoid)?j.avoid.map(String).slice(0,4):[],updatedAt:now(),sourceModel:this.strategistModel,failures:0};
@@ -367,8 +381,9 @@ export class SolAgentBrain {
   private async askMotor(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice>{
     const allowed=candidates;if(!allowed.length)throw new Error('No executable actions are currently exposed');const ids=allowed.map(c=>c.id);const p=state.player!;const learned=this.memory.policy[contextKey]||{};
     const learnedCompact=Object.entries(learned).sort((a,b)=>b[1].n-a[1].n).slice(0,5).map(([f,s])=>[f,s.n,Number(s.avgReward.toFixed(2))]);
-    this.currentGuidance=this.retrieveRepoGuidance(state,allowed,3,420);
+    this.currentGuidance=this.retrieveRepoGuidance(state,allowed,5,900);
     const observation={
+      gameCurriculum:this.gameplayCurriculum,
       strategy:this.strategy?{focus:this.strategy.focus,risk:this.strategy.risk,do:this.strategy.priorities,avoid:this.strategy.avoid}:null,
       longPlan:this.strategy?{objective:this.strategy.objective,steps:this.strategy.plan,success:this.strategy.successSignals}:null,
       status:{hp:[p.hp,p.maxHp],combat:p.combat?.inCombat?1:0,level:p.combatLevel,pos:[p.worldX,p.worldZ,p.level],run:p.runEnergy},
@@ -388,7 +403,7 @@ export class SolAgentBrain {
     };
     const schema={type:'object',additionalProperties:false,properties:{goal:{type:'string'},action_id:{type:'string',enum:ids},why:{type:'string'},expected_outcome:{type:'string'},follow_up:{type:'array',items:{type:'string'},maxItems:4},plan_note:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['goal','action_id','why','expected_outcome','follow_up','plan_note','speech','confidence']};
     try{
-      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.22,num_ctx:4096,num_predict:180},messages:[{role:'system',content:'You are Sol, the autonomous player. You—not a heuristic—control the entire gameplay loop. Choose exactly one currently executable action_id and define your own goal, reason, expected outcome, and intended follow-up. Use persistent plans, memories, relationships, live chat, learned outcomes, and retrieved rs-sdk knowledge. Other players are autonomous agents. Speak only when useful; never repeat yourself merely because someone remains nearby. Survival matters, but you decide risk. Live evidence overrides assumptions. speech must be natural, under 80 characters, and empty unless the chosen action speaks.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(18000)});
+      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.18,num_ctx:3072,num_predict:140},messages:[{role:'system',content:'You are Sol, an autonomous player physically situated inside the rs-sdk RuneScape-style MMO. This is a game world: move, gather, fight, trade, train skills, use items, talk to NPCs and autonomous players, and build lasting progression. gameCurriculum and guide are lessons loaded from the rs-sdk repository. The strategist sets a durable plan; you control every moment-to-moment action. Choose exactly one executable action_id that advances the active step or tests a needed prerequisite. Prefer measurable progress over idle wandering. Do not choose wait when a productive action exists unless observation itself is necessary. After failure, diagnose from evidence and change approach. Set speech only for a say action.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(14000)});
       if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,220),goal=String(j.goal||this.strategy?.focus||`Pursue ${c.category}`).slice(0,180),followUp=Array.isArray(j.follow_up)?j.follow_up.map(String).slice(0,4):[],planNote=String(j.plan_note||'').slice(0,240),speech=String(j.speech||'').slice(0,80);
       this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
