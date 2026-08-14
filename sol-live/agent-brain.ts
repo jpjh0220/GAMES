@@ -401,13 +401,22 @@ export class SolAgentBrain {
       authority:'You control all gameplay. Choose your own goal and one executable action. Heuristics do not choose for you.',
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,120)])
     };
-    const schema={type:'object',additionalProperties:false,properties:{goal:{type:'string'},action_id:{type:'string',enum:ids},why:{type:'string'},expected_outcome:{type:'string'},follow_up:{type:'array',items:{type:'string'},maxItems:4},plan_note:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['goal','action_id','why','expected_outcome','follow_up','plan_note','speech','confidence']};
+    const schema={type:'object',additionalProperties:false,properties:{action_id:{type:'string',enum:ids},why:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['action_id','why','speech','confidence']};
+    const motorObservation={
+      plan:this.strategy?{objective:this.strategy.objective,active:this.strategy.plan?.find(x=>x.status==='active')?.label||this.strategy.focus}:null,
+      state:observation.status,
+      recent:observation.recent.slice(-3),
+      chat:observation.recentChat.slice(-3),
+      guide:this.currentGuidance.slice(0,2).map(x=>x.slice(0,360)),
+      actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,90)])
+    };
     try{
-      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.18,num_ctx:3072,num_predict:140},messages:[{role:'system',content:'You are Sol, an autonomous player physically situated inside the rs-sdk RuneScape-style MMO. This is a game world: move, gather, fight, trade, train skills, use items, talk to NPCs and autonomous players, and build lasting progression. gameCurriculum and guide are lessons loaded from the rs-sdk repository. The strategist sets a durable plan; you control every moment-to-moment action. Choose exactly one executable action_id that advances the active step or tests a needed prerequisite. Prefer measurable progress over idle wandering. Do not choose wait when a productive action exists unless observation itself is necessary. After failure, diagnose from evidence and change approach. Set speech only for a say action.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(14000)});
-      if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
-      const why=String(j.why||`Selected ${c.label}`).slice(0,220),goal=String(j.goal||this.strategy?.focus||`Pursue ${c.category}`).slice(0,180),followUp=Array.isArray(j.follow_up)?j.follow_up.map(String).slice(0,4):[],planNote=String(j.plan_note||'').slice(0,240),speech=String(j.speech||'').slice(0,80);
+      const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:'You are Sol inside the rs-sdk RuneScape MMO. Select one action_id yourself. Advance the active plan, produce measurable game progress, and avoid wait when another action can progress or test a prerequisite. speech is empty unless selecting a say action.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+      let j:any;try{j=await ask(motorObservation,12000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},10000)}
+      const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
+      const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
       this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
-      return{source:'teacher',goal,reason:why,expectedOutcome:String(j.expected_outcome||`Measure the result of ${c.label}.`).slice(0,220),actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
+      return{source:'teacher',goal,reason:why,expectedOutcome:`Observe whether ${c.label} changes game state.`,actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
     }catch(err){this.motorFailures++;if(this.motorFailures>=3)this.motorReady=false;throw err;}
   }
 
