@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1,
-    "teacherChoices": 1,
+    "totalChoices": 10,
+    "teacherChoices": 10,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1,
-    "totalReward": -0.7,
-    "saves": 1,
+    "completedExperiences": 10,
+    "totalReward": -3.44,
+    "saves": 2,
     "shadowPredictions": 0,
     "shadowMatches": 0,
-    "strategistRefreshes": 0,
+    "strategistRefreshes": 1,
     "strategistFailures": 0
   },
   "memories": [
@@ -40,6 +40,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstgu6oe-f50nz0",
+      "createdAt": "2026-08-14T21:35:16.814Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival. This plan ensures safe fishing location verification, collection of shrimps",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to the draynor fishing area at 3087 3230 and verify arrival",
+        "use bank booth distance 1 to collect shrimps anchovies",
+        "explore north about 5 tiles to confirm safe fishing location and collect additional shrimps anchovies"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -54,15 +74,124 @@
         "exampleGoal": "Progress through world",
         "exampleReason": "Use Bank booth (distance 1) to access resources and improve economy."
       }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:35:31.537Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Click here to continue"
+      },
+      "dialog:1:i d like to access my bank account please": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:35:27.297Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I'd like to access my bank account, please."
+      }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
+      "bank:deposit:coins": {
+        "n": 1,
+        "avgReward": -0.54,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.54,
+        "lastAt": "2026-08-14T21:35:39.026Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Coins"
+      },
+      "bank:deposit:body rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T21:35:45.907Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Body rune"
+      },
+      "bank:deposit:raw anchovies": {
+        "n": 2,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T21:36:05.124Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Raw anchovies"
+      },
+      "bank:withdraw:raw anchovies": {
+        "n": 2,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T21:36:11.998Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Withdraw 1 Raw anchovies"
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:34:52.836Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-14T21:35:58.811Z",
+      "encounters": 9,
       "combatLevel": 54,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "un5wc8p3r": {
+      "name": "Un5wc8p3r",
+      "firstSeenAt": "2026-08-14T21:35:14.455Z",
+      "lastSeenAt": "2026-08-14T21:36:05.411Z",
+      "encounters": 9,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "yr8wc2n6q": {
+      "name": "Yr8wc2n6q",
+      "firstSeenAt": "2026-08-14T21:35:14.455Z",
+      "lastSeenAt": "2026-08-14T21:36:05.411Z",
+      "encounters": 9,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "goo021": {
+      "name": "Goo021",
+      "firstSeenAt": "2026-08-14T21:35:39.315Z",
+      "lastSeenAt": "2026-08-14T21:35:39.315Z",
+      "encounters": 1,
+      "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -77,12 +206,20 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:34:52.836Z",
-      "visits": 1,
-      "npcs": [],
+      "lastSeenAt": "2026-08-14T21:36:05.411Z",
+      "visits": 10,
+      "npcs": [
+        "Banker",
+        "Dark wizard",
+        "Fishing spot",
+        "Jail guard",
+        "Diango",
+        "Aggie",
+        "Ned"
+      ],
       "locs": [
         "Bank booth",
         "Closed bank booth",
@@ -117,7 +254,104 @@
       ]
     }
   },
-  "sequences": {},
+  "sequences": {
+    "loc:use:bank booth > dialog:1:click here to continue > dialog:1:i d like to access my bank account please": {
+      "sequence": [
+        "loc:use:bank booth",
+        "dialog:1:click here to continue",
+        "dialog:1:i d like to access my bank account please"
+      ],
+      "n": 1,
+      "avgReward": -1.9,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:27.297Z",
+      "example": "Use Bank booth (distance 1) → Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please."
+    },
+    "dialog:1:click here to continue > dialog:1:i d like to access my bank account please > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:31.538Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue"
+    },
+    "dialog:1:i d like to access my bank account please > dialog:1:click here to continue > bank:deposit:coins": {
+      "sequence": [
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.74,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:39.026Z",
+      "example": "Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue → Deposit all Coins"
+    },
+    "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:body rune": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "bank:deposit:coins",
+        "bank:deposit:body rune"
+      ],
+      "n": 1,
+      "avgReward": -1.54,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:45.907Z",
+      "example": "Dialog 1: Click here to continue → Deposit all Coins → Deposit all Body rune"
+    },
+    "bank:deposit:coins > bank:deposit:body rune > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:body rune",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.02,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:52.685Z",
+      "example": "Deposit all Coins → Deposit all Body rune → Deposit all Raw anchovies"
+    },
+    "bank:deposit:body rune > bank:deposit:raw anchovies > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:deposit:body rune",
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.4,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:35:58.503Z",
+      "example": "Deposit all Body rune → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:deposit:raw anchovies > bank:withdraw:raw anchovies > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:05.124Z",
+      "example": "Deposit all Raw anchovies → Withdraw 1 Raw anchovies → Deposit all Raw anchovies"
+    },
+    "bank:withdraw:raw anchovies > bank:deposit:raw anchovies > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:36:11.998Z",
+      "example": "Withdraw 1 Raw anchovies → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
+    }
+  },
   "discoveries": [
     {
       "id": "resource:bank booth:193:202:0",
@@ -490,7 +724,126 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "resource:banker:193:202:0",
+      "at": "2026-08-14T21:35:14.455Z",
+      "kind": "resource",
+      "text": "Banker observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:dark wizard:193:202:0",
+      "at": "2026-08-14T21:35:14.455Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:fishing spot:193:202:0",
+      "at": "2026-08-14T21:35:14.455Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "danger:jail guard:193:202:0",
+      "at": "2026-08-14T21:35:14.455Z",
+      "kind": "danger",
+      "text": "Jail guard observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:diango:193:202:0",
+      "at": "2026-08-14T21:35:21.602Z",
+      "kind": "npc",
+      "text": "Diango observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:aggie:193:202:0",
+      "at": "2026-08-14T21:35:21.602Z",
+      "kind": "npc",
+      "text": "Aggie observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:ned:193:202:0",
+      "at": "2026-08-14T21:35:39.315Z",
+      "kind": "npc",
+      "text": "Ned observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T21:35:14.165Z"
+  "updatedAt": "2026-08-14T21:36:11.998Z",
+  "activePlan": {
+    "objective": "Verify safe fishing location and collect shrimps/anchovies",
+    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+    "reason": "This plan ensures safe fishing location verification, collection of shrimps",
+    "risk": "balanced",
+    "plan": [
+      {
+        "id": "step-1",
+        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "status": "active"
+      },
+      {
+        "id": "step-2",
+        "label": "Use Bank booth (distance 1) to collect shrimps/anchovies",
+        "status": "pending"
+      },
+      {
+        "id": "step-3",
+        "label": "Explore north about 5 tiles to confirm safe fishing location and collect additional shrimps/anchovies",
+        "status": "pending"
+      }
+    ],
+    "successSignals": [
+      "Observed position, inventory, XP, combat, or dialog change."
+    ],
+    "priorities": [
+      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+      "Use Bank booth (distance 1) to collect shrimps/anchovies",
+      "Explore north about 5 tiles to confirm safe fishing location and collect additional shrimps/anchovies"
+    ],
+    "avoid": [],
+    "updatedAt": "2026-08-14T21:35:16.814Z",
+    "sourceModel": "qwen3:1.7b",
+    "failures": 0
+  }
 }
