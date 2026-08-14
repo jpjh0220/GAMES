@@ -26,6 +26,7 @@ type FeedEvent = {
   at: string;
 };
 type TrailPoint = { x:number; z:number; level:number; tick:number };
+type OutgoingChat = { id:string; tick:number; at:string; text:string; target:string|null; replyTo:string|null; status:'submitted' };
 
 let tick = 0;
 let actions = 0;
@@ -39,11 +40,16 @@ let currentGoal = 'Initialize persistent agent';
 let currentWhy = 'Load memory, perception, learned policy, and local teacher model.';
 const actionHistory: FeedEvent[] = [];
 const movementTrail: TrailPoint[] = [];
+const outgoingChat: OutgoingChat[] = [];
+const answeredChatIds = new Set<string>();
+let lastPublicSayTick = -9999;
+let lastPublicSayText = '';
 
 const brain = new SolAgentBrain({
   name:username,
   directive,
-  model:process.env.SOL_AGENT_MODEL || 'qwen3:1.7b',
+  motorModel:process.env.SOL_MOTOR_MODEL || process.env.SOL_AGENT_MODEL || 'qwen3:1.7b',
+  strategistModel:process.env.SOL_STRATEGIST_MODEL || process.env.SOL_AGENT_MODEL || 'qwen3:1.7b',
   ollamaUrl:process.env.OLLAMA_URL || 'http://127.0.0.1:11434',
   githubToken:process.env.GH_TOKEN,
   githubRepo:process.env.GITHUB_REPOSITORY,
@@ -66,7 +72,7 @@ const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>=
 let snapshot:any = {
   updatedAt:new Date().toISOString(),online:false,inGame:false,tick:0,revision:0,sessionStartedAt,directive,runNumber,
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
-  combatStyle:null,combatEvents:[],gameMessages:[],recentDialogs:[],prayers:null,
+  combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
   currentAction:null,currentGoal,currentWhy,actions:[],actionCount:0,movementTrail:[],lessons:[],agent:brain.publicState()
 };
@@ -94,6 +100,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     combatStyle:s?.combatStyle??null,
     combatEvents:s?.combatEvents?.slice?.(-100)?.map((e:any)=>({tick:e.tick,observationId:e.observationId,type:e.type,damage:e.damage,sourceType:e.sourceType,sourceIndex:e.sourceIndex,targetType:e.targetType,targetIndex:e.targetIndex}))??[],
     gameMessages:s?.gameMessages?.slice?.(-50)?.map((m:any)=>({type:m.type,text:m.text,sender:m.sender,tick:m.tick,observationId:m.observationId,fromSelf:m.fromSelf}))??[],
+    outgoingChat:outgoingChat.slice(-50),
     recentDialogs:s?.recentDialogs?.slice?.(-20)?.map((d:any)=>({text:d.text,tick:d.tick,observationId:d.observationId,interfaceId:d.interfaceId}))??[],
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
@@ -127,7 +134,7 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   const p=state.player!;
   const out:AgentCandidate[]=[];
   let seq=0;
-  const add=(c:Omit<AgentCandidate,'id'>)=>{ if(out.length<48) out.push({...c,id:`a${seq++}_${slug(c.category)}`}); };
+  const add=(c:Omit<AgentCandidate,'id'>)=>{ if(out.length<96) out.push({...c,id:`a${seq++}_${slug(c.category)}`}); };
 
   add({label:'Wait and observe for a moment',category:'wait',fingerprint:'wait',settleTicks:3,action:{type:'wait',reason:'Observe before acting.'},tags:['observe','patience']});
 
@@ -164,7 +171,12 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
     for(const o of item.optionsWithIndex.filter(o=>/^eat$|^drink$/i.test(o.text)).slice(0,1)) add({label:`${o.text} ${item.name}`,category:'recovery',fingerprint:`inventory:${norm(o.text)}:${norm(item.name)}`,settleTicks:4,action:{type:'useInventoryItem',slot:item.slot,optionIndex:o.opIndex,reason:`Use ${item.name}.`},tags:['recovery',item.name,o.text]});
   }
 
-  if((state.nearbyPlayers?.length||0)>0) add({label:`Speak to nearby agent(s): ${state.nearbyPlayers.slice(0,4).map(x=>x.name).join(', ')}`,category:'say',fingerprint:'social:say',settleTicks:5,action:{type:'say',message:'Hello.',reason:'Communicate with nearby agents.'},tags:['social','agent','communication']});
+  if((state.nearbyPlayers?.length||0)>0){
+    const latestIncoming=[...((state.gameMessages||[]) as any[])].reverse().find(m=>m?.sender&&norm(m.sender)!==norm(username)&&[1,2,3,7].includes(Number(m.type)));
+    const incomingId=latestIncoming?`${latestIncoming.observationId??''}:${latestIncoming.tick??''}:${latestIncoming.sender}:${latestIncoming.text}`:null;
+    const target=latestIncoming?.sender||state.nearbyPlayers[0]?.name||null;
+    add({label:latestIncoming?`Speak publicly; latest message from ${target}: ${String(latestIncoming.text||'').slice(0,90)}`:`Speak publicly to nearby agents: ${state.nearbyPlayers.slice(0,4).map(x=>x.name).join(', ')}`,category:'say',fingerprint:'social:say',settleTicks:5,action:{type:'say',message:'Hello.',reason:'Model chose to communicate.',chatReplyId:incomingId,chatTarget:target},tags:['social','agent','communication']});
+  }
 
   for(const npc of (state.nearbyNpcs||[]).filter(n=>n.reachable!==false).sort((a,b)=>a.distance-b.distance).slice(0,12)){
     for(const o of (npc.optionsWithIndex||[]).slice(0,4)){
@@ -192,7 +204,16 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 
 const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldState)=>{
   const action={...candidate.action,reason:choice.reason};
-  if(action.type==='say') action.message=choice.speech?.trim()||'Hello.';
+  if(action.type==='say'){
+    const proposed=(choice.speech?.trim()||'Hello.').slice(0,80);
+    action.message=norm(proposed)===norm(lastPublicSayText)&&tick-lastPublicSayTick<200?`What are you working on, ${action.chatTarget||'friend'}?`:proposed;
+    lastPublicSayTick=tick;lastPublicSayText=action.message;
+    if(action.chatReplyId)answeredChatIds.add(action.chatReplyId);
+    const chat:OutgoingChat={id:`out-${runNumber||0}-${tick}`,tick,at:new Date().toISOString(),text:action.message,target:action.chatTarget||null,replyTo:action.chatReplyId||null,status:'submitted'};
+    outgoingChat.push(chat);if(outgoingChat.length>80)outgoingChat.shift();
+    void log('OUTGOING_CHAT',chat);
+    delete action.chatReplyId;delete action.chatTarget;
+  }
   const result=executor.execute(action);
   actions++;
   currentGoal=choice.goal;
@@ -288,12 +309,6 @@ client.setOnGameTickCallback(()=>{
     }
 
     if(tick<=3||tick%100===0) void log('OBSERVE',{tick,pos:[state.player.worldX,state.player.worldZ,state.player.level],hp:[state.player.hp,state.player.maxHp],combatLevel:state.player.combatLevel,skills:Object.fromEntries(state.skills.map(s=>[s.name,s.level])),inventory:state.inventory.map(i=>i.name),nearbyAgents:state.nearbyPlayers.map(p=>p.name),agent:brain.publicState()});
-
-    if(runEmergencyReflex(state)){
-      nextDecisionTick=tick+4;
-      refreshSnapshot(state);
-      return;
-    }
 
     if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
     refreshSnapshot(state);

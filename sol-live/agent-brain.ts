@@ -10,6 +10,7 @@ export type AgentCandidate = {
 export type AgentChoice = {
   source:'teacher'|'student'; goal:string; reason:string; expectedOutcome:string;
   actionId:string; speech?:string; confidence:number; contextKey:string; fingerprint:string;
+  followUp?:string[]; planNote?:string;
 };
 
 type PolicyStat = {
@@ -123,6 +124,7 @@ export class SolAgentBrain {
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
   private replay:{tick:number;perception:string;retrieved:string[];prediction:string|null;decision:string|null;action:string|null;outcome:string|null;lesson:string|null}[]=[];
+  private lastAutonomousProposal:{goal:string;action:string;followUp:string[];planNote:string;speech:string;at:string}|null=null;
 
   constructor(private readonly opts:{
     name:string;directive:string;motorModel?:string;strategistModel?:string;model?:string;
@@ -329,7 +331,7 @@ export class SolAgentBrain {
   }
 
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
-    this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    this.observe(state);const legal=candidates;const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
     const choice=await this.askMotor(state,legal,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
@@ -363,7 +365,7 @@ export class SolAgentBrain {
   }
 
   private async askMotor(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice>{
-    const allowed=this.balancedCandidates(candidates);if(!allowed.length)throw new Error('No legal actions for AI motor');const ids=allowed.map(c=>c.id);const p=state.player!;const learned=this.memory.policy[contextKey]||{};
+    const allowed=candidates;if(!allowed.length)throw new Error('No executable actions are currently exposed');const ids=allowed.map(c=>c.id);const p=state.player!;const learned=this.memory.policy[contextKey]||{};
     const learnedCompact=Object.entries(learned).sort((a,b)=>b[1].n-a[1].n).slice(0,5).map(([f,s])=>[f,s.n,Number(s.avgReward.toFixed(2))]);
     this.currentGuidance=this.retrieveRepoGuidance(state,allowed,3,420);
     const observation={
@@ -381,14 +383,16 @@ export class SolAgentBrain {
       successfulSequences:Object.values(this.memory.sequences).filter(s=>s.n>=2&&s.avgReward>0).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),
       learned:learnedCompact,
       student:this.lastShadowPrediction?[this.lastShadowPrediction.actionId,Number(this.lastShadowPrediction.confidence.toFixed(2))]:null,
-      actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,100)])
+      authority:'You control all gameplay. Choose your own goal and one executable action. Heuristics do not choose for you.',
+      actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,120)])
     };
-    const schema={type:'object',additionalProperties:false,properties:{action_id:{type:'string',enum:ids},why:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['action_id','why','speech','confidence']};
+    const schema={type:'object',additionalProperties:false,properties:{goal:{type:'string'},action_id:{type:'string',enum:ids},why:{type:'string'},expected_outcome:{type:'string'},follow_up:{type:'array',items:{type:'string'},maxItems:4},plan_note:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['goal','action_id','why','expected_outcome','follow_up','plan_note','speech','confidence']};
     try{
-      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:1536,num_predict:96},messages:[{role:'system',content:'You are the AI motor playing Sol. Pick exactly one legal action_id. Follow the active long-term plan when possible. guide is retrieved rs-sdk knowledge; live evidence overrides it. Other players are autonomous: read their chat, remember identity and trust, respond when useful, ask concise questions, cooperate or negotiate when beneficial, and distrust suspicious or contradicted claims. Stay active, avoid failed loops. Keep why under 16 words. speech must be natural and under 80 characters, and empty unless the selected action speaks.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(9000)});
+      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.22,num_ctx:4096,num_predict:180},messages:[{role:'system',content:'You are Sol, the autonomous player. You—not a heuristic—control the entire gameplay loop. Choose exactly one currently executable action_id and define your own goal, reason, expected outcome, and intended follow-up. Use persistent plans, memories, relationships, live chat, learned outcomes, and retrieved rs-sdk knowledge. Other players are autonomous agents. Speak only when useful; never repeat yourself merely because someone remains nearby. Survival matters, but you decide risk. Live evidence overrides assumptions. speech must be natural, under 80 characters, and empty unless the chosen action speaks.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(18000)});
       if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
-      const why=String(j.why||`Selected ${c.label}`).slice(0,160);const focus=this.strategy?.focus||`Pursue ${c.category}`;
-      return{source:'teacher',goal:focus,reason:why,expectedOutcome:`Measure the result of ${c.label}.`.slice(0,180),actionId:c.id,speech:String(j.speech||'').slice(0,80),confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint};
+      const why=String(j.why||`Selected ${c.label}`).slice(0,220),goal=String(j.goal||this.strategy?.focus||`Pursue ${c.category}`).slice(0,180),followUp=Array.isArray(j.follow_up)?j.follow_up.map(String).slice(0,4):[],planNote=String(j.plan_note||'').slice(0,240),speech=String(j.speech||'').slice(0,80);
+      this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
+      return{source:'teacher',goal,reason:why,expectedOutcome:String(j.expected_outcome||`Measure the result of ${c.label}.`).slice(0,220),actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
     }catch(err){this.motorFailures++;if(this.motorFailures>=3)this.motorReady=false;throw err;}
   }
 
@@ -438,6 +442,6 @@ export class SolAgentBrain {
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
     const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
-    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
+    return{architecture:'model-sovereign-gameplay-with-execution-validation',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:[],shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }
