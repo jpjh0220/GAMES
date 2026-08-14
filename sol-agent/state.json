@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 561,
-    "teacherChoices": 561,
+    "totalChoices": 571,
+    "teacherChoices": 571,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 560,
-    "totalReward": -178.35,
-    "saves": 83,
-    "shadowPredictions": 235,
-    "shadowMatches": 10,
-    "strategistRefreshes": 14,
+    "completedExperiences": 570,
+    "totalReward": -178.5,
+    "saves": 84,
+    "shadowPredictions": 240,
+    "shadowMatches": 14,
+    "strategistRefreshes": 15,
     "strategistFailures": 147
   },
   "memories": [
@@ -2257,6 +2257,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "msstl5x7-lj86fw",
+      "createdAt": "2026-08-14T10:44:24.763Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access deposit functionality. This objective aligns with the guide provided and uses a named repository-tested escape or travel skill (bank) when available. Each step provides observable evidence and follows the listed actions.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access deposit functionality",
+        "deposit all coins using the bank s deposit feature",
+        "verify that all coins have been successfully deposited into the bank account"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -3746,13 +3766,13 @@
         "exampleReason": "Deposit all Coins"
       },
       "wait": {
-        "n": 5,
+        "n": 6,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T10:44:02.249Z",
-        "exampleGoal": "Open the bank to access deposit functionality.",
+        "lastAt": "2026-08-14T10:45:05.535Z",
+        "exampleGoal": "Open the bank to access deposit functionality",
         "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:body rune": {
@@ -3972,23 +3992,23 @@
         "exampleReason": "I'm opening the bank to deposit items."
       },
       "bank:withdraw:coins": {
-        "n": 7,
+        "n": 14,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:43:56.512Z",
-        "exampleGoal": "Open the bank to access deposit functionality.",
-        "exampleReason": "a2_bank"
+        "lastAt": "2026-08-14T10:45:11.837Z",
+        "exampleGoal": "Open the bank to access deposit functionality",
+        "exampleReason": "Opening the bank to access deposit functionality"
       },
       "bank:deposit:coins": {
-        "n": 3,
-        "avgReward": -0.1333,
+        "n": 5,
+        "avgReward": -0.22,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.2,
-        "lastAt": "2026-08-14T10:43:30.419Z",
-        "exampleGoal": "Open the bank to access deposit functionality.",
+        "lastAt": "2026-08-14T10:44:46.370Z",
+        "exampleGoal": "Open the bank to access deposit functionality",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:bronze sq shield": {
@@ -5009,8 +5029,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:43:56.819Z",
-      "visits": 65,
+      "lastSeenAt": "2026-08-14T10:45:05.844Z",
+      "visits": 75,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5019,7 +5039,8 @@
         "Ned",
         "Jail guard",
         "Fishing spot",
-        "Rat"
+        "Rat",
+        "Black Knight"
       ],
       "locs": [
         "Closed bank booth",
@@ -5055,7 +5076,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:44:02.249Z",
+  "updatedAt": "2026-08-14T10:45:11.837Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7667,10 +7688,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 3,
-      "avgReward": -0.067,
+      "n": 5,
+      "avgReward": -0.1,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:30.419Z",
+      "lastAt": "2026-08-14T10:44:46.370Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -7895,10 +7916,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 3,
-      "avgReward": -0.033,
+      "n": 5,
+      "avgReward": -0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:37.339Z",
+      "lastAt": "2026-08-14T10:44:52.948Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -7955,10 +7976,10 @@
         "wait",
         "bank:withdraw:coins"
       ],
-      "n": 2,
+      "n": 4,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:56.512Z",
+      "lastAt": "2026-08-14T10:45:11.837Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     },
     "wait > bank:withdraw:coins > bank:withdraw:coins": {
@@ -7967,10 +7988,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:04.912Z",
+      "lastAt": "2026-08-14T10:44:16.372Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:coins": {
@@ -7979,10 +8000,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 2,
-      "avgReward": -0.1,
+      "n": 4,
+      "avgReward": -0.125,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:43.653Z",
+      "lastAt": "2026-08-14T10:44:59.238Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > wait": {
@@ -7991,26 +8012,14 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:43:49.907Z",
+      "lastAt": "2026-08-14T10:45:05.535Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Wait and observe for a moment"
     }
   },
   "discoveries": [
-    {
-      "id": "place:piano stool:194:210:0",
-      "at": "2026-08-14T10:00:08.540Z",
-      "kind": "place",
-      "text": "Piano stool observed near 3107, 3366, level 0.",
-      "location": {
-        "x": 3107,
-        "z": 3366,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:bookcase:194:210:0",
       "at": "2026-08-14T10:00:08.540Z",
@@ -11598,44 +11607,56 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:black knight:193:202:0",
+      "at": "2026-08-14T10:44:25.952Z",
+      "kind": "npc",
+      "text": "Black Knight observed near 3092, 3245, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
-    "objective": "Deposit all items in the bank to maximize resources for travel or escape.",
-    "focus": "Open the bank to access deposit functionality.",
-    "reason": "This approach ensures efficient resource management and prepares for travel or escape by maximizing available items in the bank.",
+    "objective": "Deposit all Coins in the bank",
+    "focus": "Open the bank to access deposit functionality",
+    "reason": "This objective aligns with the guide provided and uses a named repository-tested escape or travel skill (bank) when available. Each step provides observable evidence and follows the listed actions.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access deposit functionality.",
+        "label": "Open the bank to access deposit functionality",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all available items using the bank's slot system.",
+        "label": "Deposit all Coins using the bank's deposit feature",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all items have been successfully deposited and the bank is updated accordingly.",
+        "label": "Verify that all Coins have been successfully deposited into the bank account",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully updated with all items deposited."
+      "Bank opened successfully, Coins deposited"
     ],
     "priorities": [
-      "Open the bank to access deposit functionality.",
-      "Deposit all available items using the bank's slot system.",
-      "Verify that all items have been successfully deposited and the bank is updated accordingly."
+      "Open the bank to access deposit functionality",
+      "Deposit all Coins using the bank's deposit feature",
+      "Verify that all Coins have been successfully deposited into the bank account"
     ],
     "avoid": [
-      "Deposit all Raw bear meat",
       "Deposit all Coins",
-      "Deposit all Bronze sq shield"
+      "Wait and observe for a moment",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-14T10:42:14.240Z",
+    "updatedAt": "2026-08-14T10:44:24.763Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
