@@ -6,87 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2001,
-    "teacherChoices": 2001,
+    "totalChoices": 2011,
+    "teacherChoices": 2011,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2000,
-    "totalReward": 500.17,
-    "saves": 227,
-    "shadowPredictions": 978,
-    "shadowMatches": 400,
-    "strategistRefreshes": 91,
+    "completedExperiences": 2010,
+    "totalReward": 497.62,
+    "saves": 228,
+    "shadowPredictions": 979,
+    "shadowMatches": 401,
+    "strategistRefreshes": 92,
     "strategistFailures": 149
   },
   "memories": [
-    {
-      "id": "mssyubv5-hupyrk",
-      "createdAt": "2026-08-14T13:11:30.449Z",
-      "tick": 32549,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3237 → 3092,3243; new: npc:Aggie, npc:Ned, npc:Jail guard, loc:Oak, loc:Bench, loc:Shelves. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc aggie",
-        "npc ned",
-        "npc jail guard",
-        "loc oak",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mssyubv6-mhrjzh",
-      "createdAt": "2026-08-14T13:11:30.450Z",
-      "tick": 32549,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 2.52.",
-      "importance": 3.52,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mssyut7j-gyrdqp",
-      "createdAt": "2026-08-14T13:11:52.927Z",
-      "tick": 32624,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +933 XP; moved 3092,3243 → 3084,3236. Reward 4.08.",
-      "importance": 2.74,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
     {
       "id": "mssyut7k-9mbj4n",
       "createdAt": "2026-08-14T13:11:52.928Z",
@@ -8640,6 +8572,62 @@
         "z": 3251,
         "level": 0
       }
+    },
+    {
+      "id": "mst3kvzm-vfhwoh",
+      "createdAt": "2026-08-14T15:24:08.050Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Sell 1 Raw anchovies for about 7 GP at the general store.. This plan leverages the shop's overstocked status and alternative income methods to maximize profit while",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "sell 1 raw anchovies for about 7 gp at the general store",
+        "explore specialized shops like the tanner or leather worker to sell cow hides for 100 gp",
+        "use mining or fishing to generate additional income and ensure inventory is optimized for trade"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst3kw4g-o0f1zv",
+      "createdAt": "2026-08-14T15:24:08.224Z",
+      "tick": 59075,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Close the shop. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "modal",
+        "shop"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst3kw4g-hclq4q",
+      "createdAt": "2026-08-14T15:24:08.224Z",
+      "tick": 59075,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Close the shop worked across 4 similar samples with average reward 1.65.",
+      "importance": 2.65,
+      "tags": [
+        "modal",
+        "modal close shop"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12725,23 +12713,23 @@
         "exampleReason": "Close the shop"
       },
       "shop:sell:raw anchovies": {
-        "n": 2,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:00:45.745Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "lastAt": "2026-08-14T15:24:01.058Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
       "shop:buy:toy horsey": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:00:52.060Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "lastAt": "2026-08-14T15:23:52.643Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "Buy 1 Toy horsey for about 150"
       },
       "shop:sell:coins": {
@@ -12769,23 +12757,23 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:00:21.720Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "lastAt": "2026-08-14T15:23:34.022Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:00:16.310Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "lastAt": "2026-08-14T15:23:23.221Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "Dialog 1: Toy horseys?"
       }
     },
@@ -12823,26 +12811,26 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 3,
-        "avgReward": 1.4,
-        "positive": 2,
+        "n": 4,
+        "avgReward": 1.65,
+        "positive": 3,
         "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:01:36.115Z",
-        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T15:24:08.224Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "Close the shop"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
       "npc:talk to:diango": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T13:00:04.058Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "exampleReason": "Talk-to Diango (level 0, distance 1) to initiate the trade"
+        "lastAt": "2026-08-14T15:24:23.819Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to exchange some anchovies for the general store."
       },
       "npc:trade:diango": {
         "n": 2,
@@ -12865,6 +12853,16 @@
         "lastAt": "2026-08-14T13:00:28.050Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
+      },
+      "shop:buy:toy horsey": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:23:40.617Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -13950,6 +13948,30 @@
         "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "I need to talk to Diango (level 0, distance 4) to proceed with the mission."
       }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:23:17.232Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
+        "exampleReason": "Click here to continue"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T15:23:28.613Z",
+        "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
+        "exampleReason": "Observing for a moment to prepare for the next step."
+      }
     }
   },
   "relationships": {
@@ -14255,8 +14277,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T15:05:44.555Z",
-      "encounters": 74,
+      "lastSeenAt": "2026-08-14T15:23:34.332Z",
+      "encounters": 77,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -14493,8 +14515,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T15:22:58.945Z",
-      "encounters": 104,
+      "lastSeenAt": "2026-08-14T15:23:28.921Z",
+      "encounters": 107,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -15536,12 +15558,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3084,
-      "z": 3248,
+      "x": 3081,
+      "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T15:22:58.945Z",
-      "visits": 78,
+      "lastSeenAt": "2026-08-14T15:24:08.555Z",
+      "visits": 88,
       "npcs": [
         "Banker",
         "Diango",
@@ -15769,7 +15791,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T15:23:10.950Z",
+  "updatedAt": "2026-08-14T15:24:23.820Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -20961,10 +20983,10 @@
         "npc:talk to:diango",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": -1.12,
-      "positive": 0,
-      "lastAt": "2026-08-14T12:35:54.715Z",
+      "n": 2,
+      "avgReward": 0.38,
+      "positive": 1,
+      "lastAt": "2026-08-14T15:23:17.233Z",
       "example": "Talk-to Diango (level 0, distance 9) → Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue"
     },
     "npc:talk to:diango > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -20973,10 +20995,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 5,
-      "avgReward": -1.778,
-      "positive": 0,
-      "lastAt": "2026-08-14T13:00:16.310Z",
+      "n": 6,
+      "avgReward": -1.282,
+      "positive": 1,
+      "lastAt": "2026-08-14T15:23:23.221Z",
       "example": "Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
@@ -21105,10 +21127,10 @@
         "modal:close-shop",
         "npc:talk to:diango"
       ],
-      "n": 1,
-      "avgReward": -1.8,
-      "positive": 0,
-      "lastAt": "2026-08-14T12:37:19.649Z",
+      "n": 2,
+      "avgReward": -0.3,
+      "positive": 1,
+      "lastAt": "2026-08-14T15:24:23.819Z",
       "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Talk-to Diango (level 0, distance 1)"
     },
     "modal:close-shop > npc:talk to:diango > dialog:1:click here to continue": {
@@ -22802,33 +22824,93 @@
       "positive": 1,
       "lastAt": "2026-08-14T15:23:10.950Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Diango (level 0, distance 12) → Talk-to Diango (level 0, distance 4)"
+    },
+    "dialog:1:click here to continue > dialog:1:toy horseys > wait": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:toy horseys",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:23:28.613Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
+    },
+    "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:toy horseys",
+        "wait",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:23:34.022Z",
+      "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
+    },
+    "wait > dialog:1:click here to continue > shop:buy:toy horsey": {
+      "sequence": [
+        "wait",
+        "dialog:1:click here to continue",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:23:40.617Z",
+      "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
+    },
+    "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:raw anchovies": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "shop:buy:toy horsey",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:23:46.661Z",
+      "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
+    },
+    "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:23:52.643Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
+    },
+    "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:raw anchovies": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:24:01.058Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
+    },
+    "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:raw anchovies",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T15:24:08.224Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Close the shop"
     }
   },
   "discoveries": [
-    {
-      "id": "place:table:192:202:0",
-      "at": "2026-08-14T13:37:34.056Z",
-      "kind": "place",
-      "text": "Table observed near 3086, 3238, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:192:202:0",
-      "at": "2026-08-14T13:37:34.056Z",
-      "kind": "place",
-      "text": "Daisies observed near 3086, 3238, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:plant:192:202:0",
       "at": "2026-08-14T13:37:34.056Z",
@@ -26404,46 +26486,69 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "place:oak:192:203:0",
+      "at": "2026-08-14T15:23:11.223Z",
+      "kind": "place",
+      "text": "Oak observed near 3081, 3251, level 0.",
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:warehouse shelves:192:203:0",
+      "at": "2026-08-14T15:23:11.223Z",
+      "kind": "place",
+      "text": "Warehouse shelves observed near 3081, 3251, level 0.",
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
-    "objective": "Talk to the Jail guard to proceed with the mission.",
-    "focus": "Use `talkTo` to interact with the Jail guard NPC.",
-    "reason": "This approach uses a named repository-tested escape skill (`talkTo`) and ensures observable evidence through failed list checks and dialog completion.",
+    "objective": "Maximize profit by selling anchovies at the general store and exploring alternative income sources.",
+    "focus": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+    "reason": "This plan leverages the shop's overstocked status and alternative income methods to maximize profit while",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `talkTo` to interact with the Jail guard NPC.",
+        "label": "Sell 1 Raw anchovies for about 7 GP at the general store.",
         "status": "done",
-        "evidence": "moved 3086,3231 → 3092,3243; new: npc:Diango, npc:Jail guard, npc:Aggie, npc:Ned, loc:Crate, loc:Staircase"
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
-        "label": "Confirm the dialog is open by checking the failed list.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Explore specialized shops like the Tanner or Leather Worker to sell cow hides for ~100 GP.",
+        "status": "active"
       },
       {
         "id": "step-3",
-        "label": "Complete the dialog by clicking 'Click here to continue' in the failed list.",
-        "status": "active"
+        "label": "Use mining or fishing to generate additional income and ensure inventory is optimized for trade.",
+        "status": "pending"
       }
     ],
     "successSignals": [
-      "Successfully interacted with the Jail"
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use `talkTo` to interact with the Jail guard NPC.",
-      "Confirm the dialog is open by checking the failed list.",
-      "Complete the dialog by clicking 'Click here to continue' in the failed list."
+      "Sell 1 Raw anchovies for about 7 GP at the general store.",
+      "Explore specialized shops like the Tanner or Leather Worker to sell cow hides for ~100 GP.",
+      "Use mining or fishing to generate additional income and ensure inventory is optimized for trade."
     ],
     "avoid": [
-      "Talk-to Jail guard (level 26, distance 1)",
-      "Dialog 1: Click here to continue",
-      "Bait Fishing spot (level 0, distance 1)"
+      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Raw anchovies for about 7",
+      "Buy 1 Toy horsey for about 150"
     ],
-    "updatedAt": "2026-08-14T15:20:29.316Z",
+    "updatedAt": "2026-08-14T15:24:08.050Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
