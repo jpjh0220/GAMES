@@ -14,29 +14,10 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
-      - name: Select low-tier tool-calling model
-        id: model
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          CATALOG=$(curl --fail -sS \
-            -H 'Accept: application/vnd.github+json' \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H 'X-GitHub-Api-Version: 2026-03-10' \
-            https://models.github.ai/catalog/models)
-          MODEL=$(printf '%s' "$CATALOG" | jq -r '[.[] | select(.rate_limit_tier == "low") | select((.capabilities // []) | index("tool-calling"))][0].id // empty')
-          if [ -z "$MODEL" ]; then
-            MODEL='openai/gpt-4o-mini'
-          fi
-          echo "model=$MODEL" >> "$GITHUB_OUTPUT"
-          echo "Selected model: $MODEL"
-
       - name: Verify structured agent decision
         env:
           GH_TOKEN: ${{ github.token }}
-          MODEL: ${{ steps.model.outputs.model }}
+          MODEL: openai/gpt-4o
         shell: bash
         run: |
           set -euo pipefail
@@ -67,7 +48,7 @@ jobs:
             }],
             tool_choice:"required"
           }')
-          RESPONSE=$(curl --fail -sS \
+          RESPONSE=$(curl --fail-with-body -sS \
             -H 'Accept: application/vnd.github+json' \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H 'X-GitHub-Api-Version: 2026-03-10' \
