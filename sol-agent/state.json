@@ -6,87 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3031,
-    "teacherChoices": 3031,
+    "totalChoices": 3041,
+    "teacherChoices": 3041,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 3030,
-    "totalReward": 1334.62,
-    "saves": 331,
-    "shadowPredictions": 1511,
+    "completedExperiences": 3040,
+    "totalReward": 1331.76,
+    "saves": 332,
+    "shadowPredictions": 1515,
     "shadowMatches": 645,
     "strategistRefreshes": 147,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst7ivo7-dnw2jn",
-      "createdAt": "2026-08-14T17:14:32.791Z",
-      "tick": 14622,
-      "runNumber": 36,
-      "kind": "episode",
-      "text": "AI motor: Net Fishing spot (level 0, distance 8). Result: +1 level(s); moved 3086,3238 → 3086,3230. Reward 3.08.",
-      "importance": 2.24,
-      "tags": [
-        "npc",
-        "fishing spot",
-        "net",
-        "level 0",
-        "npc black knight",
-        "loc thistle"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst7jcch-ufbu8f",
-      "createdAt": "2026-08-14T17:14:54.401Z",
-      "tick": 14694,
-      "runNumber": 36,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3230 → 3092,3243; new: npc:Diango, npc:Ned, npc:Jail guard, loc:Crate, loc:Staircase, loc:Oak. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc diango",
-        "npc ned",
-        "npc jail guard",
-        "loc crate",
-        "loc staircase",
-        "loc oak",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst7jcch-sm4aqe",
-      "createdAt": "2026-08-14T17:14:54.401Z",
-      "tick": 14694,
-      "runNumber": 36,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 19 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mst7k5il-teg87j",
       "createdAt": "2026-08-14T17:15:32.205Z",
@@ -8393,6 +8325,66 @@
         "z": 3238,
         "level": 0
       }
+    },
+    {
+      "id": "mstbw79n-e728h5",
+      "createdAt": "2026-08-14T19:16:52.811Z",
+      "tick": 39088,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Explore north about 5 tiles. Result: moved 3086,3230 → 3085,3234; new: npc:Diango, npc:Black Knight, loc:Market stall. Reward 0.85.",
+      "importance": 1.13,
+      "tags": [
+        "explore",
+        "north",
+        "npc diango",
+        "npc black knight",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3234,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstbw79n-u5ze85",
+      "createdAt": "2026-08-14T19:16:52.811Z",
+      "tick": 39088,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Explore north about 5 tiles worked across 4 similar samples with average reward 0.60.",
+      "importance": 1.6,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3234,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstbwzym-o74t5x",
+      "createdAt": "2026-08-14T19:17:29.998Z",
+      "tick": 39212,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: moved 3087,3228 → 3087,3227; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "net",
+        "level 0",
+        "npc black knight"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10522,24 +10514,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,wait,world": {
       "walk:north": {
-        "n": 3,
-        "avgReward": 0.5167,
-        "positive": 3,
+        "n": 4,
+        "avgReward": 0.6,
+        "positive": 4,
         "negative": 0,
-        "lastReward": 0.65,
-        "lastAt": "2026-08-14T16:08:19.890Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "I'm exploring north about 5 tiles to locate the Net Fishing spot (level 0, distance 8)."
+        "lastReward": 0.85,
+        "lastAt": "2026-08-14T19:16:52.811Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I'm exploring north about 5 tiles to locate the Net Fishing spot (level 0, distance 6)."
       },
       "npc:net:fishing spot": {
-        "n": 21,
-        "avgReward": -0.9852,
+        "n": 22,
+        "avgReward": -0.9936,
         "positive": 0,
-        "negative": 21,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:04:08.687Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I need to explore the fishing area to gather resources."
+        "negative": 22,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T19:17:29.998Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I need to explore the net fishing spot (level 0, distance 1) to gather more fish and shrimps."
       },
       "skill:travel:draynor-bank": {
         "n": 11,
@@ -10966,14 +10958,14 @@
         "exampleReason": "Use Bank booth (distance 8) to verify the fishing location."
       },
       "npc:net:fishing spot": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T16:08:32.194Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "I need to locate the net fishing spot in Draynor Village to obtain the 10 Earth rune. The current position is at (3087, 3235), which is 8 units away from the bait spot. I will proc"
+        "lastAt": "2026-08-14T19:17:05.983Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I need to bait the Net Fishing spot (level 0, distance 6) to collect shrimps/anchovies."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -11264,13 +11256,13 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 134,
-        "avgReward": -0.3536,
+        "n": 137,
+        "avgReward": -0.359,
         "positive": 10,
-        "negative": 124,
+        "negative": 127,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:07:41.375Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-14T19:17:18.892Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
@@ -11374,14 +11366,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 33,
+        "n": 34,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T18:45:20.379Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I am waiting for the fishing spot to be revealed. I will observe for a moment to ensure I have the correct location."
+        "lastAt": "2026-08-14T19:17:36.288Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "You need to wait for the fisherman's errand to complete before proceeding. The current state shows that the net fishing spot (level 0, distance 1) has been moved, which may affect "
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,wait,world": {
@@ -11604,14 +11596,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 31,
+        "n": 32,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T19:07:36.024Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Observing the environment for safe fishing spots"
+        "lastAt": "2026-08-14T19:17:12.937Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "Observing the environment for potential safe fishing spots"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
@@ -12248,14 +12240,14 @@
         "exampleReason": "I have collected Bones (distance 7) and 36 Earth rune (distance 7) from the Draynor village. This is a significant step towards gathering resources for further exploration."
       },
       "npc:bait:fishing spot": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T18:37:52.775Z",
+        "lastAt": "2026-08-14T19:16:24.297Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "exampleReason": "Bait Fishing spot (level 0, distance 1) - Safe fishing spot in Draynor Village"
+        "exampleReason": "I need to locate the Net Fishing spot in Draynor Village to progress with level 1 fishing."
       },
       "skill:travel:draynor-bank": {
         "n": 2,
@@ -12608,6 +12600,16 @@
         "lastAt": "2026-08-14T16:20:14.787Z",
         "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
         "exampleReason": "I need to talk to Diango to get more information from Henryatkins. I can't do that right now, so I'll wait for the NPC to respond."
+      },
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T19:16:05.092Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I have located the Net Fishing spot (level 0, distance 8) at Draynor Bank, which is the main fishing area for level 1 fishing. This action is the most productive and will allow me "
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -15801,8 +15803,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T19:03:19.793Z",
-      "encounters": 352,
+      "lastSeenAt": "2026-08-14T19:16:53.099Z",
+      "encounters": 355,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -15902,8 +15904,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T19:03:02.707Z",
-      "encounters": 310,
+      "lastSeenAt": "2026-08-14T19:15:42.890Z",
+      "encounters": 311,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -16550,8 +16552,8 @@
     "freshbot1": {
       "name": "Freshbot1",
       "firstSeenAt": "2026-08-14T18:52:55.808Z",
-      "lastSeenAt": "2026-08-14T19:15:30.311Z",
-      "encounters": 81,
+      "lastSeenAt": "2026-08-14T19:17:19.201Z",
+      "encounters": 91,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -17083,12 +17085,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3084,
-      "z": 3236,
+      "x": 3085,
+      "z": 3234,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:32:08.824Z",
-      "lastSeenAt": "2026-08-14T19:15:30.311Z",
-      "visits": 585,
+      "lastSeenAt": "2026-08-14T19:16:53.099Z",
+      "visits": 587,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -17146,11 +17148,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3087,
-      "z": 3230,
+      "z": 3227,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T19:09:14.077Z",
-      "visits": 896,
+      "lastSeenAt": "2026-08-14T19:17:30.307Z",
+      "visits": 905,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -17456,7 +17458,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T19:15:42.594Z",
+  "updatedAt": "2026-08-14T19:17:36.288Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21784,10 +21786,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 21,
-      "avgReward": 4,
-      "positive": 17,
-      "lastAt": "2026-08-14T18:45:02.111Z",
+      "n": 22,
+      "avgReward": 3.966,
+      "positive": 18,
+      "lastAt": "2026-08-14T19:16:11.988Z",
       "example": "Attack Dark wizard (level 7, distance 2) → Net Fishing spot (level 0, distance 8) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > loc:chop down:willow": {
@@ -21868,10 +21870,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 82,
-      "avgReward": -0.978,
+      "n": 83,
+      "avgReward": -0.974,
       "positive": 9,
-      "lastAt": "2026-08-14T19:07:41.375Z",
+      "lastAt": "2026-08-14T19:17:18.892Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -21928,10 +21930,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 69,
-      "avgReward": -1.068,
+      "n": 70,
+      "avgReward": -1.08,
       "positive": 7,
-      "lastAt": "2026-08-14T19:07:51.891Z",
+      "lastAt": "2026-08-14T19:17:29.999Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -22000,10 +22002,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 25,
-      "avgReward": -1.33,
+      "n": 26,
+      "avgReward": -1.322,
       "positive": 4,
-      "lastAt": "2026-08-14T19:06:45.900Z",
+      "lastAt": "2026-08-14T19:16:24.297Z",
       "example": "Net Fishing spot (level 0, distance 2) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -22012,10 +22014,10 @@
         "npc:bait:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 28,
-      "avgReward": -0.763,
+      "n": 29,
+      "avgReward": -0.799,
       "positive": 7,
-      "lastAt": "2026-08-14T19:06:51.597Z",
+      "lastAt": "2026-08-14T19:16:30.004Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > social:say": {
@@ -22060,10 +22062,10 @@
         "npc:attack:dark wizard",
         "npc:net:fishing spot"
       ],
-      "n": 13,
-      "avgReward": 7.607,
-      "positive": 13,
-      "lastAt": "2026-08-14T18:34:08.402Z",
+      "n": 14,
+      "avgReward": 7.67,
+      "positive": 14,
+      "lastAt": "2026-08-14T19:16:05.092Z",
       "example": "Attack Dark wizard (level 7, distance 4) → Attack Dark wizard (level 7, distance 2) → Net Fishing spot (level 0, distance 7)"
     },
     "npc:attack:dark wizard > npc:net:fishing spot > wait": {
@@ -22084,10 +22086,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 69,
-      "avgReward": -1.345,
+      "n": 70,
+      "avgReward": -1.353,
       "positive": 1,
-      "lastAt": "2026-08-14T18:58:50.990Z",
+      "lastAt": "2026-08-14T19:17:36.288Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -24940,10 +24942,10 @@
         "walk:north",
         "npc:net:fishing spot"
       ],
-      "n": 1,
-      "avgReward": 0.13,
+      "n": 2,
+      "avgReward": 0.23,
       "positive": 0,
-      "lastAt": "2026-08-14T16:08:32.194Z",
+      "lastAt": "2026-08-14T19:17:05.983Z",
       "example": "Dialog 1: Click here to continue → Explore north about 5 tiles → Net Fishing spot (level 0, distance 7)"
     },
     "walk:north > npc:net:fishing spot > wait": {
@@ -24952,10 +24954,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 1,
-      "avgReward": 0.58,
-      "positive": 1,
-      "lastAt": "2026-08-14T16:08:38.197Z",
+      "n": 2,
+      "avgReward": 0.68,
+      "positive": 2,
+      "lastAt": "2026-08-14T19:17:12.937Z",
       "example": "Explore north about 5 tiles → Net Fishing spot (level 0, distance 7) → Wait and observe for a moment"
     },
     "shop:sell:raw anchovies > modal:close-shop > npc:attack:dark wizard": {
@@ -25833,69 +25835,21 @@
       "positive": 1,
       "lastAt": "2026-08-14T19:14:00.279Z",
       "example": "Chop down Willow (distance 1) → Attack Dark wizard (level 7, distance 1) → Chop down Willow (distance 1)"
+    },
+    "npc:bait:fishing spot > dialog:1:click here to continue > walk:north": {
+      "sequence": [
+        "npc:bait:fishing spot",
+        "dialog:1:click here to continue",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -0.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:16:52.811Z",
+      "example": "Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Explore north about 5 tiles"
     }
   },
   "discoveries": [
-    {
-      "id": "route:3085:3239:3087:3237:0",
-      "at": "2026-08-14T17:01:03.391Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3239 → 3087,3237; +530 XP; 4 damage dealt; 3 damage taken; moved 3085,3239 → 3087,3237; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3087:3237:3084:3236:0",
-      "at": "2026-08-14T17:01:44.227Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3237 → 3084,3236; +1595 XP; 4 damage dealt; moved 3087,3237 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3086:3231:3092:3243:0",
-      "at": "2026-08-14T17:03:49.298Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3231 → 3092,3243; moved 3086,3231 → 3092,3243; new: agent:Goo020, npc:Jail guard, npc:Aggie, npc:Ned, npc:Diango, loc:Crate",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3084:3236:0",
-      "at": "2026-08-14T17:04:34.890Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3084,3236; +132 XP; moved 3092,3243 → 3084,3236",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3084:3239:3081:3248:0",
-      "at": "2026-08-14T17:05:55.596Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3239 → 3081,3248; moved 3084,3239 → 3081,3248",
-      "location": {
-        "x": 3081,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
     {
       "id": "route:3086:3231:3084:3236:0",
       "at": "2026-08-14T17:08:51.089Z",
@@ -29447,6 +29401,54 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3238:3086:3230:0",
+      "at": "2026-08-14T19:16:05.092Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3238 → 3086,3230; moved 3087,3238 → 3086,3230",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3086:3230:3085:3234:0",
+      "at": "2026-08-14T19:16:52.811Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3230 → 3085,3234; moved 3086,3230 → 3085,3234; new: npc:Diango, npc:Black Knight, loc:Market stall",
+      "location": {
+        "x": 3085,
+        "z": 3234,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3085:3234:3087:3228:0",
+      "at": "2026-08-14T19:17:05.983Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3234 → 3087,3228; moved 3085,3234 → 3087,3228",
+      "location": {
+        "x": 3087,
+        "z": 3228,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3087:3228:3087:3227:0",
+      "at": "2026-08-14T19:17:29.999Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3228 → 3087,3227; moved 3087,3228 → 3087,3227; execution rejected or failed",
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
@@ -29464,12 +29466,13 @@
       {
         "id": "step-2",
         "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 6).",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3086,3230 → 3085,3234; new: npc:Diango, npc:Black Knight, loc:Market stall"
       },
       {
         "id": "step-3",
         "label": "Bait the Net Fishing spot (level 0, distance 6) to collect shrimps/anchovies.",
-        "status": "pending"
+        "status": "active"
       }
     ],
     "successSignals": [
@@ -29487,6 +29490,6 @@
     ],
     "updatedAt": "2026-08-14T19:15:32.921Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
