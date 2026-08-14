@@ -1,4 +1,4 @@
-name: Patch Sol Agent Syntax
+name: Patch Sol Agent Persistence
 
 on:
   push:
@@ -14,15 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Fix reflex ternary
+      - name: Isolate memory branch and guard learned speech
         run: |
-          python -c "from pathlib import Path; p=Path('sol-live/sol-live.ts'); s=p.read_text(); s=s.replace('p.combat.inCombat?.45:.32','p.combat.inCombat ? .45 : .32'); p.write_text(s)"
-          grep -Fq 'p.combat.inCombat ? .45 : .32' sol-live/sol-live.ts
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sol-live/agent-brain.ts')
+          s=p.read_text()
+          s=s.replace('contents/sol-agent/state.json?ref=main&t=', 'contents/sol-agent/state.json?ref=sol-memory&t=')
+          s=s.replace("branch: 'main'", "branch: 'sol-memory'")
+          s=s.replace("for (const c of candidates) {\n      const s = stats[c.fingerprint];", "for (const c of candidates) {\n      if (c.category === 'say') continue;\n      const s = stats[c.fingerprint];")
+          p.write_text(s)
+          PY
+          grep -Fq 'ref=sol-memory' sol-live/agent-brain.ts
+          grep -Fq "branch: 'sol-memory'" sol-live/agent-brain.ts
+          grep -Fq "c.category === 'say'" sol-live/agent-brain.ts
       - name: Commit patch
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sol-live/sol-live.ts
+          git add sol-live/agent-brain.ts
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'Fix Sol agent reflex ternary'
+          git commit -m 'Persist Sol learning on isolated memory branch'
           git push
