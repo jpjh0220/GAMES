@@ -35,7 +35,9 @@ jobs:
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
           test -s /tmp/sol-live-agent.js
           grep -q 'sol-memory' agent-brain.ts
-          grep -q 'ai-player-shadow-learner' agent-brain.ts
+          grep -q 'dual-ai-player-shadow-learner' agent-brain.ts
+          grep -q 'qwen3:0.6b' agent-brain.ts
+          grep -q 'qwen3:1.7b' agent-brain.ts
           grep -q 'studentPrediction' agent-brain.ts
-          grep -q 'No scripted normal-action fallback' agent-brain.ts
-          echo 'Sol AI-player + shadow-learner compiled successfully.'
+          grep -q "currentController:this.motorReady?'ai-motor'" agent-brain.ts
+          echo 'Sol dual-AI player + shadow learner compiled successfully.'
