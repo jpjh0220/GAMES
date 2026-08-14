@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2011,
-    "teacherChoices": 2011,
+    "totalChoices": 2021,
+    "teacherChoices": 2021,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2010,
-    "totalReward": 497.62,
-    "saves": 228,
+    "completedExperiences": 2020,
+    "totalReward": 492.52,
+    "saves": 229,
     "shadowPredictions": 979,
     "shadowMatches": 401,
     "strategistRefreshes": 92,
@@ -13972,6 +13972,74 @@
         "exampleGoal": "Use `talkTo` to interact with the Jail guard NPC.",
         "exampleReason": "Observing for a moment to prepare for the next step."
       }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
+      "wait": {
+        "n": 2,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T15:24:43.608Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Wait and observe for a moment"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
+      "dialog:1:click here to continue": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:24:48.441Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Click here to continue"
+      },
+      "dialog:1:toy horseys": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:24:39.149Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Dialog 1: Toy horseys?"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
+      "shop:buy:toy horsey": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:25:11.861Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "I'm buying a Toy horsey for 150 GP, which is a good investment. This will help me increase my inventory and prepare for selling cow hides in the specialized shops."
+      },
+      "shop:sell:raw anchovies": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:25:18.424Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Sell 1 Raw anchovies for about 7"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal": {
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T15:25:22.924Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP at the general store.",
+        "exampleReason": "Close the shop"
+      }
     }
   },
   "relationships": {
@@ -15562,8 +15630,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T15:24:08.555Z",
-      "visits": 88,
+      "lastSeenAt": "2026-08-14T15:25:18.714Z",
+      "visits": 98,
       "npcs": [
         "Banker",
         "Diango",
@@ -15571,7 +15639,8 @@
         "Dark wizard",
         "Ned",
         "Rat",
-        "Morgan"
+        "Morgan",
+        "Imp"
       ],
       "locs": [
         "Crate",
@@ -15791,7 +15860,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T15:24:23.820Z",
+  "updatedAt": "2026-08-14T15:25:22.924Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -22831,10 +22900,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:23:28.613Z",
+      "lastAt": "2026-08-14T15:24:43.608Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -22843,10 +22912,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:23:34.022Z",
+      "lastAt": "2026-08-14T15:24:48.441Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -22855,10 +22924,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:23:40.617Z",
+      "lastAt": "2026-08-14T15:24:58.363Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -22867,10 +22936,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:23:46.661Z",
+      "lastAt": "2026-08-14T15:25:04.913Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -22879,10 +22948,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:23:52.643Z",
+      "lastAt": "2026-08-14T15:25:11.861Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -22891,10 +22960,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:24:01.058Z",
+      "lastAt": "2026-08-14T15:25:18.424Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
@@ -22903,26 +22972,50 @@
         "shop:sell:raw anchovies",
         "modal:close-shop"
       ],
-      "n": 1,
-      "avgReward": 1.2,
+      "n": 2,
+      "avgReward": -0.3,
       "positive": 1,
-      "lastAt": "2026-08-14T15:24:08.224Z",
+      "lastAt": "2026-08-14T15:25:22.924Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Close the shop"
+    },
+    "modal:close-shop > npc:talk to:diango > wait": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:talk to:diango",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 1.65,
+      "positive": 1,
+      "lastAt": "2026-08-14T15:24:29.238Z",
+      "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
+    },
+    "npc:talk to:diango > wait > dialog:1:click here to continue": {
+      "sequence": [
+        "npc:talk to:diango",
+        "wait",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:24:34.049Z",
+      "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
+    },
+    "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
+      "sequence": [
+        "wait",
+        "dialog:1:click here to continue",
+        "dialog:1:toy horseys"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T15:24:39.149Z",
+      "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     }
   },
   "discoveries": [
-    {
-      "id": "place:plant:192:202:0",
-      "at": "2026-08-14T13:37:34.056Z",
-      "kind": "place",
-      "text": "Plant observed near 3086, 3238, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:crate:192:202:0",
       "at": "2026-08-14T13:37:34.056Z",
@@ -26504,6 +26597,18 @@
       "at": "2026-08-14T15:23:11.223Z",
       "kind": "place",
       "text": "Warehouse shelves observed near 3081, 3251, level 0.",
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:imp:192:203:0",
+      "at": "2026-08-14T15:24:29.547Z",
+      "kind": "npc",
+      "text": "Imp observed near 3081, 3251, level 0.",
       "location": {
         "x": 3081,
         "z": 3251,
