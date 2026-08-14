@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 560,
-    "teacherChoices": 560,
+    "totalChoices": 570,
+    "teacherChoices": 570,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 560,
-    "totalReward": 150.74,
-    "saves": 57,
-    "shadowPredictions": 225,
+    "completedExperiences": 570,
+    "totalReward": 161.11,
+    "saves": 58,
+    "shadowPredictions": 226,
     "shadowMatches": 95,
-    "strategistRefreshes": 30,
+    "strategistRefreshes": 31,
     "strategistFailures": 1
   },
   "memories": [
@@ -4228,6 +4228,115 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "mstkbgfe-73ggjk",
+      "createdAt": "2026-08-14T23:12:41.450Z",
+      "tick": 19543,
+      "runNumber": 37,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Pickpocketing time hehe, dont tell anyone\". Current stance friendly, trust 0.36.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "friendly"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstkc3sr-xxzpwr",
+      "createdAt": "2026-08-14T23:13:11.739Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Use the Escape skill to flee the dungeon. Escape skill is available and provides observable evidence of success. Steps are concise and actionable with clear evidence points.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the escape skill to flee the dungeon",
+        "confirm escape success by checking the map",
+        "return to base to rest and prepare for next mission"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstkc8vi-y91lkq",
+      "createdAt": "2026-08-14T23:13:18.318Z",
+      "tick": 19686,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 7). Result: +1595 XP; 12 damage dealt; moved 3086,3231 → 3084,3237; execution rejected or failed. Reward 4.63.",
+      "importance": 3.01,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent goo015",
+        "npc diango",
+        "loc crate",
+        "loc staircase"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3237,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstkck89-ehauq5",
+      "createdAt": "2026-08-14T23:13:33.033Z",
+      "tick": 19735,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 1). Result: +665 XP; 5 damage dealt; execution rejected or failed. Reward 3.5.",
+      "importance": 2.45,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3237,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstkdl9b-ghc7hx",
+      "createdAt": "2026-08-14T23:14:21.023Z",
+      "tick": 19895,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 7). Result: +1595 XP; 12 damage dealt; moved 3087,3228 → 3087,3235; execution rejected or failed. Reward 4.63.",
+      "importance": 3.01,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent goo025",
+        "agent scrappydoo",
+        "agent goo017",
+        "npc diango",
+        "loc closed bank booth",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -4525,6 +4634,16 @@
         "lastAt": "2026-08-14T22:10:51.600Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I have successfully traveled to Draynor Bank at 3092,3243 using verified waypoint navigation."
+      },
+      "npc:bait:fishing spot": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T23:14:32.148Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "Bait Fishing spot (level 0, distance 4)"
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -4571,13 +4690,13 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 77,
-        "avgReward": -0.2493,
+        "n": 80,
+        "avgReward": -0.2625,
         "positive": 9,
-        "negative": 68,
+        "negative": 71,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:12:30.304Z",
-        "exampleGoal": "Use `interactLoc` to interact with the fishing spot location.",
+        "lastAt": "2026-08-14T23:14:09.033Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
         "exampleReason": "You need a Woodcutting level of 30 to chop down this tree."
       },
       "wait": {
@@ -4603,14 +4722,14 @@
         "exampleReason": "I need to talk to the NPC to progress the quest and gain access to the next location."
       },
       "npc:attack:dark wizard": {
-        "n": 1,
-        "avgReward": 4.03,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 4.33,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 4.03,
-        "lastAt": "2026-08-14T22:11:25.805Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I've retrieved the coins from the inventory and am ready to craft a weapon."
+        "lastReward": 4.63,
+        "lastAt": "2026-08-14T23:14:21.023Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "I am using the combat skill to attack a Dark wizard at level 7, distance 9. This is a crucial step in escaping the dungeon, as it provides me with the necessary skills to survive a"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,wait,world": {
@@ -4861,14 +4980,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 24,
+        "n": 25,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T23:12:24.303Z",
+        "lastAt": "2026-08-14T23:12:47.152Z",
         "exampleGoal": "Use `interactLoc` to interact with the fishing spot location.",
-        "exampleReason": "I am waiting for the NPC to respond to my request to talk to the fishing spot to avoid the failed dialog options."
+        "exampleReason": "You need to wait for the NPC to respond to your request to avoid the failed dialog options."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
@@ -5563,14 +5682,14 @@
         "exampleReason": "I have reached Draynor Bank at 3092,3243 using verified waypoint navigation. I now need to explore the surrounding area to find safe fishing spots. I will proceed to explore the no"
       },
       "npc:attack:dark wizard": {
-        "n": 1,
+        "n": 2,
         "avgReward": 4.63,
-        "positive": 1,
+        "positive": 2,
         "negative": 0,
         "lastReward": 4.63,
-        "lastAt": "2026-08-14T23:08:29.708Z",
-        "exampleGoal": "Click on Dialog 1: Click here to continue to initiate the dialogue with the NPC.",
-        "exampleReason": "I need to attack a Dark wizard, which is a critical step to progress the quest."
+        "lastAt": "2026-08-14T23:13:18.318Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "I'm ready to attack the Dark wizard at level 7, distance 6. This is the first step to escape from the fishing spot."
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
@@ -5897,26 +6016,26 @@
     },
     "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,world": {
       "npc:net:fishing spot": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T23:08:55.513Z",
-        "exampleGoal": "Click on Dialog 1: Click here to continue to initiate the dialogue with the NPC.",
-        "exampleReason": "I need to talk to the NPC to progress the quest and gain access to the next location."
+        "lastAt": "2026-08-14T23:13:46.204Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "I need to learn the skill to interact with the Net Fishing spot (level 0, distance 9)."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,world": {
       "npc:net:fishing spot": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:09:13.841Z",
-        "exampleGoal": "Click on Dialog 1: Click here to continue to initiate the dialogue with the NPC.",
-        "exampleReason": "I need to pick up the Bones (distance 7) to progress the quest."
+        "lastAt": "2026-08-14T23:14:03.303Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "Net Fishing spot (level 0, distance 1) - you can use this to start your net fishing."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
@@ -5930,14 +6049,26 @@
         "exampleGoal": "Click on Dialog 1: Click here to continue to initiate the dialogue with the NPC.",
         "exampleReason": "Bait Fishing spot (level 0, distance 1)"
       }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 3.5,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 3.5,
+        "lastAt": "2026-08-14T23:13:33.033Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "I'm using the combat skill to attack the Dark wizard (level 7, distance 1)."
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "encounters": 267,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 273,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -6002,8 +6133,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "encounters": 475,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 485,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -6093,8 +6224,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "encounters": 475,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 485,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -6214,8 +6345,8 @@
     "goo015": {
       "name": "Goo015",
       "firstSeenAt": "2026-08-14T21:41:15.628Z",
-      "lastSeenAt": "2026-08-14T23:07:40.797Z",
-      "encounters": 5,
+      "lastSeenAt": "2026-08-14T23:13:18.608Z",
+      "encounters": 6,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -6229,8 +6360,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "encounters": 347,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 357,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -6350,11 +6481,11 @@
     "oag0azhyi": {
       "name": "Oag0azhyi",
       "firstSeenAt": "2026-08-14T21:58:27.912Z",
-      "lastSeenAt": "2026-08-14T23:04:25.205Z",
+      "lastSeenAt": "2026-08-14T23:12:41.450Z",
       "encounters": 1,
       "trust": 0.36,
       "stance": "friendly",
-      "conversations": 6,
+      "conversations": 7,
       "cooperation": 3,
       "suspicion": 0,
       "facts": [
@@ -6362,7 +6493,8 @@
         "Varrock trip, gonna forge it all up",
         "Pickaxe out, let's find some ore :3",
         "Mining buddies!! Im 99 mining hehe :3",
-        "Fishing's comfy im on smithing rn tho hehe"
+        "Fishing's comfy im on smithing rn tho hehe",
+        "Pickpocketing time hehe, dont tell anyone"
       ],
       "questions": [],
       "lastMessages": [
@@ -6395,6 +6527,11 @@
           "at": "2026-08-14T23:04:25.205Z",
           "direction": "incoming",
           "text": "Smelting steel bars now, right here at al kharid :3"
+        },
+        {
+          "at": "2026-08-14T23:12:41.450Z",
+          "direction": "incoming",
+          "text": "Pickpocketing time hehe, dont tell anyone"
         }
       ]
     },
@@ -6534,8 +6671,8 @@
     "goo006": {
       "name": "Goo006",
       "firstSeenAt": "2026-08-14T22:49:53.999Z",
-      "lastSeenAt": "2026-08-14T22:50:05.997Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T23:12:47.442Z",
+      "encounters": 3,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -6760,8 +6897,8 @@
     "goo025": {
       "name": "Goo025",
       "firstSeenAt": "2026-08-14T22:59:16.516Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "encounters": 53,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 59,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -6804,6 +6941,21 @@
           "text": "."
         }
       ]
+    },
+    "goo017": {
+      "name": "Goo017",
+      "firstSeenAt": "2026-08-14T23:14:21.332Z",
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "encounters": 1,
+      "combatLevel": 124,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -6864,12 +7016,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3084,
-      "z": 3236,
+      "x": 3087,
+      "z": 3235,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-14T23:08:42.908Z",
-      "visits": 95,
+      "lastSeenAt": "2026-08-14T23:14:21.332Z",
+      "visits": 98,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -6921,12 +7073,12 @@
     },
     "192:201:0": {
       "key": "192:201:0",
-      "x": 3086,
-      "z": 3231,
+      "x": 3087,
+      "z": 3228,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-14T23:12:30.592Z",
-      "visits": 215,
+      "lastSeenAt": "2026-08-14T23:14:09.322Z",
+      "visits": 222,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -7794,10 +7946,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 15,
-      "avgReward": -1.148,
+      "n": 16,
+      "avgReward": -1.146,
       "positive": 3,
-      "lastAt": "2026-08-14T23:09:30.348Z",
+      "lastAt": "2026-08-14T23:14:03.304Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -7806,10 +7958,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 19,
-      "avgReward": -0.591,
+      "n": 20,
+      "avgReward": -0.651,
       "positive": 8,
-      "lastAt": "2026-08-14T23:09:19.542Z",
+      "lastAt": "2026-08-14T23:14:09.033Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -7926,10 +8078,10 @@
         "npc:attack:dark wizard",
         "npc:net:fishing spot"
       ],
-      "n": 2,
-      "avgReward": 8.815,
-      "positive": 2,
-      "lastAt": "2026-08-14T23:08:55.513Z",
+      "n": 3,
+      "avgReward": 8.613,
+      "positive": 3,
+      "lastAt": "2026-08-14T23:13:46.204Z",
       "example": "Attack Dark wizard (level 7, distance 1) → Attack Dark wizard (level 7, distance 3) → Net Fishing spot (level 0, distance 4)"
     },
     "npc:attack:dark wizard > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -7938,10 +8090,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 4,
-      "avgReward": 3.973,
-      "positive": 3,
-      "lastAt": "2026-08-14T23:09:02.417Z",
+      "n": 5,
+      "avgReward": 3.774,
+      "positive": 4,
+      "lastAt": "2026-08-14T23:13:52.536Z",
       "example": "Attack Dark wizard (level 7, distance 3) → Net Fishing spot (level 0, distance 4) → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > wait": {
@@ -7950,10 +8102,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 13,
-      "avgReward": -1.385,
+      "n": 14,
+      "avgReward": -1.383,
       "positive": 0,
-      "lastAt": "2026-08-14T23:10:48.640Z",
+      "lastAt": "2026-08-14T23:12:47.153Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 2) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > wait > dialog:1:click here to continue": {
@@ -7962,10 +8114,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 16,
-      "avgReward": -1.032,
+      "n": 17,
+      "avgReward": -1.051,
       "positive": 2,
-      "lastAt": "2026-08-14T23:10:53.737Z",
+      "lastAt": "2026-08-14T23:12:55.519Z",
       "example": "Net Fishing spot (level 0, distance 2) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -8010,10 +8162,10 @@
         "dialog:1:click here to continue",
         "npc:attack:dark wizard"
       ],
-      "n": 1,
-      "avgReward": 6.13,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:01:11.756Z",
+      "n": 2,
+      "avgReward": 4.78,
+      "positive": 2,
+      "lastAt": "2026-08-14T23:14:21.024Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7)"
     },
     "dialog:1:click here to continue > npc:attack:dark wizard > npc:talk to:diango": {
@@ -9042,10 +9194,10 @@
         "npc:attack:dark wizard",
         "npc:attack:dark wizard"
       ],
-      "n": 3,
-      "avgReward": 8.443,
-      "positive": 3,
-      "lastAt": "2026-08-14T23:08:42.598Z",
+      "n": 4,
+      "avgReward": 8.215,
+      "positive": 4,
+      "lastAt": "2026-08-14T23:13:33.033Z",
       "example": "Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 6) → Attack Dark wizard (level 7, distance 5)"
     },
     "npc:attack:dark wizard > npc:attack:dark wizard > npc:talk to:diango": {
@@ -9450,11 +9602,23 @@
         "dialog:1:click here to continue",
         "npc:attack:dark wizard"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 3.88,
-      "positive": 1,
-      "lastAt": "2026-08-14T23:08:29.708Z",
+      "positive": 2,
+      "lastAt": "2026-08-14T23:13:18.318Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7)"
+    },
+    "dialog:1:click here to continue > npc:attack:dark wizard > npc:bait:fishing spot": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "npc:attack:dark wizard",
+        "npc:bait:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": 4.11,
+      "positive": 1,
+      "lastAt": "2026-08-14T23:14:32.148Z",
+      "example": "Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7) → Bait Fishing spot (level 0, distance 4)"
     }
   },
   "discoveries": [
@@ -12937,47 +13101,82 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3086:3231:3084:3237:0",
+      "at": "2026-08-14T23:13:18.318Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3231 → 3084,3237; +1595 XP; 12 damage dealt; moved 3086,3231 → 3084,3237; execution rejected or failed",
+      "location": {
+        "x": 3084,
+        "z": 3237,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3228:3087:3235:0",
+      "at": "2026-08-14T23:14:21.024Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3228 → 3087,3235; +1595 XP; 12 damage dealt; moved 3087,3228 → 3087,3235; execution rejected or failed",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3235:3086:3231:0",
+      "at": "2026-08-14T23:14:32.148Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3235 → 3086,3231; moved 3087,3235 → 3086,3231",
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-14T23:12:41.139Z",
+  "updatedAt": "2026-08-14T23:14:32.149Z",
   "activePlan": {
-    "objective": "Escape from the fishing spot to avoid the failed dialog options.",
-    "focus": "Use `interactLoc` to interact with the fishing spot location.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Escape the dungeon using the escape skill",
+    "focus": "Use the Escape skill to flee the dungeon",
+    "reason": "Escape skill is available and provides observable evidence of success. Steps are concise and actionable with clear evidence points.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `interactLoc` to interact with the fishing spot location.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: agent:Un5wc8p3r, agent:Yr8wc2n6q, agent:Gpgather1, loc:Bullrushes, loc:Stones, loc:Thistle"
-      },
-      {
-        "id": "step-2",
-        "label": "Use `talkTo` to engage with the NPC at the fishing spot to avoid the failed dialog options.",
+        "label": "Use the Escape skill to flee the dungeon",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Confirm escape success by checking the map",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Confirm escape by checking the location status or using `interactLoc` again to move away from the spot. Verify escape by checking the player",
+        "label": "Return to base to rest and prepare for next mission",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Escape completed successfully"
     ],
     "priorities": [
-      "Use `interactLoc` to interact with the fishing spot location.",
-      "Use `talkTo` to engage with the NPC at the fishing spot to avoid the failed dialog options.",
-      "Confirm escape by checking the location status or using `interactLoc` again to move away from the spot. Verify escape by checking the player"
+      "Use the Escape skill to flee the dungeon",
+      "Confirm escape success by checking the map",
+      "Return to base to rest and prepare for next mission"
     ],
     "avoid": [
-      "Wait and observe for a moment",
       "Dialog 1: Click here to continue",
-      "Bait Fishing spot (level 0, distance 1)"
+      "Net Fishing spot (level 0, distance 1)",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-14T23:10:08.815Z",
+    "updatedAt": "2026-08-14T23:13:11.739Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
