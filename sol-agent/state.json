@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1401,
-    "teacherChoices": 1401,
+    "totalChoices": 1411,
+    "teacherChoices": 1411,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1400,
-    "totalReward": -2.45,
-    "saves": 167,
+    "completedExperiences": 1410,
+    "totalReward": -5.45,
+    "saves": 168,
     "shadowPredictions": 700,
     "shadowMatches": 276,
     "strategistRefreshes": 59,
@@ -11012,6 +11012,26 @@
         "lastAt": "2026-08-14T12:59:19.316Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
+      },
+      "shop:buy:toy horsey": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:59:44.248Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
+      },
+      "shop:sell:coins": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:59:49.615Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Sell 1 Coins for about 0"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,social,wait,world": {
@@ -11028,24 +11048,80 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
+        "n": 4,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 4,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T13:00:21.720Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Dialog 1: Click here to continue"
+      },
+      "dialog:1:toy horseys": {
         "n": 2,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:59:12.742Z",
+        "lastAt": "2026-08-14T13:00:16.310Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "exampleReason": "Click here to continue to proceed with the dialogue"
-      },
-      "dialog:1:toy horseys": {
+        "exampleReason": "Dialog 1: Toy horseys?"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
+      "shop:buy:toy horsey": {
         "n": 1,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 1,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:59:06.432Z",
+        "lastAt": "2026-08-14T12:59:25.645Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "exampleReason": "I'm fine, thanks."
+        "exampleReason": "Buy 1 Toy horsey for about 150"
+      },
+      "shop:sell:coins": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:59:31.621Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Sell 1 Coins for about 0"
+      },
+      "shop:sell:raw anchovies": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T12:59:37.946Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Sell 1 Raw anchovies for about 7"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": 2.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T12:59:54.112Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Close the shop"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T13:00:04.058Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "exampleReason": "Talk-to Diango (level 0, distance 1) to initiate the trade"
       }
     }
   },
@@ -11351,8 +11427,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T12:55:17.223Z",
-      "encounters": 52,
+      "lastSeenAt": "2026-08-14T13:00:16.620Z",
+      "encounters": 55,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -12296,15 +12372,16 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T12:59:13.052Z",
-      "visits": 51,
+      "lastSeenAt": "2026-08-14T13:00:16.620Z",
+      "visits": 61,
       "npcs": [
         "Banker",
         "Diango",
         "Aggie",
         "Dark wizard",
         "Ned",
-        "Rat"
+        "Rat",
+        "Morgan"
       ],
       "locs": [
         "Crate",
@@ -12402,7 +12479,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T12:59:19.317Z",
+  "updatedAt": "2026-08-14T13:00:21.720Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -17606,10 +17683,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 4,
-      "avgReward": -1.772,
+      "n": 5,
+      "avgReward": -1.778,
       "positive": 0,
-      "lastAt": "2026-08-14T12:59:06.432Z",
+      "lastAt": "2026-08-14T13:00:16.310Z",
       "example": "Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
@@ -17618,10 +17695,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:59:12.742Z",
+      "lastAt": "2026-08-14T13:00:21.720Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -17750,10 +17827,10 @@
         "npc:talk to:diango",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
-      "avgReward": -2.085,
-      "positive": 0,
-      "lastAt": "2026-08-14T12:58:58.045Z",
+      "n": 3,
+      "avgReward": -0.99,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:00:10.616Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "shop:buy:toy horsey > shop:sell:coins > wait": {
@@ -18002,10 +18079,10 @@
         "shop:sell:coins",
         "shop:sell:raw anchovies"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:57:51.724Z",
+      "lastAt": "2026-08-14T12:59:37.946Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7"
     },
     "shop:sell:coins > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -18014,10 +18091,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:57:39.123Z",
+      "lastAt": "2026-08-14T12:59:44.248Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:coins": {
@@ -18026,10 +18103,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 1,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T12:57:45.740Z",
+      "lastAt": "2026-08-14T12:59:49.615Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:sell:coins > shop:sell:raw anchovies > modal:close-shop": {
@@ -18127,21 +18204,45 @@
       "positive": 0,
       "lastAt": "2026-08-14T12:59:19.316Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Sell 1 Raw anchovies for about 7"
+    },
+    "dialog:1:click here to continue > shop:sell:raw anchovies > shop:buy:toy horsey": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T12:59:25.645Z",
+      "example": "Dialog 1: Click here to continue → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
+    },
+    "shop:buy:toy horsey > shop:sell:coins > modal:close-shop": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:coins",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T12:59:54.112Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Close the shop"
+    },
+    "shop:sell:coins > modal:close-shop > npc:talk to:diango": {
+      "sequence": [
+        "shop:sell:coins",
+        "modal:close-shop",
+        "npc:talk to:diango"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:00:04.058Z",
+      "example": "Sell 1 Coins for about 0 → Close the shop → Talk-to Diango (level 0, distance 1)"
     }
   },
   "discoveries": [
-    {
-      "id": "place:candles:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Candles observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:piano:195:210:0",
       "at": "2026-08-14T10:30:15.149Z",
@@ -21729,6 +21830,18 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:morgan:192:203:0",
+      "at": "2026-08-14T12:59:49.925Z",
+      "kind": "npc",
+      "text": "Morgan observed near 3082, 3251, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
@@ -21740,12 +21853,13 @@
       {
         "id": "step-1",
         "label": "Click Dialog 1: Click here to continue to proceed with the dialogue",
-        "status": "active"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
         "label": "Use clickDialogByText to select the option with the text 'Trade Diango (level 0, distance 2)' to initiate the trade",
-        "status": "pending"
+        "status": "active"
       },
       {
         "id": "step-3",
