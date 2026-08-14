@@ -14,7 +14,10 @@ jobs:
         id: endpoint
         run: |
           set -euo pipefail
-          JSON=$(curl --fail --retry 5 --retry-delay 2 -sS "https://raw.githubusercontent.com/jpjh0220/GAMES/main/sol-watch/live.json?$(date +%s)")
+          META=$(curl --fail --retry 5 --retry-delay 2 -sS \
+            -H 'Accept: application/vnd.github+json' \
+            "https://api.github.com/repos/jpjh0220/GAMES/contents/sol-watch/live.json?ref=main&t=$(date +%s)")
+          JSON=$(printf '%s' "$META" | jq -r .content | tr -d '\n' | base64 -d)
           URL=$(printf '%s' "$JSON" | jq -r .url)
           RUN=$(printf '%s' "$JSON" | jq -r .runNumber)
           echo "url=$URL" >> "$GITHUB_OUTPUT"
@@ -24,7 +27,7 @@ jobs:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
-          for i in $(seq 1 30); do
+          for i in $(seq 1 45); do
             if HEALTH=$(curl --fail --connect-timeout 5 --max-time 10 -sS "$LIVE_URL/health"); then
               echo "$HEALTH"
               echo "$HEALTH" | jq -e '.ok == true and .online == true and (.actionCount|type == "number") and (.sessionStartedAt|type == "string")' >/dev/null
