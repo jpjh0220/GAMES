@@ -6,39 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3431,
-    "teacherChoices": 3431,
+    "totalChoices": 3441,
+    "teacherChoices": 3441,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 3430,
-    "totalReward": 1610.6,
-    "saves": 371,
-    "shadowPredictions": 1712,
+    "completedExperiences": 3440,
+    "totalReward": 1605.83,
+    "saves": 372,
+    "shadowPredictions": 1715,
     "shadowMatches": 724,
     "strategistRefreshes": 168,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "msta7yrd-nvvn0s",
-      "createdAt": "2026-08-14T18:30:02.425Z",
-      "tick": 0,
-      "runNumber": 36,
-      "kind": "strategy",
-      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.. This plan uses a named repository-tested escape or travel skill (",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
-        "explore north about 5 tiles to locate the net fishing spot level 0 distance 1",
-        "use the net fishing spot to catch anchovies and confirm the location in the guide"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "msta812a-gyjm2h",
       "createdAt": "2026-08-14T18:30:05.410Z",
@@ -8493,6 +8473,26 @@
         "z": 3228,
         "level": 0
       }
+    },
+    {
+      "id": "mstf0j0b-vjzo0i",
+      "createdAt": "2026-08-14T20:44:13.499Z",
+      "tick": 56557,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Bait Fishing spot (level 0, distance 1). Result: moved 3087,3227 → 3087,3228; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "bait",
+        "level 0"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3228,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -11488,24 +11488,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 175,
-        "avgReward": -0.2742,
+        "n": 178,
+        "avgReward": -0.2797,
         "positive": 14,
-        "negative": 161,
+        "negative": 164,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T20:43:01.793Z",
+        "lastAt": "2026-08-14T20:44:04.190Z",
         "exampleGoal": "Use the Body rune to cast a shield over the Net Fishing spot to avoid the trap.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 62,
+        "n": 66,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T20:40:07.485Z",
-        "exampleGoal": "Use the Escape skill to flee from the dungeon",
-        "exampleReason": "I need to observe for a moment to gather information about the escape route"
+        "lastAt": "2026-08-14T20:44:18.900Z",
+        "exampleGoal": "Use the Body rune to cast a shield over the Net Fishing spot to avoid the trap.",
+        "exampleReason": "You need a Woodcutting level of 30 to chop down this tree."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -13638,24 +13638,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,world": {
       "npc:bait:fishing spot": {
-        "n": 30,
-        "avgReward": -0.6912,
+        "n": 32,
+        "avgReward": -0.7034,
         "positive": 0,
-        "negative": 29,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T20:40:04.492Z",
-        "exampleGoal": "Use the Escape skill to flee from the dungeon",
+        "negative": 31,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T20:44:13.499Z",
+        "exampleGoal": "Use the Body rune to cast a shield over the Net Fishing spot to avoid the trap.",
         "exampleReason": "Bait Fishing spot (level 0, distance 1)"
       },
       "npc:net:fishing spot": {
-        "n": 32,
-        "avgReward": -0.7924,
+        "n": 33,
+        "avgReward": -0.7866,
         "positive": 0,
-        "negative": 30,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T20:43:12.003Z",
+        "negative": 31,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T20:43:53.996Z",
         "exampleGoal": "Use the Body rune to cast a shield over the Net Fishing spot to avoid the trap.",
-        "exampleReason": "I need to explore the Net Fishing spot to gather resources and prepare for the escape plan."
+        "exampleReason": "You need a Woodcutting level of 30 to chop down this tree."
       },
       "skill:travel:draynor-bank": {
         "n": 18,
@@ -17993,8 +17993,8 @@
       "z": 3228,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T20:43:02.103Z",
-      "visits": 1120,
+      "lastSeenAt": "2026-08-14T20:44:13.807Z",
+      "visits": 1130,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -18302,7 +18302,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T20:43:12.003Z",
+  "updatedAt": "2026-08-14T20:44:18.900Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -22714,10 +22714,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 104,
-      "avgReward": -1.034,
+      "n": 106,
+      "avgReward": -1.045,
       "positive": 10,
-      "lastAt": "2026-08-14T20:42:41.109Z",
+      "lastAt": "2026-08-14T20:44:04.190Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -22762,10 +22762,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 75,
+      "n": 76,
       "avgReward": -1.315,
       "positive": 1,
-      "lastAt": "2026-08-14T20:43:01.793Z",
+      "lastAt": "2026-08-14T20:43:44.395Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -22774,10 +22774,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 83,
-      "avgReward": -1.091,
+      "n": 84,
+      "avgReward": -1.094,
       "positive": 8,
-      "lastAt": "2026-08-14T20:43:12.003Z",
+      "lastAt": "2026-08-14T20:43:53.996Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -22930,10 +22930,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 86,
-      "avgReward": -1.366,
+      "n": 88,
+      "avgReward": -1.372,
       "positive": 1,
-      "lastAt": "2026-08-14T20:42:34.182Z",
+      "lastAt": "2026-08-14T20:43:59.384Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -23218,10 +23218,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 57,
-      "avgReward": -1.375,
+      "n": 59,
+      "avgReward": -1.384,
       "positive": 0,
-      "lastAt": "2026-08-14T20:42:51.032Z",
+      "lastAt": "2026-08-14T20:44:13.499Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -23230,10 +23230,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 67,
-      "avgReward": -1.367,
+      "n": 69,
+      "avgReward": -1.375,
       "positive": 0,
-      "lastAt": "2026-08-14T20:42:56.692Z",
+      "lastAt": "2026-08-14T20:44:18.900Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > npc:attack:dark wizard": {
@@ -27127,18 +27127,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3082:3247:3092:3243:0",
-      "at": "2026-08-14T18:18:20.098Z",
-      "kind": "route",
-      "text": "Route learned: 3082,3247 → 3092,3243; moved 3082,3247 → 3092,3243; new: npc:Fishing spot, npc:Jail guard, npc:Ned, loc:Bush, loc:Tree stump, loc:Pile of rope",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
       "id": "place:market stall:192:202:0",
       "at": "2026-08-14T18:18:43.482Z",
       "kind": "place",
@@ -30725,6 +30713,18 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3227:3087:3228:0",
+      "at": "2026-08-14T20:44:13.499Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3227 → 3087,3228; moved 3087,3227 → 3087,3228; execution rejected or failed",
+      "location": {
+        "x": 3087,
+        "z": 3228,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
@@ -30764,6 +30764,6 @@
     ],
     "updatedAt": "2026-08-14T20:42:41.518Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 2
   }
 }
