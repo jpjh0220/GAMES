@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 670,
-    "teacherChoices": 670,
+    "totalChoices": 680,
+    "teacherChoices": 680,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 670,
-    "totalReward": 242.95,
-    "saves": 68,
-    "shadowPredictions": 273,
+    "completedExperiences": 680,
+    "totalReward": 243.82,
+    "saves": 69,
+    "shadowPredictions": 276,
     "shadowMatches": 112,
-    "strategistRefreshes": 36,
+    "strategistRefreshes": 37,
     "strategistFailures": 1
   },
   "memories": [
@@ -5810,6 +5810,115 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstl57lu-hg6ucx",
+      "createdAt": "2026-08-14T23:35:49.698Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to the draynor fishing area at 3087 3230 and verify arrival",
+        "explore north about 5 tiles to locate the net fishing spot level 0 distance 12",
+        "use the net fishing spot to catch shrimp anchovies and collect the chaos rune from the bait fishing spot level 0 distance 12"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl5ss1-9fyk96",
+      "createdAt": "2026-08-14T23:36:17.137Z",
+      "tick": 24282,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 1). Result: +1062 XP; 3 damage dealt; 4 damage taken; execution rejected or failed. Reward 1.6.",
+      "importance": 1.5,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3239,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl628n-713t95",
+      "createdAt": "2026-08-14T23:36:29.399Z",
+      "tick": 24323,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 3). Result: moved 3084,3239 → 3084,3241; execution rejected or failed; new: loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom. Reward -0.2.",
+      "importance": 0.8,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "loc cooking shelves",
+        "loc door",
+        "loc wardrobe",
+        "loc broom"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl7hvv-b3d4ak",
+      "createdAt": "2026-08-14T23:37:36.331Z",
+      "tick": 24546,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 4). Result: moved 3084,3238 → 3084,3241; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.25.",
+      "importance": 1.32,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves",
+        "loc door"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl813w-xcm1ll",
+      "createdAt": "2026-08-14T23:38:01.244Z",
+      "tick": 24629,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 3). Result: moved 3083,3239 → 3083,3241; execution rejected or failed; new: loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom. Reward -0.2.",
+      "importance": 0.8,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "loc cooking shelves",
+        "loc door",
+        "loc wardrobe",
+        "loc broom"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3241,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -5929,12 +6038,12 @@
         "exampleReason": "I need to wait for the bank to open before proceeding with the deposit process."
       },
       "bank:withdraw:chaos rune": {
-        "n": 4,
+        "n": 5,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T23:35:07.508Z",
+        "lastAt": "2026-08-14T23:35:22.215Z",
         "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "Withdraw 1 Chaos rune"
       },
@@ -5969,12 +6078,12 @@
         "exampleReason": "Deposit all Bronze arrow"
       },
       "modal:close-bank": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:33:49.798Z",
+        "lastAt": "2026-08-14T23:35:27.003Z",
         "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "Close the bank"
       },
@@ -6119,13 +6228,13 @@
         "exampleReason": "I have selected to attack the Dark wizard (level 7, distance 1) to progress the plan."
       },
       "loc:chop down:tree": {
-        "n": 1,
-        "avgReward": 0,
+        "n": 2,
+        "avgReward": -0.1,
         "positive": 0,
-        "negative": 0,
-        "lastReward": 0,
-        "lastAt": "2026-08-14T22:09:18.928Z",
-        "exampleGoal": "Click the 'Coins' item in the inventory to select it.",
+        "negative": 1,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T23:36:29.399Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Chop down Tree (distance 3)"
       },
       "skill:travel:draynor-bank": {
@@ -7125,14 +7234,14 @@
         "exampleReason": "I've found the Net Fishing spot in Draynor Village, which is level 0 and 4 tiles away. I'll start exploring further to gather resources."
       },
       "npc:attack:dark wizard": {
-        "n": 1,
-        "avgReward": 4.33,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 2.965,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 4.33,
-        "lastAt": "2026-08-14T22:50:20.145Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "You have successfully attacked a Dark wizard (level 7, distance 6) with a combat skill."
+        "lastReward": 1.6,
+        "lastAt": "2026-08-14T23:36:17.137Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I have successfully attacked the Dark wizard (level 7, distance 6) at 3087,3245. This action contributes to my level progression and resource gathering."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
@@ -7864,6 +7973,78 @@
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Chop down Willow (distance 4)"
       }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T23:36:03.043Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I need to attack a Dark wizard to secure the fishing spot. The current level is 116, which is above the required level for a Dark wizard (7)."
+      }
+    },
+    "area=385:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
+      "pickup:bones": {
+        "n": 1,
+        "avgReward": 0.16,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.16,
+        "lastAt": "2026-08-14T23:36:42.340Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I have picked up Bones (distance 3) from the location."
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,social,wait,world": {
+      "social:say": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T23:37:24.027Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I have reached the Draynor fishing area and will now explore the north about 5 tiles to gather resources."
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,social,wait,world": {
+      "loc:chop down:tree": {
+        "n": 1,
+        "avgReward": 1.25,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.25,
+        "lastAt": "2026-08-14T23:37:36.331Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Chop down Tree (distance 5)"
+      }
+    },
+    "area=385:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,social,wait,world": {
+      "loc:chop down:willow": {
+        "n": 1,
+        "avgReward": -0.7,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.7,
+        "lastAt": "2026-08-14T23:37:49.225Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Chop down Willow (distance 4)"
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,social,wait,world": {
+      "loc:chop down:tree": {
+        "n": 1,
+        "avgReward": -0.2,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T23:38:01.244Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Use-quickly Bank booth (distance 8)"
+      }
     }
   },
   "relationships": {
@@ -7956,8 +8137,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:35:07.857Z",
-      "encounters": 565,
+      "lastSeenAt": "2026-08-14T23:37:49.494Z",
+      "encounters": 576,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -7967,11 +8148,6 @@
       "facts": [],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-14T21:55:16.537Z",
-          "direction": "outgoing",
-          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
-        },
         {
           "at": "2026-08-14T21:56:54.035Z",
           "direction": "outgoing",
@@ -8066,14 +8242,19 @@
           "at": "2026-08-14T23:30:26.433Z",
           "direction": "outgoing",
           "text": "Hi, i'm exploring the northeast area and found the net fishing spot at 3087,323"
+        },
+        {
+          "at": "2026-08-14T23:37:24.336Z",
+          "direction": "outgoing",
+          "text": "Heyo nice to see someone else out here :3."
         }
       ]
     },
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:35:07.857Z",
-      "encounters": 565,
+      "lastSeenAt": "2026-08-14T23:37:49.494Z",
+      "encounters": 576,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -8083,11 +8264,6 @@
       "facts": [],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-14T21:55:16.537Z",
-          "direction": "outgoing",
-          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
-        },
         {
           "at": "2026-08-14T21:56:54.035Z",
           "direction": "outgoing",
@@ -8182,6 +8358,11 @@
           "at": "2026-08-14T23:30:26.433Z",
           "direction": "outgoing",
           "text": "Hi, i'm exploring the northeast area and found the net fishing spot at 3087,323"
+        },
+        {
+          "at": "2026-08-14T23:37:24.336Z",
+          "direction": "outgoing",
+          "text": "Heyo nice to see someone else out here :3."
         }
       ]
     },
@@ -8233,8 +8414,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T23:35:07.857Z",
-      "encounters": 437,
+      "lastSeenAt": "2026-08-14T23:37:49.494Z",
+      "encounters": 448,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -8244,11 +8425,6 @@
       "facts": [],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-14T21:55:16.537Z",
-          "direction": "outgoing",
-          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
-        },
         {
           "at": "2026-08-14T21:56:54.035Z",
           "direction": "outgoing",
@@ -8343,6 +8519,11 @@
           "at": "2026-08-14T23:30:26.433Z",
           "direction": "outgoing",
           "text": "Hi, i'm exploring the northeast area and found the net fishing spot at 3087,323"
+        },
+        {
+          "at": "2026-08-14T23:37:24.336Z",
+          "direction": "outgoing",
+          "text": "Heyo nice to see someone else out here :3."
         }
       ]
     },
@@ -8842,8 +9023,8 @@
     "goo022": {
       "name": "Goo022",
       "firstSeenAt": "2026-08-14T22:56:43.219Z",
-      "lastSeenAt": "2026-08-14T23:33:27.618Z",
-      "encounters": 16,
+      "lastSeenAt": "2026-08-14T23:37:03.905Z",
+      "encounters": 17,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8971,8 +9152,8 @@
     "goo016": {
       "name": "Goo016",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-14T23:33:50.107Z",
-      "encounters": 12,
+      "lastSeenAt": "2026-08-14T23:36:42.610Z",
+      "encounters": 13,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8997,8 +9178,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-14T23:35:07.857Z",
-      "encounters": 34,
+      "lastSeenAt": "2026-08-14T23:37:49.494Z",
+      "encounters": 46,
       "combatLevel": 33,
       "trust": 0,
       "stance": "unknown",
@@ -9012,6 +9193,11 @@
           "at": "2026-08-14T23:30:26.433Z",
           "direction": "outgoing",
           "text": "Hi, i'm exploring the northeast area and found the net fishing spot at 3087,323"
+        },
+        {
+          "at": "2026-08-14T23:37:24.336Z",
+          "direction": "outgoing",
+          "text": "Heyo nice to see someone else out here :3."
         }
       ]
     }
@@ -9023,8 +9209,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:35:07.857Z",
-      "visits": 250,
+      "lastSeenAt": "2026-08-14T23:35:50.120Z",
+      "visits": 254,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -9078,8 +9264,8 @@
       "z": 3239,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-14T23:31:53.130Z",
-      "visits": 134,
+      "lastSeenAt": "2026-08-14T23:37:49.494Z",
+      "visits": 142,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -10765,10 +10951,10 @@
         "npc:attack:dark wizard",
         "loc:chop down:tree"
       ],
-      "n": 1,
-      "avgReward": 9.48,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:09:18.928Z",
+      "n": 2,
+      "avgReward": 5.48,
+      "positive": 2,
+      "lastAt": "2026-08-14T23:36:29.399Z",
       "example": "Attack Dark wizard (level 7, distance 1) → Attack Dark wizard (level 7, distance 3) → Chop down Tree (distance 3)"
     },
     "npc:attack:dark wizard > loc:chop down:tree > npc:attack:dark wizard": {
@@ -11929,10 +12115,10 @@
         "loc:chop down:willow",
         "loc:chop down:tree"
       ],
-      "n": 1,
-      "avgReward": -2.55,
+      "n": 2,
+      "avgReward": -1.1,
       "positive": 0,
-      "lastAt": "2026-08-14T23:31:40.222Z",
+      "lastAt": "2026-08-14T23:38:01.244Z",
       "example": "Chop down Tree (distance 1) → Chop down Willow (distance 4) → Chop down Tree (distance 3)"
     },
     "loc:chop down:willow > loc:chop down:tree > loc:chop down:willow": {
@@ -12121,10 +12307,10 @@
         "bank:deposit:chaos rune",
         "bank:withdraw:chaos rune"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T23:35:07.509Z",
+      "lastAt": "2026-08-14T23:35:22.215Z",
       "example": "Withdraw 1 Chaos rune → Deposit all Chaos rune → Withdraw 1 Chaos rune"
     },
     "bank:deposit:chaos rune > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -12138,45 +12324,93 @@
       "positive": 0,
       "lastAt": "2026-08-14T23:35:15.020Z",
       "example": "Deposit all Chaos rune → Withdraw 1 Chaos rune → Deposit all Chaos rune"
+    },
+    "bank:deposit:chaos rune > bank:withdraw:chaos rune > modal:close-bank": {
+      "sequence": [
+        "bank:deposit:chaos rune",
+        "bank:withdraw:chaos rune",
+        "modal:close-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:35:27.003Z",
+      "example": "Deposit all Chaos rune → Withdraw 1 Chaos rune → Close the bank"
+    },
+    "bank:withdraw:chaos rune > modal:close-bank > npc:attack:dark wizard": {
+      "sequence": [
+        "bank:withdraw:chaos rune",
+        "modal:close-bank",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": -0.44,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:36:03.043Z",
+      "example": "Withdraw 1 Chaos rune → Close the bank → Attack Dark wizard (level 7, distance 7)"
+    },
+    "modal:close-bank > npc:attack:dark wizard > npc:attack:dark wizard": {
+      "sequence": [
+        "modal:close-bank",
+        "npc:attack:dark wizard",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 1.08,
+      "positive": 1,
+      "lastAt": "2026-08-14T23:36:17.137Z",
+      "example": "Close the bank → Attack Dark wizard (level 7, distance 7) → Attack Dark wizard (level 7, distance 1)"
+    },
+    "npc:attack:dark wizard > loc:chop down:tree > pickup:bones": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "loc:chop down:tree",
+        "pickup:bones"
+      ],
+      "n": 1,
+      "avgReward": 1.56,
+      "positive": 1,
+      "lastAt": "2026-08-14T23:36:42.340Z",
+      "example": "Attack Dark wizard (level 7, distance 1) → Chop down Tree (distance 3) → Pick up Bones (distance 3)"
+    },
+    "loc:chop down:tree > pickup:bones > social:say": {
+      "sequence": [
+        "loc:chop down:tree",
+        "pickup:bones",
+        "social:say"
+      ],
+      "n": 1,
+      "avgReward": -0.64,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:37:24.027Z",
+      "example": "Chop down Tree (distance 3) → Pick up Bones (distance 3) → Speak publicly; latest message from Oag0azhyi: Heyo nice to see someone else out here :3"
+    },
+    "pickup:bones > social:say > loc:chop down:tree": {
+      "sequence": [
+        "pickup:bones",
+        "social:say",
+        "loc:chop down:tree"
+      ],
+      "n": 1,
+      "avgReward": 0.81,
+      "positive": 1,
+      "lastAt": "2026-08-14T23:37:36.331Z",
+      "example": "Pick up Bones (distance 3) → Speak publicly; latest message from Oag0azhyi: Heyo nice to see someone else out here :3 → Chop down Tree (distance 4)"
+    },
+    "social:say > loc:chop down:tree > loc:chop down:willow": {
+      "sequence": [
+        "social:say",
+        "loc:chop down:tree",
+        "loc:chop down:willow"
+      ],
+      "n": 1,
+      "avgReward": -0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:37:49.225Z",
+      "example": "Speak publicly; latest message from Oag0azhyi: Heyo nice to see someone else out here :3 → Chop down Tree (distance 4) → Chop down Willow (distance 4)"
     }
   },
   "discoveries": [
-    {
-      "id": "resource:tree stump:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:plant:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "place",
-      "text": "Plant observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "place",
-      "text": "Fern observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "resource:tree:192:201:0",
       "at": "2026-08-14T21:55:37.191Z",
@@ -15740,28 +15974,64 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3242:3087:3245:0",
+      "at": "2026-08-14T23:36:03.043Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3242 → 3087,3245; moved 3092,3242 → 3087,3245",
+      "location": {
+        "x": 3087,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3084:3241:3084:3238:0",
+      "at": "2026-08-14T23:36:42.340Z",
+      "kind": "route",
+      "text": "Route learned: 3084,3241 → 3084,3238; moved 3084,3241 → 3084,3238; inventory changed",
+      "location": {
+        "x": 3084,
+        "z": 3238,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3084:3238:3084:3241:0",
+      "at": "2026-08-14T23:37:36.331Z",
+      "kind": "route",
+      "text": "Route learned: 3084,3238 → 3084,3241; moved 3084,3238 → 3084,3241; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door",
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-14T23:35:15.021Z",
+  "updatedAt": "2026-08-14T23:38:01.244Z",
   "activePlan": {
-    "objective": "Deposit all items in the bank to complete the banking task.",
-    "focus": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
-    "reason": "This plan ensures the player completes",
+    "objective": "Secure all safe fishing locations and gather resources in Draynor Village",
+    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all coins using the `depositItem` skill with the pattern `/coins/i` to ensure all coins are deposited.",
+        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 12)",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify the deposit by checking the bank interface or using the `depositItem` skill with a specific item to confirm successful deposit of all",
+        "label": "Use the Net Fishing spot to catch Shrimp/anchovies and collect the Chaos rune from the Bait Fishing spot (level 0, distance 12)",
         "status": "pending"
       }
     ],
@@ -15769,16 +16039,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Open the bank using the `openBank` skill to access the banker NPC or booth.",
-      "Deposit all coins using the `depositItem` skill with the pattern `/coins/i` to ensure all coins are deposited.",
-      "Verify the deposit by checking the bank interface or using the `depositItem` skill with a specific item to confirm successful deposit of all"
+      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 12)",
+      "Use the Net Fishing spot to catch Shrimp/anchovies and collect the Chaos rune from the Bait Fishing spot (level 0, distance 12)"
     ],
     "avoid": [
-      "Deposit all Coins",
-      "Deposit all Earth rune",
-      "Deposit all Coins"
+      "Deposit all Chaos rune",
+      "Deposit all Chaos rune",
+      "Close the bank"
     ],
-    "updatedAt": "2026-08-14T23:33:24.133Z",
+    "updatedAt": "2026-08-14T23:35:49.698Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
