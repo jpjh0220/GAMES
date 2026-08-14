@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 551,
-    "teacherChoices": 551,
+    "totalChoices": 561,
+    "teacherChoices": 561,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 550,
-    "totalReward": -178.05,
-    "saves": 82,
+    "completedExperiences": 560,
+    "totalReward": -178.35,
+    "saves": 83,
     "shadowPredictions": 235,
     "shadowMatches": 10,
     "strategistRefreshes": 14,
@@ -3746,13 +3746,13 @@
         "exampleReason": "Deposit all Coins"
       },
       "wait": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T10:41:28.022Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
+        "lastAt": "2026-08-14T10:44:02.249Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
         "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:body rune": {
@@ -3940,14 +3940,24 @@
         "exampleReason": "Deposit all Raw bear meat"
       },
       "bank:withdraw:coins": {
-        "n": 2,
+        "n": 4,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:42:58.646Z",
+        "lastAt": "2026-08-14T10:43:24.143Z",
         "exampleGoal": "Open the bank to access deposit functionality.",
-        "exampleReason": "You have the level to use an axe."
+        "exampleReason": "bank"
+      },
+      "bank:deposit:coins": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T10:43:10.903Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Deposit all Coins"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -3962,22 +3972,22 @@
         "exampleReason": "I'm opening the bank to deposit items."
       },
       "bank:withdraw:coins": {
-        "n": 3,
+        "n": 7,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:42:25.637Z",
+        "lastAt": "2026-08-14T10:43:56.512Z",
         "exampleGoal": "Open the bank to access deposit functionality.",
-        "exampleReason": "Bank opened successfully"
+        "exampleReason": "a2_bank"
       },
       "bank:deposit:coins": {
-        "n": 2,
-        "avgReward": -0.1,
+        "n": 3,
+        "avgReward": -0.1333,
         "positive": 0,
-        "negative": 0,
-        "lastReward": -0.1,
-        "lastAt": "2026-08-14T10:42:17.803Z",
+        "negative": 1,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T10:43:30.419Z",
         "exampleGoal": "Open the bank to access deposit functionality.",
         "exampleReason": "Deposit all Coins"
       },
@@ -4345,8 +4355,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T10:42:52.310Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-14T10:43:17.821Z",
+      "encounters": 7,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -4999,8 +5009,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:42:52.310Z",
-      "visits": 55,
+      "lastSeenAt": "2026-08-14T10:43:56.819Z",
+      "visits": 65,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5045,7 +5055,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:42:58.646Z",
+  "updatedAt": "2026-08-14T10:44:02.249Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7657,10 +7667,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
-      "avgReward": 0,
+      "n": 3,
+      "avgReward": -0.067,
       "positive": 0,
-      "lastAt": "2026-08-14T10:39:51.118Z",
+      "lastAt": "2026-08-14T10:43:30.419Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -7885,10 +7895,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
-      "avgReward": 0.1,
+      "n": 3,
+      "avgReward": -0.033,
       "positive": 0,
-      "lastAt": "2026-08-14T10:42:25.637Z",
+      "lastAt": "2026-08-14T10:43:37.339Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -7933,10 +7943,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.2,
       "positive": 0,
-      "lastAt": "2026-08-14T10:42:52.021Z",
+      "lastAt": "2026-08-14T10:44:02.249Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "bank:withdraw:coins > wait > bank:withdraw:coins": {
@@ -7945,11 +7955,47 @@
         "wait",
         "bank:withdraw:coins"
       ],
+      "n": 2,
+      "avgReward": 0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:43:56.512Z",
+      "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
+    },
+    "wait > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "wait",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
       "n": 1,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:42:58.646Z",
-      "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
+      "lastAt": "2026-08-14T10:43:04.912Z",
+      "example": "Wait and observe for a moment → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 2,
+      "avgReward": -0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:43:43.653Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:coins > wait": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:43:49.907Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Coins → Wait and observe for a moment"
     }
   },
   "discoveries": [
