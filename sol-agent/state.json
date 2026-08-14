@@ -6,14 +6,14 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 640,
-    "teacherChoices": 640,
+    "totalChoices": 650,
+    "teacherChoices": 650,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 640,
-    "totalReward": 251.55,
-    "saves": 65,
-    "shadowPredictions": 253,
+    "completedExperiences": 650,
+    "totalReward": 246.25,
+    "saves": 66,
+    "shadowPredictions": 256,
     "shadowMatches": 107,
     "strategistRefreshes": 35,
     "strategistFailures": 1
@@ -5639,6 +5639,117 @@
         "z": 3241,
         "level": 0
       }
+    },
+    {
+      "id": "mstkzbn1-o9l3h6",
+      "createdAt": "2026-08-14T23:31:14.989Z",
+      "tick": 23275,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 1). Result: execution rejected or failed; new: npc:Aggie. Reward -1.65.",
+      "importance": 1.52,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "npc aggie"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstkzv3y-359co1",
+      "createdAt": "2026-08-14T23:31:40.222Z",
+      "tick": 23359,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Tree (distance 3). Result: moved 3083,3239 → 3083,3241; execution rejected or failed; new: loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror. Reward -0.2.",
+      "importance": 0.8,
+      "tags": [
+        "world",
+        "tree",
+        "chop down",
+        "loc cooking shelves",
+        "loc wardrobe",
+        "loc broom",
+        "loc mirror"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl04ui-820r4a",
+      "createdAt": "2026-08-14T23:31:52.842Z",
+      "tick": 23401,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Chop down Willow (distance 4). Result: moved 3083,3241 → 3083,3239; execution rejected or failed; new: loc:Bullrushes, loc:Stones. Reward -0.7.",
+      "importance": 1.05,
+      "tags": [
+        "world",
+        "willow",
+        "chop down",
+        "loc bullrushes",
+        "loc stones"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3239,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl0ebb-kqkbyq",
+      "createdAt": "2026-08-14T23:32:05.111Z",
+      "tick": 23442,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Use Bank booth (distance 8). Result: moved 3083,3239 → 3087,3247; new: npc:Ned, npc:Aggie, loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "world",
+        "bank booth",
+        "use",
+        "npc ned",
+        "npc aggie",
+        "loc cooking shelves",
+        "loc wardrobe",
+        "loc broom",
+        "loc mirror"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl0o34-a8qo9a",
+      "createdAt": "2026-08-14T23:32:17.776Z",
+      "tick": 23484,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Talk-to Ned (level 0, distance 9). Result: execution rejected or failed; detail: Failed to interact with NPC: target_not_found. Reward -1.7.",
+      "importance": 1.55,
+      "tags": [
+        "social",
+        "ned",
+        "talk to",
+        "level 0",
+        "agent goo015",
+        "npc diango"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -5656,35 +5767,35 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
+        "n": 4,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 4,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T23:32:36.300Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Dialog 1: Click here to continue"
+      },
+      "dialog:1:i d like to access my bank account please": {
         "n": 2,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T21:35:31.537Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Click here to continue"
-      },
-      "dialog:1:i d like to access my bank account please": {
-        "n": 1,
-        "avgReward": -0.6,
-        "positive": 0,
-        "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T21:35:27.297Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-14T23:32:30.610Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I'd like to access my bank account, please."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 27,
-        "avgReward": -0.2312,
+        "n": 28,
+        "avgReward": -0.2265,
         "positive": 0,
         "negative": 12,
         "lastReward": -0.1,
-        "lastAt": "2026-08-14T21:53:58.834Z",
-        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "lastAt": "2026-08-14T23:32:43.816Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -5870,6 +5981,16 @@
         "lastAt": "2026-08-14T22:16:57.353Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Net Fishing spot (level 0, distance 13)"
+      },
+      "npc:talk to:ned": {
+        "n": 1,
+        "avgReward": -1.7,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.7,
+        "lastAt": "2026-08-14T23:32:17.776Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I need to talk to Ned to get his help. I'm at Draynor Village, and I need to find safe fishing spots. I'm at position (3089, 3247, 0). I can see the coordinates (3087, 32"
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -6726,14 +6847,14 @@
         "exampleReason": "I've reached the Draynor fishing area and am now exploring it. I'll continue to gather resources and complete safe fishing locations."
       },
       "loc:chop down:tree": {
-        "n": 2,
-        "avgReward": -1.85,
+        "n": 3,
+        "avgReward": -1.7833,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-14T23:06:11.140Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "exampleReason": "I have completed the initial steps of verifying the arrival at the Draynor fishing area. I have successfully confirmed the coordinates and the location type. I now proceed to explo"
+        "negative": 3,
+        "lastReward": -1.65,
+        "lastAt": "2026-08-14T23:31:14.989Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Chop down 5 Chaos rune (distance 5)"
       },
       "loc:chop down:willow": {
         "n": 1,
@@ -6870,14 +6991,14 @@
         "exampleReason": "Bait Fishing spot (level 0, distance 9)"
       },
       "loc:chop down:tree": {
-        "n": 1,
-        "avgReward": 1.55,
+        "n": 2,
+        "avgReward": 0.675,
         "positive": 1,
-        "negative": 0,
-        "lastReward": 1.55,
-        "lastAt": "2026-08-14T23:04:48.628Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "Chop down Tree (distance 8)"
+        "negative": 1,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-14T23:31:40.222Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Use-quickly Bank booth (distance 8)"
       },
       "skill:travel:draynor-fishing": {
         "n": 1,
@@ -6888,6 +7009,16 @@
         "lastAt": "2026-08-14T23:06:51.337Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "I have successfully traveled to the Draynor fishing area at 3087,3230 and verified arrival. I now have the necessary information to proceed with identifying safe fishing locations "
+      },
+      "loc:use:bank booth": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-14T23:32:05.111Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Use Bank booth (distance 8) to locate the fishing spots."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
@@ -7641,14 +7772,26 @@
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I am currently at Draynor Bank at 3092,3243 and verified arrival at 3087,3230. I will now explore the area to locate safe fishing spots."
       }
+    },
+    "area=385:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
+      "loc:chop down:willow": {
+        "n": 2,
+        "avgReward": -0.7,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.7,
+        "lastAt": "2026-08-14T23:31:52.842Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Chop down Willow (distance 4)"
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:28:02.151Z",
-      "encounters": 322,
+      "lastSeenAt": "2026-08-14T23:31:15.318Z",
+      "encounters": 323,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -7733,8 +7876,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:30:39.896Z",
-      "encounters": 536,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 545,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -7849,8 +7992,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:30:39.896Z",
-      "encounters": 536,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 545,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -7965,8 +8108,8 @@
     "goo021": {
       "name": "Goo021",
       "firstSeenAt": "2026-08-14T21:35:39.315Z",
-      "lastSeenAt": "2026-08-14T23:07:56.135Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 8,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -7995,8 +8138,8 @@
     "goo015": {
       "name": "Goo015",
       "firstSeenAt": "2026-08-14T21:41:15.628Z",
-      "lastSeenAt": "2026-08-14T23:18:50.436Z",
-      "encounters": 7,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 11,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8010,8 +8153,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T23:30:39.896Z",
-      "encounters": 408,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 417,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -8381,8 +8524,8 @@
     "goo023": {
       "name": "Goo023",
       "firstSeenAt": "2026-08-14T22:49:12.897Z",
-      "lastSeenAt": "2026-08-14T23:07:14.422Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 6,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8463,8 +8606,8 @@
     "goo019": {
       "name": "Goo019",
       "firstSeenAt": "2026-08-14T22:49:53.999Z",
-      "lastSeenAt": "2026-08-14T23:24:18.638Z",
-      "encounters": 6,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 8,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8499,8 +8642,8 @@
     "goo010": {
       "name": "Goo010",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-14T23:02:59.738Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 5,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8613,8 +8756,8 @@
     "goo022": {
       "name": "Goo022",
       "firstSeenAt": "2026-08-14T22:56:43.219Z",
-      "lastSeenAt": "2026-08-14T23:17:51.933Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 10,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8768,8 +8911,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-14T23:30:39.896Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "encounters": 14,
       "combatLevel": 33,
       "trust": 0,
       "stance": "unknown",
@@ -8791,11 +8934,11 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:28:39.912Z",
-      "visits": 225,
+      "lastSeenAt": "2026-08-14T23:32:36.628Z",
+      "visits": 230,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -8845,12 +8988,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3087,
+      "x": 3083,
       "z": 3239,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-14T23:30:39.896Z",
-      "visits": 129,
+      "lastSeenAt": "2026-08-14T23:31:53.130Z",
+      "visits": 134,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -9072,10 +9215,10 @@
         "dialog:1:i d like to access my bank account please",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T21:35:31.538Z",
+      "lastAt": "2026-08-14T23:32:36.300Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue"
     },
     "dialog:1:i d like to access my bank account please > dialog:1:click here to continue > bank:deposit:coins": {
@@ -9084,10 +9227,10 @@
         "dialog:1:click here to continue",
         "bank:deposit:coins"
       ],
-      "n": 1,
-      "avgReward": -1.74,
+      "n": 2,
+      "avgReward": -1.52,
       "positive": 0,
-      "lastAt": "2026-08-14T21:35:39.026Z",
+      "lastAt": "2026-08-14T23:32:43.816Z",
       "example": "Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue → Deposit all Coins"
     },
     "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:body rune": {
@@ -11376,10 +11519,10 @@
         "loc:chop down:tree",
         "loc:chop down:tree"
       ],
-      "n": 1,
-      "avgReward": -1.17,
+      "n": 2,
+      "avgReward": -0.495,
       "positive": 0,
-      "lastAt": "2026-08-14T23:06:11.140Z",
+      "lastAt": "2026-08-14T23:31:14.990Z",
       "example": "Pick up 10 Earth rune (distance 1) → Chop down Tree (distance 5) → Chop down Tree (distance 1)"
     },
     "loc:chop down:tree > loc:chop down:tree > loc:chop down:willow": {
@@ -11388,10 +11531,10 @@
         "loc:chop down:tree",
         "loc:chop down:willow"
       ],
-      "n": 1,
-      "avgReward": -1.2,
+      "n": 2,
+      "avgReward": -1.15,
       "positive": 0,
-      "lastAt": "2026-08-14T23:06:24.031Z",
+      "lastAt": "2026-08-14T23:31:27.902Z",
       "example": "Chop down Tree (distance 5) → Chop down Tree (distance 1) → Chop down Willow (distance 4)"
     },
     "loc:chop down:tree > loc:chop down:willow > pickup:bones": {
@@ -11693,69 +11836,81 @@
       "positive": 1,
       "lastAt": "2026-08-14T23:31:01.802Z",
       "example": "Speak publicly; latest message from Oag0azhyi: Oh hi another bot friend :3 whatcha working on? → Pick up 36 Earth rune (distance 3) → Chop down Tree (distance 4)"
+    },
+    "loc:chop down:tree > loc:chop down:willow > loc:chop down:tree": {
+      "sequence": [
+        "loc:chop down:tree",
+        "loc:chop down:willow",
+        "loc:chop down:tree"
+      ],
+      "n": 1,
+      "avgReward": -2.55,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:31:40.222Z",
+      "example": "Chop down Tree (distance 1) → Chop down Willow (distance 4) → Chop down Tree (distance 3)"
+    },
+    "loc:chop down:willow > loc:chop down:tree > loc:chop down:willow": {
+      "sequence": [
+        "loc:chop down:willow",
+        "loc:chop down:tree",
+        "loc:chop down:willow"
+      ],
+      "n": 1,
+      "avgReward": -1.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:31:52.842Z",
+      "example": "Chop down Willow (distance 4) → Chop down Tree (distance 3) → Chop down Willow (distance 4)"
+    },
+    "loc:chop down:tree > loc:chop down:willow > loc:use:bank booth": {
+      "sequence": [
+        "loc:chop down:tree",
+        "loc:chop down:willow",
+        "loc:use:bank booth"
+      ],
+      "n": 1,
+      "avgReward": 0.65,
+      "positive": 1,
+      "lastAt": "2026-08-14T23:32:05.112Z",
+      "example": "Chop down Tree (distance 3) → Chop down Willow (distance 4) → Use Bank booth (distance 8)"
+    },
+    "loc:chop down:willow > loc:use:bank booth > npc:talk to:ned": {
+      "sequence": [
+        "loc:chop down:willow",
+        "loc:use:bank booth",
+        "npc:talk to:ned"
+      ],
+      "n": 1,
+      "avgReward": -0.85,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:32:17.777Z",
+      "example": "Chop down Willow (distance 4) → Use Bank booth (distance 8) → Talk-to Ned (level 0, distance 9)"
+    },
+    "loc:use:bank booth > npc:talk to:ned > dialog:1:click here to continue": {
+      "sequence": [
+        "loc:use:bank booth",
+        "npc:talk to:ned",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -0.75,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:32:24.001Z",
+      "example": "Use Bank booth (distance 8) → Talk-to Ned (level 0, distance 9) → Dialog 1: Click here to continue"
+    },
+    "npc:talk to:ned > dialog:1:click here to continue > dialog:1:i d like to access my bank account please": {
+      "sequence": [
+        "npc:talk to:ned",
+        "dialog:1:click here to continue",
+        "dialog:1:i d like to access my bank account please"
+      ],
+      "n": 1,
+      "avgReward": -2.9,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:32:30.610Z",
+      "example": "Talk-to Ned (level 0, distance 9) → Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please."
     }
   },
   "discoveries": [
-    {
-      "id": "place:stool:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "place",
-      "text": "Stool observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "place",
-      "text": "Daisies observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:bank table:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "resource",
-      "text": "Bank table observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:bank booth:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "resource",
-      "text": "Bank booth observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:bank notice board:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "resource",
-      "text": "Bank notice board observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:table:192:201:0",
       "at": "2026-08-14T21:55:37.191Z",
@@ -15307,9 +15462,57 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3083:3239:3083:3241:0",
+      "at": "2026-08-14T23:31:40.222Z",
+      "kind": "route",
+      "text": "Route learned: 3083,3239 → 3083,3241; moved 3083,3239 → 3083,3241; execution rejected or failed; new: loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror",
+      "location": {
+        "x": 3083,
+        "z": 3241,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3083:3241:3083:3239:0",
+      "at": "2026-08-14T23:31:52.842Z",
+      "kind": "route",
+      "text": "Route learned: 3083,3241 → 3083,3239; moved 3083,3241 → 3083,3239; execution rejected or failed; new: loc:Bullrushes, loc:Stones",
+      "location": {
+        "x": 3083,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3083:3239:3087:3247:0",
+      "at": "2026-08-14T23:32:05.112Z",
+      "kind": "route",
+      "text": "Route learned: 3083,3239 → 3087,3247; moved 3083,3239 → 3087,3247; new: npc:Ned, npc:Aggie, loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:ned:193:202:0",
+      "at": "2026-08-14T23:32:05.421Z",
+      "kind": "npc",
+      "text": "Ned observed near 3089, 3247, level 0.",
+      "location": {
+        "x": 3089,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T23:31:01.803Z",
+  "updatedAt": "2026-08-14T23:32:43.816Z",
   "activePlan": {
     "objective": "Locate and verify safe fishing spots in Draynor Village",
     "focus": "Plan complete; form the next objective.",
