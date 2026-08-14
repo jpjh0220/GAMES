@@ -98,7 +98,14 @@ export class SolAgentBrain {
   private pending:Experience|null=null;
   private githubSha:string|null=null;
   private dirty=false;
+  private dirtyRevision=0;
   private lastSaveAt=0;
+  private persistenceLoaded=false;
+  private persistenceLoadedAt:string|null=null;
+  private lastSaveSucceededAt:string|null=null;
+  private lastSaveError:string|null=null;
+  private saveFailures=0;
+  private saveInFlight:Promise<boolean>|null=null;
   private motorReady=false;
   private strategistReady=false;
   private motorFailures=0;
@@ -200,24 +207,47 @@ export class SolAgentBrain {
         this.memory.lifetime.strategistRefreshes??=0;this.memory.lifetime.strategistFailures??=0;
         this.memory.memories||=[];this.memory.policy||={};this.memory.relationships||={};this.memory.places||={};this.memory.sequences||={};this.memory.discoveries||=[];this.strategy=this.memory.activePlan||null;
         for(const [key,r] of Object.entries(this.memory.relationships)){const x:any=r;x.trust??=0;x.stance??='unknown';x.conversations??=0;x.cooperation??=0;x.suspicion??=0;x.facts??=[];x.questions??=[];x.lastMessages??=[];this.memory.relationships[key]=x;}
+        this.persistenceLoaded=true;this.persistenceLoadedAt=now();this.lastSaveError=null;
       }
-    }catch(err){console.warn('AGENT_MEMORY_LOAD_FAILED',String(err));}
+    }catch(err){this.lastSaveError=`load: ${String(err).slice(0,240)}`;console.warn('AGENT_MEMORY_LOAD_FAILED',String(err));}
   }
 
   async save(force=false){
     if(!this.opts.githubToken||!this.opts.githubRepo||!this.dirty)return false;
     if(!force&&Date.now()-this.lastSaveAt<5*60_000&&this.memory.lifetime.completedExperiences%10!==0)return false;
-    try{
-      this.memory.updatedAt=now();this.memory.lifetime.saves++;
-      const payload:any={message:`Persist Sol AI demonstrations (${this.memory.lifetime.completedExperiences} experiences)`,content:Buffer.from(JSON.stringify(this.memory,null,2)+'\n').toString('base64'),branch:'sol-memory'};
-      if(this.githubSha)payload.sha=this.githubSha;
-      const r=await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json`,{method:'PUT',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.opts.githubToken}`,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify(payload)});
-      if(!r.ok)throw new Error(`memory save ${r.status}: ${await r.text()}`);
-      const body:any=await r.json();this.githubSha=body?.content?.sha||this.githubSha;this.lastSaveAt=Date.now();this.dirty=false;return true;
-    }catch(err){console.warn('AGENT_MEMORY_SAVE_FAILED',String(err));return false;}
+    if(this.saveInFlight)return force?await this.saveInFlight:false;
+    this.saveInFlight=this.persistWithRetry();
+    try{return await this.saveInFlight}finally{this.saveInFlight=null;}
   }
 
-  noteReflex(){this.memory.lifetime.reflexActions++;this.dirty=true;}
+  private async persistWithRetry(){
+    const savingRevision=this.dirtyRevision;
+    const priorSaves=this.memory.lifetime.saves;
+    this.memory.lifetime.saves=priorSaves+1;
+    for(let attempt=1;attempt<=3;attempt++){
+      try{
+        const savedAt=now();this.memory.updatedAt=savedAt;
+        const payload:any={message:`Persist Sol AI demonstrations (${this.memory.lifetime.completedExperiences} experiences)`,content:Buffer.from(JSON.stringify(this.memory,null,2)+'\n').toString('base64'),branch:'sol-memory'};
+        if(this.githubSha)payload.sha=this.githubSha;
+        const r=await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json`,{method:'PUT',headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.opts.githubToken}`,'X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'},body:JSON.stringify(payload)});
+        if(r.status===409||r.status===422){await this.refreshPersistenceSha();await Bun.sleep(350*attempt);continue;}
+        if(!r.ok)throw new Error(`memory save ${r.status}: ${(await r.text()).slice(0,300)}`);
+        const body:any=await r.json();this.githubSha=body?.content?.sha||this.githubSha;this.lastSaveAt=Date.now();this.lastSaveSucceededAt=savedAt;this.lastSaveError=null;this.saveFailures=0;this.dirty=this.dirtyRevision!==savingRevision;return true;
+      }catch(err){this.saveFailures++;this.lastSaveError=`save attempt ${attempt}: ${String(err).slice(0,240)}`;console.warn('AGENT_MEMORY_SAVE_FAILED',this.lastSaveError);if(attempt<3)await Bun.sleep(500*attempt);}
+    }
+    this.memory.lifetime.saves=priorSaves;
+    return false;
+  }
+
+  private async refreshPersistenceSha(){
+    const r=await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json?ref=sol-memory&t=${Date.now()}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.opts.githubToken}`,'X-GitHub-Api-Version':'2022-11-28'}});
+    if(!r.ok)throw new Error(`memory conflict refresh ${r.status}`);
+    const body:any=await r.json();this.githubSha=body.sha||null;
+  }
+
+  private markDirty(){this.dirty=true;this.dirtyRevision++;}
+
+  noteReflex(){this.memory.lifetime.reflexActions++;this.markDirty();}
 
   private observe(state:BotWorldState){
     const t=now();
@@ -232,10 +262,10 @@ export class SolAgentBrain {
         const old=this.memory.relationships[person]||{name:sender,firstSeenAt:t,lastSeenAt:t,encounters:1,combatLevel:undefined,trust:0,stance:'unknown',conversations:0,cooperation:0,suspicion:0,facts:[],questions:[],lastMessages:[]};
         const helpful=/\b(help|guide|give|spare|need|try|use|find|at|near|buy|sell)\b/i.test(text),risky=/\b(scam|kill|attack|steal|lure|trust me|drop all)\b/i.test(text);
         const trust=clamp(old.trust+(helpful ? .12 : 0)-(risky ? .28 : 0),-1,1),stance=trust>.45?'cooperative':trust>.12?'friendly':trust<-.35?'distrusted':trust<-.08?'cautious':'unknown';
-        this.memory.relationships[person]={...old,name:sender,lastSeenAt:t,conversations:old.conversations+1,cooperation:old.cooperation+(helpful?1:0),suspicion:old.suspicion+(risky?1:0),trust:Number(trust.toFixed(2)),stance,facts:uniq([...old.facts,text]).slice(-20),questions:text.includes('?')?uniq([...old.questions,text]).slice(-12):old.questions,lastMessages:[...old.lastMessages,{at:t,direction:'incoming',text}].slice(-20)};
+        this.memory.relationships[person]={...old,name:sender,lastSeenAt:t,conversations:old.conversations+1,cooperation:old.cooperation+(helpful?1:0),suspicion:old.suspicion+(risky?1:0),trust:Number(trust.toFixed(2)),stance,facts:uniq([...old.facts,text]).slice(-20),questions:text.includes('?')?uniq([...old.questions,text]).slice(-12):old.questions,lastMessages:[...old.lastMessages,{at:t,direction:'incoming' as const,text}].slice(-20)};
         this.addMemory({kind:'relationship',text:`${sender} said: "${text}". Current stance ${stance}, trust ${trust.toFixed(2)}.`,importance:helpful||risky?1.4:.8,tags:['social',sender,stance,...(helpful?['potential-help']:[]),...(risky?['risk']:[])],tick:Number(m.tick)||0,state});
       }else if(m.fromSelf){
-        for(const p of state.nearbyPlayers||[]){const k=norm(p.name),old=this.memory.relationships[k];if(old)old.lastMessages=[...old.lastMessages,{at:t,direction:'outgoing',text}].slice(-20);}
+        for(const p of state.nearbyPlayers||[]){const k=norm(p.name),old=this.memory.relationships[k];if(old)old.lastMessages=[...old.lastMessages,{at:t,direction:'outgoing' as const,text}].slice(-20);}
       }
     }
     if(state.player){
@@ -246,7 +276,7 @@ export class SolAgentBrain {
       for(const name of [...npcs,...locs]){const kind=/tree|rock|ore|fish|range|bank|shop/i.test(name)?'resource':/dragon|demon|skeleton|guard/i.test(name)?'danger':npcs.includes(name)?'npc':'place';const id=`${kind}:${norm(name)}:${k}`;if(!this.memory.discoveries.some(d=>d.id===id))this.memory.discoveries.push({id,at:t,kind:kind as any,text:`${name} observed near ${x}, ${z}, level ${level}.`,location:{x,z,level},confidence:.7});}
       if(this.memory.discoveries.length>300)this.memory.discoveries.splice(0,this.memory.discoveries.length-300);
     }
-    this.dirty=true;
+    this.markDirty();
   }
 
   private contextKey(state:BotWorldState,candidates:AgentCandidate[]){
@@ -304,7 +334,7 @@ export class SolAgentBrain {
     const choice=await this.askMotor(state,legal,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
-    this.lastChoice=choice;this.dirty=true;
+    this.lastChoice=choice;this.markDirty();
     this.replay.push({tick:(state as any).tick||0,perception:`HP ${state.player?.hp}/${state.player?.maxHp}; ${state.nearbyPlayers?.length||0} agents; ${state.nearbyNpcs?.length||0} NPCs; ${state.nearbyLocs?.length||0} objects`,retrieved:this.currentGuidance,prediction:this.lastShadowPrediction?.fingerprint||null,decision:choice.reason,action:choice.fingerprint,outcome:null,lesson:null});
     if(this.replay.length>80)this.replay.shift();
     this.maybeRefreshStrategy(state,legal);
@@ -318,7 +348,7 @@ export class SolAgentBrain {
     if(!this.strategistReady){void this.refreshAvailability();return;}
     this.strategistInFlight=true;this.lastStrategySessionChoice=this.sessionMotorChoices;
     void this.askStrategist(state,candidates).then(strategy=>{
-      this.strategy=strategy;this.memory.activePlan=strategy;this.memory.lifetime.strategistRefreshes=(this.memory.lifetime.strategistRefreshes||0)+1;this.dirty=true;
+      this.strategy=strategy;this.memory.activePlan=strategy;this.memory.lifetime.strategistRefreshes=(this.memory.lifetime.strategistRefreshes||0)+1;this.markDirty();
       this.addMemory({kind:'strategy',text:`AI strategist: ${strategy.focus}. ${strategy.reason}`,importance:1.1,tags:['ai-strategy',...strategy.priorities.slice(0,3)],tick:0,state});
     }).catch(err=>{this.memory.lifetime.strategistFailures=(this.memory.lifetime.strategistFailures||0)+1;console.warn('AI_STRATEGIST_ERROR',String(err));}).finally(()=>{this.strategistInFlight=false;});
   }
@@ -391,7 +421,7 @@ export class SolAgentBrain {
     const active=this.strategy?.plan?.find(x=>x.status==='active');
     if(active){const overlap=[...toks(active.label)].some(t=>toks(`${exp.candidate.label} ${outcome.summary}`).has(t));if(outcome.reward>.45&&overlap){active.status='done';active.evidence=outcome.summary;const next=this.strategy!.plan!.find(x=>x.status==='pending');if(next)next.status='active';else this.strategy!.focus='Plan complete; form the next objective.';this.memory.activePlan=this.strategy;}else if(outcome.reward<-.7){this.strategy!.failures=(this.strategy!.failures||0)+1;if((this.strategy!.failures||0)>=3){active.status='blocked';active.evidence='Repeated negative outcomes; strategist must replan.';this.memory.activePlan=this.strategy;this.strategy=null;}}}
     const replay=this.replay.at(-1);if(replay&&!replay.outcome){replay.outcome=outcome.summary;replay.lesson=outcome.reward>0?`Reinforce ${exp.candidate.fingerprint} (reward ${outcome.reward})`:`Avoid or revise ${exp.candidate.fingerprint} (reward ${outcome.reward})`;}
-    this.dirty=true;void this.save(false);
+    this.markDirty();void this.save(false);
   }
 
   private addMemory(args:{kind:MemoryEntry['kind'];text:string;importance:number;tags:string[];tick:number;state:BotWorldState}){
@@ -407,6 +437,7 @@ export class SolAgentBrain {
     const contexts=Object.keys(this.memory.policy).length;const learnedActions=Object.values(this.memory.policy).reduce((n,ctx)=>n+Object.values(ctx).filter(s=>s.n>=2&&s.avgReward>.05).length,0);const predictions=this.memory.lifetime.shadowPredictions||0;const matches=this.memory.lifetime.shadowMatches||0;
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
-    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
+    const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
+    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }

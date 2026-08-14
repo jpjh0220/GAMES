@@ -108,7 +108,7 @@ const server=Bun.serve({
     const path=new URL(req.url).pathname;
     const headers={'Cache-Control':'no-store','Access-Control-Allow-Origin':'*'};
     if(path==='/state') return Response.json(snapshot,{headers});
-    if(path==='/health') return Response.json({ok:true,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,learnedActions:snapshot.agent?.learnedActions??0,memoryCount:snapshot.agent?.memoryCount??0},{headers});
+    if(path==='/health') return Response.json({ok:true,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,learnedActions:snapshot.agent?.learnedActions??0,memoryCount:snapshot.agent?.memoryCount??0,persistence:snapshot.agent?.persistence??null},{headers});
     return new Response(viewerHtml,{headers:{...headers,'Content-Type':'text/html; charset=utf-8'}});
   }
 });
