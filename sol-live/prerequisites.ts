@@ -30,7 +30,8 @@ export type Blocker = {
 
 type Rule = {
   re: RegExp;
-  build: (m: RegExpMatchArray) => Omit<Blocker, 'id' | 'evidence' | 'firstSeenTick' | 'hits'>;
+  /** `last` is the fingerprint of the action that provoked the message, when known. */
+  build: (m: RegExpMatchArray, last?: string) => Omit<Blocker, 'id' | 'evidence' | 'firstSeenTick' | 'hits'>;
 };
 
 const RULES: Rule[] = [
@@ -39,11 +40,16 @@ const RULES: Rule[] = [
     re: /you need an?\s+(\w+)\s+level of (\d+)/i,
     build: (m) => {
       const skill = m[1].toLowerCase();
+      const gathering: Record<string, string> = {
+        woodcutting: 'loc:chop down:*',
+        mining: 'loc:mine:*',
+        fishing: 'npc:*:fishing spot',
+      };
       return {
         kind: 'skill',
         requirement: skill,
         level: Number(m[2]),
-        blocks: [`loc:chop down:${skill === 'woodcutting' ? 'willow' : '*'}`, `skill:${skill}`],
+        blocks: [gathering[skill] ?? `skill:${skill}:*`],
         subgoal: `Raise ${skill} to ${m[2]} before retrying; train on the lowest-requirement target available.`,
       };
     },
@@ -56,9 +62,7 @@ const RULES: Rule[] = [
       return {
         kind: 'item',
         requirement: item,
-        blocks: item.includes('net')
-          ? ['npc:net:fishing spot']
-          : [`item:${item}`],
+        blocks: item.includes('net') ? ['npc:net:fishing spot', 'npc:bait:fishing spot'] : [`item:${item}:*`],
         subgoal: `Acquire a ${item} (shop, drop, or trade) before attempting to ${m[2].replace(/\.$/, '')}.`,
       };
     },
@@ -69,42 +73,54 @@ const RULES: Rule[] = [
     build: (m) => ({
       kind: 'item',
       requirement: m[1].trim().toLowerCase(),
-      blocks: ['loc:chop down:willow', 'loc:chop down:tree', 'loc:chop down:oak'],
+      blocks: ['loc:chop down:*'],
       subgoal: `Obtain a usable ${m[1].trim()} at your current level before any woodcutting action.`,
     }),
   },
   {
-    // "You don't have enough coins."
+    // "You don't have enough coins." — bars purchases until funds exist.
     re: /you don'?t have enough coins/i,
     build: () => ({
       kind: 'coins',
       requirement: 'coins',
-      blocks: ['shop:buy'],
-      subgoal: 'Earn coins first: sell loot, or bank and collect drops from a profitable target.',
+      blocks: ['shop:buy:*'],
+      subgoal: 'Earn coins first: sell sellable loot, or collect drops from a profitable target.',
     }),
   },
   {
-    // "You can't sell this item to a shop."
+    // "You can't sell this item to a shop." — scoped to the exact item, not all selling.
     re: /you can'?t sell this item to a shop/i,
-    build: () => ({
-      kind: 'unsellable',
-      requirement: 'a shop that buys this item',
-      blocks: ['shop:sell'],
-      subgoal: 'This shop refuses this item. Try a different shop, or stop attempting to sell it.',
-    }),
+    build: (_m, last) => {
+      const item = last?.startsWith('shop:sell:') ? last.slice('shop:sell:'.length) : null;
+      return {
+        kind: 'unsellable',
+        requirement: item ?? 'this item',
+        blocks: [item ? `shop:sell:${item}` : 'shop:sell:*'],
+        subgoal: item
+          ? `Shops will not buy ${item}. Stop offering it; find a buyer or discard it.`
+          : 'This shop refuses this item. Try a different shop, or stop attempting to sell it.',
+      };
+    },
   },
 ];
+
+/** Glob match supporting '*' anywhere in the pattern. */
+function matches(pattern: string, fingerprint: string): boolean {
+  if (!pattern.includes('*')) return pattern === fingerprint;
+  const rx = new RegExp('^' + pattern.split('*').map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*') + '$');
+  return rx.test(fingerprint);
+}
 
 export class PrerequisiteTracker {
   private blockers = new Map<string, Blocker>();
 
   /** Feed every engine message. Returns newly-created blockers. */
-  observe(text: string, tick: number): Blocker[] {
+  observe(text: string, tick: number, lastFingerprint?: string): Blocker[] {
     const created: Blocker[] = [];
     for (const rule of RULES) {
       const m = text.match(rule.re);
       if (!m) continue;
-      const spec = rule.build(m);
+      const spec = rule.build(m, lastFingerprint);
       const id = `${spec.kind}:${spec.requirement}${spec.level ? ':' + spec.level : ''}`;
       const existing = this.blockers.get(id);
       if (existing) {
@@ -123,7 +139,7 @@ export class PrerequisiteTracker {
   isBlocked(fingerprint: string): Blocker | null {
     for (const b of this.blockers.values()) {
       for (const pat of b.blocks) {
-        if (pat.endsWith('*') ? fingerprint.startsWith(pat.slice(0, -1)) : fingerprint === pat) return b;
+        if (matches(pat, fingerprint)) return b;
       }
     }
     return null;

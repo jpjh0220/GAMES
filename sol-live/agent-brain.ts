@@ -294,7 +294,7 @@ export class SolAgentBrain {
     for(const m of (state.gameMessages||[]) as any[]){
       const text=String(m.text||'').trim(),sender=String(m.sender||'').trim();if(!text)continue;
       const id=`${m.observationId??''}:${m.tick??''}:${sender}:${text}`;if(this.seenMessages.has(id))continue;this.seenMessages.add(id);if(this.seenMessages.size>500)this.seenMessages=new Set([...this.seenMessages].slice(-300));
-      for(const b of this.prereqs.observe(text,Number(m.tick)||0))console.log('AGENT_PREREQ_LEARNED',JSON.stringify({requirement:b.requirement,level:b.level,evidence:b.evidence,subgoal:b.subgoal}));
+      for(const b of this.prereqs.observe(text,Number(m.tick)||0,this.lastChoice?.fingerprint))console.log('AGENT_PREREQ_LEARNED',JSON.stringify({requirement:b.requirement,level:b.level,evidence:b.evidence,subgoal:b.subgoal}));
       const incoming=!m.fromSelf&&!!sender,person=norm(incoming?sender:this.opts.name);if(incoming&&person){
         const old=this.memory.relationships[person]||{name:sender,firstSeenAt:t,lastSeenAt:t,encounters:1,combatLevel:undefined,trust:0,stance:'unknown',conversations:0,cooperation:0,suspicion:0,facts:[],questions:[],lastMessages:[]};
         const helpful=/\b(help|guide|give|spare|need|try|use|find|at|near|buy|sell)\b/i.test(text),risky=/\b(scam|kill|attack|steal|lure|trust me|drop all)\b/i.test(text);
