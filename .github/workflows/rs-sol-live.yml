@@ -90,13 +90,36 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
           echo "Spectator tunnel: $URL"
 
-      - name: Publish current spectator endpoint
+      - name: Start Sol, verify health, and publish spectator endpoint
+        working-directory: rs-sdk/server/webclient
         env:
+          SOL_USER: Sol5
+          SOL_PASS: run-31675285392-1
+          SOL_AGENT_MODEL: qwen3:1.7b
+          OLLAMA_URL: http://127.0.0.1:11434
           GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           LIVE_URL: ${{ steps.tunnel.outputs.url }}
-        shell: bash
         run: |
           set -euo pipefail
+          bun sol-live.ts > >(tee ../../sol-console.log) 2>&1 &
+          AGENT_PID=$!
+          READY=''
+          for i in $(seq 1 120); do
+            if ! kill -0 "$AGENT_PID" 2>/dev/null; then
+              wait "$AGENT_PID"
+              exit 1
+            fi
+            if curl -fsS --max-time 3 http://127.0.0.1:8787/health | jq -e '.ok == true' >/dev/null; then
+              READY=1
+              break
+            fi
+            sleep 2
+          done
+          if [ -z "$READY" ]; then
+            echo 'Sol did not become healthy before the readiness deadline.'
+            exit 1
+          fi
           NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol5",controller:"dual-ai-player-shadow-learner",motor:"qwen3:0.6b",strategist:"qwen3:1.7b"}')
           CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
@@ -106,20 +129,8 @@ jobs:
           else
             gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" -f message="Create Sol live spectator endpoint" -f content="$CONTENT" >/dev/null
           fi
-          echo "$JSON"
-
-      - name: Run persistent Sol learning agent
-        working-directory: rs-sdk/server/webclient
-        env:
-          SOL_USER: Sol5
-          SOL_PASS: run-31675285392-1
-          SOL_AGENT_MODEL: qwen3:1.7b
-          OLLAMA_URL: http://127.0.0.1:11434
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: |
-          set -o pipefail
-          bun sol-live.ts 2>&1 | tee ../../sol-console.log
+          echo "Published healthy spectator endpoint: $LIVE_URL"
+          wait "$AGENT_PID"
 
       - name: Upload session logs
         if: always()
