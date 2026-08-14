@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 390,
-    "teacherChoices": 390,
+    "totalChoices": 400,
+    "teacherChoices": 400,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 390,
-    "totalReward": 75.86,
-    "saves": 40,
+    "completedExperiences": 400,
+    "totalReward": 73.99,
+    "saves": 41,
     "shadowPredictions": 163,
     "shadowMatches": 76,
     "strategistRefreshes": 21,
@@ -2437,6 +2437,24 @@
         "z": 3240,
         "level": 0
       }
+    },
+    {
+      "id": "mstj4vze-mot9am",
+      "createdAt": "2026-08-14T22:39:35.402Z",
+      "tick": 12943,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Close the shop. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "modal",
+        "shop"
+      ],
+      "location": {
+        "x": 3078,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -3072,6 +3090,16 @@
         "lastAt": "2026-08-14T22:12:27.339Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I'm ready to explore the area and gather some resources for my level 1 journey."
+      },
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T22:38:44.737Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "Talk-to Diango (level 0, distance 11) to confirm fishing location and exchange items."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
@@ -3605,6 +3633,86 @@
         "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
         "exampleReason": "I'm ready to explore the draynor village and secure my fishing spots. Let's star"
       }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T22:38:55.205Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "I will wait for the NPC to respond to the dialogue to proceed with the next location."
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:39:14.709Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "Dialog 1: Click here to continue"
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
+      "dialog:1:toy horseys": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:39:08.698Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "I'm ready to explore the draynor village and secure my fishing spots. Let's star"
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
+      "shop:buy:toy horsey": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:39:57.031Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "I need to buy a toy horsey to proceed with the dialogue."
+      },
+      "shop:sell:coins": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:39:28.804Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "I'm ready to explore the draynor village and secure my fishing spots."
+      },
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": 2.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T22:39:35.402Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "Close the shop interface"
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
+      "npc:trade:diango": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:39:46.526Z",
+        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "exampleReason": "Talk-to Diango (level 0, distance 1) to gain access to the next location."
+      }
     }
   },
   "relationships": {
@@ -3662,8 +3770,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:38:17.724Z",
-      "encounters": 340,
+      "lastSeenAt": "2026-08-14T22:38:30.926Z",
+      "encounters": 341,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -3728,8 +3836,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T22:38:17.724Z",
-      "encounters": 340,
+      "lastSeenAt": "2026-08-14T22:38:30.926Z",
+      "encounters": 341,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -3839,8 +3947,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T22:38:17.724Z",
-      "encounters": 212,
+      "lastSeenAt": "2026-08-14T22:38:30.926Z",
+      "encounters": 213,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -4082,12 +4190,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3087,
-      "z": 3236,
+      "x": 3086,
+      "z": 3240,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-14T22:38:17.724Z",
-      "visits": 55,
+      "lastSeenAt": "2026-08-14T22:38:30.926Z",
+      "visits": 56,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -4175,12 +4283,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3082,
-      "z": 3248,
+      "x": 3078,
+      "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-14T22:03:52.543Z",
-      "visits": 21,
+      "lastSeenAt": "2026-08-14T22:39:46.858Z",
+      "visits": 30,
       "npcs": [
         "Diango",
         "Banker",
@@ -4219,7 +4327,9 @@
         "Oak",
         "Rock",
         "Chair",
-        "Cart"
+        "Cart",
+        "Thistle",
+        "Small fern"
       ]
     },
     "193:203:0": {
@@ -5284,10 +5394,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T22:01:59.728Z",
+      "lastAt": "2026-08-14T22:39:14.709Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -5296,10 +5406,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T22:02:06.629Z",
+      "lastAt": "2026-08-14T22:39:22.234Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
@@ -5308,10 +5418,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T22:02:12.001Z",
+      "lastAt": "2026-08-14T22:39:28.804Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:buy:toy horsey > shop:sell:coins > shop:buy:toy horsey": {
@@ -5344,10 +5454,10 @@
         "shop:sell:coins",
         "modal:close-shop"
       ],
-      "n": 1,
-      "avgReward": 4.2,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:02:32.138Z",
+      "n": 2,
+      "avgReward": 2.7,
+      "positive": 2,
+      "lastAt": "2026-08-14T22:39:35.402Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Close the shop"
     },
     "shop:sell:coins > modal:close-shop > npc:talk to:diango": {
@@ -5380,10 +5490,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": -1.35,
+      "n": 2,
+      "avgReward": -1.01,
       "positive": 0,
-      "lastAt": "2026-08-14T22:02:56.101Z",
+      "lastAt": "2026-08-14T22:39:02.388Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:2:i m fine thanks": {
@@ -6261,6 +6371,66 @@
       "positive": 1,
       "lastAt": "2026-08-14T22:38:30.594Z",
       "example": "Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 6) → Attack Dark wizard (level 7, distance 5)"
+    },
+    "npc:attack:dark wizard > npc:attack:dark wizard > npc:talk to:diango": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "npc:attack:dark wizard",
+        "npc:talk to:diango"
+      ],
+      "n": 1,
+      "avgReward": 7.49,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:38:44.737Z",
+      "example": "Attack Dark wizard (level 7, distance 6) → Attack Dark wizard (level 7, distance 5) → Talk-to Diango (level 0, distance 12)"
+    },
+    "npc:attack:dark wizard > npc:talk to:diango > wait": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "npc:talk to:diango",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 2.71,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:38:55.205Z",
+      "example": "Attack Dark wizard (level 7, distance 5) → Talk-to Diango (level 0, distance 12) → Wait and observe for a moment"
+    },
+    "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
+      "sequence": [
+        "wait",
+        "dialog:1:click here to continue",
+        "dialog:1:toy horseys"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:39:08.698Z",
+      "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
+    },
+    "shop:sell:coins > modal:close-shop > npc:trade:diango": {
+      "sequence": [
+        "shop:sell:coins",
+        "modal:close-shop",
+        "npc:trade:diango"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:39:46.527Z",
+      "example": "Sell 1 Coins for about 0 → Close the shop → Trade Diango (level 0, distance 1)"
+    },
+    "modal:close-shop > npc:trade:diango > shop:buy:toy horsey": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:trade:diango",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:39:57.031Z",
+      "example": "Close the shop → Trade Diango (level 0, distance 1) → Buy 1 Toy horsey for about 150"
     }
   },
   "discoveries": [
@@ -9215,9 +9385,45 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3086:3240:3079:3250:0",
+      "at": "2026-08-14T22:38:44.737Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3240 → 3079,3250; moved 3086,3240 → 3079,3250",
+      "location": {
+        "x": 3079,
+        "z": 3250,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "place:thistle:192:203:0",
+      "at": "2026-08-14T22:38:45.007Z",
+      "kind": "place",
+      "text": "Thistle observed near 3078, 3251, level 0.",
+      "location": {
+        "x": 3078,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:small fern:192:203:0",
+      "at": "2026-08-14T22:38:45.007Z",
+      "kind": "place",
+      "text": "Small fern observed near 3078, 3251, level 0.",
+      "location": {
+        "x": 3078,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T22:38:30.594Z",
+  "updatedAt": "2026-08-14T22:39:57.031Z",
   "activePlan": {
     "objective": "Talk to the NPC to progress the dialogue and gain access to the next location.",
     "focus": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
@@ -9227,12 +9433,13 @@
       {
         "id": "step-1",
         "label": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
-        "status": "active"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
         "label": "Wait for the dialogue to open by checking the `failed` array for completion.",
-        "status": "pending"
+        "status": "active"
       },
       {
         "id": "step-3",
