@@ -59,7 +59,7 @@ const feed = (label: string, data: any = {}, reason = '') => {
   };
   currentAction = e;
   actionHistory.push(e);
-  if (actionHistory.length > 120) actionHistory.shift();
+  if (actionHistory.length > 160) actionHistory.shift();
 };
 const log = async (event: string, data?: unknown) => {
   const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
@@ -68,8 +68,11 @@ const log = async (event: string, data?: unknown) => {
 };
 
 let snapshot: any = {
-  updatedAt: new Date().toISOString(), online: false, tick: 0, sessionStartedAt, directive,
-  player: null, skills: [], inventory: [], nearbyNpcs: [], nearbyPlayers: [], groundItems: [], nearbyLocs: [],
+  updatedAt: new Date().toISOString(), online: false, inGame: false, tick: 0, revision: 0,
+  sessionStartedAt, directive, runNumber: null,
+  player: null, skills: [], inventory: [], equipment: [], nearbyNpcs: [], nearbyPlayers: [], groundItems: [], nearbyLocs: [],
+  combatStyle: null, combatEvents: [], gameMessages: [], recentDialogs: [], prayers: null,
+  worldUi: { shopOpen:false, bankOpen:false, tradeOpen:false, dialogOpen:false, modalOpen:false },
   currentAction: null, currentGoal, currentWhy, actions: [], actionCount: 0, movementTrail: [], lessons: []
 };
 
@@ -80,34 +83,60 @@ const refreshSnapshot = (state: BotWorldState | null) => {
     const next = { x: state.player.worldX, z: state.player.worldZ, level: state.player.level, tick };
     if (!last || last.x !== next.x || last.z !== next.z || last.level !== next.level) {
       movementTrail.push(next);
-      if (movementTrail.length > 220) movementTrail.shift();
+      if (movementTrail.length > 320) movementTrail.shift();
     }
   }
 
   snapshot = {
     updatedAt: new Date().toISOString(),
     online: !!state?.player,
+    inGame: !!s?.inGame,
     tick,
+    revision: s?.revision ?? 0,
     sessionStartedAt,
     directive,
     runNumber: Number(process.env.GITHUB_RUN_NUMBER || 0) || null,
     player: state?.player ?? null,
     skills: state?.skills ?? [],
-    inventory: state?.inventory?.map(i => ({ name: i.name, count: i.count, slot: i.slot })) ?? [],
+    inventory: state?.inventory?.map(i => ({ id:i.id, name:i.name, count:i.count, slot:i.slot })) ?? [],
+    equipment: state?.equipment?.map(i => ({ id:i.id, name:i.name, count:i.count, slot:i.slot })) ?? [],
     nearbyNpcs: s?.nearbyNpcs?.map((n: any) => ({
-      name:n.name, combatLevel:n.combatLevel, x:n.x, z:n.z, hp:n.hp, maxHp:n.maxHp,
-      inCombat:n.inCombat, targetIndex:n.targetIndex, animId:n.animId, distance:n.distance, reachable:n.reachable
+      id:n.id, index:n.index, name:n.name, combatLevel:n.combatLevel, x:n.x, z:n.z,
+      hp:n.hp, maxHp:n.maxHp, healthPercent:n.healthPercent, inCombat:n.inCombat,
+      targetIndex:n.targetIndex, animId:n.animId, spotanimId:n.spotanimId,
+      lastCombatTick:n.lastCombatTick, distance:n.distance, reachable:n.reachable, options:n.options
     })) ?? [],
     nearbyPlayers: s?.nearbyPlayers?.map((p: any) => ({
-      name:p.name, combatLevel:p.combatLevel, x:p.x, z:p.z, distance:p.distance, reachable:p.reachable
+      index:p.index, name:p.name, combatLevel:p.combatLevel, x:p.x, z:p.z,
+      distance:p.distance, reachable:p.reachable
     })) ?? [],
     groundItems: s?.groundItems?.map((g: any) => ({
-      name:g.name, count:g.count, x:g.x, z:g.z, distance:g.distance, reachable:g.reachable
+      id:g.id, name:g.name, count:g.count, x:g.x, z:g.z, distance:g.distance, reachable:g.reachable
     })) ?? [],
-    nearbyLocs: s?.nearbyLocs?.slice?.(0, 120)?.map((l: any) => ({
-      name:l.name, x:l.x, z:l.z, level:l.level, distance:l.distance, reachable:l.reachable, options:l.options
+    nearbyLocs: s?.nearbyLocs?.slice?.(0, 160)?.map((l: any) => ({
+      id:l.id, name:l.name, x:l.x, z:l.z, level:l.level, distance:l.distance,
+      reachable:l.reachable, options:l.options
     })) ?? [],
     combatStyle: s?.combatStyle ?? null,
+    combatEvents: s?.combatEvents?.slice?.(-80)?.map((e:any) => ({
+      tick:e.tick, observationId:e.observationId, type:e.type, damage:e.damage,
+      sourceType:e.sourceType, sourceIndex:e.sourceIndex, targetType:e.targetType, targetIndex:e.targetIndex
+    })) ?? [],
+    gameMessages: s?.gameMessages?.slice?.(-40)?.map((m:any) => ({
+      type:m.type, text:m.text, sender:m.sender, tick:m.tick, observationId:m.observationId, fromSelf:m.fromSelf
+    })) ?? [],
+    recentDialogs: s?.recentDialogs?.slice?.(-16)?.map((d:any) => ({
+      text:d.text, tick:d.tick, observationId:d.observationId, interfaceId:d.interfaceId
+    })) ?? [],
+    prayers: s?.prayers ?? null,
+    worldUi: {
+      shopOpen: !!s?.shop?.isOpen,
+      bankOpen: !!s?.bank?.isOpen,
+      tradeOpen: !!s?.trade?.isOpen,
+      tradePartner: s?.trade?.partner ?? null,
+      dialogOpen: !!s?.dialog?.isOpen,
+      modalOpen: !!s?.modalOpen
+    },
     currentAction,
     currentGoal,
     currentWhy,
@@ -124,7 +153,10 @@ const server = Bun.serve({
     const path = new URL(req.url).pathname;
     const headers = { 'Cache-Control': 'no-store', 'Access-Control-Allow-Origin': '*' };
     if (path === '/state') return Response.json(snapshot, { headers });
-    if (path === '/health') return Response.json({ ok: true, online: snapshot.online, tick, actionCount: actions, sessionStartedAt }, { headers });
+    if (path === '/health') return Response.json({
+      ok: true, online: snapshot.online, inGame: snapshot.inGame, tick,
+      actionCount: actions, sessionStartedAt, runNumber:snapshot.runNumber
+    }, { headers });
     return new Response(viewerHtml, { headers: { ...headers, 'Content-Type': 'text/html; charset=utf-8' } });
   }
 });
