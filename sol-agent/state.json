@@ -6,15 +6,15 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 30,
-    "teacherChoices": 30,
+    "totalChoices": 40,
+    "teacherChoices": 40,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 30,
-    "totalReward": -3.18,
-    "saves": 4,
-    "shadowPredictions": 0,
-    "shadowMatches": 0,
+    "completedExperiences": 40,
+    "totalReward": -3.26,
+    "saves": 5,
+    "shadowPredictions": 3,
+    "shadowMatches": 1,
     "strategistRefreshes": 2,
     "strategistFailures": 0
   },
@@ -80,6 +80,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstgypn1-l6cl4o",
+      "createdAt": "2026-08-14T21:38:48.013Z",
+      "tick": 785,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Withdraw 1 Raw anchovies. Result: inventory changed. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "retrieve",
+        "raw anchovies",
+        "agent scrappydoo"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -119,14 +139,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 5,
-        "avgReward": -0.208,
+        "n": 7,
+        "avgReward": -0.22,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.1,
-        "lastAt": "2026-08-14T21:38:14.444Z",
+        "lastAt": "2026-08-14T21:39:29.185Z",
         "exampleGoal": "Deposit all Raw anchovies",
-        "exampleReason": "Deposit all Coins"
+        "exampleReason": "Deposit all Coins to start the process of depositing raw anchovies. This action is necessary to proceed with the plan to deposit raw anchovies."
       },
       "bank:deposit:body rune": {
         "n": 1,
@@ -139,32 +159,32 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:deposit:raw anchovies": {
-        "n": 5,
+        "n": 7,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T21:38:27.629Z",
+        "lastAt": "2026-08-14T21:39:45.301Z",
         "exampleGoal": "Deposit all Raw anchovies",
         "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:raw anchovies": {
-        "n": 7,
+        "n": 8,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T21:38:34.215Z",
+        "lastAt": "2026-08-14T21:38:48.013Z",
         "exampleGoal": "Deposit all Raw anchovies",
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 6,
+        "n": 11,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T21:38:21.313Z",
+        "lastAt": "2026-08-14T21:39:35.731Z",
         "exampleGoal": "Deposit all Raw anchovies",
         "exampleReason": "banking trip started"
       },
@@ -194,8 +214,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:35:58.811Z",
-      "encounters": 9,
+      "lastSeenAt": "2026-08-14T21:39:36.038Z",
+      "encounters": 17,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -209,8 +229,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:38:27.937Z",
-      "encounters": 29,
+      "lastSeenAt": "2026-08-14T21:39:36.038Z",
+      "encounters": 39,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -224,8 +244,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:38:27.937Z",
-      "encounters": 29,
+      "lastSeenAt": "2026-08-14T21:39:36.038Z",
+      "encounters": 39,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -274,8 +294,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:38:27.937Z",
-      "visits": 30,
+      "lastSeenAt": "2026-08-14T21:39:36.038Z",
+      "visits": 40,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -399,10 +419,10 @@
         "bank:withdraw:raw anchovies",
         "bank:deposit:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:36:05.124Z",
+      "lastAt": "2026-08-14T21:38:41.730Z",
       "example": "Deposit all Raw anchovies → Withdraw 1 Raw anchovies → Deposit all Raw anchovies"
     },
     "bank:withdraw:raw anchovies > bank:deposit:raw anchovies > bank:withdraw:raw anchovies": {
@@ -411,10 +431,10 @@
         "bank:deposit:raw anchovies",
         "bank:withdraw:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:36:11.998Z",
+      "lastAt": "2026-08-14T21:38:48.013Z",
       "example": "Withdraw 1 Raw anchovies → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
     },
     "bank:deposit:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
@@ -471,10 +491,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 3,
-      "avgReward": 0.067,
+      "n": 5,
+      "avgReward": 0.02,
       "positive": 0,
-      "lastAt": "2026-08-14T21:38:21.313Z",
+      "lastAt": "2026-08-14T21:39:35.731Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -483,10 +503,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 2,
-      "avgReward": -0.15,
+      "n": 3,
+      "avgReward": -0.233,
       "positive": 0,
-      "lastAt": "2026-08-14T21:38:14.444Z",
+      "lastAt": "2026-08-14T21:39:29.185Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:bronze sq shield": {
@@ -555,10 +575,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.28,
       "positive": 0,
-      "lastAt": "2026-08-14T21:37:55.835Z",
+      "lastAt": "2026-08-14T21:39:01.240Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -567,10 +587,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
-      "avgReward": 0,
+      "n": 2,
+      "avgReward": -0.1,
       "positive": 0,
-      "lastAt": "2026-08-14T21:38:01.536Z",
+      "lastAt": "2026-08-14T21:39:12.015Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -579,10 +599,10 @@
         "bank:withdraw:coins",
         "bank:deposit:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:38:27.629Z",
+      "lastAt": "2026-08-14T21:39:45.302Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Raw anchovies"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > bank:withdraw:raw anchovies": {
@@ -596,6 +616,30 @@
       "positive": 0,
       "lastAt": "2026-08-14T21:38:34.215Z",
       "example": "Withdraw 1 Coins → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
+    },
+    "bank:deposit:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:raw anchovies",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:38:54.899Z",
+      "example": "Deposit all Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.3,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:39:06.013Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -1068,7 +1112,7 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T21:38:34.215Z",
+  "updatedAt": "2026-08-14T21:39:45.302Z",
   "activePlan": {
     "objective": "Deposit raw anchovies and withdraw essential items",
     "focus": "Deposit all Raw anchovies",
