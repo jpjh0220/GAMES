@@ -6,13 +6,13 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 21,
-    "teacherChoices": 21,
+    "totalChoices": 28,
+    "teacherChoices": 28,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 20,
-    "totalReward": 5.53,
-    "saves": 5
+    "completedExperiences": 27,
+    "totalReward": 6.53,
+    "saves": 6
   },
   "memories": [
     {
@@ -68,6 +68,42 @@
         "z": 3329,
         "level": 0
       }
+    },
+    {
+      "id": "mssld1ya-i2layh",
+      "createdAt": "2026-08-14T06:54:09.442Z",
+      "tick": 3136,
+      "runNumber": 13,
+      "kind": "strategy",
+      "text": "Learned strategy: Explore north about 5 tiles is usually useful in context hp=hurt|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world; 3 samples, average reward 0.64.",
+      "importance": 1.64,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3128,
+        "z": 3337,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssle1sy-trwbkx",
+      "createdAt": "2026-08-14T06:54:55.906Z",
+      "tick": 3291,
+      "runNumber": 13,
+      "kind": "strategy",
+      "text": "Learned strategy: Explore north about 5 tiles is usually useful in context hp=hurt|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world; 4 samples, average reward 0.62.",
+      "importance": 1.62,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3128,
+        "z": 3355,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -93,6 +129,16 @@
         "lastAt": "2026-08-14T06:41:31.918Z",
         "exampleGoal": "Explore and gather resources to improve survival and combat capabilities",
         "exampleReason": "There are multiple resources available in the area, such as runes, meat, and shields, which can enhance my abilities. Exploring further could also provide new opportunities to learn and grow."
+      },
+      "wait": {
+        "n": 1,
+        "avgReward": 0,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0,
+        "lastAt": "2026-08-14T06:58:46.612Z",
+        "exampleGoal": "Remain stable while reasoning recovers",
+        "exampleReason": "Teacher inference failed: TimeoutError: The operation timed out."
       }
     },
     "hp=healthy|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,social,wait,world": {
@@ -143,24 +189,36 @@
     },
     "hp=hurt|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat,combat-style,explore,inventory,wait,world": {
       "wait": {
-        "n": 5,
+        "n": 6,
         "avgReward": 0,
         "positive": 0,
         "negative": 0,
         "lastReward": 0,
-        "lastAt": "2026-08-14T06:53:22.900Z",
+        "lastAt": "2026-08-14T06:55:42.102Z",
         "exampleGoal": "Remain stable while reasoning recovers",
         "exampleReason": "Teacher inference failed: TimeoutError: The operation timed out."
       },
       "walk:north": {
-        "n": 2,
-        "avgReward": 0.74,
-        "positive": 2,
+        "n": 4,
+        "avgReward": 0.62,
+        "positive": 4,
         "negative": 0,
         "lastReward": 0.56,
-        "lastAt": "2026-08-14T06:51:51.109Z",
+        "lastAt": "2026-08-14T06:54:55.906Z",
         "exampleGoal": "Explore north about 5 tiles",
         "exampleReason": "Recent outcomes show exploration north is effective, and it provides new locations for further investigation."
+      }
+    },
+    "hp=hurt|combat=0|dialog=0|agents=0|food=0|bank=0|shop=0|weak=Ranged|cats=combat-style,explore,inventory,wait,world": {
+      "wait": {
+        "n": 3,
+        "avgReward": 0,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0,
+        "lastAt": "2026-08-14T06:58:00.415Z",
+        "exampleGoal": "Remain stable while reasoning recovers",
+        "exampleReason": "Teacher inference failed: TimeoutError: The operation timed out."
       }
     }
   },
@@ -280,11 +338,11 @@
     "195:208:0": {
       "key": "195:208:0",
       "x": 3128,
-      "z": 3341,
+      "z": 3335,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:47:15.725Z",
-      "lastSeenAt": "2026-08-14T06:51:05.502Z",
-      "visits": 6,
+      "lastSeenAt": "2026-08-14T06:54:09.950Z",
+      "visits": 7,
       "npcs": [
         "Tree",
         "Veronica",
@@ -315,11 +373,11 @@
     "195:209:0": {
       "key": "195:209:0",
       "x": 3128,
-      "z": 3345,
+      "z": 3355,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:51:51.415Z",
-      "lastSeenAt": "2026-08-14T06:52:37.301Z",
-      "visits": 2,
+      "lastSeenAt": "2026-08-14T06:58:00.720Z",
+      "visits": 8,
       "npcs": [
         "Tree",
         "Giant spider"
@@ -338,9 +396,13 @@
         "Stairs",
         "Barrel",
         "Sacks",
-        "Tree stump"
+        "Tree stump",
+        "Statue",
+        "Candles",
+        "Piano stool",
+        "Piano"
       ]
     }
   },
-  "updatedAt": "2026-08-14T06:53:22.900Z"
+  "updatedAt": "2026-08-14T06:58:46.612Z"
 }
