@@ -1,4 +1,6 @@
 import type { BotWorldState } from './src/bot/types.js';
+import { readdir, readFile } from 'fs/promises';
+import { join, basename } from 'path';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -85,6 +87,7 @@ export class SolAgentBrain {
   private lastOutcome:AgentOutcome|null=null;
   private lastShadowPrediction:AgentChoice|null=null;
   private recentOutcomes:AgentOutcome[]=[];
+  private repoKnowledge:{source:string;text:string}[]=[];
 
   constructor(private readonly opts:{
     name:string;directive:string;motorModel?:string;strategistModel?:string;model?:string;
@@ -98,7 +101,52 @@ export class SolAgentBrain {
 
   async init(){
     await this.load();
+    await this.loadRepoKnowledge();
     await this.refreshAvailability();
+  }
+
+  private async loadRepoKnowledge(){
+    const root=join(process.cwd(),'..','..');
+    const files:{path:string;source:string}[]=[];
+    try{
+      const dir=join(root,'learnings');
+      for(const name of await readdir(dir)){if(name.endsWith('.md'))files.push({path:join(dir,name),source:`learnings/${name}`});}
+    }catch(err){console.warn('RS_KNOWLEDGE_LEARNINGS_FAILED',String(err));}
+    for(const [rel,path] of [['README.md',join(root,'README.md')],['sdk/API.md',join(root,'sdk','API.md')]] as const)files.push({path,source:rel});
+    const segments:{source:string;text:string}[]=[];
+    for(const file of files){
+      try{
+        const raw=await readFile(file.path,'utf8');
+        const parts=raw.split(/\n(?=#{1,4}\s)/g);
+        for(const part of parts){
+          const clean=part.replace(/```[\s\S]*?```/g,m=>m.slice(0,900)).replace(/\s+/g,' ').trim();
+          if(clean.length<40)continue;
+          for(let i=0;i<clean.length;i+=1200){const chunk=clean.slice(i,i+1400);if(chunk.length>=40)segments.push({source:file.source,text:chunk});}
+        }
+      }catch(err){console.warn('RS_KNOWLEDGE_FILE_FAILED',file.source,String(err));}
+    }
+    this.repoKnowledge=segments.slice(0,700);
+    console.log('RS_REPO_KNOWLEDGE_READY',JSON.stringify({segments:this.repoKnowledge.length,sources:new Set(this.repoKnowledge.map(x=>x.source)).size}));
+  }
+
+  private retrieveRepoGuidance(state:BotWorldState,candidates:AgentCandidate[],limit=2,maxChars=380){
+    if(!this.repoKnowledge.length)return [];
+    const p=state.player;
+    const query=[
+      this.strategy?.focus||'',
+      ...(state.skills||[]).filter(x=>x.level<15).map(x=>x.name),
+      ...(state.inventory||[]).slice(0,12).map(x=>x.name),
+      ...(state.nearbyNpcs||[]).slice(0,10).map(x=>x.name),
+      ...(state.nearbyLocs||[]).slice(0,12).map(x=>x.name),
+      ...candidates.slice(0,12).flatMap(c=>[c.category,c.label,...(c.tags||[])])
+    ].join(' ');
+    const q=toks(query);
+    return this.repoKnowledge.map((seg,i)=>{
+      const st=toks(`${basename(seg.source,'.md')} ${seg.text}`);let overlap=0;for(const t of q)if(st.has(t))overlap++;
+      const exact=[...q].some(t=>t.length>5&&seg.text.toLowerCase().includes(t))?1:0;
+      const api=seg.source==='sdk/API.md'?.3:0;
+      return{seg,score:overlap*2+exact+api+i/100000};
+    }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>`${x.seg.source}: ${x.seg.text.slice(0,maxChars)}`);
   }
 
   private async refreshAvailability(){
@@ -211,9 +259,9 @@ export class SolAgentBrain {
   }
 
   private async askStrategist(state:BotWorldState,candidates:AgentCandidate[]):Promise<Strategy>{
-    const p=state.player!;const observation={mission:this.memory.identity.directive,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),recent:this.recentOutcomes.slice(-5).map(o=>[o.candidateLabel,o.reward,o.summary]),categories:uniq(candidates.map(c=>c.category))};
+    const p=state.player!;const observation={mission:this.memory.identity.directive,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),recent:this.recentOutcomes.slice(-5).map(o=>[o.candidateLabel,o.reward,o.summary]),categories:uniq(candidates.map(c=>c.category)),repoGuidance:this.retrieveRepoGuidance(state,candidates,3,650)};
     const schema={type:'object',additionalProperties:false,properties:{focus:{type:'string'},reason:{type:'string'},risk:{type:'string',enum:['low','balanced','high']},priorities:{type:'array',items:{type:'string'},maxItems:4},avoid:{type:'array',items:{type:'string'},maxItems:4}},required:['focus','reason','risk','priorities','avoid']};
-    const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. Use outcomes, avoid loops, preserve survival, seek useful progression.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(22000)});
+    const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You are Sol strategic AI. Give a short direction to a separate fast motor AI. repoGuidance contains relevant excerpts loaded from the rs-sdk GitHub repository; use it as gameplay/API knowledge. Live state and measured outcomes override stale guidance. Avoid loops, preserve survival, seek useful progression.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(22000)});
     if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();const j=JSON.parse(raw?.message?.content||'{}');
     return{focus:String(j.focus||'Explore and progress').slice(0,140),reason:String(j.reason||'Seek measurable progress.').slice(0,240),risk:['low','balanced','high'].includes(j.risk)?j.risk:'balanced',priorities:Array.isArray(j.priorities)?j.priorities.map(String).slice(0,4):[],avoid:Array.isArray(j.avoid)?j.avoid.map(String).slice(0,4):[],updatedAt:now(),sourceModel:this.strategistModel};
   }
@@ -227,13 +275,14 @@ export class SolAgentBrain {
       nearbyAgents:(state.nearbyPlayers||[]).slice(0,3).map(x=>[x.name,x.combatLevel,x.distance]),
       memories:this.relevantMemories(state,allowed),
       recent:this.recentOutcomes.slice(-3).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),
+      guide:this.retrieveRepoGuidance(state,allowed,2,360),
       learned:learnedCompact,
       student:this.lastShadowPrediction?[this.lastShadowPrediction.actionId,Number(this.lastShadowPrediction.confidence.toFixed(2))]:null,
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,100)])
     };
     const schema={type:'object',additionalProperties:false,properties:{action_id:{type:'string',enum:ids},why:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['action_id','why','speech','confidence']};
     try{
-      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:1024,num_predict:64},messages:[{role:'system',content:'You are the AI motor playing Sol. Pick exactly one legal action_id. Sol is only learning from you and never controls you. Stay active; do not idle if another action exists. Avoid recently failed actions. Use strategy if present. Keep why under 12 words. speech empty unless speaking.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(9000)});
+      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:1024,num_predict:64},messages:[{role:'system',content:'You are the AI motor playing Sol. Pick exactly one legal action_id. guide contains relevant rs-sdk repository guidance; use it when choosing, but trust live state and measured outcomes if they conflict. Sol is only learning from you and never controls you. Stay active; do not idle if another action exists. Avoid recently failed actions. Use strategy if present. Keep why under 12 words. speech empty unless speaking.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(9000)});
       if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();const j=JSON.parse(raw?.message?.content||'{}');const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,160);const focus=this.strategy?.focus||`Pursue ${c.category}`;
       return{source:'teacher',goal:focus,reason:why,expectedOutcome:`Measure the result of ${c.label}.`.slice(0,180),actionId:c.id,speech:String(j.speech||'').slice(0,80),confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint};
@@ -277,6 +326,6 @@ export class SolAgentBrain {
 
   publicState(){
     const contexts=Object.keys(this.memory.policy).length;const learnedActions=Object.values(this.memory.policy).reduce((n,ctx)=>n+Object.values(ctx).filter(s=>s.n>=2&&s.avgReward>.05).length,0);const predictions=this.memory.lifetime.shadowPredictions||0;const matches=this.memory.lifetime.shadowMatches||0;
-    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy,strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,shadowStudentPrediction:this.lastShadowPrediction,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-8),recentOutcomes:this.recentOutcomes.slice(-8)};
+    return{architecture:'dual-ai-player-shadow-learner',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'ai-motor':'ai-motor-offline',strategy:this.strategy,strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,shadowStudentPrediction:this.lastShadowPrediction,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-8),recentOutcomes:this.recentOutcomes.slice(-8)};
   }
 }
