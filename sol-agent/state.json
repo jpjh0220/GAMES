@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 650,
-    "teacherChoices": 650,
+    "totalChoices": 660,
+    "teacherChoices": 660,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 650,
-    "totalReward": 246.25,
-    "saves": 66,
-    "shadowPredictions": 256,
-    "shadowMatches": 107,
-    "strategistRefreshes": 35,
+    "completedExperiences": 660,
+    "totalReward": 244.25,
+    "saves": 67,
+    "shadowPredictions": 265,
+    "shadowMatches": 110,
+    "strategistRefreshes": 36,
     "strategistFailures": 1
   },
   "memories": [
@@ -5750,6 +5750,47 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstl23ad-qzefuq",
+      "createdAt": "2026-08-14T23:33:24.133Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank using the `openBank` skill to access the banker NPC or booth.. This plan ensures the player completes",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank using the openbank skill to access the banker npc or booth",
+        "deposit all coins using the deposititem skill with the pattern coins i to ensure all coins are deposited",
+        "verify the deposit by checking the bank interface or using the deposititem skill with a specific item to confirm successful deposit of all"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstl2hsv-o6hfoy",
+      "createdAt": "2026-08-14T23:33:42.943Z",
+      "tick": 23768,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Chaos rune. Result: inventory changed. Reward -0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "store",
+        "chaos rune",
+        "agent goo011",
+        "agent goo012"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -5767,14 +5808,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:32:36.300Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "lastAt": "2026-08-14T23:34:05.733Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:i d like to access my bank account please": {
         "n": 2,
@@ -5789,12 +5830,12 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 28,
-        "avgReward": -0.2265,
+        "n": 29,
+        "avgReward": -0.2221,
         "positive": 0,
         "negative": 12,
         "lastReward": -0.1,
-        "lastAt": "2026-08-14T23:32:43.816Z",
+        "lastAt": "2026-08-14T23:33:06.981Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Coins"
       },
@@ -5829,14 +5870,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 58,
+        "n": 61,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T21:54:06.021Z",
-        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
-        "exampleReason": "Banking is the first step to opening the bank, so I will proceed with the bank action first."
+        "lastAt": "2026-08-14T23:33:27.308Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "exampleReason": "Withdraw 1 Coins"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -5869,23 +5910,23 @@
         "exampleReason": "I need to wait for the bank to open before proceeding with the deposit process."
       },
       "bank:withdraw:chaos rune": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T21:50:53.422Z",
-        "exampleGoal": "Open the bank to access the deposit functionality.",
-        "exampleReason": "Withdraw 1 Bronze sq shield"
+        "lastAt": "2026-08-14T23:33:35.116Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "exampleReason": "Withdraw 1 Chaos rune"
       },
       "bank:deposit:chaos rune": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T21:51:13.209Z",
-        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "lastAt": "2026-08-14T23:33:42.942Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:withdraw:bronze arrow": {
@@ -5909,14 +5950,24 @@
         "exampleReason": "Deposit all Bronze arrow"
       },
       "modal:close-bank": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T21:54:11.728Z",
-        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "lastAt": "2026-08-14T23:33:49.798Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "Close the bank"
+      },
+      "bank:deposit:earth rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-14T23:32:51.619Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Earth rune"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -5991,6 +6042,16 @@
         "lastAt": "2026-08-14T23:32:17.776Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I need to talk to Ned to get his help. I'm at Draynor Village, and I need to find safe fishing spots. I'm at position (3089, 3247, 0). I can see the coordinates (3087, 32"
+      },
+      "loc:use:bank booth": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T23:34:00.291Z",
+        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "exampleReason": "Use Bank booth (distance 1)"
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -7876,8 +7937,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 545,
+      "lastSeenAt": "2026-08-14T23:34:00.641Z",
+      "encounters": 555,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -7992,8 +8053,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 545,
+      "lastSeenAt": "2026-08-14T23:34:00.641Z",
+      "encounters": 555,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -8108,8 +8169,8 @@
     "goo021": {
       "name": "Goo021",
       "firstSeenAt": "2026-08-14T21:35:39.315Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 8,
+      "lastSeenAt": "2026-08-14T23:33:17.732Z",
+      "encounters": 13,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8138,8 +8199,8 @@
     "goo015": {
       "name": "Goo015",
       "firstSeenAt": "2026-08-14T21:41:15.628Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 11,
+      "lastSeenAt": "2026-08-14T23:33:07.228Z",
+      "encounters": 15,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8153,8 +8214,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 417,
+      "lastSeenAt": "2026-08-14T23:34:00.641Z",
+      "encounters": 427,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -8482,8 +8543,8 @@
     "goo011": {
       "name": "Goo011",
       "firstSeenAt": "2026-08-14T22:48:48.007Z",
-      "lastSeenAt": "2026-08-14T23:23:08.101Z",
-      "encounters": 7,
+      "lastSeenAt": "2026-08-14T23:33:50.107Z",
+      "encounters": 9,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8524,8 +8585,8 @@
     "goo023": {
       "name": "Goo023",
       "firstSeenAt": "2026-08-14T22:49:12.897Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 6,
+      "lastSeenAt": "2026-08-14T23:33:17.732Z",
+      "encounters": 11,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8539,8 +8600,8 @@
     "goo007": {
       "name": "Goo007",
       "firstSeenAt": "2026-08-14T22:49:35.708Z",
-      "lastSeenAt": "2026-08-14T23:23:08.101Z",
-      "encounters": 5,
+      "lastSeenAt": "2026-08-14T23:33:43.212Z",
+      "encounters": 6,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8606,8 +8667,8 @@
     "goo019": {
       "name": "Goo019",
       "firstSeenAt": "2026-08-14T22:49:53.999Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 8,
+      "lastSeenAt": "2026-08-14T23:33:07.228Z",
+      "encounters": 12,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8627,8 +8688,8 @@
     "goo008": {
       "name": "Goo008",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-14T23:23:08.101Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-14T23:33:43.212Z",
+      "encounters": 4,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8642,8 +8703,8 @@
     "goo010": {
       "name": "Goo010",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 5,
+      "lastSeenAt": "2026-08-14T23:33:07.228Z",
+      "encounters": 9,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8657,8 +8718,8 @@
     "goo012": {
       "name": "Goo012",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-14T23:23:08.101Z",
-      "encounters": 8,
+      "lastSeenAt": "2026-08-14T23:33:50.107Z",
+      "encounters": 10,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8709,8 +8770,8 @@
     "goo018": {
       "name": "Goo018",
       "firstSeenAt": "2026-08-14T22:55:40.531Z",
-      "lastSeenAt": "2026-08-14T23:23:12.305Z",
-      "encounters": 6,
+      "lastSeenAt": "2026-08-14T23:33:50.107Z",
+      "encounters": 7,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8730,8 +8791,8 @@
     "goo009": {
       "name": "Goo009",
       "firstSeenAt": "2026-08-14T22:55:40.531Z",
-      "lastSeenAt": "2026-08-14T23:23:02.428Z",
-      "encounters": 5,
+      "lastSeenAt": "2026-08-14T23:33:50.107Z",
+      "encounters": 6,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -8756,8 +8817,8 @@
     "goo022": {
       "name": "Goo022",
       "firstSeenAt": "2026-08-14T22:56:43.219Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 10,
+      "lastSeenAt": "2026-08-14T23:33:27.618Z",
+      "encounters": 16,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8844,8 +8905,8 @@
     "goo017": {
       "name": "Goo017",
       "firstSeenAt": "2026-08-14T23:14:21.332Z",
-      "lastSeenAt": "2026-08-14T23:22:07.541Z",
-      "encounters": 25,
+      "lastSeenAt": "2026-08-14T23:33:17.732Z",
+      "encounters": 28,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8859,8 +8920,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-14T23:18:30.627Z",
-      "encounters": 10,
+      "lastSeenAt": "2026-08-14T23:33:35.404Z",
+      "encounters": 12,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -8885,8 +8946,8 @@
     "goo016": {
       "name": "Goo016",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-14T23:28:39.912Z",
-      "encounters": 11,
+      "lastSeenAt": "2026-08-14T23:33:50.107Z",
+      "encounters": 12,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -8911,8 +8972,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "encounters": 14,
+      "lastSeenAt": "2026-08-14T23:34:00.641Z",
+      "encounters": 24,
       "combatLevel": 33,
       "trust": 0,
       "stance": "unknown",
@@ -8937,8 +8998,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:32:36.628Z",
-      "visits": 230,
+      "lastSeenAt": "2026-08-14T23:34:00.641Z",
+      "visits": 240,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -9347,10 +9408,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 25,
-      "avgReward": -0.024,
+      "n": 26,
+      "avgReward": -0.019,
       "positive": 0,
-      "lastAt": "2026-08-14T21:54:06.021Z",
+      "lastAt": "2026-08-14T23:33:17.398Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -9587,10 +9648,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:chaos rune"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.28,
       "positive": 0,
-      "lastAt": "2026-08-14T21:50:53.422Z",
+      "lastAt": "2026-08-14T23:33:35.116Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Chaos rune"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:withdraw:coins": {
@@ -11908,21 +11969,105 @@
       "positive": 0,
       "lastAt": "2026-08-14T23:32:30.610Z",
       "example": "Talk-to Ned (level 0, distance 9) → Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please."
+    },
+    "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:earth rune": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "bank:deposit:coins",
+        "bank:deposit:earth rune"
+      ],
+      "n": 1,
+      "avgReward": -1.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:32:51.619Z",
+      "example": "Dialog 1: Click here to continue → Deposit all Coins → Deposit all Earth rune"
+    },
+    "bank:deposit:coins > bank:deposit:earth rune > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:earth rune",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.4,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:32:59.718Z",
+      "example": "Deposit all Coins → Deposit all Earth rune → Withdraw 1 Coins"
+    },
+    "bank:deposit:earth rune > bank:withdraw:coins > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:earth rune",
+        "bank:withdraw:coins",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.4,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:33:06.981Z",
+      "example": "Deposit all Earth rune → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:33:27.308Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:chaos rune",
+        "bank:deposit:chaos rune"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:33:42.943Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Chaos rune → Deposit all Chaos rune"
+    },
+    "bank:withdraw:chaos rune > bank:deposit:chaos rune > modal:close-bank": {
+      "sequence": [
+        "bank:withdraw:chaos rune",
+        "bank:deposit:chaos rune",
+        "modal:close-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:33:49.798Z",
+      "example": "Withdraw 1 Chaos rune → Deposit all Chaos rune → Close the bank"
+    },
+    "bank:deposit:chaos rune > modal:close-bank > loc:use:bank booth": {
+      "sequence": [
+        "bank:deposit:chaos rune",
+        "modal:close-bank",
+        "loc:use:bank booth"
+      ],
+      "n": 1,
+      "avgReward": -1.28,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:34:00.291Z",
+      "example": "Deposit all Chaos rune → Close the bank → Use Bank booth (distance 1)"
+    },
+    "modal:close-bank > loc:use:bank booth > dialog:1:click here to continue": {
+      "sequence": [
+        "modal:close-bank",
+        "loc:use:bank booth",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T23:34:05.733Z",
+      "example": "Close the bank → Use Bank booth (distance 1) → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
-    {
-      "id": "place:table:192:201:0",
-      "at": "2026-08-14T21:55:37.191Z",
-      "kind": "place",
-      "text": "Table observed near 3086, 3230, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "resource:tree stump:192:201:0",
       "at": "2026-08-14T21:55:37.191Z",
@@ -15510,48 +15655,57 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "danger:jail guard:193:202:0",
+      "at": "2026-08-14T23:33:17.732Z",
+      "kind": "danger",
+      "text": "Jail guard observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T23:32:43.816Z",
+  "updatedAt": "2026-08-14T23:34:05.733Z",
   "activePlan": {
-    "objective": "Locate and verify safe fishing spots in Draynor Village",
-    "focus": "Plan complete; form the next objective.",
-    "reason": "This plan uses the Net Fishing spot (level 0, distance 1",
-    "risk": "high",
+    "objective": "Deposit all items in the bank to complete the banking task.",
+    "focus": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+    "reason": "This plan ensures the player completes",
+    "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "done",
-        "evidence": "+1597 XP; 12 damage dealt; moved 3087,3240 → 3084,3236; execution rejected or failed"
+        "label": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 10)",
-        "status": "done",
-        "evidence": "moved 3084,3236 → 3087,3239; inventory changed"
+        "label": "Deposit all coins using the `depositItem` skill with the pattern `/coins/i` to ensure all coins are deposited.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Pick up Bones (distance 3) to confirm successful fishing location verification",
-        "status": "done",
-        "evidence": "moved 3087,3239 → 3084,3241; new: npc:Aggie, loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror"
+        "label": "Verify the deposit by checking the bank interface or using the `depositItem` skill with a specific item to confirm successful deposit of all",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 10)",
-      "Pick up Bones (distance 3) to confirm successful fishing location verification"
+      "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+      "Deposit all coins using the `depositItem` skill with the pattern `/coins/i` to ensure all coins are deposited.",
+      "Verify the deposit by checking the bank interface or using the `depositItem` skill with a specific item to confirm successful deposit of all"
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
-      "Speak publicly; latest message from Oag0azhyi: Aa he caught me!! Im so sorry sir w",
-      "Speak publicly; latest message from Oag0azhyi: Nyaa 3g*****her, ty kind sir :3"
+      "Deposit all Coins",
+      "Deposit all Earth rune",
+      "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-14T23:29:20.766Z",
+    "updatedAt": "2026-08-14T23:33:24.133Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
