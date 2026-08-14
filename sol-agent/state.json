@@ -6,17 +6,17 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 151,
-    "teacherChoices": 151,
+    "totalChoices": 161,
+    "teacherChoices": 161,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 150,
-    "totalReward": -33.68,
-    "saves": 33,
-    "shadowPredictions": 23,
+    "completedExperiences": 160,
+    "totalReward": -38.03,
+    "saves": 34,
+    "shadowPredictions": 32,
     "shadowMatches": 5,
     "strategistRefreshes": 4,
-    "strategistFailures": 20
+    "strategistFailures": 27
   },
   "memories": [
     {
@@ -708,6 +708,82 @@
         "z": 3357,
         "level": 0
       }
+    },
+    {
+      "id": "msspjslg-gsiy9b",
+      "createdAt": "2026-08-14T08:51:22.372Z",
+      "tick": 2066,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Haha yeah\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "unknown"
+      ],
+      "location": {
+        "x": 3109,
+        "z": 3357,
+        "level": 0
+      }
+    },
+    {
+      "id": "msspks8r-ywr6ai",
+      "createdAt": "2026-08-14T08:52:08.571Z",
+      "tick": 2205,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Ozymandias said: \"Yo kuro u new?\". Current stance unknown, trust 0.12.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "ozymandias",
+        "unknown"
+      ],
+      "location": {
+        "x": 3109,
+        "z": 3357,
+        "level": 0
+      }
+    },
+    {
+      "id": "msspmbrk-9ghfbb",
+      "createdAt": "2026-08-14T08:53:20.528Z",
+      "tick": 2457,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Ozymandias said: \"Stasis u seeing this bot spam lol\". Current stance unknown, trust 0.12.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "ozymandias",
+        "unknown"
+      ],
+      "location": {
+        "x": 3111,
+        "z": 3355,
+        "level": 0
+      }
+    },
+    {
+      "id": "msspmj73-ki9xnv",
+      "createdAt": "2026-08-14T08:53:30.159Z",
+      "tick": 2484,
+      "runNumber": 24,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Mhm\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "unknown"
+      ],
+      "location": {
+        "x": 3111,
+        "z": 3355,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -1055,12 +1131,12 @@
         "exampleReason": "Wield Shortbow"
       },
       "inventory:wield:shortbow": {
-        "n": 4,
-        "avgReward": -0.47,
+        "n": 6,
+        "avgReward": -0.5133,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:49:03.171Z",
+        "lastAt": "2026-08-14T08:53:05.570Z",
         "exampleGoal": "Pursue inventory",
         "exampleReason": "Wield Shortbow"
       },
@@ -1075,14 +1151,14 @@
         "exampleReason": "Explore west about 5 tiles. Result: moved; new: loc:Bed, loc:Ladder."
       },
       "inventory:wield:bronze sq shield": {
-        "n": 4,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 4,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:50:19.038Z",
+        "lastAt": "2026-08-14T08:53:43.348Z",
         "exampleGoal": "Pursue inventory",
-        "exampleReason": "Wield the Bronze sq shield"
+        "exampleReason": "Wield Bronze sq shield"
       },
       "loc:open:large door": {
         "n": 1,
@@ -1115,24 +1191,56 @@
         "exampleReason": "Wielding a bronze sq shield is a useful starting step in the crafting process. It provides a solid base for your first combat-style weapon."
       },
       "loc:open:wardrobe": {
-        "n": 1,
-        "avgReward": 0.2,
+        "n": 2,
+        "avgReward": -0.2,
         "positive": 1,
-        "negative": 0,
-        "lastReward": 0.2,
-        "lastAt": "2026-08-14T08:47:36.467Z",
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:53:34.050Z",
         "exampleGoal": "Pursue world",
-        "exampleReason": "Open Wardrobe (distance 0)"
+        "exampleReason": "Open Wardrobe (distance 1)"
       },
       "style:aggressive:strength": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:51:31.983Z",
+        "exampleGoal": "Pursue combat-style",
+        "exampleReason": "Combat style Kick: Aggressive; trains Strength"
+      },
+      "style:defensive:defence": {
         "n": 1,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 1,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:51:06.147Z",
+        "lastAt": "2026-08-14T08:51:58.675Z",
         "exampleGoal": "Pursue combat-style",
-        "exampleReason": "Combat style Kick: Aggressive; trains Strength"
+        "exampleReason": "To combat the scorpion, use a combat-style approach that trains your defense, which is effective in this scenario."
+      },
+      "loc:close:wardrobe": {
+        "n": 2,
+        "avgReward": -0.175,
+        "positive": 1,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:53:39.443Z",
+        "exampleGoal": "Pursue world",
+        "exampleReason": "Close Wardrobe (distance 1)"
+      }
+    },
+    "area=388:419:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,inventory,wait,world": {
+      "loc:open:wardrobe": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T08:52:24.760Z",
+        "exampleGoal": "Pursue world",
+        "exampleReason": "Open Wardrobe (distance 3)"
       }
     }
   },
@@ -1140,11 +1248,11 @@
     "ozymandias": {
       "name": "Ozymandias",
       "firstSeenAt": "2026-08-14T08:42:22.353Z",
-      "lastSeenAt": "2026-08-14T08:50:43.039Z",
+      "lastSeenAt": "2026-08-14T08:53:20.528Z",
       "encounters": 1,
       "trust": 0.12,
       "stance": "unknown",
-      "conversations": 6,
+      "conversations": 8,
       "cooperation": 1,
       "suspicion": 0,
       "facts": [
@@ -1153,12 +1261,15 @@
         "Sup",
         "Yo scrap u buying rn?",
         "Yo u got any spare arrows? im broke rn",
-        "This oag dude ever shut up lol"
+        "This oag dude ever shut up lol",
+        "Yo kuro u new?",
+        "Stasis u seeing this bot spam lol"
       ],
       "questions": [
         "Yo u dropping any gp?",
         "Yo scrap u buying rn?",
-        "Yo u got any spare arrows? im broke rn"
+        "Yo u got any spare arrows? im broke rn",
+        "Yo kuro u new?"
       ],
       "lastMessages": [
         {
@@ -1190,24 +1301,36 @@
           "at": "2026-08-14T08:50:43.039Z",
           "direction": "incoming",
           "text": "This oag dude ever shut up lol"
+        },
+        {
+          "at": "2026-08-14T08:52:08.571Z",
+          "direction": "incoming",
+          "text": "Yo kuro u new?"
+        },
+        {
+          "at": "2026-08-14T08:53:20.528Z",
+          "direction": "incoming",
+          "text": "Stasis u seeing this bot spam lol"
         }
       ]
     },
     "oag0azhyi": {
       "name": "Oag0azhyi",
       "firstSeenAt": "2026-08-14T08:44:49.979Z",
-      "lastSeenAt": "2026-08-14T08:50:14.837Z",
+      "lastSeenAt": "2026-08-14T08:53:30.158Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 4,
+      "conversations": 7,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
         "Hii",
         "Heyo :3",
         "Nah just grinding steel rn, not trading :3",
-        "Sry focused on my own grind rn :3"
+        "Sry focused on my own grind rn :3",
+        "Haha yeah",
+        "Mhm"
       ],
       "questions": [],
       "lastMessages": [
@@ -1230,6 +1353,21 @@
           "at": "2026-08-14T08:50:14.837Z",
           "direction": "incoming",
           "text": "Sry focused on my own grind rn :3"
+        },
+        {
+          "at": "2026-08-14T08:51:22.372Z",
+          "direction": "incoming",
+          "text": "Haha yeah"
+        },
+        {
+          "at": "2026-08-14T08:52:25.068Z",
+          "direction": "incoming",
+          "text": "Hii"
+        },
+        {
+          "at": "2026-08-14T08:53:30.158Z",
+          "direction": "incoming",
+          "text": "Mhm"
         }
       ]
     }
@@ -1422,12 +1560,12 @@
     },
     "194:209:0": {
       "key": "194:209:0",
-      "x": 3109,
-      "z": 3357,
+      "x": 3111,
+      "z": 3355,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T08:51:17.878Z",
-      "visits": 876,
+      "lastSeenAt": "2026-08-14T08:53:39.777Z",
+      "visits": 898,
       "npcs": [
         "Tree",
         "Rat",
@@ -1475,7 +1613,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T08:51:22.063Z",
+  "updatedAt": "2026-08-14T08:53:43.348Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -1675,10 +1813,10 @@
         "inventory:wield:shortbow",
         "loc:close:wardrobe"
       ],
-      "n": 1,
-      "avgReward": -1.8,
+      "n": 2,
+      "avgReward": -1.375,
       "positive": 0,
-      "lastAt": "2026-08-14T08:48:20.282Z",
+      "lastAt": "2026-08-14T08:53:20.239Z",
       "example": "Wield Bronze sq shield → Wield Shortbow → Close Wardrobe (distance 1)"
     },
     "inventory:wield:shortbow > loc:close:wardrobe > loc:open:wardrobe": {
@@ -1687,10 +1825,10 @@
         "loc:close:wardrobe",
         "loc:open:wardrobe"
       ],
-      "n": 1,
-      "avgReward": -1.8,
+      "n": 2,
+      "avgReward": -1.375,
       "positive": 0,
-      "lastAt": "2026-08-14T08:48:34.385Z",
+      "lastAt": "2026-08-14T08:53:34.050Z",
       "example": "Wield Shortbow → Close Wardrobe (distance 1) → Open Wardrobe (distance 1)"
     },
     "loc:close:wardrobe > loc:open:wardrobe > inventory:wield:bronze sq shield": {
@@ -1836,6 +1974,102 @@
       "positive": 0,
       "lastAt": "2026-08-14T08:51:22.062Z",
       "example": "Combat style Punch: Accurate; trains Attack → Combat style Kick: Aggressive; trains Strength → Combat style Punch: Accurate; trains Attack"
+    },
+    "style:aggressive:strength > style:accurate:attack > style:aggressive:strength": {
+      "sequence": [
+        "style:aggressive:strength",
+        "style:accurate:attack",
+        "style:aggressive:strength"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:51:31.983Z",
+      "example": "Combat style Kick: Aggressive; trains Strength → Combat style Punch: Accurate; trains Attack → Combat style Kick: Aggressive; trains Strength"
+    },
+    "style:accurate:attack > style:aggressive:strength > style:defensive:defence": {
+      "sequence": [
+        "style:accurate:attack",
+        "style:aggressive:strength",
+        "style:defensive:defence"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:51:58.675Z",
+      "example": "Combat style Punch: Accurate; trains Attack → Combat style Kick: Aggressive; trains Strength → Combat style Block: Defensive; trains Defence"
+    },
+    "style:aggressive:strength > style:defensive:defence > loc:open:wardrobe": {
+      "sequence": [
+        "style:aggressive:strength",
+        "style:defensive:defence",
+        "loc:open:wardrobe"
+      ],
+      "n": 1,
+      "avgReward": -1,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:52:24.760Z",
+      "example": "Combat style Kick: Aggressive; trains Strength → Combat style Block: Defensive; trains Defence → Open Wardrobe (distance 3)"
+    },
+    "style:defensive:defence > loc:open:wardrobe > inventory:wield:shortbow": {
+      "sequence": [
+        "style:defensive:defence",
+        "loc:open:wardrobe",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -1,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:52:38.557Z",
+      "example": "Combat style Block: Defensive; trains Defence → Open Wardrobe (distance 3) → Wield Shortbow"
+    },
+    "loc:open:wardrobe > inventory:wield:shortbow > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:open:wardrobe",
+        "inventory:wield:shortbow",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -1,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:52:51.724Z",
+      "example": "Open Wardrobe (distance 3) → Wield Shortbow → Wield Bronze sq shield"
+    },
+    "inventory:wield:shortbow > inventory:wield:bronze sq shield > inventory:wield:shortbow": {
+      "sequence": [
+        "inventory:wield:shortbow",
+        "inventory:wield:bronze sq shield",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:53:05.570Z",
+      "example": "Wield Shortbow → Wield Bronze sq shield → Wield Shortbow"
+    },
+    "loc:close:wardrobe > loc:open:wardrobe > loc:close:wardrobe": {
+      "sequence": [
+        "loc:close:wardrobe",
+        "loc:open:wardrobe",
+        "loc:close:wardrobe"
+      ],
+      "n": 1,
+      "avgReward": -0.95,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:53:39.443Z",
+      "example": "Close Wardrobe (distance 1) → Open Wardrobe (distance 1) → Close Wardrobe (distance 1)"
+    },
+    "loc:open:wardrobe > loc:close:wardrobe > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:open:wardrobe",
+        "loc:close:wardrobe",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:53:43.348Z",
+      "example": "Open Wardrobe (distance 1) → Close Wardrobe (distance 1) → Wield Bronze sq shield"
     }
   },
   "discoveries": [
