@@ -1,0 +1,68 @@
+name: Patch Sol Agent Integration
+
+on:
+  push:
+    paths:
+      - '.github/workflows/sol-agent-code-patch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Fix agent cadence and reflex syntax
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sol-live/sol-live.ts')
+          s=p.read_text()
+          s=s.replace(
+            "let decisionInFlight = false;\nconst actionHistory",
+            "let decisionInFlight = false;\nlet actionAwaitingOutcome = false;\nconst actionHistory"
+          )
+          s=s.replace(
+            "brain.beginExperience(choice,candidate,state,tick);\n  void log('AGENT_ACTION'",
+            "brain.beginExperience(choice,candidate,state,tick);\n  actionAwaitingOutcome = true;\n  void log('AGENT_ACTION'"
+          )
+          s=s.replace(
+            "Math.floor(p.maxHp*(p.combat.inCombat?.45:.32))",
+            "Math.floor(p.maxHp*(p.combat.inCombat ? .45 : .32))"
+          )
+          s=s.replace(
+            "if (outcome) {\n      feed('LEARNED_OUTCOME'",
+            "if (outcome) {\n      actionAwaitingOutcome = false;\n      feed('LEARNED_OUTCOME'"
+          )
+          old="""    if (!decisionInFlight && tick>=nextDecisionTick && !brain.publicState().lastChoice?.actionId === false) {
+      // Deliberation begins only when no previous action is still awaiting an outcome.
+      if (!brain.publicState().lastChoice || brain.publicState().lastOutcome || actions===0) launchDecision(state);
+    }
+
+    // If the prior choice has completed, maybeFinishExperience cleared it internally; use a simple cadence guard.
+    if (!decisionInFlight && tick>=nextDecisionTick && outcome) launchDecision(state);
+    if (!decisionInFlight && tick>=nextDecisionTick && actions===0) launchDecision(state);
+"""
+          new="""    if (!decisionInFlight && !actionAwaitingOutcome && tick>=nextDecisionTick) {
+      launchDecision(state);
+    }
+"""
+          if old not in s:
+              raise SystemExit('expected cadence block not found')
+          s=s.replace(old,new)
+          p.write_text(s)
+          PY
+          grep -q 'actionAwaitingOutcome' sol-live/sol-live.ts
+          grep -q 'p.combat.inCombat ? .45 : .32' sol-live/sol-live.ts
+      - name: Commit patch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sol-live/sol-live.ts
+          git diff --cached --quiet && exit 0
+          git commit -m 'Fix Sol agent decision cadence before activation'
+          git push
