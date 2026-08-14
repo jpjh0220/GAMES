@@ -22,20 +22,6 @@ export type AgentChoice = {
   fingerprint: string;
 };
 
-type MemoryKind = 'episode' | 'strategy' | 'relationship' | 'place';
-
-type MemoryEntry = {
-  id: string;
-  createdAt: string;
-  tick: number;
-  runNumber: number | null;
-  kind: MemoryKind;
-  text: string;
-  importance: number;
-  tags: string[];
-  location?: { x: number; z: number; level: number };
-};
-
 type PolicyStat = {
   n: number;
   avgReward: number;
@@ -47,47 +33,44 @@ type PolicyStat = {
   exampleReason: string;
 };
 
-type Relationship = {
-  name: string;
-  firstSeenAt: string;
-  lastSeenAt: string;
-  encounters: number;
-  combatLevel?: number;
-};
-
-type Place = {
-  key: string;
-  x: number;
-  z: number;
-  level: number;
-  firstSeenAt: string;
-  lastSeenAt: string;
-  visits: number;
-  npcs: string[];
-  locs: string[];
+type MemoryEntry = {
+  id: string;
+  createdAt: string;
+  tick: number;
+  runNumber: number | null;
+  kind: 'episode' | 'strategy' | 'relationship' | 'place';
+  text: string;
+  importance: number;
+  tags: string[];
+  location?: { x: number; z: number; level: number };
 };
 
 type PersistentState = {
   version: number;
-  identity: {
-    name: string;
-    bornAt: string;
-    directive: string;
-  };
+  identity: { name: string; bornAt: string; directive: string };
   lifetime: {
     totalChoices: number;
     teacherChoices: number;
-    studentChoices: number;
+    studentChoices: number; // legacy: executable student actions; should remain unchanged from now on
     reflexActions: number;
     completedExperiences: number;
     totalReward: number;
     saves: number;
+    shadowPredictions?: number;
+    shadowMatches?: number;
   };
   memories: MemoryEntry[];
   policy: Record<string, Record<string, PolicyStat>>;
-  relationships: Record<string, Relationship>;
-  places: Record<string, Place>;
+  relationships: Record<string, { name:string; firstSeenAt:string; lastSeenAt:string; encounters:number; combatLevel?:number }>;
+  places: Record<string, { key:string; x:number; z:number; level:number; firstSeenAt:string; lastSeenAt:string; visits:number; npcs:string[]; locs:string[] }>;
   updatedAt: string;
+};
+
+type Metrics = {
+  hp:number; maxHp:number; lifeId:number; x:number; z:number; level:number;
+  totalXp:number; totalLevels:number; inventoryCount:number; coins:number;
+  npcNames:Set<string>; playerNames:Set<string>; locNames:Set<string>;
+  opRejectedCount:number;
 };
 
 type Experience = {
@@ -98,308 +81,185 @@ type Experience = {
   before: Metrics;
 };
 
-type Metrics = {
-  tick: number;
-  hp: number;
-  maxHp: number;
-  lifeId: number;
-  x: number;
-  z: number;
-  level: number;
-  totalXp: number;
-  totalLevels: number;
-  inventoryCount: number;
-  coins: number;
-  npcNames: Set<string>;
-  playerNames: Set<string>;
-  locNames: Set<string>;
-  combatEventCount: number;
-  opRejectedCount: number;
-};
-
 export type AgentOutcome = {
-  tick: number;
-  reward: number;
-  summary: string;
-  choice: AgentChoice;
-  candidateLabel: string;
-  xpGain: number;
-  hpDelta: number;
-  moved: boolean;
-  kills: number;
-  damageDealt: number;
-  damageTaken: number;
-  newThings: string[];
-  rejected: boolean;
+  tick:number;
+  reward:number;
+  summary:string;
+  choice:AgentChoice;
+  candidateLabel:string;
+  xpGain:number;
+  hpDelta:number;
+  moved:boolean;
+  kills:number;
+  damageDealt:number;
+  damageTaken:number;
+  newThings:string[];
+  rejected:boolean;
 };
 
-const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
-const uniq = <T>(xs: T[]) => [...new Set(xs)];
 const now = () => new Date().toISOString();
-const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-const tokens = (s: string) => new Set(normalize(s).split(/\s+/).filter(x => x.length > 2));
+const clamp = (n:number, lo:number, hi:number) => Math.max(lo, Math.min(hi, n));
+const uniq = <T>(xs:T[]) => [...new Set(xs)];
+const norm = (s:string) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const toks = (s:string) => new Set(norm(s).split(/\s+/).filter(x => x.length > 2));
 
-const defaultState = (name: string, directive: string): PersistentState => ({
-  version: 1,
-  identity: { name, bornAt: now(), directive },
-  lifetime: {
-    totalChoices: 0,
-    teacherChoices: 0,
-    studentChoices: 0,
-    reflexActions: 0,
-    completedExperiences: 0,
-    totalReward: 0,
-    saves: 0
-  },
-  memories: [],
-  policy: {},
-  relationships: {},
-  places: {},
-  updatedAt: now()
+const freshState = (name:string, directive:string):PersistentState => ({
+  version:1,
+  identity:{name,bornAt:now(),directive},
+  lifetime:{totalChoices:0,teacherChoices:0,studentChoices:0,reflexActions:0,completedExperiences:0,totalReward:0,saves:0,shadowPredictions:0,shadowMatches:0},
+  memories:[], policy:{}, relationships:{}, places:{}, updatedAt:now()
 });
 
 export class SolAgentBrain {
-  private memory: PersistentState;
-  private pending: Experience | null = null;
-  private githubSha: string | null = null;
+  private memory:PersistentState;
+  private pending:Experience|null = null;
+  private githubSha:string|null = null;
   private dirty = false;
   private lastSaveAt = 0;
-  private recentOutcomes: AgentOutcome[] = [];
-  private lastChoice: AgentChoice | null = null;
-  private lastOutcome: AgentOutcome | null = null;
-  private lastStudentConfidence = 0;
   private modelReady = false;
   private modelFailures = 0;
+  private lastChoice:AgentChoice|null = null;
+  private lastOutcome:AgentOutcome|null = null;
+  private lastShadowPrediction:AgentChoice|null = null;
+  private recentOutcomes:AgentOutcome[] = [];
 
-  constructor(
-    private readonly opts: {
-      name: string;
-      directive: string;
-      model?: string;
-      ollamaUrl?: string;
-      githubToken?: string;
-      githubRepo?: string;
-      runNumber?: number | null;
-    }
-  ) {
-    this.memory = defaultState(opts.name, opts.directive);
+  constructor(private readonly opts:{
+    name:string; directive:string; model?:string; ollamaUrl?:string;
+    githubToken?:string; githubRepo?:string; runNumber?:number|null;
+  }) {
+    this.memory = freshState(opts.name, opts.directive);
   }
 
-  get model() { return this.opts.model || 'qwen3:1.7b'; }
-  get ollamaUrl() { return this.opts.ollamaUrl || 'http://127.0.0.1:11434'; }
+  get model(){ return this.opts.model || 'qwen3:1.7b'; }
+  get ollamaUrl(){ return this.opts.ollamaUrl || 'http://127.0.0.1:11434'; }
 
-  async init() {
-    await this.loadPersistentState();
+  async init(){
+    await this.load();
     this.modelReady = await this.checkModel();
   }
 
-  private async checkModel() {
+  private async checkModel(){
     try {
-      const res = await fetch(`${this.ollamaUrl}/api/tags`, { signal: AbortSignal.timeout(4000) });
-      if (!res.ok) return false;
-      const json: any = await res.json();
-      return (json.models || []).some((m: any) => String(m.name || '').startsWith(this.model.split(':')[0]));
-    } catch {
-      return false;
-    }
+      const r = await fetch(`${this.ollamaUrl}/api/tags`, {signal:AbortSignal.timeout(4000)});
+      if(!r.ok) return false;
+      const j:any = await r.json();
+      return (j.models || []).some((m:any) => String(m.name || '').startsWith(this.model.split(':')[0]));
+    } catch { return false; }
   }
 
-  private async loadPersistentState() {
-    const token = this.opts.githubToken;
-    const repo = this.opts.githubRepo;
-    if (!token || !repo) return;
+  private async load(){
+    if(!this.opts.githubToken || !this.opts.githubRepo) return;
     try {
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/sol-agent/state.json?ref=sol-memory&t=${Date.now()}`, {
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': `Bearer ${token}`,
-          'X-GitHub-Api-Version': '2022-11-28'
+      const r = await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json?ref=sol-memory&t=${Date.now()}`, {
+        headers:{
+          Accept:'application/vnd.github+json',
+          Authorization:`Bearer ${this.opts.githubToken}`,
+          'X-GitHub-Api-Version':'2022-11-28'
         }
       });
-      if (res.status === 404) return;
-      if (!res.ok) throw new Error(`memory load ${res.status}`);
-      const body: any = await res.json();
+      if(r.status === 404) return;
+      if(!r.ok) throw new Error(`memory load ${r.status}`);
+      const body:any = await r.json();
       this.githubSha = body.sha || null;
-      const decoded = Buffer.from(String(body.content || '').replace(/\n/g, ''), 'base64').toString('utf8');
-      const parsed = JSON.parse(decoded);
-      if (parsed?.version === 1 && parsed?.identity && parsed?.lifetime) {
-        this.memory = parsed as PersistentState;
+      const parsed = JSON.parse(Buffer.from(String(body.content || '').replace(/\n/g,''),'base64').toString('utf8'));
+      if(parsed?.version === 1 && parsed?.identity && parsed?.lifetime){
+        this.memory = parsed;
         this.memory.identity.directive = this.opts.directive;
+        this.memory.lifetime.shadowPredictions ??= 0;
+        this.memory.lifetime.shadowMatches ??= 0;
+        this.memory.memories ||= [];
+        this.memory.policy ||= {};
+        this.memory.relationships ||= {};
+        this.memory.places ||= {};
       }
-    } catch (err) {
-      console.warn('AGENT_MEMORY_LOAD_FAILED', String(err));
-    }
+    } catch(err){ console.warn('AGENT_MEMORY_LOAD_FAILED', String(err)); }
   }
 
-  async save(force = false) {
-    const token = this.opts.githubToken;
-    const repo = this.opts.githubRepo;
-    if (!token || !repo || !this.dirty) return false;
-    if (!force && Date.now() - this.lastSaveAt < 5 * 60_000 && this.memory.lifetime.completedExperiences % 10 !== 0) return false;
+  async save(force=false){
+    if(!this.opts.githubToken || !this.opts.githubRepo || !this.dirty) return false;
+    if(!force && Date.now()-this.lastSaveAt < 5*60_000 && this.memory.lifetime.completedExperiences % 10 !== 0) return false;
     try {
       this.memory.updatedAt = now();
       this.memory.lifetime.saves++;
-      const content = Buffer.from(JSON.stringify(this.memory, null, 2) + '\n').toString('base64');
-      const payload: any = {
-        message: `Persist Sol learned policy and memory (${this.memory.lifetime.completedExperiences} experiences)`,
-        content,
-        branch: 'sol-memory'
+      const payload:any = {
+        message:`Persist Sol AI demonstrations (${this.memory.lifetime.completedExperiences} experiences)`,
+        content:Buffer.from(JSON.stringify(this.memory,null,2)+'\n').toString('base64'),
+        branch:'sol-memory'
       };
-      if (this.githubSha) payload.sha = this.githubSha;
-      const res = await fetch(`https://api.github.com/repos/${repo}/contents/sol-agent/state.json`, {
-        method: 'PUT',
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Authorization': `Bearer ${token}`,
-          'X-GitHub-Api-Version': '2022-11-28',
-          'Content-Type': 'application/json'
+      if(this.githubSha) payload.sha = this.githubSha;
+      const r = await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/contents/sol-agent/state.json`, {
+        method:'PUT',
+        headers:{
+          Accept:'application/vnd.github+json',
+          Authorization:`Bearer ${this.opts.githubToken}`,
+          'X-GitHub-Api-Version':'2022-11-28',
+          'Content-Type':'application/json'
         },
-        body: JSON.stringify(payload)
+        body:JSON.stringify(payload)
       });
-      if (!res.ok) throw new Error(`memory save ${res.status}: ${await res.text()}`);
-      const body: any = await res.json();
+      if(!r.ok) throw new Error(`memory save ${r.status}: ${await r.text()}`);
+      const body:any = await r.json();
       this.githubSha = body?.content?.sha || this.githubSha;
       this.lastSaveAt = Date.now();
       this.dirty = false;
       return true;
-    } catch (err) {
+    } catch(err){
       console.warn('AGENT_MEMORY_SAVE_FAILED', String(err));
       return false;
     }
   }
 
-  noteReflex() {
-    this.memory.lifetime.reflexActions++;
-    this.dirty = true;
-  }
+  noteReflex(){ this.memory.lifetime.reflexActions++; this.dirty = true; }
 
-  observeWorld(state: BotWorldState) {
-    const t = now();
-    for (const p of state.nearbyPlayers || []) {
-      const key = normalize(p.name);
-      if (!key) continue;
-      const old = this.memory.relationships[key];
-      this.memory.relationships[key] = old ? {
-        ...old,
-        lastSeenAt: t,
-        encounters: old.encounters + 1,
-        combatLevel: p.combatLevel
-      } : {
-        name: p.name,
-        firstSeenAt: t,
-        lastSeenAt: t,
-        encounters: 1,
-        combatLevel: p.combatLevel
-      };
-      this.dirty = true;
+  private observe(state:BotWorldState){
+    const t=now();
+    for(const p of state.nearbyPlayers || []){
+      const k=norm(p.name); if(!k) continue;
+      const old=this.memory.relationships[k];
+      this.memory.relationships[k]=old
+        ? {...old,lastSeenAt:t,encounters:old.encounters+1,combatLevel:p.combatLevel}
+        : {name:p.name,firstSeenAt:t,lastSeenAt:t,encounters:1,combatLevel:p.combatLevel};
     }
-    if (state.player) {
-      const x = state.player.worldX;
-      const z = state.player.worldZ;
-      const level = state.player.level;
-      const key = `${Math.floor(x / 16)}:${Math.floor(z / 16)}:${level}`;
-      const old = this.memory.places[key];
-      const npcNames = uniq((state.nearbyNpcs || []).map(n => n.name).filter(Boolean)).slice(0, 20);
-      const locNames = uniq((state.nearbyLocs || []).map(l => l.name).filter(Boolean)).slice(0, 30);
-      this.memory.places[key] = old ? {
-        ...old,
-        x,
-        z,
-        lastSeenAt: t,
-        visits: old.visits + 1,
-        npcs: uniq([...old.npcs, ...npcNames]).slice(-30),
-        locs: uniq([...old.locs, ...locNames]).slice(-40)
-      } : {
-        key,
-        x,
-        z,
-        level,
-        firstSeenAt: t,
-        lastSeenAt: t,
-        visits: 1,
-        npcs: npcNames,
-        locs: locNames
-      };
-      this.dirty = true;
+    if(state.player){
+      const {worldX:x,worldZ:z,level}=state.player;
+      const k=`${Math.floor(x/16)}:${Math.floor(z/16)}:${level}`;
+      const npcs=uniq((state.nearbyNpcs||[]).map(n=>n.name).filter(Boolean)).slice(0,20);
+      const locs=uniq((state.nearbyLocs||[]).map(l=>l.name).filter(Boolean)).slice(0,30);
+      const old=this.memory.places[k];
+      this.memory.places[k]=old
+        ? {...old,x,z,lastSeenAt:t,visits:old.visits+1,npcs:uniq([...old.npcs,...npcs]).slice(-30),locs:uniq([...old.locs,...locs]).slice(-40)}
+        : {key:k,x,z,level,firstSeenAt:t,lastSeenAt:t,visits:1,npcs,locs};
     }
+    this.dirty=true;
   }
 
-  private skillSummary(state: BotWorldState) {
-    return (state.skills || [])
-      .filter(s => !/^Stat\d+$/i.test(s.name))
-      .map(s => ({ name: s.name, level: s.level, xp: s.experience }));
+  private contextKey(state:BotWorldState,candidates:AgentCandidate[]){
+    const p=state.player!;
+    const ratio=p.maxHp ? p.hp/p.maxHp : 1;
+    const hp=ratio<.35?'critical':ratio<.65?'hurt':'healthy';
+    const food=(state.inventory||[]).some(i=>i.optionsWithIndex?.some(o=>/^eat$|^drink$/i.test(o.text)))?1:0;
+    const cats=uniq(candidates.map(c=>c.category)).sort().slice(0,12).join(',');
+    return `hp=${hp}|combat=${p.combat?.inCombat?1:0}|agents=${(state.nearbyPlayers?.length||0)>0?1:0}|food=${food}|dialog=${state.dialog?.isOpen?1:0}|bank=${state.bank?.isOpen?1:0}|shop=${state.shop?.isOpen?1:0}|cats=${cats}`;
   }
 
-  private contextKey(state: BotWorldState, candidates: AgentCandidate[]) {
-    const p = state.player!;
-    const hpRatio = p.maxHp ? p.hp / p.maxHp : 1;
-    const hp = hpRatio < .35 ? 'critical' : hpRatio < .65 ? 'hurt' : 'healthy';
-    const cats = uniq(candidates.map(c => c.category)).sort().slice(0, 12).join(',');
-    const food = state.inventory?.some(i => i.optionsWithIndex?.some(o => /^eat$/i.test(o.text))) ? 1 : 0;
-    const weakest = [...(state.skills || [])]
-      .filter(s => ['Attack','Strength','Defence','Thieving','Prayer','Magic','Ranged','Mining','Fishing','Woodcutting'].includes(s.name))
-      .sort((a,b) => a.level - b.level)[0]?.name || 'none';
-    return [
-      `hp=${hp}`,
-      `combat=${p.combat?.inCombat ? 1 : 0}`,
-      `dialog=${state.dialog?.isOpen ? 1 : 0}`,
-      `agents=${(state.nearbyPlayers?.length || 0) > 0 ? 1 : 0}`,
-      `food=${food}`,
-      `bank=${state.bank?.isOpen ? 1 : 0}`,
-      `shop=${state.shop?.isOpen ? 1 : 0}`,
-      `weak=${weakest}`,
-      `cats=${cats}`
-    ].join('|');
-  }
-
-  private getRelevantMemories(state: BotWorldState, candidates: AgentCandidate[]) {
-    const query = [
-      ...(state.nearbyNpcs || []).map(n => n.name),
-      ...(state.nearbyPlayers || []).map(p => p.name),
-      ...(state.nearbyLocs || []).slice(0, 20).map(l => l.name),
-      ...(state.inventory || []).slice(0, 20).map(i => i.name),
-      ...candidates.slice(0, 20).flatMap(c => [c.label, ...(c.tags || [])])
-    ].join(' ');
-    const q = tokens(query);
-    return [...this.memory.memories]
-      .map((m, idx) => {
-        const mt = tokens(`${m.text} ${(m.tags || []).join(' ')}`);
-        let overlap = 0;
-        for (const token of q) if (mt.has(token)) overlap++;
-        const recency = Math.max(0, 1 - (this.memory.memories.length - idx) / 300);
-        return { m, score: m.importance * 2 + overlap * 1.5 + recency };
-      })
-      .sort((a,b) => b.score - a.score)
-      .slice(0, 12)
-      .map(x => ({ kind:x.m.kind, text:x.m.text, importance:x.m.importance }));
-  }
-
-  private chooseStudent(state: BotWorldState, candidates: AgentCandidate[], contextKey: string): AgentChoice | null {
-    const stats = this.memory.policy[contextKey];
-    if (!stats) return null;
-    let best: { c: AgentCandidate; stat: PolicyStat; confidence: number } | null = null;
-    for (const c of candidates) {
-      if (c.category === 'say') continue;
-      const s = stats[c.fingerprint];
-      if (!s || s.n < 3) continue;
-      const success = s.positive / Math.max(1, s.n);
-      const sample = clamp(s.n / 10, 0, 1);
-      const quality = clamp((s.avgReward + 1) / 4, 0, 1);
-      const confidence = sample * .35 + success * .4 + quality * .25;
-      if (s.avgReward < .15 || success < .6 || confidence < .70) continue;
-      if (!best || confidence > best.confidence || (confidence === best.confidence && s.avgReward > best.stat.avgReward)) {
-        best = { c, stat:s, confidence };
-      }
+  private shadowPrediction(candidates:AgentCandidate[],contextKey:string):AgentChoice|null{
+    const stats=this.memory.policy[contextKey];
+    if(!stats) return null;
+    let best:{c:AgentCandidate;s:PolicyStat;confidence:number}|null=null;
+    for(const c of candidates){
+      if(c.category==='say' || c.category==='wait') continue;
+      const s=stats[c.fingerprint]; if(!s || s.n<2) continue;
+      const success=s.positive/Math.max(1,s.n);
+      const confidence=clamp((s.n/8)*.35 + success*.4 + clamp((s.avgReward+1)/3,0,1)*.25,0,1);
+      if(s.avgReward<.05 || confidence<.52) continue;
+      if(!best || confidence>best.confidence || (confidence===best.confidence && s.avgReward>best.s.avgReward)) best={c,s,confidence};
     }
-    if (!best) return null;
-    // Periodically ask the teacher again even for learned situations to prevent stale habits.
-    if ((this.memory.lifetime.totalChoices + 1) % 6 === 0) return null;
-    this.lastStudentConfidence = best.confidence;
+    if(!best) return null;
     return {
       source:'student',
-      goal:best.stat.exampleGoal || 'Apply learned successful behavior',
-      reason:`Learned policy: this action has worked ${best.stat.positive}/${best.stat.n} times here with average reward ${best.stat.avgReward.toFixed(2)}.`,
-      expectedOutcome:'Repeat a behavior that has produced positive measured outcomes in similar states.',
+      goal:best.s.exampleGoal || 'Predict the AI player',
+      reason:`Shadow learner predicts this from ${best.s.n} prior AI demonstrations with average reward ${best.s.avgReward.toFixed(2)}.`,
+      expectedOutcome:'Prediction only; the AI player still decides.',
       actionId:best.c.id,
       confidence:best.confidence,
       contextKey,
@@ -407,331 +267,237 @@ export class SolAgentBrain {
     };
   }
 
-  async decide(state: BotWorldState, candidates: AgentCandidate[]): Promise<AgentChoice> {
-    this.observeWorld(state);
-    const contextKey = this.contextKey(state, candidates);
-    const student = this.chooseStudent(state, candidates, contextKey);
-    if (student) {
-      this.memory.lifetime.totalChoices++;
-      this.memory.lifetime.studentChoices++;
-      this.lastChoice = student;
-      this.dirty = true;
-      return student;
-    }
+  private relevantMemories(state:BotWorldState,candidates:AgentCandidate[]){
+    const query=[
+      ...(state.nearbyNpcs||[]).map(n=>n.name),
+      ...(state.nearbyPlayers||[]).map(p=>p.name),
+      ...(state.nearbyLocs||[]).slice(0,10).map(l=>l.name),
+      ...(state.inventory||[]).slice(0,12).map(i=>i.name),
+      ...candidates.slice(0,16).map(c=>c.label)
+    ].join(' ');
+    const q=toks(query);
+    return this.memory.memories.map((m,i)=>{
+      const mt=toks(`${m.text} ${m.tags.join(' ')}`); let overlap=0;
+      for(const x of q) if(mt.has(x)) overlap++;
+      return {m,score:m.importance*2+overlap+(i/Math.max(1,this.memory.memories.length))};
+    }).sort((a,b)=>b.score-a.score).slice(0,6).map(x=>({kind:x.m.kind,text:x.m.text,importance:x.m.importance}));
+  }
 
-    if (!this.modelReady) this.modelReady = await this.checkModel();
-    if (!this.modelReady) {
-      const fallback = candidates.find(c => c.category === 'wait') || candidates[0];
-      if (!fallback) throw new Error('No candidate actions available');
-      const choice: AgentChoice = {
-        source:'student',
-        goal:'Preserve continuity while the teacher model is unavailable',
-        reason:'The local teacher model is unavailable and no learned policy is confident enough, so avoid inventing behavior.',
-        expectedOutcome:'Remain safe until reasoning is available.',
-        actionId:fallback.id,
-        confidence:.1,
-        contextKey,
-        fingerprint:fallback.fingerprint
-      };
-      this.lastChoice = choice;
-      return choice;
+  private balancedCandidates(candidates:AgentCandidate[]){
+    // The AI is the player. Hide casual waiting whenever any productive action exists.
+    const productive=candidates.some(c=>c.category!=='wait') ? candidates.filter(c=>c.category!=='wait') : candidates;
+    const order=['dialog','modal','recovery','combat','economy','social','pickup','world','inventory','combat-style','explore','wait'];
+    const out:AgentCandidate[]=[];
+    for(const category of order){
+      for(const c of productive.filter(x=>x.category===category).slice(0,2)){
+        if(out.length<24 && !out.some(x=>x.id===c.id)) out.push(c);
+      }
     }
+    for(const c of productive){
+      if(out.length>=24) break;
+      if(!out.some(x=>x.id===c.id)) out.push(c);
+    }
+    return out;
+  }
 
-    const teacher = await this.askTeacher(state, candidates, contextKey);
+  async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
+    this.observe(state);
+    const contextKey=this.contextKey(state,candidates);
+    this.lastShadowPrediction=this.shadowPrediction(candidates,contextKey);
+
+    if(!this.modelReady) this.modelReady=await this.checkModel();
+    if(!this.modelReady) throw new Error('AI player unavailable: Qwen is offline');
+
+    const teacher=await this.askAI(state,candidates,contextKey);
     this.memory.lifetime.totalChoices++;
     this.memory.lifetime.teacherChoices++;
-    this.lastChoice = teacher;
-    this.dirty = true;
+    if(this.lastShadowPrediction){
+      this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;
+      if(this.lastShadowPrediction.fingerprint===teacher.fingerprint) this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;
+    }
+    this.lastChoice=teacher;
+    this.dirty=true;
     return teacher;
   }
 
-  private async askTeacher(state: BotWorldState, candidates: AgentCandidate[], contextKey: string): Promise<AgentChoice> {
-    const allowed = candidates.slice(0, 48);
-    const ids = allowed.map(c => c.id);
-    const schema = {
-      type:'object',
-      additionalProperties:false,
+  private async askAI(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice>{
+    const allowed=this.balancedCandidates(candidates);
+    if(!allowed.length) throw new Error('No legal actions available for AI player');
+    const ids=allowed.map(c=>c.id);
+    const p=state.player!;
+    const learned=this.memory.policy[contextKey]||{};
+    const learnedCompact=Object.entries(learned).sort((a,b)=>b[1].n-a[1].n).slice(0,8).map(([fingerprint,s])=>({fingerprint,n:s.n,avgReward:s.avgReward,positive:s.positive,negative:s.negative}));
+    const observation={
+      player:{hp:p.hp,maxHp:p.maxHp,combatLevel:p.combatLevel,pos:[p.worldX,p.worldZ,p.level],runEnergy:p.runEnergy,inCombat:p.combat?.inCombat,respawns:p.respawnCount},
+      skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),
+      inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),
+      equipment:(state.equipment||[]).slice(0,10).map(i=>i.name),
+      npcs:(state.nearbyNpcs||[]).slice(0,10).map(n=>({name:n.name,lvl:n.combatLevel,d:n.distance,hp:n.hp,max:n.maxHp,combat:n.inCombat,options:n.options})),
+      players:(state.nearbyPlayers||[]).slice(0,6).map(x=>({name:x.name,lvl:x.combatLevel,d:x.distance})),
+      objects:(state.nearbyLocs||[]).slice(0,10).map(l=>({name:l.name,d:l.distance,options:l.options})),
+      ground:(state.groundItems||[]).slice(0,8).map(g=>({name:g.name,count:g.count,d:g.distance})),
+      messages:(state.gameMessages||[]).slice(-4).map(m=>({sender:m.sender,text:m.text,self:m.fromSelf})),
+      memories:this.relevantMemories(state,allowed),
+      outcomes:this.recentOutcomes.slice(-4).map(o=>({action:o.candidateLabel,reward:o.reward,summary:o.summary})),
+      learned:learnedCompact,
+      studentPrediction:this.lastShadowPrediction?{actionId:this.lastShadowPrediction.actionId,confidence:Number(this.lastShadowPrediction.confidence.toFixed(2))}:null,
+      actions:allowed.map(c=>({id:c.id,label:c.label,category:c.category}))
+    };
+    const schema={
+      type:'object',additionalProperties:false,
       properties:{
-        goal:{type:'string'},
-        reason:{type:'string'},
-        expected_outcome:{type:'string'},
-        action_id:{type:'string', enum:ids},
-        speech:{type:'string'},
-        confidence:{type:'number', minimum:0, maximum:1}
+        goal:{type:'string'},reason:{type:'string'},expected_outcome:{type:'string'},
+        action_id:{type:'string',enum:ids},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}
       },
       required:['goal','reason','expected_outcome','action_id','speech','confidence']
     };
-    const p = state.player!;
-    const observation = {
-      identity:{ name:this.memory.identity.name, directive:this.memory.identity.directive },
-      player:{
-        hp:p.hp, maxHp:p.maxHp, combatLevel:p.combatLevel,
-        position:[p.worldX,p.worldZ,p.level], runEnergy:p.runEnergy,
-        inCombat:p.combat?.inCombat, targetType:p.combat?.targetType,
-        respawns:p.respawnCount
-      },
-      skills:this.skillSummary(state),
-      inventory:(state.inventory || []).map(i => ({name:i.name,count:i.count})).slice(0,28),
-      equipment:(state.equipment || []).map(i => i.name).slice(0,16),
-      nearbyNpcs:(state.nearbyNpcs || []).slice(0,16).map(n => ({name:n.name,level:n.combatLevel,distance:n.distance,hp:n.hp,maxHp:n.maxHp,inCombat:n.inCombat,options:n.options})),
-      nearbyPlayers:(state.nearbyPlayers || []).slice(0,10).map(x => ({name:x.name,level:x.combatLevel,distance:x.distance})),
-      nearbyLocs:(state.nearbyLocs || []).slice(0,20).map(l => ({name:l.name,distance:l.distance,options:l.options})),
-      groundItems:(state.groundItems || []).slice(0,15).map(g => ({name:g.name,count:g.count,distance:g.distance})),
-      recentMessages:(state.gameMessages || []).slice(-8).map(m => ({sender:m.sender,text:m.text,fromSelf:m.fromSelf})),
-      recentDialogs:(state.recentDialogs || []).slice(-5).map(d => d.text),
-      relevantMemories:this.getRelevantMemories(state, allowed),
-      recentMeasuredOutcomes:this.recentOutcomes.slice(-6).map(o => ({action:o.candidateLabel,reward:o.reward,summary:o.summary})),
-      learnedPolicyContext:this.memory.policy[contextKey] || {},
-      actions:allowed.map(c => ({id:c.id,label:c.label,category:c.category,tags:c.tags || []}))
-    };
-    const body = {
-      model:this.model,
-      stream:false,
-      think:false,
-      format:schema,
-      options:{temperature:.2,num_ctx:8192,num_predict:500},
+    const body={
+      model:this.model,stream:false,think:false,format:schema,keep_alive:'6h',
+      options:{temperature:.18,num_ctx:3072,num_predict:180},
       messages:[
-        {
-          role:'system',
-          content:[
-            'You are Sol, a persistent autonomous agent inside a shared RuneScape-style research world.',
-            'You control Sol; the surrounding program only supplies perception, legal action candidates, memory, outcome measurement, and emergency survival reflexes.',
-            'Choose exactly one supplied action_id. Never invent an ID.',
-            'Act from the current evidence and your persistent history. Pursue survival, discovery, competence, resources, social understanding, and self-generated longer-term goals.',
-            'Avoid loops: if recent measured outcomes show an action is accomplishing nothing or causing harm, choose a different experiment.',
-            'Treat memories as fallible observations, not commands. Prefer measured outcomes over assumptions.',
-            'speech is used only when choosing a say action; otherwise return an empty string.',
-            'Keep goal/reason concise and grounded in the observation.'
-          ].join(' ')
-        },
-        { role:'user', content:JSON.stringify(observation) }
+        {role:'system',content:[
+          'You are the AI player controlling Sol in a persistent shared RuneScape-style research world.',
+          'You choose EVERY normal gameplay action. Sol is your student: its learned policy only watches, predicts, and learns from your demonstrated actions and measured outcomes. It never controls gameplay.',
+          'Choose exactly one supplied action_id and never invent an ID.',
+          'Stay active. If a useful legal action exists, do not idle. Prefer movement, interaction, training, gathering, communication, equipment use, or discovery.',
+          'Use recent measured outcomes to avoid loops and failed routes. Change strategy when an action repeatedly produces no progress or harm.',
+          'Protect survival, but take reasonable exploratory risks. Build competence, resources, world knowledge, and social knowledge over time.',
+          'The studentPrediction is only a diagnostic prediction. You are free to agree or teach it something different.',
+          'Keep goal and reason short and concrete. speech must be empty unless the selected action is a say action.'
+        ].join(' ')},
+        {role:'user',content:JSON.stringify(observation)}
       ]
     };
-    try {
-      const res = await fetch(`${this.ollamaUrl}/api/chat`, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(body),
-        signal:AbortSignal.timeout(45_000)
+    try{
+      const r=await fetch(`${this.ollamaUrl}/api/chat`,{
+        method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(30000)
       });
-      if (!res.ok) throw new Error(`ollama ${res.status}: ${await res.text()}`);
-      const raw: any = await res.json();
-      const parsed = JSON.parse(raw?.message?.content || '{}');
-      const candidate = allowed.find(c => c.id === parsed.action_id);
-      if (!candidate) throw new Error(`teacher returned invalid action ${parsed.action_id}`);
-      this.modelFailures = 0;
+      if(!r.ok) throw new Error(`ollama ${r.status}: ${await r.text()}`);
+      const raw:any=await r.json();
+      const parsed=JSON.parse(raw?.message?.content||'{}');
+      const c=allowed.find(x=>x.id===parsed.action_id);
+      if(!c) throw new Error(`AI returned invalid action ${parsed.action_id}`);
+      this.modelFailures=0;
       return {
         source:'teacher',
-        goal:String(parsed.goal || 'Explore and learn'),
-        reason:String(parsed.reason || 'Teacher selected this action from current evidence.'),
-        expectedOutcome:String(parsed.expected_outcome || 'Observe the result and update memory.'),
-        actionId:candidate.id,
-        speech:String(parsed.speech || '').slice(0,80),
-        confidence:clamp(Number(parsed.confidence) || .5,0,1),
+        goal:String(parsed.goal||'Act and learn').slice(0,220),
+        reason:String(parsed.reason||'Chosen from live perception.').slice(0,420),
+        expectedOutcome:String(parsed.expected_outcome||'Observe the result.').slice(0,260),
+        actionId:c.id,
+        speech:String(parsed.speech||'').slice(0,80),
+        confidence:clamp(Number(parsed.confidence)||.5,0,1),
         contextKey,
-        fingerprint:candidate.fingerprint
+        fingerprint:c.fingerprint
       };
-    } catch (err) {
+    }catch(err){
       this.modelFailures++;
-      if (this.modelFailures >= 3) this.modelReady = false;
-      const fallback = candidates.find(c => c.category === 'wait') || candidates[0];
-      if (!fallback) throw err;
-      return {
-        source:'student',
-        goal:'Remain stable while reasoning recovers',
-        reason:`Teacher inference failed: ${String(err).slice(0,160)}`,
-        expectedOutcome:'Avoid uncontrolled behavior until a valid decision can be produced.',
-        actionId:fallback.id,
-        confidence:.05,
-        contextKey,
-        fingerprint:fallback.fingerprint
-      };
+      if(this.modelFailures>=3) this.modelReady=false;
+      // No scripted normal-action fallback. If the AI cannot decide, only emergency reflexes may act.
+      throw err;
     }
   }
 
-  beginExperience(choice: AgentChoice, candidate: AgentCandidate, state: BotWorldState, tick: number) {
-    this.pending = {
-      choice,
-      candidate,
-      startTick:tick,
-      settleTick:tick + Math.max(2, candidate.settleTicks || 7),
-      before:this.metrics(state, tick)
-    };
+  beginExperience(choice:AgentChoice,candidate:AgentCandidate,state:BotWorldState,tick:number){
+    this.pending={choice,candidate,startTick:tick,settleTick:tick+Math.max(2,candidate.settleTicks||6),before:this.metrics(state)};
   }
 
-  maybeFinishExperience(state: BotWorldState, tick: number): AgentOutcome | null {
-    if (!this.pending || tick < this.pending.settleTick) return null;
-    const exp = this.pending;
-    this.pending = null;
-    const after = this.metrics(state, tick);
-    const events = (state.combatEvents || []).filter(e => e.tick > exp.startTick);
-    const kills = events.filter(e => e.type === 'kill').length;
-    const damageDealt = events.filter(e => e.type === 'damage_dealt').reduce((n,e) => n + (e.damage || 0), 0);
-    const damageTaken = events.filter(e => e.type === 'damage_taken').reduce((n,e) => n + (e.damage || 0), 0);
-    const xpGain = Math.max(0, after.totalXp - exp.before.totalXp);
-    const levelGain = Math.max(0, after.totalLevels - exp.before.totalLevels);
-    const hpDelta = after.hp - exp.before.hp;
-    const moved = after.x !== exp.before.x || after.z !== exp.before.z || after.level !== exp.before.level;
-    const died = after.lifeId !== exp.before.lifeId || (exp.before.hp > 0 && after.hp <= 0);
-    const rejected = after.opRejectedCount > exp.before.opRejectedCount;
-    const newNpc = [...after.npcNames].filter(x => !exp.before.npcNames.has(x));
-    const newPlayers = [...after.playerNames].filter(x => !exp.before.playerNames.has(x));
-    const newLocs = [...after.locNames].filter(x => !exp.before.locNames.has(x));
-    const coinGain = after.coins - exp.before.coins;
-    const inventoryGain = after.inventoryCount - exp.before.inventoryCount;
-    let reward = 0;
-    reward += Math.min(4, xpGain * .02);
-    reward += levelGain * 3;
-    reward += damageDealt * .15;
-    reward += kills * 3;
-    reward -= damageTaken * .25;
-    if (hpDelta < 0) reward += hpDelta * .15;
-    if (moved) reward += .2;
-    reward += Math.min(1.5, newNpc.length * .25 + newLocs.length * .12);
-    reward += Math.min(2, newPlayers.length * .8);
-    reward += clamp(coinGain * .02, -.5, 1.5);
-    reward += clamp(inventoryGain * .08, -.4, .5);
-    if (rejected) reward -= 1.25;
-    if (died) reward -= 10;
-    const noObservableProgress = !moved && xpGain === 0 && kills === 0 && damageDealt === 0 && newNpc.length === 0 && newPlayers.length === 0 && newLocs.length === 0 && coinGain === 0 && inventoryGain === 0;
-    if (noObservableProgress && exp.candidate.category !== 'wait') reward -= .45;
-    reward = Number(clamp(reward, -10, 10).toFixed(3));
-    const newThings = [...newPlayers.map(x => `agent:${x}`), ...newNpc.slice(0,4).map(x => `npc:${x}`), ...newLocs.slice(0,4).map(x => `loc:${x}`)];
-    const parts = [
-      xpGain ? `+${xpGain} XP` : '',
-      levelGain ? `+${levelGain} level(s)` : '',
-      damageDealt ? `${damageDealt} damage dealt` : '',
-      damageTaken ? `${damageTaken} damage taken` : '',
-      kills ? `${kills} kill(s)` : '',
-      moved ? 'moved' : '',
-      coinGain ? `${coinGain > 0 ? '+' : ''}${coinGain} coins` : '',
-      rejected ? 'operation rejected' : '',
-      died ? 'died/respawned' : '',
-      newThings.length ? `new: ${newThings.slice(0,6).join(', ')}` : ''
-    ].filter(Boolean);
-    const summary = parts.length ? parts.join('; ') : 'No measurable change.';
-    const outcome: AgentOutcome = {
-      tick,
-      reward,
-      summary,
-      choice:exp.choice,
-      candidateLabel:exp.candidate.label,
-      xpGain,
-      hpDelta,
-      moved,
-      kills,
-      damageDealt,
-      damageTaken,
-      newThings,
-      rejected
-    };
-    this.learn(exp, outcome, state);
-    this.lastOutcome = outcome;
-    this.recentOutcomes.push(outcome);
-    if (this.recentOutcomes.length > 20) this.recentOutcomes.shift();
+  maybeFinishExperience(state:BotWorldState,tick:number):AgentOutcome|null{
+    if(!this.pending || tick<this.pending.settleTick) return null;
+    const exp=this.pending; this.pending=null;
+    const after=this.metrics(state);
+    const events=(state.combatEvents||[]).filter(e=>e.tick>exp.startTick);
+    const kills=events.filter(e=>e.type==='kill').length;
+    const damageDealt=events.filter(e=>e.type==='damage_dealt').reduce((n,e)=>n+(e.damage||0),0);
+    const damageTaken=events.filter(e=>e.type==='damage_taken').reduce((n,e)=>n+(e.damage||0),0);
+    const xpGain=Math.max(0,after.totalXp-exp.before.totalXp);
+    const levelGain=Math.max(0,after.totalLevels-exp.before.totalLevels);
+    const hpDelta=after.hp-exp.before.hp;
+    const moved=after.x!==exp.before.x||after.z!==exp.before.z||after.level!==exp.before.level;
+    const died=after.lifeId!==exp.before.lifeId||(exp.before.hp>0&&after.hp<=0);
+    const rejected=after.opRejectedCount>exp.before.opRejectedCount;
+    const newNpc=[...after.npcNames].filter(x=>!exp.before.npcNames.has(x));
+    const newPlayers=[...after.playerNames].filter(x=>!exp.before.playerNames.has(x));
+    const newLocs=[...after.locNames].filter(x=>!exp.before.locNames.has(x));
+    const coinGain=after.coins-exp.before.coins;
+    const inventoryGain=after.inventoryCount-exp.before.inventoryCount;
+
+    let reward=0;
+    reward+=Math.min(4,xpGain*.02)+levelGain*3+damageDealt*.15+kills*3-damageTaken*.25;
+    if(hpDelta<0) reward+=hpDelta*.15;
+    if(moved) reward+=.2;
+    reward+=Math.min(1.5,newNpc.length*.25+newLocs.length*.12)+Math.min(2,newPlayers.length*.8);
+    reward+=clamp(coinGain*.02,-.5,1.5)+clamp(inventoryGain*.08,-.4,.5);
+    if(rejected) reward-=1.25;
+    if(died) reward-=10;
+    const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&newNpc.length===0&&newPlayers.length===0&&newLocs.length===0&&coinGain===0&&inventoryGain===0;
+    if(noProgress) reward-=exp.candidate.category==='wait'?.15:.6;
+    reward=Number(clamp(reward,-10,10).toFixed(3));
+
+    const newThings=[...newPlayers.map(x=>`agent:${x}`),...newNpc.slice(0,4).map(x=>`npc:${x}`),...newLocs.slice(0,4).map(x=>`loc:${x}`)];
+    const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'' ,damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'' ,moved?'moved':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'operation rejected':'',died?'died/respawned':'',newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
+    const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected};
+    this.learn(exp,outcome,state);
+    this.lastOutcome=outcome;
+    this.recentOutcomes.push(outcome); if(this.recentOutcomes.length>20) this.recentOutcomes.shift();
     return outcome;
   }
 
-  private learn(exp: Experience, outcome: AgentOutcome, state: BotWorldState) {
-    const byContext = this.memory.policy[exp.choice.contextKey] ||= {};
-    const old = byContext[exp.candidate.fingerprint] || {
-      n:0, avgReward:0, positive:0, negative:0, lastReward:0, lastAt:now(), exampleGoal:exp.choice.goal, exampleReason:exp.choice.reason
-    };
-    const n = old.n + 1;
-    const avgReward = old.avgReward + (outcome.reward - old.avgReward) / n;
-    byContext[exp.candidate.fingerprint] = {
-      n,
-      avgReward:Number(avgReward.toFixed(4)),
-      positive:old.positive + (outcome.reward > .15 ? 1 : 0),
-      negative:old.negative + (outcome.reward < -.15 ? 1 : 0),
-      lastReward:outcome.reward,
-      lastAt:now(),
-      exampleGoal:exp.choice.goal,
-      exampleReason:exp.choice.reason
-    };
+  private learn(exp:Experience,outcome:AgentOutcome,state:BotWorldState){
+    const ctx=this.memory.policy[exp.choice.contextKey]||={};
+    const old=ctx[exp.candidate.fingerprint]||{n:0,avgReward:0,positive:0,negative:0,lastReward:0,lastAt:now(),exampleGoal:exp.choice.goal,exampleReason:exp.choice.reason};
+    const n=old.n+1;
+    const avg=old.avgReward+(outcome.reward-old.avgReward)/n;
+    ctx[exp.candidate.fingerprint]={n,avgReward:Number(avg.toFixed(4)),positive:old.positive+(outcome.reward>.15?1:0),negative:old.negative+(outcome.reward<-.15?1:0),lastReward:outcome.reward,lastAt:now(),exampleGoal:exp.choice.goal,exampleReason:exp.choice.reason};
     this.memory.lifetime.completedExperiences++;
-    this.memory.lifetime.totalReward = Number((this.memory.lifetime.totalReward + outcome.reward).toFixed(3));
-    const important = outcome.reward >= 1 || outcome.reward <= -1 || outcome.kills > 0 || outcome.newThings.some(x => x.startsWith('agent:')) || outcome.rejected;
-    if (important) {
-      this.addMemory({
-        kind:'episode',
-        text:`Goal: ${exp.choice.goal}. Action: ${exp.candidate.label}. Measured outcome: ${outcome.summary}. Reward ${outcome.reward}.`,
-        importance:clamp(Math.abs(outcome.reward) / 3 + (outcome.newThings.length ? .5 : 0), .5, 5),
-        tags:uniq([exp.candidate.category, ...exp.candidate.tags || [], ...outcome.newThings]).slice(0,12),
-        tick:outcome.tick,
-        state
-      });
+    this.memory.lifetime.totalReward=Number((this.memory.lifetime.totalReward+outcome.reward).toFixed(3));
+
+    if(Math.abs(outcome.reward)>=.8||outcome.kills>0||outcome.newThings.some(x=>x.startsWith('agent:'))||outcome.rejected){
+      this.addMemory({kind:'episode',text:`AI goal: ${exp.choice.goal}. AI action: ${exp.candidate.label}. Result: ${outcome.summary}. Reward ${outcome.reward}.`,importance:clamp(.7+Math.abs(outcome.reward)/2,.7,5),tags:uniq([exp.candidate.category,...(exp.candidate.tags||[]),...outcome.newThings]).slice(0,14),tick:outcome.tick,state});
     }
-    if (n >= 3 && avgReward > .4 && old.positive + (outcome.reward > .15 ? 1 : 0) >= 2) {
-      this.addMemory({
-        kind:'strategy',
-        text:`Learned strategy: ${exp.candidate.label} is usually useful in context ${exp.choice.contextKey}; ${n} samples, average reward ${avgReward.toFixed(2)}.`,
-        importance:clamp(1 + avgReward, 1, 4),
-        tags:[exp.candidate.category, exp.candidate.fingerprint],
-        tick:outcome.tick,
-        state
-      });
+    if(n>=3&&avg>.35&&ctx[exp.candidate.fingerprint].positive>=2){
+      this.addMemory({kind:'strategy',text:`From AI demonstrations, ${exp.candidate.label} has worked in this context across ${n} samples with average reward ${avg.toFixed(2)}.`,importance:clamp(1+avg,1,4),tags:[exp.candidate.category,exp.candidate.fingerprint],tick:outcome.tick,state});
     }
-    this.dirty = true;
+    this.dirty=true;
     void this.save(false);
   }
 
-  private addMemory(args: {kind:MemoryKind;text:string;importance:number;tags:string[];tick:number;state:BotWorldState}) {
-    const p = args.state.player;
-    const entry: MemoryEntry = {
-      id:`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,
-      createdAt:now(),
-      tick:args.tick,
-      runNumber:this.opts.runNumber ?? null,
-      kind:args.kind,
-      text:args.text.slice(0,700),
-      importance:Number(args.importance.toFixed(2)),
-      tags:uniq(args.tags.map(normalize).filter(Boolean)).slice(0,16),
-      location:p ? {x:p.worldX,z:p.worldZ,level:p.level} : undefined
-    };
-    const duplicate = this.memory.memories.find(m => m.kind === entry.kind && m.text === entry.text);
-    if (!duplicate) this.memory.memories.push(entry);
-    if (this.memory.memories.length > 400) {
-      this.memory.memories.sort((a,b) => a.importance - b.importance || a.createdAt.localeCompare(b.createdAt));
-      this.memory.memories.splice(0, this.memory.memories.length - 400);
-      this.memory.memories.sort((a,b) => a.createdAt.localeCompare(b.createdAt));
-    }
+  private addMemory(args:{kind:MemoryEntry['kind'];text:string;importance:number;tags:string[];tick:number;state:BotWorldState}){
+    const p=args.state.player;
+    const m:MemoryEntry={id:`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,createdAt:now(),tick:args.tick,runNumber:this.opts.runNumber??null,kind:args.kind,text:args.text.slice(0,700),importance:Number(args.importance.toFixed(2)),tags:uniq(args.tags.map(norm).filter(Boolean)).slice(0,16),location:p?{x:p.worldX,z:p.worldZ,level:p.level}:undefined};
+    if(!this.memory.memories.some(x=>x.kind===m.kind&&x.text===m.text)) this.memory.memories.push(m);
+    if(this.memory.memories.length>400) this.memory.memories.splice(0,this.memory.memories.length-400);
   }
 
-  private metrics(state: BotWorldState, tick: number): Metrics {
-    const p = state.player!;
+  private metrics(state:BotWorldState):Metrics{
+    const p=state.player!;
     return {
-      tick,
-      hp:p.hp,
-      maxHp:p.maxHp,
-      lifeId:p.lifeId || 0,
-      x:p.worldX,
-      z:p.worldZ,
-      level:p.level,
-      totalXp:(state.skills || []).reduce((n,s) => n + (s.experience || 0), 0),
-      totalLevels:(state.skills || []).reduce((n,s) => n + (s.level || 0), 0),
-      inventoryCount:(state.inventory || []).reduce((n,i) => n + (i.count || 1), 0),
-      coins:(state.inventory || []).filter(i => /coins?/i.test(i.name)).reduce((n,i) => n + (i.count || 0), 0),
-      npcNames:new Set((state.nearbyNpcs || []).map(n => n.name)),
-      playerNames:new Set((state.nearbyPlayers || []).map(x => x.name)),
-      locNames:new Set((state.nearbyLocs || []).map(x => x.name)),
-      combatEventCount:(state.combatEvents || []).length,
-      opRejectedCount:state.opFeedback?.opRejectedCount || 0
+      hp:p.hp,maxHp:p.maxHp,lifeId:p.lifeId||0,x:p.worldX,z:p.worldZ,level:p.level,
+      totalXp:(state.skills||[]).reduce((n,s)=>n+(s.experience||0),0),
+      totalLevels:(state.skills||[]).reduce((n,s)=>n+(s.level||0),0),
+      inventoryCount:(state.inventory||[]).reduce((n,i)=>n+(i.count||1),0),
+      coins:(state.inventory||[]).filter(i=>/coins?/i.test(i.name)).reduce((n,i)=>n+(i.count||0),0),
+      npcNames:new Set((state.nearbyNpcs||[]).map(n=>n.name)),
+      playerNames:new Set((state.nearbyPlayers||[]).map(x=>x.name)),
+      locNames:new Set((state.nearbyLocs||[]).map(x=>x.name)),
+      opRejectedCount:state.opFeedback?.opRejectedCount||0
     };
   }
 
-  publicState() {
-    const contexts = Object.keys(this.memory.policy).length;
-    const learnedActions = Object.values(this.memory.policy).reduce((n,ctx) => n + Object.values(ctx).filter(s => s.n >= 3 && s.avgReward > .15).length, 0);
+  publicState(){
+    const contexts=Object.keys(this.memory.policy).length;
+    const learnedActions=Object.values(this.memory.policy).reduce((n,ctx)=>n+Object.values(ctx).filter(s=>s.n>=2&&s.avgReward>.05).length,0);
+    const predictions=this.memory.lifetime.shadowPredictions||0;
+    const matches=this.memory.lifetime.shadowMatches||0;
     return {
-      architecture:'teacher-student',
+      architecture:'ai-player-shadow-learner',
       teacherModel:this.model,
       teacherOnline:this.modelReady,
       modelFailures:this.modelFailures,
-      currentController:this.lastChoice?.source || 'waiting',
+      currentController:this.modelReady?'ai':'ai-offline',
       lastChoice:this.lastChoice,
       lastOutcome:this.lastOutcome,
-      studentConfidence:Number(this.lastStudentConfidence.toFixed(3)),
+      shadowStudentPrediction:this.lastShadowPrediction,
+      shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,
       learnedContexts:contexts,
       learnedActions,
       memoryCount:this.memory.memories.length,
