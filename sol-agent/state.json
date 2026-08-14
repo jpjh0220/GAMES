@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 531,
-    "teacherChoices": 531,
+    "totalChoices": 541,
+    "teacherChoices": 541,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 530,
-    "totalReward": -177.35,
-    "saves": 80,
+    "completedExperiences": 540,
+    "totalReward": -177.79,
+    "saves": 81,
     "shadowPredictions": 235,
     "shadowMatches": 10,
     "strategistRefreshes": 13,
@@ -3616,13 +3616,13 @@
         "exampleReason": "Deposit all Shortbow"
       },
       "bank:deposit:bronze sq shield": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T10:39:21.721Z",
-        "exampleGoal": "Open the bank to deposit items",
+        "lastAt": "2026-08-14T10:41:08.557Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "bank:deposit:chaos rune": {
@@ -3636,14 +3636,14 @@
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:deposit:air rune": {
-        "n": 1,
-        "avgReward": -0.32,
+        "n": 2,
+        "avgReward": -0.2,
         "positive": 0,
         "negative": 1,
-        "lastReward": -0.32,
-        "lastAt": "2026-08-14T10:36:16.947Z",
-        "exampleGoal": "Travel to Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Deposit all Body rune"
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:40:58.041Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "Deposit all Air rune"
       },
       "bank:deposit:raw bear meat": {
         "n": 2,
@@ -3686,14 +3686,44 @@
         "exampleReason": "Deposit all Coins"
       },
       "wait": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T10:40:06.125Z",
+        "lastAt": "2026-08-14T10:41:28.022Z",
         "exampleGoal": "Open the bank to access deposit slots.",
         "exampleReason": "Wait and observe for a moment"
+      },
+      "bank:withdraw:body rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T10:40:36.710Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "Withdraw 1 Body rune"
+      },
+      "bank:withdraw:air rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T10:40:43.327Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "Deposit all Body rune"
+      },
+      "bank:deposit:body rune": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:40:50.515Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "Deposit all Body rune"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
@@ -3838,6 +3868,28 @@
         "lastAt": "2026-08-14T10:40:13.950Z",
         "exampleGoal": "Open the bank to access deposit slots.",
         "exampleReason": "Deposit all Raw bear meat"
+      }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
+      "bank:deposit:raw bear meat": {
+        "n": 2,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-14T10:41:34.908Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "I'm opening the bank to deposit items."
+      },
+      "bank:withdraw:coins": {
+        "n": 1,
+        "avgReward": 0.1,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.1,
+        "lastAt": "2026-08-14T10:41:39.461Z",
+        "exampleGoal": "Open the bank to access deposit slots.",
+        "exampleReason": "I am opening the bank to deposit items."
       }
     }
   },
@@ -4847,8 +4899,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:40:22.321Z",
-      "visits": 35,
+      "lastSeenAt": "2026-08-14T10:41:35.215Z",
+      "visits": 45,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -4892,7 +4944,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:40:30.122Z",
+  "updatedAt": "2026-08-14T10:41:39.461Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7540,10 +7592,10 @@
         "wait",
         "bank:deposit:raw bear meat"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.31,
       "positive": 0,
-      "lastAt": "2026-08-14T10:40:13.950Z",
+      "lastAt": "2026-08-14T10:41:34.908Z",
       "example": "Deposit all Raw bear meat → Wait and observe for a moment → Deposit all Raw bear meat"
     },
     "wait > bank:deposit:raw bear meat > bank:deposit:raw rat meat": {
@@ -7569,6 +7621,114 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:40:30.122Z",
       "example": "Deposit all Raw bear meat → Deposit all Raw rat meat → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:raw rat meat > bank:deposit:bronze sq shield > bank:withdraw:body rune": {
+      "sequence": [
+        "bank:deposit:raw rat meat",
+        "bank:deposit:bronze sq shield",
+        "bank:withdraw:body rune"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:40:36.710Z",
+      "example": "Deposit all Raw rat meat → Deposit all Bronze sq shield → Withdraw 1 Body rune"
+    },
+    "bank:deposit:bronze sq shield > bank:withdraw:body rune > bank:withdraw:air rune": {
+      "sequence": [
+        "bank:deposit:bronze sq shield",
+        "bank:withdraw:body rune",
+        "bank:withdraw:air rune"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:40:43.327Z",
+      "example": "Deposit all Bronze sq shield → Withdraw 1 Body rune → Withdraw 1 Air rune"
+    },
+    "bank:withdraw:body rune > bank:withdraw:air rune > bank:deposit:body rune": {
+      "sequence": [
+        "bank:withdraw:body rune",
+        "bank:withdraw:air rune",
+        "bank:deposit:body rune"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:40:50.515Z",
+      "example": "Withdraw 1 Body rune → Withdraw 1 Air rune → Deposit all Body rune"
+    },
+    "bank:withdraw:air rune > bank:deposit:body rune > bank:deposit:air rune": {
+      "sequence": [
+        "bank:withdraw:air rune",
+        "bank:deposit:body rune",
+        "bank:deposit:air rune"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:40:58.041Z",
+      "example": "Withdraw 1 Air rune → Deposit all Body rune → Deposit all Air rune"
+    },
+    "bank:deposit:body rune > bank:deposit:air rune > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:deposit:body rune",
+        "bank:deposit:air rune",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.24,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:08.557Z",
+      "example": "Deposit all Body rune → Deposit all Air rune → Deposit all Bronze sq shield"
+    },
+    "bank:deposit:air rune > bank:deposit:bronze sq shield > wait": {
+      "sequence": [
+        "bank:deposit:air rune",
+        "bank:deposit:bronze sq shield",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.31,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:15.138Z",
+      "example": "Deposit all Air rune → Deposit all Bronze sq shield → Wait and observe for a moment"
+    },
+    "bank:deposit:bronze sq shield > wait > bank:deposit:raw bear meat": {
+      "sequence": [
+        "bank:deposit:bronze sq shield",
+        "wait",
+        "bank:deposit:raw bear meat"
+      ],
+      "n": 1,
+      "avgReward": -0.31,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:21.704Z",
+      "example": "Deposit all Bronze sq shield → Wait and observe for a moment → Deposit all Raw bear meat"
+    },
+    "wait > bank:deposit:raw bear meat > wait": {
+      "sequence": [
+        "wait",
+        "bank:deposit:raw bear meat",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.38,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:28.023Z",
+      "example": "Wait and observe for a moment → Deposit all Raw bear meat → Wait and observe for a moment"
+    },
+    "wait > bank:deposit:raw bear meat > bank:withdraw:coins": {
+      "sequence": [
+        "wait",
+        "bank:deposit:raw bear meat",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:41:39.461Z",
+      "example": "Wait and observe for a moment → Deposit all Raw bear meat → Withdraw 1 Coins"
     }
   },
   "discoveries": [
