@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 431,
-    "teacherChoices": 431,
+    "totalChoices": 432,
+    "teacherChoices": 432,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 430,
-    "totalReward": -167.35,
-    "saves": 66,
+    "completedExperiences": 431,
+    "totalReward": -169.2,
+    "saves": 67,
     "shadowPredictions": 229,
     "shadowMatches": 6,
     "strategistRefreshes": 4,
@@ -1385,6 +1385,24 @@
         "z": 3362,
         "level": 1
       }
+    },
+    {
+      "id": "msssbw0r-p2076n",
+      "createdAt": "2026-08-14T10:09:12.411Z",
+      "tick": 45,
+      "runNumber": 33,
+      "kind": "episode",
+      "text": "AI motor: Explore north about 5 tiles. Result: execution rejected or failed. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "explore",
+        "north"
+      ],
+      "location": {
+        "x": 3104,
+        "z": 3371,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -2215,6 +2233,18 @@
         "exampleGoal": "Progress through combat",
         "exampleReason": "Attack Ghost (level 19, distance 15)"
       }
+    },
+    "area=388:421:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:09:12.411Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "Exploring the area north about 5 tiles will help identify potential locations or resources. I will continue to observe and gather information as needed."
+      }
     }
   },
   "relationships": {
@@ -2750,12 +2780,12 @@
     },
     "194:210:1": {
       "key": "194:210:1",
-      "x": 3108,
-      "z": 3366,
+      "x": 3104,
+      "z": 3371,
       "level": 1,
       "firstSeenAt": "2026-08-14T10:01:08.835Z",
-      "lastSeenAt": "2026-08-14T10:01:55.036Z",
-      "visits": 4,
+      "lastSeenAt": "2026-08-14T10:08:59.261Z",
+      "visits": 5,
       "npcs": [
         "Ghost"
       ],
@@ -2820,7 +2850,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:06:31.323Z",
+  "updatedAt": "2026-08-14T10:09:12.412Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
