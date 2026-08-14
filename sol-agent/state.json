@@ -6,13 +6,13 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 119,
-    "teacherChoices": 119,
+    "totalChoices": 121,
+    "teacherChoices": 121,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 118,
-    "totalReward": -19.64,
-    "saves": 29,
+    "completedExperiences": 120,
+    "totalReward": -20.84,
+    "saves": 30,
     "shadowPredictions": 4,
     "shadowMatches": 4,
     "strategistRefreshes": 4,
@@ -690,22 +690,22 @@
     },
     "area=388:419:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
       "walk:south": {
-        "n": 5,
-        "avgReward": -0.6,
-        "positive": 0,
-        "negative": 5,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:34:44.239Z",
-        "exampleGoal": "explore",
-        "exampleReason": "Explore southeast about 4 tiles"
-      },
-      "walk:north": {
         "n": 6,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T08:41:26.236Z",
+        "lastAt": "2026-08-14T08:41:40.079Z",
+        "exampleGoal": "Pursue explore",
+        "exampleReason": "Explore east about 5 tiles."
+      },
+      "walk:north": {
+        "n": 7,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 7,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T08:41:53.831Z",
         "exampleGoal": "Pursue explore",
         "exampleReason": "Explore east about 5 tiles."
       },
@@ -954,8 +954,8 @@
       "z": 3355,
       "level": 0,
       "firstSeenAt": "2026-08-14T07:28:51.152Z",
-      "lastSeenAt": "2026-08-14T08:41:19.042Z",
-      "visits": 800,
+      "lastSeenAt": "2026-08-14T08:41:50.238Z",
+      "visits": 804,
       "npcs": [
         "Tree",
         "Rat",
@@ -1003,8 +1003,21 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T08:41:26.237Z",
-  "sequences": {},
+  "updatedAt": "2026-08-14T08:41:53.832Z",
+  "sequences": {
+    "walk:north > walk:south > walk:north": {
+      "sequence": [
+        "walk:north",
+        "walk:south",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T08:41:53.832Z",
+      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore north about 5 tiles"
+    }
+  },
   "discoveries": [
     {
       "id": "place:candles:194:209:0",
