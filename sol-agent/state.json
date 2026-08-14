@@ -6,37 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3571,
-    "teacherChoices": 3571,
+    "totalChoices": 3581,
+    "teacherChoices": 3581,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 3570,
-    "totalReward": 1716.66,
-    "saves": 385,
-    "shadowPredictions": 1777,
-    "shadowMatches": 750,
-    "strategistRefreshes": 175,
+    "completedExperiences": 3580,
+    "totalReward": 1710.66,
+    "saves": 386,
+    "shadowPredictions": 1781,
+    "shadowMatches": 752,
+    "strategistRefreshes": 176,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mstb6kkd-immfml",
-      "createdAt": "2026-08-14T18:56:56.989Z",
-      "tick": 35102,
-      "runNumber": 36,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 4) worked across 19 similar samples with average reward 4.19.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mstb6xm7-91bi06",
       "createdAt": "2026-08-14T18:57:13.903Z",
@@ -8529,6 +8511,26 @@
         "z": 3251,
         "level": 0
       }
+    },
+    {
+      "id": "mstg0upx-rfccyw",
+      "createdAt": "2026-08-14T21:12:28.293Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.. This plan ensures safe fishing location exploration, resource gathering",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
+        "verify arrival at draynor fishing area at 3087 3230 and explore north about 5 tiles",
+        "explore south about 5 tiles and search crate distance 7 to collect resources"
+      ],
+      "location": {
+        "x": 3082,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -13254,12 +13256,12 @@
         "exampleReason": "Close the shop"
       },
       "shop:sell:raw anchovies": {
-        "n": 11,
+        "n": 12,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 11,
+        "negative": 12,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T21:11:36.910Z",
+        "lastAt": "2026-08-14T21:11:48.597Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
@@ -13340,24 +13342,24 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
       "shop:buy:toy horsey": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:39:59.083Z",
-        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
-        "exampleReason": "Buy 1 Toy horsey for about 150"
+        "lastAt": "2026-08-14T21:12:52.487Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "I have successfully bought 1 Toy horsey for 150. This is a key resource for progression."
       },
       "shop:sell:coins": {
-        "n": 2,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:50:16.490Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "Sell 1 Coins for about 0"
+        "lastAt": "2026-08-14T21:12:41.997Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "Selling 1 Coins for about 0"
       },
       "shop:sell:raw anchovies": {
         "n": 3,
@@ -13368,17 +13370,27 @@
         "lastAt": "2026-08-14T17:40:04.801Z",
         "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
         "exampleReason": "Sell 1 Raw anchovies for about 7"
+      },
+      "shop:sell:body rune": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:12:59.093Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "Sell 1 Body rune for about 1"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 10,
-        "avgReward": 0.3,
+        "n": 12,
+        "avgReward": 0.15,
         "positive": 3,
-        "negative": 7,
+        "negative": 9,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:49:50.703Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-14T21:12:06.305Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Close the shop"
       },
       "wait": {
@@ -13404,14 +13416,14 @@
         "exampleReason": "Talk to Diango (level 0, distance 1) to gather resources for crafting arrow shafts."
       },
       "npc:trade:diango": {
-        "n": 5,
-        "avgReward": -0.714,
+        "n": 7,
+        "avgReward": -0.6814,
         "positive": 0,
-        "negative": 5,
+        "negative": 7,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:50:00.288Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I will talk to Diango (level 0, distance 1) to gather resources."
+        "lastAt": "2026-08-14T21:12:20.109Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Talk-to Diango (level 0, distance 1)"
       },
       "skill:travel:draynor-fishing": {
         "n": 1,
@@ -18386,8 +18398,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T21:11:37.199Z",
-      "visits": 337,
+      "lastSeenAt": "2026-08-14T21:12:52.796Z",
+      "visits": 347,
       "npcs": [
         "Banker",
         "Diango",
@@ -18655,7 +18667,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T21:11:42.297Z",
+  "updatedAt": "2026-08-14T21:12:59.093Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -23907,10 +23919,10 @@
         "shop:sell:coins",
         "shop:buy:toy horsey"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T21:11:18.618Z",
+      "lastAt": "2026-08-14T21:12:52.487Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:coins > shop:buy:toy horsey > shop:sell:coins": {
@@ -23919,10 +23931,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T21:11:24.906Z",
+      "lastAt": "2026-08-14T21:12:41.997Z",
       "example": "Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:buy:toy horsey > shop:sell:coins > shop:sell:bones": {
@@ -24339,10 +24351,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 3,
-      "avgReward": -2.143,
+      "n": 4,
+      "avgReward": -2.057,
       "positive": 0,
-      "lastAt": "2026-08-14T13:02:01.349Z",
+      "lastAt": "2026-08-14T21:12:20.109Z",
       "example": "Trade Diango (level 0, distance 3) → Close the shop → Trade Diango (level 0, distance 2)"
     },
     "modal:close-shop > npc:trade:diango > modal:close-shop": {
@@ -24351,10 +24363,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 4,
-      "avgReward": -2.085,
+      "n": 5,
+      "avgReward": -2.028,
       "positive": 0,
-      "lastAt": "2026-08-14T17:39:02.706Z",
+      "lastAt": "2026-08-14T21:12:06.305Z",
       "example": "Close the shop → Trade Diango (level 0, distance 2) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:diango": {
@@ -26523,10 +26535,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T19:50:00.288Z",
+      "lastAt": "2026-08-14T21:12:01.807Z",
       "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "shop:sell:raw anchovies > wait > modal:close-shop": {
@@ -27567,10 +27579,10 @@
         "shop:sell:raw anchovies",
         "modal:close-shop"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T20:50:51.879Z",
+      "lastAt": "2026-08-14T21:11:53.105Z",
       "example": "Sell 1 Body rune for about 1 → Sell 1 Raw anchovies for about 7 → Close the shop"
     },
     "shop:sell:body rune > shop:sell:raw anchovies > shop:sell:body rune": {
@@ -27656,6 +27668,54 @@
       "positive": 0,
       "lastAt": "2026-08-14T21:10:53.400Z",
       "example": "Attack Dark wizard (level 7, distance 12) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
+    },
+    "shop:sell:raw anchovies > shop:sell:body rune > shop:sell:raw anchovies": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "shop:sell:body rune",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:11:48.597Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Sell 1 Body rune for about 1 → Sell 1 Raw anchovies for about 7"
+    },
+    "modal:close-shop > npc:trade:diango > shop:sell:coins": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:trade:diango",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:12:29.106Z",
+      "example": "Close the shop → Trade Diango (level 0, distance 1) → Sell 1 Coins for about 0"
+    },
+    "npc:trade:diango > shop:sell:coins > shop:buy:toy horsey": {
+      "sequence": [
+        "npc:trade:diango",
+        "shop:sell:coins",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:12:36.306Z",
+      "example": "Trade Diango (level 0, distance 1) → Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150"
+    },
+    "shop:sell:coins > shop:buy:toy horsey > shop:sell:body rune": {
+      "sequence": [
+        "shop:sell:coins",
+        "shop:buy:toy horsey",
+        "shop:sell:body rune"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:12:59.093Z",
+      "example": "Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150 → Sell 1 Body rune for about 1"
     }
   },
   "discoveries": [
@@ -31261,25 +31321,24 @@
     }
   ],
   "activePlan": {
-    "objective": "Find safe fishing locations and gather resources for travel",
-    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-    "reason": "This plan uses the Net Fishing spot, which is a safe location for level",
+    "objective": "Find safe fishing locations and gather resources for progression.",
+    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+    "reason": "This plan ensures safe fishing location exploration, resource gathering",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "done",
-        "evidence": "+1332 XP; 10 damage dealt; moved 3092,3243 → 3087,3238; execution rejected or failed"
-      },
-      {
-        "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 13)",
+        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Verify arrival at Draynor fishing area at 3087,3230 and explore north about 5 tiles.",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Use the Net Fishing spot to catch Shrimp/anchovies and gather resources for travel",
+        "label": "Explore south about 5 tiles and search crate (distance 7) to collect resources.",
         "status": "pending"
       }
     ],
@@ -31287,17 +31346,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 13)",
-      "Use the Net Fishing spot to catch Shrimp/anchovies and gather resources for travel"
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+      "Verify arrival at Draynor fishing area at 3087,3230 and explore north about 5 tiles.",
+      "Explore south about 5 tiles and search crate (distance 7) to collect resources."
     ],
     "avoid": [
-      "Speak publicly; latest message from Oag0azhyi: Time to go mine again :3",
-      "Speak publicly; latest message from Oag0azhyi: Time to go mine again :3",
-      "Speak publicly; latest message from Oag0azhyi: Heading over to al kharid now"
+      "Close the shop",
+      "Trade Diango (level 0, distance 1)",
+      "Close the shop"
     ],
-    "updatedAt": "2026-08-14T21:09:48.647Z",
+    "updatedAt": "2026-08-14T21:12:28.293Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
