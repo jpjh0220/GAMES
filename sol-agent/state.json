@@ -6,15 +6,15 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 472,
-    "teacherChoices": 472,
+    "totalChoices": 481,
+    "teacherChoices": 481,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 471,
-    "totalReward": -187.9,
-    "saves": 74,
-    "shadowPredictions": 233,
-    "shadowMatches": 9,
+    "completedExperiences": 480,
+    "totalReward": -189.8,
+    "saves": 75,
+    "shadowPredictions": 235,
+    "shadowMatches": 10,
     "strategistRefreshes": 10,
     "strategistFailures": 147
   },
@@ -1704,6 +1704,123 @@
         "z": 3361,
         "level": 2
       }
+    },
+    {
+      "id": "msst2y49-o1ej7v",
+      "createdAt": "2026-08-14T10:30:14.841Z",
+      "tick": 297,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors. Result: moved 3106,3361 → 3125,3369; execution rejected or failed; new: agent:Goo001, npc:Skeleton, npc:Tree, loc:Fungus, loc:Dead tree, loc:Statue. Reward 0.3.",
+      "importance": 0.85,
+      "tags": [
+        "navigation skill",
+        "escape",
+        "draynor manor",
+        "staircase",
+        "door",
+        "repository tested",
+        "measurable position",
+        "agent goo001",
+        "npc skeleton",
+        "npc tree",
+        "loc fungus",
+        "loc dead tree",
+        "loc statue",
+        "loc candles"
+      ],
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      }
+    },
+    {
+      "id": "msst374d-zt5hf5",
+      "createdAt": "2026-08-14T10:30:26.509Z",
+      "tick": 336,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Chop down Dead tree (distance 2). Result: moved 3125,3369 → 3124,3369; execution rejected or failed. Reward -0.9.",
+      "importance": 1.15,
+      "tags": [
+        "world",
+        "dead tree",
+        "chop down"
+      ],
+      "location": {
+        "x": 3124,
+        "z": 3369,
+        "level": 0
+      }
+    },
+    {
+      "id": "msst3q3t-960rjl",
+      "createdAt": "2026-08-14T10:30:51.113Z",
+      "tick": 418,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3124,3369 → 3129,3321; execution rejected or failed; detail: Could not verify arrival at Draynor Bank. Last attempted step: Walk toward 3120,3280 (attempt 1). Recent game messages: Welcome to RuneScape. | You do not have an axe which you have the level to use.; new: npc:Goblin, npc:Tree, loc:Bush, loc:Daisies, loc:Tree, loc:Oak. Reward 0.3.",
+      "importance": 0.85,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc goblin",
+        "npc tree",
+        "loc bush",
+        "loc daisies",
+        "loc tree",
+        "loc oak"
+      ],
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      }
+    },
+    {
+      "id": "msst425c-lxt9h3",
+      "createdAt": "2026-08-14T10:31:06.720Z",
+      "tick": 470,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: execution rejected or failed; detail: Could not verify arrival at Draynor Bank. Last attempted step: Walk toward 3120,3280 (attempt 1). Recent game messages: Welcome to RuneScape. | You do not have an axe which you have the level to use.. Reward -1.85.",
+      "importance": 1.63,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate"
+      ],
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      }
+    },
+    {
+      "id": "msst4jzd-n246qm",
+      "createdAt": "2026-08-14T10:31:29.833Z",
+      "tick": 547,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Chop down Dead tree (distance 2). Result: moved 3129,3321 → 3128,3322; execution rejected or failed; new: npc:Goblin. Reward -0.7.",
+      "importance": 1.05,
+      "tags": [
+        "world",
+        "dead tree",
+        "chop down",
+        "npc goblin"
+      ],
+      "location": {
+        "x": 3128,
+        "z": 3322,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -2825,24 +2942,24 @@
     },
     "area=388:420:2|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait,world": {
       "loc:open:door": {
-        "n": 2,
+        "n": 3,
         "avgReward": 0.35,
-        "positive": 2,
+        "positive": 3,
         "negative": 0,
         "lastReward": 0.35,
-        "lastAt": "2026-08-14T10:20:03.127Z",
-        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
+        "lastAt": "2026-08-14T10:29:19.011Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
         "exampleReason": "Open Door (distance 1)"
       },
       "skill:escape-draynor-manor": {
-        "n": 2,
-        "avgReward": -1.85,
-        "positive": 0,
+        "n": 3,
+        "avgReward": -1.1333,
+        "positive": 1,
         "negative": 2,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-14T10:22:23.493Z",
-        "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
-        "exampleReason": "I am executing the skill to explore the east wing doors. I will check the coordinates for the two key doors to ensure they are accessible. I will also observe the surroundings to i"
+        "lastReward": 0.3,
+        "lastAt": "2026-08-14T10:30:14.841Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "I am using the `navigation-skill` skill to explore the area around the manor, looking for any potential paths or doors to open."
       }
     },
     "area=388:420:2|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
@@ -2855,6 +2972,88 @@
         "lastAt": "2026-08-14T10:23:00.430Z",
         "exampleGoal": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documente",
         "exampleReason": "Open Door (distance 1)"
+      }
+    },
+    "area=390:421:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,say,wait,world": {
+      "loc:chop down:dead tree": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-14T10:30:26.509Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "Chop down Dead tree (distance 2) to secure the area."
+      }
+    },
+    "area=390:421:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait": {
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 0.3,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.3,
+        "lastAt": "2026-08-14T10:30:51.113Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "I am now at Draynor Bank at 3092,3243 using verified waypoint navigation."
+      }
+    },
+    "area=391:415:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,wait,world": {
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-14T10:31:06.720Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "I am using the 'navigation-skill' skill to travel to the Draynor Bank at 3092,3243 using verified waypoint navigation. The skill has been executed successfully, and I have moved th"
+      },
+      "loc:chop down:dead tree": {
+        "n": 1,
+        "avgReward": -0.7,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.7,
+        "lastAt": "2026-08-14T10:31:29.833Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "Chop down Dead tree (distance 6)"
+      }
+    },
+    "area=391:415:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait,world": {
+      "inventory:wield:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:31:17.836Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "I have the Bronze sq shield, which is a useful item for defense and attack."
+      }
+    },
+    "area=391:415:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,wait": {
+      "inventory:wield:shortbow": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:31:38.817Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "I have the skill to wield a shortbow, which is essential for my escape plan."
+      }
+    },
+    "area=391:415:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,wait": {
+      "inventory:wield:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-14T10:31:46.324Z",
+        "exampleGoal": "Use the `escape Draynor Manor` skill to descend to the ground and prepare for escape.",
+        "exampleReason": "Wield Bronze sq shield"
       }
     }
   },
@@ -3092,6 +3291,21 @@
       "firstSeenAt": "2026-08-14T09:59:03.194Z",
       "lastSeenAt": "2026-08-14T10:00:50.248Z",
       "encounters": 5,
+      "combatLevel": 126,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "goo001": {
+      "name": "Goo001",
+      "firstSeenAt": "2026-08-14T10:30:15.149Z",
+      "lastSeenAt": "2026-08-14T10:30:15.149Z",
+      "encounters": 1,
       "combatLevel": 126,
       "trust": 0,
       "stance": "unknown",
@@ -3503,8 +3717,8 @@
       "z": 3361,
       "level": 2,
       "firstSeenAt": "2026-08-14T10:16:52.057Z",
-      "lastSeenAt": "2026-08-14T10:28:46.084Z",
-      "visits": 11,
+      "lastSeenAt": "2026-08-14T10:29:19.359Z",
+      "visits": 13,
       "npcs": [
         "Ernest",
         "Professor Oddenstein"
@@ -3523,9 +3737,70 @@
         "Wardrobe",
         "Spooky picture"
       ]
+    },
+    "195:210:0": {
+      "key": "195:210:0",
+      "x": 3124,
+      "z": 3369,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T10:30:15.149Z",
+      "lastSeenAt": "2026-08-14T10:30:26.817Z",
+      "visits": 2,
+      "npcs": [
+        "Skeleton",
+        "Tree"
+      ],
+      "locs": [
+        "Fungus",
+        "Dead tree",
+        "Table",
+        "Statue",
+        "Candles",
+        "Piano",
+        "Piano stool",
+        "Spooky picture",
+        "Sacks",
+        "Door",
+        "Barrel",
+        "Crate",
+        "Warehouse shelves",
+        "Stairs",
+        "Gallows",
+        "Chair",
+        "Wardrobe",
+        "Boxes",
+        "Mushroom",
+        "Bench"
+      ]
+    },
+    "195:207:0": {
+      "key": "195:207:0",
+      "x": 3128,
+      "z": 3322,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T10:30:51.401Z",
+      "lastSeenAt": "2026-08-14T10:31:39.124Z",
+      "visits": 5,
+      "npcs": [
+        "Goblin",
+        "Tree"
+      ],
+      "locs": [
+        "Dead tree",
+        "Fungus",
+        "Bush",
+        "Daisies",
+        "Tree",
+        "Oak",
+        "Mushroom",
+        "Boulder",
+        "Stones",
+        "Tree stump",
+        "Hay Bails"
+      ]
     }
   },
-  "updatedAt": "2026-08-14T10:29:09.113Z",
+  "updatedAt": "2026-08-14T10:31:46.324Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -5501,10 +5776,10 @@
         "loc:open:door",
         "skill:escape-draynor-manor"
       ],
-      "n": 1,
-      "avgReward": -1.15,
-      "positive": 0,
-      "lastAt": "2026-08-14T10:22:23.494Z",
+      "n": 2,
+      "avgReward": -0.075,
+      "positive": 1,
+      "lastAt": "2026-08-14T10:30:14.841Z",
       "example": "Open Door (distance 0) → Open Door (distance 1) → Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors"
     },
     "loc:open:door > loc:open:door > loc:open:door": {
@@ -5518,6 +5793,90 @@
       "positive": 2,
       "lastAt": "2026-08-14T10:23:00.430Z",
       "example": "Open Door (distance 0) → Open Door (distance 1) → Open Door (distance 0)"
+    },
+    "loc:open:door > skill:escape-draynor-manor > loc:chop down:dead tree": {
+      "sequence": [
+        "loc:open:door",
+        "skill:escape-draynor-manor",
+        "loc:chop down:dead tree"
+      ],
+      "n": 1,
+      "avgReward": -0.25,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:30:26.509Z",
+      "example": "Open Door (distance 1) → Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors → Chop down Dead tree (distance 2)"
+    },
+    "skill:escape-draynor-manor > loc:chop down:dead tree > skill:travel:draynor-bank": {
+      "sequence": [
+        "skill:escape-draynor-manor",
+        "loc:chop down:dead tree",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.3,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:30:51.113Z",
+      "example": "Execute rs-sdk skill: escape Draynor Manor by descending to ground first, then use the documented east-wing doors → Chop down Dead tree (distance 2) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
+    },
+    "loc:chop down:dead tree > skill:travel:draynor-bank > skill:travel:draynor-bank": {
+      "sequence": [
+        "loc:chop down:dead tree",
+        "skill:travel:draynor-bank",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": -2.45,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:31:06.720Z",
+      "example": "Chop down Dead tree (distance 2) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
+    },
+    "skill:travel:draynor-bank > skill:travel:draynor-bank > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "skill:travel:draynor-bank",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:31:17.836Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Wield Bronze sq shield"
+    },
+    "skill:travel:draynor-bank > inventory:wield:bronze sq shield > loc:chop down:dead tree": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "inventory:wield:bronze sq shield",
+        "loc:chop down:dead tree"
+      ],
+      "n": 1,
+      "avgReward": -2.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:31:29.833Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Wield Bronze sq shield → Chop down Dead tree (distance 2)"
+    },
+    "inventory:wield:bronze sq shield > loc:chop down:dead tree > inventory:wield:shortbow": {
+      "sequence": [
+        "inventory:wield:bronze sq shield",
+        "loc:chop down:dead tree",
+        "inventory:wield:shortbow"
+      ],
+      "n": 1,
+      "avgReward": -0.3,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:31:38.817Z",
+      "example": "Wield Bronze sq shield → Chop down Dead tree (distance 2) → Wield Shortbow"
+    },
+    "loc:chop down:dead tree > inventory:wield:shortbow > inventory:wield:bronze sq shield": {
+      "sequence": [
+        "loc:chop down:dead tree",
+        "inventory:wield:shortbow",
+        "inventory:wield:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.3,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:31:46.324Z",
+      "example": "Chop down Dead tree (distance 2) → Wield Shortbow → Wield Bronze sq shield"
     }
   },
   "discoveries": [
@@ -7788,6 +8147,462 @@
         "level": 2
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3106:3361:3125:3369:0",
+      "at": "2026-08-14T10:30:14.841Z",
+      "kind": "route",
+      "text": "Route learned: 3106,3361 → 3125,3369; moved 3106,3361 → 3125,3369; execution rejected or failed; new: agent:Goo001, npc:Skeleton, npc:Tree, loc:Fungus, loc:Dead tree, loc:Statue",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "danger:skeleton:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "danger",
+      "text": "Skeleton observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "resource",
+      "text": "Tree observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fungus:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Fungus observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:dead tree:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "resource",
+      "text": "Dead tree observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Table observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Statue observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Candles observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:piano:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Piano observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:piano stool:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Piano stool observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spooky picture:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Spooky picture observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:sacks:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Sacks observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Door observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Barrel observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Crate observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:warehouse shelves:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Warehouse shelves observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stairs:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Stairs observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:gallows:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Gallows observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Chair observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boxes:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Boxes observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mushroom:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Mushroom observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:195:210:0",
+      "at": "2026-08-14T10:30:15.149Z",
+      "kind": "place",
+      "text": "Bench observed near 3125, 3369, level 0.",
+      "location": {
+        "x": 3125,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3125:3369:3124:3369:0",
+      "at": "2026-08-14T10:30:26.509Z",
+      "kind": "route",
+      "text": "Route learned: 3125,3369 → 3124,3369; moved 3125,3369 → 3124,3369; execution rejected or failed",
+      "location": {
+        "x": 3124,
+        "z": 3369,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3124:3369:3129:3321:0",
+      "at": "2026-08-14T10:30:51.113Z",
+      "kind": "route",
+      "text": "Route learned: 3124,3369 → 3129,3321; moved 3124,3369 → 3129,3321; execution rejected or failed; detail: Could not verify arrival at Draynor Bank. Last attempted step: Walk toward 3120,3280 (attempt 1). Recent game messages: Welcome to RuneScape. | You do not have an axe which you have the level to use.; new: npc:Goblin, npc:Tree, loc:Bush, loc:Daisies, loc:Tree, loc:Oak",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "npc:goblin:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "npc",
+      "text": "Goblin observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "resource",
+      "text": "Tree observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:dead tree:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "resource",
+      "text": "Dead tree observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fungus:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Fungus observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Bush observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Daisies observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Oak observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mushroom:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Mushroom observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Boulder observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stones:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Stones observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:hay bails:195:207:0",
+      "at": "2026-08-14T10:30:51.401Z",
+      "kind": "place",
+      "text": "Hay Bails observed near 3129, 3321, level 0.",
+      "location": {
+        "x": 3129,
+        "z": 3321,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3129:3321:3128:3322:0",
+      "at": "2026-08-14T10:31:29.833Z",
+      "kind": "route",
+      "text": "Route learned: 3129,3321 → 3128,3322; moved 3129,3321 → 3128,3322; execution rejected or failed; new: npc:Goblin",
+      "location": {
+        "x": 3128,
+        "z": 3322,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
@@ -7823,6 +8638,6 @@
     "avoid": [],
     "updatedAt": "2026-08-14T10:29:08.977Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 2
   }
 }
