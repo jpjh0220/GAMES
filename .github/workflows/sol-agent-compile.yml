@@ -22,7 +22,7 @@ jobs:
           bun-version: latest
       - name: Clone upstream rs-sdk
         run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
-      - name: Install dependencies and stage agent
+      - name: Install dependencies and stage final agent
         run: |
           cd rs-sdk && bun install --frozen-lockfile
           cd server/webclient && bun install --frozen-lockfile
@@ -34,4 +34,6 @@ jobs:
         run: |
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
           test -s /tmp/sol-live-agent.js
-          echo 'Sol learning agent compiled successfully.'
+          grep -q 'sol-memory' agent-brain.ts
+          grep -q 'teacher-student' agent-brain.ts
+          echo 'Final Sol teacher-student agent compiled successfully.'
