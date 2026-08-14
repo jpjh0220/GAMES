@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1111,
-    "teacherChoices": 1111,
+    "totalChoices": 1121,
+    "teacherChoices": 1121,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1110,
-    "totalReward": -128.94,
-    "saves": 138,
+    "completedExperiences": 1120,
+    "totalReward": -128.04,
+    "saves": 139,
     "shadowPredictions": 654,
     "shadowMatches": 256,
     "strategistRefreshes": 43,
@@ -3945,6 +3945,83 @@
         "z": 3230,
         "level": 0
       }
+    },
+    {
+      "id": "mssw46rb-3gx905",
+      "createdAt": "2026-08-14T11:55:11.543Z",
+      "tick": 17286,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "net",
+        "level 0"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssw4yio-6f4fi8",
+      "createdAt": "2026-08-14T11:55:47.520Z",
+      "tick": 17406,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Dialog 1: Click here to continue worked across 5 similar samples with average reward 0.60.",
+      "importance": 1.6,
+      "tags": [
+        "dialog",
+        "dialog 1 click here to continue"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssw5b9g-7k41h1",
+      "createdAt": "2026-08-14T11:56:04.036Z",
+      "tick": 17453,
+      "runNumber": 35,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Aa sry henry i meant iron's a good shout, not that i'd smith it for u :3\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "unknown"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssw5l7c-907vds",
+      "createdAt": "2026-08-14T11:56:16.920Z",
+      "tick": 17487,
+      "runNumber": 35,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?\". Current stance friendly, trust 0.36.",
+      "importance": 1.4,
+      "tags": [
+        "social",
+        "henryatkins",
+        "friendly",
+        "potential help"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -6166,22 +6243,22 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T11:52:08.235Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-14T11:55:21.113Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
         "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T11:54:55.018Z",
+        "lastAt": "2026-08-14T11:55:16.018Z",
         "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
         "exampleReason": "You feel weakened."
       }
@@ -6200,14 +6277,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 4,
-        "avgReward": 0.15,
-        "positive": 1,
+        "n": 5,
+        "avgReward": 0.6,
+        "positive": 2,
         "negative": 3,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T11:51:50.814Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T11:55:47.520Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
         "exampleReason": "Click here to continue"
+      },
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T11:55:42.441Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
+        "exampleReason": "You feel weakened."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -6270,25 +6357,25 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,world": {
       "npc:net:fishing spot": {
-        "n": 2,
-        "avgReward": -0.885,
+        "n": 3,
+        "avgReward": -0.79,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T11:51:43.617Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I'm going to check the Net Fishing spot to collect anchovies and verify the successful collection via the guide file."
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T11:55:58.363Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
+        "exampleReason": "I have successfully reached the safe fishing location in Draynor Village. I will now begin my first fishing expedition to collect shrimps and anchovies."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T11:50:58.032Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-14T11:56:22.315Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
         "exampleReason": "Click here to continue"
       }
     },
@@ -6302,6 +6389,16 @@
         "lastAt": "2026-08-14T11:51:12.126Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "I'm at Draynor Bank, I need to locate safe fishing spots to obtain anchovies for crafting. I'll explore the area to find the best locations."
+      },
+      "npc:net:fishing spot": {
+        "n": 2,
+        "avgReward": 0.9,
+        "positive": 1,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T11:55:37.906Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
+        "exampleReason": "I have successfully reached the Net Fishing spot (level 0, distance 1) in Draynor Village. I am now ready to start my journey to the safe fishing location."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,social,world": {
@@ -6396,6 +6493,18 @@
         "lastAt": "2026-08-14T11:55:00.417Z",
         "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
         "exampleReason": "You feel weakened."
+      }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,world": {
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T11:56:16.610Z",
+        "exampleGoal": "Use the Bronze sq shield to travel to Draynor Village coordinates (3087, 3230).",
+        "exampleReason": "I have successfully reached the safe fishing location in Draynor Village at coordinates (3087, 3230). I have collected Raw anchovies (distance 3) and am ready to proceed with my pl"
       }
     }
   },
@@ -6535,11 +6644,11 @@
     "oag0azhyi": {
       "name": "Oag0azhyi",
       "firstSeenAt": "2026-08-14T08:44:49.979Z",
-      "lastSeenAt": "2026-08-14T11:54:49.652Z",
+      "lastSeenAt": "2026-08-14T11:56:04.036Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 32,
+      "conversations": 33,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -6560,15 +6669,11 @@
         "Hehe :3",
         "Def start iron, steel's the natural upgrade after :3",
         "Iron armour + a decent shield will get u through early game fine",
-        "Made 26200gp from the steel run!! :3"
+        "Made 26200gp from the steel run!! :3",
+        "Aa sry henry i meant iron's a good shout, not that i'd smith it for u :3"
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-14T09:07:20.580Z",
-          "direction": "incoming",
-          "text": "Sup!! :3"
-        },
         {
           "at": "2026-08-14T09:08:30.448Z",
           "direction": "incoming",
@@ -6663,6 +6768,11 @@
           "at": "2026-08-14T11:54:49.652Z",
           "direction": "incoming",
           "text": "Haha yeah"
+        },
+        {
+          "at": "2026-08-14T11:56:04.036Z",
+          "direction": "incoming",
+          "text": "Aa sry henry i meant iron's a good shout, not that i'd smith it for u :3"
         }
       ]
     },
@@ -6735,8 +6845,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T11:54:55.307Z",
-      "encounters": 179,
+      "lastSeenAt": "2026-08-14T11:55:21.442Z",
+      "encounters": 183,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -6861,12 +6971,12 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T11:54:30.112Z",
+      "lastSeenAt": "2026-08-14T11:56:16.920Z",
       "encounters": 1,
-      "trust": 0.24,
+      "trust": 0.36,
       "stance": "friendly",
-      "conversations": 7,
-      "cooperation": 2,
+      "conversations": 8,
+      "cooperation": 3,
       "suspicion": 0,
       "facts": [
         "Ooh anvil time! Whatcha smithing over there? i'm stuck at the catherby docks pulling up sharks all day :3",
@@ -6875,7 +6985,8 @@
         "Ohh nice!! Rolling in steel money :3 you're way ahead of me i'm still just dreaming of a decent starter set. Iron's where a fella like me should start, right?",
         "Sooo... Hypothetically, if a very clumsy fisherman asked you reaaal nicely, could the resident smithing expert whip him up a little iron set? helm, platebody, platelegs... The works :3 i'd be your biggest fan",
         "Sooo that's a yes right?? :3 you'd literally be saving me. I'm at catherby docks all day name a fair price or just swing by, your call!",
-        "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor"
+        "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor",
+        "Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?"
       ],
       "questions": [
         "Ooh anvil time! Whatcha smithing over there? i'm stuck at the catherby docks pulling up sharks all day :3",
@@ -6884,7 +6995,8 @@
         "Ohh nice!! Rolling in steel money :3 you're way ahead of me i'm still just dreaming of a decent starter set. Iron's where a fella like me should start, right?",
         "Sooo... Hypothetically, if a very clumsy fisherman asked you reaaal nicely, could the resident smithing expert whip him up a little iron set? helm, platebody, platelegs... The works :3 i'd be your biggest fan",
         "Sooo that's a yes right?? :3 you'd literally be saving me. I'm at catherby docks all day name a fair price or just swing by, your call!",
-        "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor"
+        "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor",
+        "Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?"
       ],
       "lastMessages": [
         {
@@ -6921,6 +7033,11 @@
           "at": "2026-08-14T11:54:30.112Z",
           "direction": "incoming",
           "text": "26200Gp?! Okay you're officially rich now :3 sooo rich smith... About that iron set for your favourite fisherman? full set + a decent shield, like ya said. I'll be the most handsome fish-stain in gielinor"
+        },
+        {
+          "at": "2026-08-14T11:56:16.920Z",
+          "direction": "incoming",
+          "text": "Aww and here i was picking out matching boot colours :3 no worries though! But heaaar me out you're literally right there at the anvil, i'm a disaster in a fight, and i'd pay properly for the rescue. Pretty please with a swordfish on top?"
         }
       ]
     }
@@ -7468,8 +7585,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T11:54:55.307Z",
-      "visits": 28,
+      "lastSeenAt": "2026-08-14T11:56:16.920Z",
+      "visits": 38,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -7602,7 +7719,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T11:55:00.417Z",
+  "updatedAt": "2026-08-14T11:56:22.315Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -12014,10 +12131,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": -0.897,
-      "positive": 0,
-      "lastAt": "2026-08-14T11:55:00.417Z",
+      "n": 5,
+      "avgReward": 0.122,
+      "positive": 2,
+      "lastAt": "2026-08-14T11:55:47.520Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -12074,10 +12191,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 2,
-      "avgReward": 0.15,
-      "positive": 1,
-      "lastAt": "2026-08-14T11:54:49.343Z",
+      "n": 5,
+      "avgReward": 0.45,
+      "positive": 3,
+      "lastAt": "2026-08-14T11:55:58.363Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -12086,10 +12203,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": 1.2,
-      "positive": 1,
-      "lastAt": "2026-08-14T11:50:58.032Z",
+      "n": 3,
+      "avgReward": 0.2,
+      "positive": 2,
+      "lastAt": "2026-08-14T11:56:22.315Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -12230,11 +12347,23 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 1,
-      "avgReward": -1.35,
-      "positive": 0,
-      "lastAt": "2026-08-14T11:54:55.018Z",
+      "n": 3,
+      "avgReward": -0.35,
+      "positive": 1,
+      "lastAt": "2026-08-14T11:55:42.441Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
+    },
+    "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
+      "sequence": [
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue",
+        "npc:net:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T11:56:16.610Z",
+      "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     }
   },
   "discoveries": [
