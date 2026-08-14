@@ -206,7 +206,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
 const runEmergencyReflex=(state:BotWorldState)=>{
   const p=state.player!;
   if(p.hp<=0) return false;
-  const threshold=Math.max(3,Math.floor(p.maxHp*(p.combat.inCombat?.45:.32)));
+  const threshold=Math.max(3,Math.floor(p.maxHp*(p.combat.inCombat ? .45 : .32)));
   if(p.hp>threshold) return false;
   const food=state.inventory.find(i=>i.optionsWithIndex?.some(o=>/^eat$/i.test(o.text)));
   const eat=food?.optionsWithIndex?.find(o=>/^eat$/i.test(o.text));
