@@ -6,77 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2211,
-    "teacherChoices": 2211,
+    "totalChoices": 2221,
+    "teacherChoices": 2221,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2210,
-    "totalReward": 702.7,
-    "saves": 249,
-    "shadowPredictions": 1078,
+    "completedExperiences": 2220,
+    "totalReward": 705.23,
+    "saves": 250,
+    "shadowPredictions": 1079,
     "shadowMatches": 446,
-    "strategistRefreshes": 103,
+    "strategistRefreshes": 104,
     "strategistFailures": 149
   },
   "memories": [
-    {
-      "id": "mst10p5p-tul4m9",
-      "createdAt": "2026-08-14T14:12:26.845Z",
-      "tick": 44737,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to the Draynor fishing area at 3087,3230 and verify arrival worked across 5 similar samples with average reward 0.85.",
-      "importance": 1.85,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor fishing"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst11c26-94o3hw",
-      "createdAt": "2026-08-14T14:12:56.526Z",
-      "tick": 44836,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 6). Result: +1198 XP; 9 damage dealt; moved 3092,3243 → 3086,3239; execution rejected or failed. Reward 4.18.",
-      "importance": 2.79,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst11c26-qzh0ka",
-      "createdAt": "2026-08-14T14:12:56.526Z",
-      "tick": 44836,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 8 similar samples with average reward 3.68.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mst12ky8-mah3o4",
       "createdAt": "2026-08-14T14:13:54.704Z",
@@ -8485,6 +8427,71 @@
         "z": 3248,
         "level": 0
       }
+    },
+    {
+      "id": "mst5c56e-j4lyfu",
+      "createdAt": "2026-08-14T16:13:19.286Z",
+      "tick": 2377,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Dialog 1: Toy horseys?. Result: No measurable change.. Reward -0.6.",
+      "importance": 1,
+      "tags": [
+        "dialog",
+        "conversation",
+        "toy horseys",
+        "agent anduril"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst5cvc2-k500ll",
+      "createdAt": "2026-08-14T16:13:53.186Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Sell 1 Raw anchovies for about 7. This action sequence maximizes profit by selling anchovies at the general store and closing the shop to prevent further sales, aligning with the guide's recommendation to sell items the store actually needs and use different money-making me",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "sell 1 raw anchovies for about 7",
+        "close the shop to avoid further sales and maximize earnings"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst5dduf-p6136p",
+      "createdAt": "2026-08-14T16:14:17.175Z",
+      "tick": 2570,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 9). Result: +1465 XP; 11 damage dealt; moved 3080,3248 → 3087,3239; execution rejected or failed. Reward 4.48.",
+      "importance": 2.94,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "npc fishing spot",
+        "npc black knight",
+        "loc boulder",
+        "loc tree stump",
+        "loc bush",
+        "loc bullrushes"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3239,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12744,14 +12751,14 @@
         "exampleReason": "I'm fine, thanks."
       },
       "wait": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T16:13:07.306Z",
+        "lastAt": "2026-08-14T16:13:24.988Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I'm waiting for the next step in the exploration to confirm completion."
+        "exampleReason": "I'm waiting for the next step to gather resources in Draynor Bank area"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
@@ -14018,14 +14025,14 @@
         "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:48:32.513Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
-        "exampleReason": "Crafting 15 arrow shafts using the `fletchLogs` action is the most efficient way to achieve the plan. The current state shows that I have 100 run, which is sufficient to complete t"
+        "lastAt": "2026-08-14T16:13:19.286Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "I'm fine, thanks."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
@@ -14054,13 +14061,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:48:43.034Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
+        "lastAt": "2026-08-14T16:13:30.380Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
@@ -14076,36 +14083,36 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
       "shop:buy:toy horsey": {
-        "n": 6,
+        "n": 8,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 8,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:49:01.656Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
-        "exampleReason": "Buy 1 Toy horsey for about 150"
+        "lastAt": "2026-08-14T16:13:54.678Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "Shop for 1 Toy horsey for about 150 GP"
       },
       "shop:sell:raw anchovies": {
-        "n": 6,
+        "n": 8,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 8,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:49:07.613Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
-        "exampleReason": "Sell 1 Raw anchovies for about 7"
+        "lastAt": "2026-08-14T16:14:01.288Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "Shop"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal": {
       "modal:close-shop": {
-        "n": 3,
-        "avgReward": -0.6,
-        "positive": 0,
+        "n": 4,
+        "avgReward": 0.15,
+        "positive": 1,
         "negative": 3,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:49:12.117Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
-        "exampleReason": "Close the shop"
+        "lastReward": 2.4,
+        "lastAt": "2026-08-14T16:14:05.517Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "modal"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,world": {
@@ -14118,6 +14125,16 @@
         "lastAt": "2026-08-14T15:49:24.829Z",
         "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
         "exampleReason": "I'm using the `navigation-skill` to travel to the Draynor Bank at 3092,3243 using a verified waypoint. This action will help me reach the location where I can safely explore and cr"
+      },
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 4.48,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 4.48,
+        "lastAt": "2026-08-14T16:14:17.175Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7",
+        "exampleReason": "Attack Dark wizard (level 7, distance 9)"
       }
     },
     "area=386:404:0|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,wait,world": {
@@ -14256,6 +14273,18 @@
         "lastAt": "2026-08-14T16:07:02.802Z",
         "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
         "exampleReason": "I have successfully traveled to Draynor Bank at (3092, 3243) using verified waypoint navigation. I now need to verify my arrival at the Draynor Fishing Area at (3087, 3230)."
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
+      "dialog:1:click here to continue": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T16:13:13.276Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Click here to continue"
       }
     }
   },
@@ -14562,8 +14591,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-14T10:32:45.140Z",
-      "lastSeenAt": "2026-08-14T16:13:00.687Z",
-      "encounters": 86,
+      "lastSeenAt": "2026-08-14T16:13:07.601Z",
+      "encounters": 87,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -14739,8 +14768,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T16:11:00.689Z",
-      "encounters": 199,
+      "lastSeenAt": "2026-08-14T16:13:19.595Z",
+      "encounters": 200,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -15893,8 +15922,8 @@
       "z": 3248,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T16:13:00.687Z",
-      "visits": 141,
+      "lastSeenAt": "2026-08-14T16:14:05.847Z",
+      "visits": 151,
       "npcs": [
         "Banker",
         "Diango",
@@ -16123,7 +16152,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T16:13:07.306Z",
+  "updatedAt": "2026-08-14T16:14:17.175Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -23163,10 +23192,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:48:37.916Z",
+      "lastAt": "2026-08-14T16:13:24.988Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -23175,10 +23204,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:48:43.034Z",
+      "lastAt": "2026-08-14T16:13:30.380Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -23187,10 +23216,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:48:49.625Z",
+      "lastAt": "2026-08-14T16:13:37.278Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -23199,10 +23228,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:48:55.340Z",
+      "lastAt": "2026-08-14T16:13:45.095Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -23211,10 +23240,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:49:01.656Z",
+      "lastAt": "2026-08-14T16:13:54.678Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -23223,10 +23252,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T15:49:07.613Z",
+      "lastAt": "2026-08-14T16:14:01.288Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
@@ -23235,10 +23264,10 @@
         "shop:sell:raw anchovies",
         "modal:close-shop"
       ],
-      "n": 6,
-      "avgReward": -0.8,
-      "positive": 2,
-      "lastAt": "2026-08-14T15:49:12.117Z",
+      "n": 7,
+      "avgReward": -0.514,
+      "positive": 3,
+      "lastAt": "2026-08-14T16:14:05.517Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Close the shop"
     },
     "modal:close-shop > npc:talk to:diango > wait": {
@@ -23259,10 +23288,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": -1.35,
-      "positive": 0,
-      "lastAt": "2026-08-14T15:48:25.384Z",
+      "n": 4,
+      "avgReward": 0.15,
+      "positive": 1,
+      "lastAt": "2026-08-14T16:13:13.276Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -23271,10 +23300,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T15:48:32.513Z",
+      "lastAt": "2026-08-14T16:13:19.286Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:raw anchovies > modal:close-shop > skill:travel:draynor-bank": {
@@ -23624,6 +23653,18 @@
       "positive": 1,
       "lastAt": "2026-08-14T16:08:38.197Z",
       "example": "Explore north about 5 tiles → Net Fishing spot (level 0, distance 7) → Wait and observe for a moment"
+    },
+    "shop:sell:raw anchovies > modal:close-shop > npc:attack:dark wizard": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "modal:close-shop",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 6.28,
+      "positive": 1,
+      "lastAt": "2026-08-14T16:14:17.175Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Attack Dark wizard (level 7, distance 9)"
     }
   },
   "discoveries": [
@@ -27226,46 +27267,56 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3080:3248:3087:3239:0",
+      "at": "2026-08-14T16:14:17.175Z",
+      "kind": "route",
+      "text": "Route learned: 3080,3248 → 3087,3239; +1465 XP; 11 damage dealt; moved 3080,3248 → 3087,3239; execution rejected or failed",
+      "location": {
+        "x": 3087,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
   "activePlan": {
-    "objective": "Explore and gather resources in Draynor Bank area",
-    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-    "reason": "This plan ensures systematic exploration of the area, focusing on resource gathering while maintaining clear, observable steps with named waypoints for verification in a repository-tested",
+    "objective": "Sell anchovies at the general store to maximize profit",
+    "focus": "Sell 1 Raw anchovies for about 7",
+    "reason": "This action sequence maximizes profit by selling anchovies at the general store and closing the shop to prevent further sales, aligning with the guide's recommendation to sell items the store actually needs and use different money-making me",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "status": "done",
-        "evidence": "moved 3087,3227 → 3092,3243; new: npc:Diango, npc:Ned, loc:Closed bank booth, loc:Crate, loc:Staircase, loc:Bench"
+        "label": "Sell 1 Raw anchovies for about 7",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate and collect resources",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: npc:Black Knight, loc:Bullrushes, loc:Stones, loc:Thistle"
+        "label": "Sell 1 Raw anchovies for about 7",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Explore west about 5 tiles to gather additional resources and confirm exploration completion",
-        "status": "active"
+        "label": "Close the shop to avoid further sales and maximize earnings",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Explore north about 5 tiles to locate and collect resources",
-      "Explore west about 5 tiles to gather additional resources and confirm exploration completion"
+      "Sell 1 Raw anchovies for about 7",
+      "Sell 1 Raw anchovies for about 7",
+      "Close the shop to avoid further sales and maximize earnings"
     ],
     "avoid": [
-      "Net Fishing spot (level 0, distance 1)",
       "Wait and observe for a moment",
-      "Dialog 1: Click here to continue"
+      "Dialog 1: Click here to continue",
+      "Buy 1 Toy horsey for about 150"
     ],
-    "updatedAt": "2026-08-14T16:09:40.917Z",
+    "updatedAt": "2026-08-14T16:13:53.186Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
