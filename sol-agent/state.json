@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 951,
-    "teacherChoices": 951,
+    "totalChoices": 961,
+    "teacherChoices": 961,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 950,
-    "totalReward": -183.04,
-    "saves": 122,
-    "shadowPredictions": 549,
-    "shadowMatches": 207,
-    "strategistRefreshes": 34,
+    "completedExperiences": 960,
+    "totalReward": -183.16,
+    "saves": 123,
+    "shadowPredictions": 559,
+    "shadowMatches": 212,
+    "strategistRefreshes": 35,
     "strategistFailures": 147
   },
   "memories": [
@@ -2735,6 +2735,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "mssv5fcc-n7kpbk",
+      "createdAt": "2026-08-14T11:28:09.708Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Deposit all Coins using the bank. This plan ensures that all Coins are deposited and all items are withdrawn from the bank, with observable evidence through the deposit and withdrawal actions.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "deposit all coins using the bank",
+        "withdraw all items from the bank",
+        "verify that all items have been successfully deposited and withdrawn"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -4214,14 +4234,14 @@
         "exampleReason": "Deposit all Coins"
       },
       "bank:withdraw:coins": {
-        "n": 70,
+        "n": 72,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T11:23:49.634Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Withdraw 1 Coins"
+        "lastAt": "2026-08-14T11:28:27.749Z",
+        "exampleGoal": "Deposit all Coins using the bank",
+        "exampleReason": "bank"
       },
       "wait": {
         "n": 32,
@@ -4264,14 +4284,14 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:withdraw:chaos rune": {
-        "n": 15,
+        "n": 16,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-14T11:19:30.112Z",
-        "exampleGoal": "Deposit all Coins to ensure sufficient resources for daily needs",
-        "exampleReason": "Withdraw 1 Chaos rune"
+        "lastAt": "2026-08-14T11:28:34.954Z",
+        "exampleGoal": "Deposit all Coins using the bank",
+        "exampleReason": "Withdraw 1 Bronze sq shield"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 5,
@@ -4356,13 +4376,13 @@
         "exampleReason": "Deposit all Bronze arrow"
       },
       "bank:deposit:bronze sq shield": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T10:40:30.122Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
+        "lastAt": "2026-08-14T11:28:13.360Z",
+        "exampleGoal": "Deposit all Coins using the bank",
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "bank:deposit:raw rat meat": {
@@ -4416,22 +4436,22 @@
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:withdraw:coins": {
-        "n": 55,
+        "n": 58,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T11:27:22.912Z",
+        "lastAt": "2026-08-14T11:27:46.017Z",
         "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
-        "exampleReason": "You need a Woodcutting level of 30 to chop down this tree."
+        "exampleReason": "Withdraw 1 Coins"
       },
       "bank:deposit:coins": {
-        "n": 18,
-        "avgReward": -0.3011,
+        "n": 20,
+        "avgReward": -0.306,
         "positive": 0,
-        "negative": 15,
+        "negative": 17,
         "lastReward": -0.2,
-        "lastAt": "2026-08-14T11:26:47.545Z",
+        "lastAt": "2026-08-14T11:28:03.197Z",
         "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
         "exampleReason": "Deposit all Coins"
       },
@@ -4464,6 +4484,16 @@
         "lastAt": "2026-08-14T11:26:39.407Z",
         "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
         "exampleReason": "Withdraw 1 Water rune"
+      },
+      "bank:withdraw:bronze sq shield": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T11:27:52.637Z",
+        "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
+        "exampleReason": "Withdraw 1 Bronze sq shield"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -4895,8 +4925,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T11:27:16.051Z",
-      "encounters": 108,
+      "lastSeenAt": "2026-08-14T11:28:03.470Z",
+      "encounters": 115,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -5624,8 +5654,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T11:27:16.051Z",
-      "visits": 458,
+      "lastSeenAt": "2026-08-14T11:28:28.017Z",
+      "visits": 468,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5671,7 +5701,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T11:27:22.912Z",
+  "updatedAt": "2026-08-14T11:28:34.954Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -8271,10 +8301,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0.12,
       "positive": 0,
-      "lastAt": "2026-08-14T11:07:37.946Z",
+      "lastAt": "2026-08-14T11:28:27.749Z",
       "example": "Deposit all Bronze sq shield → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -8283,10 +8313,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 40,
-      "avgReward": -0.17,
+      "n": 41,
+      "avgReward": -0.173,
       "positive": 0,
-      "lastAt": "2026-08-14T11:26:18.209Z",
+      "lastAt": "2026-08-14T11:27:31.921Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -8487,10 +8517,10 @@
         "bank:deposit:bronze sq shield",
         "bank:withdraw:coins"
       ],
-      "n": 1,
-      "avgReward": -0.08,
+      "n": 2,
+      "avgReward": -0.13,
       "positive": 0,
-      "lastAt": "2026-08-14T10:42:07.619Z",
+      "lastAt": "2026-08-14T11:28:20.804Z",
       "example": "Deposit all Coins → Deposit all Bronze sq shield → Withdraw 1 Coins"
     },
     "bank:deposit:bronze sq shield > bank:withdraw:coins > bank:deposit:coins": {
@@ -8511,10 +8541,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 51,
-      "avgReward": -0.163,
+      "n": 52,
+      "avgReward": -0.166,
       "positive": 0,
-      "lastAt": "2026-08-14T11:26:25.345Z",
+      "lastAt": "2026-08-14T11:27:39.113Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -8595,10 +8625,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 50,
-      "avgReward": -0.143,
+      "n": 51,
+      "avgReward": -0.146,
       "positive": 0,
-      "lastAt": "2026-08-14T11:26:32.242Z",
+      "lastAt": "2026-08-14T11:27:46.017Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > wait": {
@@ -8895,10 +8925,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 62,
+      "n": 63,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T11:27:22.912Z",
+      "lastAt": "2026-08-14T11:27:26.268Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:chaos rune": {
@@ -8907,10 +8937,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:chaos rune"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0.28,
       "positive": 0,
-      "lastAt": "2026-08-14T10:54:04.613Z",
+      "lastAt": "2026-08-14T11:28:34.954Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Chaos rune"
     },
     "bank:withdraw:chaos rune > bank:deposit:chaos rune > wait": {
@@ -9111,10 +9141,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:bronze sq shield"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": 0.28,
       "positive": 0,
-      "lastAt": "2026-08-14T11:11:50.843Z",
+      "lastAt": "2026-08-14T11:27:52.637Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Bronze sq shield"
     },
     "bank:withdraw:coins > bank:withdraw:bronze sq shield > bank:deposit:bronze sq shield": {
@@ -9440,6 +9470,30 @@
       "positive": 0,
       "lastAt": "2026-08-14T11:26:03.118Z",
       "example": "Deposit all Shortbow → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:bronze sq shield > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:bronze sq shield",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.02,
+      "positive": 0,
+      "lastAt": "2026-08-14T11:28:03.197Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Bronze sq shield → Deposit all Coins"
+    },
+    "bank:withdraw:bronze sq shield > bank:deposit:coins > bank:deposit:bronze sq shield": {
+      "sequence": [
+        "bank:withdraw:bronze sq shield",
+        "bank:deposit:coins",
+        "bank:deposit:bronze sq shield"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-14T11:28:13.360Z",
+      "example": "Withdraw 1 Bronze sq shield → Deposit all Coins → Deposit all Bronze sq shield"
     }
   },
   "discoveries": [
@@ -13045,41 +13099,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Deposit all Coins and withdraw all required items from the bank",
-    "focus": "Open the bank to access the deposit and withdrawal functions",
-    "reason": "This plan uses the bank's deposit and withdrawal functions to achieve the goal, with each step having observable evidence (e.g., successful deposit, withdrawal, and",
+    "objective": "Deposit all Coins and withdraw all items from the bank",
+    "focus": "Deposit all Coins using the bank",
+    "reason": "This plan ensures that all Coins are deposited and all items are withdrawn from the bank, with observable evidence through the deposit and withdrawal actions.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access the deposit and withdrawal functions",
+        "label": "Deposit all Coins using the bank",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the bank's deposit function",
+        "label": "Withdraw all items from the bank",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Withdraw all required items (Coins, Shortbow, and other items) from the bank using the bank's withdrawal function",
+        "label": "Verify that all items have been successfully deposited and withdrawn",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Bank successfully opened, Coins deposited, items withdrawn"
     ],
     "priorities": [
-      "Open the bank to access the deposit and withdrawal functions",
-      "Deposit all Coins using the bank's deposit function",
-      "Withdraw all required items (Coins, Shortbow, and other items) from the bank using the bank's withdrawal function"
+      "Deposit all Coins using the bank",
+      "Withdraw all items from the bank",
+      "Verify that all items have been successfully deposited and withdrawn"
     ],
     "avoid": [
       "Deposit all Coins",
-      "Deposit all Fire rune",
+      "Deposit all Water rune",
       "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-14T11:25:51.674Z",
+    "updatedAt": "2026-08-14T11:28:09.707Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
