@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 821,
-    "teacherChoices": 821,
+    "totalChoices": 831,
+    "teacherChoices": 831,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 820,
-    "totalReward": -182.14,
-    "saves": 109,
-    "shadowPredictions": 419,
-    "shadowMatches": 130,
-    "strategistRefreshes": 27,
+    "completedExperiences": 830,
+    "totalReward": -182.24,
+    "saves": 110,
+    "shadowPredictions": 429,
+    "shadowMatches": 138,
+    "strategistRefreshes": 28,
     "strategistFailures": 147
   },
   "memories": [
@@ -2595,6 +2595,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "mssuljbw-1unmdh",
+      "createdAt": "2026-08-14T11:12:41.756Z",
+      "tick": 0,
+      "runNumber": 35,
+      "kind": "strategy",
+      "text": "AI strategist: Withdraw 1 Coins. This sequence ensures the player deposits essential items while maintaining observable progress through the bank deposit action, which is a named repository-tested escape or travel skill in the RS-SDK.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "withdraw 1 coins",
+        "withdraw 1 bronze sq shield",
+        "deposit all coins and bronze sq shield in the bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -4064,24 +4084,24 @@
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:coins": {
-        "n": 10,
-        "avgReward": -0.402,
+        "n": 12,
+        "avgReward": -0.41,
         "positive": 0,
-        "negative": 10,
-        "lastReward": -0.3,
-        "lastAt": "2026-08-14T11:12:13.357Z",
-        "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
+        "negative": 12,
+        "lastReward": -0.5,
+        "lastAt": "2026-08-14T11:13:22.016Z",
+        "exampleGoal": "Withdraw 1 Coins",
         "exampleReason": "Deposit all Coins"
       },
       "bank:withdraw:coins": {
-        "n": 37,
+        "n": 45,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T11:12:41.232Z",
-        "exampleGoal": "Open the bank to access the deposit and withdrawal functions",
-        "exampleReason": "Banking action"
+        "lastAt": "2026-08-14T11:13:42.110Z",
+        "exampleGoal": "Withdraw 1 Coins",
+        "exampleReason": "bank"
       },
       "wait": {
         "n": 27,
@@ -5484,8 +5504,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T11:12:32.275Z",
-      "visits": 327,
+      "lastSeenAt": "2026-08-14T11:13:35.216Z",
+      "visits": 337,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5531,7 +5551,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T11:12:41.232Z",
+  "updatedAt": "2026-08-14T11:13:42.110Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -8143,10 +8163,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 26,
-      "avgReward": -0.156,
+      "n": 28,
+      "avgReward": -0.163,
       "positive": 0,
-      "lastAt": "2026-08-14T11:10:53.222Z",
+      "lastAt": "2026-08-14T11:13:22.016Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -8371,10 +8391,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 35,
-      "avgReward": -0.142,
+      "n": 37,
+      "avgReward": -0.148,
       "positive": 0,
-      "lastAt": "2026-08-14T11:12:20.510Z",
+      "lastAt": "2026-08-14T11:13:28.341Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -8455,10 +8475,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 37,
-      "avgReward": -0.127,
+      "n": 39,
+      "avgReward": -0.133,
       "positive": 0,
-      "lastAt": "2026-08-14T11:12:27.431Z",
+      "lastAt": "2026-08-14T11:13:34.949Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > wait": {
@@ -8755,10 +8775,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 33,
+      "n": 37,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T11:12:41.232Z",
+      "lastAt": "2026-08-14T11:13:42.110Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:chaos rune": {
@@ -12701,41 +12721,41 @@
     }
   ],
   "activePlan": {
-    "objective": "Deposit all Coins and withdraw all items from the bank",
-    "focus": "Open the bank to access the deposit and withdrawal functions",
-    "reason": "This plan uses the bank deposit and withdrawal functions, which are available in the repository-tested escape or travel skill. The steps are executable and provide observable evidence of the actions taken.",
+    "objective": "Deposit all coins and shields in the bank to unlock further gameplay",
+    "focus": "Withdraw 1 Coins",
+    "reason": "This sequence ensures the player deposits essential items while maintaining observable progress through the bank deposit action, which is a named repository-tested escape or travel skill in the RS-SDK.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access the deposit and withdrawal functions",
+        "label": "Withdraw 1 Coins",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the deposit item command",
+        "label": "Withdraw 1 Bronze sq shield",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Withdraw all items from the bank using the withdraw item command by bank slot",
+        "label": "Deposit all Coins and Bronze sq shield in the bank",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "The"
+      "Bank deposit completed successfully"
     ],
     "priorities": [
-      "Open the bank to access the deposit and withdrawal functions",
-      "Deposit all Coins using the deposit item command",
-      "Withdraw all items from the bank using the withdraw item command by bank slot"
+      "Withdraw 1 Coins",
+      "Withdraw 1 Bronze sq shield",
+      "Deposit all Coins and Bronze sq shield in the bank"
     ],
     "avoid": [
       "Deposit all Coins",
-      "Deposit all Coins",
-      "Deposit all Water rune"
+      "Deposit all Bronze sq shield",
+      "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-14T11:10:25.257Z",
+    "updatedAt": "2026-08-14T11:12:41.756Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
