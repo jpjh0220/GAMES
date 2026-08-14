@@ -1,0 +1,80 @@
+name: Sol Agent Model Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/sol-agent-model-smoke.yml'
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Select low-tier tool-calling model
+        id: model
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          CATALOG=$(curl --fail -sS \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2026-03-10' \
+            https://models.github.ai/catalog/models)
+          MODEL=$(printf '%s' "$CATALOG" | jq -r '[.[] | select(.rate_limit_tier == "low") | select((.capabilities // []) | index("tool-calling"))][0].id // empty')
+          if [ -z "$MODEL" ]; then
+            MODEL='openai/gpt-4o-mini'
+          fi
+          echo "model=$MODEL" >> "$GITHUB_OUTPUT"
+          echo "Selected model: $MODEL"
+
+      - name: Verify structured agent decision
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODEL: ${{ steps.model.outputs.model }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          BODY=$(jq -cn --arg model "$MODEL" '{
+            model:$model,
+            temperature:0.2,
+            max_tokens:400,
+            messages:[
+              {role:"system",content:"You are a game agent. Choose exactly one valid action from the observation. Return a tool call only."},
+              {role:"user",content:"Observation: HP 10/10. Nearby NPC: Man, options Talk-to and Pickpocket. Choose a useful action."}
+            ],
+            tools:[{
+              type:"function",
+              function:{
+                name:"choose_action",
+                description:"Choose the next game action.",
+                parameters:{
+                  type:"object",
+                  additionalProperties:false,
+                  properties:{
+                    goal:{type:"string"},
+                    reason:{type:"string"},
+                    action:{type:"string",enum:["talk","pickpocket","wait"]}
+                  },
+                  required:["goal","reason","action"]
+                }
+              }
+            }],
+            tool_choice:"required"
+          }')
+          RESPONSE=$(curl --fail -sS \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2026-03-10' \
+            -H 'Content-Type: application/json' \
+            https://models.github.ai/inference/chat/completions \
+            -d "$BODY")
+          ARGS=$(printf '%s' "$RESPONSE" | jq -r '.choices[0].message.tool_calls[0].function.arguments // empty')
+          test -n "$ARGS"
+          printf '%s' "$ARGS" | jq -e '.goal and .reason and .action' >/dev/null
+          echo "GitHub Models tool-calling smoke test passed with $MODEL."
