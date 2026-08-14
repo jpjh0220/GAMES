@@ -16,8 +16,9 @@ jobs:
           set -euo pipefail
           JSON=$(curl --fail --retry 5 --retry-delay 2 -sS "https://raw.githubusercontent.com/jpjh0220/GAMES/main/sol-watch/live.json?$(date +%s)")
           URL=$(printf '%s' "$JSON" | jq -r .url)
+          RUN=$(printf '%s' "$JSON" | jq -r .runNumber)
           echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "Endpoint acquired."
+          echo "Checking current spectator endpoint from live runner $RUN."
       - name: Verify telemetry health
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
