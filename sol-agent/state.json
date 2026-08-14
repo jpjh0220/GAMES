@@ -6,45 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2291,
-    "teacherChoices": 2291,
+    "totalChoices": 2301,
+    "teacherChoices": 2301,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2290,
-    "totalReward": 693.18,
-    "saves": 257,
+    "completedExperiences": 2300,
+    "totalReward": 688.08,
+    "saves": 258,
     "shadowPredictions": 1094,
     "shadowMatches": 451,
-    "strategistRefreshes": 107,
+    "strategistRefreshes": 108,
     "strategistFailures": 149
   },
   "memories": [
-    {
-      "id": "mst18scf-hsfuh9",
-      "createdAt": "2026-08-14T14:18:44.223Z",
-      "tick": 45995,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3236 → 3092,3243; new: npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc ned",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mst19462-swzpgx",
       "createdAt": "2026-08-14T14:18:59.546Z",
@@ -8476,6 +8450,26 @@
         "z": 3251,
         "level": 0
       }
+    },
+    {
+      "id": "mst5rgf8-syzlsc",
+      "createdAt": "2026-08-14T16:25:13.700Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Use the Escape skill to open the shop door. The Escape skill is available and can be used to exit the shop. The Travel skill helps navigate to the escape route. The action 'Close the shop' is the starting point for the escape sequence. All steps are observable and executable in the g",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the escape skill to open the shop door",
+        "navigate to the escape route using the travel skill",
+        "execute the escape skill to exit the shop area"
+      ],
+      "location": {
+        "x": 3079,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -14337,14 +14331,14 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 4,
+        "n": 6,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T16:23:23.496Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
-        "exampleReason": "I am waiting for the NPC to respond to my request to progress the quest. I need to observe the dialogue to determine if there are any measurable changes or if I need to test a prer"
+        "lastAt": "2026-08-14T16:25:31.918Z",
+        "exampleGoal": "Use the Escape skill to open the shop door",
+        "exampleReason": "Wait and observe for a moment"
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
@@ -14373,70 +14367,70 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
       "shop:buy:toy horsey": {
-        "n": 6,
+        "n": 7,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 7,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:24:45.374Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
-        "exampleReason": "Buy 1 Toy horsey for about 150"
+        "lastAt": "2026-08-14T16:25:43.294Z",
+        "exampleGoal": "Use the Escape skill to open the shop door",
+        "exampleReason": "Shop opened successfully"
       },
       "shop:sell:raw anchovies": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:24:42.073Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
-        "exampleReason": "Sell 1 Raw anchovies for about 7"
+        "lastAt": "2026-08-14T16:25:48.682Z",
+        "exampleGoal": "Use the Escape skill to open the shop door",
+        "exampleReason": "Shop opened successfully"
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal": {
       "modal:close-shop": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:21:38.189Z",
-        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+        "lastAt": "2026-08-14T16:24:57.681Z",
+        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
         "exampleReason": "Close the shop"
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
       "npc:talk to:diango": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:21:48.093Z",
-        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
-        "exampleReason": "Talk to Diango (level 0, distance 1) to gain dialogue and progress in the story."
+        "lastAt": "2026-08-14T16:25:07.877Z",
+        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to initiate the quest."
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 6,
+        "n": 8,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 8,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:24:32.481Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
-        "exampleReason": "I'm ready to proceed with the quest to talk to the NPC."
+        "lastAt": "2026-08-14T16:25:36.669Z",
+        "exampleGoal": "Use the Escape skill to open the shop door",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:24:22.881Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC at the current position",
-        "exampleReason": "I want to talk to the NPC to progress the quest"
+        "lastAt": "2026-08-14T16:25:26.802Z",
+        "exampleGoal": "Use the Escape skill to open the shop door",
+        "exampleReason": "You can't sell this item to this shop."
       }
     }
   },
@@ -14920,8 +14914,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T16:24:42.382Z",
-      "encounters": 207,
+      "lastSeenAt": "2026-08-14T16:24:57.998Z",
+      "encounters": 210,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -15483,6 +15477,21 @@
           "text": "Latest message from henryatkins: quiz for the anvil crew: what smithing le:"
         }
       ]
+    },
+    "momobot": {
+      "name": "Momobot",
+      "firstSeenAt": "2026-08-14T16:25:36.979Z",
+      "lastSeenAt": "2026-08-14T16:25:43.582Z",
+      "encounters": 2,
+      "combatLevel": 105,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -16074,8 +16083,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T16:24:42.382Z",
-      "visits": 193,
+      "lastSeenAt": "2026-08-14T16:25:43.582Z",
+      "visits": 203,
       "npcs": [
         "Banker",
         "Diango",
@@ -16304,7 +16313,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T16:24:45.374Z",
+  "updatedAt": "2026-08-14T16:25:48.682Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21640,10 +21649,10 @@
         "modal:close-shop",
         "npc:talk to:diango"
       ],
-      "n": 6,
-      "avgReward": -1.3,
+      "n": 7,
+      "avgReward": -1.371,
       "positive": 1,
-      "lastAt": "2026-08-14T16:24:06.969Z",
+      "lastAt": "2026-08-14T16:25:07.877Z",
       "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Talk-to Diango (level 0, distance 1)"
     },
     "modal:close-shop > npc:talk to:diango > dialog:1:click here to continue": {
@@ -23344,10 +23353,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:24:27.380Z",
+      "lastAt": "2026-08-14T16:25:31.918Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -23356,10 +23365,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:24:32.481Z",
+      "lastAt": "2026-08-14T16:25:36.669Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -23368,10 +23377,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:24:36.675Z",
+      "lastAt": "2026-08-14T16:25:43.294Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -23380,10 +23389,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 11,
+      "n": 12,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:24:42.073Z",
+      "lastAt": "2026-08-14T16:25:48.682Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -23404,10 +23413,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:23:53.486Z",
+      "lastAt": "2026-08-14T16:24:51.083Z",
       "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > modal:close-shop": {
@@ -23416,10 +23425,10 @@
         "shop:sell:raw anchovies",
         "modal:close-shop"
       ],
-      "n": 10,
-      "avgReward": -0.9,
+      "n": 11,
+      "avgReward": -0.982,
       "positive": 3,
-      "lastAt": "2026-08-14T16:23:58.000Z",
+      "lastAt": "2026-08-14T16:24:57.681Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Close the shop"
     },
     "modal:close-shop > npc:talk to:diango > wait": {
@@ -23428,10 +23437,10 @@
         "npc:talk to:diango",
         "wait"
       ],
-      "n": 5,
-      "avgReward": -0.75,
+      "n": 6,
+      "avgReward": -0.85,
       "positive": 1,
-      "lastAt": "2026-08-14T16:24:12.091Z",
+      "lastAt": "2026-08-14T16:25:15.379Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:talk to:diango > wait > dialog:1:click here to continue": {
@@ -23440,10 +23449,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 8,
-      "avgReward": -0.6,
+      "n": 9,
+      "avgReward": -0.683,
       "positive": 1,
-      "lastAt": "2026-08-14T16:24:16.898Z",
+      "lastAt": "2026-08-14T16:25:20.493Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -23452,10 +23461,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 8,
+      "n": 9,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:24:22.881Z",
+      "lastAt": "2026-08-14T16:25:26.802Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:raw anchovies > modal:close-shop > skill:travel:draynor-bank": {
@@ -27458,24 +27467,24 @@
     }
   ],
   "activePlan": {
-    "objective": "Talk to the NPC to progress the quest",
-    "focus": "Use `talkTo` to interact with the NPC at the current position",
-    "reason": "This sequence ensures the player interacts with the NPC, waits for the dialog to appear, and then proceeds by clicking the appropriate option, all observable through the SDK actions.",
+    "objective": "Escape the shop to avoid being captured",
+    "focus": "Use the Escape skill to open the shop door",
+    "reason": "The Escape skill is available and can be used to exit the shop. The Travel skill helps navigate to the escape route. The action 'Close the shop' is the starting point for the escape sequence. All steps are observable and executable in the g",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `talkTo` to interact with the NPC at the current position",
+        "label": "Use the Escape skill to open the shop door",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Wait for the dialog to open using `waitForDialog`",
+        "label": "Navigate to the escape route using the Travel skill",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Click on the dialog option to continue the interaction",
+        "label": "Execute the Escape skill to exit the shop area",
         "status": "pending"
       }
     ],
@@ -27483,16 +27492,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use `talkTo` to interact with the NPC at the current position",
-      "Wait for the dialog to open using `waitForDialog`",
-      "Click on the dialog option to continue the interaction"
+      "Use the Escape skill to open the shop door",
+      "Navigate to the escape route using the Travel skill",
+      "Execute the Escape skill to exit the shop area"
     ],
     "avoid": [
-      "Close the shop",
-      "Talk-to Diango (level 0, distance 1)",
-      "Wait and observe for a moment"
+      "Sell 1 Raw anchovies for about 7",
+      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Raw anchovies for about 7"
     ],
-    "updatedAt": "2026-08-14T16:23:15.918Z",
+    "updatedAt": "2026-08-14T16:25:13.700Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
