@@ -182,12 +182,14 @@ const descendManorToGround=async()=>{
   for(let attempt=1;attempt<=4;attempt++){
     const p=position();if(!p)return false;if(p.level===0)return true;
     const transition=p.level===2
-      ?{level:2,x:3105,z:3363,id:1740,approach:{x:3104,z:3363,level:2},option:/climb-down/i}
+      // forceapproach=13 blocks north/south/west; the level-2 staircase must be used from its east tile.
+      ?{level:2,x:3105,z:3363,id:1740,approach:{x:3106,z:3363,level:2},option:/climb-down/i}
       :p.level===1
-        ?{level:1,x:3108,z:3364,id:1731,approach:{x:3107,z:3364,level:1},option:/walk-down/i}
+        // forceapproach=14 blocks east/south/west; the 2x2 level-1 staircase must be used from its north edge.
+        ?{level:1,x:3108,z:3364,id:1731,approach:{x:3108,z:3366,level:1},option:/walk-down/i}
         :null;
     if(!transition)return false;
-    if(!await walkToward(transition.approach,2,true,10))continue;
+    if(!await walkToward(transition.approach,0,true,10))continue;
     const state=lastState;
     const loc=(state?.nearbyLocs||[]).find(l=>l.level===transition.level&&l.x===transition.x&&l.z===transition.z&&l.id===transition.id);
     const option=loc?.optionsWithIndex?.find(o=>transition.option.test(o.text));
@@ -248,7 +250,9 @@ const executeWorldSkill=async(action:any)=>{
       message=success?`Verified arrival at ${action.destination||'the selected landmark'}.`:`Could not verify arrival at ${action.destination||'the selected landmark'}.`;
     }else message=`Unknown world skill ${skill}.`;
   }catch(err){message=String(err);success=false;}
-  const end=position();procedure.status=success?'completed':'failed';procedure.step=success?'Outcome verified':'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
+  const end=position(),failedStep=procedure.step;
+  if(!success){const game=(lastState?.gameMessages||[]).slice(-3).map((m:any)=>String(m.text||'')).filter(Boolean).join(' | ');message=`${message} Last attempted step: ${failedStep}.${game?` Recent game messages: ${game}`:''}`.slice(0,700);}
+  procedure.status=success?'completed':'failed';procedure.step=success?'Outcome verified':'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
   void log('WORLD_SKILL_OUTCOME',{tick,skill,success,message,start,end,primitiveActions:procedure.primitiveActions});
   return{success,message,phase:'completion',reason:success?undefined:'verification_failed'};
 };
