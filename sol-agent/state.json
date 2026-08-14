@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 170,
-    "teacherChoices": 170,
+    "totalChoices": 180,
+    "teacherChoices": 180,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 170,
-    "totalReward": -4.25,
-    "saves": 18,
-    "shadowPredictions": 114,
+    "completedExperiences": 180,
+    "totalReward": -1.11,
+    "saves": 19,
+    "shadowPredictions": 115,
     "shadowMatches": 48,
-    "strategistRefreshes": 9,
+    "strategistRefreshes": 10,
     "strategistFailures": 0
   },
   "memories": [
@@ -260,6 +260,117 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msthiscc-02jb95",
+      "createdAt": "2026-08-14T21:54:24.636Z",
+      "tick": 3907,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 9). Result: moved 3092,3242 → 3083,3240; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "loc bullrushes"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthj45q-bg3uiq",
+      "createdAt": "2026-08-14T21:54:39.950Z",
+      "tick": 3958,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3083,3240 → 3092,3243; new: npc:Ned, loc:Bush, loc:Wardrobe, loc:Broom, loc:Mirror. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc ned",
+        "loc bush",
+        "loc wardrobe",
+        "loc broom",
+        "loc mirror"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthjf92-2s3m6m",
+      "createdAt": "2026-08-14T21:54:54.326Z",
+      "tick": 4006,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +397 XP; 3 damage dealt; moved 3092,3243 → 3084,3239; execution rejected or failed. Reward 3.28.",
+      "importance": 2.34,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent un5wc8p3r",
+        "agent yr8wc2n6q",
+        "agent gpgather1",
+        "loc bullrushes",
+        "loc stones"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3239,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthkh8e-6m5qde",
+      "createdAt": "2026-08-14T21:55:43.550Z",
+      "tick": 4170,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Dialog 1: Click here to continue. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "dialog",
+        "conversation",
+        "click here to continue"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthl28s-wb96wn",
+      "createdAt": "2026-08-14T21:56:10.780Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use talkto to speak publicly to nearby agents scrappydoo un5wc8p3r yr8wc2n6q gpgather1",
+        "use interactloc to interact with the net fishing spot level 0 distance 1 to collect coins",
+        "use talkto to escape from the dark wizard level"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -417,6 +528,16 @@
         "lastAt": "2026-08-14T21:53:46.532Z",
         "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Bronze arrow"
+      },
+      "modal:close-bank": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:54:11.728Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "Close the bank"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -460,14 +581,98 @@
         "exampleGoal": "Open the bank to access the deposit functionality.",
         "exampleReason": "I have successfully deposited all Raw anchovies in the bank to avoid failed actions."
       }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": -1.17,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T21:54:24.636Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "I will attack the Dark wizard at level 7, distance 5."
+      }
+    },
+    "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,say,social,wait,world": {
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-14T21:54:39.950Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "I've successfully navigated to the Draynor Bank at 3092,3243 using verified waypoint navigation. I'm now ready to proceed with my plan."
+      }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 3.28,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 3.28,
+        "lastAt": "2026-08-14T21:54:54.326Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "I have successfully attacked the Dark wizard (level 7, distance 6) and it's a good move to progress."
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
+      "social:say": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:55:16.210Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "Speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1"
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T21:55:36.923Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "Talk-to Diango (level 0, distance 10) to initiate the negotiation with Diango, who can provide the necessary items for the bank deposit."
+      }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 2,
+        "avgReward": 0.9,
+        "positive": 1,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:56:02.698Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "Click here to continue"
+      }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
+      "npc:net:fishing spot": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T21:56:22.537Z",
+        "exampleGoal": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
+        "exampleReason": "Net Fishing spot (level 0, distance 1)"
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:53:59.122Z",
-      "encounters": 124,
+      "lastSeenAt": "2026-08-14T21:56:03.012Z",
+      "encounters": 134,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -476,13 +681,19 @@
       "suspicion": 0,
       "facts": [],
       "questions": [],
-      "lastMessages": []
+      "lastMessages": [
+        {
+          "at": "2026-08-14T21:55:16.537Z",
+          "direction": "outgoing",
+          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+        }
+      ]
     },
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:53:59.122Z",
-      "encounters": 169,
+      "lastSeenAt": "2026-08-14T21:56:03.012Z",
+      "encounters": 178,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -491,13 +702,19 @@
       "suspicion": 0,
       "facts": [],
       "questions": [],
-      "lastMessages": []
+      "lastMessages": [
+        {
+          "at": "2026-08-14T21:55:16.537Z",
+          "direction": "outgoing",
+          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+        }
+      ]
     },
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T21:53:59.122Z",
-      "encounters": 169,
+      "lastSeenAt": "2026-08-14T21:56:03.012Z",
+      "encounters": 178,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -506,7 +723,13 @@
       "suspicion": 0,
       "facts": [],
       "questions": [],
-      "lastMessages": []
+      "lastMessages": [
+        {
+          "at": "2026-08-14T21:55:16.537Z",
+          "direction": "outgoing",
+          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+        }
+      ]
     },
     "goo021": {
       "name": "Goo021",
@@ -556,8 +779,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T21:53:59.122Z",
-      "encounters": 41,
+      "lastSeenAt": "2026-08-14T21:56:03.012Z",
+      "encounters": 50,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -566,7 +789,13 @@
       "suspicion": 0,
       "facts": [],
       "questions": [],
-      "lastMessages": []
+      "lastMessages": [
+        {
+          "at": "2026-08-14T21:55:16.537Z",
+          "direction": "outgoing",
+          "text": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
+        }
+      ]
     },
     "frenbot1": {
       "name": "Frenbot1",
@@ -603,11 +832,11 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3242,
+      "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T21:53:59.122Z",
-      "visits": 170,
+      "lastSeenAt": "2026-08-14T21:54:40.198Z",
+      "visits": 173,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -649,6 +878,83 @@
         "Fireplace",
         "Plant",
         "Standing torch"
+      ]
+    },
+    "192:202:0": {
+      "key": "192:202:0",
+      "x": 3084,
+      "z": 3239,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T21:54:24.904Z",
+      "lastSeenAt": "2026-08-14T21:55:16.537Z",
+      "visits": 3,
+      "npcs": [
+        "Dark wizard",
+        "Banker",
+        "Diango",
+        "Fishing spot"
+      ],
+      "locs": [
+        "Tree",
+        "Willow",
+        "Rock",
+        "Fern",
+        "Market stall",
+        "Bank table",
+        "Bank booth",
+        "Closed bank booth",
+        "Plant",
+        "Boulder",
+        "Bank notice board",
+        "Stool",
+        "Table",
+        "Crate",
+        "Staircase",
+        "Daisies",
+        "Oak",
+        "Bench",
+        "Shelves",
+        "Tree stump",
+        "Bullrushes",
+        "Cooking shelves",
+        "Door",
+        "Stones",
+        "Bush"
+      ]
+    },
+    "192:201:0": {
+      "key": "192:201:0",
+      "x": 3086,
+      "z": 3230,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T21:55:37.191Z",
+      "lastSeenAt": "2026-08-14T21:56:03.012Z",
+      "visits": 4,
+      "npcs": [
+        "Fishing spot",
+        "Dark wizard",
+        "Banker",
+        "Black Knight"
+      ],
+      "locs": [
+        "Willow",
+        "Bullrushes",
+        "Boulder",
+        "Rock",
+        "Stones",
+        "Stool",
+        "Daisies",
+        "Bank table",
+        "Bank booth",
+        "Bank notice board",
+        "Table",
+        "Tree stump",
+        "Plant",
+        "Fern",
+        "Tree",
+        "Thistle",
+        "Bush",
+        "Closed bank booth"
       ]
     }
   },
@@ -1288,6 +1594,114 @@
       "positive": 0,
       "lastAt": "2026-08-14T21:53:58.834Z",
       "example": "Deposit all Bronze arrow → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > modal:close-bank": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "modal:close-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.6,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:54:11.728Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Close the bank"
+    },
+    "bank:withdraw:coins > modal:close-bank > npc:attack:dark wizard": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "modal:close-bank",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": -1.67,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:54:24.636Z",
+      "example": "Withdraw 1 Coins → Close the bank → Attack Dark wizard (level 7, distance 9)"
+    },
+    "modal:close-bank > npc:attack:dark wizard > skill:travel:draynor-bank": {
+      "sequence": [
+        "modal:close-bank",
+        "npc:attack:dark wizard",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.22,
+      "positive": 0,
+      "lastAt": "2026-08-14T21:54:39.950Z",
+      "example": "Close the bank → Attack Dark wizard (level 7, distance 9) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
+    },
+    "npc:attack:dark wizard > skill:travel:draynor-bank > npc:attack:dark wizard": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "skill:travel:draynor-bank",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 3.66,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:54:54.326Z",
+      "example": "Attack Dark wizard (level 7, distance 9) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 8)"
+    },
+    "skill:travel:draynor-bank > npc:attack:dark wizard > social:say": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "npc:attack:dark wizard",
+        "social:say"
+      ],
+      "n": 1,
+      "avgReward": 4.23,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:55:16.210Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 8) → Speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1"
+    },
+    "npc:attack:dark wizard > social:say > npc:net:fishing spot": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "social:say",
+        "npc:net:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": 2.76,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:55:36.923Z",
+      "example": "Attack Dark wizard (level 7, distance 8) → Speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1 → Net Fishing spot (level 0, distance 9)"
+    },
+    "social:say > npc:net:fishing spot > dialog:1:click here to continue": {
+      "sequence": [
+        "social:say",
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 1.88,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:55:43.550Z",
+      "example": "Speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1 → Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue"
+    },
+    "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
+      "sequence": [
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue",
+        "npc:net:fishing spot"
+      ],
+      "n": 2,
+      "avgReward": 0.04,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:56:22.537Z",
+      "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
+    },
+    "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 1.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T21:56:02.698Z",
+      "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
@@ -1758,28 +2172,688 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3242:3083:3240:0",
+      "at": "2026-08-14T21:54:24.637Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3242 → 3083,3240; moved 3092,3242 → 3083,3240; execution rejected or failed",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "npc:dark wizard:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Banker observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:diango:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "npc",
+      "text": "Diango observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:fishing spot:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Tree observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:willow:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Willow observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Rock observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Fern observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:market stall:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Market stall observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Plant observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Boulder observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Stool observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Table observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Crate observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Staircase observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Daisies observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Oak observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Bench observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:shelves:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Shelves observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bullrushes:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Bullrushes observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cooking shelves:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Cooking shelves observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:192:202:0",
+      "at": "2026-08-14T21:54:24.904Z",
+      "kind": "place",
+      "text": "Door observed near 3083, 3240, level 0.",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3083:3240:3092:3243:0",
+      "at": "2026-08-14T21:54:39.951Z",
+      "kind": "route",
+      "text": "Route learned: 3083,3240 → 3092,3243; moved 3083,3240 → 3092,3243; new: npc:Ned, loc:Bush, loc:Wardrobe, loc:Broom, loc:Mirror",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3092:3243:3084:3239:0",
+      "at": "2026-08-14T21:54:54.326Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3084,3239; +397 XP; 3 damage dealt; moved 3092,3243 → 3084,3239; execution rejected or failed",
+      "location": {
+        "x": 3084,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "place:stones:192:202:0",
+      "at": "2026-08-14T21:54:54.617Z",
+      "kind": "place",
+      "text": "Stones observed near 3084, 3239, level 0.",
+      "location": {
+        "x": 3084,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:192:202:0",
+      "at": "2026-08-14T21:54:54.617Z",
+      "kind": "place",
+      "text": "Bush observed near 3084, 3239, level 0.",
+      "location": {
+        "x": 3084,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3084:3239:3086:3230:0",
+      "at": "2026-08-14T21:55:36.923Z",
+      "kind": "route",
+      "text": "Route learned: 3084,3239 → 3086,3230; moved 3084,3239 → 3086,3230",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "resource:fishing spot:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:dark wizard:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Banker observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:willow:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Willow observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bullrushes:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Bullrushes observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Boulder observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Rock observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stones:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Stones observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Stool observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Daisies observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Table observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Plant observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Fern observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Tree observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:thistle:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Thistle observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "place",
+      "text": "Bush observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:192:201:0",
+      "at": "2026-08-14T21:55:37.191Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:black knight:192:201:0",
+      "at": "2026-08-14T21:56:03.012Z",
+      "kind": "npc",
+      "text": "Black Knight observed near 3086, 3230, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T21:54:06.022Z",
+  "updatedAt": "2026-08-14T21:56:22.538Z",
   "activePlan": {
-    "objective": "Open the bank, deposit all raw anchovies, and withdraw the required items.",
-    "focus": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
-    "reason": "This plan uses a named repository-tested",
+    "objective": "Escape from the Dark wizard and reach the Net Fishing spot to collect coins",
+    "focus": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "label": "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all raw anchovies using the `Deposit all Raw anchovies` skill to fulfill the bank's deposit requirement.",
+        "label": "Use `interactLoc` to interact with the Net Fishing spot (level 0, distance 1) to collect coins",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Withdraw the required items using the `Withdraw 1 Raw anchovies` skill to retrieve the items from the bank slot.",
+        "label": "Use `talkTo` to escape from the Dark wizard (level",
         "status": "pending"
       }
     ],
@@ -1787,16 +2861,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
-      "Deposit all raw anchovies using the `Deposit all Raw anchovies` skill to fulfill the bank's deposit requirement.",
-      "Withdraw the required items using the `Withdraw 1 Raw anchovies` skill to retrieve the items from the bank slot."
+      "Use `talkTo` to speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
+      "Use `interactLoc` to interact with the Net Fishing spot (level 0, distance 1) to collect coins",
+      "Use `talkTo` to escape from the Dark wizard (level"
     ],
     "avoid": [
-      "Wait and observe for a moment",
-      "Wait and observe for a moment",
-      "Deposit all Coins"
+      "Attack Dark wizard (level 7, distance 9)",
+      "Speak publicly to nearby agents: Scrappydoo, Un5wc8p3r, Yr8wc2n6q, Gpgather1",
+      "Net Fishing spot (level 0, distance 1)"
     ],
-    "updatedAt": "2026-08-14T21:52:56.263Z",
+    "updatedAt": "2026-08-14T21:56:10.780Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
