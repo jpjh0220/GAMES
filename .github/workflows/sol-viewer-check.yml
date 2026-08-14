@@ -49,11 +49,11 @@ jobs:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
-          HTML=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/")
-          printf '%s' "$HTML" | grep -q 'SOL // WORLD SPECTATOR'
-          printf '%s' "$HTML" | grep -q 'Since your last visit'
-          printf '%s' "$HTML" | grep -q 'CINEMATIC'
-          printf '%s' "$HTML" | grep -q 'COMMS'
-          printf '%s' "$HTML" | grep -q 'damageLayer'
-          printf '%s' "$HTML" | grep -q 'mobileNav'
+          curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/" -o /tmp/sol-viewer.html
+          grep -q 'SOL // WORLD SPECTATOR' /tmp/sol-viewer.html
+          grep -q 'Since your last visit' /tmp/sol-viewer.html
+          grep -q 'CINEMATIC' /tmp/sol-viewer.html
+          grep -q 'COMMS' /tmp/sol-viewer.html
+          grep -q 'damageLayer' /tmp/sol-viewer.html
+          grep -q 'mobileNav' /tmp/sol-viewer.html
           echo 'Spectator cockpit UI verified.'
