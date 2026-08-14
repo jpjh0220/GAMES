@@ -6,14 +6,14 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1421,
-    "teacherChoices": 1421,
+    "totalChoices": 1431,
+    "teacherChoices": 1431,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 1420,
-    "totalReward": -6.42,
-    "saves": 169,
-    "shadowPredictions": 701,
+    "completedExperiences": 1430,
+    "totalReward": -2.97,
+    "saves": 170,
+    "shadowPredictions": 703,
     "shadowMatches": 277,
     "strategistRefreshes": 60,
     "strategistFailures": 148
@@ -7457,6 +7457,80 @@
         "z": 3252,
         "level": 0
       }
+    },
+    {
+      "id": "mssyi4qt-8hfztq",
+      "createdAt": "2026-08-14T13:02:01.349Z",
+      "tick": 30652,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 3). Result: moved 3080,3252 → 3078,3252; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "npc",
+        "diango",
+        "trade",
+        "level 0",
+        "npc dark wizard",
+        "loc small fern",
+        "loc boulder"
+      ],
+      "location": {
+        "x": 3078,
+        "z": 3252,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssyiidb-aropnh",
+      "createdAt": "2026-08-14T13:02:19.007Z",
+      "tick": 30711,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 11). Result: +265 XP; 2 damage dealt; moved 3078,3252 → 3085,3242; execution rejected or failed. Reward 3.13.",
+      "importance": 2.26,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent joebot",
+        "npc fishing spot",
+        "loc rock",
+        "loc tree stump",
+        "loc pile of rope",
+        "loc bush"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssyj9pp-t9u3wu",
+      "createdAt": "2026-08-14T13:02:54.445Z",
+      "tick": 30829,
+      "runNumber": 35,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +1333 XP; 10 damage dealt; moved 3086,3230 → 3081,3239; execution rejected or failed. Reward 4.33.",
+      "importance": 2.87,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "npc diango",
+        "loc market stall",
+        "loc crate",
+        "loc staircase",
+        "loc oak"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3239,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9912,14 +9986,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 20,
-        "avgReward": -0.3001,
+        "n": 21,
+        "avgReward": -0.3144,
         "positive": 2,
-        "negative": 18,
+        "negative": 19,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:29:23.845Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I'm here! I found some fishing spots and resources. Let me check the north tiles."
+        "lastAt": "2026-08-14T13:03:41.824Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "Click here to continue"
       },
       "wait": {
         "n": 8,
@@ -10682,6 +10756,16 @@
         "lastAt": "2026-08-14T12:38:16.058Z",
         "exampleGoal": "Use the `talkTo` method to interact with the nearby NPC",
         "exampleReason": "I'm waiting to observe for a moment to gather information about the NPC's response to my request to continue the dialogue."
+      },
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T13:02:07.351Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "Close the shop"
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
@@ -10878,6 +10962,16 @@
         "lastAt": "2026-08-14T12:54:33.737Z",
         "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
         "exampleReason": "I have successfully reached Draynor Bank and verified the fishing spots. I am now ready to explore further and secure the fishing spots for level 1."
+      },
+      "pickup:raw anchovies": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T13:03:14.540Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "I have picked up Raw anchovies at the distance 9."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -10900,6 +10994,16 @@
         "lastAt": "2026-08-14T12:54:11.216Z",
         "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
         "exampleReason": "I have successfully reached Draynor Bank using verified waypoint navigation. I am now ready to attack the Dark wizard at level 7."
+      },
+      "npc:net:fishing spot": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T13:03:35.906Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "Talk-to Diango (level 0, distance 14) to obtain Raw anchovies."
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
@@ -11032,13 +11136,13 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
       "modal:close-shop": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:58:38.210Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "lastAt": "2026-08-14T13:01:52.009Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
         "exampleReason": "Close the shop"
       },
       "shop:sell:raw anchovies": {
@@ -11160,6 +11264,16 @@
         "lastAt": "2026-08-14T13:00:04.058Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
         "exampleReason": "Talk-to Diango (level 0, distance 1) to initiate the trade"
+      },
+      "npc:trade:diango": {
+        "n": 2,
+        "avgReward": -0.885,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-14T13:02:01.349Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "Talk-to Diango (level 0, distance 2)"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
@@ -11196,6 +11310,42 @@
         "lastAt": "2026-08-14T13:01:31.038Z",
         "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
         "exampleReason": "Trade Diango (level 0, distance 4) to gain 0 coins and 0 raw anchovies."
+      }
+    },
+    "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,social,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 3.13,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 3.13,
+        "lastAt": "2026-08-14T13:02:19.007Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "I will attack the Dark wizard at level 7, distance 11. This will help me increase my level and gain experience, which will be useful for future plans."
+      }
+    },
+    "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
+      "pickup:raw anchovies": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T13:02:40.950Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "I have picked up Raw anchovies (distance 12) at the Draynor fishing area."
+      }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 4.33,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 4.33,
+        "lastAt": "2026-08-14T13:02:54.445Z",
+        "exampleGoal": "Sell 1 Coins for about 0 using the shop interface.",
+        "exampleReason": "I am ready to attack the Dark wizard."
       }
     }
   },
@@ -11537,8 +11687,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-14T10:33:39.133Z",
-      "lastSeenAt": "2026-08-14T12:53:26.252Z",
-      "encounters": 333,
+      "lastSeenAt": "2026-08-14T13:02:41.240Z",
+      "encounters": 335,
       "combatLevel": 120,
       "trust": 0,
       "stance": "unknown",
@@ -12345,12 +12495,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3084,
-      "z": 3244,
+      "x": 3087,
+      "z": 3235,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:32:08.824Z",
-      "lastSeenAt": "2026-08-14T12:56:34.046Z",
-      "visits": 112,
+      "lastSeenAt": "2026-08-14T13:03:14.851Z",
+      "visits": 116,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -12404,12 +12554,12 @@
     },
     "192:201:0": {
       "key": "192:201:0",
-      "x": 3087,
+      "x": 3086,
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T12:44:49.664Z",
-      "visits": 184,
+      "lastSeenAt": "2026-08-14T13:03:36.115Z",
+      "visits": 185,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -12442,12 +12592,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3080,
+      "x": 3078,
       "z": 3252,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T13:01:31.328Z",
-      "visits": 71,
+      "lastSeenAt": "2026-08-14T13:02:07.662Z",
+      "visits": 76,
       "npcs": [
         "Banker",
         "Diango",
@@ -12554,7 +12704,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T13:01:36.116Z",
+  "updatedAt": "2026-08-14T13:03:41.825Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -18238,10 +18388,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 1,
-      "avgReward": -2.94,
+      "n": 3,
+      "avgReward": -2.143,
       "positive": 0,
-      "lastAt": "2026-08-14T12:58:31.908Z",
+      "lastAt": "2026-08-14T13:02:01.349Z",
       "example": "Trade Diango (level 0, distance 3) → Close the shop → Trade Diango (level 0, distance 2)"
     },
     "modal:close-shop > npc:trade:diango > modal:close-shop": {
@@ -18250,10 +18400,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 1,
-      "avgReward": -2.37,
+      "n": 3,
+      "avgReward": -2.18,
       "positive": 0,
-      "lastAt": "2026-08-14T12:58:38.210Z",
+      "lastAt": "2026-08-14T13:02:07.351Z",
       "example": "Close the shop → Trade Diango (level 0, distance 2) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:diango": {
@@ -18327,69 +18477,81 @@
       "positive": 1,
       "lastAt": "2026-08-14T13:01:20.518Z",
       "example": "Sell 1 Coins for about 0 → Close the shop → Explore north about 5 tiles"
+    },
+    "npc:trade:diango > modal:close-shop > npc:attack:dark wizard": {
+      "sequence": [
+        "npc:trade:diango",
+        "modal:close-shop",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 1.36,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:02:19.007Z",
+      "example": "Trade Diango (level 0, distance 3) → Close the shop → Attack Dark wizard (level 7, distance 11)"
+    },
+    "modal:close-shop > npc:attack:dark wizard > pickup:raw anchovies": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:attack:dark wizard",
+        "pickup:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 2.61,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:02:40.950Z",
+      "example": "Close the shop → Attack Dark wizard (level 7, distance 11) → Pick up Raw anchovies (distance 12)"
+    },
+    "npc:attack:dark wizard > pickup:raw anchovies > npc:attack:dark wizard": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "pickup:raw anchovies",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 7.54,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:02:54.445Z",
+      "example": "Attack Dark wizard (level 7, distance 11) → Pick up Raw anchovies (distance 12) → Attack Dark wizard (level 7, distance 8)"
+    },
+    "pickup:raw anchovies > npc:attack:dark wizard > pickup:raw anchovies": {
+      "sequence": [
+        "pickup:raw anchovies",
+        "npc:attack:dark wizard",
+        "pickup:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 4.49,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:03:14.540Z",
+      "example": "Pick up Raw anchovies (distance 12) → Attack Dark wizard (level 7, distance 8) → Pick up Raw anchovies (distance 9)"
+    },
+    "npc:attack:dark wizard > pickup:raw anchovies > npc:net:fishing spot": {
+      "sequence": [
+        "npc:attack:dark wizard",
+        "pickup:raw anchovies",
+        "npc:net:fishing spot"
+      ],
+      "n": 1,
+      "avgReward": 3.81,
+      "positive": 1,
+      "lastAt": "2026-08-14T13:03:35.906Z",
+      "example": "Attack Dark wizard (level 7, distance 8) → Pick up Raw anchovies (distance 9) → Net Fishing spot (level 0, distance 1)"
+    },
+    "pickup:raw anchovies > npc:net:fishing spot > dialog:1:click here to continue": {
+      "sequence": [
+        "pickup:raw anchovies",
+        "npc:net:fishing spot",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-14T13:03:41.825Z",
+      "example": "Pick up Raw anchovies (distance 9) → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
-    {
-      "id": "place:sacks:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Sacks observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:door:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Door observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Barrel observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Crate observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:warehouse shelves:195:210:0",
-      "at": "2026-08-14T10:30:15.149Z",
-      "kind": "place",
-      "text": "Warehouse shelves observed near 3125, 3369, level 0.",
-      "location": {
-        "x": 3125,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:stairs:195:210:0",
       "at": "2026-08-14T10:30:15.149Z",
@@ -21929,6 +22091,66 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3080:3252:3078:3252:0",
+      "at": "2026-08-14T13:02:01.349Z",
+      "kind": "route",
+      "text": "Route learned: 3080,3252 → 3078,3252; moved 3080,3252 → 3078,3252; execution rejected or failed",
+      "location": {
+        "x": 3078,
+        "z": 3252,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3078:3252:3085:3242:0",
+      "at": "2026-08-14T13:02:19.008Z",
+      "kind": "route",
+      "text": "Route learned: 3078,3252 → 3085,3242; +265 XP; 2 damage dealt; moved 3078,3252 → 3085,3242; execution rejected or failed",
+      "location": {
+        "x": 3085,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3085:3242:3087:3236:0",
+      "at": "2026-08-14T13:02:40.951Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3242 → 3087,3236; moved 3085,3242 → 3087,3236",
+      "location": {
+        "x": 3087,
+        "z": 3236,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3086:3230:3081:3239:0",
+      "at": "2026-08-14T13:02:54.445Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3230 → 3081,3239; +1333 XP; 10 damage dealt; moved 3086,3230 → 3081,3239; execution rejected or failed",
+      "location": {
+        "x": 3081,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3081:3239:3087:3237:0",
+      "at": "2026-08-14T13:03:14.541Z",
+      "kind": "route",
+      "text": "Route learned: 3081,3239 → 3087,3237; moved 3081,3239 → 3087,3237",
+      "location": {
+        "x": 3087,
+        "z": 3237,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
   "activePlan": {
@@ -21969,6 +22191,6 @@
     ],
     "updatedAt": "2026-08-14T13:01:07.388Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
