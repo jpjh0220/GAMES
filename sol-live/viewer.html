@@ -2,37 +2,170 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sol Live</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07100d">
+<title>Sol Live // World Observer</title>
 <style>
-:root{color-scheme:dark;--bg:#080b10;--panel:#10151d;--line:#253041;--text:#eef4ff;--muted:#8fa2bc;--accent:#66e3ff;--danger:#ff6b6b;--npc:#ffd166;--item:#7ee787;--player:#c39bff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,-apple-system,Segoe UI,sans-serif}.app{max-width:1200px;margin:auto;padding:14px}.top{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px}.title{font-size:20px;font-weight:700}.status{display:flex;gap:8px;align-items:center;color:var(--muted)}.dot{width:9px;height:9px;border-radius:50%;background:var(--danger)}.dot.live{background:#3ddc84;box-shadow:0 0 14px #3ddc84}.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:12px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}.scene{padding:0;overflow:hidden;position:relative;min-height:520px}.scene canvas{width:100%;height:520px;display:block;background:#0b1118}.hud{position:absolute;left:12px;top:12px;background:#080b10cc;border:1px solid var(--line);border-radius:10px;padding:8px 10px;max-width:70%}.hud b{color:var(--accent)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.metric{background:#0b1118;border:1px solid var(--line);border-radius:10px;padding:9px}.metric small{display:block;color:var(--muted);margin-bottom:2px}.metric strong{font-size:18px}.section{margin-top:12px}.section h3{font-size:13px;margin:0 0 7px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}.skills,.inventory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.row{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:#0b1118}.feed{max-height:230px;overflow:auto;display:flex;flex-direction:column-reverse;gap:6px}.event{border-left:3px solid var(--accent);padding:6px 8px;background:#0b1118;border-radius:6px}.event .time{color:var(--muted);font-size:11px}.legend{position:absolute;right:12px;bottom:12px;background:#080b10cc;border:1px solid var(--line);border-radius:10px;padding:8px}.legend div{margin:3px 0}.sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}@media(max-width:760px){.grid{grid-template-columns:1fr}.scene,.scene canvas{min-height:430px;height:430px}.metrics{grid-template-columns:repeat(3,1fr)}}
+:root{
+  color-scheme:dark;
+  --bg:#050807;--bg2:#08100d;--panel:#0b1411;--panel2:#0f1b17;--line:#21332b;
+  --text:#edf8f2;--muted:#839b90;--soft:#b5c9bf;--accent:#78f0b3;--accent2:#55dff2;
+  --danger:#ff7373;--warn:#f7c766;--npc:#f2c66d;--item:#80e58e;--player:#bb9cff;--loc:#607c70;
+  --shadow:0 18px 60px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{background:
+  radial-gradient(circle at 18% -15%,rgba(120,240,179,.10),transparent 35rem),
+  radial-gradient(circle at 100% 0,rgba(85,223,242,.07),transparent 32rem),var(--bg)}
+button{font:inherit;color:inherit}
+.app{width:min(1480px,100%);margin:0 auto;padding:16px 16px 34px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}.sigil{width:38px;height:38px;border:1px solid #315244;border-radius:11px;display:grid;place-items:center;background:#0a1712;box-shadow:inset 0 0 24px rgba(120,240,179,.07)}
+.sigil:before{content:"S";font-weight:800;font-size:18px;color:var(--accent)}
+.brand h1{font-size:16px;letter-spacing:.11em;margin:0;font-weight:750}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.livebox{display:flex;align-items:center;gap:9px;color:var(--soft);font-size:12px;white-space:nowrap}.dot{width:9px;height:9px;border-radius:50%;background:#6b3535;box-shadow:0 0 0 4px rgba(255,115,115,.06)}.dot.live{background:var(--accent);box-shadow:0 0 0 4px rgba(120,240,179,.09),0 0 18px rgba(120,240,179,.45)}
+.hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.75fr);gap:12px;margin-bottom:12px}.card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(14,25,21,.96),rgba(8,15,12,.96));box-shadow:var(--shadow)}
+.intent{padding:17px 18px}.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:750}.goal{font-size:24px;line-height:1.15;margin:5px 0 9px;font-weight:720;letter-spacing:-.02em}.why{color:var(--soft);max-width:820px}.actionline{display:flex;align-items:flex-start;gap:9px;margin-top:13px;padding-top:12px;border-top:1px solid rgba(68,94,81,.45)}.actionchip{flex:0 0 auto;border:1px solid rgba(120,240,179,.34);color:var(--accent);background:rgba(120,240,179,.07);border-radius:999px;padding:3px 8px;font-size:11px;font-weight:750;letter-spacing:.04em}.actiontext{min-width:0;color:var(--text)}.actionreason{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.session{display:grid;grid-template-columns:1fr 1fr;padding:8px}.session .stat{padding:10px;border-radius:11px}.stat .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}.stat .v{font-size:18px;font-weight:720}.stat .sub{font-size:11px;color:var(--muted);margin-top:1px}
+.dashboard{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(330px,.8fr);gap:12px;align-items:start}.left,.right{display:grid;gap:12px}
+.scene{overflow:hidden;position:relative;min-height:590px;background:#07100d}.scene canvas{width:100%;height:590px;display:block;background:#07100d;touch-action:none}.scenehud{position:absolute;left:12px;top:12px;right:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;pointer-events:none}.hudgroup{display:flex;gap:7px;flex-wrap:wrap}.badge{border:1px solid rgba(69,98,84,.76);background:rgba(5,10,8,.82);backdrop-filter:blur(10px);border-radius:999px;padding:6px 9px;font-size:11px;color:var(--soft)}.badge b{color:var(--text)}
+.mapcontrols{position:absolute;right:12px;bottom:12px;display:flex;gap:6px}.mapcontrols button,.filterbar button{border:1px solid var(--line);background:rgba(7,14,11,.9);border-radius:9px;min-width:34px;height:34px;cursor:pointer}.mapcontrols button:hover,.filterbar button:hover{border-color:#3d6655}.mapcontrols button:active{transform:translateY(1px)}
+.filterbar{position:absolute;left:12px;bottom:12px;display:flex;gap:5px;flex-wrap:wrap}.filterbar button{height:30px;padding:0 9px;font-size:11px;color:var(--muted);min-width:0}.filterbar button[aria-pressed="true"]{color:var(--accent);border-color:rgba(120,240,179,.36);background:rgba(120,240,179,.08)}
+.metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:10px}.metric{padding:10px;border:1px solid rgba(48,72,61,.6);background:#09120f;border-radius:11px;min-width:0}.metric .k{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.metric .v{font-size:18px;font-weight:740;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.metric .mini{font-size:10px;color:var(--muted);margin-top:1px}.hpbar{height:4px;background:#213229;border-radius:5px;margin-top:7px;overflow:hidden}.hpbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s ease}.hpbar.danger i{background:var(--danger)}
+.panel{padding:14px}.panelhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.panelhead h2{margin:0;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}.count{font-size:11px;color:var(--muted)}
+.players{display:grid;gap:7px}.empty{padding:16px 10px;text-align:center;border:1px dashed #263b31;border-radius:10px;color:var(--muted);font-size:12px}.entity{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid #20332a;border-radius:11px;background:#08110e}.entitydot{width:9px;height:9px;border-radius:50%;background:var(--player);box-shadow:0 0 12px rgba(187,156,255,.32)}.entitymain{min-width:0;flex:1}.entityname{font-weight:680;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.entitymeta{font-size:11px;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.skill{display:flex;justify-content:space-between;gap:7px;border:1px solid #1e3128;background:#08110e;padding:7px 8px;border-radius:9px;font-size:12px}.skill b{color:var(--soft)}.skill.gained{border-color:rgba(120,240,179,.55);background:rgba(120,240,179,.07);animation:flash 1.4s ease-out}@keyframes flash{0%{box-shadow:0 0 0 0 rgba(120,240,179,.25)}100%{box-shadow:0 0 0 10px rgba(120,240,179,0)}}
+.inventory{display:flex;gap:6px;flex-wrap:wrap}.item{border:1px solid #20332a;background:#08110e;padding:6px 8px;border-radius:9px;font-size:11px}.item b{color:var(--accent);margin-left:5px}
+.feed{display:grid;gap:7px;max-height:370px;overflow:auto;padding-right:2px;scrollbar-color:#294337 transparent}.event{display:grid;grid-template-columns:42px minmax(0,1fr);gap:8px;padding:9px 0;border-bottom:1px solid rgba(37,58,48,.55)}.event:last-child{border-bottom:0}.tick{font-variant-numeric:tabular-nums;color:var(--muted);font-size:10px;padding-top:2px}.eventtitle{font-size:12px;font-weight:700}.eventsummary{color:var(--accent);font-weight:600;margin-left:4px}.eventreason{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.35}
+.lessons{display:grid;gap:6px}.lesson{position:relative;padding:8px 9px 8px 24px;border:1px solid #20332a;border-radius:10px;background:#08110e;color:var(--soft);font-size:12px}.lesson:before{content:"↳";position:absolute;left:8px;color:var(--accent)}
+.inspector{position:absolute;min-width:170px;max-width:230px;padding:9px 10px;border:1px solid #385447;border-radius:10px;background:rgba(5,10,8,.94);box-shadow:0 12px 30px rgba(0,0,0,.38);pointer-events:none;display:none;font-size:11px}.inspector strong{display:block;font-size:12px;margin-bottom:2px}.inspector span{color:var(--muted)}
+.footer{color:#597066;font-size:10px;text-align:center;padding:18px 0 0}.footer b{color:#7d958a}
+@media(max-width:1050px){.dashboard{grid-template-columns:1fr}.right{grid-template-columns:1fr 1fr}.right .activity{grid-column:1/-1}.metrics{grid-template-columns:repeat(5,minmax(100px,1fr));overflow-x:auto}}
+@media(max-width:760px){.app{padding:10px 10px 26px}.topbar{margin-bottom:10px}.brand h1{font-size:14px}.brand p{max-width:56vw}.livebox .packet{display:none}.hero{grid-template-columns:1fr}.goal{font-size:20px}.session{grid-template-columns:repeat(4,1fr)}.session .stat{padding:7px 6px}.stat .v{font-size:14px}.stat .sub{display:none}.dashboard{gap:10px}.left,.right{gap:10px}.scene{min-height:455px}.scene canvas{height:455px}.scenehud{left:8px;top:8px;right:8px}.badge{padding:5px 7px}.filterbar{left:8px;bottom:8px;max-width:75%}.filterbar button{padding:0 7px}.mapcontrols{right:8px;bottom:8px}.metrics{grid-template-columns:repeat(3,1fr);overflow:visible}.metric:nth-child(4),.metric:nth-child(5){grid-column:span 1}.right{grid-template-columns:1fr}.right .activity{grid-column:auto}.skills{grid-template-columns:repeat(2,minmax(0,1fr))}.feed{max-height:330px}.inspector{max-width:190px}}
+@media(max-width:430px){.livebox{gap:6px}.session{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}.filterbar button[data-filter="locs"]{display:none}.goal{font-size:19px}}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="top"><div><div class="title">SOL // LIVE WORLD OBSERVER</div><div id="subtitle" style="color:var(--muted)">Connecting to agent telemetry…</div></div><div class="status"><span id="dot" class="dot"></span><span id="status">offline</span></div></div>
-  <div class="grid">
-    <div class="panel scene"><canvas id="scene"></canvas><div class="hud"><div>Action: <b id="action">—</b></div><div id="coords" style="color:var(--muted)">—</div></div><div class="legend"><div><span class="sw" style="background:var(--accent)"></span>Sol</div><div><span class="sw" style="background:var(--npc)"></span>NPC</div><div><span class="sw" style="background:var(--player)"></span>Player</div><div><span class="sw" style="background:var(--item)"></span>Ground item</div></div></div>
-    <div class="panel">
-      <div class="metrics"><div class="metric"><small>Combat</small><strong id="combat">—</strong></div><div class="metric"><small>HP</small><strong id="hp">—</strong></div><div class="metric"><small>Tick</small><strong id="tick">—</strong></div></div>
-      <div class="section"><h3>Skills</h3><div id="skills" class="skills"></div></div>
-      <div class="section"><h3>Inventory</h3><div id="inventory" class="inventory"></div></div>
-      <div class="section"><h3>Recent decisions</h3><div id="feed" class="feed"></div></div>
+  <header class="topbar">
+    <div class="brand"><div class="sigil"></div><div><h1>SOL // WORLD OBSERVER</h1><p id="subtitle">Connecting to autonomous agent telemetry…</p></div></div>
+    <div class="livebox"><span id="dot" class="dot"></span><b id="status">OFFLINE</b><span id="packet" class="packet">no packets yet</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="card intent">
+      <div class="eyebrow">Current objective</div>
+      <div id="goal" class="goal">Orient to the world</div>
+      <div id="why" class="why">Waiting for Sol's live reasoning context.</div>
+      <div class="actionline"><span id="actionLabel" class="actionchip">OBSERVE</span><div class="actiontext"><span id="actionText">Waiting for next action…</span><span id="actionReason" class="actionreason"></span></div></div>
     </div>
-  </div>
+    <div class="card session">
+      <div class="stat"><div class="k">Session</div><div id="uptime" class="v">—</div><div class="sub">current runner</div></div>
+      <div class="stat"><div class="k">Actions</div><div id="actions" class="v">—</div><div class="sub">this session</div></div>
+      <div class="stat"><div class="k">Runner</div><div id="runner" class="v">—</div><div class="sub">handoff chain</div></div>
+      <div class="stat"><div class="k">World</div><div class="v">Shared</div><div class="sub">rs-sdk demo</div></div>
+    </div>
+  </section>
+
+  <main class="dashboard">
+    <div class="left">
+      <section class="card scene" id="sceneWrap">
+        <canvas id="scene" aria-label="Live local world view around Sol"></canvas>
+        <div class="scenehud"><div class="hudgroup"><span class="badge"><b id="coords">—</b></span><span class="badge">radius <b id="radius">24</b> tiles</span></div><span id="combatState" class="badge">idle</span></div>
+        <div class="filterbar" aria-label="Map layers">
+          <button data-filter="npcs" aria-pressed="true">NPCs</button><button data-filter="players" aria-pressed="true">Agents</button><button data-filter="items" aria-pressed="true">Items</button><button data-filter="locs" aria-pressed="true">Objects</button><button data-filter="trail" aria-pressed="true">Trail</button>
+        </div>
+        <div class="mapcontrols"><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomIn" aria-label="Zoom in">+</button></div>
+        <div id="inspector" class="inspector"></div>
+      </section>
+
+      <section class="card metrics">
+        <div class="metric"><div class="k">Combat level</div><div id="combat" class="v">—</div><div class="mini">Sol5</div></div>
+        <div class="metric"><div class="k">Hitpoints</div><div id="hp" class="v">—</div><div id="hpbar" class="hpbar"><i></i></div></div>
+        <div class="metric"><div class="k">Game tick</div><div id="tick" class="v">—</div><div class="mini">live simulation</div></div>
+        <div class="metric"><div class="k">Nearby NPCs</div><div id="npcCount" class="v">—</div><div class="mini">local scene</div></div>
+        <div class="metric"><div class="k">Other agents</div><div id="playerCount" class="v">—</div><div class="mini">near Sol</div></div>
+      </section>
+
+      <section class="card panel">
+        <div class="panelhead"><h2>Skills</h2><span class="count">levels flash when they rise</span></div>
+        <div id="skills" class="skills"></div>
+      </section>
+
+      <section class="card panel">
+        <div class="panelhead"><h2>Inventory</h2><span id="inventoryCount" class="count">0 slots</span></div>
+        <div id="inventory" class="inventory"></div>
+      </section>
+    </div>
+
+    <aside class="right">
+      <section class="card panel">
+        <div class="panelhead"><h2>Nearby agents</h2><span id="agentCount" class="count">0 visible</span></div>
+        <div id="players" class="players"></div>
+      </section>
+
+      <section class="card panel activity">
+        <div class="panelhead"><h2>Decision stream</h2><span class="count">newest first</span></div>
+        <div id="feed" class="feed"></div>
+      </section>
+
+      <section class="card panel">
+        <div class="panelhead"><h2>Learned this session</h2><span id="lessonCount" class="count">0</span></div>
+        <div id="lessons" class="lessons"></div>
+      </section>
+    </aside>
+  </main>
+  <div class="footer">READ-ONLY SPECTATOR • viewer cannot issue movement, combat, inventory, or chat commands to <b>Sol5</b></div>
 </div>
 <script>
-const $=id=>document.getElementById(id), canvas=$('scene'), ctx=canvas.getContext('2d');let last=null,lastSeen=0;
-function resize(){const d=devicePixelRatio||1,w=canvas.clientWidth,h=canvas.clientHeight;canvas.width=w*d;canvas.height=h*d;ctx.setTransform(d,0,0,d,0,0)}addEventListener('resize',resize);resize();
-function esc(s){return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function render(s){last=s;lastSeen=Date.now();$('dot').classList.add('live');$('status').textContent='LIVE';$('subtitle').textContent='Sol5 • read-only spectator telemetry • '+new Date(s.updatedAt).toLocaleTimeString();$('action').textContent=s.currentAction?.label||'observing';$('coords').textContent=s.player?`world ${s.player.worldX}, ${s.player.worldZ} • plane ${s.player.level}`:'loading world';$('combat').textContent=s.player?.combatLevel??'—';$('hp').textContent=s.player?`${s.player.hp}/${s.player.maxHp}`:'—';$('tick').textContent=s.tick??'—';
- $('skills').innerHTML=(s.skills||[]).filter(x=>!/^Stat/.test(x.name)).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.level}</b></div>`).join('');
- $('inventory').innerHTML=(s.inventory||[]).map(x=>`<div class="row"><span>${esc(x.name)}</span><b>${x.count>1?x.count:''}</b></div>`).join('')||'<span style="color:var(--muted)">Empty</span>';
- $('feed').innerHTML=(s.actions||[]).slice(-30).reverse().map(x=>`<div class="event"><div><b>${esc(x.label)}</b> ${esc(x.summary||'')}</div><div class="time">tick ${x.tick}</div></div>`).join('');draw(s)}
-function draw(s){resize();const w=canvas.clientWidth,h=canvas.clientHeight;ctx.clearRect(0,0,w,h);ctx.fillStyle='#0b1118';ctx.fillRect(0,0,w,h);const p=s.player;if(!p)return;const scale=Math.max(9,Math.min(18,w/45));const cx=w/2,cy=h/2;ctx.strokeStyle='#172232';ctx.lineWidth=1;for(let x=cx%scale;x<w;x+=scale){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=cy%scale;y<h;y+=scale){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
- const pt=(x,z)=>[cx+(x-p.worldX)*scale,cy-(z-p.worldZ)*scale];function mark(x,z,color,r,label){const q=pt(x,z);if(q[0]<-30||q[0]>w+30||q[1]<-30||q[1]>h+30)return;ctx.fillStyle=color;ctx.beginPath();ctx.arc(q[0],q[1],r,0,Math.PI*2);ctx.fill();if(label){ctx.font='11px system-ui';ctx.fillStyle='#e8eef8';ctx.fillText(label,q[0]+r+4,q[1]+4)}}
- (s.groundItems||[]).forEach(x=>mark(x.x,x.z,'#7ee787',3,x.name));(s.nearbyNpcs||[]).forEach(x=>mark(x.x,x.z,'#ffd166',5,`${x.name}${x.combatLevel?` [${x.combatLevel}]`:''}`));(s.nearbyPlayers||[]).forEach(x=>mark(x.x,x.z,'#c39bff',5,x.name));mark(p.worldX,p.worldZ,'#66e3ff',8,'Sol5');ctx.strokeStyle='#66e3ff55';ctx.beginPath();ctx.arc(cx,cy,scale*15,0,Math.PI*2);ctx.stroke()}
-async function poll(){try{const r=await fetch('/state?'+Date.now(),{cache:'no-store'});if(r.ok)render(await r.json())}catch(e){}if(Date.now()-lastSeen>5000){$('dot').classList.remove('live');$('status').textContent='reconnecting'}setTimeout(poll,650)}poll();
+const $=id=>document.getElementById(id);
+const canvas=$('scene'),ctx=canvas.getContext('2d'),wrap=$('sceneWrap'),inspector=$('inspector');
+let state=null,lastSeen=0,zoom=1,prevSkills=new Map(),entities=[];
+const layers={npcs:true,players:true,items:true,locs:true,trail:true};
+const colors={sol:'#78f0b3',npc:'#f2c66d',player:'#bb9cff',item:'#80e58e',loc:'#607c70'};
+const fmt=n=>new Intl.NumberFormat().format(n||0);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const elapsed=iso=>{if(!iso)return'—';let s=Math.max(0,Math.floor((Date.now()-Date.parse(iso))/1000));const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;return h?`${h}h ${m}m`:m?`${m}m ${s}s`:`${s}s`};
+function resize(){const d=Math.min(devicePixelRatio||1,2),w=canvas.clientWidth,h=canvas.clientHeight;if(canvas.width!==Math.floor(w*d)||canvas.height!==Math.floor(h*d)){canvas.width=Math.floor(w*d);canvas.height=Math.floor(h*d);ctx.setTransform(d,0,0,d,0,0)}draw()}
+addEventListener('resize',resize);
+function render(s){
+  state=s;lastSeen=Date.now();$('dot').classList.add('live');$('status').textContent='LIVE';
+  $('subtitle').textContent=`Sol5 • shared rs-sdk world • telemetry ${new Date(s.updatedAt).toLocaleTimeString()}`;
+  $('goal').textContent=s.currentGoal||'Observe and choose';$('why').textContent=s.currentWhy||'Waiting for decision context.';
+  const a=s.currentAction;$('actionLabel').textContent=a?.label||'OBSERVE';$('actionText').textContent=a?(a.summary?`${a.label} ${a.summary}`:a.label):'Observing world state…';$('actionReason').textContent=a?.reason||'';
+  $('uptime').textContent=elapsed(s.sessionStartedAt);$('actions').textContent=fmt(s.actionCount);$('runner').textContent=s.runNumber?`#${s.runNumber}`:'—';
+  const p=s.player;$('combat').textContent=p?.combatLevel??'—';$('hp').textContent=p?`${p.hp}/${p.maxHp}`:'—';$('tick').textContent=fmt(s.tick);$('npcCount').textContent=(s.nearbyNpcs||[]).length;$('playerCount').textContent=(s.nearbyPlayers||[]).length;
+  $('coords').textContent=p?`${p.worldX}, ${p.worldZ} • plane ${p.level}`:'loading world';$('combatState').textContent=p?.combat?.inCombat?'IN COMBAT':'idle';$('combatState').style.color=p?.combat?.inCombat?'var(--warn)':'';
+  const pct=p?.maxHp?Math.max(0,Math.min(100,p.hp/p.maxHp*100)):0;$('hpbar').querySelector('i').style.width=pct+'%';$('hpbar').classList.toggle('danger',pct<45);
+  const skillList=(s.skills||[]).filter(x=>!/^Stat/.test(x.name));
+  $('skills').innerHTML=skillList.map(x=>{const old=prevSkills.get(x.name),gain=old!=null&&x.level>old;return `<div class="skill${gain?' gained':''}"><span>${esc(x.name)}</span><b>${x.level}</b></div>`}).join('');skillList.forEach(x=>prevSkills.set(x.name,x.level));
+  $('inventoryCount').textContent=`${(s.inventory||[]).length} slots`;$('inventory').innerHTML=(s.inventory||[]).map(x=>`<span class="item">${esc(x.name)}${x.count>1?`<b>×${fmt(x.count)}</b>`:''}</span>`).join('')||'<div class="empty">Inventory empty</div>';
+  const ps=(s.nearbyPlayers||[]).slice().sort((a,b)=>a.distance-b.distance);$('agentCount').textContent=`${ps.length} visible`;$('players').innerHTML=ps.length?ps.map(x=>`<div class="entity"><span class="entitydot"></span><div class="entitymain"><div class="entityname">${esc(x.name)}</div><div class="entitymeta">combat ${x.combatLevel||'?'} • ${Number(x.distance||0).toFixed(1)} tiles away${x.reachable===false?' • blocked':''}</div></div></div>`).join(''):'<div class="empty">No other player-agents are inside Sol’s currently observed scene.</div>';
+  $('feed').innerHTML=(s.actions||[]).slice(-45).reverse().map(x=>`<div class="event"><div class="tick">#${fmt(x.tick)}</div><div><div class="eventtitle">${esc(x.label)} <span class="eventsummary">${esc(x.summary||'')}</span></div>${x.reason?`<div class="eventreason">${esc(x.reason)}</div>`:''}</div></div>`).join('')||'<div class="empty">Waiting for Sol’s first action.</div>';
+  const ls=s.lessons||[];$('lessonCount').textContent=String(ls.length);$('lessons').innerHTML=ls.length?ls.map(x=>`<div class="lesson">${esc(x)}</div>`).join(''):'<div class="empty">No new durable lesson recorded in this runner session yet.</div>';
+  draw();
+}
+function draw(){
+  const s=state,w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;ctx.clearRect(0,0,w,h);ctx.fillStyle='#07100d';ctx.fillRect(0,0,w,h);entities=[];const p=s?.player;if(!p)return;
+  const base=Math.max(8,Math.min(17,w/48)),scale=base*zoom,cx=w/2,cy=h/2;$('radius').textContent=Math.round(Math.min(w,h)/(2*scale));
+  ctx.strokeStyle='rgba(63,91,77,.20)';ctx.lineWidth=1;for(let x=cx%scale;x<w;x+=scale){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}for(let y=cy%scale;y<h;y+=scale){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+  const pt=(x,z)=>[cx+(x-p.worldX)*scale,cy-(z-p.worldZ)*scale];
+  if(layers.trail&&(s.movementTrail||[]).length>1){ctx.strokeStyle='rgba(120,240,179,.28)';ctx.lineWidth=2;ctx.beginPath();let started=false;(s.movementTrail||[]).forEach(q=>{if(q.level!==p.level)return;const [x,y]=pt(q.x,q.z);if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y)});ctx.stroke()}
+  function label(x,y,text,color,priority=0){if(!text||zoom<.82&&priority<2)return;ctx.font=priority>1?'600 11px system-ui':'10px system-ui';ctx.textBaseline='middle';const tw=ctx.measureText(text).width,bx=Math.min(w-tw-12,Math.max(4,x+8)),by=Math.min(h-8,Math.max(8,y));ctx.fillStyle='rgba(3,8,6,.74)';ctx.fillRect(bx-3,by-8,tw+6,16);ctx.fillStyle=color;ctx.fillText(text,bx,by)}
+  function mark(kind,obj,color,r,text,shape='circle',priority=0){const [x,y]=pt(obj.x,obj.z);if(x<-35||x>w+35||y<-35||y>h+35)return;ctx.fillStyle=color;ctx.strokeStyle='rgba(255,255,255,.12)';ctx.lineWidth=1;if(shape==='square'){ctx.fillRect(x-r,y-r,r*2,r*2)}else{ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill()}entities.push({kind,obj,x,y,r:Math.max(9,r+5)});label(x,y,text,color,priority)}
+  if(layers.locs)(s.nearbyLocs||[]).forEach(x=>mark('Object',x,colors.loc,2.5,x.name&&x.name!=='null'?x.name:'', 'square',0));
+  if(layers.items)(s.groundItems||[]).forEach(x=>mark('Ground item',x,colors.item,3,x.count>1?`${x.name} ×${x.count}`:x.name,'circle',0));
+  if(layers.npcs)(s.nearbyNpcs||[]).forEach(x=>mark('NPC',x,x.inCombat?'#ff9b73':colors.npc,5,`${x.name}${x.combatLevel?` [${x.combatLevel}]`:''}`,'circle',x.inCombat?2:1));
+  if(layers.players)(s.nearbyPlayers||[]).forEach(x=>mark('Agent',x,colors.player,6,`${x.name}${x.combatLevel?` [${x.combatLevel}]`:''}`,'circle',2));
+  ctx.strokeStyle='rgba(120,240,179,.20)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,scale*12,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,scale*24,0,Math.PI*2);ctx.stroke();
+  ctx.fillStyle=colors.sol;ctx.beginPath();ctx.arc(cx,cy,8,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(120,240,179,.35)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(cx,cy,13,0,Math.PI*2);ctx.stroke();label(cx,cy,'Sol5',colors.sol,3);
+}
+canvas.addEventListener('pointermove',e=>{if(!entities.length){inspector.style.display='none';return}const r=canvas.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let hit=null,best=1e9;for(const q of entities){const d=Math.hypot(x-q.x,y-q.y);if(d<q.r&&d<best){best=d;hit=q}}if(!hit){inspector.style.display='none';return}const o=hit.obj;inspector.innerHTML=`<strong>${esc(o.name||hit.kind)}</strong><span>${hit.kind}${o.combatLevel?` • combat ${o.combatLevel}`:''}${o.distance!=null?` • ${Number(o.distance).toFixed(1)} tiles`:''}${o.hp!=null?` • HP ${o.hp}${o.maxHp?'/'+o.maxHp:''}`:''}</span>`;inspector.style.display='block';inspector.style.left=Math.min(wrap.clientWidth-240,Math.max(8,x+14))+'px';inspector.style.top=Math.min(wrap.clientHeight-70,Math.max(8,y+14))+'px'});canvas.addEventListener('pointerleave',()=>inspector.style.display='none');
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.filter;layers[k]=!layers[k];b.setAttribute('aria-pressed',String(layers[k]));draw()}));$('zoomIn').addEventListener('click',()=>{zoom=Math.min(2.1,zoom*1.18);draw()});$('zoomOut').addEventListener('click',()=>{zoom=Math.max(.55,zoom/1.18);draw()});
+setInterval(()=>{if(state){$('uptime').textContent=elapsed(state.sessionStartedAt);$('packet').textContent=`${Math.max(0,((Date.now()-lastSeen)/1000)).toFixed(1)}s ago`}if(Date.now()-lastSeen>5000){$('dot').classList.remove('live');$('status').textContent='RECONNECTING'}},500);
+async function poll(){try{const r=await fetch('/state?'+Date.now(),{cache:'no-store'});if(r.ok)render(await r.json())}catch(e){}setTimeout(poll,650)}
+resize();poll();
 </script>
 </body>
 </html>
