@@ -6,15 +6,17 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 42,
-    "teacherChoices": 42,
+    "totalChoices": 43,
+    "teacherChoices": 43,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 41,
-    "totalReward": 7.69,
-    "saves": 10,
+    "completedExperiences": 42,
+    "totalReward": 6.64,
+    "saves": 11,
     "shadowPredictions": 0,
-    "shadowMatches": 0
+    "shadowMatches": 0,
+    "strategistRefreshes": 1,
+    "strategistFailures": 0
   },
   "memories": [
     {
@@ -127,6 +129,45 @@
       "location": {
         "x": 3119,
         "z": 3350,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssmagvq-g2astd",
+      "createdAt": "2026-08-14T07:20:08.438Z",
+      "tick": 0,
+      "runNumber": 17,
+      "kind": "strategy",
+      "text": "AI strategist focus: explore. The AI should prioritize exploring to gather resources, learn new skills, and avoid loops. The player is currently in a low-health state and needs to secure basic survival resources before advancing. Expanding knowledge and gathering materials is essential for long-term survival and progression.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore",
+        "gather resources",
+        "learn skills"
+      ],
+      "location": {
+        "x": 3125,
+        "z": 3330,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssmbgct-rgg6at",
+      "createdAt": "2026-08-14T07:20:54.413Z",
+      "tick": 230,
+      "runNumber": 17,
+      "kind": "episode",
+      "text": "AI motor goal: explore. Action: Chop down Dead tree (distance 1). Result: moved; operation rejected. Reward -1.05.",
+      "importance": 1.23,
+      "tags": [
+        "world",
+        "dead tree",
+        "chop down"
+      ],
+      "location": {
+        "x": 3125,
+        "z": 3329,
         "level": 0
       }
     }
@@ -269,6 +310,18 @@
         "exampleGoal": "Explore north about 5 tiles",
         "exampleReason": "To investigate the area and gather information about the surroundings."
       }
+    },
+    "hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,social,wait,world": {
+      "loc:chop down:dead tree": {
+        "n": 1,
+        "avgReward": -1.05,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.05,
+        "lastAt": "2026-08-14T07:20:54.413Z",
+        "exampleGoal": "explore",
+        "exampleReason": "Chop down Dead tree (distance 1)"
+      }
     }
   },
   "relationships": {},
@@ -386,12 +439,12 @@
     },
     "195:208:0": {
       "key": "195:208:0",
-      "x": 3128,
-      "z": 3335,
+      "x": 3125,
+      "z": 3330,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:47:15.725Z",
-      "lastSeenAt": "2026-08-14T06:54:09.950Z",
-      "visits": 7,
+      "lastSeenAt": "2026-08-14T07:20:50.246Z",
+      "visits": 13,
       "npcs": [
         "Tree",
         "Veronica",
@@ -453,5 +506,5 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T07:15:01.640Z"
+  "updatedAt": "2026-08-14T07:20:54.414Z"
 }
