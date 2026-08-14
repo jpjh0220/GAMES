@@ -6,46 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2541,
-    "teacherChoices": 2541,
+    "totalChoices": 2551,
+    "teacherChoices": 2551,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2540,
-    "totalReward": 971.27,
-    "saves": 282,
-    "shadowPredictions": 1245,
+    "completedExperiences": 2550,
+    "totalReward": 967.07,
+    "saves": 283,
+    "shadowPredictions": 1246,
     "shadowMatches": 525,
-    "strategistRefreshes": 120,
+    "strategistRefreshes": 121,
     "strategistFailures": 150
   },
   "memories": [
-    {
-      "id": "mst3mryu-l4zjiu",
-      "createdAt": "2026-08-14T15:25:36.150Z",
-      "tick": 59368,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3081,3251 → 3092,3243; new: npc:Fishing spot, npc:Ned, loc:Bush, loc:Tree stump, loc:Boulder, loc:Pile of rope. Reward 1.35.",
-      "importance": 1.38,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc fishing spot",
-        "npc ned",
-        "loc bush",
-        "loc tree stump",
-        "loc boulder",
-        "loc pile of rope"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mst3n5m9-nmdato",
       "createdAt": "2026-08-14T15:25:53.841Z",
@@ -8383,6 +8356,26 @@
         "z": 3231,
         "level": 0
       }
+    },
+    {
+      "id": "mst7z7p4-pqlosx",
+      "createdAt": "2026-08-14T17:27:14.872Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Interact with the fishing spot to trigger the trap. This plan uses a named repository-tested escape skill (Black robe) and ensures observable evidence through spell casting and location movement.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "interact with the fishing spot to trigger the trap",
+        "use the black robe to cast a spell to break the trap",
+        "walk to the next location to avoid the trap area permanently"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -11218,24 +11211,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 109,
-        "avgReward": -0.2145,
+        "n": 112,
+        "avgReward": -0.2248,
         "positive": 10,
-        "negative": 99,
+        "negative": 102,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:26:49.786Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the narrative",
-        "exampleReason": "To get to the Net Fishing spot and complete the task"
+        "lastAt": "2026-08-14T17:27:47.086Z",
+        "exampleGoal": "Interact with the fishing spot to trigger the trap",
+        "exampleReason": "I need to get to the net fishing spot to trigger the trap."
       },
       "wait": {
-        "n": 33,
+        "n": 37,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T17:26:43.800Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the narrative",
-        "exampleReason": "Wait and observe for a moment"
+        "lastAt": "2026-08-14T17:27:59.393Z",
+        "exampleGoal": "Interact with the fishing spot to trigger the trap",
+        "exampleReason": "I'm waiting for a smith to wander past to get to the net fishing spot"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,wait,world": {
@@ -13158,14 +13151,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,world": {
       "npc:bait:fishing spot": {
-        "n": 17,
-        "avgReward": -0.7006,
+        "n": 18,
+        "avgReward": -0.695,
         "positive": 0,
-        "negative": 17,
+        "negative": 18,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:27:00.280Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the narrative",
-        "exampleReason": "I need to explore the Bait Fishing spot to find the Net Fishing spot. I'll check the coordinates and see if I can reach it from here."
+        "lastAt": "2026-08-14T17:27:53.390Z",
+        "exampleGoal": "Interact with the fishing spot to trigger the trap",
+        "exampleReason": "I need to explore the bait fishing spot to find the trap."
       },
       "npc:net:fishing spot": {
         "n": 21,
@@ -14764,6 +14757,18 @@
         "lastAt": "2026-08-14T17:09:19.627Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I am ready to explore the safe fishing locations and gather resources for further exploration."
+      }
+    },
+    "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,world": {
+      "npc:net:fishing spot": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:27:40.488Z",
+        "exampleGoal": "Interact with the fishing spot to trigger the trap",
+        "exampleReason": "I need to explore the net fishing spot to find a way out of the bait trap."
       }
     }
   },
@@ -16468,8 +16473,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T17:26:50.095Z",
-      "visits": 646,
+      "lastSeenAt": "2026-08-14T17:27:53.698Z",
+      "visits": 656,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -16737,7 +16742,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T17:27:00.280Z",
+  "updatedAt": "2026-08-14T17:27:59.393Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21149,10 +21154,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 54,
-      "avgReward": -0.884,
+      "n": 56,
+      "avgReward": -0.9,
       "positive": 7,
-      "lastAt": "2026-08-14T17:26:21.000Z",
+      "lastAt": "2026-08-14T17:27:47.086Z",
       "example": "Net Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > pickup:raw anchovies": {
@@ -21197,10 +21202,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 41,
-      "avgReward": -1.289,
+      "n": 42,
+      "avgReward": -1.29,
       "positive": 1,
-      "lastAt": "2026-08-14T17:26:49.786Z",
+      "lastAt": "2026-08-14T17:27:08.989Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21209,10 +21214,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 44,
-      "avgReward": -1.008,
+      "n": 46,
+      "avgReward": -1.023,
       "positive": 5,
-      "lastAt": "2026-08-14T17:26:08.081Z",
+      "lastAt": "2026-08-14T17:27:40.488Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -21365,10 +21370,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 45,
+      "n": 47,
       "avgReward": -1.342,
       "positive": 1,
-      "lastAt": "2026-08-14T17:26:14.987Z",
+      "lastAt": "2026-08-14T17:27:43.817Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -21653,10 +21658,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 30,
-      "avgReward": -1.381,
+      "n": 31,
+      "avgReward": -1.38,
       "positive": 0,
-      "lastAt": "2026-08-14T17:27:00.280Z",
+      "lastAt": "2026-08-14T17:27:53.390Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -21665,10 +21670,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 34,
+      "n": 36,
       "avgReward": -1.353,
       "positive": 0,
-      "lastAt": "2026-08-14T17:26:43.800Z",
+      "lastAt": "2026-08-14T17:27:59.393Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > npc:attack:dark wizard": {
@@ -28179,42 +28184,42 @@
     }
   ],
   "activePlan": {
-    "objective": "Navigate to the Net Fishing spot and complete the task",
-    "focus": "Click Dialog 1: Click here to continue to advance the narrative",
-    "reason": "This plan uses a named repository-tested escape skill (Net Fishing spot) and ensures observable evidence through inventory checks and task completion verification.",
+    "objective": "Escape the fishing spot to avoid the bait trap",
+    "focus": "Interact with the fishing spot to trigger the trap",
+    "reason": "This plan uses a named repository-tested escape skill (Black robe) and ensures observable evidence through spell casting and location movement.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Click Dialog 1: Click here to continue to advance the narrative",
+        "label": "Interact with the fishing spot to trigger the trap",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use the Net Fishing spot (level 0, distance 1) to complete the task",
+        "label": "Use the Black robe to cast a spell to break the trap",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify completion by checking the inventory for raw anchovies and confirming the task is finished",
+        "label": "Walk to the next location to avoid the trap area permanently",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Escape the trap and avoid the bait area."
     ],
     "priorities": [
-      "Click Dialog 1: Click here to continue to advance the narrative",
-      "Use the Net Fishing spot (level 0, distance 1) to complete the task",
-      "Verify completion by checking the inventory for raw anchovies and confirming the task is finished"
+      "Interact with the fishing spot to trigger the trap",
+      "Use the Black robe to cast a spell to break the trap",
+      "Walk to the next location to avoid the trap area permanently"
     ],
     "avoid": [
       "Wait and observe for a moment",
       "Dialog 1: Click here to continue",
-      "Net Fishing spot (level 0, distance 1)"
+      "Bait Fishing spot (level 0, distance 1)"
     ],
-    "updatedAt": "2026-08-14T17:24:07.992Z",
+    "updatedAt": "2026-08-14T17:27:14.872Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
