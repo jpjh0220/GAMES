@@ -6,13 +6,15 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 41,
-    "teacherChoices": 41,
+    "totalChoices": 42,
+    "teacherChoices": 42,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 40,
-    "totalReward": 6.53,
-    "saves": 9
+    "completedExperiences": 41,
+    "totalReward": 7.69,
+    "saves": 10,
+    "shadowPredictions": 0,
+    "shadowMatches": 0
   },
   "memories": [
     {
@@ -102,6 +104,29 @@
       "location": {
         "x": 3128,
         "z": 3355,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssm3w5j-s3yiwe",
+      "createdAt": "2026-08-14T07:15:01.639Z",
+      "tick": 814,
+      "runNumber": 15,
+      "kind": "episode",
+      "text": "AI goal: Explore north about 5 tiles. AI action: Chop down Dead tree (distance 3). Result: moved; new: loc:Wardrobe, loc:Standing torch, loc:Charms, loc:Large door. Reward 1.16.",
+      "importance": 1.28,
+      "tags": [
+        "world",
+        "dead tree",
+        "chop down",
+        "loc wardrobe",
+        "loc standing torch",
+        "loc charms",
+        "loc large door"
+      ],
+      "location": {
+        "x": 3119,
+        "z": 3350,
         "level": 0
       }
     }
@@ -231,6 +256,18 @@
         "lastAt": "2026-08-14T07:08:00.130Z",
         "exampleGoal": "Remain stable while reasoning recovers",
         "exampleReason": "Teacher inference failed: TimeoutError: The operation timed out."
+      }
+    },
+    "hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "loc:chop down:dead tree": {
+        "n": 1,
+        "avgReward": 1.16,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.16,
+        "lastAt": "2026-08-14T07:15:01.639Z",
+        "exampleGoal": "Explore north about 5 tiles",
+        "exampleReason": "To investigate the area and gather information about the surroundings."
       }
     }
   },
@@ -388,8 +425,8 @@
       "z": 3355,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:51:51.415Z",
-      "lastSeenAt": "2026-08-14T07:08:00.416Z",
-      "visits": 21,
+      "lastSeenAt": "2026-08-14T07:14:33.135Z",
+      "visits": 29,
       "npcs": [
         "Tree",
         "Giant spider"
@@ -416,5 +453,5 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T07:08:46.351Z"
+  "updatedAt": "2026-08-14T07:15:01.640Z"
 }
