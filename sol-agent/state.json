@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 210,
-    "teacherChoices": 210,
+    "totalChoices": 220,
+    "teacherChoices": 220,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 210,
-    "totalReward": 23.79,
-    "saves": 22,
+    "completedExperiences": 220,
+    "totalReward": 24.24,
+    "saves": 23,
     "shadowPredictions": 120,
     "shadowMatches": 53,
-    "strategistRefreshes": 11,
+    "strategistRefreshes": 12,
     "strategistFailures": 0
   },
   "memories": [
@@ -740,6 +740,44 @@
         "z": 3234,
         "level": 0
       }
+    },
+    {
+      "id": "mstht8i2-o1n8ul",
+      "createdAt": "2026-08-14T22:02:32.138Z",
+      "tick": 5532,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Close the shop. Result: +2 level(s). Reward 5.4.",
+      "importance": 3.4,
+      "tags": [
+        "modal",
+        "shop"
+      ],
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "msthteil-a55tej",
+      "createdAt": "2026-08-14T22:02:39.933Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Click the shop interface option to close it. This plan uses the `clickInterfaceOption()` action to interact with the shop interface and ensures observable evidence through inventory and failed actions checks. The staff is used to open",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "click the shop interface option to close it",
+        "use the staff to open the shop interface again to ensure it is closed",
+        "verify the shop is closed by checking the inventory and failed actions list for confirmation of escape success"
+      ],
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -1209,14 +1247,82 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
+        "n": 3,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:02:56.101Z",
+        "exampleGoal": "Click the shop interface option to close it",
+        "exampleReason": "Click here to continue"
+      },
+      "dialog:1:toy horseys": {
         "n": 1,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 1,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:01:48.031Z",
+        "lastAt": "2026-08-14T22:01:54.297Z",
         "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Click here to continue"
+        "exampleReason": "I need to continue the dialogue with Oag0azhyi to progress the plan."
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
+      "shop:buy:toy horsey": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:02:19.231Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
+      },
+      "shop:sell:coins": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:02:24.915Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Sell 1 Coins for about 0"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": 5.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 5.4,
+        "lastAt": "2026-08-14T22:02:32.137Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Close the shop"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T22:02:45.904Z",
+        "exampleGoal": "Click the shop interface option to close it",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to initiate the dialogue."
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T22:02:51.006Z",
+        "exampleGoal": "Click the shop interface option to close it",
+        "exampleReason": "waiting for the shop interface to close"
       }
     }
   },
@@ -1224,8 +1330,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T22:01:41.994Z",
-      "encounters": 143,
+      "lastSeenAt": "2026-08-14T22:02:51.334Z",
+      "encounters": 153,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -1408,8 +1514,8 @@
     "orehound": {
       "name": "Orehound",
       "firstSeenAt": "2026-08-14T21:52:50.391Z",
-      "lastSeenAt": "2026-08-14T21:53:00.312Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-14T22:02:25.244Z",
+      "encounters": 5,
       "combatLevel": 113,
       "trust": 0,
       "stance": "unknown",
@@ -1591,13 +1697,15 @@
       "z": 3248,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-14T22:01:41.994Z",
-      "visits": 1,
+      "lastSeenAt": "2026-08-14T22:02:51.334Z",
+      "visits": 11,
       "npcs": [
         "Diango",
         "Banker",
         "Dark wizard",
-        "Aggie"
+        "Aggie",
+        "Ned",
+        "Imp"
       ],
       "locs": [
         "Market stall",
@@ -2617,6 +2725,126 @@
       "positive": 0,
       "lastAt": "2026-08-14T22:01:48.031Z",
       "example": "Talk-to Diango (level 0, distance 15) → Speak publicly; latest message from Oag0azhyi: Smelting steel bars now, right here at al kharid :3 → Dialog 1: Click here to continue"
+    },
+    "social:say > dialog:1:click here to continue > dialog:1:toy horseys": {
+      "sequence": [
+        "social:say",
+        "dialog:1:click here to continue",
+        "dialog:1:toy horseys"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:01:54.297Z",
+      "example": "Speak publicly; latest message from Oag0azhyi: Smelting steel bars now, right here at al kharid :3 → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
+    },
+    "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:toy horseys",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:01:59.728Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
+    },
+    "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
+      "sequence": [
+        "dialog:1:toy horseys",
+        "dialog:1:click here to continue",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:02:06.629Z",
+      "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
+    },
+    "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:coins": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "shop:buy:toy horsey",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:02:12.001Z",
+      "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
+    },
+    "shop:buy:toy horsey > shop:sell:coins > shop:buy:toy horsey": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:coins",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:02:19.232Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150"
+    },
+    "shop:sell:coins > shop:buy:toy horsey > shop:sell:coins": {
+      "sequence": [
+        "shop:sell:coins",
+        "shop:buy:toy horsey",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:02:24.915Z",
+      "example": "Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
+    },
+    "shop:buy:toy horsey > shop:sell:coins > modal:close-shop": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "shop:sell:coins",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": 4.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:02:32.138Z",
+      "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Close the shop"
+    },
+    "shop:sell:coins > modal:close-shop > npc:talk to:diango": {
+      "sequence": [
+        "shop:sell:coins",
+        "modal:close-shop",
+        "npc:talk to:diango"
+      ],
+      "n": 1,
+      "avgReward": 4.2,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:02:45.904Z",
+      "example": "Sell 1 Coins for about 0 → Close the shop → Talk-to Diango (level 0, distance 1)"
+    },
+    "modal:close-shop > npc:talk to:diango > wait": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:talk to:diango",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 4.65,
+      "positive": 1,
+      "lastAt": "2026-08-14T22:02:51.006Z",
+      "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
+    },
+    "npc:talk to:diango > wait > dialog:1:click here to continue": {
+      "sequence": [
+        "npc:talk to:diango",
+        "wait",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T22:02:56.101Z",
+      "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     }
   },
   "discoveries": [
@@ -4443,49 +4671,70 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:ned:192:203:0",
+      "at": "2026-08-14T22:02:06.895Z",
+      "kind": "npc",
+      "text": "Ned observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:imp:192:203:0",
+      "at": "2026-08-14T22:02:51.334Z",
+      "kind": "npc",
+      "text": "Imp observed near 3082, 3248, level 0.",
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-14T22:01:48.031Z",
+  "updatedAt": "2026-08-14T22:02:56.101Z",
   "activePlan": {
-    "objective": "Talk to the NPC to progress the dialogue and avoid failed interactions.",
-    "focus": "Plan complete; form the next objective.",
-    "reason": "This plan uses a named repository-tested escape skill (`talk",
+    "objective": "Escape the shop to avoid being caught by the shopkeeper",
+    "focus": "Click the shop interface option to close it",
+    "reason": "This plan uses the `clickInterfaceOption()` action to interact with the shop interface and ensures observable evidence through inventory and failed actions checks. The staff is used to open",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
-        "status": "done",
-        "evidence": "+1 level(s)"
+        "label": "Click the shop interface option to close it",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Confirm the dialog is open by checking the `failed` list for 'Dialog 1: Click here to continue'.",
-        "status": "done",
-        "evidence": "+1 level(s)"
+        "label": "Use the staff to open the shop interface again to ensure it is closed",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Perform the action `Dialog 1: Click here to continue` to advance the dialogue and avoid failed interactions.",
-        "status": "done",
-        "evidence": "+1330 XP; 10 damage dealt; moved 3087,3227 → 3085,3234; execution rejected or failed"
+        "label": "Verify the shop is closed by checking the inventory and failed actions list for confirmation of escape success",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use `talkTo` to interact with the NPC and wait for the dialog to open.",
-      "Confirm the dialog is open by checking the `failed` list for 'Dialog 1: Click here to continue'.",
-      "Perform the action `Dialog 1: Click here to continue` to advance the dialogue and avoid failed interactions."
+      "Click the shop interface option to close it",
+      "Use the staff to open the shop interface again to ensure it is closed",
+      "Verify the shop is closed by checking the inventory and failed actions list for confirmation of escape success"
     ],
     "avoid": [
-      "Net Fishing spot (level 0, distance 1)",
-      "Dialog 1: Click here to continue",
-      "Wait and observe for a moment"
+      "Sell 1 Coins for about 0",
+      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Coins for about 0"
     ],
-    "updatedAt": "2026-08-14T21:59:59.588Z",
+    "updatedAt": "2026-08-14T22:02:39.933Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
