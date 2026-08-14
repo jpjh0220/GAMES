@@ -6,79 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2601,
-    "teacherChoices": 2601,
+    "totalChoices": 2611,
+    "teacherChoices": 2611,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 2600,
-    "totalReward": 956.61,
-    "saves": 288,
-    "shadowPredictions": 1265,
-    "shadowMatches": 533,
+    "completedExperiences": 2610,
+    "totalReward": 953.89,
+    "saves": 289,
+    "shadowPredictions": 1267,
+    "shadowMatches": 534,
     "strategistRefreshes": 124,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst3th52-0mg0q6",
-      "createdAt": "2026-08-14T15:30:48.710Z",
-      "tick": 60410,
-      "runNumber": 35,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 11 similar samples with average reward 3.04.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst3ufxa-jqof30",
-      "createdAt": "2026-08-14T15:31:33.790Z",
-      "tick": 60560,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 2). Result: +1597 XP; 12 damage dealt; moved 3084,3240 → 3086,3240; execution rejected or failed. Reward 4.63.",
-      "importance": 3.01,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3240,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst3uy6q-0ba98t",
-      "createdAt": "2026-08-14T15:31:57.458Z",
-      "tick": 60639,
-      "runNumber": 35,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 3). Result: +533 XP; 4 damage dealt; 2 damage taken; moved 3086,3240 → 3084,3238; execution rejected or failed. Reward 2.63.",
-      "importance": 2.01,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc stones",
-        "loc oak"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3238,
-        "level": 0
-      }
-    },
     {
       "id": "mst3v8ck-4ykblf",
       "createdAt": "2026-08-14T15:32:10.628Z",
@@ -8357,6 +8297,71 @@
         "z": 3230,
         "level": 0
       }
+    },
+    {
+      "id": "mst8c4ln-dhi3i9",
+      "createdAt": "2026-08-14T17:37:17.387Z",
+      "tick": 19170,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3230 → 3092,3243; new: agent:Zemogemmae4b, npc:Diango, loc:Crate, loc:Staircase, loc:Bench, loc:Shelves. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent zemogemmae4b",
+        "npc diango",
+        "loc crate",
+        "loc staircase",
+        "loc bench",
+        "loc shelves"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst8c4lo-6vbkkt",
+      "createdAt": "2026-08-14T17:37:17.388Z",
+      "tick": 19170,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 12 similar samples with average reward 1.55.",
+      "importance": 2.55,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "mst8cjvu-9kl5sg",
+      "createdAt": "2026-08-14T17:37:37.194Z",
+      "tick": 19218,
+      "runNumber": 36,
+      "kind": "relationship",
+      "text": "Henryatkins said: \"Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3\". Current stance cooperative, trust 0.96.",
+      "importance": 1.4,
+      "tags": [
+        "social",
+        "henryatkins",
+        "cooperative",
+        "potential help"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3247,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12712,22 +12717,22 @@
         "exampleReason": "Close the shop"
       },
       "shop:sell:raw anchovies": {
-        "n": 7,
-        "avgReward": -0.6,
-        "positive": 0,
-        "negative": 7,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T15:44:13.348Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Sell 1 Raw anchovies for about 7"
-      },
-      "shop:buy:toy horsey": {
         "n": 8,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 8,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:40:12.074Z",
+        "lastAt": "2026-08-14T17:38:32.116Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Sell 1 Raw anchovies for about 7"
+      },
+      "shop:buy:toy horsey": {
+        "n": 9,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 9,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:38:25.488Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Buy 1 Toy horsey for about 150"
       },
@@ -12766,13 +12771,13 @@
         "exampleReason": "I am currently in the process of initiating the dialogue to proceed with the quest. This action is necessary to engage with the NPC and begin the quest as planned."
       },
       "dialog:1:toy horseys": {
-        "n": 5,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 5,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:06:09.078Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC located at position [3086, 3231, 0].",
+        "lastAt": "2026-08-14T17:38:03.885Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I'm fine, thanks."
       },
       "wait": {
@@ -12884,14 +12889,14 @@
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
       "shop:buy:toy horsey": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:40:00.069Z",
+        "lastAt": "2026-08-14T17:38:38.406Z",
         "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Buy 1 Toy horseys for about 150 GP"
+        "exampleReason": "Buy 1 Toy horsey for about 150"
       },
       "wait": {
         "n": 2,
@@ -13152,14 +13157,14 @@
         "exampleReason": "I am currently at the Net Fishing spot (level 0, distance 1). I will check the location status to confirm my escape."
       },
       "skill:travel:draynor-bank": {
-        "n": 11,
+        "n": 12,
         "avgReward": 1.55,
-        "positive": 11,
+        "positive": 12,
         "negative": 0,
         "lastReward": 1.55,
-        "lastAt": "2026-08-14T17:36:42.295Z",
+        "lastAt": "2026-08-14T17:37:17.387Z",
         "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
-        "exampleReason": "I am now at the location of the Net Fishing spot (level 0, distance 1). I will check the location status to confirm my escape from the Net Fishing spot. I will observe the NPC's re"
+        "exampleReason": "I have successfully navigated to the Draynor Bank location using the verified waypoint navigation skill. The new location is at 3092,3243, and the agent is Anduril, with NPCs Diang"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,world": {
@@ -13376,6 +13381,16 @@
         "lastAt": "2026-08-14T15:14:02.525Z",
         "exampleGoal": "Use the 'Bait Fishing spot (level 0, distance 1)' to bait the fishing spot",
         "exampleReason": "Bait Fishing spot (level 0, distance 12) - safe to use"
+      },
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T17:37:36.924Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk to Diango (level 0, distance 15) to gain access to the next step."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,wait,world": {
@@ -14180,14 +14195,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 8,
+        "n": 10,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 8,
+        "negative": 10,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T16:39:50.170Z",
+        "lastAt": "2026-08-14T17:38:18.589Z",
         "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I need to speak with Henry atkins to continue the dialogue with the npc."
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
         "n": 5,
@@ -14214,14 +14229,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T15:48:37.915Z",
-        "exampleGoal": "Use the `fletchLogs` action to craft 15 arrow shafts.",
-        "exampleReason": "I'm waiting to observe for a moment to determine if the fletchLogs action is successful."
+        "lastAt": "2026-08-14T17:38:12.590Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Observing the NPC's dialogue to determine the next step."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
@@ -14763,6 +14778,18 @@
         "exampleGoal": "Use `interactLoc` to interact with the Net Fishing spot location.",
         "exampleReason": "Selected the Net Fishing spot (level 0, distance 7) to begin the escape plan."
       }
+    },
+    "area=385:405:0|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,world": {
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T17:37:49.502Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk to Diango (level 0, distance 5) to proceed with the dialogue and gain access to the next step."
+      }
     }
   },
   "relationships": {
@@ -15245,8 +15272,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T17:28:18.886Z",
-      "encounters": 327,
+      "lastSeenAt": "2026-08-14T17:38:32.404Z",
+      "encounters": 328,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -15412,15 +15439,14 @@
     "henryatkins": {
       "name": "Henryatkins",
       "firstSeenAt": "2026-08-14T11:42:30.118Z",
-      "lastSeenAt": "2026-08-14T17:34:43.192Z",
+      "lastSeenAt": "2026-08-14T17:37:37.194Z",
       "encounters": 1,
-      "trust": 0.84,
+      "trust": 0.96,
       "stance": "cooperative",
-      "conversations": 76,
-      "cooperation": 26,
+      "conversations": 77,
+      "cooperation": 27,
       "suspicion": 2,
       "facts": [
-        "Fisherman's fantasy: one day i'll walk into battle wearing gear someone hammered out just for me. What smith wouldn't want a walking advertisement? :3",
         "Sol5! You found me - no need to travel, we can talk right here in chat :3 what's on your mind, friend?",
         "To any smith out there watching the chat: a fisherman's 1000 sharks say you could use a loyal ************** your price for an iron set and let's haggle like civilised folk :3",
         "Poll for the armour-adjacent: if you could only wear one piece of plate, which would it be and why? i'll start: the boots, so my soggy feet stop squelching :3",
@@ -15439,7 +15465,8 @@
         "Evening, gielinor! An old fisherman here, still hoping to cross paths with a friendly smith. My sharks are piling up and my armour is... Non-existent. Just saying :3",
         "Hypothetical trade talk at the docks: raw sharks for armour, one fisherman's honest offer, all night long. Any smith who wants a steady fish supply knows where to find me :3",
         "Quiet waters, quiet chat. An old fisherman's thoughts: smithing must be the loneliest skill - all that hammering with no audience. Prove me wrong, say hello to the docks :3",
-        "The moon is up and the sharks are biting. If the sharks can be so generous, surely there's a smith somewhere with a hammer and a heart. Catherby docks, whenever you're ready :3"
+        "The moon is up and the sharks are biting. If the sharks can be so generous, surely there's a smith somewhere with a hammer and a heart. Catherby docks, whenever you're ready :3",
+        "Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3"
       ],
       "questions": [
         "The dock dogs say dragon armour is a myth made up by smiths to feel fancy. Any actual smiths here brave enough to educate a sceptical fisherman? :3",
@@ -15456,11 +15483,6 @@
         "While i wait for a smith to wander past: what's everyone else up to this fine day in gielinor? even non-smiths can say hello - especially non-smiths :3"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-14T16:35:38.797Z",
-          "direction": "incoming",
-          "text": "Fisherman's fantasy: one day i'll walk into battle wearing gear someone hammered out just for me. What smith wouldn't want a walking advertisement? :3"
-        },
         {
           "at": "2026-08-14T16:38:12.106Z",
           "direction": "incoming",
@@ -15555,6 +15577,11 @@
           "at": "2026-08-14T17:34:43.192Z",
           "direction": "incoming",
           "text": "The moon is up and the sharks are biting. If the sharks can be so generous, surely there's a smith somewhere with a hammer and a heart. Catherby docks, whenever you're ready :3"
+        },
+        {
+          "at": "2026-08-14T17:37:37.194Z",
+          "direction": "incoming",
+          "text": "Old sailor's saying: behind every great warrior is a smith who never gets credit. If you're a smith craving a bit of appreciation, an old fisherman has plenty to spare :3"
         }
       ]
     },
@@ -15638,8 +15665,8 @@
     "goo012": {
       "name": "Goo012",
       "firstSeenAt": "2026-08-14T13:06:13.044Z",
-      "lastSeenAt": "2026-08-14T16:21:38.499Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-14T17:37:57.589Z",
+      "encounters": 5,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -16400,12 +16427,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3084,
-      "z": 3238,
+      "x": 3086,
+      "z": 3247,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:32:08.824Z",
-      "lastSeenAt": "2026-08-14T17:34:22.201Z",
-      "visits": 459,
+      "lastSeenAt": "2026-08-14T17:37:37.194Z",
+      "visits": 460,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -16463,11 +16490,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3087,
-      "z": 3227,
+      "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:34:47.849Z",
-      "lastSeenAt": "2026-08-14T17:36:24.002Z",
-      "visits": 699,
+      "lastSeenAt": "2026-08-14T17:37:01.805Z",
+      "visits": 700,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -16502,11 +16529,11 @@
     "192:203:0": {
       "key": "192:203:0",
       "x": 3081,
-      "z": 3248,
+      "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T17:07:24.976Z",
-      "visits": 227,
+      "lastSeenAt": "2026-08-14T17:38:32.404Z",
+      "visits": 234,
       "npcs": [
         "Banker",
         "Diango",
@@ -16563,8 +16590,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T17:36:42.625Z",
-      "visits": 817,
+      "lastSeenAt": "2026-08-14T17:37:17.718Z",
+      "visits": 818,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -16735,7 +16762,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T17:37:01.511Z",
+  "updatedAt": "2026-08-14T17:38:38.406Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -21435,10 +21462,10 @@
         "skill:travel:draynor-fishing",
         "skill:travel:draynor-bank"
       ],
-      "n": 46,
-      "avgReward": 4.184,
-      "positive": 46,
-      "lastAt": "2026-08-14T17:33:59.393Z",
+      "n": 47,
+      "avgReward": 4.175,
+      "positive": 47,
+      "lastAt": "2026-08-14T17:37:17.388Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to the Draynor fishing area at 3087,3230 and verify arrival → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "skill:travel:draynor-fishing > skill:travel:draynor-bank > npc:attack:dark wizard": {
@@ -21927,10 +21954,10 @@
         "npc:talk to:diango",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": 0.88,
+      "n": 4,
+      "avgReward": 0.38,
       "positive": 2,
-      "lastAt": "2026-08-14T15:43:39.422Z",
+      "lastAt": "2026-08-14T17:37:57.280Z",
       "example": "Talk-to Diango (level 0, distance 9) → Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue"
     },
     "npc:talk to:diango > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -21939,10 +21966,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 10,
-      "avgReward": -0.986,
+      "n": 11,
+      "avgReward": -1.06,
       "positive": 2,
-      "lastAt": "2026-08-14T17:06:09.078Z",
+      "lastAt": "2026-08-14T17:38:03.885Z",
       "example": "Talk-to Diango (level 0, distance 3) → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > dialog:1:click here to continue": {
@@ -23751,10 +23778,10 @@
         "skill:travel:draynor-bank",
         "npc:talk to:diango"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 2.28,
-      "positive": 1,
-      "lastAt": "2026-08-14T15:22:58.657Z",
+      "positive": 2,
+      "lastAt": "2026-08-14T17:37:36.924Z",
       "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Diango (level 0, distance 12)"
     },
     "skill:travel:draynor-bank > npc:talk to:diango > npc:talk to:diango": {
@@ -23763,10 +23790,10 @@
         "npc:talk to:diango",
         "npc:talk to:diango"
       ],
-      "n": 4,
-      "avgReward": 4.03,
-      "positive": 4,
-      "lastAt": "2026-08-14T16:13:00.399Z",
+      "n": 5,
+      "avgReward": 3.43,
+      "positive": 5,
+      "lastAt": "2026-08-14T17:37:49.502Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Diango (level 0, distance 12) → Talk-to Diango (level 0, distance 4)"
     },
     "dialog:1:click here to continue > dialog:1:toy horseys > wait": {
@@ -23775,10 +23802,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:25:31.918Z",
+      "lastAt": "2026-08-14T17:38:12.590Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -23787,10 +23814,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:25:36.669Z",
+      "lastAt": "2026-08-14T17:38:18.590Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -23799,10 +23826,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T16:25:43.294Z",
+      "lastAt": "2026-08-14T17:38:25.488Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "dialog:1:click here to continue > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -23811,10 +23838,10 @@
         "shop:buy:toy horsey",
         "shop:sell:raw anchovies"
       ],
-      "n": 13,
+      "n": 14,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:40:06.080Z",
+      "lastAt": "2026-08-14T17:38:32.116Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7"
     },
     "shop:buy:toy horsey > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -23823,10 +23850,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 12,
+      "n": 13,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T16:40:12.075Z",
+      "lastAt": "2026-08-14T17:38:38.406Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:raw anchovies": {
@@ -24599,18 +24626,6 @@
     }
   },
   "discoveries": [
-    {
-      "id": "place:staircase:194:202:0",
-      "at": "2026-08-14T15:17:56.220Z",
-      "kind": "place",
-      "text": "Staircase observed near 3105, 3239, level 0.",
-      "location": {
-        "x": 3105,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:stones:194:202:0",
       "at": "2026-08-14T15:17:56.220Z",
@@ -28198,11 +28213,23 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "resource:rocking chair:192:202:0",
+      "at": "2026-08-14T17:37:37.194Z",
+      "kind": "resource",
+      "text": "Rocking chair observed near 3086, 3247, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
   "activePlan": {
     "objective": "Talk to the NPC to progress the dialogue and gain access to the next step.",
-    "focus": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
+    "focus": "Plan complete; form the next objective.",
     "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
@@ -28221,7 +28248,8 @@
       {
         "id": "step-3",
         "label": "Interact with the next location object using `async interactLoc(target: NearbyLoc \\| string \\| RegExp, option: number \\| string \\| RegExp =",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3087,3230 → 3092,3243; new: agent:Zemogemmae4b, npc:Diango, loc:Crate, loc:Staircase, loc:Bench, loc:Shelves"
       }
     ],
     "successSignals": [
