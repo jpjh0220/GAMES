@@ -6,16 +6,16 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 760,
-    "teacherChoices": 760,
+    "totalChoices": 770,
+    "teacherChoices": 770,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 760,
-    "totalReward": 241.67,
-    "saves": 77,
-    "shadowPredictions": 285,
+    "completedExperiences": 770,
+    "totalReward": 237.7,
+    "saves": 78,
+    "shadowPredictions": 288,
     "shadowMatches": 114,
-    "strategistRefreshes": 41,
+    "strategistRefreshes": 42,
     "strategistFailures": 1
   },
   "memories": [
@@ -6802,6 +6802,86 @@
         "z": 3230,
         "level": 0
       }
+    },
+    {
+      "id": "mstlshu5-km37bj",
+      "createdAt": "2026-08-14T23:53:56.045Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Navigate to Draynor Village using the 'Travel' skill.. This plan uses a named repository-tested escape and travel",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "navigate to draynor village using the travel skill",
+        "use the escape skill to access the safe fishing location at 3087 3230",
+        "cast a net and bait using the fishing skill to catch shrimp anchovies"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstlstqx-u9su1f",
+      "createdAt": "2026-08-14T23:54:11.481Z",
+      "tick": 27863,
+      "runNumber": 37,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Market time hehe, dont mind me w\". Current stance cooperative, trust 0.72.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3227,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstlt1bk-z79odl",
+      "createdAt": "2026-08-14T23:54:21.296Z",
+      "tick": 27896,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Net Fishing spot (level 0, distance 3). Result: moved 3087,3227 → 3086,3230. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "npc",
+        "fishing spot",
+        "net",
+        "level 0",
+        "agent scrappydoo",
+        "loc closed bank booth"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstlt5qq-sm40ao",
+      "createdAt": "2026-08-14T23:54:27.026Z",
+      "tick": 27899,
+      "runNumber": 37,
+      "kind": "relationship",
+      "text": "Oag0azhyi said: \"Oi the guard's on me!! Fine, square up then :3\". Current stance cooperative, trust 0.72.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "oag0azhyi",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -7205,23 +7285,23 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 106,
-        "avgReward": -0.2036,
+        "n": 110,
+        "avgReward": -0.218,
         "positive": 13,
-        "negative": 93,
+        "negative": 97,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:53:06.002Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "lastAt": "2026-08-14T23:54:32.142Z",
+        "exampleGoal": "Navigate to Draynor Village using the 'Travel' skill.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
-        "n": 17,
+        "n": 20,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T23:53:20.104Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "lastAt": "2026-08-14T23:54:26.698Z",
+        "exampleGoal": "Navigate to Draynor Village using the 'Travel' skill.",
         "exampleReason": "Wait and observe for a moment"
       }
     },
@@ -9103,23 +9183,23 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,world": {
       "npc:net:fishing spot": {
-        "n": 6,
-        "avgReward": -0.6767,
+        "n": 8,
+        "avgReward": -0.5725,
         "positive": 0,
-        "negative": 5,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-14T23:52:54.325Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "I'm looking for a net fishing spot in Draynor Village. The current spot is at (3087, 3228) with a level of 116. I'll check if there are any other spots nearby or if I need to move "
+        "negative": 6,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-14T23:54:21.296Z",
+        "exampleGoal": "Navigate to Draynor Village using the 'Travel' skill.",
+        "exampleReason": "I'm using the 'NPC' skill to explore the net fishing spot (level 0, distance 1) as it's a direct and safe location for level 1 fishing."
       },
       "npc:bait:fishing spot": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:53:15.619Z",
-        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "lastAt": "2026-08-14T23:53:59.722Z",
+        "exampleGoal": "Navigate to Draynor Village using the 'Travel' skill.",
         "exampleReason": "Bait Fishing spot (level 0, distance 1) to ensure"
       },
       "skill:travel:draynor-bank": {
@@ -9240,8 +9320,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-14T23:52:23.422Z",
-      "encounters": 361,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "encounters": 363,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -9326,8 +9406,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:53:15.907Z",
-      "encounters": 653,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "encounters": 663,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -9442,8 +9522,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-14T23:53:15.907Z",
-      "encounters": 653,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "encounters": 663,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -9558,8 +9638,8 @@
     "goo021": {
       "name": "Goo021",
       "firstSeenAt": "2026-08-14T21:35:39.315Z",
-      "lastSeenAt": "2026-08-14T23:33:17.732Z",
-      "encounters": 13,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "encounters": 14,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -9603,8 +9683,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-14T23:53:15.907Z",
-      "encounters": 525,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "encounters": 535,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -9749,16 +9829,15 @@
     "oag0azhyi": {
       "name": "Oag0azhyi",
       "firstSeenAt": "2026-08-14T21:58:27.912Z",
-      "lastSeenAt": "2026-08-14T23:52:23.422Z",
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
       "encounters": 2,
       "combatLevel": 65,
       "trust": 0.72,
       "stance": "cooperative",
-      "conversations": 36,
+      "conversations": 38,
       "cooperation": 6,
       "suspicion": 0,
       "facts": [
-        "Thieving grind, wish me luck w",
         "3Gp for me :3 shhh dont tell him",
         "Owie w he grabbed my wrist, rude!",
         "Aa he caught me!! Im so sorry sir w",
@@ -9777,7 +9856,8 @@
         "Eep! Busted at the stall, walking away casually :3",
         "Heyy henry!! Im over in ardougne robbing the market stalls hehe :3",
         "Trusty im good ty, i dont hand my gp to strangers w no offence!",
-        "Got a fur the trader's still looking the other way hehe"
+        "Got a fur the trader's still looking the other way hehe",
+        "Oi the guard's on me!! Fine, square up then :3"
       ],
       "questions": [
         "Heya!! Im pickpocketing around lumbridge rn :3 wbu?",
@@ -9785,16 +9865,6 @@
         "Heya!! Im robbing the ardougne market stalls rn :3 wbu?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-14T23:27:31.228Z",
-          "direction": "incoming",
-          "text": "Owie w he grabbed my wrist, rude!"
-        },
-        {
-          "at": "2026-08-14T23:28:16.228Z",
-          "direction": "incoming",
-          "text": "Ow ow ok ok i wasnt doing anything :3"
-        },
         {
           "at": "2026-08-14T23:30:04.507Z",
           "direction": "incoming",
@@ -9884,6 +9954,16 @@
           "at": "2026-08-14T23:52:23.422Z",
           "direction": "incoming",
           "text": "Got a fur the trader's still looking the other way hehe"
+        },
+        {
+          "at": "2026-08-14T23:54:11.481Z",
+          "direction": "incoming",
+          "text": "Market time hehe, dont mind me w"
+        },
+        {
+          "at": "2026-08-14T23:54:27.026Z",
+          "direction": "incoming",
+          "text": "Oi the guard's on me!! Fine, square up then :3"
         }
       ]
     },
@@ -10595,12 +10675,12 @@
     },
     "192:201:0": {
       "key": "192:201:0",
-      "x": 3087,
-      "z": 3227,
+      "x": 3086,
+      "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-14T23:53:15.907Z",
-      "visits": 301,
+      "lastSeenAt": "2026-08-14T23:54:27.026Z",
+      "visits": 311,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -11624,10 +11704,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 22,
-      "avgReward": -1.366,
+      "n": 24,
+      "avgReward": -1.336,
       "positive": 0,
-      "lastAt": "2026-08-14T23:53:00.331Z",
+      "lastAt": "2026-08-14T23:54:26.698Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 2) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > wait > dialog:1:click here to continue": {
@@ -11636,10 +11716,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 27,
-      "avgReward": -1.09,
+      "n": 29,
+      "avgReward": -1.084,
       "positive": 3,
-      "lastAt": "2026-08-14T23:53:06.002Z",
+      "lastAt": "2026-08-14T23:54:32.143Z",
       "example": "Net Fishing spot (level 0, distance 2) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -11648,10 +11728,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 21,
-      "avgReward": -1.113,
+      "n": 23,
+      "avgReward": -1.104,
       "positive": 2,
-      "lastAt": "2026-08-14T23:52:54.325Z",
+      "lastAt": "2026-08-14T23:54:21.297Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -12536,10 +12616,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 24,
-      "avgReward": -1.327,
+      "n": 26,
+      "avgReward": -1.329,
       "positive": 0,
-      "lastAt": "2026-08-14T23:48:57.642Z",
+      "lastAt": "2026-08-14T23:54:11.107Z",
       "example": "Bait Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -12548,10 +12628,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 15,
-      "avgReward": -1.464,
+      "n": 16,
+      "avgReward": -1.457,
       "positive": 0,
-      "lastAt": "2026-08-14T23:53:15.619Z",
+      "lastAt": "2026-08-14T23:53:59.722Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -12560,10 +12640,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 20,
-      "avgReward": -1.492,
+      "n": 21,
+      "avgReward": -1.485,
       "positive": 0,
-      "lastAt": "2026-08-14T23:53:20.105Z",
+      "lastAt": "2026-08-14T23:54:05.721Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -13852,18 +13932,6 @@
     }
   },
   "discoveries": [
-    {
-      "id": "place:shelves:192:203:0",
-      "at": "2026-08-14T22:01:41.994Z",
-      "kind": "place",
-      "text": "Shelves observed near 3082, 3248, level 0.",
-      "location": {
-        "x": 3082,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:plant:192:203:0",
       "at": "2026-08-14T22:01:41.994Z",
@@ -17451,48 +17519,58 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3227:3086:3230:0",
+      "at": "2026-08-14T23:54:21.297Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3227 → 3086,3230; moved 3087,3227 → 3086,3230",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-14T23:53:20.105Z",
+  "updatedAt": "2026-08-14T23:54:32.143Z",
   "activePlan": {
-    "objective": "Find safe fishing locations in Draynor Village and use them for level 1 fishing.",
-    "focus": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-    "reason": "Execute the current prerequisite and verify it.",
-    "risk": "high",
+    "objective": "Find and use a safe fishing location for level 1 in Draynor Village.",
+    "focus": "Navigate to Draynor Village using the 'Travel' skill.",
+    "reason": "This plan uses a named repository-tested escape and travel",
+    "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "status": "done",
-        "evidence": "moved 3084,3236 → 3092,3243; new: npc:Ned, npc:Jail guard, loc:Oak, loc:Bench, loc:Shelves, loc:Cooking shelves"
+        "label": "Navigate to Draynor Village using the 'Travel' skill.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the safe fishing spot at (3087, 3230) and verify it is a Net/Bait spot.",
-        "status": "done",
-        "evidence": "moved 3092,3243 → 3087,3230; new: agent:Un5wc8p3r, agent:Yr8wc2n6q, agent:Gpgather1, npc:Black Knight, loc:Bullrushes, loc:Stones"
+        "label": "Use the 'Escape' skill to access the safe fishing location at (3087, 3230).",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Bait Fishing spot (level 0, distance 6) to ensure",
-        "status": "active"
+        "label": "Cast a net and bait using the 'Fishing' skill to catch Shrimp/anchovies.",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-      "Explore north about 5 tiles to locate the safe fishing spot at (3087, 3230) and verify it is a Net/Bait spot.",
-      "Bait Fishing spot (level 0, distance 6) to ensure"
+      "Navigate to Draynor Village using the 'Travel' skill.",
+      "Use the 'Escape' skill to access the safe fishing location at (3087, 3230).",
+      "Cast a net and bait using the 'Fishing' skill to catch Shrimp/anchovies."
     ],
     "avoid": [
+      "Dialog 1: Click here to continue",
       "Net Fishing spot (level 0, distance 1)",
-      "Wait and observe for a moment",
-      "Dialog 1: Click here to continue"
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-14T23:51:06.397Z",
+    "updatedAt": "2026-08-14T23:53:56.045Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
