@@ -6,55 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3191,
-    "teacherChoices": 3191,
+    "totalChoices": 3201,
+    "teacherChoices": 3201,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 3190,
-    "totalReward": 1400.13,
-    "saves": 347,
+    "completedExperiences": 3200,
+    "totalReward": 1396.78,
+    "saves": 348,
     "shadowPredictions": 1601,
     "shadowMatches": 678,
-    "strategistRefreshes": 155,
+    "strategistRefreshes": 156,
     "strategistFailures": 151
   },
   "memories": [
-    {
-      "id": "mst8rfzv-sgn0bw",
-      "createdAt": "2026-08-14T17:49:11.995Z",
-      "tick": 21552,
-      "runNumber": 36,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 4 similar samples with average reward 3.28.",
-      "importance": 4,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mst8rqne-5o92b6",
-      "createdAt": "2026-08-14T17:49:25.802Z",
-      "tick": 21598,
-      "runNumber": 36,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 48 similar samples with average reward 2.77.",
-      "importance": 3.77,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mst8s8x2-v84q6j",
       "createdAt": "2026-08-14T17:49:49.478Z",
@@ -8448,6 +8412,52 @@
         "z": 3248,
         "level": 0
       }
+    },
+    {
+      "id": "mstd3wid-w2tv6f",
+      "createdAt": "2026-08-14T19:50:51.733Z",
+      "tick": 0,
+      "runNumber": 36,
+      "kind": "strategy",
+      "text": "AI strategist: Sell 1 Raw anchovies for about 7 GP. This strategy leverages the value of raw anchovies and the cost of toys to maximize profit, while avoiding the loss from the general store's low price for anchovies.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "sell 1 raw anchovies for about 7 gp",
+        "buy 1 toy horsey for about 150 gp",
+        "close the shop to avoid further losses and focus on profitable trades"
+      ],
+      "location": {
+        "x": 3082,
+        "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstd45vp-aucn1n",
+      "createdAt": "2026-08-14T19:51:03.877Z",
+      "tick": 45925,
+      "runNumber": 36,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3082,3248 → 3092,3243; new: npc:Fishing spot, loc:Bush, loc:Tree stump, loc:Boulder, loc:Pile of rope. Reward 1.15.",
+      "importance": 1.27,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc fishing spot",
+        "loc bush",
+        "loc tree stump",
+        "loc boulder",
+        "loc pile of rope"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -13049,13 +13059,13 @@
         "exampleReason": "Buy 1 Toy horsey for about 150"
       },
       "shop:sell:coins": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T12:59:31.621Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the dialogue",
+        "lastAt": "2026-08-14T19:50:16.490Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Sell 1 Coins for about 0"
       },
       "shop:sell:raw anchovies": {
@@ -13103,14 +13113,14 @@
         "exampleReason": "Talk to Diango (level 0, distance 1) to gather resources for crafting arrow shafts."
       },
       "npc:trade:diango": {
-        "n": 4,
-        "avgReward": -0.7425,
+        "n": 5,
+        "avgReward": -0.714,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T19:49:40.187Z",
+        "lastAt": "2026-08-14T19:50:00.288Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "Talk-to Diango (level 0, distance 1) to start exploring the Draynor area."
+        "exampleReason": "I will talk to Diango (level 0, distance 1) to gather resources."
       },
       "skill:travel:draynor-fishing": {
         "n": 1,
@@ -15093,14 +15103,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
       "shop:buy:toy horsey": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T17:41:18.279Z",
-        "exampleGoal": "Use `fletchLogs` to craft arrow shafts with the first product offered",
-        "exampleReason": "I have selected the first action, which is to buy a Toy horsey for 150. This action is the first step in crafting arrow shafts, which is necessary to progress in the game."
+        "lastAt": "2026-08-14T19:50:43.800Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Shop for a Toy Horsey"
       },
       "shop:sell:raw anchovies": {
         "n": 2,
@@ -15115,14 +15125,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal": {
       "modal:close-shop": {
-        "n": 1,
-        "avgReward": 5.4,
+        "n": 2,
+        "avgReward": 2.4,
         "positive": 1,
-        "negative": 0,
-        "lastReward": 5.4,
-        "lastAt": "2026-08-14T17:07:01.605Z",
-        "exampleGoal": "Use `talkTo` to interact with the NPC located at position [3086, 3231, 0].",
-        "exampleReason": "You can't sell this item to this shop."
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T19:50:50.387Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Close the shop"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
@@ -15135,6 +15145,16 @@
         "lastAt": "2026-08-14T17:07:24.682Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I have completed the plan to speak publicly with Henryatkins. The next step is to explore the area around 5 tiles to gather more information. I will now proceed to explore the area"
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.15,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.15,
+        "lastAt": "2026-08-14T19:51:03.877Z",
+        "exampleGoal": "Sell 1 Raw anchovies for about 7 GP",
+        "exampleReason": "I am using the 'navigation-skill' to travel to the verified waypoint at Draynor Bank at 3092,3243, which is a verified location in the game. This action is necessary to proceed wit"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,world": {
@@ -15509,6 +15529,64 @@
         "lastAt": "2026-08-14T19:27:41.675Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I'm preparing to travel to Draynor Bank at 3092,3243 using verified waypoint navigation. This action will help me navigate to the correct location and gather resources more efficie"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=wait": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T19:50:04.786Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Observing the environment to gather resources in the Draynor area"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=shop": {
+      "shop:buy:toy horsey": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T19:50:10.790Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Buy 1 Toy horsey for about 150 GP"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-14T19:50:22.792Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "I'm waiting to observe for a moment to gather more information about the Draynor Bank's offerings."
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=shop": {
+      "shop:sell:coins": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T19:50:28.802Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Sell 1 Coins for about 0"
+      },
+      "shop:sell:raw anchovies": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T19:50:35.398Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Sell 1 Raw anchovies for about 7"
       }
     }
   },
@@ -16093,8 +16171,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T10:36:17.254Z",
-      "lastSeenAt": "2026-08-14T19:47:22.193Z",
-      "encounters": 403,
+      "lastSeenAt": "2026-08-14T19:50:50.685Z",
+      "encounters": 409,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -17410,8 +17488,8 @@
       "z": 3248,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:33.415Z",
-      "lastSeenAt": "2026-08-14T19:49:46.188Z",
-      "visits": 292,
+      "lastSeenAt": "2026-08-14T19:50:50.685Z",
+      "visits": 302,
       "npcs": [
         "Banker",
         "Diango",
@@ -17679,7 +17757,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T19:49:50.703Z",
+  "updatedAt": "2026-08-14T19:51:03.878Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -23039,10 +23117,10 @@
         "shop:sell:coins",
         "wait"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T12:38:16.058Z",
+      "lastAt": "2026-08-14T19:50:22.792Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Wait and observe for a moment"
     },
     "shop:sell:coins > wait > shop:buy:toy horsey": {
@@ -23063,10 +23141,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T12:38:06.442Z",
+      "lastAt": "2026-08-14T19:50:16.490Z",
       "example": "Wait and observe for a moment → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:sell:coins > wait > shop:sell:bones": {
@@ -23291,10 +23369,10 @@
         "shop:sell:raw anchovies",
         "shop:buy:toy horsey"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T13:00:52.060Z",
+      "lastAt": "2026-08-14T19:50:43.800Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:raw anchovies > shop:buy:toy horsey > shop:sell:coins": {
@@ -25547,10 +25625,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-14T19:49:40.187Z",
+      "lastAt": "2026-08-14T19:50:00.288Z",
       "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "shop:sell:raw anchovies > wait > modal:close-shop": {
@@ -26176,6 +26254,78 @@
       "positive": 0,
       "lastAt": "2026-08-14T19:49:50.703Z",
       "example": "Trade Diango (level 0, distance 1) → Sell 1 Raw anchovies for about 7 → Close the shop"
+    },
+    "modal:close-shop > npc:trade:diango > wait": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:trade:diango",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:50:04.786Z",
+      "example": "Close the shop → Trade Diango (level 0, distance 1) → Wait and observe for a moment"
+    },
+    "npc:trade:diango > wait > shop:buy:toy horsey": {
+      "sequence": [
+        "npc:trade:diango",
+        "wait",
+        "shop:buy:toy horsey"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:50:10.790Z",
+      "example": "Trade Diango (level 0, distance 1) → Wait and observe for a moment → Buy 1 Toy horsey for about 150"
+    },
+    "shop:sell:coins > wait > shop:sell:coins": {
+      "sequence": [
+        "shop:sell:coins",
+        "wait",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:50:28.803Z",
+      "example": "Sell 1 Coins for about 0 → Wait and observe for a moment → Sell 1 Coins for about 0"
+    },
+    "wait > shop:sell:coins > shop:sell:raw anchovies": {
+      "sequence": [
+        "wait",
+        "shop:sell:coins",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:50:35.398Z",
+      "example": "Wait and observe for a moment → Sell 1 Coins for about 0 → Sell 1 Raw anchovies for about 7"
+    },
+    "shop:sell:raw anchovies > shop:buy:toy horsey > modal:close-shop": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "shop:buy:toy horsey",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:50:50.387Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Buy 1 Toy horsey for about 150 → Close the shop"
+    },
+    "shop:buy:toy horsey > modal:close-shop > skill:travel:draynor-bank": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "modal:close-shop",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": -0.05,
+      "positive": 0,
+      "lastAt": "2026-08-14T19:51:03.878Z",
+      "example": "Buy 1 Toy horsey for about 150 → Close the shop → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     }
   },
   "discoveries": [
@@ -29778,27 +29928,39 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3082:3248:3092:3243:0",
+      "at": "2026-08-14T19:51:03.878Z",
+      "kind": "route",
+      "text": "Route learned: 3082,3248 → 3092,3243; moved 3082,3248 → 3092,3243; new: npc:Fishing spot, loc:Bush, loc:Tree stump, loc:Boulder, loc:Pile of rope",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
   "activePlan": {
-    "objective": "Explore and gather resources in Draynor area",
-    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-    "reason": "This objective is concise, actionable, and uses a named repository-tested escape or travel skill (Draynor Bank) for observable evidence. Steps 1",
-    "risk": "high",
+    "objective": "Maximize profit by selling depleted items and using alternative money-making methods",
+    "focus": "Sell 1 Raw anchovies for about 7 GP",
+    "reason": "This strategy leverages the value of raw anchovies and the cost of toys to maximize profit, while avoiding the loss from the general store's low price for anchovies.",
+    "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "label": "Sell 1 Raw anchovies for about 7 GP",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Verify arrival at Draynor Bank by checking coordinates",
+        "label": "Buy 1 Toy horsey for about 150 GP",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Explore north about 5 tiles and collect resources such as fish and herbs",
+        "label": "Close the shop to avoid further losses and focus on profitable trades",
         "status": "pending"
       }
     ],
@@ -29806,16 +29968,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Verify arrival at Draynor Bank by checking coordinates",
-      "Explore north about 5 tiles and collect resources such as fish and herbs"
+      "Sell 1 Raw anchovies for about 7 GP",
+      "Buy 1 Toy horsey for about 150 GP",
+      "Close the shop to avoid further losses and focus on profitable trades"
     ],
     "avoid": [
-      "Net Fishing spot (level 0, distance 2)",
-      "Dialog 1: Click here to continue",
-      "Speak publicly; latest message from Oag0azhyi: Pickaxe out, let's find some ore :3"
+      "Wait and observe for a moment",
+      "Sell 1 Coins for about 0",
+      "Sell 1 Raw anchovies for about 7"
     ],
-    "updatedAt": "2026-08-14T19:48:43.558Z",
+    "updatedAt": "2026-08-14T19:50:51.733Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
