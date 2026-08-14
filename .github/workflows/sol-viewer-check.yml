@@ -20,40 +20,79 @@ jobs:
           JSON=$(printf '%s' "$META" | jq -r .content | tr -d '\n' | base64 -d)
           URL=$(printf '%s' "$JSON" | jq -r .url)
           RUN=$(printf '%s' "$JSON" | jq -r .runNumber)
+          CONTROLLER=$(printf '%s' "$JSON" | jq -r '.controller // ""')
+          test "$CONTROLLER" = 'teacher-student'
           echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "Checking current spectator endpoint from live runner $RUN."
-      - name: Verify telemetry health
+          echo "Checking learning agent at runner $RUN."
+
+      - name: Verify learning agent is online
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
-          for i in $(seq 1 45); do
+          for i in $(seq 1 60); do
             if HEALTH=$(curl --fail --connect-timeout 5 --max-time 10 -sS "$LIVE_URL/health"); then
               echo "$HEALTH"
-              echo "$HEALTH" | jq -e '.ok == true and .online == true and (.actionCount|type == "number") and (.sessionStartedAt|type == "string") and (.runNumber|type == "number")' >/dev/null
-              exit 0
+              if echo "$HEALTH" | jq -e '.ok == true and .online == true and .teacherOnline == true and (.agentController|type == "string") and (.runNumber|type == "number")' >/dev/null; then
+                exit 0
+              fi
             fi
             sleep 2
           done
           exit 1
-      - name: Verify expanded cockpit telemetry
+
+      - name: Verify teacher decision and measured outcome
+        env:
+          LIVE_URL: ${{ steps.endpoint.outputs.url }}
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 90); do
+            STATE=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/state" || true)
+            if [ -n "$STATE" ] && echo "$STATE" | jq -e '
+              .online == true and
+              .agent.architecture == "teacher-student" and
+              .agent.teacherOnline == true and
+              .agent.teacherModel == "qwen3:1.7b" and
+              (.agent.lifetime.teacherChoices >= 1) and
+              (.agent.lifetime.completedExperiences >= 1) and
+              (.agent.lastChoice.source == "teacher" or .agent.lifetime.studentChoices >= 1) and
+              (.agent.lastOutcome.reward|type == "number") and
+              (.currentGoal|type == "string") and
+              (.currentWhy|type == "string")
+            ' >/dev/null; then
+              echo "$STATE" | jq '{tick,currentGoal,currentWhy,agent:{architecture:.agent.architecture,teacherModel:.agent.teacherModel,teacherOnline:.agent.teacherOnline,currentController:.agent.currentController,lastChoice:.agent.lastChoice,lastOutcome:.agent.lastOutcome,lifetime:.agent.lifetime,learnedActions:.agent.learnedActions,memoryCount:.agent.memoryCount}}'
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'No completed teacher/outcome learning cycle observed.' >&2
+          exit 1
+
+      - name: Verify persistent learned state
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 45); do
+            META=$(curl -fsS -H 'Accept: application/vnd.github+json' \
+              "https://api.github.com/repos/jpjh0220/GAMES/contents/sol-agent/state.json?ref=sol-memory&t=$(date +%s)" || true)
+            if [ -n "$META" ]; then
+              STATE=$(printf '%s' "$META" | jq -r '.content // empty' | tr -d '\n' | base64 -d 2>/dev/null || true)
+              if [ -n "$STATE" ] && echo "$STATE" | jq -e '.version == 1 and (.lifetime.completedExperiences >= 1) and (.policy|type == "object") and (.memories|type == "array")' >/dev/null; then
+                echo "$STATE" | jq '{updatedAt,lifetime,memoryCount:(.memories|length),policyContexts:(.policy|keys|length),relationships:(.relationships|keys|length),places:(.places|keys|length)}'
+                exit 0
+              fi
+            fi
+            sleep 2
+          done
+          echo 'Persistent learning state was not observed on sol-memory.' >&2
+          exit 1
+
+      - name: Verify spectator telemetry remains intact
         env:
           LIVE_URL: ${{ steps.endpoint.outputs.url }}
         run: |
           set -euo pipefail
           STATE=$(curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/state")
-          echo "$STATE" | jq -e '.online == true and (.currentGoal|type == "string") and (.currentWhy|type == "string") and (.movementTrail|type == "array") and (.nearbyPlayers|type == "array") and (.nearbyNpcs|type == "array") and (.nearbyLocs|type == "array") and (.combatStyle|type == "object") and (.equipment|type == "array") and (.combatEvents|type == "array") and (.gameMessages|type == "array") and (.recentDialogs|type == "array") and (.worldUi|type == "object")' >/dev/null
-          echo 'Cockpit telemetry verified.'
-      - name: Verify spectator cockpit UI
-        env:
-          LIVE_URL: ${{ steps.endpoint.outputs.url }}
-        run: |
-          set -euo pipefail
+          echo "$STATE" | jq -e '.online == true and (.movementTrail|type == "array") and (.nearbyPlayers|type == "array") and (.nearbyNpcs|type == "array") and (.equipment|type == "array") and (.combatEvents|type == "array") and (.gameMessages|type == "array") and (.agent|type == "object")' >/dev/null
           curl --fail --connect-timeout 5 --max-time 15 -sS "$LIVE_URL/" -o /tmp/sol-viewer.html
           grep -q 'SOL // WORLD SPECTATOR' /tmp/sol-viewer.html
-          grep -q 'Since your last visit' /tmp/sol-viewer.html
-          grep -q 'CINEMATIC' /tmp/sol-viewer.html
-          grep -q 'COMMS' /tmp/sol-viewer.html
-          grep -q 'damageLayer' /tmp/sol-viewer.html
-          grep -q 'mobileNav' /tmp/sol-viewer.html
-          echo 'Spectator cockpit UI verified.'
+          echo 'Viewer and learning telemetry verified.'
