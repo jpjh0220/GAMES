@@ -6,15 +6,15 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 631,
-    "teacherChoices": 631,
+    "totalChoices": 641,
+    "teacherChoices": 641,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 630,
-    "totalReward": -179.6,
-    "saves": 90,
-    "shadowPredictions": 256,
-    "shadowMatches": 23,
+    "completedExperiences": 640,
+    "totalReward": -179.8,
+    "saves": 91,
+    "shadowPredictions": 264,
+    "shadowMatches": 29,
     "strategistRefreshes": 18,
     "strategistFailures": 147
   },
@@ -3826,14 +3826,14 @@
         "exampleReason": "Withdraw 1 Coins"
       },
       "wait": {
-        "n": 11,
+        "n": 13,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-14T10:50:19.310Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "I need to wait for the bank to open before proceeding"
+        "lastAt": "2026-08-14T10:52:59.850Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:body rune": {
         "n": 1,
@@ -4092,24 +4092,24 @@
         "exampleReason": "I'm opening the bank to deposit items."
       },
       "bank:withdraw:coins": {
-        "n": 20,
+        "n": 26,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-14T10:50:13.028Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Deposit 1 Chaos rune"
+        "lastAt": "2026-08-14T10:53:48.154Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "Withdraw 1 Coins"
       },
       "bank:deposit:coins": {
-        "n": 7,
-        "avgReward": -0.1857,
+        "n": 9,
+        "avgReward": -0.2,
         "positive": 0,
-        "negative": 3,
-        "lastReward": -0.1,
-        "lastAt": "2026-08-14T10:50:27.149Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Deposit all Chaos runes in the bank to unlock further gameplay"
+        "negative": 5,
+        "lastReward": -0.3,
+        "lastAt": "2026-08-14T10:53:34.919Z",
+        "exampleGoal": "Open the bank to access the deposit functionality.",
+        "exampleReason": "Deposit all Chaos runes in the bank to unlock further progress."
       },
       "bank:deposit:bronze sq shield": {
         "n": 2,
@@ -5159,8 +5159,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T10:35:45.160Z",
-      "lastSeenAt": "2026-08-14T10:52:33.159Z",
-      "visits": 137,
+      "lastSeenAt": "2026-08-14T10:53:41.553Z",
+      "visits": 147,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -5206,7 +5206,7 @@
       ]
     }
   },
-  "updatedAt": "2026-08-14T10:52:40.017Z",
+  "updatedAt": "2026-08-14T10:53:48.154Z",
   "sequences": {
     "walk:north > walk:south > walk:north": {
       "sequence": [
@@ -7818,10 +7818,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 8,
-      "avgReward": -0.137,
+      "n": 9,
+      "avgReward": -0.133,
       "positive": 0,
-      "lastAt": "2026-08-14T10:46:43.351Z",
+      "lastAt": "2026-08-14T10:53:34.919Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:deposit:raw bear meat": {
@@ -8046,10 +8046,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 9,
+      "n": 10,
       "avgReward": -0.1,
       "positive": 0,
-      "lastAt": "2026-08-14T10:51:05.805Z",
+      "lastAt": "2026-08-14T10:53:41.245Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:bronze sq shield": {
@@ -8094,10 +8094,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": -0.2,
       "positive": 0,
-      "lastAt": "2026-08-14T10:50:19.310Z",
+      "lastAt": "2026-08-14T10:52:59.850Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "bank:withdraw:coins > wait > bank:withdraw:coins": {
@@ -8106,10 +8106,10 @@
         "wait",
         "bank:withdraw:coins"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-14T10:46:29.239Z",
+      "lastAt": "2026-08-14T10:52:54.150Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     },
     "wait > bank:withdraw:coins > bank:withdraw:coins": {
@@ -8130,10 +8130,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 7,
-      "avgReward": -0.1,
+      "n": 9,
+      "avgReward": -0.089,
       "positive": 0,
-      "lastAt": "2026-08-14T10:51:13.058Z",
+      "lastAt": "2026-08-14T10:53:48.154Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > wait": {
@@ -8370,10 +8370,10 @@
         "wait",
         "bank:deposit:coins"
       ],
-      "n": 1,
-      "avgReward": -0.15,
+      "n": 2,
+      "avgReward": -0.2,
       "positive": 0,
-      "lastAt": "2026-08-14T10:50:27.149Z",
+      "lastAt": "2026-08-14T10:53:07.322Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Deposit all Coins"
     },
     "wait > bank:deposit:coins > bank:withdraw:chaos rune": {
@@ -8430,10 +8430,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T10:51:19.038Z",
+      "lastAt": "2026-08-14T10:53:28.019Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:chaos rune": {
@@ -8478,10 +8478,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
-      "avgReward": -0.35,
+      "n": 2,
+      "avgReward": -0.3,
       "positive": 0,
-      "lastAt": "2026-08-14T10:51:59.263Z",
+      "lastAt": "2026-08-14T10:53:13.962Z",
       "example": "Wait and observe for a moment → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:withdraw:shortbow": {
@@ -8555,6 +8555,18 @@
       "positive": 0,
       "lastAt": "2026-08-14T10:52:40.017Z",
       "example": "Deposit all Shortbow → Deposit all Chaos rune → Withdraw 1 Coins"
+    },
+    "bank:deposit:chaos rune > bank:withdraw:coins > wait": {
+      "sequence": [
+        "bank:deposit:chaos rune",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-14T10:52:46.623Z",
+      "example": "Deposit all Chaos rune → Withdraw 1 Coins → Wait and observe for a moment"
     }
   },
   "discoveries": [
