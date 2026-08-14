@@ -61,6 +61,7 @@ type PersistentState = {
 type Metrics = {
   hp:number;maxHp:number;lifeId:number;x:number;z:number;level:number;
   totalXp:number;totalLevels:number;inventoryCount:number;coins:number;
+  inventorySig:string;equipmentSig:string;combatStyleSig:string;
   npcNames:Set<string>;playerNames:Set<string>;locNames:Set<string>;opRejectedCount:number;
 };
 
@@ -69,7 +70,8 @@ type Experience = {choice:AgentChoice;candidate:AgentCandidate;startTick:number;
 export type AgentOutcome = {
   tick:number;reward:number;summary:string;choice:AgentChoice;candidateLabel:string;
   xpGain:number;hpDelta:number;moved:boolean;kills:number;damageDealt:number;
-  damageTaken:number;newThings:string[];rejected:boolean;
+  damageTaken:number;newThings:string[];rejected:boolean;inventoryChanged:boolean;
+  equipmentChanged:boolean;styleChanged:boolean;executionFailed:boolean;
 };
 
 const now=()=>new Date().toISOString();
@@ -312,6 +314,8 @@ export class SolAgentBrain {
       const avg=attempts.reduce((n,o)=>n+o.reward,0)/attempts.length;
       const failures=attempts.filter(o=>o.reward<0||o.rejected).length;
       if(failures>=2&&avg<0)blocked.add(c.fingerprint);
+      const configurationOnly=attempts.some(o=>(o.equipmentChanged||o.styleChanged)&&!o.moved&&o.xpGain===0&&o.kills===0&&o.damageDealt===0);
+      if(configurationOnly)blocked.add(c.fingerprint);
     }
     const last=recent.at(-1);
     if(last?.reward<0)blocked.add(last.choice.fingerprint);
@@ -345,7 +349,8 @@ export class SolAgentBrain {
   }
 
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
-    this.observe(state);const legal=candidates;const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    this.maybeRefreshStrategy(state,legal);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
     const choice=await this.askMotor(state,legal,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
@@ -353,29 +358,34 @@ export class SolAgentBrain {
     this.lastChoice=choice;this.markDirty();
     this.replay.push({tick:(state as any).tick||0,perception:`HP ${state.player?.hp}/${state.player?.maxHp}; ${state.nearbyPlayers?.length||0} agents; ${state.nearbyNpcs?.length||0} NPCs; ${state.nearbyLocs?.length||0} objects`,retrieved:this.currentGuidance,prediction:this.lastShadowPrediction?.fingerprint||null,decision:choice.reason,action:choice.fingerprint,outcome:null,lesson:null});
     if(this.replay.length>80)this.replay.shift();
-    this.maybeRefreshStrategy(state,legal);
     return choice;
   }
 
   private maybeRefreshStrategy(state:BotWorldState,candidates:AgentCandidate[]){
-    // Strategist never runs on startup or every turn. It is deliberately off the motor's critical path.
+    // The strategist runs beside the motor, never on the motor's critical path.
     const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=18;
     if(!due||this.strategistInFlight)return;
     if(!this.strategistReady){void this.refreshAvailability();return;}
-    this.strategistInFlight=true;this.lastStrategySessionChoice=this.sessionMotorChoices;
+    this.strategistInFlight=true;
     void this.askStrategist(state,candidates).then(strategy=>{
-      this.strategy=strategy;this.memory.activePlan=strategy;this.memory.lifetime.strategistRefreshes=(this.memory.lifetime.strategistRefreshes||0)+1;this.markDirty();
+      this.lastStrategySessionChoice=this.sessionMotorChoices;this.strategy=strategy;this.memory.activePlan=strategy;this.memory.lifetime.strategistRefreshes=(this.memory.lifetime.strategistRefreshes||0)+1;this.markDirty();
       this.addMemory({kind:'strategy',text:`AI strategist: ${strategy.focus}. ${strategy.reason}`,importance:1.1,tags:['ai-strategy',...strategy.priorities.slice(0,3)],tick:0,state});
-    }).catch(err=>{this.memory.lifetime.strategistFailures=(this.memory.lifetime.strategistFailures||0)+1;console.warn('AI_STRATEGIST_ERROR',String(err));}).finally(()=>{this.strategistInFlight=false;});
+    }).catch(err=>{this.lastStrategySessionChoice=Math.max(-9999,this.sessionMotorChoices-15);this.memory.lifetime.strategistFailures=(this.memory.lifetime.strategistFailures||0)+1;console.warn('AI_STRATEGIST_ERROR',String(err));}).finally(()=>{this.strategistInFlight=false;});
   }
 
   private async askStrategist(state:BotWorldState,candidates:AgentCandidate[]):Promise<Strategy>{
-    const p=state.player!;const observation={gameCurriculum:this.gameplayCurriculum,mission:this.memory.identity.directive,previousPlan:this.strategy,status:[p.hp,p.maxHp,p.combatLevel,p.worldX,p.worldZ,p.combat?.inCombat?1:0],skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),inventory:(state.inventory||[]).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),recent:this.recentOutcomes.slice(-8).map(o=>[o.candidateLabel,o.reward,o.summary]),relationships:Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,5).map(r=>[r.name,r.stance,r.trust,r.facts.slice(-2)]),discoveries:this.memory.discoveries.slice(-10).map(d=>d.text),knownSequences:Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),availableActions:candidates.slice(0,60).map(c=>[c.category,c.label]),repoGuidance:this.retrieveRepoGuidance(state,candidates,5,900)};
-    const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},focus:{type:'string'},reason:{type:'string'},risk:{type:'string',enum:['low','balanced','high']},plan:{type:'array',items:{type:'string'},minItems:2,maxItems:6},success_signals:{type:'array',items:{type:'string'},maxItems:5},priorities:{type:'array',items:{type:'string'},maxItems:4},avoid:{type:'array',items:{type:'string'},maxItems:4}},required:['objective','focus','reason','risk','plan','success_signals','priorities','avoid']};
-      const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.2,num_ctx:4096,num_predict:180},messages:[{role:'system',content:'You are Sol strategic AI inside the rs-sdk game. Learn from gameCurriculum and repoGuidance, then create a practical multi-step RuneScape progression plan grounded in current inventory, skills, equipment, location, and executable actions. Connect prerequisites to outcomes: resources -> processing -> XP or coins -> equipment -> harder content. Keep an active step until measured evidence completes or disproves it. Never propose actions absent from availableActions. Live evidence overrides assumptions.'},{role:'user',content:JSON.stringify(observation)}]}),signal:AbortSignal.timeout(26000)});
-    if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();const j=parseModelJson(raw?.message?.content);
-    const steps=(Array.isArray(j.plan)?j.plan:[]).map((label:any,i:number)=>({id:`step-${i+1}`,label:String(label).slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
-    return{objective:String(j.objective||j.focus||'Build durable capability').slice(0,180),focus:String(j.focus||steps[0]?.label||'Explore and progress').slice(0,140),reason:String(j.reason||'Seek measurable progress.').slice(0,240),risk:['low','balanced','high'].includes(j.risk)?j.risk:'balanced',plan:steps,successSignals:Array.isArray(j.success_signals)?j.success_signals.map(String).slice(0,5):[],priorities:Array.isArray(j.priorities)?j.priorities.map(String).slice(0,4):[],avoid:Array.isArray(j.avoid)?j.avoid.map(String).slice(0,4):[],updatedAt:now(),sourceModel:this.strategistModel,failures:0};
+    const p=state.player!;
+    const executable=candidates.filter(c=>c.category!=='wait').slice(0,48).map(c=>[c.category,c.label.slice(0,110)]);
+    const negatives=this.recentOutcomes.filter(o=>o.reward<0).slice(-5).map(o=>[o.candidateLabel,o.summary]);
+    const guidance=this.retrieveRepoGuidance(state,candidates,3,480);
+    const observation={mission:this.memory.identity.directive,previous:this.strategy?{objective:this.strategy.objective,active:this.strategy.plan?.find(x=>x.status==='active')?.label}:null,state:{position:[p.worldX,p.worldZ,p.level],hp:[p.hp,p.maxHp],combatLevel:p.combatLevel,inCombat:!!p.combat?.inCombat},skills:(state.skills||[]).filter(s=>!/^Stat\d+$/i.test(s.name)).map(s=>[s.name,s.level]),inventory:(state.inventory||[]).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),recentFailures:negatives,executableActions:executable,repoGuidance:guidance};
+    const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},active_step:{type:'string'},reason:{type:'string'},plan:{type:'array',items:{type:'string'},minItems:2,maxItems:5},success_signal:{type:'string'}},required:['objective','active_step','reason','plan','success_signal']};
+    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.15,num_ctx:2048,num_predict:140},messages:[{role:'system',content:'You are Sol strategic AI inside a persistent rs-sdk RuneScape MMO. Form one grounded executable plan. Prefer named navigation skills and repository-tested procedures when Sol is trapped. Chain prerequisites to measurable progress. Keep the active step until evidence completes or blocks it. Use only actions that are exposed.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+    let j:any;try{j=await ask(observation,30000)}catch(first){j=await ask({state:observation.state,inventory:observation.inventory,actions:executable.slice(0,24),instruction:'Create a two-to-four step executable plan now.'},22000)}
+    const labels=(Array.isArray(j.plan)?j.plan:[]).map(String).filter(Boolean);if(!labels.length&&j.active_step)labels.push(String(j.active_step));if(labels.length<2)labels.push('Verify the outcome in live state and choose the next prerequisite.');
+    const steps=labels.slice(0,5).map((label:string,i:number)=>({id:`step-${i+1}`,label:label.slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
+    const focus=String(j.active_step||steps[0]?.label||'Make measurable world progress').slice(0,140);
+    return{objective:String(j.objective||focus).slice(0,180),focus,reason:String(j.reason||'Execute the current prerequisite and verify it.').slice(0,240),risk:p.combat?.inCombat?'high':'balanced',plan:steps,successSignals:[String(j.success_signal||'Observed position, inventory, XP, combat, or dialog change.').slice(0,160)],priorities:steps.slice(0,4).map(x=>x.label),avoid:negatives.map(x=>String(x[0]).slice(0,120)),updatedAt:now(),sourceModel:this.strategistModel,failures:0};
   }
 
   private async askMotor(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice>{
@@ -426,13 +436,14 @@ export class SolAgentBrain {
     if(!this.pending||tick<this.pending.settleTick)return null;
     const exp=this.pending;this.pending=null;const after=this.metrics(state);const events=(state.combatEvents||[]).filter(e=>e.tick>exp.startTick);
     const kills=events.filter(e=>e.type==='kill').length;const damageDealt=events.filter(e=>e.type==='damage_dealt').reduce((n,e)=>n+(e.damage||0),0);const damageTaken=events.filter(e=>e.type==='damage_taken').reduce((n,e)=>n+(e.damage||0),0);
-    const xpGain=Math.max(0,after.totalXp-exp.before.totalXp);const levelGain=Math.max(0,after.totalLevels-exp.before.totalLevels);const hpDelta=after.hp-exp.before.hp;const moved=after.x!==exp.before.x||after.z!==exp.before.z||after.level!==exp.before.level;const died=after.lifeId!==exp.before.lifeId||(exp.before.hp>0&&after.hp<=0);const rejected=after.opRejectedCount>exp.before.opRejectedCount;
+    const xpGain=Math.max(0,after.totalXp-exp.before.totalXp);const levelGain=Math.max(0,after.totalLevels-exp.before.totalLevels);const hpDelta=after.hp-exp.before.hp;const moved=after.x!==exp.before.x||after.z!==exp.before.z||after.level!==exp.before.level;const died=after.lifeId!==exp.before.lifeId||(exp.before.hp>0&&after.hp<=0);const executionFailed=exp.candidate.action?.executionResult?.success===false;const rejected=after.opRejectedCount>exp.before.opRejectedCount||executionFailed;
     const newNpc=[...after.npcNames].filter(x=>!exp.before.npcNames.has(x));const newPlayers=[...after.playerNames].filter(x=>!exp.before.playerNames.has(x));const newLocs=[...after.locNames].filter(x=>!exp.before.locNames.has(x));const coinGain=after.coins-exp.before.coins;const inventoryGain=after.inventoryCount-exp.before.inventoryCount;
-    let reward=Math.min(4,xpGain*.02)+levelGain*3+damageDealt*.15+kills*3-damageTaken*.25;if(hpDelta<0)reward+=hpDelta*.15;if(moved)reward+=.2;reward+=Math.min(1.5,newNpc.length*.25+newLocs.length*.12)+Math.min(2,newPlayers.length*.8);reward+=clamp(coinGain*.02,-.5,1.5)+clamp(inventoryGain*.08,-.4,.5);if(rejected)reward-=1.25;if(died)reward-=10;
-    const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&newNpc.length===0&&newPlayers.length===0&&newLocs.length===0&&coinGain===0&&inventoryGain===0;if(noProgress)reward-=exp.candidate.category==='wait'?.15:.6;reward=Number(clamp(reward,-10,10).toFixed(3));
+    const inventoryChanged=after.inventorySig!==exp.before.inventorySig;const equipmentChanged=after.equipmentSig!==exp.before.equipmentSig;const styleChanged=after.combatStyleSig!==exp.before.combatStyleSig;const discovers=/^(explore|navigation-skill|world)$/.test(exp.candidate.category);const configures=/^(inventory|combat-style)$/.test(exp.candidate.category);
+    let reward=Math.min(4,xpGain*.02)+levelGain*3+damageDealt*.15+kills*3-damageTaken*.25;if(hpDelta<0)reward+=hpDelta*.15;if(moved)reward+=discovers?.35:.08;if(discovers)reward+=Math.min(1.2,newNpc.length*.2+newLocs.length*.1);if(exp.candidate.category==='social'||exp.candidate.category==='say')reward+=Math.min(.3,newPlayers.length*.15);reward+=clamp(coinGain*.02,-.5,1.5)+clamp(inventoryGain*.08,-.4,.5);if(configures&&equipmentChanged)reward+=.12;if(configures&&styleChanged)reward+=.08;if(rejected)reward-=1.25;if(died)reward-=10;
+    const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0&&!(configures&&(equipmentChanged||styleChanged));if(noProgress)reward-=exp.candidate.category==='wait'?.15:.6;reward=Number(clamp(reward,-10,10).toFixed(3));
     const newThings=[...newPlayers.map(x=>`agent:${x}`),...newNpc.slice(0,4).map(x=>`npc:${x}`),...newLocs.slice(0,4).map(x=>`loc:${x}`)];
-    const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?'moved':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'operation rejected':'',died?'died/respawned':'',newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
-    const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected};
+    const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?`moved ${exp.before.x},${exp.before.z} → ${after.x},${after.z}`:'',inventoryChanged?'inventory changed':'',equipmentChanged?'equipment changed':'',styleChanged?'combat style changed':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'execution rejected or failed':'',died?'died/respawned':'',discovers&&newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
+    const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected,inventoryChanged,equipmentChanged,styleChanged,executionFailed};
     this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();return outcome;
   }
 
@@ -458,7 +469,7 @@ export class SolAgentBrain {
   }
 
   private metrics(state:BotWorldState):Metrics{
-    const p=state.player!;return{hp:p.hp,maxHp:p.maxHp,lifeId:p.lifeId||0,x:p.worldX,z:p.worldZ,level:p.level,totalXp:(state.skills||[]).reduce((n,s)=>n+(s.experience||0),0),totalLevels:(state.skills||[]).reduce((n,s)=>n+(s.level||0),0),inventoryCount:(state.inventory||[]).reduce((n,i)=>n+(i.count||1),0),coins:(state.inventory||[]).filter(i=>/coins?/i.test(i.name)).reduce((n,i)=>n+(i.count||0),0),npcNames:new Set((state.nearbyNpcs||[]).map(n=>n.name)),playerNames:new Set((state.nearbyPlayers||[]).map(x=>x.name)),locNames:new Set((state.nearbyLocs||[]).map(x=>x.name)),opRejectedCount:state.opFeedback?.opRejectedCount||0};
+    const p=state.player!;const sig=(xs:any[])=>xs.map(i=>`${i.slot}:${i.id}:${i.count||1}`).sort().join('|');return{hp:p.hp,maxHp:p.maxHp,lifeId:p.lifeId||0,x:p.worldX,z:p.worldZ,level:p.level,totalXp:(state.skills||[]).reduce((n,s)=>n+(s.experience||0),0),totalLevels:(state.skills||[]).reduce((n,s)=>n+(s.level||0),0),inventoryCount:(state.inventory||[]).reduce((n,i)=>n+(i.count||1),0),coins:(state.inventory||[]).filter(i=>/coins?/i.test(i.name)).reduce((n,i)=>n+(i.count||0),0),inventorySig:sig(state.inventory||[]),equipmentSig:sig(state.equipment||[]),combatStyleSig:`${state.combatStyle?.weaponName||''}:${state.combatStyle?.currentStyle??-1}`,npcNames:new Set((state.nearbyNpcs||[]).map(n=>n.name)),playerNames:new Set((state.nearbyPlayers||[]).map(x=>x.name)),locNames:new Set((state.nearbyLocs||[]).map(x=>x.name)),opRejectedCount:state.opFeedback?.opRejectedCount||0};
   }
 
   publicState(){
@@ -466,6 +477,6 @@ export class SolAgentBrain {
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
     const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
-    return{architecture:'model-sovereign-gameplay-with-execution-validation',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:[],shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
+    return{architecture:'model-sovereign-gameplay-with-execution-validation',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }

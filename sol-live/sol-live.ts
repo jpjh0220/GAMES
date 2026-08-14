@@ -27,6 +27,7 @@ type FeedEvent = {
 };
 type TrailPoint = { x:number; z:number; level:number; tick:number };
 type OutgoingChat = { id:string; tick:number; at:string; text:string; target:string|null; replyTo:string|null; status:'submitted' };
+type ProcedureState = { skill:string; label:string; status:'running'|'completed'|'failed'; step:string; startedTick:number; finishedTick?:number; start:{x:number;z:number;level:number}; end?:{x:number;z:number;level:number}; primitiveActions:number; message?:string };
 
 let tick = 0;
 let actions = 0;
@@ -35,6 +36,9 @@ let lastReflexTick = -9999;
 let lastState: BotWorldState | null = null;
 let decisionInFlight = false;
 let actionAwaitingOutcome = false;
+let primitiveActions = 0;
+let procedureInFlight: ProcedureState | null = null;
+let lastProcedureRun: ProcedureState | null = null;
 let currentAction: FeedEvent | null = null;
 let currentGoal = 'Initialize persistent agent';
 let currentWhy = 'Load memory, perception, learned policy, and local teacher model.';
@@ -62,9 +66,9 @@ const log = async (event:string,data?:unknown) => {
   process.stdout.write(line);
   await appendFile('../../sol-session.log',line).catch(()=>{});
 };
-const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>={}) => {
+const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&{setCurrent?:boolean}={}) => {
   const e:FeedEvent = {tick,label,summary,reason,target:data.target,item:data.item,source:data.source,reward:data.reward,at:new Date().toISOString()};
-  currentAction=e;
+  if(data.setCurrent!==false) currentAction=e;
   actionHistory.push(e);
   if(actionHistory.length>200) actionHistory.shift();
 };
@@ -74,7 +78,7 @@ let snapshot:any = {
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
-  currentAction:null,currentGoal,currentWhy,actions:[],actionCount:0,movementTrail:[],lessons:[],agent:brain.publicState()
+  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState()
 };
 
 const refreshSnapshot = (state:BotWorldState|null) => {
@@ -104,7 +108,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     recentDialogs:s?.recentDialogs?.slice?.(-20)?.map((d:any)=>({text:d.text,tick:d.tick,observationId:d.observationId,interfaceId:d.interfaceId}))??[],
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
-    currentAction,currentGoal,currentWhy,actions:actionHistory,actionCount:actions,movementTrail,
+    currentAction,currentGoal,currentWhy,thinking:decisionInFlight,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
     lessons:(agent.recentMemories||[]).map((m:any)=>m.text),agent
   };
 };
@@ -129,6 +133,82 @@ executor.setScanProvider(collector);
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slug=(s:string)=>norm(s).replace(/\s+/g,'-').slice(0,24)||'x';
+const position=()=>lastState?.player?{x:lastState.player.worldX,z:lastState.player.worldZ,level:lastState.player.level}:null;
+const tileDistance=(a:{x:number;z:number},b:{x:number;z:number})=>Math.hypot(a.x-b.x,a.z-b.z);
+const waitTicks=async(count:number)=>{const start=tick,deadline=Date.now()+Math.max(4000,count*1100);while(tick<start+count&&Date.now()<deadline)await Bun.sleep(180);};
+const dispatchPrimitive=async(label:string,action:any)=>{
+  primitiveActions++;
+  if(procedureInFlight){procedureInFlight.step=label;procedureInFlight.primitiveActions++;}
+  try{
+    const result:any=await Promise.resolve(executor.execute(action));
+    const normalized={success:result?.success!==false,message:String(result?.message||label),phase:result?.phase,reason:result?.reason};
+    void log('WORLD_SKILL_PRIMITIVE',{tick,label,action:action.type,result:normalized});
+    return normalized;
+  }catch(err){const failed={success:false,message:String(err),reason:'executor_exception'};void log('WORLD_SKILL_PRIMITIVE_ERROR',{tick,label,error:String(err)});return failed;}
+};
+
+const openNearestDoorToward=async(target:{x:number;z:number})=>{
+  const state=lastState;if(!state?.player)return false;
+  const candidates=(state.nearbyLocs||[]).filter(loc=>{
+    const open=loc.optionsWithIndex?.some(o=>/^open$/i.test(o.text));
+    const frontDoor=(loc.x===3108||loc.x===3109)&&loc.z===3353;
+    return open&&loc.reachable!==false&&!frontDoor&&loc.level===state.player!.level&&/door|gate/i.test(loc.name);
+  }).sort((a,b)=>(a.distance+tileDistance(a,target)*.65)-(b.distance+tileDistance(b,target)*.65));
+  const door=candidates[0];if(!door)return false;
+  const option=door.optionsWithIndex.find(o=>/^open$/i.test(o.text));if(!option)return false;
+  const result=await dispatchPrimitive(`Open route obstacle ${door.name} at ${door.x},${door.z}`,{type:'interactLoc',x:door.x,z:door.z,locId:door.id,optionIndex:option.opIndex,reason:'Repository-guided navigation opened a verified obstacle.'});
+  await waitTicks(4);return result.success;
+};
+
+const walkToward=async(target:{x:number;z:number},radius=2,allowDoors=false)=>{
+  for(let attempt=1;attempt<=7;attempt++){
+    const before=position();if(!before)return false;
+    const beforeDistance=tileDistance(before,target);if(before.level===0&&beforeDistance<=radius)return true;
+    const result=await dispatchPrimitive(`Walk toward ${target.x},${target.z} (attempt ${attempt})`,{type:'walkTo',x:target.x,z:target.z,running:true,reason:'Follow a model-selected verified route.'});
+    await waitTicks(7);
+    const after=position();if(!after)return false;
+    const afterDistance=tileDistance(after,target);if(after.level===0&&afterDistance<=radius)return true;
+    const progressed=afterDistance<beforeDistance-.75;
+    if(!result.success||!progressed){if(allowDoors&&await openNearestDoorToward(target)){continue;}if(!result.success)return false;}
+  }
+  const end=position();return !!end&&end.level===0&&tileDistance(end,target)<=radius;
+};
+
+const openDocumentedDoor=async(x:number,z:number,locId:number)=>{
+  const state=lastState;if(!state?.player)return false;
+  const loc=(state.nearbyLocs||[]).find(l=>l.x===x&&l.z===z&&l.level===state.player!.level);
+  const open=loc?.optionsWithIndex?.find(o=>/^open$/i.test(o.text));
+  if(loc&&!open)return true;
+  const result=await dispatchPrimitive(`Open documented Draynor door at ${x},${z}`,{type:'interactLoc',x,z,locId:loc?.id||locId,optionIndex:open?.opIndex||1,reason:'Use the rs-sdk Draynor Manor escape procedure.'});
+  await waitTicks(4);return result.success;
+};
+
+const executeWorldSkill=async(action:any)=>{
+  const start=position();if(!start)return{success:false,message:'No live player position.'};
+  const skill=String(action.skill||'unknown'),label=skill==='escape-draynor-manor'?'Escape Draynor Manor':`Travel to ${action.destination||'landmark'}`;
+  const procedure:ProcedureState={skill,label,status:'running',step:'Starting verified procedure',startedTick:tick,start,primitiveActions:0};
+  procedureInFlight=procedure;let success=false;let message='Procedure failed before completion.';
+  try{
+    if(skill==='escape-draynor-manor'){
+      success=await walkToward({x:3119,z:3355},1,true)
+        &&await openDocumentedDoor(3119,3356,1530)
+        &&await walkToward({x:3119,z:3358},1,true)
+        &&await walkToward({x:3123,z:3359},1,true)
+        &&await openDocumentedDoor(3123,3360,136)
+        &&await walkToward({x:3123,z:3362},1,true)
+        &&await walkToward({x:3125,z:3370},2,true);
+      const end=position();success=success&&!!end&&(end.x>3124||end.z>3368);message=success?'Reached the Draynor Manor courtyard through both documented east-wing doors.':'Could not verify escape from the manor boundary.';
+    }else if(skill==='travel-waypoints'){
+      const points=(Array.isArray(action.waypoints)?action.waypoints:[]).map((p:any)=>({x:Number(p[0]??p.x),z:Number(p[1]??p.z)})).filter((p:any)=>Number.isFinite(p.x)&&Number.isFinite(p.z));
+      success=points.length>0;
+      for(const point of points){if(!await walkToward(point,4,true)){success=false;break;}}
+      message=success?`Verified arrival at ${action.destination||'the selected landmark'}.`:`Could not verify arrival at ${action.destination||'the selected landmark'}.`;
+    }else message=`Unknown world skill ${skill}.`;
+  }catch(err){message=String(err);success=false;}
+  const end=position();procedure.status=success?'completed':'failed';procedure.step=success?'Outcome verified':'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
+  void log('WORLD_SKILL_OUTCOME',{tick,skill,success,message,start,end,primitiveActions:procedure.primitiveActions});
+  return{success,message,phase:'completion',reason:success?undefined:'verification_failed'};
+};
 
 const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   const p=state.player!;
@@ -161,6 +241,16 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
     add({label:'Close the blocking interface',category:'modal',fingerprint:'modal:close-interface',settleTicks:3,action:{type:'closeModal',reason:'Close the current interface.'},tags:['interface']});
     return out;
   }
+
+  const insideDraynorManor=p.level===0&&p.worldX>=3095&&p.worldX<=3124&&p.worldZ>=3345&&p.worldZ<=3368;
+  if(insideDraynorManor) add({label:'Execute rs-sdk skill: escape Draynor Manor through the documented east-wing doors to the courtyard',category:'navigation-skill',fingerprint:'skill:escape-draynor-manor',settleTicks:18,action:{type:'worldSkill',skill:'escape-draynor-manor'},tags:['escape','draynor-manor','door','repository-tested','measurable-position']});
+
+  const distance=(x:number,z:number)=>Math.hypot(p.worldX-x,p.worldZ-z);
+  if(!insideDraynorManor&&p.level===0&&distance(3092,3243)>6&&distance(3092,3243)<230){
+    const waypoints=p.worldZ>3300?[[3130,3320],[3120,3280],[3092,3243]]:[[3092,3243]];
+    add({label:'Travel to Draynor Bank at 3092,3243 using verified waypoint navigation',category:'navigation-skill',fingerprint:'skill:travel:draynor-bank',settleTicks:16,action:{type:'worldSkill',skill:'travel-waypoints',destination:'Draynor Bank',waypoints},tags:['travel','bank','draynor','repository-coordinate']});
+  }
+  if(!insideDraynorManor&&p.level===0&&distance(3087,3230)>6&&distance(3087,3230)<180) add({label:'Travel to the Draynor fishing area at 3087,3230 and verify arrival',category:'navigation-skill',fingerprint:'skill:travel:draynor-fishing',settleTicks:16,action:{type:'worldSkill',skill:'travel-waypoints',destination:'Draynor fishing area',waypoints:[[3087,3230]]},tags:['travel','fishing','resource','repository-coordinate']});
 
   // Always leave room for navigation so a crowded scene cannot trap the agent in local interactions.
   const walks=[['north',0,5],['south',0,-5],['east',5,0],['west',-5,0],['northeast',4,4],['northwest',-4,4],['southeast',4,-4],['southwest',-4,-4]] as const;
@@ -214,14 +304,24 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
     void log('OUTGOING_CHAT',chat);
     delete action.chatReplyId;delete action.chatTarget;
   }
-  const result=executor.execute(action);
   actions++;
   currentGoal=choice.goal;
   currentWhy=choice.reason;
   feed(choice.source==='teacher'?'AGENT_TEACHER':'AGENT_STUDENT',candidate.label,choice.reason,{source:choice.source,target:candidate.label});
   brain.beginExperience(choice,candidate,state,tick);
   actionAwaitingOutcome=true;
-  void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,fingerprint:candidate.fingerprint,result:result instanceof Promise?'async':result});
+  if(action.type==='worldSkill'){
+    candidate.action.executionResult={success:true,pending:true};
+    void executeWorldSkill(action).then(result=>{candidate.action.executionResult=result;refreshSnapshot(lastState);}).catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};procedureInFlight=null;refreshSnapshot(lastState);});
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,fingerprint:candidate.fingerprint,result:'verified-world-skill'});
+    return;
+  }
+  try{
+    const result:any=executor.execute(action);
+    if(result instanceof Promise)void result.then((resolved:any)=>{candidate.action.executionResult=resolved;}).catch((err:any)=>{candidate.action.executionResult={success:false,message:String(err),reason:'executor_exception'};});
+    else candidate.action.executionResult=result;
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,fingerprint:candidate.fingerprint,result:result instanceof Promise?'async':result});
+  }catch(err){candidate.action.executionResult={success:false,message:String(err),reason:'executor_exception'};void log('AGENT_ACTION_ERROR',{tick,action:candidate.label,error:String(err)});}
 };
 
 const runEmergencyReflex=(state:BotWorldState)=>{
@@ -257,8 +357,6 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   const startedTick=tick;
   const startedLife=stateAtStart.player?.lifeId;
   decisionInFlight=true;
-  currentGoal='Deliberating';
-  currentWhy='Sol is comparing live perception, persistent memories, learned policy, recent outcomes, and legal actions.';
   refreshSnapshot(stateAtStart);
   void log('AGENT_THINK',{tick:startedTick,candidates:candidates.length,agent:brain.publicState()});
   brain.decide(stateAtStart,candidates).then(choice=>{
@@ -300,10 +398,10 @@ client.setOnGameTickCallback(()=>{
     }
     lastState=state;
 
-    const outcome=brain.maybeFinishExperience(state,tick);
+    const outcome=procedureInFlight?null:brain.maybeFinishExperience(state,tick);
     if(outcome){
       actionAwaitingOutcome=false;
-      feed('LEARNED_OUTCOME',outcome.summary,`Measured reward ${outcome.reward} from ${outcome.choice.source} action.`,{source:'learning',reward:outcome.reward});
+      feed('LEARNED_OUTCOME',outcome.summary,`Measured reward ${outcome.reward} from ${outcome.choice.source} action.`,{source:'learning',reward:outcome.reward,setCurrent:false});
       void log('AGENT_OUTCOME',{tick,reward:outcome.reward,summary:outcome.summary,source:outcome.choice.source,action:outcome.candidateLabel});
       nextDecisionTick=Math.max(nextDecisionTick,tick+1);
     }
