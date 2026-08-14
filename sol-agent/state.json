@@ -6,13 +6,13 @@
     "directive": "remain alive, learn continuously, avoid loops, expand capabilities indefinitely"
   },
   "lifetime": {
-    "totalChoices": 51,
-    "teacherChoices": 51,
+    "totalChoices": 61,
+    "teacherChoices": 61,
     "studentChoices": 0,
     "reflexActions": 37,
-    "completedExperiences": 50,
-    "totalReward": 9.51,
-    "saves": 13,
+    "completedExperiences": 60,
+    "totalReward": 6.67,
+    "saves": 14,
     "shadowPredictions": 4,
     "shadowMatches": 4,
     "strategistRefreshes": 2,
@@ -306,6 +306,50 @@
         "z": 3341,
         "level": 0
       }
+    },
+    {
+      "id": "mssmlnxv-ga7pwv",
+      "createdAt": "2026-08-14T07:28:50.803Z",
+      "tick": 296,
+      "runNumber": 19,
+      "kind": "episode",
+      "text": "AI motor: Explore north about 5 tiles. Result: moved; new: loc:Fireplace, loc:Stairs, loc:Crate, loc:Bookcase. Reward 1.04.",
+      "importance": 1.22,
+      "tags": [
+        "explore",
+        "north",
+        "loc fireplace",
+        "loc stairs",
+        "loc crate",
+        "loc bookcase"
+      ],
+      "location": {
+        "x": 3109,
+        "z": 3346,
+        "level": 0
+      }
+    },
+    {
+      "id": "mssmlz29-xtccom",
+      "createdAt": "2026-08-14T07:29:05.217Z",
+      "tick": 344,
+      "runNumber": 19,
+      "kind": "episode",
+      "text": "AI motor: Explore north about 5 tiles. Result: moved; new: loc:Study desk, loc:Staircase, loc:Boxes, loc:Stool. Reward 0.92.",
+      "importance": 1.16,
+      "tags": [
+        "explore",
+        "north",
+        "loc study desk",
+        "loc staircase",
+        "loc boxes",
+        "loc stool"
+      ],
+      "location": {
+        "x": 3109,
+        "z": 3351,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -445,6 +489,16 @@
         "lastAt": "2026-08-14T07:15:01.639Z",
         "exampleGoal": "Explore north about 5 tiles",
         "exampleReason": "To investigate the area and gather information about the surroundings."
+      },
+      "walk:north": {
+        "n": 7,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 7,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T07:29:57.425Z",
+        "exampleGoal": "explore",
+        "exampleReason": "Explore northeast about 4 tiles."
       }
     },
     "hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,social,wait,world": {
@@ -493,6 +547,30 @@
         "lastAt": "2026-08-14T07:28:44.548Z",
         "exampleGoal": "explore",
         "exampleReason": "Explore north 5 tiles; moved; new: loc:Wardrobe, loc:Standing torch, loc:Charms, loc:Large door. Reward 1.16."
+      }
+    },
+    "hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,social,wait,world": {
+      "walk:north": {
+        "n": 2,
+        "avgReward": 0.98,
+        "positive": 2,
+        "negative": 0,
+        "lastReward": 0.92,
+        "lastAt": "2026-08-14T07:29:05.217Z",
+        "exampleGoal": "explore",
+        "exampleReason": "Explore northeast about 4 tiles. Result: moved; new: loc:Fireplace, loc:Stairs, loc:Crate, loc:Bookcase."
+      }
+    },
+    "hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,wait,world": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-14T07:29:12.418Z",
+        "exampleGoal": "explore",
+        "exampleReason": "Explore north about 5 tiles. Result: moved; new: loc:Statue, loc:Charms, loc:Large door, loc:Candles."
       }
     }
   },
@@ -585,12 +663,12 @@
     },
     "194:208:0": {
       "key": "194:208:0",
-      "x": 3110,
-      "z": 3337,
+      "x": 3109,
+      "z": 3341,
       "level": 0,
       "firstSeenAt": "2026-08-14T06:43:29.817Z",
-      "lastSeenAt": "2026-08-14T07:28:37.623Z",
-      "visits": 6,
+      "lastSeenAt": "2026-08-14T07:28:44.836Z",
+      "visits": 7,
       "npcs": [
         "Veronica",
         "Tree",
@@ -606,7 +684,13 @@
         "Charms",
         "Large door",
         "Candles",
-        "Warehouse shelves"
+        "Warehouse shelves",
+        "Statue",
+        "Wardrobe",
+        "Table",
+        "Spooky picture",
+        "Chair",
+        "Door"
       ]
     },
     "195:208:0": {
@@ -676,7 +760,51 @@
         "Piano stool",
         "Piano"
       ]
+    },
+    "194:209:0": {
+      "key": "194:209:0",
+      "x": 3109,
+      "z": 3351,
+      "level": 0,
+      "firstSeenAt": "2026-08-14T07:28:51.152Z",
+      "lastSeenAt": "2026-08-14T07:29:52.955Z",
+      "visits": 14,
+      "npcs": [
+        "Tree",
+        "Rat",
+        "Veronica"
+      ],
+      "locs": [
+        "Dead tree",
+        "Standing torch",
+        "Bush",
+        "Charms",
+        "Large door",
+        "Fungus",
+        "Candles",
+        "Mushroom",
+        "Table",
+        "Spooky picture",
+        "Wardrobe",
+        "Door",
+        "Statue",
+        "Chair",
+        "Fireplace",
+        "Stairs",
+        "Crate",
+        "Bookcase",
+        "Barrel",
+        "Lever",
+        "Sacks",
+        "Warehouse shelves",
+        "Study desk",
+        "Staircase",
+        "Boxes",
+        "Stool",
+        "Corpse",
+        "Portrait"
+      ]
     }
   },
-  "updatedAt": "2026-08-14T07:28:44.548Z"
+  "updatedAt": "2026-08-14T07:29:57.425Z"
 }
