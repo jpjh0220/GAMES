@@ -6,68 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1620,
-    "teacherChoices": 1620,
+    "totalChoices": 1622,
+    "teacherChoices": 1622,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1620,
-    "totalReward": 866.79,
-    "saves": 163,
-    "shadowPredictions": 740,
-    "shadowMatches": 330,
+    "completedExperiences": 1621,
+    "totalReward": 868.34,
+    "saves": 164,
+    "shadowPredictions": 742,
+    "shadowMatches": 331,
     "strategistRefreshes": 89,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstnswkl-3wq1gz",
-      "createdAt": "2026-08-15T00:50:14.373Z",
-      "tick": 0,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "AI strategist: Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.. These steps directly interact with the available interface options and maximize the profit from the inventory",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "click the sell 1 chaos rune for about 7 option to sell the chaos rune",
-        "click the sell 1 nature rune for about 10 option to sell the nature rune",
-        "click the sell 1 coins for about 0 option to sell the coins"
-      ],
-      "location": {
-        "x": 3076,
-        "z": 3251,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstnt3zc-vsm4yw",
-      "createdAt": "2026-08-15T00:50:23.976Z",
-      "tick": 39104,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3076,3251 → 3092,3243; new: agent:Scrappydoo, npc:Fishing spot, npc:Jail guard, npc:Ned, loc:Bank notice board, loc:Bush. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent scrappydoo",
-        "npc fishing spot",
-        "npc jail guard",
-        "npc ned",
-        "loc bank notice board",
-        "loc bush",
-        "loc tree stump",
-        "loc pile of rope"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstnvbeq-atgy1l",
       "createdAt": "2026-08-15T00:52:06.914Z",
@@ -8687,6 +8638,51 @@
         "z": 3236,
         "level": 0
       }
+    },
+    {
+      "id": "mstslqkb-whhnq3",
+      "createdAt": "2026-08-15T03:04:38.075Z",
+      "tick": 65951,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3236 → 3092,3243; new: npc:Aggie, npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc aggie",
+        "npc ned",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves",
+        "loc door"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstslqkb-f8ow7g",
+      "createdAt": "2026-08-15T03:04:38.075Z",
+      "tick": 65951,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 8 similar samples with average reward 1.35.",
+      "importance": 2.35,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9458,14 +9454,14 @@
         "exampleReason": "Talk-to Diango (level 0, distance 15)"
       },
       "skill:travel:draynor-bank": {
-        "n": 7,
-        "avgReward": 1.3214,
-        "positive": 6,
+        "n": 8,
+        "avgReward": 1.35,
+        "positive": 7,
         "negative": 0,
         "lastReward": 1.55,
-        "lastAt": "2026-08-15T03:02:48.580Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I've successfully navigated to the Draynor Bank at 3092,3243 using verified waypoint navigation. I now have access to the necessary information to proceed with my plan."
+        "lastAt": "2026-08-15T03:04:38.075Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "I'm moving to Draynor Bank at 3092,3243 using verified waypoint navigation"
       },
       "npc:attack:dark wizard": {
         "n": 9,
@@ -13462,8 +13458,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T03:03:48.613Z",
-      "encounters": 1220,
+      "lastSeenAt": "2026-08-15T03:04:22.185Z",
+      "encounters": 1221,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -14234,8 +14230,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T03:04:08.393Z",
-      "encounters": 607,
+      "lastSeenAt": "2026-08-15T03:04:38.425Z",
+      "encounters": 609,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14381,8 +14377,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T03:04:08.393Z",
-      "encounters": 223,
+      "lastSeenAt": "2026-08-15T03:04:38.425Z",
+      "encounters": 225,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -14632,8 +14628,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T03:04:08.393Z",
-      "visits": 489,
+      "lastSeenAt": "2026-08-15T03:04:38.425Z",
+      "visits": 490,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -14689,12 +14685,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3085,
-      "z": 3239,
+      "x": 3087,
+      "z": 3236,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T03:03:48.613Z",
-      "visits": 437,
+      "lastSeenAt": "2026-08-15T03:04:22.185Z",
+      "visits": 438,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -16305,10 +16301,10 @@
         "npc:attack:dark wizard",
         "skill:travel:draynor-bank"
       ],
-      "n": 46,
-      "avgReward": 5.764,
-      "positive": 46,
-      "lastAt": "2026-08-15T03:02:48.581Z",
+      "n": 47,
+      "avgReward": 5.794,
+      "positive": 47,
+      "lastAt": "2026-08-15T03:04:38.075Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 6) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "npc:attack:dark wizard > npc:attack:dark wizard > loc:use:bank booth": {
@@ -19986,18 +19982,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3076:3251:3092:3243:0",
-      "at": "2026-08-15T00:50:23.977Z",
-      "kind": "route",
-      "text": "Route learned: 3076,3251 → 3092,3243; moved 3076,3251 → 3092,3243; new: agent:Scrappydoo, npc:Fishing spot, npc:Jail guard, npc:Ned, loc:Bank notice board, loc:Bush",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
       "id": "route:3092:3243:3087:3230:0",
       "at": "2026-08-15T00:50:43.179Z",
       "kind": "route",
@@ -23584,9 +23568,21 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3087:3236:3092:3243:0",
+      "at": "2026-08-15T03:04:38.075Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3236 → 3092,3243; moved 3087,3236 → 3092,3243; new: npc:Aggie, npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T03:04:21.890Z",
+  "updatedAt": "2026-08-15T03:04:52.773Z",
   "activePlan": {
     "objective": "Find safe fishing locations and gather resources in Draynor Village",
     "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
