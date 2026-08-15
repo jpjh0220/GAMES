@@ -6,64 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1100,
-    "teacherChoices": 1100,
+    "totalChoices": 1110,
+    "teacherChoices": 1110,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1100,
-    "totalReward": 460.62,
-    "saves": 111,
+    "completedExperiences": 1110,
+    "totalReward": 462.4,
+    "saves": 112,
     "shadowPredictions": 395,
     "shadowMatches": 152,
-    "strategistRefreshes": 60,
+    "strategistRefreshes": 61,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstisycy-or2ps7",
-      "createdAt": "2026-08-14T22:30:18.610Z",
-      "tick": 11087,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstiv9ok-uzheqa",
-      "createdAt": "2026-08-14T22:32:06.596Z",
-      "tick": 11447,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3231 → 3092,3243; new: npc:Diango, npc:Ned, loc:Crate, loc:Staircase, loc:Oak, loc:Bench. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc diango",
-        "npc ned",
-        "loc crate",
-        "loc staircase",
-        "loc oak",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstivv09-3wm600",
       "createdAt": "2026-08-14T22:32:34.233Z",
@@ -8686,6 +8641,52 @@
         "z": 3240,
         "level": 0
       }
+    },
+    {
+      "id": "mstoa459-4rfqof",
+      "createdAt": "2026-08-15T01:03:37.341Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "sell 1 nature rune for about 10 using the sell 1 nature rune for about 10 action to generate immediate profit",
+        "buy 1 toy horsey for about 150 using the buy 1 toy horsey for about 150 action to increase inventory and prepare for later sales",
+        "close the shop using the"
+      ],
+      "location": {
+        "x": 3077,
+        "z": 3247,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstoas4i-ug6z74",
+      "createdAt": "2026-08-15T01:04:08.418Z",
+      "tick": 41852,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +1198 XP; 9 damage dealt; moved 3077,3247 → 3083,3239; execution rejected or failed. Reward 4.18.",
+      "importance": 2.79,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent un5wc8p3r",
+        "agent gpgather1",
+        "npc fishing spot",
+        "loc bullrushes",
+        "loc tree stump",
+        "loc stones"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3239,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -11979,12 +11980,12 @@
     },
     "area=384:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T01:02:42.579Z",
+        "lastAt": "2026-08-15T01:02:59.415Z",
         "exampleGoal": "Use the Escape skill to flee the dungeon",
         "exampleReason": "Click here to continue"
       },
@@ -12010,14 +12011,80 @@
         "exampleGoal": "Use the Escape skill to flee the dungeon",
         "exampleReason": "Observing for a moment to gather resources for the escape plan."
       }
+    },
+    "area=384:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop,wait": {
+      "shop:buy:toy horsey": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T01:03:29.991Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "Buy 1 Toy horsey for about 150"
+      },
+      "shop:sell:coins": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T01:03:38.413Z",
+        "exampleGoal": "Use the Escape skill to flee the dungeon",
+        "exampleReason": "Sell 1 Coins for about 0"
+      },
+      "shop:sell:chaos rune": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T01:03:44.988Z",
+        "exampleGoal": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+        "exampleReason": "Shop"
+      },
+      "shop:sell:nature rune": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T01:03:51.326Z",
+        "exampleGoal": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+        "exampleReason": "Selling the Nature rune for 10 GP is a direct way to generate immediate profit."
+      }
+    },
+    "area=384:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
+      "modal:close-shop": {
+        "n": 1,
+        "avgReward": 2.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-15T01:03:56.196Z",
+        "exampleGoal": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+        "exampleReason": "Close the shop"
+      }
+    },
+    "area=384:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 4.18,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 4.18,
+        "lastAt": "2026-08-15T01:04:08.418Z",
+        "exampleGoal": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+        "exampleReason": "I'm attacking a Dark wizard (level 7, distance 13) to increase my combat skills."
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T01:00:32.114Z",
-      "encounters": 565,
+      "lastSeenAt": "2026-08-15T01:03:56.424Z",
+      "encounters": 570,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -12919,8 +12986,8 @@
     "goo008": {
       "name": "Goo008",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-15T00:32:52.236Z",
-      "encounters": 5,
+      "lastSeenAt": "2026-08-15T01:03:20.081Z",
+      "encounters": 7,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -12934,8 +13001,8 @@
     "goo010": {
       "name": "Goo010",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-15T00:46:55.174Z",
-      "encounters": 12,
+      "lastSeenAt": "2026-08-15T01:03:13.513Z",
+      "encounters": 13,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -13151,8 +13218,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T01:02:48.911Z",
-      "encounters": 61,
+      "lastSeenAt": "2026-08-15T01:03:56.424Z",
+      "encounters": 71,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -13370,8 +13437,8 @@
       "z": 3247,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T01:02:48.911Z",
-      "visits": 255,
+      "lastSeenAt": "2026-08-15T01:03:56.424Z",
+      "visits": 265,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -14603,10 +14670,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T00:46:25.183Z",
+      "lastAt": "2026-08-15T01:03:13.183Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:buy:toy horsey > shop:sell:coins > shop:buy:toy horsey": {
@@ -14747,10 +14814,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T23:22:30.611Z",
+      "lastAt": "2026-08-15T01:02:59.415Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > modal:close-shop": {
@@ -15647,10 +15714,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-14T23:22:36.607Z",
+      "lastAt": "2026-08-15T01:03:06.570Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:coins > modal:close-shop > skill:travel:draynor-bank": {
@@ -16727,10 +16794,10 @@
         "shop:sell:coins",
         "shop:sell:chaos rune"
       ],
-      "n": 4,
+      "n": 6,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T00:46:54.877Z",
+      "lastAt": "2026-08-15T01:03:44.989Z",
       "example": "Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0 → Sell 1 Chaos rune for about 7"
     },
     "shop:sell:coins > shop:sell:chaos rune > shop:buy:toy horsey": {
@@ -16739,10 +16806,10 @@
         "shop:sell:chaos rune",
         "shop:buy:toy horsey"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T00:46:39.335Z",
+      "lastAt": "2026-08-15T01:03:29.991Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Chaos rune for about 7 → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:chaos rune > shop:buy:toy horsey > shop:sell:coins": {
@@ -16751,10 +16818,10 @@
         "shop:buy:toy horsey",
         "shop:sell:coins"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T00:46:45.300Z",
+      "lastAt": "2026-08-15T01:03:38.413Z",
       "example": "Sell 1 Chaos rune for about 7 → Buy 1 Toy horsey for about 150 → Sell 1 Coins for about 0"
     },
     "shop:sell:coins > shop:sell:chaos rune > shop:sell:bones": {
@@ -17219,10 +17286,10 @@
         "shop:sell:chaos rune",
         "shop:sell:nature rune"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T00:49:52.177Z",
+      "lastAt": "2026-08-15T01:03:51.326Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Chaos rune for about 7 → Sell 1 Nature rune for about 10"
     },
     "shop:sell:chaos rune > shop:sell:nature rune > modal:close-shop": {
@@ -17231,10 +17298,10 @@
         "shop:sell:nature rune",
         "modal:close-shop"
       ],
-      "n": 1,
-      "avgReward": -1.8,
-      "positive": 0,
-      "lastAt": "2026-08-15T00:47:08.280Z",
+      "n": 2,
+      "avgReward": -0.3,
+      "positive": 1,
+      "lastAt": "2026-08-15T01:03:56.196Z",
       "example": "Sell 1 Chaos rune for about 7 → Sell 1 Nature rune for about 10 → Close the shop"
     },
     "shop:sell:nature rune > modal:close-shop > skill:travel:draynor-bank": {
@@ -17416,6 +17483,18 @@
       "positive": 0,
       "lastAt": "2026-08-15T01:02:42.579Z",
       "example": "Speak publicly; latest message from Oag0azhyi: Nn everyone!! Banking up n logging off for the night, back tomorrow :3 → Talk-to Diango (level 0, distance 8) → Dialog 1: Click here to continue"
+    },
+    "shop:sell:nature rune > modal:close-shop > npc:attack:dark wizard": {
+      "sequence": [
+        "shop:sell:nature rune",
+        "modal:close-shop",
+        "npc:attack:dark wizard"
+      ],
+      "n": 1,
+      "avgReward": 5.98,
+      "positive": 1,
+      "lastAt": "2026-08-15T01:04:08.419Z",
+      "example": "Sell 1 Nature rune for about 10 → Close the shop → Attack Dark wizard (level 7, distance 8)"
     }
   },
   "discoveries": [
@@ -21018,45 +21097,58 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3077:3247:3083:3239:0",
+      "at": "2026-08-15T01:04:08.419Z",
+      "kind": "route",
+      "text": "Route learned: 3077,3247 → 3083,3239; +1198 XP; 9 damage dealt; moved 3077,3247 → 3083,3239; execution rejected or failed",
+      "location": {
+        "x": 3083,
+        "z": 3239,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T01:02:54.279Z",
+  "updatedAt": "2026-08-15T01:04:08.420Z",
   "activePlan": {
-    "objective": "Escape the dungeon using the escape skill",
-    "focus": "Use the Escape skill to flee the dungeon",
-    "reason": "Escape skill is available and provides observable evidence of success. Steps are concise and actionable with clear evidence points.",
+    "objective": "Maximize profit by selling items at the Lumbridge general store and using alternative methods for additional revenue.",
+    "focus": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use the Escape skill to flee the dungeon",
-        "status": "active"
+        "label": "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
-        "label": "Confirm escape success by checking the map",
-        "status": "pending"
+        "label": "Buy 1 Toy horsey for about 150 using the 'Buy 1 Toy horsey for about 150' action to increase inventory and prepare for later sales.",
+        "status": "active"
       },
       {
         "id": "step-3",
-        "label": "Return to base to rest and prepare for next mission",
+        "label": "Close the shop using the",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Escape completed successfully"
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use the Escape skill to flee the dungeon",
-      "Confirm escape success by checking the map",
-      "Return to base to rest and prepare for next mission"
+      "Sell 1 Nature rune for about 10 using the 'Sell 1 Nature rune for about 10' action to generate immediate profit.",
+      "Buy 1 Toy horsey for about 150 using the 'Buy 1 Toy horsey for about 150' action to increase inventory and prepare for later sales.",
+      "Close the shop using the"
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
-      "Bait Fishing spot (level 0, distance 1)",
-      "Wait and observe for a moment"
+      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Coins for about 0",
+      "Sell 1 Chaos rune for about 7"
     ],
-    "updatedAt": "2026-08-15T00:59:52.071Z",
+    "updatedAt": "2026-08-15T01:03:37.341Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
