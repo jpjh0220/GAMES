@@ -6,47 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2191,
-    "teacherChoices": 2191,
+    "totalChoices": 2201,
+    "teacherChoices": 2201,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2190,
-    "totalReward": 541.91,
-    "saves": 222,
-    "shadowPredictions": 871,
-    "shadowMatches": 375,
-    "strategistRefreshes": 156,
+    "completedExperiences": 2200,
+    "totalReward": 536.5,
+    "saves": 223,
+    "shadowPredictions": 874,
+    "shadowMatches": 376,
+    "strategistRefreshes": 157,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstp6b1y-jo77ib",
-      "createdAt": "2026-08-15T01:28:39.286Z",
-      "tick": 46755,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3082,3252 → 3092,3243; new: agent:Yr8wc2n6q, npc:Ned, npc:Fishing spot, loc:Bush, loc:Tree stump, loc:Boulder. Reward 1.45.",
-      "importance": 1.42,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent yr8wc2n6q",
-        "npc ned",
-        "npc fishing spot",
-        "loc bush",
-        "loc tree stump",
-        "loc boulder",
-        "loc rock"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstp6twa-n0i7o0",
       "createdAt": "2026-08-15T01:29:03.706Z",
@@ -8532,6 +8504,26 @@
         "z": 3251,
         "level": 1
       }
+    },
+    {
+      "id": "msu2219x-zx3q7e",
+      "createdAt": "2026-08-15T07:29:14.997Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore southeast about 4 tiles to reach Draynor fishing location. This plan uses the 'Explore' skill to navigate to the target location and 'Collect' to gather resources, ensuring observable evidence of movement and resource acquisition. The",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore southeast about 4 tiles to reach draynor fishing location",
+        "use the explore skill to confirm arrival at draynor fishing location",
+        "collect coins and earth runes at draynor fishing location to strengthen resources"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3255,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -13039,44 +13031,44 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "style:accurate:attack": {
-        "n": 74,
-        "avgReward": -0.2418,
+        "n": 76,
+        "avgReward": -0.2423,
         "positive": 0,
-        "negative": 35,
+        "negative": 36,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T07:27:01.099Z",
-        "exampleGoal": "Progress through combat-style",
-        "exampleReason": "I'm ready to train my combat style for attack accuracy."
+        "lastAt": "2026-08-15T07:28:29.586Z",
+        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
+        "exampleReason": "I need to train my combat style to prepare for combat while mining."
       },
       "walk:north": {
-        "n": 51,
-        "avgReward": -0.3716,
-        "positive": 29,
+        "n": 52,
+        "avgReward": -0.35,
+        "positive": 30,
         "negative": 22,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:27:09.178Z",
-        "exampleGoal": "Use 'Explore east about 5 tiles' to reach the rock area",
-        "exampleReason": "Explore east about 5 tiles"
+        "lastReward": 0.75,
+        "lastAt": "2026-08-15T07:28:16.075Z",
+        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
+        "exampleReason": "I'm exploring the area north about 5 tiles to locate mining activity."
       },
       "style:aggressive:strength": {
-        "n": 70,
-        "avgReward": -0.1534,
+        "n": 72,
+        "avgReward": -0.1563,
         "positive": 0,
-        "negative": 24,
+        "negative": 25,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T07:27:27.797Z",
-        "exampleGoal": "Use 'Explore east about 5 tiles' to reach the rock area",
-        "exampleReason": "I'm ready to start the combat style, which is a good move to gain experience and inventory items. The action is now active and will help me progress in the game."
+        "lastAt": "2026-08-15T07:28:53.579Z",
+        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
+        "exampleReason": "I'm ready to start combat training with the 'Combat style Pound: Aggressive; trains Strength' skill. This will help me improve my defensive capabilities and prepare for potential c"
       },
       "walk:south": {
-        "n": 68,
-        "avgReward": -1.2354,
+        "n": 69,
+        "avgReward": -1.2443,
         "positive": 19,
-        "negative": 49,
+        "negative": 50,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:26:15.216Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "I'm exploring the south about 5 tiles to locate mining activity. The coordinates suggest a possible location near the SE Varrock mine. I'll continue this exploration to gather more"
+        "lastAt": "2026-08-15T07:28:09.185Z",
+        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
+        "exampleReason": "Exploring south about 5 tiles to locate mining activity."
       },
       "walk:east": {
         "n": 38,
@@ -13089,14 +13081,14 @@
         "exampleReason": "Exploring east about 5 tiles is the next step to reach the rock area. It's a good way to gather experience and inventory items before proceeding to the next phase of the plan."
       },
       "style:defensive:defence": {
-        "n": 59,
-        "avgReward": -0.1159,
+        "n": 60,
+        "avgReward": -0.1126,
         "positive": 0,
         "negative": 17,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T07:28:02.015Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
-        "exampleReason": "I'm focusing on defensive combat style to survive while mining, which is crucial in the current situation. This will help me stay safe and progress."
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T07:29:19.741Z",
+        "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
+        "exampleReason": "I'm preparing for combat, so I'll focus on defensive skills to survive while mining. This action will help me stay on track and improve my chances of survival."
       },
       "walk:west": {
         "n": 26,
@@ -13141,24 +13133,24 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,wait,world": {
       "walk:north": {
-        "n": 70,
-        "avgReward": -0.9616,
+        "n": 72,
+        "avgReward": -0.9863,
         "positive": 24,
-        "negative": 46,
+        "negative": 48,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:26:51.485Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "Exploring north about 5 tiles to check for mining activity"
+        "lastAt": "2026-08-15T07:29:00.785Z",
+        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
+        "exampleReason": "Explore north about 5 tiles"
       },
       "walk:south": {
-        "n": 36,
-        "avgReward": 0.2888,
-        "positive": 35,
+        "n": 37,
+        "avgReward": 0.2905,
+        "positive": 36,
         "negative": 1,
         "lastReward": 0.35,
-        "lastAt": "2026-08-15T07:27:37.088Z",
-        "exampleGoal": "Use 'Explore east about 5 tiles' to reach the rock area",
-        "exampleReason": "Exploring south about 5 tiles will give me the first opportunity to mine a rock."
+        "lastAt": "2026-08-15T07:29:11.909Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "Exploring the south about 5 tiles is the next step to advance the plan. The coordinates are within the main area, so it's a good move to check for any potential obstacles or resour"
       },
       "walk:southeast": {
         "n": 1,
@@ -15200,8 +15192,8 @@
       "z": 3251,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T07:27:55.092Z",
-      "visits": 543,
+      "lastSeenAt": "2026-08-15T07:29:12.220Z",
+      "visits": 553,
       "npcs": [
         "Woman"
       ],
@@ -20467,10 +20459,10 @@
         "style:accurate:attack",
         "walk:north"
       ],
-      "n": 11,
-      "avgReward": -0.479,
+      "n": 12,
+      "avgReward": -0.637,
       "positive": 0,
-      "lastAt": "2026-08-15T07:20:25.419Z",
+      "lastAt": "2026-08-15T07:28:37.110Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles"
     },
     "walk:north > walk:north > style:aggressive:strength": {
@@ -20503,10 +20495,10 @@
         "walk:north",
         "walk:south"
       ],
-      "n": 4,
-      "avgReward": -1.76,
+      "n": 5,
+      "avgReward": -1.828,
       "positive": 0,
-      "lastAt": "2026-08-15T07:16:48.217Z",
+      "lastAt": "2026-08-15T07:29:11.909Z",
       "example": "Combat style Pound: Aggressive; trains Strength → Explore north about 5 tiles → Explore south about 5 tiles"
     },
     "walk:north > walk:south > walk:south": {
@@ -20707,10 +20699,10 @@
         "style:accurate:attack",
         "style:accurate:attack"
       ],
-      "n": 2,
-      "avgReward": -2.37,
+      "n": 3,
+      "avgReward": -1.503,
       "positive": 0,
-      "lastAt": "2026-08-15T06:57:11.894Z",
+      "lastAt": "2026-08-15T07:28:29.586Z",
       "example": "Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack"
     },
     "style:aggressive:strength > style:defensive:defence > walk:south": {
@@ -20983,10 +20975,10 @@
         "walk:north",
         "style:aggressive:strength"
       ],
-      "n": 3,
-      "avgReward": -1.503,
+      "n": 4,
+      "avgReward": -1.72,
       "positive": 0,
-      "lastAt": "2026-08-15T06:47:33.485Z",
+      "lastAt": "2026-08-15T07:28:46.707Z",
       "example": "Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles → Combat style Pound: Aggressive; trains Strength"
     },
     "walk:north > style:aggressive:strength > style:aggressive:strength": {
@@ -20995,10 +20987,10 @@
         "style:aggressive:strength",
         "style:aggressive:strength"
       ],
-      "n": 5,
-      "avgReward": -1.33,
+      "n": 6,
+      "avgReward": -1.503,
       "positive": 0,
-      "lastAt": "2026-08-15T07:05:10.985Z",
+      "lastAt": "2026-08-15T07:28:53.579Z",
       "example": "Explore north about 5 tiles → Combat style Pound: Aggressive; trains Strength → Combat style Pound: Aggressive; trains Strength"
     },
     "style:aggressive:strength > style:aggressive:strength > walk:north": {
@@ -21007,10 +20999,10 @@
         "style:aggressive:strength",
         "walk:north"
       ],
-      "n": 4,
-      "avgReward": -1.07,
+      "n": 5,
+      "avgReward": -1.33,
       "positive": 0,
-      "lastAt": "2026-08-15T07:03:55.964Z",
+      "lastAt": "2026-08-15T07:29:00.785Z",
       "example": "Combat style Pound: Aggressive; trains Strength → Combat style Pound: Aggressive; trains Strength → Explore north about 5 tiles"
     },
     "walk:east > walk:west > walk:northeast": {
@@ -21571,10 +21563,10 @@
         "walk:north",
         "style:accurate:attack"
       ],
-      "n": 3,
-      "avgReward": 0.953,
+      "n": 4,
+      "avgReward": 0.46,
       "positive": 3,
-      "lastAt": "2026-08-15T07:25:10.124Z",
+      "lastAt": "2026-08-15T07:28:23.619Z",
       "example": "Explore south about 5 tiles → Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack"
     },
     "style:aggressive:strength > style:aggressive:strength > walk:south": {
@@ -22351,10 +22343,10 @@
         "walk:south",
         "style:defensive:defence"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.42,
       "positive": 0,
-      "lastAt": "2026-08-15T07:16:55.692Z",
+      "lastAt": "2026-08-15T07:29:19.741Z",
       "example": "Explore north about 5 tiles → Explore south about 5 tiles → Combat style Focus: Defensive; trains Defence"
     },
     "walk:south > style:defensive:defence > style:accurate:attack": {
@@ -22512,6 +22504,30 @@
       "positive": 0,
       "lastAt": "2026-08-15T07:28:02.016Z",
       "example": "Explore east about 5 tiles → Combat style Focus: Defensive; trains Defence → Combat style Focus: Defensive; trains Defence"
+    },
+    "style:defensive:defence > style:defensive:defence > walk:south": {
+      "sequence": [
+        "style:defensive:defence",
+        "style:defensive:defence",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:28:09.185Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles"
+    },
+    "style:defensive:defence > walk:south > walk:north": {
+      "sequence": [
+        "style:defensive:defence",
+        "walk:south",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.7,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:28:16.075Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles → Explore north about 5 tiles"
     }
   },
   "discoveries": [
@@ -26116,26 +26132,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T07:28:02.016Z",
+  "updatedAt": "2026-08-15T07:29:19.741Z",
   "activePlan": {
-    "objective": "Detect and combat mining activity in Al Kharid to survive and proceed.",
-    "focus": "Explore southeast about 4 tiles to locate mining activity.",
-    "reason": "This plan uses a named repository-tested escape or travel skill (Explore southeast about 4 tiles) and leverages a known combat strategy (Focus: Defensive; trains",
+    "objective": "Navigate to Draynor fishing location to gather resources",
+    "focus": "Explore southeast about 4 tiles to reach Draynor fishing location",
+    "reason": "This plan uses the 'Explore' skill to navigate to the target location and 'Collect' to gather resources, ensuring observable evidence of movement and resource acquisition. The",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore southeast about 4 tiles to locate mining activity.",
+        "label": "Explore southeast about 4 tiles to reach Draynor fishing location",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use Combat style Focus: Defensive; trains Defence to prepare for combat.",
+        "label": "Use the 'Explore' skill to confirm arrival at Draynor fishing location",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Combat 27+ scorpions to survive mining activity and continue exploration.",
+        "label": "Collect coins and earth runes at Draynor fishing location to strengthen resources",
         "status": "pending"
       }
     ],
@@ -26143,16 +26159,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore southeast about 4 tiles to locate mining activity.",
-      "Use Combat style Focus: Defensive; trains Defence to prepare for combat.",
-      "Combat 27+ scorpions to survive mining activity and continue exploration."
+      "Explore southeast about 4 tiles to reach Draynor fishing location",
+      "Use the 'Explore' skill to confirm arrival at Draynor fishing location",
+      "Collect coins and earth runes at Draynor fishing location to strengthen resources"
     ],
     "avoid": [
-      "Explore east about 5 tiles",
+      "Explore north about 5 tiles",
       "Combat style Pound: Aggressive; trains Strength",
-      "Explore east about 5 tiles"
+      "Explore north about 5 tiles"
     ],
-    "updatedAt": "2026-08-15T07:27:56.567Z",
+    "updatedAt": "2026-08-15T07:29:14.997Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
