@@ -2,6 +2,7 @@ import type { BotWorldState } from './src/bot/types.js';
 import { readdir, readFile } from 'fs/promises';
 import { join, basename } from 'path';
 import { PrerequisiteTracker } from './prerequisites.js';
+import { GoalSystem } from './goals.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -130,6 +131,7 @@ export class SolAgentBrain {
   private blockedFingerprints:string[]=[];
   private prereqs=new PrerequisiteTracker();
   private paidResolutions=new Set<string>();
+  private goals=new GoalSystem();
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
