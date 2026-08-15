@@ -6,47 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3151,
-    "teacherChoices": 3151,
+    "totalChoices": 3161,
+    "teacherChoices": 3161,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3150,
-    "totalReward": 1367.03,
-    "saves": 318,
-    "shadowPredictions": 1447,
-    "shadowMatches": 649,
-    "strategistRefreshes": 211,
+    "completedExperiences": 3160,
+    "totalReward": 1365.85,
+    "saves": 319,
+    "shadowPredictions": 1457,
+    "shadowMatches": 651,
+    "strategistRefreshes": 212,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu4yarh-kcigsz",
-      "createdAt": "2026-08-15T08:50:19.517Z",
-      "tick": 31921,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3236 → 3092,3243; new: agent:0ysevf7hb, npc:Ned, npc:Aggie, loc:Oak, loc:Bench, loc:Shelves. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent 0ysevf7hb",
-        "npc ned",
-        "npc aggie",
-        "loc oak",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu4ykz2-3ssev3",
       "createdAt": "2026-08-15T08:50:32.750Z",
@@ -8430,6 +8402,26 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "msu7zdv9-4dkobg",
+      "createdAt": "2026-08-15T10:15:09.045Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Deposit all Coins using the bank slot. This objective uses a named repository-tested escape or travel skill (bank slot) and ensures observable evidence through inventory checks. All actions are listed and executable within the game context.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "deposit all coins using the bank slot",
+        "deposit all water rune using the bank slot",
+        "verify the deposit by checking the bank inventory in the guide file"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8479,12 +8471,12 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 46,
-        "avgReward": -0.2571,
+        "n": 47,
+        "avgReward": -0.2538,
         "positive": 0,
         "negative": 25,
-        "lastReward": -0.58,
-        "lastAt": "2026-08-15T10:14:06.680Z",
+        "lastReward": -0.1,
+        "lastAt": "2026-08-15T10:15:02.784Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Coins"
       },
@@ -8519,14 +8511,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 107,
+        "n": 109,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T02:19:56.077Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "Withdraw 1 Coins"
+        "lastAt": "2026-08-15T10:15:18.041Z",
+        "exampleGoal": "Deposit all Coins using the bank slot",
+        "exampleReason": "Deposit all Coins using the bank slot"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8569,13 +8561,13 @@
         "exampleReason": "Withdraw 1 Chaos rune"
       },
       "bank:deposit:chaos rune": {
-        "n": 5,
-        "avgReward": -0.144,
+        "n": 6,
+        "avgReward": -0.1867,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.4,
-        "lastAt": "2026-08-15T02:11:56.995Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-15T10:14:30.327Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:withdraw:bronze arrow": {
@@ -8619,24 +8611,24 @@
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:bones": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T02:19:16.783Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
+        "lastAt": "2026-08-15T10:14:36.533Z",
+        "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Bones"
       },
       "bank:deposit:nature rune": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.32,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.32,
-        "lastAt": "2026-08-15T02:12:11.125Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "Deposit all Nature rune"
+        "lastAt": "2026-08-15T10:14:19.007Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Mind rune"
       },
       "bank:withdraw:air rune": {
         "n": 1,
@@ -8687,6 +8679,46 @@
         "lastAt": "2026-08-15T02:19:24.318Z",
         "exampleGoal": "Open the bank to access deposit functionality",
         "exampleReason": "Deposit all Fire rune"
+      },
+      "bank:deposit:mind rune": {
+        "n": 1,
+        "avgReward": -0.4,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-15T10:14:24.968Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Mind rune"
+      },
+      "bank:deposit:staff": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T10:14:42.386Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Deposit all Staff"
+      },
+      "bank:withdraw:water rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T10:14:54.362Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Withdraw 1 Water rune"
+      },
+      "bank:deposit:water rune": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T10:15:11.798Z",
+        "exampleGoal": "Deposit all Coins using the bank slot",
+        "exampleReason": "I've identified safe fishing locations and secured resources in Draynor Village. I'm now ready to proceed with the next objective of securing the bank."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -16147,8 +16179,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:14:06.989Z",
-      "encounters": 1437,
+      "lastSeenAt": "2026-08-15T10:15:12.047Z",
+      "encounters": 1447,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16993,8 +17025,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:14:06.989Z",
-      "visits": 654,
+      "lastSeenAt": "2026-08-15T10:15:12.047Z",
+      "visits": 664,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -26338,6 +26370,126 @@
       "positive": 1,
       "lastAt": "2026-08-15T10:13:49.574Z",
       "example": "Use Bank booth (distance 7) → Use Bank booth (distance 4) → Dialog 1: Click here to continue"
+    },
+    "bank:deposit:coins > bank:deposit:earth rune > bank:deposit:nature rune": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:earth rune",
+        "bank:deposit:nature rune"
+      ],
+      "n": 1,
+      "avgReward": -1.3,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:19.008Z",
+      "example": "Deposit all Coins → Deposit all Earth rune → Deposit all Nature rune"
+    },
+    "bank:deposit:earth rune > bank:deposit:nature rune > bank:deposit:mind rune": {
+      "sequence": [
+        "bank:deposit:earth rune",
+        "bank:deposit:nature rune",
+        "bank:deposit:mind rune"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:24.968Z",
+      "example": "Deposit all Earth rune → Deposit all Nature rune → Deposit all Mind rune"
+    },
+    "bank:deposit:nature rune > bank:deposit:mind rune > bank:deposit:chaos rune": {
+      "sequence": [
+        "bank:deposit:nature rune",
+        "bank:deposit:mind rune",
+        "bank:deposit:chaos rune"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:30.327Z",
+      "example": "Deposit all Nature rune → Deposit all Mind rune → Deposit all Chaos rune"
+    },
+    "bank:deposit:mind rune > bank:deposit:chaos rune > bank:deposit:bones": {
+      "sequence": [
+        "bank:deposit:mind rune",
+        "bank:deposit:chaos rune",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.88,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:36.533Z",
+      "example": "Deposit all Mind rune → Deposit all Chaos rune → Deposit all Bones"
+    },
+    "bank:deposit:chaos rune > bank:deposit:bones > bank:deposit:staff": {
+      "sequence": [
+        "bank:deposit:chaos rune",
+        "bank:deposit:bones",
+        "bank:deposit:staff"
+      ],
+      "n": 1,
+      "avgReward": -0.56,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:42.387Z",
+      "example": "Deposit all Chaos rune → Deposit all Bones → Deposit all Staff"
+    },
+    "bank:deposit:bones > bank:deposit:staff > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:bones",
+        "bank:deposit:staff",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.06,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:48.047Z",
+      "example": "Deposit all Bones → Deposit all Staff → Withdraw 1 Coins"
+    },
+    "bank:deposit:staff > bank:withdraw:coins > bank:withdraw:water rune": {
+      "sequence": [
+        "bank:deposit:staff",
+        "bank:withdraw:coins",
+        "bank:withdraw:water rune"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:14:54.362Z",
+      "example": "Deposit all Staff → Withdraw 1 Coins → Withdraw 1 Water rune"
+    },
+    "bank:withdraw:coins > bank:withdraw:water rune > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:water rune",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:15:02.784Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Water rune → Deposit all Coins"
+    },
+    "bank:withdraw:water rune > bank:deposit:coins > bank:deposit:water rune": {
+      "sequence": [
+        "bank:withdraw:water rune",
+        "bank:deposit:coins",
+        "bank:deposit:water rune"
+      ],
+      "n": 1,
+      "avgReward": -0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:15:11.798Z",
+      "example": "Withdraw 1 Water rune → Deposit all Coins → Deposit all Water rune"
+    },
+    "bank:deposit:coins > bank:deposit:water rune > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:water rune",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:15:18.042Z",
+      "example": "Deposit all Coins → Deposit all Water rune → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -29942,47 +30094,44 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T10:14:12.753Z",
+  "updatedAt": "2026-08-15T10:15:18.042Z",
   "activePlan": {
-    "objective": "Identify safe fishing locations and secure resources in Draynor Village.",
-    "focus": "Plan complete; form the next objective.",
-    "reason": "This plan ensures safe navigation, resource collection",
+    "objective": "Deposit all coins and water runes in the bank",
+    "focus": "Deposit all Coins using the bank slot",
+    "reason": "This objective uses a named repository-tested escape or travel skill (bank slot) and ensures observable evidence through inventory checks. All actions are listed and executable within the game context.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "status": "done",
-        "evidence": "moved 3087,3238 → 3088,3247; new: npc:Aggie, npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door"
+        "label": "Deposit all Coins using the bank slot",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate and verify the safe fishing location for level 0.",
-        "status": "done",
-        "evidence": "+265 XP; +1 level(s); 2 damage dealt; moved 3092,3242 → 3084,3241; execution rejected or failed"
+        "label": "Deposit all Water rune using the bank slot",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Pick up Bones (distance 3) and use the Bank booth (distance 4) to secure resources.",
-        "status": "done",
-        "evidence": "moved 3084,3237 → 3085,3245; new: npc:Aggie, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door"
+        "label": "Verify the deposit by checking the bank inventory in the guide file",
+        "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Bank successfully updated with all items"
     ],
     "priorities": [
-      "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-      "Explore north about 5 tiles to locate and verify the safe fishing location for level 0.",
-      "Pick up Bones (distance 3) and use the Bank booth (distance 4) to secure resources."
+      "Deposit all Coins using the bank slot",
+      "Deposit all Water rune using the bank slot",
+      "Verify the deposit by checking the bank inventory in the guide file"
     ],
     "avoid": [
-      "Bait Fishing spot (level 0, distance 1)",
-      "Dialog 1: Click here to continue",
-      "Pick up Bones (distance 1)"
+      "Deposit all Chaos rune",
+      "Deposit all Bones",
+      "Deposit all Staff"
     ],
-    "updatedAt": "2026-08-15T10:12:39.441Z",
+    "updatedAt": "2026-08-15T10:15:09.045Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
