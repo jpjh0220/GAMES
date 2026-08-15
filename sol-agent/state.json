@@ -6,13 +6,13 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1671,
-    "teacherChoices": 1671,
+    "totalChoices": 1681,
+    "teacherChoices": 1681,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1670,
-    "totalReward": 900.81,
-    "saves": 170,
+    "completedExperiences": 1680,
+    "totalReward": 898.68,
+    "saves": 171,
     "shadowPredictions": 762,
     "shadowMatches": 341,
     "strategistRefreshes": 93,
@@ -13199,14 +13199,14 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "style:accurate:attack": {
-        "n": 4,
+        "n": 6,
         "avgReward": -0.26,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T06:18:41.312Z",
+        "lastAt": "2026-08-15T06:19:58.697Z",
         "exampleGoal": "Explore south about 5 tiles to locate the mining area.",
-        "exampleReason": "I need to train my Defence to prepare for combat against scorpions. This is a key step in my active plan to survive and gather resources."
+        "exampleReason": "I need to train my combat style to prepare for combat against scorpions."
       },
       "walk:north": {
         "n": 3,
@@ -13219,12 +13219,12 @@
         "exampleReason": "Exploring north about 5 tiles is the next step to locate the Al Kharid mine. It's a good way to gather information before taking any further action."
       },
       "style:aggressive:strength": {
-        "n": 2,
+        "n": 4,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T06:18:46.678Z",
+        "lastAt": "2026-08-15T06:20:03.786Z",
         "exampleGoal": "Explore south about 5 tiles to locate the mining area.",
         "exampleReason": "Combat style Pound: Aggressive; trains Strength"
       },
@@ -13249,14 +13249,36 @@
         "exampleReason": "I'm exploring east about 5 tiles. I need to check if there's any mining activity nearby. If I find it, I'll start mining. If not, I'll continue exploring other directions."
       },
       "style:defensive:defence": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T06:18:56.271Z",
+        "lastAt": "2026-08-15T06:19:09.191Z",
         "exampleGoal": "Explore south about 5 tiles to locate the mining area.",
-        "exampleReason": "I am ready to train my Defence for combat against scorpions. This action will prepare me to defend myself in the dangerous environment of Al Kharid."
+        "exampleReason": "I'm ready to prepare for combat with defensive style. I'll focus on defending myself while exploring the area."
+      }
+    },
+    "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,wait,world": {
+      "walk:north": {
+        "n": 4,
+        "avgReward": -0.55,
+        "positive": 2,
+        "negative": 2,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T06:19:44.283Z",
+        "exampleGoal": "Explore south about 5 tiles to locate the mining area.",
+        "exampleReason": "Exploring the south area has provided me with some new information. The coordinates moved from (3094,3255) to (3093,3251), indicating a possible location to explore further. I will"
+      },
+      "walk:south": {
+        "n": 1,
+        "avgReward": 0.35,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.35,
+        "lastAt": "2026-08-15T06:19:30.209Z",
+        "exampleGoal": "Explore south about 5 tiles to locate the mining area.",
+        "exampleReason": "Exploring the area south about 5 tiles is the next step to gather resources. I'll check for any signs of mining activity and prepare for combat as needed."
       }
     }
   },
@@ -15180,12 +15202,12 @@
     },
     "193:203:1": {
       "key": "193:203:1",
-      "x": 3093,
-      "z": 3251,
+      "x": 3094,
+      "z": 3255,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T06:18:46.985Z",
-      "visits": 15,
+      "lastSeenAt": "2026-08-15T06:19:58.964Z",
+      "visits": 25,
       "npcs": [
         "Woman"
       ],
@@ -20571,10 +20593,10 @@
         "style:accurate:attack",
         "style:aggressive:strength"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.44,
       "positive": 0,
-      "lastAt": "2026-08-15T06:18:46.678Z",
+      "lastAt": "2026-08-15T06:20:03.786Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack → Combat style Pound: Aggressive; trains Strength"
     },
     "style:accurate:attack > style:aggressive:strength > style:defensive:defence": {
@@ -20588,6 +20610,114 @@
       "positive": 0,
       "lastAt": "2026-08-15T06:18:56.271Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Pound: Aggressive; trains Strength → Combat style Focus: Defensive; trains Defence"
+    },
+    "style:aggressive:strength > style:defensive:defence > style:aggressive:strength": {
+      "sequence": [
+        "style:aggressive:strength",
+        "style:defensive:defence",
+        "style:aggressive:strength"
+      ],
+      "n": 1,
+      "avgReward": 0.24,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:02.868Z",
+      "example": "Combat style Pound: Aggressive; trains Strength → Combat style Focus: Defensive; trains Defence → Combat style Pound: Aggressive; trains Strength"
+    },
+    "style:defensive:defence > style:aggressive:strength > style:defensive:defence": {
+      "sequence": [
+        "style:defensive:defence",
+        "style:aggressive:strength",
+        "style:defensive:defence"
+      ],
+      "n": 1,
+      "avgReward": 0.24,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:09.191Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Combat style Pound: Aggressive; trains Strength → Combat style Focus: Defensive; trains Defence"
+    },
+    "style:aggressive:strength > style:defensive:defence > walk:north": {
+      "sequence": [
+        "style:aggressive:strength",
+        "style:defensive:defence",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": 0.91,
+      "positive": 1,
+      "lastAt": "2026-08-15T06:19:15.173Z",
+      "example": "Combat style Pound: Aggressive; trains Strength → Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles"
+    },
+    "style:defensive:defence > walk:north > walk:north": {
+      "sequence": [
+        "style:defensive:defence",
+        "walk:north",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.02,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:22.999Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles → Explore north about 5 tiles"
+    },
+    "walk:north > walk:north > walk:south": {
+      "sequence": [
+        "walk:north",
+        "walk:north",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -0.75,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:30.209Z",
+      "example": "Explore north about 5 tiles → Explore north about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:north > walk:south > walk:north": {
+      "sequence": [
+        "walk:north",
+        "walk:south",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -0.75,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:36.841Z",
+      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore north about 5 tiles"
+    },
+    "walk:south > walk:north > walk:north": {
+      "sequence": [
+        "walk:south",
+        "walk:north",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -0.75,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:44.283Z",
+      "example": "Explore south about 5 tiles → Explore north about 5 tiles → Explore north about 5 tiles"
+    },
+    "walk:north > walk:north > style:accurate:attack": {
+      "sequence": [
+        "walk:north",
+        "walk:north",
+        "style:accurate:attack"
+      ],
+      "n": 1,
+      "avgReward": -1.02,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:52.983Z",
+      "example": "Explore north about 5 tiles → Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack"
+    },
+    "walk:north > style:accurate:attack > style:accurate:attack": {
+      "sequence": [
+        "walk:north",
+        "style:accurate:attack",
+        "style:accurate:attack"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:19:58.697Z",
+      "example": "Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack"
     }
   },
   "discoveries": [
@@ -24192,7 +24322,7 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T06:18:56.271Z",
+  "updatedAt": "2026-08-15T06:20:03.786Z",
   "activePlan": {
     "objective": "Detect and combat mining activity in Al Kharid to survive and gather resources.",
     "focus": "Explore south about 5 tiles to locate the mining area.",
@@ -24231,6 +24361,6 @@
     ],
     "updatedAt": "2026-08-15T06:18:23.797Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 2
   }
 }
