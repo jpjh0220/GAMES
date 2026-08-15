@@ -147,6 +147,8 @@ export class SolAgentBrain {
   private lastGoalReeval:number=0;
   private lastRecommendedActivity:string='';
   private lastRecommendedProfit:number=0;
+  private lastStudentChoice:AgentChoice|null=null;
+  private studentDecisionOutcomes:{choice:string;reward:number}[]=[];
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
@@ -717,10 +719,27 @@ export class SolAgentBrain {
   }
 
   private async askStudent(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice|null>{
-    // Student makes decisions based on learned policy + recent outcomes
-    // For now, returns null (fallback to motor)
-    // Next commit: implement independent reasoning
-    return null;
+    // Student makes decisions using learned policy + simple heuristics
+    // Prefer actions with positive expected value
+    const ctx=this.memory.policy[contextKey]||{};
+    let bestChoice:AgentChoice|null=null;
+    let bestValue=-999;
+    
+    for(const candidate of candidates){
+      const stats=ctx[candidate.fingerprint];
+      // Value = learned reward + category bonus
+      let value=stats?.avgReward||0;
+      if(candidate.category==='combat')value+=0.1; // combat bonus
+      if(candidate.category==='explore')value+=0.05; // explore bonus
+      
+      if(value>bestValue){
+        bestValue=value;
+        bestChoice={actionId:candidate.id,confidence:Math.max(0.4,Math.min(0.9,bestValue)),why:stats?`learned reward ${stats.avgReward}`:' exploring',goal:'',reason:'student'};
+      }
+    }
+    
+    if(bestChoice)console.log('AGENT_STUDENT_DECISION',JSON.stringify({action:bestChoice.actionId,confidence:bestChoice.confidence}));
+    return bestChoice;
   }
 
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
