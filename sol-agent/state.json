@@ -6,44 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1622,
-    "teacherChoices": 1622,
+    "totalChoices": 1623,
+    "teacherChoices": 1623,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1621,
-    "totalReward": 868.34,
-    "saves": 164,
+    "completedExperiences": 1622,
+    "totalReward": 867.74,
+    "saves": 165,
     "shadowPredictions": 742,
     "shadowMatches": 331,
-    "strategistRefreshes": 89,
+    "strategistRefreshes": 90,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstnvbeq-atgy1l",
-      "createdAt": "2026-08-15T00:52:06.914Z",
-      "tick": 39447,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 6). Result: +1597 XP; 10 damage dealt; moved 3086,3230 → 3084,3239; execution rejected or failed. Reward 4.33.",
-      "importance": 2.87,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "npc diango",
-        "loc market stall",
-        "loc crate",
-        "loc staircase",
-        "loc oak"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mstnvbeq-ng7iqx",
       "createdAt": "2026-08-15T00:52:06.914Z",
@@ -8683,6 +8658,26 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "mstz95ri-0x0atk",
+      "createdAt": "2026-08-15T06:10:48.558Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.. This plan uses a named repository-tested escape or travel skill (Bank",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
+        "chop down willow distance 2 and chop down willow distance 5 to gather resources",
+        "use bank booth distance 6 to complete the quest and collect resources efficiently"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3236,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -13059,14 +13054,26 @@
         "exampleGoal": "Travel to the Draynor fishing area at (3087, 3230) and verify arrival.",
         "exampleReason": "I have successfully traveled to the Draynor Bank at 3092,3243 using verified waypoint navigation. I moved the agent:Scrappydoo, npc:Aggie, npc:Ned, loc:Oak, loc:Be from their curre"
       }
+    },
+    "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,say,wait,world": {
+      "loc:chop down:willow": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T06:10:49.080Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Chop down Willow (distance 2) to gather resources."
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T03:02:17.101Z",
-      "encounters": 708,
+      "lastSeenAt": "2026-08-15T06:10:29.039Z",
+      "encounters": 709,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -13458,8 +13465,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T03:04:22.185Z",
-      "encounters": 1221,
+      "lastSeenAt": "2026-08-15T06:10:29.039Z",
+      "encounters": 1222,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -14215,8 +14222,8 @@
     "goo017": {
       "name": "Goo017",
       "firstSeenAt": "2026-08-14T23:14:21.332Z",
-      "lastSeenAt": "2026-08-15T02:46:15.284Z",
-      "encounters": 30,
+      "lastSeenAt": "2026-08-15T06:10:29.039Z",
+      "encounters": 31,
       "combatLevel": 124,
       "trust": 0,
       "stance": "unknown",
@@ -14230,8 +14237,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T03:04:38.425Z",
-      "encounters": 609,
+      "lastSeenAt": "2026-08-15T06:10:29.039Z",
+      "encounters": 610,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14689,8 +14696,8 @@
       "z": 3236,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T03:04:22.185Z",
-      "visits": 438,
+      "lastSeenAt": "2026-08-15T06:10:29.039Z",
+      "visits": 439,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -23582,45 +23589,39 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T03:04:52.773Z",
+  "updatedAt": "2026-08-15T06:10:49.080Z",
   "activePlan": {
-    "objective": "Find safe fishing locations and gather resources in Draynor Village",
-    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-    "reason": "This plan uses the available",
+    "objective": "Navigate to Draynor Bank and complete the quest to gather resources.",
+    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+    "reason": "This plan uses a named repository-tested escape or travel skill (Bank",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "status": "done",
-        "evidence": "moved 3085,3239 → 3092,3243; new: npc:Ned, loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom"
+        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Verify arrival at Draynor fishing area at 3087,3230",
-        "status": "done",
-        "evidence": "+265 XP; moved 3092,3243 → 3087,3236"
+        "label": "Chop down Willow (distance 2) and Chop down Willow (distance 5) to gather resources.",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Explore north about 5 tiles to locate safe fishing spots and gather resources such as net/bait fishing spots and collect bones and fire rune",
-        "status": "active"
+        "label": "Use Bank booth (distance 6) to complete the quest and collect resources efficiently.",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Verify arrival at Draynor fishing area at 3087,3230",
-      "Explore north about 5 tiles to locate safe fishing spots and gather resources such as net/bait fishing spots and collect bones and fire rune"
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+      "Chop down Willow (distance 2) and Chop down Willow (distance 5) to gather resources.",
+      "Use Bank booth (distance 6) to complete the quest and collect resources efficiently."
     ],
-    "avoid": [
-      "Speak publicly; latest message from Henryatkins: Feds!! :3 Friend, i'm just an old fisherm",
-      "Attack Dark wizard (level 7, distance 8)",
-      "Speak publicly; latest message from Henryatkins: Feds!! :3 Friend, i'm just an old fisherm"
-    ],
-    "updatedAt": "2026-08-15T03:03:50.992Z",
+    "avoid": [],
+    "updatedAt": "2026-08-15T06:10:48.558Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
