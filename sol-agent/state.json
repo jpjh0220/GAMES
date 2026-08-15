@@ -6,65 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1791,
-    "teacherChoices": 1791,
+    "totalChoices": 1801,
+    "teacherChoices": 1801,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1790,
-    "totalReward": 802.92,
-    "saves": 182,
+    "completedExperiences": 1800,
+    "totalReward": 794.06,
+    "saves": 183,
     "shadowPredictions": 781,
     "shadowMatches": 346,
-    "strategistRefreshes": 109,
+    "strategistRefreshes": 111,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstojo9h-lxqbnn",
-      "createdAt": "2026-08-15T01:11:03.317Z",
-      "tick": 43235,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 7) worked across 6 similar samples with average reward 1.94.",
-      "importance": 2.94,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3238,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstok6c3-xbxnw9",
-      "createdAt": "2026-08-15T01:11:26.739Z",
-      "tick": 43313,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3238 → 3092,3243; new: agent:Yr8wc2n6q, npc:Jail guard, npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent yr8wc2n6q",
-        "npc jail guard",
-        "npc ned",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstok6c3-whg6zv",
       "createdAt": "2026-08-15T01:11:26.739Z",
@@ -8642,6 +8596,46 @@
         "z": 3255,
         "level": 1
       }
+    },
+    {
+      "id": "msu04pov-gzx8fx",
+      "createdAt": "2026-08-15T06:35:20.719Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore south about 5 tiles to locate mining activity.. The guide indicates mining activity and the scorpion fight trains Defence passively. Exploring south and using defensive combat style ensures survival and allows progression.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore south about 5 tiles to locate mining activity",
+        "use combat style focus defensive trains defence to survive the scorpion fight",
+        "confirm mining activity by checking animation id 625 and proceed with exploration"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
+    },
+    {
+      "id": "msu05dg9-5tphmd",
+      "createdAt": "2026-08-15T06:35:51.513Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore north about 5 tiles to locate the mining area.. This plan uses observable evidence (exploring tiles, combat training, and combat encounters) and leverages a named repository-tested escape or travel skill (",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore north about 5 tiles to locate the mining area",
+        "use combat style focus defensive to train defence and prepare for combat",
+        "combat 27 scorpions to survive the mining activity and gather resources"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -13149,54 +13143,54 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "style:accurate:attack": {
-        "n": 18,
+        "n": 20,
         "avgReward": -0.26,
         "positive": 0,
-        "negative": 9,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T06:34:08.879Z",
-        "exampleGoal": "Explore northeast about 4 tiles to locate the mine",
-        "exampleReason": "I'm training my combat style to improve my attack accuracy, which will help me survive the scorpion fight and detect more mining activity in the Al Kharid mine."
+        "negative": 10,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T06:36:07.682Z",
+        "exampleGoal": "Explore north about 5 tiles to locate the mining area.",
+        "exampleReason": "I'm training my combat style to improve defensive capabilities and prepare for combat while mining. This will help me survive and gather resources more effectively."
       },
       "walk:north": {
-        "n": 15,
-        "avgReward": -0.4633,
-        "positive": 8,
+        "n": 16,
+        "avgReward": -0.3875,
+        "positive": 9,
         "negative": 7,
         "lastReward": 0.75,
-        "lastAt": "2026-08-15T06:33:29.351Z",
-        "exampleGoal": "Explore northeast about 4 tiles to locate the mine",
-        "exampleReason": "I need to explore the area to locate the mine,"
+        "lastAt": "2026-08-15T06:36:01.095Z",
+        "exampleGoal": "Explore north about 5 tiles to locate the mining area.",
+        "exampleReason": "I'm exploring north about 5 tiles to locate the mining area."
       },
       "style:aggressive:strength": {
-        "n": 17,
-        "avgReward": -0.12,
+        "n": 19,
+        "avgReward": -0.099,
         "positive": 0,
         "negative": 5,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T06:33:42.776Z",
-        "exampleGoal": "Explore northeast about 4 tiles to locate the mine",
-        "exampleReason": "I'm training Defensive style to improve my defense and survive the scorpion fight while mining. This will help me stay safe while working in the Al Kharid mine."
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T06:36:13.386Z",
+        "exampleGoal": "Explore north about 5 tiles to locate the mining area.",
+        "exampleReason": "I'm ready to train in defensive combat style to prepare for the combat."
       },
       "walk:south": {
-        "n": 20,
-        "avgReward": -1.3,
+        "n": 21,
+        "avgReward": -1.3262,
         "positive": 5,
-        "negative": 15,
+        "negative": 16,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:35:01.971Z",
-        "exampleGoal": "Explore south about 5 tiles to reach the Lumbridge spawn location.",
-        "exampleReason": "Exploring the south area confirms the spawn location. The coordinates are (3093, 3251, 1), and the nearby area is a woman's stand. I'll continue exploring further to confirm the pa"
+        "lastAt": "2026-08-15T06:35:16.379Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "Exploring south about 5 tiles is the next step. The area is relatively safe, and we should focus on gathering resources before heading further."
       },
       "walk:east": {
-        "n": 12,
-        "avgReward": -1.6,
+        "n": 14,
+        "avgReward": -1.6357,
         "positive": 1,
-        "negative": 11,
+        "negative": 13,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:32:42.526Z",
-        "exampleGoal": "Explore south about 5 tiles",
-        "exampleReason": "Exploring east about 5 tiles is the next logical step in the plan to uncover hidden treasures."
+        "lastAt": "2026-08-15T06:35:25.067Z",
+        "exampleGoal": "Explore south about 5 tiles to locate mining activity.",
+        "exampleReason": "Exploring east about 5 tiles provides a good starting point for further exploration and potential discovery."
       },
       "style:defensive:defence": {
         "n": 13,
@@ -13209,24 +13203,24 @@
         "exampleReason": "I'm focusing on training Defensive skills to survive the scorpion fight while mining. This will improve my overall combat effectiveness in the Al Kharid mine."
       },
       "walk:west": {
-        "n": 8,
+        "n": 9,
         "avgReward": -1.85,
         "positive": 0,
-        "negative": 8,
+        "negative": 9,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:33:11.586Z",
-        "exampleGoal": "Explore northeast about 4 tiles to locate the mine",
-        "exampleReason": "Exploring west about 5 tiles is the next step. It's a good opportunity to gather more information about the area and identify potential mining activity. I'll keep an eye on it for "
+        "lastAt": "2026-08-15T06:35:32.884Z",
+        "exampleGoal": "Explore south about 5 tiles to locate mining activity.",
+        "exampleReason": "Exploring west about 5 tiles is the next step to locate mining activity. It's a good opportunity to gather more information about the area before making a decision to proceed with "
       },
       "walk:northeast": {
-        "n": 6,
+        "n": 7,
         "avgReward": -1.85,
         "positive": 0,
-        "negative": 6,
+        "negative": 7,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:33:22.131Z",
-        "exampleGoal": "Explore northeast about 4 tiles to locate the mine",
-        "exampleReason": "I have explored northeast about 4 tiles, and the mine is likely nearby. I will now investigate further to confirm the location and gather information about the mine's activity."
+        "lastAt": "2026-08-15T06:35:39.501Z",
+        "exampleGoal": "Explore south about 5 tiles to locate mining activity.",
+        "exampleReason": "I need to explore the area to locate mining activity. The mining activity is likely in the southeast, so I should focus on that region."
       }
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,wait,world": {
@@ -15227,12 +15221,12 @@
     },
     "193:203:1": {
       "key": "193:203:1",
-      "x": 3093,
-      "z": 3251,
+      "x": 3094,
+      "z": 3255,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T06:34:54.184Z",
-      "visits": 137,
+      "lastSeenAt": "2026-08-15T06:36:07.967Z",
+      "visits": 147,
       "npcs": [
         "Woman"
       ],
@@ -20558,10 +20552,10 @@
         "walk:south",
         "walk:east"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": -3.35,
       "positive": 0,
-      "lastAt": "2026-08-15T06:32:42.526Z",
+      "lastAt": "2026-08-15T06:35:09.782Z",
       "example": "Explore south about 5 tiles → Explore south about 5 tiles → Explore east about 5 tiles"
     },
     "walk:south > walk:east > walk:south": {
@@ -20570,10 +20564,10 @@
         "walk:east",
         "walk:south"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": -5.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:32:50.020Z",
+      "lastAt": "2026-08-15T06:35:16.379Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore south about 5 tiles"
     },
     "walk:east > walk:south > walk:east": {
@@ -20582,10 +20576,10 @@
         "walk:south",
         "walk:east"
       ],
-      "n": 5,
-      "avgReward": -4.95,
+      "n": 6,
+      "avgReward": -5.05,
       "positive": 0,
-      "lastAt": "2026-08-15T06:30:52.720Z",
+      "lastAt": "2026-08-15T06:35:25.067Z",
       "example": "Explore east about 5 tiles → Explore south about 5 tiles → Explore east about 5 tiles"
     },
     "walk:south > walk:east > style:accurate:attack": {
@@ -20882,10 +20876,10 @@
         "style:accurate:attack",
         "style:aggressive:strength"
       ],
-      "n": 2,
-      "avgReward": 0.23,
-      "positive": 0,
-      "lastAt": "2026-08-15T06:29:40.378Z",
+      "n": 3,
+      "avgReward": 0.457,
+      "positive": 1,
+      "lastAt": "2026-08-15T06:36:13.386Z",
       "example": "Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack → Combat style Pound: Aggressive; trains Strength"
     },
     "style:accurate:attack > style:aggressive:strength > style:aggressive:strength": {
@@ -20954,10 +20948,10 @@
         "walk:east",
         "walk:west"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": -5.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:31:00.173Z",
+      "lastAt": "2026-08-15T06:35:32.884Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore west about 5 tiles"
     },
     "walk:east > walk:west > style:accurate:attack": {
@@ -21050,10 +21044,10 @@
         "walk:west",
         "walk:northeast"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -5.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:31:07.378Z",
+      "lastAt": "2026-08-15T06:35:39.501Z",
       "example": "Explore east about 5 tiles → Explore west about 5 tiles → Explore northeast about 4 tiles"
     },
     "walk:west > walk:northeast > style:accurate:attack": {
@@ -21062,10 +21056,10 @@
         "walk:northeast",
         "style:accurate:attack"
       ],
-      "n": 2,
-      "avgReward": -3.62,
+      "n": 3,
+      "avgReward": -3.847,
       "positive": 0,
-      "lastAt": "2026-08-15T06:31:12.467Z",
+      "lastAt": "2026-08-15T06:35:44.286Z",
       "example": "Explore west about 5 tiles → Explore northeast about 4 tiles → Combat style Jab: Accurate; trains Attack"
     },
     "walk:northeast > style:accurate:attack > style:accurate:attack": {
@@ -21206,10 +21200,10 @@
         "style:aggressive:strength",
         "walk:north"
       ],
-      "n": 2,
-      "avgReward": -1.07,
+      "n": 3,
+      "avgReward": -0.637,
       "positive": 0,
-      "lastAt": "2026-08-15T06:31:31.684Z",
+      "lastAt": "2026-08-15T06:36:01.095Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Pound: Aggressive; trains Strength → Explore north about 5 tiles"
     },
     "style:aggressive:strength > walk:north > style:aggressive:strength": {
@@ -21307,6 +21301,30 @@
       "positive": 0,
       "lastAt": "2026-08-15T06:34:25.975Z",
       "example": "Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:northeast > style:accurate:attack > style:aggressive:strength": {
+      "sequence": [
+        "walk:northeast",
+        "style:accurate:attack",
+        "style:aggressive:strength"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:35:54.220Z",
+      "example": "Explore northeast about 4 tiles → Combat style Jab: Accurate; trains Attack → Combat style Pound: Aggressive; trains Strength"
+    },
+    "style:aggressive:strength > walk:north > style:accurate:attack": {
+      "sequence": [
+        "style:aggressive:strength",
+        "walk:north",
+        "style:accurate:attack"
+      ],
+      "n": 1,
+      "avgReward": 0.91,
+      "positive": 1,
+      "lastAt": "2026-08-15T06:36:07.682Z",
+      "example": "Combat style Pound: Aggressive; trains Strength → Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack"
     }
   },
   "discoveries": [
@@ -24911,27 +24929,27 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T06:35:01.971Z",
+  "updatedAt": "2026-08-15T06:36:13.386Z",
   "activePlan": {
-    "objective": "Navigate to the Lumbridge spawn using the provided coordinates and explore nearby areas.",
-    "focus": "Explore south about 5 tiles to reach the Lumbridge spawn location.",
-    "reason": "This plan uses the 'Explore' action to verify coordinates and 'Climb-down Stair",
+    "objective": "Detect and combat mining activity in Al Kharid to survive and gather resources.",
+    "focus": "Explore north about 5 tiles to locate the mining area.",
+    "reason": "This plan uses observable evidence (exploring tiles, combat training, and combat encounters) and leverages a named repository-tested escape or travel skill (",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore south about 5 tiles to reach the Lumbridge spawn location.",
+        "label": "Explore north about 5 tiles to locate the mining area.",
         "status": "done",
         "evidence": "moved 3093,3251 → 3094,3255; new: npc:Woman, loc:Cupboard, loc:Hat stand"
       },
       {
         "id": "step-2",
-        "label": "Use the 'Explore' action to confirm the spawn coordinates and verify the location.",
+        "label": "Use Combat style Focus: Defensive to train Defence and prepare for combat.",
         "status": "active"
       },
       {
         "id": "step-3",
-        "label": "Climb down the Staircase (distance 4) to reach the Lumbridge spawn and confirm the position.",
+        "label": "Combat 27+ scorpions to survive the mining activity and gather resources.",
         "status": "pending"
       }
     ],
@@ -24939,17 +24957,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore south about 5 tiles to reach the Lumbridge spawn location.",
-      "Use the 'Explore' action to confirm the spawn coordinates and verify the location.",
-      "Climb down the Staircase (distance 4) to reach the Lumbridge spawn and confirm the position."
+      "Explore north about 5 tiles to locate the mining area.",
+      "Use Combat style Focus: Defensive to train Defence and prepare for combat.",
+      "Combat 27+ scorpions to survive the mining activity and gather resources."
     ],
     "avoid": [
-      "Combat style Focus: Defensive; trains Defence",
-      "Combat style Jab: Accurate; trains Attack",
-      "Explore north about 5 tiles"
+      "Explore east about 5 tiles",
+      "Explore west about 5 tiles",
+      "Explore northeast about 4 tiles"
     ],
-    "updatedAt": "2026-08-15T06:34:29.950Z",
+    "updatedAt": "2026-08-15T06:35:51.513Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
