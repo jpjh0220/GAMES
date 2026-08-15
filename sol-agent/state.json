@@ -6,99 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3731,
-    "teacherChoices": 3731,
+    "totalChoices": 3741,
+    "teacherChoices": 3741,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3730,
-    "totalReward": 1740.1,
-    "saves": 376,
-    "shadowPredictions": 1892,
-    "shadowMatches": 854,
+    "completedExperiences": 3740,
+    "totalReward": 1746.16,
+    "saves": 377,
+    "shadowPredictions": 1902,
+    "shadowMatches": 861,
     "strategistRefreshes": 242,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu731kf-7aqa7p",
-      "createdAt": "2026-08-15T09:50:00.111Z",
-      "tick": 0,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "AI strategist: Use the escape skill to flee from the dungeon. Escape skill is available and provides observable evidence of success. Steps are concise and actionable with clear evidence of completion.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "use the escape skill to flee from the dungeon",
-        "confirm escape success by checking the map",
-        "return to base to rest and prepare for next mission"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3227,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu733n6-nnm87r",
-      "createdAt": "2026-08-15T09:50:02.802Z",
-      "tick": 43865,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Net Fishing spot (level 0, distance 1). Result: moved 3087,3227 → 3087,3228; execution rejected or failed. Reward -1.17.",
-      "importance": 1.28,
-      "tags": [
-        "npc",
-        "fishing spot",
-        "net",
-        "level 0"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3228,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu745qo-brd3w1",
-      "createdAt": "2026-08-15T09:50:52.176Z",
-      "tick": 44030,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Bait Fishing spot (level 0, distance 1). Result: execution rejected or failed. Reward -1.85.",
-      "importance": 1.63,
-      "tags": [
-        "npc",
-        "fishing spot",
-        "bait",
-        "level 0"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3228,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu74cor-pqfzel",
-      "createdAt": "2026-08-15T09:51:01.179Z",
-      "tick": 44060,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Attack Black Knight (level 33, distance 9). Result: execution rejected or failed; detail: Failed to interact with NPC: target_not_found. Reward -1.85.",
-      "importance": 1.63,
-      "tags": [
-        "combat",
-        "black knight",
-        "attack",
-        "level 33"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3228,
-        "level": 0
-      }
-    },
     {
       "id": "msu74qc6-ui00d4",
       "createdAt": "2026-08-15T09:51:18.870Z",
@@ -8463,6 +8383,82 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "msub0c34-29caig",
+      "createdAt": "2026-08-15T11:39:52.240Z",
+      "tick": 65830,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Close the bank. Result: +1 level(s). Reward 2.4.",
+      "importance": 1.9,
+      "tags": [
+        "modal",
+        "bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msub0c34-36q7n4",
+      "createdAt": "2026-08-15T11:39:52.240Z",
+      "tick": 65830,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Close the bank worked across 6 similar samples with average reward 1.40.",
+      "importance": 2.4,
+      "tags": [
+        "modal",
+        "modal close bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msub0kxi-oy8hji",
+      "createdAt": "2026-08-15T11:40:03.702Z",
+      "tick": 65868,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +797 XP; 6 damage dealt; moved 3092,3243 → 3085,3240; execution rejected or failed. Reward 3.73.",
+      "importance": 2.56,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent gpgather1",
+        "loc bullrushes"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3240,
+        "level": 0
+      }
+    },
+    {
+      "id": "msub0kxi-flc9la",
+      "createdAt": "2026-08-15T11:40:03.702Z",
+      "tick": 65868,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 8) worked across 27 similar samples with average reward 3.04.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3240,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8552,14 +8548,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 208,
+        "n": 209,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T11:39:01.843Z",
+        "lastAt": "2026-08-15T11:39:07.888Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Withdraw 1 Coins"
+        "exampleReason": "banking loop pattern"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8582,12 +8578,12 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 17,
+        "n": 18,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T11:38:50.140Z",
+        "lastAt": "2026-08-15T11:39:13.539Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "I shall bask in lumbridge's fine architecture, unmoved."
       },
@@ -8632,13 +8628,13 @@
         "exampleReason": "Deposit all Bronze arrow"
       },
       "modal:close-bank": {
-        "n": 5,
-        "avgReward": 1.2,
-        "positive": 2,
+        "n": 6,
+        "avgReward": 1.4,
+        "positive": 3,
         "negative": 3,
-        "lastReward": 5.4,
-        "lastAt": "2026-08-15T10:18:08.186Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
+        "lastReward": 2.4,
+        "lastAt": "2026-08-15T11:39:52.240Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Close the bank"
       },
       "bank:deposit:earth rune": {
@@ -8854,24 +8850,24 @@
         "exampleReason": "I'm opening the bank to access the deposit functionality. I need to find the banker NPC or booth to proceed with depositing items. I'll start by opening the bank to access the depo"
       },
       "bank:withdraw:coins": {
-        "n": 32,
+        "n": 37,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:48:34.603Z",
-        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
-        "exampleReason": "I'm walking to the bank to deposit all the coins and items. I need to check if there are any items I haven't deposited yet. I'll proceed with the deposit action now."
+        "lastAt": "2026-08-15T11:39:47.558Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "I shall open the bank to deposit all the coins, which is the main action for this plan."
       },
       "bank:deposit:coins": {
-        "n": 12,
-        "avgReward": -0.2666,
+        "n": 13,
+        "avgReward": -0.2861,
         "positive": 0,
-        "negative": 8,
-        "lastReward": -0.1,
-        "lastAt": "2026-08-15T11:38:55.863Z",
+        "negative": 9,
+        "lastReward": -0.52,
+        "lastAt": "2026-08-15T11:39:41.439Z",
         "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "I shall open the bank to access the deposit functionality"
+        "exampleReason": "I shall open the bank to deposit all the items in the bank to avoid failed actions."
       },
       "bank:withdraw:raw anchovies": {
         "n": 2,
@@ -8926,14 +8922,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
       "npc:attack:dark wizard": {
-        "n": 26,
-        "avgReward": 3.0099,
-        "positive": 20,
+        "n": 27,
+        "avgReward": 3.0366,
+        "positive": 21,
         "negative": 2,
-        "lastReward": 3.28,
-        "lastAt": "2026-08-15T11:16:12.320Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I need to attack the Dark wizard (level 7, distance 8) to progress."
+        "lastReward": 3.73,
+        "lastAt": "2026-08-15T11:40:03.702Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "I shall attack Dark wizard (level 7, distance 9) to increase my chances of success."
       },
       "npc:net:fishing spot": {
         "n": 2,
@@ -15719,8 +15715,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T11:38:56.174Z",
-      "encounters": 1087,
+      "lastSeenAt": "2026-08-15T11:39:47.827Z",
+      "encounters": 1096,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -16976,8 +16972,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T11:38:56.174Z",
-      "encounters": 2012,
+      "lastSeenAt": "2026-08-15T11:39:52.549Z",
+      "encounters": 2022,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17950,8 +17946,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T11:38:56.174Z",
-      "visits": 962,
+      "lastSeenAt": "2026-08-15T11:39:52.549Z",
+      "visits": 972,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -18398,10 +18394,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 61,
-      "avgReward": -0.058,
+      "n": 62,
+      "avgReward": -0.062,
       "positive": 0,
-      "lastAt": "2026-08-15T11:38:45.087Z",
+      "lastAt": "2026-08-15T11:39:47.558Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -18494,10 +18490,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 35,
-      "avgReward": -0.187,
+      "n": 36,
+      "avgReward": -0.191,
       "positive": 0,
-      "lastAt": "2026-08-15T11:38:39.676Z",
+      "lastAt": "2026-08-15T11:39:41.439Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -18542,10 +18538,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 62,
+      "n": 64,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T11:38:30.021Z",
+      "lastAt": "2026-08-15T11:39:36.620Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -18602,10 +18598,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 3,
+      "n": 4,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-15T10:41:04.226Z",
+      "lastAt": "2026-08-15T11:39:13.539Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "bank:withdraw:coins > wait > bank:withdraw:coins": {
@@ -18614,10 +18610,10 @@
         "wait",
         "bank:withdraw:coins"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-15T10:41:12.021Z",
+      "lastAt": "2026-08-15T11:39:19.261Z",
       "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Coins"
     },
     "wait > bank:withdraw:coins > bank:deposit:coins": {
@@ -18734,10 +18730,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0.05,
       "positive": 0,
-      "lastAt": "2026-08-15T10:35:09.930Z",
+      "lastAt": "2026-08-15T11:39:25.308Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:raw anchovies": {
@@ -18890,10 +18886,10 @@
         "bank:withdraw:coins",
         "modal:close-bank"
       ],
-      "n": 3,
-      "avgReward": 2.3,
-      "positive": 2,
-      "lastAt": "2026-08-15T10:48:43.249Z",
+      "n": 4,
+      "avgReward": 2.22,
+      "positive": 3,
+      "lastAt": "2026-08-15T11:39:52.240Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Close the bank"
     },
     "bank:withdraw:coins > modal:close-bank > npc:attack:dark wizard": {
@@ -18902,10 +18898,10 @@
         "modal:close-bank",
         "npc:attack:dark wizard"
       ],
-      "n": 4,
-      "avgReward": 5.73,
-      "positive": 3,
-      "lastAt": "2026-08-15T10:48:59.217Z",
+      "n": 5,
+      "avgReward": 5.83,
+      "positive": 4,
+      "lastAt": "2026-08-15T11:40:03.702Z",
       "example": "Withdraw 1 Coins → Close the bank → Attack Dark wizard (level 7, distance 9)"
     },
     "modal:close-bank > npc:attack:dark wizard > skill:travel:draynor-bank": {
@@ -21002,10 +20998,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 28,
-      "avgReward": -0.101,
+      "n": 29,
+      "avgReward": -0.094,
       "positive": 0,
-      "lastAt": "2026-08-15T11:38:04.298Z",
+      "lastAt": "2026-08-15T11:39:07.888Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -32673,9 +32669,21 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3243:3085:3240:0",
+      "at": "2026-08-15T11:40:03.702Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3085,3240; +797 XP; 6 damage dealt; moved 3092,3243 → 3085,3240; execution rejected or failed",
+      "location": {
+        "x": 3085,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T11:39:01.843Z",
+  "updatedAt": "2026-08-15T11:40:03.702Z",
   "activePlan": {
     "objective": "Deposit all items in the bank to avoid failed actions",
     "focus": "Open the bank to access the deposit functionality",
@@ -32685,12 +32693,13 @@
       {
         "id": "step-1",
         "label": "Open the bank to access the deposit functionality",
-        "status": "active"
+        "status": "done",
+        "evidence": "+1 level(s)"
       },
       {
         "id": "step-2",
         "label": "Deposit all Coins using the bank slot",
-        "status": "pending"
+        "status": "active"
       },
       {
         "id": "step-3",
