@@ -7,6 +7,7 @@ import { EconomyModel } from './economy.js';
 import { SkillTree } from './skill-tree.js';
 import { QuestSystem } from './quest-system.js';
 import { TradeInference } from './trade-inference.js';
+import { GoalDecomposer } from './goal-decomposition.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -140,6 +141,7 @@ export class SolAgentBrain {
   private skillTree=new SkillTree();
   private quests=new QuestSystem();
   private trades=new TradeInference();
+  private decomposer=new GoalDecomposer();
   private stagnationCounter=new Map<string,number>();
   private recentActions:string[]=[];
   private lastGoalReeval:number=0;
@@ -406,9 +408,15 @@ export class SolAgentBrain {
       if(discoveredQuests.length>0){
         const nextQuest=discoveredQuests[0];
         this.quests.adoptQuest(nextQuest.id);
-        const questGoal=this.goals.createGoal(nextQuest.title,nextQuest.objective,
-          [{id:'quest-step',description:nextQuest.objective,targetAction:'explore'}],'high');
-        this.goals.adoptGoal(questGoal);
+        // MULTI-STEP DECOMPOSITION: break quest into sub-steps
+        const questChain=this.decomposer.decomposeGoal(nextQuest.title,nextQuest.objective,'quest');
+        const firstStep=this.decomposer.getCurrentStep(questChain.id);
+        if(firstStep){
+          const questGoal=this.goals.createGoal(nextQuest.title,`Step 1: ${firstStep.label}`,
+            [{id:'quest-step',description:firstStep.description,targetAction:firstStep.targetAction||'explore'}],'high');
+          this.goals.adoptGoal(questGoal);
+          console.log('AGENT_QUEST_DECOMPOSED',JSON.stringify({quest:nextQuest.title,steps:questChain.steps.length,currentStep:firstStep.label}));
+        }
       }else{
         // Check for arbitrage opportunities
         const bestTrade=this.trades.getMostProfitableRoute();
@@ -434,9 +442,15 @@ export class SolAgentBrain {
             if(targets.length>0){
               const t=targets[0];
               const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
-              const skillGoal=this.goals.createGoal(name,description,
-                [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
-              this.goals.adoptGoal(skillGoal);
+              // MULTI-STEP DECOMPOSITION: break level-up into sub-steps
+              const skillChain=this.decomposer.decomposeGoal(name,description,'skill');
+              const firstStep=this.decomposer.getCurrentStep(skillChain.id);
+              if(firstStep){
+                const skillGoal=this.goals.createGoal(name,`Step 1: ${firstStep.label}`,
+                  [{id:'levelup',description:firstStep.description,targetAction:firstStep.targetAction||t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
+                this.goals.adoptGoal(skillGoal);
+                console.log('AGENT_SKILL_DECOMPOSED',JSON.stringify({skill:t.skill,targetLevel:t.nextLevel,steps:skillChain.steps.length}));
+              }
             }
           }
         }
