@@ -6,70 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3744,
-    "teacherChoices": 3744,
+    "totalChoices": 3752,
+    "teacherChoices": 3752,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3742,
-    "totalReward": 1746.71,
-    "saves": 379,
-    "shadowPredictions": 1904,
-    "shadowMatches": 862,
-    "strategistRefreshes": 242,
+    "completedExperiences": 3750,
+    "totalReward": 1744.71,
+    "saves": 380,
+    "shadowPredictions": 1909,
+    "shadowMatches": 863,
+    "strategistRefreshes": 243,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu75mzm-6npjd7",
-      "createdAt": "2026-08-15T09:52:01.186Z",
-      "tick": 44260,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3239 → 3092,3243; new: npc:Aggie, npc:Jail guard, loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc aggie",
-        "npc jail guard",
-        "loc cooking shelves",
-        "loc door",
-        "loc wardrobe",
-        "loc broom"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu75wxq-hrkakg",
-      "createdAt": "2026-08-15T09:52:14.078Z",
-      "tick": 44303,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 11). Result: +533 XP; 4 damage dealt; moved 3092,3243 → 3081,3239; execution rejected or failed. Reward 3.43.",
-      "importance": 2.42,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent gpgather1",
-        "npc diango",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3081,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "msu75wxq-eyvqsy",
       "createdAt": "2026-08-15T09:52:14.078Z",
@@ -8453,6 +8402,45 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msusktqf-9cm5a6",
+      "createdAt": "2026-08-15T19:51:41.703Z",
+      "tick": 0,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival. This plan ensures safe fishing",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to the draynor fishing area at 3087 3230 and verify arrival",
+        "use bank booth distance 1 to collect shrimps anchovies",
+        "explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps anchovies if available"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msuskvy1-j5rdbm",
+      "createdAt": "2026-08-15T19:51:44.569Z",
+      "tick": 53,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Jrsgoblin2 said: \"Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "jrsgoblin2",
+        "unknown"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8470,23 +8458,23 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 14,
+        "n": 16,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 14,
+        "negative": 16,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T11:36:37.321Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
-        "exampleReason": "I shall bask in lumbridge's fine architecture, unmoved."
+        "lastAt": "2026-08-15T19:51:53.856Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:i d like to access my bank account please": {
-        "n": 6,
+        "n": 7,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 7,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T11:36:32.145Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
+        "lastAt": "2026-08-15T19:51:49.667Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "I'd like to access my bank account, please."
       },
       "wait": {
@@ -8502,14 +8490,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 82,
-        "avgReward": -0.266,
+        "n": 84,
+        "avgReward": -0.2632,
         "positive": 0,
-        "negative": 51,
-        "lastReward": -0.54,
-        "lastAt": "2026-08-15T11:38:39.676Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Deposit all Coins to start the process of depositing items in the bank."
+        "negative": 52,
+        "lastReward": -0.1,
+        "lastAt": "2026-08-15T19:52:43.949Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
         "n": 2,
@@ -8542,14 +8530,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 209,
+        "n": 210,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T11:39:07.888Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "banking loop pattern"
+        "lastAt": "2026-08-15T19:52:34.366Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "bank"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8642,13 +8630,13 @@
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:bones": {
-        "n": 7,
+        "n": 8,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T11:37:21.926Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
+        "lastAt": "2026-08-15T19:52:25.375Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "Deposit all Bones"
       },
       "bank:deposit:nature rune": {
@@ -8682,14 +8670,14 @@
         "exampleReason": "Deposit all Air rune"
       },
       "bank:withdraw:bones": {
-        "n": 2,
+        "n": 3,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T02:18:54.300Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "Withdraw 1 Bones"
+        "lastAt": "2026-08-15T19:52:03.833Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Withdraw 1 Raw Anchovies"
       },
       "bank:withdraw:fire rune": {
         "n": 1,
@@ -16102,8 +16090,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T11:40:03.980Z",
-      "encounters": 2366,
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "encounters": 2374,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16966,8 +16954,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T19:51:25.113Z",
-      "encounters": 2025,
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "encounters": 2033,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17389,8 +17377,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T19:51:25.113Z",
-      "encounters": 800,
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "encounters": 808,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17935,9 +17923,61 @@
     "bogwarden": {
       "name": "Bogwarden",
       "firstSeenAt": "2026-08-15T19:51:25.113Z",
-      "lastSeenAt": "2026-08-15T19:51:25.113Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "encounters": 9,
       "combatLevel": 7,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "joebot": {
+      "name": "Joebot",
+      "firstSeenAt": "2026-08-15T19:51:38.287Z",
+      "lastSeenAt": "2026-08-15T19:51:49.956Z",
+      "encounters": 3,
+      "combatLevel": 125,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "jrsgoblin2": {
+      "name": "Jrsgoblin2",
+      "firstSeenAt": "2026-08-15T19:51:44.568Z",
+      "lastSeenAt": "2026-08-15T19:51:44.568Z",
+      "encounters": 1,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 1,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [
+        "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total"
+      ],
+      "questions": [],
+      "lastMessages": [
+        {
+          "at": "2026-08-15T19:51:44.568Z",
+          "direction": "incoming",
+          "text": "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total"
+        }
+      ]
+    },
+    "1doal4imm": {
+      "name": "1doal4imm",
+      "firstSeenAt": "2026-08-15T19:52:14.869Z",
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "encounters": 3,
+      "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -17952,11 +17992,11 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T19:51:25.113Z",
-      "visits": 974,
+      "lastSeenAt": "2026-08-15T19:52:34.653Z",
+      "visits": 982,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -18259,10 +18299,10 @@
         "dialog:1:click here to continue",
         "dialog:1:i d like to access my bank account please"
       ],
-      "n": 4,
-      "avgReward": -0.425,
+      "n": 5,
+      "avgReward": -0.76,
       "positive": 1,
-      "lastAt": "2026-08-15T11:36:32.145Z",
+      "lastAt": "2026-08-15T19:51:49.667Z",
       "example": "Use Bank booth (distance 1) → Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please."
     },
     "dialog:1:click here to continue > dialog:1:i d like to access my bank account please > dialog:1:click here to continue": {
@@ -18271,10 +18311,10 @@
         "dialog:1:i d like to access my bank account please",
         "dialog:1:click here to continue"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T11:36:37.321Z",
+      "lastAt": "2026-08-15T19:51:53.856Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue"
     },
     "dialog:1:i d like to access my bank account please > dialog:1:click here to continue > bank:deposit:coins": {
@@ -22843,10 +22883,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 4,
-      "avgReward": -0.105,
+      "n": 5,
+      "avgReward": -0.1,
       "positive": 0,
-      "lastAt": "2026-08-15T11:37:33.086Z",
+      "lastAt": "2026-08-15T19:52:43.949Z",
       "example": "Deposit all Bones → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:air rune": {
@@ -27607,10 +27647,10 @@
         "bank:deposit:bones",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.18,
       "positive": 0,
-      "lastAt": "2026-08-15T10:30:17.469Z",
+      "lastAt": "2026-08-15T19:52:34.366Z",
       "example": "Deposit all Coins → Deposit all Bones → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:raw anchovies": {
@@ -29076,105 +29116,45 @@
       "positive": 0,
       "lastAt": "2026-08-15T11:37:27.646Z",
       "example": "Deposit all Staff → Deposit all Bones → Withdraw 1 Coins"
+    },
+    "dialog:1:i d like to access my bank account please > dialog:1:click here to continue > bank:withdraw:bones": {
+      "sequence": [
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue",
+        "bank:withdraw:bones"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:52:03.833Z",
+      "example": "Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue → Withdraw 1 Bones"
+    },
+    "dialog:1:click here to continue > bank:withdraw:bones > bank:deposit:coins": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "bank:withdraw:bones",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.72,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:52:14.561Z",
+      "example": "Dialog 1: Click here to continue → Withdraw 1 Bones → Deposit all Coins"
+    },
+    "bank:withdraw:bones > bank:deposit:coins > bank:deposit:bones": {
+      "sequence": [
+        "bank:withdraw:bones",
+        "bank:deposit:coins",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:52:25.375Z",
+      "example": "Withdraw 1 Bones → Deposit all Coins → Deposit all Bones"
     }
   },
   "discoveries": [
-    {
-      "id": "place:daisies:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Daisies observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:oak:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Oak observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bench:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Bench observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:boulder:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Boulder observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:shelves:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Shelves observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking shelves:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Cooking shelves observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3087:3230:3086:3231:0",
-      "at": "2026-08-15T09:33:08.974Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3230 → 3086,3231; moved 3087,3230 → 3086,3231; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3236:3086:3237:0",
-      "at": "2026-08-15T09:33:49.255Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3236 → 3086,3237; +132 XP; 1 damage dealt; 3 damage taken; moved 3084,3236 → 3086,3237; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
     {
       "id": "route:3086:3237:3087:3229:0",
       "at": "2026-08-15T09:34:11.710Z",
@@ -32690,48 +32670,126 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "resource:tree stump:193:202:0",
+      "at": "2026-08-15T19:51:38.287Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:193:202:0",
+      "at": "2026-08-15T19:51:44.568Z",
+      "kind": "place",
+      "text": "Daisies observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:193:202:0",
+      "at": "2026-08-15T19:51:44.568Z",
+      "kind": "place",
+      "text": "Oak observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:193:202:0",
+      "at": "2026-08-15T19:51:49.956Z",
+      "kind": "place",
+      "text": "Boulder observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:193:202:0",
+      "at": "2026-08-15T19:51:49.956Z",
+      "kind": "place",
+      "text": "Bench observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:shelves:193:202:0",
+      "at": "2026-08-15T19:51:54.164Z",
+      "kind": "place",
+      "text": "Shelves observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cooking shelves:193:202:0",
+      "at": "2026-08-15T19:51:54.164Z",
+      "kind": "place",
+      "text": "Cooking shelves observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T19:51:38.026Z",
+  "updatedAt": "2026-08-15T19:52:43.949Z",
   "activePlan": {
-    "objective": "Deposit all items in the bank to avoid failed actions",
-    "focus": "Open the bank to access the deposit functionality",
-    "reason": "This approach ensures all required items are deposited, avoiding the failed actions listed in the guide file.",
+    "objective": "Verify safe fishing location and collect shrimps/anchovies in Draynor Village",
+    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+    "reason": "This plan ensures safe fishing",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access the deposit functionality",
-        "status": "done",
-        "evidence": "+1 level(s)"
+        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the bank slot",
-        "status": "done",
-        "evidence": "moved 3085,3240 → 3092,3243; new: npc:Aggie, loc:Wardrobe, loc:Broom, loc:Mirror, loc:Barrel"
+        "label": "Use Bank booth (distance 1) to collect shrimps/anchovies",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all items have been successfully deposited by checking the bank interface or inventory update",
-        "status": "active"
+        "label": "Explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps/anchovies if available",
+        "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully opened and items deposited without errors."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Open the bank to access the deposit functionality",
-      "Deposit all Coins using the bank slot",
-      "Verify that all items have been successfully deposited by checking the bank interface or inventory update"
+      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+      "Use Bank booth (distance 1) to collect shrimps/anchovies",
+      "Explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps/anchovies if available"
     ],
-    "avoid": [
-      "Deposit all Bones",
-      "Deposit all Coins",
-      "Deposit all Coins"
-    ],
-    "updatedAt": "2026-08-15T11:38:27.727Z",
+    "avoid": [],
+    "updatedAt": "2026-08-15T19:51:41.703Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
