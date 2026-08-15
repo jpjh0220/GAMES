@@ -200,4 +200,88 @@ export class GoalSystem {
 
     return null;
   }
+
+  /**
+   * Form a subgoal from a failure reason (e.g., "MISSING_NET" -> "Acquire net")
+   */
+  formSubgoalFromFailure(parentAction: string, failureReason: string): Goal | null {
+    const subgoals: Record<string, Goal> = {
+      'MISSING_NET': {
+        id: `subgoal-net-${Date.now()}`,
+        name: 'Acquire fishing net',
+        description: 'Get a small net to fish',
+        priority: 'high',
+        status: 'active',
+        steps: [
+          {
+            id: 'find-net-shop',
+            description: 'Travel to a shop selling nets',
+            timeoutTicks: 300,
+          },
+          {
+            id: 'trade-net',
+            description: 'Buy or trade for a net',
+            targetAction: 'npc:trade:',
+            successCondition: (inv) => inv.some((i) => String(i.name || '').toLowerCase().includes('net')),
+          },
+        ],
+        currentStepIndex: 0,
+        attemptCount: 0,
+        createdAt: Date.now(),
+      },
+      'MISSING_BAIT': {
+        id: `subgoal-bait-${Date.now()}`,
+        name: 'Acquire fishing bait',
+        description: 'Get bait (shrimp, anchovies) for fishing',
+        priority: 'high',
+        status: 'active',
+        steps: [
+          {
+            id: 'find-bait-source',
+            description: 'Travel to a shop or fishing spot with bait',
+            timeoutTicks: 300,
+          },
+          {
+            id: 'acquire-bait',
+            description: 'Buy or catch bait',
+            timeoutTicks: 400,
+          },
+        ],
+        currentStepIndex: 0,
+        attemptCount: 0,
+        createdAt: Date.now(),
+      },
+      'INVENTORY_FULL': {
+        id: `subgoal-bank-${Date.now()}`,
+        name: 'Visit bank to store items',
+        description: 'Go to a bank and deposit items to make room',
+        priority: 'high',
+        status: 'active',
+        steps: [
+          {
+            id: 'travel-bank',
+            description: 'Travel to nearest bank',
+            targetAction: 'walk:',
+            timeoutTicks: 300,
+          },
+          {
+            id: 'use-bank',
+            description: 'Use bank booth and deposit items',
+            targetAction: 'loc:use:bank',
+            timeoutTicks: 200,
+          },
+        ],
+        currentStepIndex: 0,
+        attemptCount: 0,
+        createdAt: Date.now(),
+      },
+    };
+
+    const subgoal = subgoals[failureReason];
+    if (subgoal) {
+      this.adoptGoal(subgoal);
+      return subgoal;
+    }
+    return null;
+  }
 }

@@ -379,7 +379,14 @@ export class SolAgentBrain {
     this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     this.maybeRefreshStrategy(state,legal);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
-    const choice=await this.askMotor(state,legal,contextKey);
+    // GOAL FILTERING: if active goal, filter to actions matching current step
+    let filteredCandidates=legal;
+    const activeGoalStep=this.goals.currentStep();
+    if(activeGoalStep?.targetAction){
+      const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
+      if(goalFiltered.length>0)filteredCandidates=goalFiltered;
+    }
+    const choice=await this.askMotor(state,filteredCandidates,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
     this.lastChoice=choice;this.markDirty();
@@ -498,6 +505,14 @@ export class SolAgentBrain {
     const newThings=[...newPlayers.map(x=>`agent:${x}`),...newNpc.slice(0,4).map(x=>`npc:${x}`),...newLocs.slice(0,4).map(x=>`loc:${x}`)];
     const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?`moved ${exp.before.x},${exp.before.z} → ${after.x},${after.z}`:'',inventoryChanged?'inventory changed':'',equipmentChanged?'equipment changed':'',styleChanged?'combat style changed':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'execution rejected or failed':'',executionMessage?`detail: ${executionMessage}`:'',died?'died/respawned':'',unlocked.length?`unlocked: ${unlocked.join(', ')}`:'',discovers&&newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
     const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected,inventoryChanged,equipmentChanged,styleChanged,executionFailed};
+    // FAILURE ANALYSIS: if action failed, analyze why and form subgoal if recoverable
+    if(rejected&&!outcome.executionFailed){
+      const failureReason=this.extractFailureReason(state,exp,outcome);
+      if(failureReason){
+        const subgoal=this.goals.formSubgoalFromFailure(exp.candidate.label,failureReason);
+        if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.label}));
+      }
+    }
     this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();return outcome;
   }
 
@@ -520,6 +535,19 @@ export class SolAgentBrain {
   private addMemory(args:{kind:MemoryEntry['kind'];text:string;importance:number;tags:string[];tick:number;state:BotWorldState}){
     const p=args.state.player;const m:MemoryEntry={id:`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,createdAt:now(),tick:args.tick,runNumber:this.opts.runNumber??null,kind:args.kind,text:args.text.slice(0,700),importance:Number(args.importance.toFixed(2)),tags:uniq(args.tags.map(norm).filter(Boolean)).slice(0,16),location:p?{x:p.worldX,z:p.worldZ,level:p.level}:undefined};
     if(!this.memory.memories.some(x=>x.kind===m.kind&&x.text===m.text))this.memory.memories.push(m);if(this.memory.memories.length>400)this.memory.memories.splice(0,this.memory.memories.length-400);
+  }
+
+  private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
+    const msg=(outcome.summary||'').toLowerCase();
+    const inv=new Set((state.inventory||[]).map(i=>String(i.name||'').toLowerCase()));
+    if(msg.includes('no fishing spot')||msg.includes('net')&&!inv.has('fishing net'))return 'MISSING_NET';
+    if(msg.includes('no bait')||msg.includes('bait'))return 'MISSING_BAIT';
+    if(msg.includes('skill'))return 'SKILL_TOO_LOW';
+    if(msg.includes('locked')||msg.includes('blocked'))return 'LOCATION_BLOCKED';
+    if(msg.includes('died')||msg.includes('respawn'))return 'DIED_IN_COMBAT';
+    if(msg.includes('full')||msg.includes('inventory'))return 'INVENTORY_FULL';
+    if(msg.includes('coin')||msg.includes('money'))return 'NOT_ENOUGH_COINS';
+    return 'EXECUTION_FAILED';
   }
 
   private metrics(state:BotWorldState):Metrics{
