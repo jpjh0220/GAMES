@@ -6,64 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2231,
-    "teacherChoices": 2231,
+    "totalChoices": 2241,
+    "teacherChoices": 2241,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2230,
-    "totalReward": 519.33,
-    "saves": 226,
+    "completedExperiences": 2240,
+    "totalReward": 508.81,
+    "saves": 227,
     "shadowPredictions": 878,
     "shadowMatches": 379,
-    "strategistRefreshes": 159,
+    "strategistRefreshes": 161,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstp7isj-4bra1t",
-      "createdAt": "2026-08-15T01:29:35.971Z",
-      "tick": 46944,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 4) worked across 4 similar samples with average reward 2.89.",
-      "importance": 3.89,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3081,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstp7vix-lctxk1",
-      "createdAt": "2026-08-15T01:29:52.473Z",
-      "tick": 46999,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3081,3239 → 3092,3243; new: npc:Dark wizard, npc:Ned, loc:Bush, loc:Tree stump, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc dark wizard",
-        "npc ned",
-        "loc bush",
-        "loc tree stump",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstp7vix-lodyue",
       "createdAt": "2026-08-15T01:29:52.473Z",
@@ -8536,6 +8491,46 @@
         "z": 3251,
         "level": 1
       }
+    },
+    {
+      "id": "msu27e9c-4bxgu8",
+      "createdAt": "2026-08-15T07:33:25.104Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore east about 5 tiles to locate a mineable rock. The objective is to mine a rock to gain experience and inventory items, and the steps are executable with observable evidence in the game client interface.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore east about 5 tiles to locate a mineable rock",
+        "use the mine action on the identified rock to obtain experience and inventory items",
+        "verify the successful mining by checking the inventory and experience gain in the game client interface"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
+    },
+    {
+      "id": "msu28kz4-cr07hz",
+      "createdAt": "2026-08-15T07:34:20.464Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).. This plan uses a named repository-tested escape",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore north about 5 tiles to locate the lumbridge spawn at 3222 3218",
+        "use the climb down staircase distance 4 action to reach the lumbridge spawn",
+        "verify the location by checking the guide file for confirmed coordinates and confirm exploration progress"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3255,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -13053,14 +13048,14 @@
         "exampleReason": "I'm ready to start combat style training for the Attack skill. This will help me improve my defensive capabilities while surviving the scorpion fight."
       },
       "walk:north": {
-        "n": 58,
-        "avgReward": -0.3708,
-        "positive": 33,
-        "negative": 25,
+        "n": 61,
+        "avgReward": -0.401,
+        "positive": 34,
+        "negative": 27,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:32:23.924Z",
-        "exampleGoal": "Explore north about 5 tiles to locate mining activity.",
-        "exampleReason": "Explore north about 5 tiles"
+        "lastAt": "2026-08-15T07:34:20.881Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "I will explore the north area to gather information about potential paths to escape."
       },
       "style:aggressive:strength": {
         "n": 76,
@@ -13073,44 +13068,44 @@
         "exampleReason": "I'm ready to start combat style training for my defensive abilities. I'll focus on improving my strength and defense to survive the scorpion fight while mining in Al Kharid."
       },
       "walk:south": {
-        "n": 72,
-        "avgReward": -1.239,
+        "n": 74,
+        "avgReward": -1.2555,
         "positive": 20,
-        "negative": 52,
+        "negative": 54,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:31:43.709Z",
-        "exampleGoal": "Explore west about 5 tiles to locate a mineable rock",
-        "exampleReason": "Explore south about 5 tiles"
+        "lastAt": "2026-08-15T07:34:43.673Z",
+        "exampleGoal": "Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).",
+        "exampleReason": "Exploring the area south about 5 tiles will help locate the Lumbridge spawn at (3222, 3218)."
       },
       "walk:east": {
-        "n": 39,
-        "avgReward": -1.7063,
+        "n": 40,
+        "avgReward": -1.7099,
         "positive": 2,
-        "negative": 37,
+        "negative": 38,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:29:51.792Z",
-        "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
-        "exampleReason": "Exploring east about 5 tiles is the next logical step to reach Draynor fishing location."
+        "lastAt": "2026-08-15T07:34:06.224Z",
+        "exampleGoal": "Explore east about 5 tiles to locate a mineable rock",
+        "exampleReason": "Exploring east about 5 tiles is the next logical step to identify a potential mineable rock. This action will help me gather more information and set up the mining process."
       },
       "style:defensive:defence": {
-        "n": 63,
-        "avgReward": -0.1251,
+        "n": 65,
+        "avgReward": -0.1293,
         "positive": 0,
-        "negative": 19,
+        "negative": 20,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T07:32:16.381Z",
-        "exampleGoal": "Explore north about 5 tiles to locate mining activity.",
-        "exampleReason": "I need to focus on combat style training to survive while mining. The scorpion fight is a critical part of my survival plan."
+        "lastAt": "2026-08-15T07:33:50.886Z",
+        "exampleGoal": "Explore east about 5 tiles to locate a mineable rock",
+        "exampleReason": "I'm focusing on defensive combat skills to survive while mining, as combat 27+ with defensive style is enough to survive while mining."
       },
       "walk:west": {
-        "n": 26,
-        "avgReward": -1.7501,
-        "positive": 1,
-        "negative": 25,
+        "n": 28,
+        "avgReward": -1.6786,
+        "positive": 2,
+        "negative": 26,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:21:53.026Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "Exploring west about 5 tiles has been unsuccessful, but I'll continue to observe for a moment before moving on."
+        "lastAt": "2026-08-15T07:34:36.178Z",
+        "exampleGoal": "Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).",
+        "exampleReason": "I'm exploring the west about 5 tiles, which is the correct direction to reach the Lumbridge spawn at (3222, 3218)."
       },
       "walk:northeast": {
         "n": 15,
@@ -15222,12 +15217,12 @@
     },
     "193:203:1": {
       "key": "193:203:1",
-      "x": 3093,
-      "z": 3251,
+      "x": 3089,
+      "z": 3255,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T07:33:14.325Z",
-      "visits": 582,
+      "lastSeenAt": "2026-08-15T07:34:36.485Z",
+      "visits": 592,
       "npcs": [
         "Woman"
       ],
@@ -21117,10 +21112,10 @@
         "walk:north",
         "walk:east"
       ],
-      "n": 5,
-      "avgReward": -3.892,
+      "n": 6,
+      "avgReward": -3.96,
       "positive": 0,
-      "lastAt": "2026-08-15T06:50:47.884Z",
+      "lastAt": "2026-08-15T07:34:06.224Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles → Explore east about 5 tiles"
     },
     "walk:north > walk:east > walk:north": {
@@ -21129,10 +21124,10 @@
         "walk:east",
         "walk:north"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -5.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:58:26.921Z",
+      "lastAt": "2026-08-15T07:34:20.881Z",
       "example": "Explore north about 5 tiles → Explore east about 5 tiles → Explore north about 5 tiles"
     },
     "walk:east > walk:north > walk:south": {
@@ -21777,10 +21772,10 @@
         "style:defensive:defence",
         "walk:north"
       ],
-      "n": 1,
-      "avgReward": -1.02,
+      "n": 2,
+      "avgReward": -1.36,
       "positive": 0,
-      "lastAt": "2026-08-15T06:54:05.606Z",
+      "lastAt": "2026-08-15T07:33:58.803Z",
       "example": "Explore north about 5 tiles → Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles"
     },
     "style:defensive:defence > walk:north > style:defensive:defence": {
@@ -21957,10 +21952,10 @@
         "walk:north",
         "style:defensive:defence"
       ],
-      "n": 4,
-      "avgReward": -0.47,
+      "n": 5,
+      "avgReward": -0.716,
       "positive": 1,
-      "lastAt": "2026-08-15T07:32:08.919Z",
+      "lastAt": "2026-08-15T07:33:50.886Z",
       "example": "Explore south about 5 tiles → Explore north about 5 tiles → Combat style Focus: Defensive; trains Defence"
     },
     "walk:north > style:defensive:defence > style:accurate:attack": {
@@ -22305,10 +22300,10 @@
         "walk:west",
         "walk:west"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -3.35,
       "positive": 0,
-      "lastAt": "2026-08-15T07:14:21.910Z",
+      "lastAt": "2026-08-15T07:34:36.179Z",
       "example": "Explore north about 5 tiles → Explore west about 5 tiles → Explore west about 5 tiles"
     },
     "walk:west > walk:west > walk:south": {
@@ -22317,10 +22312,10 @@
         "walk:west",
         "walk:south"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -3.35,
       "positive": 0,
-      "lastAt": "2026-08-15T07:14:29.585Z",
+      "lastAt": "2026-08-15T07:34:43.673Z",
       "example": "Explore west about 5 tiles → Explore west about 5 tiles → Explore south about 5 tiles"
     },
     "walk:west > walk:south > walk:east": {
@@ -22521,10 +22516,10 @@
         "walk:east",
         "style:defensive:defence"
       ],
-      "n": 1,
-      "avgReward": -1.42,
+      "n": 2,
+      "avgReward": -2.52,
       "positive": 0,
-      "lastAt": "2026-08-15T07:27:54.814Z",
+      "lastAt": "2026-08-15T07:33:30.190Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Combat style Focus: Defensive; trains Defence"
     },
     "walk:east > style:defensive:defence > style:defensive:defence": {
@@ -22557,10 +22552,10 @@
         "walk:south",
         "walk:north"
       ],
-      "n": 1,
-      "avgReward": -1.7,
+      "n": 2,
+      "avgReward": -1.36,
       "positive": 0,
-      "lastAt": "2026-08-15T07:28:16.075Z",
+      "lastAt": "2026-08-15T07:33:43.707Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles → Explore north about 5 tiles"
     },
     "walk:south > style:defensive:defence > walk:south": {
@@ -22658,6 +22653,30 @@
       "positive": 0,
       "lastAt": "2026-08-15T07:32:30.489Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles → Combat style Pound: Aggressive; trains Strength"
+    },
+    "walk:east > style:defensive:defence > walk:south": {
+      "sequence": [
+        "walk:east",
+        "style:defensive:defence",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -3.62,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:33:37.421Z",
+      "example": "Explore east about 5 tiles → Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles"
+    },
+    "walk:east > walk:north > walk:west": {
+      "sequence": [
+        "walk:east",
+        "walk:north",
+        "walk:west"
+      ],
+      "n": 1,
+      "avgReward": -3.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:34:28.678Z",
+      "example": "Explore east about 5 tiles → Explore north about 5 tiles → Explore west about 5 tiles"
     }
   },
   "discoveries": [
@@ -26262,28 +26281,27 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T07:33:22.987Z",
+  "updatedAt": "2026-08-15T07:34:43.673Z",
   "activePlan": {
-    "objective": "Detect and combat mining activity in Al Kharid to survive and proceed.",
-    "focus": "Explore north about 5 tiles to locate mining activity.",
-    "reason": "The guide indicates active mining with animation ID 625, and combat style Focus: Defensive is recommended to survive the scorpion fight",
+    "objective": "Navigate to the Lumbridge spawn using the provided coordinates and explore nearby areas.",
+    "focus": "Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).",
+    "reason": "This plan uses a named repository-tested escape",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore north about 5 tiles to locate mining activity.",
-        "status": "done",
-        "evidence": "moved 3093,3251 → 3094,3255; new: npc:Woman, loc:Cupboard, loc:Hat stand"
-      },
-      {
-        "id": "step-2",
-        "label": "Combat style Focus: Defensive; trains Defence to survive the scorpion fight.",
+        "label": "Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).",
         "status": "blocked",
         "evidence": "Repeated negative outcomes; strategist must replan."
       },
       {
+        "id": "step-2",
+        "label": "Use the 'Climb-down Staircase (distance 4)' action to reach the Lumbridge spawn.",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Climb-down Staircase (distance 2) to exit the area and continue gameplay.",
+        "label": "Verify the location by checking the guide file for confirmed coordinates and confirm exploration progress.",
         "status": "pending"
       }
     ],
@@ -26291,16 +26309,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore north about 5 tiles to locate mining activity.",
-      "Combat style Focus: Defensive; trains Defence to survive the scorpion fight.",
-      "Climb-down Staircase (distance 2) to exit the area and continue gameplay."
+      "Explore north about 5 tiles to locate the Lumbridge spawn at (3222, 3218).",
+      "Use the 'Climb-down Staircase (distance 4)' action to reach the Lumbridge spawn.",
+      "Verify the location by checking the guide file for confirmed coordinates and confirm exploration progress."
     ],
     "avoid": [
-      "Combat style Pound: Aggressive; trains Strength",
-      "Combat style Jab: Accurate; trains Attack",
-      "Explore south about 5 tiles"
+      "Combat style Focus: Defensive; trains Defence",
+      "Explore north about 5 tiles",
+      "Explore east about 5 tiles"
     ],
-    "updatedAt": "2026-08-15T07:31:56.713Z",
+    "updatedAt": "2026-08-15T07:34:20.464Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 3
   }
