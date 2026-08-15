@@ -340,11 +340,10 @@ export class SolAgentBrain {
     const last=recent.at(-1);
     if(last?.reward<0)blocked.add(last.choice.fingerprint);
     // Engine-stated prerequisites. Clear any that are now satisfied, then bar the rest.
-    const skillLevels:Record<string,number>={};
-    for(const s of (state.skills||[]) as any[])skillLevels[String(s.name||'').toLowerCase()]=Number(s.level)||0;
-    skillLevels.__coins=Number((state.inventory||[]).find((i:any)=>/coins/i.test(i.name))?.count||0);
-    this.prereqs.resolve(skillLevels,((state.inventory||[]) as any[]).map(i=>String(i.name||'')));
-    for(const c of candidates){const b=this.prereqs.isBlocked(c.fingerprint);if(b)blocked.add(c.fingerprint);}
+    // Bar candidates the engine has already refused. Resolution of blockers
+    // happens in maybeFinishExperience, which has the world state; this path
+    // only reads the already-resolved blocker set.
+    for(const c of candidates){if(this.prereqs.isBlocked(c.fingerprint))blocked.add(c.fingerprint);}
     const filtered=candidates.filter(c=>!blocked.has(c.fingerprint));
     this.blockedFingerprints=[...blocked];
     return filtered.length?filtered:candidates;
