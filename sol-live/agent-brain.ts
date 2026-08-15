@@ -54,6 +54,7 @@ type PersistentState = {
     totalChoices:number;teacherChoices:number;studentChoices:number;reflexActions:number;
     completedExperiences:number;totalReward:number;saves:number;
     shadowPredictions?:number;shadowMatches?:number;strategistRefreshes?:number;strategistFailures?:number;
+    studentDecisions?:number;studentPromotions?:number;
   };
   memories:MemoryEntry[];
   policy:Record<string,Record<string,PolicyStat>>;
@@ -581,7 +582,7 @@ export class SolAgentBrain {
         reward-=2.0;
         // STAGNATION RECOVERY: when stuck, force exploration goal
         console.log('AGENT_STAGNATION_ESCAPE',JSON.stringify({action:exp.candidate.label,ticks:stagnationTicks}));
-        const escapeGoal=this.goals.createGoal('Escape stagnation','Explore new areas','explore');
+        const escapeGoal=this.goals.createGoal('Escape stagnation','Explore new areas',[{id:'escape',description:'Move somewhere new',targetAction:'explore'}],'critical');
         this.goals.adoptGoal(escapeGoal);
       }
       this.stagnationCounter.set(exp.candidate.fingerprint,stagnationTicks+Math.max(1,exp.settleTick-exp.startTick));
@@ -613,7 +614,7 @@ export class SolAgentBrain {
       const failureReason=this.extractFailureReason(state,exp,outcome);
       if(failureReason){
         const subgoal=this.goals.formSubgoalFromFailure(exp.candidate.label,failureReason);
-        if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.label}));
+        if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.name}));
       }
     }
     this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();
@@ -660,6 +661,8 @@ export class SolAgentBrain {
     const currentLevel=skillLevels[skillName]||0;
     return currentLevel>=requiredLevel;
   }
+
+  private computeActionCost(candidate:AgentCandidate,startTick:number,endTick:number):number{
     const duration=Math.max(1,endTick-startTick);
     const fp=candidate.fingerprint;
     let cost=0;
@@ -734,7 +737,7 @@ export class SolAgentBrain {
       
       if(value>bestValue){
         bestValue=value;
-        bestChoice={actionId:candidate.id,confidence:Math.max(0.4,Math.min(0.9,bestValue)),why:stats?`learned reward ${stats.avgReward}`:' exploring',goal:'',reason:'student'};
+        bestChoice={source:'student',goal:'Act on learned policy',reason:stats?`learned avg reward ${stats.avgReward}`:'exploring unseen action',expectedOutcome:`expected value ${bestValue.toFixed(2)}`,actionId:candidate.id,confidence:Math.max(0.4,Math.min(0.9,bestValue)),contextKey,fingerprint:candidate.fingerprint};
       }
     }
     

@@ -21,9 +21,9 @@ export class NPCRelationships {
    * Record dialogue or NPC interaction
    */
   recordInteraction(npcName: string, dialogue: string, stance?: string) {
-    const npc = this.npcMap.get(npcName) || {
+    const npc: NPCRelationship = this.npcMap.get(npcName) || {
       name: npcName,
-      stance: 'unknown' as const,
+      stance: 'unknown',
       dialogueHistory: [],
       questHints: [],
       tradeOffers: new Map(),
