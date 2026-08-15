@@ -6,39 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1410,
-    "teacherChoices": 1410,
+    "totalChoices": 1420,
+    "teacherChoices": 1420,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1410,
-    "totalReward": 677.46,
-    "saves": 142,
-    "shadowPredictions": 567,
-    "shadowMatches": 247,
-    "strategistRefreshes": 77,
+    "completedExperiences": 1420,
+    "totalReward": 677.36,
+    "saves": 143,
+    "shadowPredictions": 577,
+    "shadowMatches": 253,
+    "strategistRefreshes": 78,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstlmthp-wh88ah",
-      "createdAt": "2026-08-14T23:49:31.213Z",
-      "tick": 26896,
-      "runNumber": 37,
-      "kind": "relationship",
-      "text": "Oag0azhyi said: \"Owie he shouted at me, so rude hehe\". Current stance cooperative, trust 0.72.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "oag0azhyi",
-        "cooperative",
-        "potential help"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "mstlne2x-z9pa0o",
       "createdAt": "2026-08-14T23:49:57.897Z",
@@ -8702,6 +8682,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstqv1aw-ajbu4g",
+      "createdAt": "2026-08-15T02:15:52.664Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Use the 'Deposit all Coins' action to ensure all Coins are deposited.. This approach ensures all Coins are deposited, avoiding the 'Failed to open bank' error and ensures proper inventory management.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the deposit all coins action to ensure all coins are deposited",
+        "verify the deposit by checking the inventory for remaining coins",
+        "confirm the deposit was successful by observing the bank interface or inventory update"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8751,13 +8751,13 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 38,
-        "avgReward": -0.2406,
+        "n": 40,
+        "avgReward": -0.2461,
         "positive": 0,
-        "negative": 18,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-15T02:15:21.007Z",
-        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
+        "negative": 20,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-15T02:16:29.715Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8791,13 +8791,13 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 87,
+        "n": 93,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T02:15:27.607Z",
-        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
+        "lastAt": "2026-08-15T02:16:08.725Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
         "exampleReason": "Withdraw 1 Coins"
       },
       "bank:withdraw:bronze sq shield": {
@@ -8909,6 +8909,26 @@
         "lastAt": "2026-08-15T02:12:11.125Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Deposit all Nature rune"
+      },
+      "bank:withdraw:air rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T02:16:16.215Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
+        "exampleReason": "Withdraw 1 Air rune"
+      },
+      "bank:deposit:air rune": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T02:16:23.081Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
+        "exampleReason": "Deposit all Air rune"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -13145,8 +13165,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T02:15:21.315Z",
-      "encounters": 1039,
+      "lastSeenAt": "2026-08-15T02:16:23.391Z",
+      "encounters": 1049,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -13892,8 +13912,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T02:15:21.315Z",
-      "encounters": 386,
+      "lastSeenAt": "2026-08-15T02:16:23.391Z",
+      "encounters": 396,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14185,8 +14205,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:15:21.315Z",
-      "visits": 389,
+      "lastSeenAt": "2026-08-15T02:16:23.391Z",
+      "visits": 399,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -14607,10 +14627,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 33,
-      "avgReward": -0.046,
+      "n": 34,
+      "avgReward": -0.053,
       "positive": 0,
-      "lastAt": "2026-08-15T02:15:27.607Z",
+      "lastAt": "2026-08-15T02:16:02.090Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -14703,10 +14723,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 16,
-      "avgReward": -0.207,
+      "n": 17,
+      "avgReward": -0.212,
       "positive": 0,
-      "lastAt": "2026-08-15T02:15:21.007Z",
+      "lastAt": "2026-08-15T02:15:54.609Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -14751,10 +14771,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 22,
+      "n": 25,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T02:15:16.227Z",
+      "lastAt": "2026-08-15T02:15:48.578Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -17211,10 +17231,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 6,
-      "avgReward": -0.133,
+      "n": 8,
+      "avgReward": -0.163,
       "positive": 0,
-      "lastAt": "2026-08-15T02:15:08.402Z",
+      "lastAt": "2026-08-15T02:16:08.725Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -19052,6 +19072,42 @@
       "positive": 0,
       "lastAt": "2026-08-15T02:12:32.715Z",
       "example": "Deposit all Bones → Withdraw 1 Coins → Deposit all Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:air rune": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:coins",
+        "bank:withdraw:air rune"
+      ],
+      "n": 1,
+      "avgReward": 0.28,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:16:16.215Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Air rune"
+    },
+    "bank:withdraw:coins > bank:withdraw:air rune > bank:deposit:air rune": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:air rune",
+        "bank:deposit:air rune"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:16:23.081Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Air rune → Deposit all Air rune"
+    },
+    "bank:withdraw:air rune > bank:deposit:air rune > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:air rune",
+        "bank:deposit:air rune",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:16:29.715Z",
+      "example": "Withdraw 1 Air rune → Deposit all Air rune → Deposit all Coins"
     }
   },
   "discoveries": [
@@ -22656,43 +22712,43 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T02:15:27.607Z",
+  "updatedAt": "2026-08-15T02:16:29.715Z",
   "activePlan": {
-    "objective": "Deposit all coins and other items in the bank to avoid failure messages.",
-    "focus": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
-    "reason": "This plan ensures all items are deposited in",
+    "objective": "Deposit all Coins in the bank to avoid failure messages.",
+    "focus": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
+    "reason": "This approach ensures all Coins are deposited, avoiding the 'Failed to open bank' error and ensures proper inventory management.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
+        "label": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use the 'Deposit all Items' action to deposit all other items (e.g., staff, robe, shield) in the bank.",
+        "label": "Verify the deposit by checking the inventory for remaining Coins.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify the deposit success by checking the bank status or using the 'Check bank' action to confirm items are deposited correctly.",
+        "label": "Confirm the deposit was successful by observing the bank interface or inventory update.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Bank successfully updated"
     ],
     "priorities": [
-      "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
-      "Use the 'Deposit all Items' action to deposit all other items (e.g., staff, robe, shield) in the bank.",
-      "Verify the deposit success by checking the bank status or using the 'Check bank' action to confirm items are deposited correctly."
+      "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
+      "Verify the deposit by checking the inventory for remaining Coins.",
+      "Confirm the deposit was successful by observing the bank interface or inventory update."
     ],
     "avoid": [
       "Deposit all Coins",
       "Deposit all Coins",
       "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-15T02:13:58.087Z",
+    "updatedAt": "2026-08-15T02:15:52.664Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
