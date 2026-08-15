@@ -6,67 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1030,
-    "teacherChoices": 1030,
+    "totalChoices": 1040,
+    "teacherChoices": 1040,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1030,
-    "totalReward": 429.33,
-    "saves": 104,
-    "shadowPredictions": 371,
+    "completedExperiences": 1040,
+    "totalReward": 426.24,
+    "saves": 105,
+    "shadowPredictions": 376,
     "shadowMatches": 145,
-    "strategistRefreshes": 56,
+    "strategistRefreshes": 57,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstiapet-5upv5l",
-      "createdAt": "2026-08-14T22:16:07.205Z",
-      "tick": 8249,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Explore north about 5 tiles. Result: moved 3085,3234 → 3085,3239; new: npc:Diango, loc:Crate, loc:Staircase, loc:Oak, loc:Bench. Reward 1.05.",
-      "importance": 1.23,
-      "tags": [
-        "explore",
-        "north",
-        "npc diango",
-        "loc crate",
-        "loc staircase",
-        "loc oak",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstibitj-cqx4ke",
-      "createdAt": "2026-08-14T22:16:45.319Z",
-      "tick": 8376,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3239 → 3092,3243; new: loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom. Reward 1.45.",
-      "importance": 1.42,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "loc cooking shelves",
-        "loc door",
-        "loc wardrobe",
-        "loc broom"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msticbih-t3u73p",
       "createdAt": "2026-08-14T22:17:22.505Z",
@@ -8691,6 +8643,55 @@
         "z": 3248,
         "level": 0
       }
+    },
+    {
+      "id": "mstnswkl-3wq1gz",
+      "createdAt": "2026-08-15T00:50:14.373Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.. These steps directly interact with the available interface options and maximize the profit from the inventory",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "click the sell 1 chaos rune for about 7 option to sell the chaos rune",
+        "click the sell 1 nature rune for about 10 option to sell the nature rune",
+        "click the sell 1 coins for about 0 option to sell the coins"
+      ],
+      "location": {
+        "x": 3076,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "mstnt3zc-vsm4yw",
+      "createdAt": "2026-08-15T00:50:23.976Z",
+      "tick": 39104,
+      "runNumber": 37,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3076,3251 → 3092,3243; new: agent:Scrappydoo, npc:Fishing spot, npc:Jail guard, npc:Ned, loc:Bank notice board, loc:Bush. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent scrappydoo",
+        "npc fishing spot",
+        "npc jail guard",
+        "npc ned",
+        "loc bank notice board",
+        "loc bush",
+        "loc tree stump",
+        "loc pile of rope"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8952,6 +8953,16 @@
         "lastAt": "2026-08-14T23:34:00.291Z",
         "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "Use Bank booth (distance 1)"
+      },
+      "skill:travel:draynor-fishing": {
+        "n": 1,
+        "avgReward": 0.85,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.85,
+        "lastAt": "2026-08-15T00:50:43.179Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+        "exampleReason": "To verify the arrival at the Draynor fishing area at 3087,3230 and ensure it's a valid location."
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -9104,13 +9115,13 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 155,
-        "avgReward": -0.1932,
+        "n": 158,
+        "avgReward": -0.2009,
         "positive": 19,
-        "negative": 136,
+        "negative": 139,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T00:42:20.446Z",
-        "exampleGoal": "Interact with Net Fishing spot (level 0, distance 2) using interactLoc",
+        "lastAt": "2026-08-15T00:51:38.979Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
         "exampleReason": "Click here to continue"
       },
       "wait": {
@@ -9158,14 +9169,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,wait,world": {
       "npc:bait:fishing spot": {
-        "n": 17,
-        "avgReward": -0.6271,
+        "n": 19,
+        "avgReward": -0.6243,
         "positive": 0,
-        "negative": 16,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-15T00:39:33.904Z",
-        "exampleGoal": "Interact with Net Fishing spot (level 0, distance 2) using interactLoc",
-        "exampleReason": "Bait Fishing spot (level 0, distance 2) - Safe to use"
+        "negative": 18,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T00:51:48.278Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+        "exampleReason": "I can't sell this item to a shop."
       },
       "social:say": {
         "n": 1,
@@ -9178,14 +9189,14 @@
         "exampleReason": "I'm ready to open the bank, deposit all raw anchovies, and withdraw the required"
       },
       "npc:net:fishing spot": {
-        "n": 18,
-        "avgReward": -0.784,
+        "n": 20,
+        "avgReward": -0.8226,
         "positive": 0,
-        "negative": 17,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:24:00.626Z",
-        "exampleGoal": "Use the Escape skill to flee from the Net Fishing spot",
-        "exampleReason": "I need to explore the fishing area to gather resources."
+        "negative": 19,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-15T00:51:13.238Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+        "exampleReason": "I need to explore the net fishing spot (level 0, distance 1) to find more runes."
       },
       "walk:north": {
         "n": 3,
@@ -9414,14 +9425,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 49,
+        "n": 50,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T00:41:12.574Z",
-        "exampleGoal": "Interact with Net Fishing spot (level 0, distance 2) using interactLoc",
-        "exampleReason": "I am waiting for the NPC to respond to my plan to escape the trap. I need to observe their response to determine if they are ready to proceed with the plan."
+        "lastAt": "2026-08-15T00:51:33.587Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+        "exampleReason": "You can't sell this item to a shop."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
@@ -10378,6 +10389,16 @@
         "lastAt": "2026-08-14T22:40:26.140Z",
         "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to initiate the dialogue with the NPC.",
         "exampleReason": "I need to talk to Diango to proceed with the dialogue and gain access to the next location."
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-15T00:50:23.976Z",
+        "exampleGoal": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+        "exampleReason": "I've successfully traveled to the Draynor Bank at 3092,3243 using verified waypoint navigation. This action will help me locate the necessary runes and shop."
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
@@ -11893,8 +11914,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T00:48:45.593Z",
-      "encounters": 545,
+      "lastSeenAt": "2026-08-15T00:51:39.287Z",
+      "encounters": 554,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -12004,8 +12025,8 @@
     "un5wc8p3r": {
       "name": "Un5wc8p3r",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-15T00:48:13.182Z",
-      "encounters": 865,
+      "lastSeenAt": "2026-08-15T00:51:39.287Z",
+      "encounters": 873,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -12120,8 +12141,8 @@
     "yr8wc2n6q": {
       "name": "Yr8wc2n6q",
       "firstSeenAt": "2026-08-14T21:35:14.455Z",
-      "lastSeenAt": "2026-08-15T00:48:13.182Z",
-      "encounters": 865,
+      "lastSeenAt": "2026-08-15T00:51:39.287Z",
+      "encounters": 873,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -12281,8 +12302,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T00:48:13.182Z",
-      "encounters": 737,
+      "lastSeenAt": "2026-08-15T00:51:39.287Z",
+      "encounters": 745,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -13181,8 +13202,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T00:47:21.581Z",
-      "visits": 288,
+      "lastSeenAt": "2026-08-15T00:50:24.306Z",
+      "visits": 289,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -13299,8 +13320,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-15T00:42:20.721Z",
-      "visits": 444,
+      "lastSeenAt": "2026-08-15T00:51:39.287Z",
+      "visits": 452,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -13337,8 +13358,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-15T00:50:03.309Z",
-      "visits": 90,
+      "lastSeenAt": "2026-08-15T00:50:09.896Z",
+      "visits": 91,
       "npcs": [
         "Diango",
         "Banker",
@@ -14170,10 +14191,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 28,
-      "avgReward": -0.877,
+      "n": 29,
+      "avgReward": -0.948,
       "positive": 7,
-      "lastAt": "2026-08-15T00:41:45.611Z",
+      "lastAt": "2026-08-15T00:51:13.238Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -14182,10 +14203,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 31,
-      "avgReward": 0.182,
+      "n": 32,
+      "avgReward": 0.102,
       "positive": 17,
-      "lastAt": "2026-08-15T00:41:51.588Z",
+      "lastAt": "2026-08-15T00:51:18.905Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -14194,10 +14215,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 17,
-      "avgReward": -2.202,
+      "n": 18,
+      "avgReward": -2.211,
       "positive": 0,
-      "lastAt": "2026-08-15T00:37:36.284Z",
+      "lastAt": "2026-08-15T00:51:28.487Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -15178,10 +15199,10 @@
         "skill:travel:draynor-fishing",
         "npc:net:fishing spot"
       ],
-      "n": 15,
-      "avgReward": 1.497,
-      "positive": 15,
-      "lastAt": "2026-08-15T00:38:53.142Z",
+      "n": 16,
+      "avgReward": 1.48,
+      "positive": 16,
+      "lastAt": "2026-08-15T00:50:54.902Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to the Draynor fishing area at 3087,3230 and verify arrival → Net Fishing spot (level 0, distance 2)"
     },
     "skill:travel:draynor-fishing > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -15190,10 +15211,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 16,
-      "avgReward": -0.469,
+      "n": 17,
+      "avgReward": -0.496,
       "positive": 2,
-      "lastAt": "2026-08-15T00:39:03.009Z",
+      "lastAt": "2026-08-15T00:51:01.475Z",
       "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Net Fishing spot (level 0, distance 2) → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > walk:north > walk:north": {
@@ -15238,10 +15259,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 34,
-      "avgReward": -1.063,
+      "n": 35,
+      "avgReward": -1.071,
       "positive": 2,
-      "lastAt": "2026-08-15T00:41:18.882Z",
+      "lastAt": "2026-08-15T00:51:38.980Z",
       "example": "Bait Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -15250,10 +15271,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 20,
-      "avgReward": -1.492,
+      "n": 21,
+      "avgReward": -1.485,
       "positive": 0,
-      "lastAt": "2026-08-15T00:37:57.578Z",
+      "lastAt": "2026-08-15T00:51:48.278Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -15262,10 +15283,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 27,
-      "avgReward": -1.497,
+      "n": 28,
+      "avgReward": -1.492,
       "positive": 0,
-      "lastAt": "2026-08-15T00:38:02.686Z",
+      "lastAt": "2026-08-15T00:51:33.587Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -15538,10 +15559,10 @@
         "skill:travel:draynor-bank",
         "skill:travel:draynor-fishing"
       ],
-      "n": 1,
-      "avgReward": 1.6,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:41:46.798Z",
+      "n": 2,
+      "avgReward": 1.7,
+      "positive": 2,
+      "lastAt": "2026-08-15T00:50:43.179Z",
       "example": "Close the shop → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to the Draynor fishing area at 3087,3230 and verify arrival"
     },
     "skill:travel:draynor-fishing > npc:net:fishing spot > wait": {
@@ -17247,69 +17268,21 @@
       "positive": 0,
       "lastAt": "2026-08-15T00:50:09.614Z",
       "example": "Sell 1 Coins for about 0 → Buy 1 Toy horsey for about 150 → Close the shop"
+    },
+    "shop:buy:toy horsey > modal:close-shop > skill:travel:draynor-bank": {
+      "sequence": [
+        "shop:buy:toy horsey",
+        "modal:close-shop",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": 0.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T00:50:23.977Z",
+      "example": "Buy 1 Toy horsey for about 150 → Close the shop → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     }
   },
   "discoveries": [
-    {
-      "id": "route:3087:3228:3087:3233:0",
-      "at": "2026-08-14T22:25:43.226Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3228 → 3087,3233; moved 3087,3228 → 3087,3233; new: loc:Closed bank booth, loc:Market stall",
-      "location": {
-        "x": 3087,
-        "z": 3233,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3233:3087:3228:0",
-      "at": "2026-08-14T22:25:54.299Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3233 → 3087,3228; moved 3087,3233 → 3087,3228",
-      "location": {
-        "x": 3087,
-        "z": 3228,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3227:3092:3243:0",
-      "at": "2026-08-14T22:28:23.190Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3227 → 3092,3243; moved 3087,3227 → 3092,3243; new: agent:Dhjack, npc:Diango, npc:Ned, npc:Jail guard, loc:Closed bank booth, loc:Crate",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3230:3086:3230:0",
-      "at": "2026-08-14T22:28:53.109Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3230 → 3086,3230; moved 3087,3230 → 3086,3230; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3086:3231:3092:3243:0",
-      "at": "2026-08-14T22:32:06.596Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3231 → 3092,3243; moved 3086,3231 → 3092,3243; new: npc:Diango, npc:Ned, loc:Crate, loc:Staircase, loc:Oak, loc:Bench",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
     {
       "id": "route:3092:3243:3086:3246:0",
       "at": "2026-08-14T22:32:18.330Z",
@@ -20849,47 +20822,107 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3076:3251:3092:3243:0",
+      "at": "2026-08-15T00:50:23.977Z",
+      "kind": "route",
+      "text": "Route learned: 3076,3251 → 3092,3243; moved 3076,3251 → 3092,3243; new: agent:Scrappydoo, npc:Fishing spot, npc:Jail guard, npc:Ned, loc:Bank notice board, loc:Bush",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3092:3243:3087:3230:0",
+      "at": "2026-08-15T00:50:43.179Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3087,3230; moved 3092,3243 → 3087,3230; new: agent:Un5wc8p3r, agent:Yr8wc2n6q, agent:Gpgather1, npc:Black Knight, loc:Bullrushes, loc:Stones",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3087:3230:3086:3231:0",
+      "at": "2026-08-15T00:50:54.902Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3230 → 3086,3231; moved 3087,3230 → 3086,3231; execution rejected or failed",
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "place:market stall:192:201:0",
+      "at": "2026-08-15T00:50:55.190Z",
+      "kind": "place",
+      "text": "Market stall observed near 3086, 3231, level 0.",
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3086:3231:3086:3230:0",
+      "at": "2026-08-15T00:51:13.238Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3231 → 3086,3230; moved 3086,3231 → 3086,3230; execution rejected or failed",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T00:50:09.614Z",
+  "updatedAt": "2026-08-15T00:51:48.278Z",
   "activePlan": {
-    "objective": "Maximize profit by selling rare runes and avoiding overstocked shops",
-    "focus": "Sell 1 Chaos rune for about 7",
-    "reason": "This action sequence ensures profitable rune sales while avoiding failed transactions from the shop, aligning with the guide's recommendation to sell items the store actually needs.",
+    "objective": "Sell excess runes to maximize profit and afford a Toy Horsey.",
+    "focus": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+    "reason": "These steps directly interact with the available interface options and maximize the profit from the inventory",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Sell 1 Chaos rune for about 7",
+        "label": "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
         "status": "done",
-        "evidence": "moved 3079,3250 → 3077,3244; new: npc:Fishing spot, loc:Boulder"
+        "evidence": "moved 3092,3243 → 3087,3230; new: agent:Un5wc8p3r, agent:Yr8wc2n6q, agent:Gpgather1, npc:Black Knight, loc:Bullrushes, loc:Stones"
       },
       {
         "id": "step-2",
-        "label": "Sell 1 Nature rune for about 10",
+        "label": "Click the 'Sell 1 Nature rune for about 10' option to sell the Nature rune.",
         "status": "active"
       },
       {
         "id": "step-3",
-        "label": "Close the shop to avoid failed transactions",
+        "label": "Click the 'Sell 1 Coins for about 0' option to sell the Coins.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Shop closed, runes sold"
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Sell 1 Chaos rune for about 7",
-      "Sell 1 Nature rune for about 10",
-      "Close the shop to avoid failed transactions"
+      "Click the 'Sell 1 Chaos rune for about 7' option to sell the Chaos rune.",
+      "Click the 'Sell 1 Nature rune for about 10' option to sell the Nature rune.",
+      "Click the 'Sell 1 Coins for about 0' option to sell the Coins."
     ],
     "avoid": [
       "Sell 1 Chaos rune for about 7",
-      "Buy 1 Toy horsey for about 150",
+      "Sell 1 Nature rune for about 10",
       "Sell 1 Coins for about 0"
     ],
-    "updatedAt": "2026-08-15T00:47:01.695Z",
+    "updatedAt": "2026-08-15T00:50:14.373Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 2
   }
 }
