@@ -6,63 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 4222,
-    "teacherChoices": 4222,
+    "totalChoices": 4232,
+    "teacherChoices": 4232,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 4220,
-    "totalReward": 2020.48,
-    "saves": 427,
-    "shadowPredictions": 2227,
-    "shadowMatches": 973,
-    "strategistRefreshes": 268,
+    "completedExperiences": 4230,
+    "totalReward": 2014.93,
+    "saves": 428,
+    "shadowPredictions": 2230,
+    "shadowMatches": 974,
+    "strategistRefreshes": 269,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msuaklnv-a0bjvg",
-      "createdAt": "2026-08-15T11:27:38.155Z",
-      "tick": 63383,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 12 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msuakywb-n2vdr6",
-      "createdAt": "2026-08-15T11:27:55.307Z",
-      "tick": 63440,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to the Draynor fishing area at 3087,3230 and verify arrival. Result: moved 3092,3243 → 3087,3230; new: agent:Gpgather1, npc:Black Knight, loc:Bullrushes, loc:Stones, loc:Thistle. Reward 0.85.",
-      "importance": 1.13,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "fishing",
-        "resource",
-        "repository coordinate",
-        "agent gpgather1",
-        "npc black knight",
-        "loc bullrushes",
-        "loc stones",
-        "loc thistle"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "msuakywb-aak6me",
       "createdAt": "2026-08-15T11:27:55.307Z",
@@ -8300,6 +8256,44 @@
         "z": 3251,
         "level": 0
       }
+    },
+    {
+      "id": "msuvlr3v-ejl7po",
+      "createdAt": "2026-08-15T21:16:23.803Z",
+      "tick": 0,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "AI strategist: Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use walkto with intermediate points that curve north around the danger zone to avoid the dark wizards",
+        "verify the successful navigation by checking the coordinates of the destination point 3230 3270 3150 3250 and 3092 3243",
+        "confirm that"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "msuvm3vx-29ku99",
+      "createdAt": "2026-08-15T21:16:40.365Z",
+      "tick": 17037,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Close the shop worked across 5 similar samples with average reward 1.20.",
+      "importance": 2.2,
+      "tags": [
+        "modal",
+        "modal close shop"
+      ],
+      "location": {
+        "x": 3081,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9679,24 +9673,24 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 12,
+        "n": 13,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 12,
+        "negative": 13,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:15:21.757Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "lastAt": "2026-08-15T21:16:29.277Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
         "exampleReason": "Dialog 1: Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 5,
+        "n": 6,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 5,
+        "negative": 6,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T08:11:14.943Z",
+        "lastAt": "2026-08-15T21:16:24.489Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "Dialog 1: Toy horseys?"
+        "exampleReason": "I'm fine, thanks."
       },
       "dialog:2:i m fine thanks": {
         "n": 1,
@@ -9781,35 +9775,35 @@
         "exampleReason": "Sell 1 Bones for about 0"
       },
       "shop:sell:mind rune": {
+        "n": 3,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:17:07.198Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "exampleReason": "Selling a Mind rune for 1 GP is a good move, as it gives me a small reward and a chance to progress. I'll try this action now."
+      },
+      "shop:sell:raw anchovies": {
         "n": 2,
         "avgReward": -0.6,
         "positive": 0,
         "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:15:53.872Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "Sell 1 Mind rune for about 1"
-      },
-      "shop:sell:raw anchovies": {
-        "n": 1,
-        "avgReward": -0.6,
-        "positive": 0,
-        "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:15:47.905Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "Sell 1 Raw anchovies for about 7"
+        "lastAt": "2026-08-15T21:16:36.190Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "exampleReason": "Selling raw anchovies for 7 GP is a good move to increase your inventory, which can help you progress further in the game."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,wait": {
       "modal:close-shop": {
-        "n": 4,
-        "avgReward": 1.65,
+        "n": 5,
+        "avgReward": 1.2,
         "positive": 2,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:15:58.078Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "lastAt": "2026-08-15T21:16:40.365Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
         "exampleReason": "Close the shop"
       }
     },
@@ -9843,18 +9837,28 @@
         "lastAt": "2026-08-15T00:47:21.292Z",
         "exampleGoal": "Sell 1 Chaos rune for about 7",
         "exampleReason": "I have successfully reached the Draynor Bank at 3092,3243 using verified waypoint navigation. This action shows my ability to navigate and interact with the location, which is a ke"
+      },
+      "npc:trade:diango": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:16:48.484Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "exampleReason": "Talk to Diango (level 0, distance 1) to gain experience."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T21:15:07.351Z",
+        "lastAt": "2026-08-15T21:16:11.280Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I'm waiting for a moment to observe the environment and gather any potential progress."
+        "exampleReason": "I'm waiting for a moment to observe the environment and gather any potential information to improve my progress."
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
@@ -15973,6 +15977,38 @@
         "lastAt": "2026-08-15T21:15:16.949Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I'm fine, thanks."
+      },
+      "dialog:1:click here to continue": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:16:17.288Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "Click here to continue"
+      }
+    },
+    "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
+      "shop:sell:mind rune": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:16:54.495Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "exampleReason": "Selling 1 Mind rune for about 1 GP is a good move to increase your money, as it's a valuable item for the game."
+      },
+      "shop:sell:raw anchovies": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:17:00.187Z",
+        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "exampleReason": "Sell 1 Raw anchovies for about 7"
       }
     }
   },
@@ -15980,8 +16016,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T20:56:46.351Z",
-      "encounters": 1125,
+      "lastSeenAt": "2026-08-15T21:16:36.498Z",
+      "encounters": 1129,
       "combatLevel": 56,
       "trust": 0,
       "stance": "unknown",
@@ -17238,8 +17274,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T21:15:58.386Z",
-      "encounters": 2452,
+      "lastSeenAt": "2026-08-15T21:17:00.494Z",
+      "encounters": 2462,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17385,8 +17421,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T21:15:58.386Z",
-      "encounters": 420,
+      "lastSeenAt": "2026-08-15T21:16:40.674Z",
+      "encounters": 426,
       "combatLevel": 86,
       "trust": 0,
       "stance": "unknown",
@@ -17666,8 +17702,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T21:15:58.386Z",
-      "encounters": 1068,
+      "lastSeenAt": "2026-08-15T21:16:29.588Z",
+      "encounters": 1073,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17797,8 +17833,8 @@
     "stasis": {
       "name": "Stasis",
       "firstSeenAt": "2026-08-15T06:17:23.863Z",
-      "lastSeenAt": "2026-08-15T21:15:58.386Z",
-      "encounters": 32,
+      "lastSeenAt": "2026-08-15T21:17:00.494Z",
+      "encounters": 42,
       "trust": 0.12,
       "stance": "unknown",
       "conversations": 5,
@@ -18896,6 +18932,21 @@
       "facts": [],
       "questions": [],
       "lastMessages": []
+    },
+    "testee5": {
+      "name": "Testee5",
+      "firstSeenAt": "2026-08-15T21:16:06.774Z",
+      "lastSeenAt": "2026-08-15T21:16:36.498Z",
+      "encounters": 3,
+      "combatLevel": 23,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -19068,8 +19119,8 @@
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-15T21:15:58.386Z",
-      "visits": 160,
+      "lastSeenAt": "2026-08-15T21:17:00.494Z",
+      "visits": 170,
       "npcs": [
         "Diango",
         "Banker",
@@ -20278,10 +20329,10 @@
         "dialog:1:toy horseys",
         "dialog:1:click here to continue"
       ],
-      "n": 8,
+      "n": 9,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T21:15:21.757Z",
+      "lastAt": "2026-08-15T21:16:29.277Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Dialog 1: Click here to continue"
     },
     "dialog:1:toy horseys > dialog:1:click here to continue > shop:buy:toy horsey": {
@@ -20362,10 +20413,10 @@
         "npc:talk to:diango",
         "wait"
       ],
-      "n": 2,
-      "avgReward": 1.65,
+      "n": 3,
+      "avgReward": 0.65,
       "positive": 1,
-      "lastAt": "2026-08-14T22:40:31.498Z",
+      "lastAt": "2026-08-15T21:16:11.280Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:talk to:diango > wait > dialog:1:click here to continue": {
@@ -20374,10 +20425,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 5,
-      "avgReward": -1.298,
+      "n": 6,
+      "avgReward": -1.307,
       "positive": 0,
-      "lastAt": "2026-08-15T20:55:38.833Z",
+      "lastAt": "2026-08-15T21:16:17.288Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:2:i m fine thanks": {
@@ -21286,10 +21337,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T21:15:16.949Z",
+      "lastAt": "2026-08-15T21:16:24.489Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:coins > modal:close-shop > npc:trade:diango": {
@@ -31174,10 +31225,10 @@
         "dialog:1:click here to continue",
         "shop:sell:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T21:15:28.252Z",
+      "lastAt": "2026-08-15T21:16:36.190Z",
       "example": "Dialog 1: Toy horseys? → Dialog 1: Click here to continue → Sell 1 Raw anchovies for about 7"
     },
     "dialog:1:click here to continue > shop:sell:raw anchovies > shop:buy:toy horsey": {
@@ -31222,10 +31273,10 @@
         "shop:sell:raw anchovies",
         "shop:sell:mind rune"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T21:15:53.873Z",
+      "lastAt": "2026-08-15T21:17:07.198Z",
       "example": "Sell 1 Mind rune for about 1 → Sell 1 Raw anchovies for about 7 → Sell 1 Mind rune for about 1"
     },
     "shop:sell:raw anchovies > shop:sell:mind rune > modal:close-shop": {
@@ -31251,6 +31302,54 @@
       "positive": 0,
       "lastAt": "2026-08-15T21:16:06.499Z",
       "example": "Sell 1 Mind rune for about 1 → Close the shop → Talk-to Diango (level 0, distance 1)"
+    },
+    "dialog:1:click here to continue > shop:sell:raw anchovies > modal:close-shop": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "shop:sell:raw anchovies",
+        "modal:close-shop"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:16:40.365Z",
+      "example": "Dialog 1: Click here to continue → Sell 1 Raw anchovies for about 7 → Close the shop"
+    },
+    "shop:sell:raw anchovies > modal:close-shop > npc:trade:diango": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "modal:close-shop",
+        "npc:trade:diango"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:16:48.484Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Close the shop → Trade Diango (level 0, distance 1)"
+    },
+    "modal:close-shop > npc:trade:diango > shop:sell:mind rune": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:trade:diango",
+        "shop:sell:mind rune"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:16:54.495Z",
+      "example": "Close the shop → Trade Diango (level 0, distance 1) → Sell 1 Mind rune for about 1"
+    },
+    "npc:trade:diango > shop:sell:mind rune > shop:sell:raw anchovies": {
+      "sequence": [
+        "npc:trade:diango",
+        "shop:sell:mind rune",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:17:00.187Z",
+      "example": "Trade Diango (level 0, distance 1) → Sell 1 Mind rune for about 1 → Sell 1 Raw anchovies for about 7"
     }
   },
   "discoveries": [
@@ -34855,45 +34954,43 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T21:16:06.499Z",
+  "updatedAt": "2026-08-15T21:17:07.198Z",
   "activePlan": {
-    "objective": "Reach Draynor Village and secure safe fishing spots for level 1.",
-    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-    "reason": "This action ensures safe fishing location access for level",
+    "objective": "Navigate safely from the cow field to Draynor Bank by curving north around the danger zone.",
+    "focus": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "status": "done",
-        "evidence": "moved 3086,3231 → 3092,3243; new: npc:Diango, npc:Aggie, loc:Crate, loc:Staircase, loc:Oak, loc:Bench"
+        "label": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 1).",
-        "status": "done",
-        "evidence": "+798 XP; 6 damage dealt; moved 3092,3243 → 3084,3238; execution rejected or failed"
+        "label": "Verify the successful navigation by checking the coordinates of the destination point (3230, 3270), (3150, 3250), and (3092, 3243).",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Pick up Raw anchovies from the Net Fishing spot (level 0, distance 1).",
-        "status": "active"
+        "label": "Confirm that",
+        "status": "pending"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-      "Explore north about 5 tiles to locate the Net Fishing spot (level 0, distance 1).",
-      "Pick up Raw anchovies from the Net Fishing spot (level 0, distance 1)."
+      "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
+      "Verify the successful navigation by checking the coordinates of the destination point (3230, 3270), (3150, 3250), and (3092, 3243).",
+      "Confirm that"
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
-      "Bait Fishing spot (level 0, distance 1)",
-      "Dialog 1: Click here to continue"
+      "Close the shop",
+      "Talk-to Diango (level 0, distance 1)",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T21:14:04.275Z",
+    "updatedAt": "2026-08-15T21:16:23.803Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
