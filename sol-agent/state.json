@@ -6,63 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1711,
-    "teacherChoices": 1711,
+    "totalChoices": 1721,
+    "teacherChoices": 1721,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1710,
-    "totalReward": 876.81,
-    "saves": 174,
+    "completedExperiences": 1720,
+    "totalReward": 867.27,
+    "saves": 175,
     "shadowPredictions": 768,
     "shadowMatches": 342,
-    "strategistRefreshes": 97,
+    "strategistRefreshes": 99,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstogqge-rpr230",
-      "createdAt": "2026-08-15T01:08:46.191Z",
-      "tick": 42778,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3236 → 3092,3243; new: npc:Jail guard, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc jail guard",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstogqgf-3g4vl5",
-      "createdAt": "2026-08-15T01:08:46.191Z",
-      "tick": 42778,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 4 similar samples with average reward 1.55.",
-      "importance": 2.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstoh2hh-3jjhu2",
       "createdAt": "2026-08-15T01:09:01.781Z",
@@ -8666,6 +8622,46 @@
         "z": 3255,
         "level": 1
       }
+    },
+    {
+      "id": "mstzqypd-pk3239",
+      "createdAt": "2026-08-15T06:24:39.217Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore south about 5 tiles. This plan uses observable actions and leverages the guide's coordinates to reach the target location. The steps are executable and provide clear evidence of progress toward the objective.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore south about 5 tiles",
+        "climb down staircase distance 2",
+        "explore northwest about 4 tiles to locate lumbridge spawn at 3222 3218"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
+    },
+    {
+      "id": "mstzsgj8-66nwid",
+      "createdAt": "2026-08-15T06:25:48.980Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore southwest about 4 tiles to locate the scorpion nest. This plan uses the Focus combat style to defend against scorpions, observes animation ID 62",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore southwest about 4 tiles to locate the scorpion nest",
+        "combat style focus defensive trains defence to survive the scorpion fight",
+        "confirm scorpion activity by checking animation id 625 and ensure combat style is set to defensive for survival"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3255,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -13173,54 +13169,54 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "style:accurate:attack": {
-        "n": 8,
+        "n": 10,
         "avgReward": -0.26,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T06:22:55.675Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "I'm ready to combat, so I'll focus on training my defensive skills to survive while mining. I'll use the Combat style Jab to improve my attack and the Combat style Pound to enhance"
+        "lastAt": "2026-08-15T06:25:26.872Z",
+        "exampleGoal": "Explore south about 5 tiles",
+        "exampleReason": "I'm ready to start combat style Jab. I'll use my accurate attack to get closer to the Lumbridge spawn."
       },
       "walk:north": {
-        "n": 6,
-        "avgReward": -0.55,
-        "positive": 3,
-        "negative": 3,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:24:01.753Z",
-        "exampleGoal": "Explore southeast about 4 tiles to reach the Draynor fishing location",
-        "exampleReason": "I've confirmed that the location has been reached. The coordinates are (3094, 3255, 1). The new position is (3093, 3251) after moving 3094, 3255 → 30"
-      },
-      "style:aggressive:strength": {
-        "n": 7,
-        "avgReward": -0.0171,
-        "positive": 0,
-        "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T06:23:09.782Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "I'm training my combat style to focus on defensive skills to prepare for combat while mining. This will help me survive and potentially escape the trap."
-      },
-      "walk:south": {
-        "n": 8,
-        "avgReward": -1.0251,
-        "positive": 3,
+        "n": 9,
+        "avgReward": -0.6944,
+        "positive": 4,
         "negative": 5,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:24:17.274Z",
-        "exampleGoal": "Explore southeast about 4 tiles to reach the Draynor fishing location",
-        "exampleReason": "Exploring the south direction confirms the location has been reached, with the coordinates matching the Draynor fishing location. I'll proceed with the next step to gather more inf"
+        "lastAt": "2026-08-15T06:26:02.007Z",
+        "exampleGoal": "Explore southwest about 4 tiles to locate the scorpion nest",
+        "exampleReason": "Exploring the north 5 tiles is the next step to locate the scorpion nest. I'll check the coordinates and see if there's any sign of activity."
+      },
+      "style:aggressive:strength": {
+        "n": 9,
+        "avgReward": -0.0711,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T06:25:53.880Z",
+        "exampleGoal": "Explore southwest about 4 tiles to locate the scorpion nest",
+        "exampleReason": "I'm focusing on combat style training to improve my defensive capabilities. This will help me survive while mining and exploring."
+      },
+      "walk:south": {
+        "n": 9,
+        "avgReward": -1.1168,
+        "positive": 3,
+        "negative": 6,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T06:24:34.970Z",
+        "exampleGoal": "Progress through explore",
+        "exampleReason": "I'm exploring the south area to find any potential routes or obstacles. This is a good way to gather information before making any major decisions."
       },
       "walk:east": {
-        "n": 5,
-        "avgReward": -1.25,
+        "n": 6,
+        "avgReward": -1.35,
         "positive": 1,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:24:24.524Z",
-        "exampleGoal": "Explore southeast about 4 tiles to reach the Draynor fishing location",
-        "exampleReason": "Exploring the east direction is the next step to reach the Draynor fishing location. I'll continue to observe for any changes in the coordinates and ensure we are on the correct pa"
+        "lastAt": "2026-08-15T06:24:51.468Z",
+        "exampleGoal": "Explore south about 5 tiles",
+        "exampleReason": "Exploring east about 5 tiles is the next step to reach the Lumbridge spawn coordinates. I'll continue exploring in that direction to find the correct path."
       },
       "style:defensive:defence": {
         "n": 6,
@@ -13233,14 +13229,14 @@
         "exampleReason": "I'm ready to train Defensive skills, which will help me survive while mining. Let's start exploring the area and gather more information about the Al Kharid mine."
       },
       "walk:west": {
-        "n": 1,
+        "n": 2,
         "avgReward": -1.85,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T06:22:34.078Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "Exploring west about 5 tiles is the next step to locate mining activity. The area around Al Kharid mine is full of Lvl 14 scorpions, so we should be cautious."
+        "lastAt": "2026-08-15T06:24:59.568Z",
+        "exampleGoal": "Explore south about 5 tiles",
+        "exampleReason": "Exploring the west about 5 tiles is the next step to reach the Lumbridge spawn coordinates. It's a good opportunity to gather resources and prepare for the journey ahead."
       },
       "walk:northeast": {
         "n": 1,
@@ -15241,12 +15237,12 @@
     },
     "193:203:1": {
       "key": "193:203:1",
-      "x": 3093,
-      "z": 3251,
+      "x": 3094,
+      "z": 3255,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T06:24:17.580Z",
-      "visits": 56,
+      "lastSeenAt": "2026-08-15T06:25:54.226Z",
+      "visits": 67,
       "npcs": [
         "Woman"
       ],
@@ -20584,10 +20580,10 @@
         "walk:east",
         "walk:south"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -5.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:22:08.034Z",
+      "lastAt": "2026-08-15T06:24:34.970Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore south about 5 tiles"
     },
     "walk:east > walk:south > walk:east": {
@@ -20596,10 +20592,10 @@
         "walk:south",
         "walk:east"
       ],
-      "n": 2,
-      "avgReward": -4.05,
+      "n": 3,
+      "avgReward": -4.55,
       "positive": 0,
-      "lastAt": "2026-08-15T06:22:17.619Z",
+      "lastAt": "2026-08-15T06:24:51.468Z",
       "example": "Explore east about 5 tiles → Explore south about 5 tiles → Explore east about 5 tiles"
     },
     "walk:south > walk:east > style:accurate:attack": {
@@ -20961,6 +20957,102 @@
       "positive": 0,
       "lastAt": "2026-08-15T06:23:41.623Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles → Explore south about 5 tiles"
+    },
+    "walk:south > walk:east > walk:west": {
+      "sequence": [
+        "walk:south",
+        "walk:east",
+        "walk:west"
+      ],
+      "n": 1,
+      "avgReward": -5.55,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:24:59.568Z",
+      "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore west about 5 tiles"
+    },
+    "walk:east > walk:west > style:accurate:attack": {
+      "sequence": [
+        "walk:east",
+        "walk:west",
+        "style:accurate:attack"
+      ],
+      "n": 1,
+      "avgReward": -3.62,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:08.011Z",
+      "example": "Explore east about 5 tiles → Explore west about 5 tiles → Combat style Jab: Accurate; trains Attack"
+    },
+    "walk:west > style:accurate:attack > walk:north": {
+      "sequence": [
+        "walk:west",
+        "style:accurate:attack",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.02,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:16.368Z",
+      "example": "Explore west about 5 tiles → Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles"
+    },
+    "style:accurate:attack > walk:north > style:accurate:attack": {
+      "sequence": [
+        "style:accurate:attack",
+        "walk:north",
+        "style:accurate:attack"
+      ],
+      "n": 1,
+      "avgReward": 0.23,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:26.872Z",
+      "example": "Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack"
+    },
+    "walk:north > style:accurate:attack > walk:north": {
+      "sequence": [
+        "walk:north",
+        "style:accurate:attack",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -1.7,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:35.311Z",
+      "example": "Explore north about 5 tiles → Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles"
+    },
+    "style:accurate:attack > walk:north > style:aggressive:strength": {
+      "sequence": [
+        "style:accurate:attack",
+        "walk:north",
+        "style:aggressive:strength"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:45.531Z",
+      "example": "Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles → Combat style Pound: Aggressive; trains Strength"
+    },
+    "walk:north > style:aggressive:strength > style:aggressive:strength": {
+      "sequence": [
+        "walk:north",
+        "style:aggressive:strength",
+        "style:aggressive:strength"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:25:53.880Z",
+      "example": "Explore north about 5 tiles → Combat style Pound: Aggressive; trains Strength → Combat style Pound: Aggressive; trains Strength"
+    },
+    "style:aggressive:strength > style:aggressive:strength > walk:north": {
+      "sequence": [
+        "style:aggressive:strength",
+        "style:aggressive:strength",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T06:26:02.007Z",
+      "example": "Combat style Pound: Aggressive; trains Strength → Combat style Pound: Aggressive; trains Strength → Explore north about 5 tiles"
     }
   },
   "discoveries": [
@@ -24565,28 +24657,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T06:24:24.525Z",
+  "updatedAt": "2026-08-15T06:26:02.007Z",
   "activePlan": {
-    "objective": "Navigate to the Draynor fishing location using the provided coordinates",
-    "focus": "Explore southeast about 4 tiles to reach the Draynor fishing location",
-    "reason": "The guide file provides the correct coordinates for Draynor fishing, and exploring southeast about 4 tiles aligns with the target location.",
+    "objective": "Detect and combat scorpions in the Al Kharid mine to survive mining",
+    "focus": "Explore southwest about 4 tiles to locate the scorpion nest",
+    "reason": "This plan uses the Focus combat style to defend against scorpions, observes animation ID 62",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore southeast about 4 tiles to reach the Draynor fishing location",
-        "status": "done",
-        "evidence": "moved 3093,3251 → 3094,3255; new: npc:Woman, loc:Cupboard, loc:Hat stand"
+        "label": "Explore southwest about 4 tiles to locate the scorpion nest",
+        "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use the 'Explore' action to confirm the location has been reached",
-        "status": "blocked",
-        "evidence": "Repeated negative outcomes; strategist must replan."
+        "label": "Combat style Focus: Defensive; trains Defence to survive the scorpion fight",
+        "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify the location by checking the guide file for the correct coordinates and confirming the exploration was successful",
+        "label": "Confirm scorpion activity by checking animation ID 625 and ensure combat style is set to Defensive for survival",
         "status": "pending"
       }
     ],
@@ -24594,17 +24684,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore southeast about 4 tiles to reach the Draynor fishing location",
-      "Use the 'Explore' action to confirm the location has been reached",
-      "Verify the location by checking the guide file for the correct coordinates and confirming the exploration was successful"
+      "Explore southwest about 4 tiles to locate the scorpion nest",
+      "Combat style Focus: Defensive; trains Defence to survive the scorpion fight",
+      "Confirm scorpion activity by checking animation ID 625 and ensure combat style is set to Defensive for survival"
     ],
     "avoid": [
-      "Combat style Pound: Aggressive; trains Strength",
-      "Combat style Focus: Defensive; trains Defence",
+      "Explore west about 5 tiles",
+      "Combat style Jab: Accurate; trains Attack",
       "Explore north about 5 tiles"
     ],
-    "updatedAt": "2026-08-15T06:23:44.939Z",
+    "updatedAt": "2026-08-15T06:25:48.980Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 3
+    "failures": 1
   }
 }
