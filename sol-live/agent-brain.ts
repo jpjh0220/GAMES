@@ -418,9 +418,11 @@ export class SolAgentBrain {
             [{id:'trade',description:`Travel between ${bestTrade.sellNpc} and ${bestTrade.buyNpc}`,targetAction:'travel'}],'high');
           this.goals.adoptGoal(tradeGoal);
         }else{
-          // Query economy for best activity
+          // Query economy for best activity (but filter by skill level)
+          const skillLevels:Record<string,number>={};
+          for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
           const bestActivity=this.economy.getBestActivityFor('money');
-          if(bestActivity){
+          if(bestActivity&&this.canPursueActivity(skillLevels,bestActivity.name)){
             const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
               [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
             this.goals.adoptGoal(activityGoal);
@@ -559,7 +561,13 @@ export class SolAgentBrain {
     // STAGNATION DETECTION: hard penalty for zero movement over 100 ticks
     if(!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0){
       const stagnationTicks=this.stagnationCounter.get(exp.candidate.fingerprint)||0;
-      if(stagnationTicks>=100)reward-=2.0;
+      if(stagnationTicks>=100){
+        reward-=2.0;
+        // STAGNATION RECOVERY: when stuck, force exploration goal
+        console.log('AGENT_STAGNATION_ESCAPE',JSON.stringify({action:exp.candidate.label,ticks:stagnationTicks}));
+        const escapeGoal=this.goals.createGoal('Escape stagnation','Explore new areas','explore');
+        this.goals.adoptGoal(escapeGoal);
+      }
       this.stagnationCounter.set(exp.candidate.fingerprint,stagnationTicks+Math.max(1,exp.settleTick-exp.startTick));
     }else{
       this.stagnationCounter.clear();
@@ -592,7 +600,16 @@ export class SolAgentBrain {
         if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.label}));
       }
     }
-    this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();return outcome;
+    this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();
+    // GOAL COMPLETION CHECK: if active goal step has success condition, check if met
+    const activeGoal=this.goals.currentStep();
+    if(activeGoal?.successCondition){
+      if(activeGoal.successCondition(state.inventory||[],state.equipment||[])){
+        console.log('AGENT_GOAL_STEP_COMPLETE',JSON.stringify({step:activeGoal.description,action:exp.candidate.label}));
+        this.goals.completeStep(state.inventory||[],state.equipment||[]);
+      }
+    }
+    return outcome;
   }
 
   private learn(exp:Experience,outcome:AgentOutcome,state:BotWorldState){
