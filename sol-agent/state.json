@@ -6,55 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2071,
-    "teacherChoices": 2071,
+    "totalChoices": 2081,
+    "teacherChoices": 2081,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2070,
-    "totalReward": 605.55,
-    "saves": 210,
-    "shadowPredictions": 844,
-    "shadowMatches": 366,
-    "strategistRefreshes": 143,
+    "completedExperiences": 2080,
+    "totalReward": 600.05,
+    "saves": 211,
+    "shadowPredictions": 848,
+    "shadowMatches": 367,
+    "strategistRefreshes": 145,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstozexj-q8nmdm",
-      "createdAt": "2026-08-15T01:23:17.719Z",
-      "tick": 45683,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Close the shop. Result: +1 level(s). Reward 2.4.",
-      "importance": 1.9,
-      "tags": [
-        "modal",
-        "shop"
-      ],
-      "location": {
-        "x": 3079,
-        "z": 3249,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstozexj-ahyvov",
-      "createdAt": "2026-08-15T01:23:17.719Z",
-      "tick": 45683,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Close the shop worked across 3 similar samples with average reward 4.40.",
-      "importance": 4,
-      "tags": [
-        "modal",
-        "modal close shop"
-      ],
-      "location": {
-        "x": 3079,
-        "z": 3249,
-        "level": 0
-      }
-    },
     {
       "id": "mstp0zhq-ccen1u",
       "createdAt": "2026-08-15T01:24:31.022Z",
@@ -8545,6 +8509,46 @@
         "z": 3251,
         "level": 1
       }
+    },
+    {
+      "id": "msu1fvrd-v153e7",
+      "createdAt": "2026-08-15T07:12:01.417Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore southeast about 4 tiles. This sequence uses observable actions and leverages the guide for coordinates. The steps are executable and provide evidence of exploration and location confirmation.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore southeast about 4 tiles",
+        "climb up staircase distance 2",
+        "explore southwest about 4 tiles to confirm location of earth rune"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
+    },
+    {
+      "id": "msu1h8cd-fb6rpi",
+      "createdAt": "2026-08-15T07:13:04.381Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore east about 5 tiles to observe mining activity. This plan uses the available Combat style Focus: Defensive to train Defence passively, and explores east to observe mining activity. It also includes a combat strategy to survive while",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore east about 5 tiles to observe mining activity",
+        "use combat style focus defensive to train defence passively",
+        "combat 27 scorpions to survive while mining and confirm activity is active"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
     }
   ],
   "policy": {
@@ -13062,14 +13066,14 @@
         "exampleReason": "I'm preparing for combat-style training, which will help me survive while mining. I'll focus on defensive skills to stay safe while exploring and fighting."
       },
       "walk:north": {
-        "n": 40,
-        "avgReward": -0.3549,
+        "n": 41,
+        "avgReward": -0.3914,
         "positive": 23,
-        "negative": 17,
-        "lastReward": 0.75,
-        "lastAt": "2026-08-15T07:09:45.173Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "I'm exploring the southeast about 4 tiles to locate mining activity. The current position is at (3093, 3251, 1), and I've already attempted to explore other directions, but the res"
+        "negative": 18,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T07:12:29.918Z",
+        "exampleGoal": "Explore southeast about 4 tiles",
+        "exampleReason": "Exploring the north about 5 tiles has moved me closer to the Cow field south gate. The new coordinates are (3093, 3251), which is a 3094,3255 position. I now have a better understa"
       },
       "style:aggressive:strength": {
         "n": 54,
@@ -13082,24 +13086,24 @@
         "exampleReason": "I'm training my combat style to improve my defensive capabilities and prepare for potential combat with the Al Kharid mine."
       },
       "walk:south": {
-        "n": 54,
-        "avgReward": -1.3204,
-        "positive": 13,
+        "n": 55,
+        "avgReward": -1.29,
+        "positive": 14,
         "negative": 41,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:09:18.764Z",
-        "exampleGoal": "Explore south about 5 tiles to reach the Lumbridge spawn",
-        "exampleReason": "Exploring south about 5 tiles is the next step to reach the Lumbridge spawn. It's a good way to gather coordinates and prepare for the journey."
+        "lastReward": 0.35,
+        "lastAt": "2026-08-15T07:12:37.420Z",
+        "exampleGoal": "Explore southeast about 4 tiles",
+        "exampleReason": "Exploring the south about 5 tiles is the next logical step to locate the Earth rune."
       },
       "walk:east": {
-        "n": 32,
-        "avgReward": -1.7436,
+        "n": 33,
+        "avgReward": -1.7468,
         "positive": 1,
-        "negative": 31,
+        "negative": 32,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:09:29.280Z",
+        "lastAt": "2026-08-15T07:13:02.878Z",
         "exampleGoal": "Progress through explore",
-        "exampleReason": "Exploring east about 5 tiles is the next step to assess the area for potential mining activity. I'll check if there's a nearby Lvl 14 scorpion mine or any other active mining activ"
+        "exampleReason": "Exploring east about 5 tiles is a good move to check for any signs of mining activity. The animation ID 625 indicates active mining, which is a good sign to stay alert."
       },
       "style:defensive:defence": {
         "n": 45,
@@ -13142,36 +13146,36 @@
         "exampleReason": "Explore northwest about 4 tiles"
       },
       "wait": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T07:01:04.721Z",
-        "exampleGoal": "Progress through wait",
-        "exampleReason": "I'll wait for a moment to observe for a moment"
+        "lastAt": "2026-08-15T07:13:10.397Z",
+        "exampleGoal": "Explore east about 5 tiles to observe mining activity",
+        "exampleReason": "I'm waiting for the necessary information to proceed. I'll observe for a moment before taking any action."
       }
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,wait,world": {
       "walk:north": {
-        "n": 52,
-        "avgReward": -1.0539,
-        "positive": 16,
-        "negative": 36,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:10:55.997Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "Exploring the south about 5 tiles has moved me from (3094,3255) to (3093,3251), which is a 3094,3255 → 3093,3251 move."
+        "n": 55,
+        "avgReward": -1.0028,
+        "positive": 18,
+        "negative": 37,
+        "lastReward": 0.75,
+        "lastAt": "2026-08-15T07:12:21.772Z",
+        "exampleGoal": "Explore southeast about 4 tiles",
+        "exampleReason": "Exploring north about 5 tiles is the next logical step to locate the Earth rune in the Cow field south gate."
       },
       "walk:south": {
-        "n": 27,
-        "avgReward": 0.2685,
-        "positive": 26,
+        "n": 28,
+        "avgReward": 0.2714,
+        "positive": 27,
         "negative": 1,
         "lastReward": 0.35,
-        "lastAt": "2026-08-15T07:11:10.113Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity",
-        "exampleReason": "Exploring south about 5 tiles"
+        "lastAt": "2026-08-15T07:12:13.978Z",
+        "exampleGoal": "Explore southeast about 4 tiles",
+        "exampleReason": "Exploring the south gate of the Cow field is the next logical step to locate the Earth rune. The coordinates are (3253, 3266), which is a key location in the field. I will continue"
       },
       "walk:southeast": {
         "n": 1,
@@ -13234,6 +13238,16 @@
         "lastAt": "2026-08-15T07:05:23.582Z",
         "exampleGoal": "Explore west about 5 tiles to observe mining activity and assess danger.",
         "exampleReason": "I'm preparing for combat, focusing on defensive training to survive the scorpion fight."
+      },
+      "walk:south": {
+        "n": 1,
+        "avgReward": -1.85,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T07:12:52.103Z",
+        "exampleGoal": "Explore southeast about 4 tiles",
+        "exampleReason": "I'm exploring the south gate, which is the first step in locating the Earth rune. I'm at position (3093,3251,1) and have 97 HP, 97 combat, and level 116. I'm on my way to the"
       }
     }
   },
@@ -15193,8 +15207,8 @@
       "z": 3251,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T07:11:40.708Z",
-      "visits": 421,
+      "lastSeenAt": "2026-08-15T07:13:03.168Z",
+      "visits": 431,
       "npcs": [
         "Woman"
       ],
@@ -20640,10 +20654,10 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 3,
-      "avgReward": -1.313,
+      "n": 4,
+      "avgReward": -1.24,
       "positive": 0,
-      "lastAt": "2026-08-15T06:58:07.711Z",
+      "lastAt": "2026-08-15T07:12:05.867Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles → Explore north about 5 tiles"
     },
     "walk:north > walk:north > walk:south": {
@@ -20652,10 +20666,10 @@
         "walk:north",
         "walk:south"
       ],
-      "n": 8,
-      "avgReward": -0.775,
+      "n": 10,
+      "avgReward": -0.77,
       "positive": 0,
-      "lastAt": "2026-08-15T07:06:36.193Z",
+      "lastAt": "2026-08-15T07:12:37.420Z",
       "example": "Explore north about 5 tiles → Explore north about 5 tiles → Explore south about 5 tiles"
     },
     "walk:north > walk:south > walk:north": {
@@ -20664,10 +20678,10 @@
         "walk:south",
         "walk:north"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": -0.75,
       "positive": 0,
-      "lastAt": "2026-08-15T07:10:47.869Z",
+      "lastAt": "2026-08-15T07:12:21.772Z",
       "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore north about 5 tiles"
     },
     "walk:south > walk:north > walk:north": {
@@ -20676,10 +20690,10 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 9,
-      "avgReward": -0.995,
+      "n": 10,
+      "avgReward": -0.971,
       "positive": 0,
-      "lastAt": "2026-08-15T07:10:55.997Z",
+      "lastAt": "2026-08-15T07:12:29.918Z",
       "example": "Explore south about 5 tiles → Explore north about 5 tiles → Explore north about 5 tiles"
     },
     "walk:north > walk:north > style:accurate:attack": {
@@ -21876,10 +21890,10 @@
         "walk:east",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -3.85,
       "positive": 0,
-      "lastAt": "2026-08-15T07:01:04.721Z",
+      "lastAt": "2026-08-15T07:13:10.397Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Wait and observe for a moment"
     },
     "walk:east > wait > style:accurate:attack": {
@@ -22176,11 +22190,47 @@
         "style:defensive:defence",
         "walk:north"
       ],
-      "n": 1,
-      "avgReward": -1.69,
-      "positive": 0,
-      "lastAt": "2026-08-15T07:10:32.908Z",
+      "n": 2,
+      "avgReward": -0.39,
+      "positive": 1,
+      "lastAt": "2026-08-15T07:11:58.389Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Focus: Defensive; trains Defence → Explore north about 5 tiles"
+    },
+    "walk:north > walk:south > wait": {
+      "sequence": [
+        "walk:north",
+        "walk:south",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.65,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:12:44.612Z",
+      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Wait and observe for a moment"
+    },
+    "walk:south > wait > walk:south": {
+      "sequence": [
+        "walk:south",
+        "wait",
+        "walk:south"
+      ],
+      "n": 1,
+      "avgReward": -1.65,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:12:52.103Z",
+      "example": "Explore south about 5 tiles → Wait and observe for a moment → Explore south about 5 tiles"
+    },
+    "wait > walk:south > walk:east": {
+      "sequence": [
+        "wait",
+        "walk:south",
+        "walk:east"
+      ],
+      "n": 1,
+      "avgReward": -3.85,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:13:02.879Z",
+      "example": "Wait and observe for a moment → Explore south about 5 tiles → Explore east about 5 tiles"
     }
   },
   "discoveries": [
@@ -25785,27 +25835,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T07:11:47.394Z",
+  "updatedAt": "2026-08-15T07:13:10.397Z",
   "activePlan": {
     "objective": "Detect and respond to mining activity in Al Kharid mine",
-    "focus": "Explore southeast about 4 tiles to locate mining activity",
-    "reason": "This plan uses the listed actions, provides observable evidence (exploration and combat), and aligns with the guide's instructions for detecting mining activity and",
+    "focus": "Explore east about 5 tiles to observe mining activity",
+    "reason": "This plan uses the available Combat style Focus: Defensive to train Defence passively, and explores east to observe mining activity. It also includes a combat strategy to survive while",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore southeast about 4 tiles to locate mining activity",
-        "status": "done",
-        "evidence": "moved 3093,3251 → 3094,3255; new: npc:Woman, loc:Cupboard, loc:Hat stand"
-      },
-      {
-        "id": "step-2",
-        "label": "Use Combat style Focus: Defensive to train Defence and prepare for potential combat",
+        "label": "Explore east about 5 tiles to observe mining activity",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Use Combat style Focus: Defensive to train Defence passively",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Combat 27+ scorpions with defensive style to survive mining activity and continue exploration",
+        "label": "Combat 27+ scorpions to survive while mining and confirm activity is active",
         "status": "pending"
       }
     ],
@@ -25813,17 +25862,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore southeast about 4 tiles to locate mining activity",
-      "Use Combat style Focus: Defensive to train Defence and prepare for potential combat",
-      "Combat 27+ scorpions with defensive style to survive mining activity and continue exploration"
+      "Explore east about 5 tiles to observe mining activity",
+      "Use Combat style Focus: Defensive to train Defence passively",
+      "Combat 27+ scorpions to survive while mining and confirm activity is active"
     ],
     "avoid": [
-      "Explore south about 5 tiles",
-      "Explore east about 5 tiles",
+      "Explore north about 5 tiles",
+      "Wait and observe for a moment",
       "Explore south about 5 tiles"
     ],
-    "updatedAt": "2026-08-15T07:09:31.187Z",
+    "updatedAt": "2026-08-15T07:13:04.381Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
