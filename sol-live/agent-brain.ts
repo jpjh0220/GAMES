@@ -142,6 +142,9 @@ export class SolAgentBrain {
   private trades=new TradeInference();
   private stagnationCounter=new Map<string,number>();
   private recentActions:string[]=[];
+  private lastGoalReeval:number=0;
+  private lastRecommendedActivity:string='';
+  private lastRecommendedProfit:number=0;
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
@@ -388,6 +391,8 @@ export class SolAgentBrain {
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
     this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     this.maybeRefreshStrategy(state,legal);
+    // REAL-TIME ADAPTATION: re-evaluate goal every 500 ticks if current goal isn't profitable
+    this.maybeReevaluateGoal(state,500);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
     // GOAL FILTERING & ECONOMY: check active goal, else form goal from economy
     let filteredCandidates=legal;
@@ -644,6 +649,33 @@ export class SolAgentBrain {
       // Student ready: next time we call motor, could sample student instead
       // For now, log promotion; next commit will integrate
       this.memory.lifetime.studentPromotions=(this.memory.lifetime.studentPromotions||0)+1;
+    }
+  }
+
+  private maybeReevaluateGoal(state:BotWorldState,intervalTicks:number){
+    // Every N ticks, check if current goal is still best
+    const now=Date.now();
+    if(now-this.lastGoalReeval<intervalTicks*50)return; // ~50ms per tick
+    this.lastGoalReeval=now;
+    
+    const activeGoal=this.goals.currentStep();
+    if(!activeGoal)return; // No goal to re-evaluate
+    
+    // Check if arbitrage is now more profitable
+    const bestTrade=this.trades.getMostProfitableRoute();
+    if(bestTrade&&bestTrade.profit>=100){
+      console.log('AGENT_GOAL_REEVAL_SWITCH',JSON.stringify({from:'current',to:'arbitrage',profit:bestTrade.profit}));
+      // Abandon current goal, switch to arbitrage
+      this.goals.failGoal('Better opportunity found: arbitrage');
+    }
+    
+    // Check if economy has shifted significantly
+    const bestActivity=this.economy.getBestActivityFor('money');
+    if(bestActivity&&this.lastRecommendedActivity!==bestActivity.name){
+      if(bestActivity.profitPerHour>this.lastRecommendedProfit*1.5){
+        console.log('AGENT_GOAL_REEVAL_ECONOMY',JSON.stringify({from:this.lastRecommendedActivity,to:bestActivity.name,profitDelta:bestActivity.profitPerHour-this.lastRecommendedProfit}));
+        this.goals.failGoal('Better economy opportunity found');
+      }
     }
   }
 
