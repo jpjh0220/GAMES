@@ -6,48 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1390,
-    "teacherChoices": 1390,
+    "totalChoices": 1400,
+    "teacherChoices": 1400,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1390,
-    "totalReward": 677.66,
-    "saves": 140,
-    "shadowPredictions": 547,
-    "shadowMatches": 231,
-    "strategistRefreshes": 76,
+    "completedExperiences": 1400,
+    "totalReward": 677.56,
+    "saves": 141,
+    "shadowPredictions": 557,
+    "shadowMatches": 239,
+    "strategistRefreshes": 77,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstlmeo8-su3txx",
-      "createdAt": "2026-08-14T23:49:12.008Z",
-      "tick": 26865,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3231 → 3092,3243; new: agent:Goo015, npc:Diango, npc:Ned, npc:Aggie, loc:Crate, loc:Staircase. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent goo015",
-        "npc diango",
-        "npc ned",
-        "npc aggie",
-        "loc crate",
-        "loc staircase",
-        "loc oak",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mstlmthp-wh88ah",
       "createdAt": "2026-08-14T23:49:31.213Z",
@@ -8711,6 +8682,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstqskw7-zaorea",
+      "createdAt": "2026-08-15T02:13:58.087Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Use the 'Deposit all Coins' action to ensure all coins are deposited.. This plan ensures all items are deposited in",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use the deposit all coins action to ensure all coins are deposited",
+        "use the deposit all items action to deposit all other items e g staff robe shield in the bank",
+        "verify the deposit success by checking the bank status or using the check bank action to confirm items are deposited correctly"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8760,13 +8751,13 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 34,
-        "avgReward": -0.216,
+        "n": 36,
+        "avgReward": -0.229,
         "positive": 0,
-        "negative": 14,
+        "negative": 16,
         "lastReward": -0.4,
-        "lastAt": "2026-08-15T02:13:06.569Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-15T02:14:20.382Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8800,13 +8791,13 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 71,
+        "n": 79,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T02:13:27.009Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "lastAt": "2026-08-15T02:14:34.182Z",
+        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
         "exampleReason": "Withdraw 1 Coins"
       },
       "bank:withdraw:bronze sq shield": {
@@ -12761,8 +12752,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:10:42.589Z",
-      "encounters": 644,
+      "lastSeenAt": "2026-08-15T02:14:27.308Z",
+      "encounters": 653,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -13154,8 +13145,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T02:13:20.380Z",
-      "encounters": 1019,
+      "lastSeenAt": "2026-08-15T02:14:27.308Z",
+      "encounters": 1029,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -13901,8 +13892,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T02:13:20.380Z",
-      "encounters": 366,
+      "lastSeenAt": "2026-08-15T02:14:27.308Z",
+      "encounters": 376,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14194,8 +14185,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:13:20.380Z",
-      "visits": 369,
+      "lastSeenAt": "2026-08-15T02:14:27.308Z",
+      "visits": 379,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -14616,10 +14607,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 29,
-      "avgReward": -0.018,
+      "n": 31,
+      "avgReward": -0.033,
       "positive": 0,
-      "lastAt": "2026-08-15T02:13:13.210Z",
+      "lastAt": "2026-08-15T02:14:27.000Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -14712,10 +14703,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 12,
-      "avgReward": -0.192,
+      "n": 14,
+      "avgReward": -0.2,
       "positive": 0,
-      "lastAt": "2026-08-15T02:13:06.570Z",
+      "lastAt": "2026-08-15T02:14:20.382Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -14760,10 +14751,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 13,
+      "n": 17,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T02:13:27.009Z",
+      "lastAt": "2026-08-15T02:14:15.880Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -17220,10 +17211,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 3,
-      "avgReward": 0,
+      "n": 5,
+      "avgReward": -0.1,
       "positive": 0,
-      "lastAt": "2026-08-15T02:13:20.111Z",
+      "lastAt": "2026-08-15T02:14:34.183Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -19064,18 +19055,6 @@
     }
   },
   "discoveries": [
-    {
-      "id": "resource:bank table:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "resource",
-      "text": "Bank table observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:shelves:192:203:0",
       "at": "2026-08-15T00:06:54.634Z",
@@ -22663,28 +22642,40 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:black knight:193:202:0",
+      "at": "2026-08-15T02:14:01.843Z",
+      "kind": "npc",
+      "text": "Black Knight observed near 3092, 3242, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T02:13:27.009Z",
+  "updatedAt": "2026-08-15T02:14:34.183Z",
   "activePlan": {
-    "objective": "Access Draynor Bank using safe fishing location coordinates",
-    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-    "reason": "This plan leverages the safe fishing location guide provided in",
+    "objective": "Deposit all coins and other items in the bank to avoid failure messages.",
+    "focus": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
+    "reason": "This plan ensures all items are deposited in",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "label": "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use the safe fishing location at Draynor Village (3087, 3230) to access bank account",
+        "label": "Use the 'Deposit all Items' action to deposit all other items (e.g., staff, robe, shield) in the bank.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Confirm access to bank account by observing the bank interface and verifying account balance update",
+        "label": "Verify the deposit success by checking the bank status or using the 'Check bank' action to confirm items are deposited correctly.",
         "status": "pending"
       }
     ],
@@ -22692,16 +22683,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Use the safe fishing location at Draynor Village (3087, 3230) to access bank account",
-      "Confirm access to bank account by observing the bank interface and verifying account balance update"
+      "Use the 'Deposit all Coins' action to ensure all coins are deposited.",
+      "Use the 'Deposit all Items' action to deposit all other items (e.g., staff, robe, shield) in the bank.",
+      "Verify the deposit success by checking the bank status or using the 'Check bank' action to confirm items are deposited correctly."
     ],
     "avoid": [
-      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-      "Dialog 1: Click here to continue",
-      "Wait and observe for a moment"
+      "Deposit all Coins",
+      "Deposit all Coins",
+      "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-15T02:11:40.723Z",
+    "updatedAt": "2026-08-15T02:13:58.087Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
