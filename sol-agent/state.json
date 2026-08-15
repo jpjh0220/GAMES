@@ -6,60 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3171,
-    "teacherChoices": 3171,
+    "totalChoices": 3181,
+    "teacherChoices": 3181,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3170,
-    "totalReward": 1365.85,
-    "saves": 320,
-    "shadowPredictions": 1467,
-    "shadowMatches": 657,
-    "strategistRefreshes": 212,
+    "completedExperiences": 3180,
+    "totalReward": 1366.53,
+    "saves": 321,
+    "shadowPredictions": 1477,
+    "shadowMatches": 665,
+    "strategistRefreshes": 213,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu4ykz2-3ssev3",
-      "createdAt": "2026-08-15T08:50:32.750Z",
-      "tick": 31965,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 9). Result: moved 3092,3243 → 3084,3235. Reward 0.08.",
-      "importance": 0.74,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent gpgather1",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3235,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu4ykz2-zhtsko",
-      "createdAt": "2026-08-15T08:50:32.750Z",
-      "tick": 31965,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 9) worked across 26 similar samples with average reward 2.93.",
-      "importance": 3.93,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3235,
-        "level": 0
-      }
-    },
     {
       "id": "msu4yueu-c5njla",
       "createdAt": "2026-08-15T08:50:44.982Z",
@@ -8422,6 +8381,46 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "msu81rji-nsg6bt",
+      "createdAt": "2026-08-15T10:17:00.078Z",
+      "tick": 49256,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Withdraw 1 Coins. Result: inventory changed; +1 coins. Reward 0.1.",
+      "importance": 0.75,
+      "tags": [
+        "bank",
+        "retrieve",
+        "coins",
+        "agent ndzq5pll9"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msu81ufm-d211qz",
+      "createdAt": "2026-08-15T10:17:03.826Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access deposit functionality. This approach ensures all failed actions are resolved and the bank is properly updated with the player's items.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access deposit functionality",
+        "deposit all coins using the bank s deposit feature",
+        "verify that all items have been successfully deposited by checking the bank s inventory or logs"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8471,12 +8470,12 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 49,
-        "avgReward": -0.2557,
+        "n": 50,
+        "avgReward": -0.2546,
         "positive": 0,
-        "negative": 26,
-        "lastReward": -0.5,
-        "lastAt": "2026-08-15T10:16:11.440Z",
+        "negative": 27,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-15T10:16:29.495Z",
         "exampleGoal": "Deposit all Coins using the bank slot",
         "exampleReason": "Deposit all Coins"
       },
@@ -8511,12 +8510,12 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 115,
+        "n": 123,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:16:17.368Z",
+        "lastAt": "2026-08-15T10:17:04.889Z",
         "exampleGoal": "Deposit all Coins using the bank slot",
         "exampleReason": "Withdraw 1 Coins"
       },
@@ -8701,14 +8700,14 @@
         "exampleReason": "Deposit all Staff"
       },
       "bank:withdraw:water rune": {
-        "n": 2,
+        "n": 3,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T10:15:36.945Z",
-        "exampleGoal": "Deposit all Coins using the bank slot",
-        "exampleReason": "Withdraw 1 Water rune"
+        "lastAt": "2026-08-15T10:17:11.762Z",
+        "exampleGoal": "Open the bank to access deposit functionality",
+        "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:water rune": {
         "n": 2,
@@ -14922,8 +14921,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:16:11.749Z",
-      "encounters": 944,
+      "lastSeenAt": "2026-08-15T10:16:29.784Z",
+      "encounters": 947,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -16179,8 +16178,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:16:11.749Z",
-      "encounters": 1457,
+      "lastSeenAt": "2026-08-15T10:17:05.199Z",
+      "encounters": 1467,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16326,8 +16325,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T10:16:01.583Z",
-      "encounters": 319,
+      "lastSeenAt": "2026-08-15T10:17:00.391Z",
+      "encounters": 322,
       "combatLevel": 75,
       "trust": 0,
       "stance": "unknown",
@@ -17025,8 +17024,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:16:11.749Z",
-      "visits": 674,
+      "lastSeenAt": "2026-08-15T10:17:05.199Z",
+      "visits": 684,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17473,10 +17472,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 43,
-      "avgReward": -0.064,
+      "n": 44,
+      "avgReward": -0.063,
       "positive": 0,
-      "lastAt": "2026-08-15T10:16:17.368Z",
+      "lastAt": "2026-08-15T10:16:35.125Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -17569,10 +17568,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 22,
-      "avgReward": -0.201,
+      "n": 23,
+      "avgReward": -0.192,
       "positive": 0,
-      "lastAt": "2026-08-15T10:16:11.440Z",
+      "lastAt": "2026-08-15T10:16:29.495Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -17617,10 +17616,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 33,
+      "n": 38,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T10:16:06.992Z",
+      "lastAt": "2026-08-15T10:17:04.889Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -20077,10 +20076,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 11,
-      "avgReward": -0.155,
+      "n": 13,
+      "avgReward": -0.154,
       "positive": 0,
-      "lastAt": "2026-08-15T02:22:01.225Z",
+      "lastAt": "2026-08-15T10:16:40.873Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -26550,6 +26549,18 @@
       "positive": 0,
       "lastAt": "2026-08-15T10:15:55.878Z",
       "example": "Deposit all Water rune → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:water rune": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:coins",
+        "bank:withdraw:water rune"
+      ],
+      "n": 1,
+      "avgReward": 0.28,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:17:11.762Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Water rune"
     }
   },
   "discoveries": [
@@ -30154,43 +30165,43 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T10:16:17.369Z",
+  "updatedAt": "2026-08-15T10:17:11.762Z",
   "activePlan": {
-    "objective": "Deposit all coins and water runes in the bank",
-    "focus": "Deposit all Coins using the bank slot",
-    "reason": "This objective uses a named repository-tested escape or travel skill (bank slot) and ensures observable evidence through inventory checks. All actions are listed and executable within the game context.",
+    "objective": "Deposit all items in the bank to avoid failed actions",
+    "focus": "Open the bank to access deposit functionality",
+    "reason": "This approach ensures all failed actions are resolved and the bank is properly updated with the player's items.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Deposit all Coins using the bank slot",
+        "label": "Open the bank to access deposit functionality",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Water rune using the bank slot",
+        "label": "Deposit all coins using the bank's deposit feature",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify the deposit by checking the bank inventory in the guide file",
+        "label": "Verify that all items have been successfully deposited by checking the bank's inventory or logs",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully updated with all items"
+      "Bank successfully updated with all items, avoiding failed deposits."
     ],
     "priorities": [
-      "Deposit all Coins using the bank slot",
-      "Deposit all Water rune using the bank slot",
-      "Verify the deposit by checking the bank inventory in the guide file"
+      "Open the bank to access deposit functionality",
+      "Deposit all coins using the bank's deposit feature",
+      "Verify that all items have been successfully deposited by checking the bank's inventory or logs"
     ],
     "avoid": [
-      "Deposit all Chaos rune",
-      "Deposit all Bones",
-      "Deposit all Staff"
+      "Deposit all Water rune",
+      "Deposit all Coins",
+      "Deposit all Coins"
     ],
-    "updatedAt": "2026-08-15T10:15:09.045Z",
+    "updatedAt": "2026-08-15T10:17:03.826Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
