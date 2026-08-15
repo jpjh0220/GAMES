@@ -6,82 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3762,
-    "teacherChoices": 3762,
+    "totalChoices": 3772,
+    "teacherChoices": 3772,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3760,
-    "totalReward": 1745.03,
-    "saves": 381,
-    "shadowPredictions": 1919,
+    "completedExperiences": 3770,
+    "totalReward": 1744.87,
+    "saves": 382,
+    "shadowPredictions": 1929,
     "shadowMatches": 864,
-    "strategistRefreshes": 243,
+    "strategistRefreshes": 244,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu75wxq-eyvqsy",
-      "createdAt": "2026-08-15T09:52:14.078Z",
-      "tick": 44303,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 11) worked across 63 similar samples with average reward 3.16.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3081,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu76ix4-fpiarz",
-      "createdAt": "2026-08-15T09:52:42.568Z",
-      "tick": 44398,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3081,3239 → 3092,3243; new: npc:Ned, npc:Jail guard, loc:Bush, loc:Tree stump, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc ned",
-        "npc jail guard",
-        "loc bush",
-        "loc tree stump",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu76ix4-lsllbk",
-      "createdAt": "2026-08-15T09:52:42.568Z",
-      "tick": 44398,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 20 similar samples with average reward 2.00.",
-      "importance": 3,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu76tdd-n6mlhc",
       "createdAt": "2026-08-15T09:52:56.113Z",
@@ -8441,6 +8378,64 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msusoxqx-2sgl82",
+      "createdAt": "2026-08-15T19:54:53.529Z",
+      "tick": 0,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access the deposit functionality. Using the bank deposit functionality, the player can efficiently manage their inventory items, ensuring all required items are deposited as per the task requirements. The action 'Deposit all Earth rune' directly addresses the goal of deposi",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access the deposit functionality",
+        "deposit all earth runes using the deposit item action",
+        "verify the successful deposit of all items by checking the bank interface or inventory update"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msusp33m-7bphsh",
+      "createdAt": "2026-08-15T19:55:00.466Z",
+      "tick": 712,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Jrsgoblin2 said: \"Woodcutting 36 (+9375 xp) firemaking 43 (+15000 xp) 15 fires in 3m 443875 xp hr total\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "jrsgoblin2",
+        "unknown"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msusphwk-0cbf3y",
+      "createdAt": "2026-08-15T19:55:19.652Z",
+      "tick": 753,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Daytrader said: \"Anyone buying or selling anything interesting right now?\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "daytrader",
+        "unknown"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8510,24 +8505,24 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:deposit:raw anchovies": {
-        "n": 43,
+        "n": 45,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T19:54:08.248Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-15T19:56:23.285Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:raw anchovies": {
-        "n": 45,
+        "n": 46,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T19:53:59.260Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "I have successfully deposited 1 Raw anchovies in Draynor Village. This is a good step to gather more resources for my fishing plan."
+        "lastAt": "2026-08-15T19:55:00.179Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "I will withdraw 1 Raw anchovies from the bank to collect them in Draynor Village. This action has a high avgReward of 0.08 and a successRate of 0.5, making it the best option for i"
       },
       "bank:withdraw:coins": {
         "n": 211,
@@ -8590,23 +8585,23 @@
         "exampleReason": "Deposit all Chaos rune to ensure the bank is fully stocked with the required items."
       },
       "bank:withdraw:bronze arrow": {
-        "n": 3,
+        "n": 4,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T02:16:36.628Z",
-        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
-        "exampleReason": "Withdraw 1 Bronze arrow"
+        "lastAt": "2026-08-15T19:56:02.555Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "Banking trip started successfully. The bank is open, and I'm ready to deposit items. I'll start by withdrawing raw bear meat first, which has a good reward of 0.08. Then I'll proce"
       },
       "bank:deposit:bronze arrow": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T02:16:44.084Z",
-        "exampleGoal": "Use the 'Deposit all Coins' action to ensure all Coins are deposited.",
+        "lastAt": "2026-08-15T19:56:13.057Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Bronze arrow"
       },
       "modal:close-bank": {
@@ -8620,13 +8615,13 @@
         "exampleReason": "Close the bank"
       },
       "bank:deposit:earth rune": {
-        "n": 5,
-        "avgReward": -0.272,
+        "n": 6,
+        "avgReward": -0.24,
         "positive": 0,
         "negative": 3,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-15T11:36:50.498Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T19:55:09.769Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:bones": {
@@ -8670,14 +8665,14 @@
         "exampleReason": "Deposit all Air rune"
       },
       "bank:withdraw:bones": {
-        "n": 3,
+        "n": 4,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T19:52:03.833Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Withdraw 1 Raw Anchovies"
+        "lastAt": "2026-08-15T19:56:34.361Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:fire rune": {
         "n": 1,
@@ -8760,13 +8755,13 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:deposit:raw bear meat": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T10:39:49.562Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
+        "lastAt": "2026-08-15T19:55:19.386Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
         "exampleReason": "Deposit all Raw bear meat"
       },
       "bank:withdraw:shortbow": {
@@ -8790,14 +8785,14 @@
         "exampleReason": "Deposit all Shortbow"
       },
       "bank:withdraw:raw rat meat": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T10:43:52.305Z",
-        "exampleGoal": "Withdraw 1 Chaos rune from the current position.",
-        "exampleReason": "Deposit 1 Raw rat meat"
+        "lastAt": "2026-08-15T19:55:31.050Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "Deposit all Raw Rat Meat"
       },
       "bank:withdraw:earth rune": {
         "n": 3,
@@ -8818,6 +8813,16 @@
         "lastAt": "2026-08-15T11:37:10.240Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
         "exampleReason": "Deposit all Rope"
+      },
+      "bank:deposit:raw rat meat": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T19:55:51.155Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "Deposit all Raw rat meat"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -15697,8 +15702,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T19:54:29.552Z",
-      "encounters": 1101,
+      "lastSeenAt": "2026-08-15T19:54:38.856Z",
+      "encounters": 1102,
       "combatLevel": 56,
       "trust": 0,
       "stance": "unknown",
@@ -16090,8 +16095,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T19:54:29.552Z",
-      "encounters": 2384,
+      "lastSeenAt": "2026-08-15T19:56:23.572Z",
+      "encounters": 2394,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16954,8 +16959,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T19:54:29.552Z",
-      "encounters": 2043,
+      "lastSeenAt": "2026-08-15T19:56:23.572Z",
+      "encounters": 2053,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17827,8 +17832,8 @@
     "jw4prv9i2e": {
       "name": "Jw4prv9i2e",
       "firstSeenAt": "2026-08-15T09:27:46.181Z",
-      "lastSeenAt": "2026-08-15T09:27:59.714Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-15T19:55:10.078Z",
+      "encounters": 4,
       "combatLevel": 126,
       "trust": 0,
       "stance": "unknown",
@@ -17938,8 +17943,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-15T19:51:38.287Z",
-      "lastSeenAt": "2026-08-15T19:51:49.956Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-15T19:56:23.572Z",
+      "encounters": 12,
       "combatLevel": 125,
       "trust": 0,
       "stance": "unknown",
@@ -17953,15 +17958,16 @@
     "jrsgoblin2": {
       "name": "Jrsgoblin2",
       "firstSeenAt": "2026-08-15T19:51:44.568Z",
-      "lastSeenAt": "2026-08-15T19:51:44.568Z",
+      "lastSeenAt": "2026-08-15T19:55:00.466Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 1,
+      "conversations": 2,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
-        "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total"
+        "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total",
+        "Woodcutting 36 (+9375 xp) firemaking 43 (+15000 xp) 15 fires in 3m 443875 xp hr total"
       ],
       "questions": [],
       "lastMessages": [
@@ -17969,15 +17975,59 @@
           "at": "2026-08-15T19:51:44.568Z",
           "direction": "incoming",
           "text": "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total"
+        },
+        {
+          "at": "2026-08-15T19:55:00.466Z",
+          "direction": "incoming",
+          "text": "Woodcutting 36 (+9375 xp) firemaking 43 (+15000 xp) 15 fires in 3m 443875 xp hr total"
         }
       ]
     },
     "1doal4imm": {
       "name": "1doal4imm",
       "firstSeenAt": "2026-08-15T19:52:14.869Z",
-      "lastSeenAt": "2026-08-15T19:54:29.552Z",
-      "encounters": 13,
+      "lastSeenAt": "2026-08-15T19:55:00.466Z",
+      "encounters": 15,
       "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "daytrader": {
+      "name": "Daytrader",
+      "firstSeenAt": "2026-08-15T19:55:19.652Z",
+      "lastSeenAt": "2026-08-15T19:55:19.652Z",
+      "encounters": 1,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 1,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [
+        "Anyone buying or selling anything interesting right now?"
+      ],
+      "questions": [
+        "Anyone buying or selling anything interesting right now?"
+      ],
+      "lastMessages": [
+        {
+          "at": "2026-08-15T19:55:19.652Z",
+          "direction": "incoming",
+          "text": "Anyone buying or selling anything interesting right now?"
+        }
+      ]
+    },
+    "cowboypure": {
+      "name": "Cowboypure",
+      "firstSeenAt": "2026-08-15T19:56:23.572Z",
+      "lastSeenAt": "2026-08-15T19:56:23.572Z",
+      "encounters": 1,
+      "combatLevel": 17,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -17995,8 +18045,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T19:54:29.552Z",
-      "visits": 992,
+      "lastSeenAt": "2026-08-15T19:56:23.572Z",
+      "visits": 1002,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -29212,6 +29262,126 @@
       "positive": 0,
       "lastAt": "2026-08-15T19:54:38.562Z",
       "example": "Withdraw 1 Earth rune → Withdraw 1 Raw bear meat → Deposit all Coins"
+    },
+    "bank:withdraw:raw bear meat > bank:deposit:coins > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:raw bear meat",
+        "bank:deposit:coins",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.06,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:00.179Z",
+      "example": "Withdraw 1 Raw bear meat → Deposit all Coins → Withdraw 1 Raw anchovies"
+    },
+    "bank:deposit:coins > bank:withdraw:raw anchovies > bank:deposit:earth rune": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:earth rune"
+      ],
+      "n": 1,
+      "avgReward": -0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:09.769Z",
+      "example": "Deposit all Coins → Withdraw 1 Raw anchovies → Deposit all Earth rune"
+    },
+    "bank:withdraw:raw anchovies > bank:deposit:earth rune > bank:deposit:raw bear meat": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:earth rune",
+        "bank:deposit:raw bear meat"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:19.386Z",
+      "example": "Withdraw 1 Raw anchovies → Deposit all Earth rune → Deposit all Raw bear meat"
+    },
+    "bank:deposit:earth rune > bank:deposit:raw bear meat > bank:withdraw:raw rat meat": {
+      "sequence": [
+        "bank:deposit:earth rune",
+        "bank:deposit:raw bear meat",
+        "bank:withdraw:raw rat meat"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:31.050Z",
+      "example": "Deposit all Earth rune → Deposit all Raw bear meat → Withdraw 1 Raw rat meat"
+    },
+    "bank:deposit:raw bear meat > bank:withdraw:raw rat meat > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw bear meat",
+        "bank:withdraw:raw rat meat",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:41.264Z",
+      "example": "Deposit all Raw bear meat → Withdraw 1 Raw rat meat → Deposit all Raw anchovies"
+    },
+    "bank:withdraw:raw rat meat > bank:deposit:raw anchovies > bank:deposit:raw rat meat": {
+      "sequence": [
+        "bank:withdraw:raw rat meat",
+        "bank:deposit:raw anchovies",
+        "bank:deposit:raw rat meat"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:55:51.155Z",
+      "example": "Withdraw 1 Raw rat meat → Deposit all Raw anchovies → Deposit all Raw rat meat"
+    },
+    "bank:deposit:raw anchovies > bank:deposit:raw rat meat > bank:withdraw:bronze arrow": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:deposit:raw rat meat",
+        "bank:withdraw:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:56:02.555Z",
+      "example": "Deposit all Raw anchovies → Deposit all Raw rat meat → Withdraw 1 Bronze arrow"
+    },
+    "bank:deposit:raw rat meat > bank:withdraw:bronze arrow > bank:deposit:bronze arrow": {
+      "sequence": [
+        "bank:deposit:raw rat meat",
+        "bank:withdraw:bronze arrow",
+        "bank:deposit:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:56:13.057Z",
+      "example": "Deposit all Raw rat meat → Withdraw 1 Bronze arrow → Deposit all Bronze arrow"
+    },
+    "bank:withdraw:bronze arrow > bank:deposit:bronze arrow > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:bronze arrow",
+        "bank:deposit:bronze arrow",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:56:23.285Z",
+      "example": "Withdraw 1 Bronze arrow → Deposit all Bronze arrow → Deposit all Raw anchovies"
+    },
+    "bank:deposit:bronze arrow > bank:deposit:raw anchovies > bank:withdraw:bones": {
+      "sequence": [
+        "bank:deposit:bronze arrow",
+        "bank:deposit:raw anchovies",
+        "bank:withdraw:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:56:34.361Z",
+      "example": "Deposit all Bronze arrow → Deposit all Raw anchovies → Withdraw 1 Bones"
     }
   },
   "discoveries": [
@@ -32816,26 +32986,26 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T19:54:38.562Z",
+  "updatedAt": "2026-08-15T19:56:34.361Z",
   "activePlan": {
-    "objective": "Verify safe fishing location and collect shrimps/anchovies in Draynor Village",
-    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-    "reason": "This plan ensures safe fishing",
+    "objective": "Deposit all items in the bank to complete the task",
+    "focus": "Open the bank to access the deposit functionality",
+    "reason": "Using the bank deposit functionality, the player can efficiently manage their inventory items, ensuring all required items are deposited as per the task requirements. The action 'Deposit all Earth rune' directly addresses the goal of deposi",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "label": "Open the bank to access the deposit functionality",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use Bank booth (distance 1) to collect shrimps/anchovies",
+        "label": "Deposit all Earth runes using the deposit item action",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps/anchovies if available",
+        "label": "Verify the successful deposit of all items by checking the bank interface or inventory update",
         "status": "pending"
       }
     ],
@@ -32843,12 +33013,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-      "Use Bank booth (distance 1) to collect shrimps/anchovies",
-      "Explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps/anchovies if available"
+      "Open the bank to access the deposit functionality",
+      "Deposit all Earth runes using the deposit item action",
+      "Verify the successful deposit of all items by checking the bank interface or inventory update"
     ],
-    "avoid": [],
-    "updatedAt": "2026-08-15T19:51:41.703Z",
+    "avoid": [
+      "Deposit all Raw anchovies",
+      "Deposit all Raw anchovies",
+      "Deposit all Coins"
+    ],
+    "updatedAt": "2026-08-15T19:54:53.529Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
