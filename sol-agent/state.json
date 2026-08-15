@@ -6,59 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3942,
-    "teacherChoices": 3942,
+    "totalChoices": 3952,
+    "teacherChoices": 3952,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3940,
-    "totalReward": 1909.33,
-    "saves": 399,
-    "shadowPredictions": 2067,
-    "shadowMatches": 922,
-    "strategistRefreshes": 253,
+    "completedExperiences": 3950,
+    "totalReward": 1912.31,
+    "saves": 400,
+    "shadowPredictions": 2075,
+    "shadowMatches": 926,
+    "strategistRefreshes": 254,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu8zrks-xngajd",
-      "createdAt": "2026-08-15T10:43:26.428Z",
-      "tick": 0,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "AI strategist: Withdraw 1 Chaos rune from the current position.. These resources are critical for crafting, healing, and advancing in the game. Withdrawal is a direct and observable action that confirms completion.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "withdraw 1 chaos rune from the current position",
-        "withdraw 1 air rune from the current position",
-        "withdraw 1 body rune from the current position"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu92l2r-wqpzhc",
-      "createdAt": "2026-08-15T10:45:37.971Z",
-      "tick": 0,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "AI strategist: Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.. This plan ensures all coins are deposited and necessary items are withdrawn, providing clear observable evidence of the",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "deposit all coins using the deposit all coins action to ensure they are stored in the bank",
-        "withdraw 1 coins from the bank to verify the deposit was successful",
-        "withdraw 1 bronze sq shield and 1 chaos rune from the bank to complete the transaction and ensure proper inventory management"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
     {
       "id": "msu95em5-zv0g2i",
       "createdAt": "2026-08-15T10:47:49.566Z",
@@ -8344,6 +8304,49 @@
         "z": 3231,
         "level": 0
       }
+    },
+    {
+      "id": "msutydon-6a68mk",
+      "createdAt": "2026-08-15T20:30:13.703Z",
+      "tick": 0,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "AI strategist: Use `interactLoc` to interact with the nearby location object to escape. This plan uses the available `interactLoc` and `talkTo` actions to escape the combat area and avoid the NPC's attack. The steps are",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use interactloc to interact with the nearby location object to escape",
+        "use talkto to talk to the npc to avoid combat",
+        "use interactloc again to move to a safe location and avoid the combat area"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "msutzjnk-5ex0uj",
+      "createdAt": "2026-08-15T20:31:08.096Z",
+      "tick": 7931,
+      "runNumber": 67,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 5). Result: +1465 XP; 11 damage dealt; moved 3086,3231 → 3084,3236; execution rejected or failed. Reward 4.48.",
+      "importance": 2.94,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "npc diango",
+        "loc crate",
+        "loc staircase"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3236,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9197,14 +9200,14 @@
         "exampleReason": "I'm waiting for the game to confirm my collection of the 18 Fire Rune at the net/bait fishing spot (level 0, distance 6)."
       },
       "wait": {
-        "n": 71,
+        "n": 73,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T20:30:01.812Z",
+        "lastAt": "2026-08-15T20:30:09.883Z",
         "exampleGoal": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-        "exampleReason": "Wait for the Bait Fishing spot to become accessible"
+        "exampleReason": "Wait and observe for a moment"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
@@ -10981,14 +10984,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 63,
-        "avgReward": 0.3048,
-        "positive": 15,
-        "negative": 48,
+        "n": 67,
+        "avgReward": 0.2955,
+        "positive": 16,
+        "negative": 51,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T20:29:29.073Z",
-        "exampleGoal": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-        "exampleReason": "I'm waiting for the Bait Fishing spot to become accessible. I'll proceed with the dialog to continue the plan."
+        "lastAt": "2026-08-15T20:30:57.292Z",
+        "exampleGoal": "Use `interactLoc` to interact with the nearby location object to escape",
+        "exampleReason": "I am using the `dialog` action to continue the conversation with Henryatkins, which is the most relevant action for escaping from the NPC. The average reward is 0.31, and there is "
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,social,world": {
@@ -13015,24 +13018,24 @@
         "exampleReason": "I have completed the action to bury bones at level 0, distance 1, which is the first step in preparing for safe fishing. This action contributes to my progress in resource gatherin"
       },
       "npc:net:fishing spot": {
-        "n": 7,
+        "n": 9,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 7,
+        "negative": 9,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T20:29:38.687Z",
-        "exampleGoal": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-        "exampleReason": "I need to navigate to the Net Fishing spot (level 0, distance 1) to complete the plan. The current position is at (3086, 3231, 0), which is within the Bait Fishing spot's coordinat"
+        "lastAt": "2026-08-15T20:30:37.175Z",
+        "exampleGoal": "Use `interactLoc` to interact with the nearby location object to escape",
+        "exampleReason": "Bait Fishing spot (level 0, distance 4)"
       },
       "npc:bait:fishing spot": {
-        "n": 13,
-        "avgReward": -0.723,
+        "n": 14,
+        "avgReward": -0.7142,
         "positive": 0,
-        "negative": 12,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-15T20:29:23.386Z",
-        "exampleGoal": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-        "exampleReason": "I'm a transparent rs-sdk bot, mostly woodcutting now. I can work toward iron gear next if that helps."
+        "negative": 13,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T20:30:51.577Z",
+        "exampleGoal": "Use `interactLoc` to interact with the nearby location object to escape",
+        "exampleReason": "Bait Fishing spot (level 0, distance 4)"
       },
       "style:accurate:attack": {
         "n": 1,
@@ -13043,6 +13046,16 @@
         "lastAt": "2026-08-15T09:48:00.622Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
         "exampleReason": "I am preparing to use the combat-style Jab to attack the Dark wizard at level 7, distance 5. This will be a more effective and strategic move to secure the resources for safe fishi"
+      },
+      "npc:attack:dark wizard": {
+        "n": 1,
+        "avgReward": 4.48,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 4.48,
+        "lastAt": "2026-08-15T20:31:08.096Z",
+        "exampleGoal": "Use `interactLoc` to interact with the nearby location object to escape",
+        "exampleReason": "I need to attack a Dark wizard to escape from the NPC. The current location is at 3086, 3231, 0. I can use the combat skill to attack the Dark wizard nearby. The action is to attac"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say,wait,world": {
@@ -16129,8 +16142,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T20:29:59.406Z",
-      "encounters": 2545,
+      "lastSeenAt": "2026-08-15T20:30:57.600Z",
+      "encounters": 2555,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16994,8 +17007,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T20:29:59.406Z",
-      "encounters": 2208,
+      "lastSeenAt": "2026-08-15T20:30:57.600Z",
+      "encounters": 2218,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17422,8 +17435,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T20:29:59.406Z",
-      "encounters": 910,
+      "lastSeenAt": "2026-08-15T20:30:57.600Z",
+      "encounters": 920,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -18453,8 +18466,8 @@
       "z": 3231,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-15T20:29:59.406Z",
-      "visits": 1258,
+      "lastSeenAt": "2026-08-15T20:30:57.600Z",
+      "visits": 1268,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -19354,10 +19367,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 108,
-      "avgReward": -1.166,
+      "n": 109,
+      "avgReward": -1.172,
       "positive": 17,
-      "lastAt": "2026-08-15T20:26:15.303Z",
+      "lastAt": "2026-08-15T20:30:37.175Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -19366,10 +19379,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 114,
-      "avgReward": -0.224,
-      "positive": 46,
-      "lastAt": "2026-08-15T20:27:34.484Z",
+      "n": 116,
+      "avgReward": -0.226,
+      "positive": 47,
+      "lastAt": "2026-08-15T20:30:42.913Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -19378,10 +19391,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 46,
-      "avgReward": -1.897,
+      "n": 47,
+      "avgReward": -1.895,
       "positive": 3,
-      "lastAt": "2026-08-15T20:29:23.386Z",
+      "lastAt": "2026-08-15T20:30:51.577Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -19390,10 +19403,10 @@
         "npc:bait:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 62,
-      "avgReward": -0.443,
+      "n": 63,
+      "avgReward": -0.465,
       "positive": 28,
-      "lastAt": "2026-08-15T20:29:29.073Z",
+      "lastAt": "2026-08-15T20:30:57.292Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > social:say": {
@@ -19534,10 +19547,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 66,
-      "avgReward": -0.714,
-      "positive": 12,
-      "lastAt": "2026-08-15T20:26:33.876Z",
+      "n": 67,
+      "avgReward": -0.679,
+      "positive": 13,
+      "lastAt": "2026-08-15T20:30:23.109Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -20590,10 +20603,10 @@
         "dialog:1:click here to continue",
         "npc:attack:dark wizard"
       ],
-      "n": 20,
-      "avgReward": 2.919,
-      "positive": 19,
-      "lastAt": "2026-08-15T20:15:36.882Z",
+      "n": 21,
+      "avgReward": 2.936,
+      "positive": 20,
+      "lastAt": "2026-08-15T20:31:08.096Z",
       "example": "Bait Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 6)"
     },
     "dialog:1:click here to continue > npc:attack:dark wizard > npc:attack:dark wizard": {
@@ -22546,10 +22559,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 3,
-      "avgReward": 1.1,
-      "positive": 2,
-      "lastAt": "2026-08-15T11:24:30.638Z",
+      "n": 4,
+      "avgReward": 1.35,
+      "positive": 3,
+      "lastAt": "2026-08-15T20:30:14.096Z",
       "example": "Wait and observe for a moment → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > skill:travel:draynor-bank": {
@@ -30178,10 +30191,10 @@
         "wait",
         "wait"
       ],
-      "n": 3,
+      "n": 5,
       "avgReward": -0.45,
       "positive": 0,
-      "lastAt": "2026-08-15T20:30:01.812Z",
+      "lastAt": "2026-08-15T20:30:09.883Z",
       "example": "Wait and observe for a moment → Wait and observe for a moment → Wait and observe for a moment"
     }
   },
@@ -33785,28 +33798,40 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3086:3231:3084:3236:0",
+      "at": "2026-08-15T20:31:08.096Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3231 → 3084,3236; +1465 XP; 11 damage dealt; moved 3086,3231 → 3084,3236; execution rejected or failed",
+      "location": {
+        "x": 3084,
+        "z": 3236,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T20:30:01.813Z",
+  "updatedAt": "2026-08-15T20:31:08.096Z",
   "activePlan": {
-    "objective": "Navigate through the Bait Fishing spot (level 0, distance 1) using the 'Wait and observe for a moment' skill.",
-    "focus": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Escape from the NPC to avoid combat",
+    "focus": "Use `interactLoc` to interact with the nearby location object to escape",
+    "reason": "This plan uses the available `interactLoc` and `talkTo` actions to escape the combat area and avoid the NPC's attack. The steps are",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
+        "label": "Use `interactLoc` to interact with the nearby location object to escape",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Click the 'Wait and observe for a moment' skill to trigger the transition to the Bait Fishing spot (level 0, distance 1).",
+        "label": "Use `talkTo` to talk to the NPC to avoid combat",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that the Bait Fishing spot (level 0",
+        "label": "Use `interactLoc` again to move to a safe location and avoid the combat area",
         "status": "pending"
       }
     ],
@@ -33814,17 +33839,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use the 'Wait and observe for a moment' skill to wait for the Bait Fishing spot to become accessible.",
-      "Click the 'Wait and observe for a moment' skill to trigger the transition to the Bait Fishing spot (level 0, distance 1).",
-      "Verify that the Bait Fishing spot (level 0"
+      "Use `interactLoc` to interact with the nearby location object to escape",
+      "Use `talkTo` to talk to the NPC to avoid combat",
+      "Use `interactLoc` again to move to a safe location and avoid the combat area"
     ],
     "avoid": [
-      "Bait Fishing spot (level 0, distance 1)",
       "Wait and observe for a moment",
-      "Bait Fishing spot (level 0, distance 1)"
+      "Wait and observe for a moment",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T20:27:21.257Z",
+    "updatedAt": "2026-08-15T20:30:13.703Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
