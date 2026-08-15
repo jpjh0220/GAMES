@@ -6,43 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3411,
-    "teacherChoices": 3411,
+    "totalChoices": 3421,
+    "teacherChoices": 3421,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3410,
-    "totalReward": 1435.02,
-    "saves": 344,
-    "shadowPredictions": 1661,
-    "shadowMatches": 746,
-    "strategistRefreshes": 224,
+    "completedExperiences": 3420,
+    "totalReward": 1434.76,
+    "saves": 345,
+    "shadowPredictions": 1671,
+    "shadowMatches": 752,
+    "strategistRefreshes": 225,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu5b4ta-nkja4k",
-      "createdAt": "2026-08-15T09:00:18.334Z",
-      "tick": 33917,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Talk-to Diango (level 0, distance 15). Result: +2 level(s); moved 3092,3243 → 3086,3247. Reward 6.08.",
-      "importance": 3.74,
-      "tags": [
-        "social",
-        "diango",
-        "talk to",
-        "level 0",
-        "loc mystical wall chart",
-        "loc charms",
-        "loc chair",
-        "loc cart"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3247,
-        "level": 0
-      }
-    },
     {
       "id": "msu5berb-ppy301",
       "createdAt": "2026-08-15T09:00:31.223Z",
@@ -8453,6 +8429,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msu92l2r-wqpzhc",
+      "createdAt": "2026-08-15T10:45:37.971Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.. This plan ensures all coins are deposited and necessary items are withdrawn, providing clear observable evidence of the",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "deposit all coins using the deposit all coins action to ensure they are stored in the bank",
+        "withdraw 1 coins from the bank to verify the deposit was successful",
+        "withdraw 1 bronze sq shield and 1 chaos rune from the bank to complete the transaction and ensure proper inventory management"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8502,13 +8498,13 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 74,
-        "avgReward": -0.2537,
+        "n": 76,
+        "avgReward": -0.2562,
         "positive": 0,
-        "negative": 46,
-        "lastReward": -0.5,
-        "lastAt": "2026-08-15T10:44:12.036Z",
-        "exampleGoal": "Withdraw 1 Chaos rune from the current position.",
+        "negative": 47,
+        "lastReward": -0.1,
+        "lastAt": "2026-08-15T10:46:09.986Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8542,14 +8538,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 184,
+        "n": 190,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:45:28.882Z",
-        "exampleGoal": "Withdraw 1 Chaos rune from the current position.",
-        "exampleReason": "Deposit 1 Coins"
+        "lastAt": "2026-08-15T10:46:34.009Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
+        "exampleReason": "Withdraw 1 Coins"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8592,14 +8588,14 @@
         "exampleReason": "Withdraw 1 Chaos rune"
       },
       "bank:deposit:chaos rune": {
-        "n": 7,
-        "avgReward": -0.1829,
+        "n": 8,
+        "avgReward": -0.17,
         "positive": 0,
         "negative": 3,
-        "lastReward": -0.16,
-        "lastAt": "2026-08-15T10:44:37.882Z",
-        "exampleGoal": "Withdraw 1 Chaos rune from the current position.",
-        "exampleReason": "Deposit all Chaos rune"
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T10:45:56.732Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
+        "exampleReason": "Deposit all Chaos rune to ensure the bank is fully stocked with the required items."
       },
       "bank:withdraw:bronze arrow": {
         "n": 3,
@@ -8672,13 +8668,13 @@
         "exampleReason": "Withdraw 1 Air rune"
       },
       "bank:deposit:air rune": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T10:40:00.677Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
+        "lastAt": "2026-08-15T10:46:22.541Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
         "exampleReason": "Deposit all Air rune"
       },
       "bank:withdraw:bones": {
@@ -15239,8 +15235,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:45:24.698Z",
-      "encounters": 1006,
+      "lastSeenAt": "2026-08-15T10:46:10.235Z",
+      "encounters": 1013,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -15632,8 +15628,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T10:45:24.698Z",
-      "encounters": 2135,
+      "lastSeenAt": "2026-08-15T10:46:28.618Z",
+      "encounters": 2145,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16496,8 +16492,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:45:24.698Z",
-      "encounters": 1699,
+      "lastSeenAt": "2026-08-15T10:46:28.618Z",
+      "encounters": 1709,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16643,8 +16639,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T10:45:24.698Z",
-      "encounters": 352,
+      "lastSeenAt": "2026-08-15T10:45:57.082Z",
+      "encounters": 357,
       "combatLevel": 75,
       "trust": 0,
       "stance": "unknown",
@@ -16919,8 +16915,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T10:40:24.080Z",
-      "encounters": 608,
+      "lastSeenAt": "2026-08-15T10:46:28.618Z",
+      "encounters": 610,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17422,8 +17418,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:45:24.698Z",
-      "visits": 858,
+      "lastSeenAt": "2026-08-15T10:46:28.618Z",
+      "visits": 868,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17870,10 +17866,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 56,
-      "avgReward": -0.063,
+      "n": 57,
+      "avgReward": -0.06,
       "positive": 0,
-      "lastAt": "2026-08-15T10:43:04.897Z",
+      "lastAt": "2026-08-15T10:46:15.975Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -17966,10 +17962,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 32,
-      "avgReward": -0.181,
+      "n": 33,
+      "avgReward": -0.188,
       "positive": 0,
-      "lastAt": "2026-08-15T10:44:12.036Z",
+      "lastAt": "2026-08-15T10:45:46.838Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -18014,10 +18010,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 55,
+      "n": 57,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T10:45:28.882Z",
+      "lastAt": "2026-08-15T10:45:39.272Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -18146,10 +18142,10 @@
         "bank:deposit:coins",
         "bank:deposit:chaos rune"
       ],
-      "n": 1,
-      "avgReward": -0.38,
+      "n": 2,
+      "avgReward": -0.48,
       "positive": 0,
-      "lastAt": "2026-08-14T21:51:13.209Z",
+      "lastAt": "2026-08-15T10:45:56.732Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Deposit all Chaos rune"
     },
     "bank:deposit:coins > bank:deposit:chaos rune > bank:withdraw:coins": {
@@ -18158,10 +18154,10 @@
         "bank:deposit:chaos rune",
         "bank:withdraw:coins"
       ],
-      "n": 1,
-      "avgReward": -0.38,
+      "n": 2,
+      "avgReward": -0.48,
       "positive": 0,
-      "lastAt": "2026-08-14T21:51:20.097Z",
+      "lastAt": "2026-08-15T10:46:03.649Z",
       "example": "Deposit all Coins → Deposit all Chaos rune → Withdraw 1 Coins"
     },
     "bank:deposit:chaos rune > bank:withdraw:coins > bank:deposit:coins": {
@@ -18170,10 +18166,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:51:26.106Z",
+      "lastAt": "2026-08-15T10:46:09.986Z",
       "example": "Deposit all Chaos rune → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > wait": {
@@ -27583,6 +27579,42 @@
       "positive": 0,
       "lastAt": "2026-08-15T10:45:02.198Z",
       "example": "Withdraw 1 Chaos rune → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:deposit:coins > bank:withdraw:coins > bank:deposit:air rune": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:withdraw:coins",
+        "bank:deposit:air rune"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:46:22.541Z",
+      "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Air rune"
+    },
+    "bank:withdraw:coins > bank:deposit:air rune > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:air rune",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:46:28.248Z",
+      "example": "Withdraw 1 Coins → Deposit all Air rune → Withdraw 1 Coins"
+    },
+    "bank:deposit:air rune > bank:withdraw:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:air rune",
+        "bank:withdraw:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:46:34.009Z",
+      "example": "Deposit all Air rune → Withdraw 1 Coins → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -31187,43 +31219,43 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T10:45:28.883Z",
+  "updatedAt": "2026-08-15T10:46:34.009Z",
   "activePlan": {
-    "objective": "Collect and withdraw essential resources for survival and progression.",
-    "focus": "Withdraw 1 Chaos rune from the current position.",
-    "reason": "These resources are critical for crafting, healing, and advancing in the game. Withdrawal is a direct and observable action that confirms completion.",
+    "objective": "Deposit all coins and withdraw necessary items from the bank",
+    "focus": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
+    "reason": "This plan ensures all coins are deposited and necessary items are withdrawn, providing clear observable evidence of the",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Withdraw 1 Chaos rune from the current position.",
+        "label": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Withdraw 1 Air rune from the current position.",
+        "label": "Withdraw 1 Coins from the bank to verify the deposit was successful.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Withdraw 1 Body rune from the current position.",
+        "label": "Withdraw 1 Bronze sq shield and 1 Chaos rune from the bank to complete the transaction and ensure proper inventory management.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Resources collected and withdrawn successfully."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Withdraw 1 Chaos rune from the current position.",
-      "Withdraw 1 Air rune from the current position.",
-      "Withdraw 1 Body rune from the current position."
+      "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
+      "Withdraw 1 Coins from the bank to verify the deposit was successful.",
+      "Withdraw 1 Bronze sq shield and 1 Chaos rune from the bank to complete the transaction and ensure proper inventory management."
     ],
     "avoid": [
       "Deposit all Coins",
-      "Deposit all Coins",
-      "Deposit all Coins"
+      "Deposit all Earth rune",
+      "Deposit all Chaos rune"
     ],
-    "updatedAt": "2026-08-15T10:43:26.428Z",
+    "updatedAt": "2026-08-15T10:45:37.971Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
