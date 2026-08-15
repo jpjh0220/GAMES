@@ -6,37 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2811,
-    "teacherChoices": 2811,
+    "totalChoices": 2821,
+    "teacherChoices": 2821,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2810,
-    "totalReward": 1123.58,
-    "saves": 284,
-    "shadowPredictions": 1251,
+    "completedExperiences": 2820,
+    "totalReward": 1119.61,
+    "saves": 285,
+    "shadowPredictions": 1254,
     "shadowMatches": 552,
-    "strategistRefreshes": 193,
+    "strategistRefreshes": 194,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "msu3695f-pa72iz",
-      "createdAt": "2026-08-15T08:00:31.443Z",
-      "tick": 21962,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 2.55.",
-      "importance": 3.55,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu36jcb-hispi6",
       "createdAt": "2026-08-15T08:00:44.651Z",
@@ -8430,6 +8412,26 @@
         "z": 3237,
         "level": 0
       }
+    },
+    {
+      "id": "msu5x3xv-udp6yl",
+      "createdAt": "2026-08-15T09:17:23.636Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Use `interactLoc` to interact with the fishing spot location. This plan uses a named repository-tested escape skill (`interactLoc`) and a named repository",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "use interactloc to interact with the fishing spot location",
+        "use talkto to engage with the npc and avoid the failed dialog",
+        "confirm escape by checking the inventory for coins and moving to a new location using interactloc again with a new target location"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3228,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9073,24 +9075,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 293,
-        "avgReward": -0.1903,
+        "n": 297,
+        "avgReward": -0.1959,
         "positive": 35,
-        "negative": 258,
+        "negative": 262,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T09:16:30.271Z",
-        "exampleGoal": "Use `interactLoc` to interact with the location object near the NPC.",
-        "exampleReason": "To continue the dialogue with the NPC"
+        "lastAt": "2026-08-15T09:17:37.219Z",
+        "exampleGoal": "Use `interactLoc` to interact with the fishing spot location",
+        "exampleReason": "To continue the dialog"
       },
       "wait": {
-        "n": 40,
+        "n": 41,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T08:43:29.982Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I'm waiting for the NPC to respond to my request to reach Draynor Village. I need to observe the dialogue to determine if I can proceed."
+        "lastAt": "2026-08-15T09:17:32.741Z",
+        "exampleGoal": "Use `interactLoc` to interact with the fishing spot location",
+        "exampleReason": "I am waiting for the NPC to respond to the fishing spot location. I will observe for a moment before taking any action."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
@@ -9443,14 +9445,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 81,
+        "n": 83,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T09:15:24.041Z",
+        "lastAt": "2026-08-15T09:17:10.775Z",
         "exampleGoal": "Use `interactLoc` to interact with the location object near the NPC.",
-        "exampleReason": "I am waiting for the NPC to respond to the location request. I will observe for a moment before proceeding."
+        "exampleReason": "You feel weakened."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
@@ -12429,12 +12431,12 @@
         "exampleReason": "I have successfully reached the Draynor Bank at 3092,3243 using verified waypoint navigation. This is a safe and strategic location for fishing and exploring."
       },
       "npc:bait:fishing spot": {
-        "n": 4,
-        "avgReward": -0.6,
+        "n": 6,
+        "avgReward": -0.4867,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T09:15:18.571Z",
+        "lastAt": "2026-08-15T09:17:06.608Z",
         "exampleGoal": "Use `interactLoc` to interact with the location object near the NPC.",
         "exampleReason": "Bait Fishing spot (level 0, distance 1)"
       },
@@ -12491,13 +12493,13 @@
         "exampleReason": "I need to locate the Net Fishing spot (level 0, distance 1) to gather resources and improve combat readiness."
       },
       "npc:bait:fishing spot": {
-        "n": 5,
-        "avgReward": -0.578,
+        "n": 6,
+        "avgReward": -0.5817,
         "positive": 0,
-        "negative": 4,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T09:15:35.715Z",
-        "exampleGoal": "Use `interactLoc` to interact with the location object near the NPC.",
+        "lastAt": "2026-08-15T09:17:27.330Z",
+        "exampleGoal": "Use `interactLoc` to interact with the fishing spot location",
         "exampleReason": "Bait Fishing spot (level 0, distance 1)"
       }
     },
@@ -14338,8 +14340,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T09:16:30.641Z",
-      "encounters": 855,
+      "lastSeenAt": "2026-08-15T09:16:44.166Z",
+      "encounters": 857,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -14731,8 +14733,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T09:16:30.641Z",
-      "encounters": 1638,
+      "lastSeenAt": "2026-08-15T09:17:33.009Z",
+      "encounters": 1648,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -15595,8 +15597,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T09:16:30.641Z",
-      "encounters": 1153,
+      "lastSeenAt": "2026-08-15T09:16:44.166Z",
+      "encounters": 1155,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16146,8 +16148,8 @@
     "ze0hqj0xy": {
       "name": "Ze0hqj0xy",
       "firstSeenAt": "2026-08-15T07:42:04.691Z",
-      "lastSeenAt": "2026-08-15T09:16:17.102Z",
-      "encounters": 10,
+      "lastSeenAt": "2026-08-15T09:17:33.009Z",
+      "encounters": 11,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -16483,12 +16485,12 @@
     },
     "192:201:0": {
       "key": "192:201:0",
-      "x": 3086,
-      "z": 3231,
+      "x": 3087,
+      "z": 3228,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-15T09:16:30.641Z",
-      "visits": 870,
+      "lastSeenAt": "2026-08-15T09:17:33.009Z",
+      "visits": 880,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -17400,10 +17402,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 80,
-      "avgReward": -0.496,
+      "n": 81,
+      "avgReward": -0.512,
       "positive": 28,
-      "lastAt": "2026-08-15T09:16:30.271Z",
+      "lastAt": "2026-08-15T09:16:43.856Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -17412,10 +17414,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 32,
-      "avgReward": -1.967,
+      "n": 33,
+      "avgReward": -1.941,
       "positive": 2,
-      "lastAt": "2026-08-15T08:44:33.298Z",
+      "lastAt": "2026-08-15T09:16:49.210Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -18456,10 +18458,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 57,
-      "avgReward": -0.889,
+      "n": 60,
+      "avgReward": -0.901,
       "positive": 7,
-      "lastAt": "2026-08-15T09:15:28.482Z",
+      "lastAt": "2026-08-15T09:17:37.219Z",
       "example": "Bait Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -18468,10 +18470,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 37,
-      "avgReward": -1.214,
+      "n": 39,
+      "avgReward": -1.221,
       "positive": 3,
-      "lastAt": "2026-08-15T09:15:35.715Z",
+      "lastAt": "2026-08-15T09:17:27.330Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -18480,10 +18482,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 45,
-      "avgReward": -1.462,
+      "n": 48,
+      "avgReward": -1.441,
       "positive": 0,
-      "lastAt": "2026-08-15T09:15:24.041Z",
+      "lastAt": "2026-08-15T09:17:32.741Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -28905,26 +28907,26 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T09:16:39.281Z",
+  "updatedAt": "2026-08-15T09:17:37.220Z",
   "activePlan": {
-    "objective": "Escape the NPC and interact with the location to obtain the required runes.",
-    "focus": "Use `interactLoc` to interact with the location object near the NPC.",
-    "reason": "This plan uses a named repository-tested escape or travel skill (`interactLoc` and `talkTo`) and ensures observable evidence through inventory",
+    "objective": "Escape the fishing spot to avoid the failed dialog and interaction",
+    "focus": "Use `interactLoc` to interact with the fishing spot location",
+    "reason": "This plan uses a named repository-tested escape skill (`interactLoc`) and a named repository",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Use `interactLoc` to interact with the location object near the NPC.",
+        "label": "Use `interactLoc` to interact with the fishing spot location",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Use `talkTo` to engage with the NPC and proceed with the dialogue.",
+        "label": "Use `talkTo` to engage with the NPC and avoid the failed dialog",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Collect the required runes from the inventory and use them to complete the task.",
+        "label": "Confirm escape by checking the inventory for coins and moving to a new location using `interactLoc` again with a new target location",
         "status": "pending"
       }
     ],
@@ -28932,16 +28934,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Use `interactLoc` to interact with the location object near the NPC.",
-      "Use `talkTo` to engage with the NPC and proceed with the dialogue.",
-      "Collect the required runes from the inventory and use them to complete the task."
+      "Use `interactLoc` to interact with the fishing spot location",
+      "Use `talkTo` to engage with the NPC and avoid the failed dialog",
+      "Confirm escape by checking the inventory for coins and moving to a new location using `interactLoc` again with a new target location"
     ],
     "avoid": [
       "Dialog 1: Click here to continue",
-      "Net Fishing spot (level 0, distance 1)",
+      "Bait Fishing spot (level 0, distance 1)",
       "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T09:15:13.578Z",
+    "updatedAt": "2026-08-15T09:17:23.635Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
