@@ -3,6 +3,7 @@ import { readdir, readFile } from 'fs/promises';
 import { join, basename } from 'path';
 import { PrerequisiteTracker } from './prerequisites.js';
 import { GoalSystem } from './goals.js';
+import { EconomyModel } from './economy.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -132,6 +133,9 @@ export class SolAgentBrain {
   private prereqs=new PrerequisiteTracker();
   private paidResolutions=new Set<string>();
   private goals=new GoalSystem();
+  private economy=new EconomyModel();
+  private stagnationCounter=new Map<string,number>();
+  private recentActions:string[]=[];
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
@@ -379,16 +383,25 @@ export class SolAgentBrain {
     this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     this.maybeRefreshStrategy(state,legal);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
-    // GOAL FILTERING: if active goal, filter to actions matching current step
+    // GOAL FILTERING & ECONOMY: check active goal, else form goal from economy
     let filteredCandidates=legal;
     const activeGoalStep=this.goals.currentStep();
     if(activeGoalStep?.targetAction){
       const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
       if(goalFiltered.length>0)filteredCandidates=goalFiltered;
+    }else{
+      // No active goal: query economy for best activity, adopt it
+      const bestActivity=this.economy.getBestActivityFor('money');
+      if(bestActivity){
+        const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
+          [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
+        this.goals.adoptGoal(activityGoal);
+      }
     }
     const choice=await this.askMotor(state,filteredCandidates,contextKey);
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
+    this.maybePromoteStudent();
     this.lastChoice=choice;this.markDirty();
     this.replay.push({tick:(state as any).tick||0,perception:`HP ${state.player?.hp}/${state.player?.maxHp}; ${state.nearbyPlayers?.length||0} agents; ${state.nearbyNpcs?.length||0} NPCs; ${state.nearbyLocs?.length||0} objects`,retrieved:this.currentGuidance,prediction:this.lastShadowPrediction?.fingerprint||null,decision:choice.reason,action:choice.fingerprint,outcome:null,lesson:null});
     if(this.replay.length>80)this.replay.shift();
@@ -485,6 +498,17 @@ export class SolAgentBrain {
     const newNpc=[...after.npcNames].filter(x=>!exp.before.npcNames.has(x));const newPlayers=[...after.playerNames].filter(x=>!exp.before.playerNames.has(x));const newLocs=[...after.locNames].filter(x=>!exp.before.locNames.has(x));const coinGain=after.coins-exp.before.coins;const inventoryGain=after.inventoryCount-exp.before.inventoryCount;
     const inventoryChanged=after.inventorySig!==exp.before.inventorySig;const equipmentChanged=after.equipmentSig!==exp.before.equipmentSig;const styleChanged=after.combatStyleSig!==exp.before.combatStyleSig;const executionMessage=executionFailed?String(exp.candidate.action?.executionResult?.message||'').slice(0,420):'';const discovers=/^(explore|navigation-skill|world)$/.test(exp.candidate.category);const configures=/^(inventory|combat-style)$/.test(exp.candidate.category);
     let reward=Math.min(4,xpGain*.02)+levelGain*3+damageDealt*.15+kills*3-damageTaken*.25;if(hpDelta<0)reward+=hpDelta*.15;if(moved)reward+=discovers?.35:.08;if(discovers)reward+=Math.min(1.2,newNpc.length*.2+newLocs.length*.1);if(exp.candidate.category==='social'||exp.candidate.category==='say')reward+=Math.min(.3,newPlayers.length*.15);reward+=clamp(coinGain*.02,-.5,1.5)+clamp(inventoryGain*.08,-.4,.5);if(configures&&equipmentChanged)reward+=.12;if(configures&&styleChanged)reward+=.08;if(rejected)reward-=1.25;if(died)reward-=10;
+    // ACTION COST MODELING: penalize time-wasting actions to prevent standing-still
+    const actionCost=this.computeActionCost(exp.candidate,exp.startTick,tick);
+    reward-=actionCost;
+    // STAGNATION DETECTION: hard penalty for zero movement over 100 ticks
+    if(!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0){
+      const stagnationTicks=this.stagnationCounter.get(exp.candidate.fingerprint)||0;
+      if(stagnationTicks>=100)reward-=2.0;
+      this.stagnationCounter.set(exp.candidate.fingerprint,stagnationTicks+Math.max(1,exp.settleTick-exp.startTick));
+    }else{
+      this.stagnationCounter.clear();
+    }
     // CAPABILITY INVESTMENT. Spending coins is penalised above and clearing a
     // prerequisite paid nothing, so buying a fishing net scored negative even
     // though it unlocks an entire skill. Pay for the capability, once per
@@ -535,6 +559,32 @@ export class SolAgentBrain {
   private addMemory(args:{kind:MemoryEntry['kind'];text:string;importance:number;tags:string[];tick:number;state:BotWorldState}){
     const p=args.state.player;const m:MemoryEntry={id:`${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`,createdAt:now(),tick:args.tick,runNumber:this.opts.runNumber??null,kind:args.kind,text:args.text.slice(0,700),importance:Number(args.importance.toFixed(2)),tags:uniq(args.tags.map(norm).filter(Boolean)).slice(0,16),location:p?{x:p.worldX,z:p.worldZ,level:p.level}:undefined};
     if(!this.memory.memories.some(x=>x.kind===m.kind&&x.text===m.text))this.memory.memories.push(m);if(this.memory.memories.length>400)this.memory.memories.splice(0,this.memory.memories.length-400);
+  }
+
+  private computeActionCost(candidate:AgentCandidate,startTick:number,endTick:number):number{
+    const duration=Math.max(1,endTick-startTick);
+    const fp=candidate.fingerprint;
+    let cost=0;
+    // Base costs: walking and style changes are time-wasting
+    if(fp.startsWith('walk:'))cost=0.02;
+    else if(fp.startsWith('style:'))cost=0.01;
+    // Repetition penalty: nth repeat = base_cost * n^2
+    const repeatCount=this.recentActions.filter(a=>a===fp).length;
+    if(repeatCount>0)cost*=Math.pow(repeatCount+1,1.5);
+    this.recentActions.push(fp);if(this.recentActions.length>20)this.recentActions.shift();
+    return Math.min(cost,.5);
+  }
+
+  private maybePromoteStudent(){
+    // When student accuracy >= 65% over 10+ samples, promote to make decisions
+    const totalAgree=this.memory.lifetime.shadowMatches||0;
+    const totalPredictions=this.memory.lifetime.shadowPredictions||0;
+    if(totalPredictions>=10&&totalAgree/totalPredictions>=.65){
+      console.log('AGENT_STUDENT_PROMOTED',JSON.stringify({agreement:totalAgree/totalPredictions,decisions:this.sessionMotorChoices}));
+      // Student ready: next time we call motor, could sample student instead
+      // For now, log promotion; next commit will integrate
+      this.memory.lifetime.studentPromotions=(this.memory.lifetime.studentPromotions||0)+1;
+    }
   }
 
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
