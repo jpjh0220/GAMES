@@ -6,58 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 4302,
-    "teacherChoices": 4302,
+    "totalChoices": 4312,
+    "teacherChoices": 4312,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 4300,
-    "totalReward": 2080.83,
-    "saves": 435,
-    "shadowPredictions": 2274,
+    "completedExperiences": 4310,
+    "totalReward": 2082.41,
+    "saves": 436,
+    "shadowPredictions": 2275,
     "shadowMatches": 997,
     "strategistRefreshes": 273,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msusktqf-9cm5a6",
-      "createdAt": "2026-08-15T19:51:41.703Z",
-      "tick": 0,
-      "runNumber": 67,
-      "kind": "strategy",
-      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival. This plan ensures safe fishing",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "travel to the draynor fishing area at 3087 3230 and verify arrival",
-        "use bank booth distance 1 to collect shrimps anchovies",
-        "explore northeast about 4 tiles to confirm safe fishing location and collect additional shrimps anchovies if available"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msuskvy1-j5rdbm",
-      "createdAt": "2026-08-15T19:51:44.569Z",
-      "tick": 53,
-      "runNumber": 67,
-      "kind": "relationship",
-      "text": "Jrsgoblin2 said: \"Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total\". Current stance unknown, trust 0.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "jrsgoblin2",
-        "unknown"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
     {
       "id": "msusoxqx-2sgl82",
       "createdAt": "2026-08-15T19:54:53.529Z",
@@ -8278,6 +8239,50 @@
         "z": 3239,
         "level": 0
       }
+    },
+    {
+      "id": "msuw3w6i-a7uwq5",
+      "createdAt": "2026-08-15T21:30:30.186Z",
+      "tick": 19803,
+      "runNumber": 67,
+      "kind": "episode",
+      "text": "AI motor: Talk-to Diango (level 0, distance 13). Result: +2 level(s); moved 3081,3239 → 3077,3249. Reward 6.08.",
+      "importance": 3.74,
+      "tags": [
+        "social",
+        "diango",
+        "talk to",
+        "level 0",
+        "npc aggie",
+        "loc wardrobe",
+        "loc standing torch",
+        "loc cauldron",
+        "loc broom"
+      ],
+      "location": {
+        "x": 3077,
+        "z": 3249,
+        "level": 0
+      }
+    },
+    {
+      "id": "msuw3wei-mdhaco",
+      "createdAt": "2026-08-15T21:30:30.474Z",
+      "tick": 19777,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Jrsgoblin2 said: \"Woodcutting 72 (+108750 xp) firemaking 79 (+174000 xp) 174 fires in 38m 445253 xp hr total\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "jrsgoblin2",
+        "unknown"
+      ],
+      "location": {
+        "x": 3077,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9025,6 +9030,16 @@
         "lastAt": "2026-08-15T11:23:56.216Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I have collected Bones (distance 4)."
+      },
+      "npc:talk to:diango": {
+        "n": 1,
+        "avgReward": 6.08,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 6.08,
+        "lastAt": "2026-08-15T21:30:30.186Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
+        "exampleReason": "Talk to Diango (level 0, distance 11) to gain experience and collect raw anchovies."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,social,wait,world": {
@@ -11541,36 +11556,36 @@
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 5,
+        "n": 7,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 5,
+        "negative": 7,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T01:23:43.777Z",
-        "exampleGoal": "Use the `fletchLogs` skill to craft 15 arrow shafts from the available materials.",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "lastAt": "2026-08-15T21:30:57.769Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
+        "exampleReason": "Click here to continue to proceed with the narrative"
       },
       "dialog:1:toy horseys": {
-        "n": 3,
+        "n": 4,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 4,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T01:23:38.402Z",
-        "exampleGoal": "Use the `fletchLogs` skill to craft 15 arrow shafts from the available materials.",
+        "lastAt": "2026-08-15T21:30:47.588Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
         "exampleReason": "I'm fine, thanks."
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T01:22:22.780Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Wait and observe for a moment"
+        "lastAt": "2026-08-15T21:30:52.676Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
+        "exampleReason": "I am waiting for the narrative to progress and observe for any changes."
       }
     },
     "area=384:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
@@ -13811,6 +13826,26 @@
         "lastAt": "2026-08-15T01:23:09.612Z",
         "exampleGoal": "Use the `fletchLogs` skill to craft 15 arrow shafts from the available materials.",
         "exampleReason": "I will sell 1 Chaos rune for 7, which is a good move to get some resources for crafting arrow shafts."
+      },
+      "shop:sell:mind rune": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:31:16.387Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
+        "exampleReason": "Click on the 'Shop' interface to proceed with the plan."
+      },
+      "shop:sell:raw anchovies": {
+        "n": 2,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 2,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:31:22.677Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to proceed with the narrative.",
+        "exampleReason": "Selling Raw anchovies for 7 GP is a good move to gain experience and collect raw anchovies. It's a direct way to increase your inventory and progress in the game. I'll proceed with"
       }
     },
     "area=386:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
@@ -16491,8 +16526,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 2851,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "encounters": 2852,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -17356,8 +17391,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 2531,
+      "lastSeenAt": "2026-08-15T21:31:16.697Z",
+      "encounters": 2541,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17784,8 +17819,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 1114,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "encounters": 1115,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17915,8 +17950,8 @@
     "stasis": {
       "name": "Stasis",
       "firstSeenAt": "2026-08-15T06:17:23.863Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 111,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "encounters": 112,
       "trust": 0.12,
       "stance": "unknown",
       "conversations": 5,
@@ -18397,15 +18432,14 @@
     "jrsgoblin2": {
       "name": "Jrsgoblin2",
       "firstSeenAt": "2026-08-15T19:51:44.568Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
+      "lastSeenAt": "2026-08-15T21:30:30.474Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 21,
+      "conversations": 22,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
-        "Woodcutting 20 (+0 xp) firemaking 25 (+0 xp) 0 fires in 0m 0 xp hr total",
         "Woodcutting 36 (+9375 xp) firemaking 43 (+15000 xp) 15 fires in 3m 443875 xp hr total",
         "Woodcutting 43 (+16875 xp) firemaking 49 (+27000 xp) 27 fires in 5m 507750 xp hr total",
         "Woodcutting 43 (+0 xp) firemaking 49 (+0 xp) 0 fires in 0m 0 xp hr total",
@@ -18424,15 +18458,11 @@
         "Woodcutting 69 (+76250 xp) firemaking 76 (+122000 xp) 122 fires in 26m 458962 xp hr total",
         "Woodcutting 69 (+80625 xp) firemaking 76 (+129000 xp) 129 fires in 29m 434125 xp hr total",
         "Woodcutting 70 (+90000 xp) firemaking 77 (+144000 xp) 144 fires in 32m 438256 xp hr total",
-        "Woodcutting 72 (+103750 xp) firemaking 78 (+166000 xp) 166 fires in 35m 461228 xp hr total"
+        "Woodcutting 72 (+103750 xp) firemaking 78 (+166000 xp) 166 fires in 35m 461228 xp hr total",
+        "Woodcutting 72 (+108750 xp) firemaking 79 (+174000 xp) 174 fires in 38m 445253 xp hr total"
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-15T19:55:00.466Z",
-          "direction": "incoming",
-          "text": "Woodcutting 36 (+9375 xp) firemaking 43 (+15000 xp) 15 fires in 3m 443875 xp hr total"
-        },
         {
           "at": "2026-08-15T19:56:53.579Z",
           "direction": "incoming",
@@ -18527,6 +18557,11 @@
           "at": "2026-08-15T21:27:30.475Z",
           "direction": "incoming",
           "text": "Woodcutting 72 (+103750 xp) firemaking 78 (+166000 xp) 166 fires in 35m 461228 xp hr total"
+        },
+        {
+          "at": "2026-08-15T21:30:30.474Z",
+          "direction": "incoming",
+          "text": "Woodcutting 72 (+108750 xp) firemaking 79 (+174000 xp) 174 fires in 38m 445253 xp hr total"
         }
       ]
     },
@@ -18962,8 +18997,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 201,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "encounters": 202,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -18993,8 +19028,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "encounters": 200,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "encounters": 201,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -19131,12 +19166,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3086,
-      "z": 3237,
+      "x": 3081,
+      "z": 3239,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T21:30:07.697Z",
-      "visits": 959,
+      "lastSeenAt": "2026-08-15T21:30:19.377Z",
+      "visits": 960,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -19233,12 +19268,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3081,
+      "x": 3077,
       "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-15T21:17:50.889Z",
-      "visits": 178,
+      "lastSeenAt": "2026-08-15T21:31:16.697Z",
+      "visits": 187,
       "npcs": [
         "Diango",
         "Banker",
@@ -20543,10 +20578,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 6,
-      "avgReward": -1.307,
-      "positive": 0,
-      "lastAt": "2026-08-15T21:16:17.288Z",
+      "n": 7,
+      "avgReward": -0.359,
+      "positive": 1,
+      "lastAt": "2026-08-15T21:30:42.185Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:2:i m fine thanks": {
@@ -20603,10 +20638,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T01:22:22.780Z",
+      "lastAt": "2026-08-15T21:30:52.676Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -20615,10 +20650,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T01:22:27.905Z",
+      "lastAt": "2026-08-15T21:30:57.769Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > modal:close-shop": {
@@ -21431,10 +21466,10 @@
         "npc:attack:dark wizard",
         "npc:talk to:diango"
       ],
-      "n": 2,
-      "avgReward": 6.99,
-      "positive": 2,
-      "lastAt": "2026-08-14T23:21:07.467Z",
+      "n": 3,
+      "avgReward": 8.423,
+      "positive": 3,
+      "lastAt": "2026-08-15T21:30:30.186Z",
       "example": "Attack Dark wizard (level 7, distance 6) → Attack Dark wizard (level 7, distance 5) → Talk-to Diango (level 0, distance 12)"
     },
     "npc:attack:dark wizard > npc:talk to:diango > wait": {
@@ -21443,10 +21478,10 @@
         "npc:talk to:diango",
         "wait"
       ],
-      "n": 1,
-      "avgReward": 2.71,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:38:55.205Z",
+      "n": 2,
+      "avgReward": 5.285,
+      "positive": 2,
+      "lastAt": "2026-08-15T21:30:36.179Z",
       "example": "Attack Dark wizard (level 7, distance 5) → Talk-to Diango (level 0, distance 12) → Wait and observe for a moment"
     },
     "wait > dialog:1:click here to continue > dialog:1:toy horseys": {
@@ -21455,10 +21490,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 5,
+      "n": 6,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T21:16:24.489Z",
+      "lastAt": "2026-08-15T21:30:47.588Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:coins > modal:close-shop > npc:trade:diango": {
@@ -31391,10 +31426,10 @@
         "shop:sell:raw anchovies",
         "shop:sell:mind rune"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T21:17:07.198Z",
+      "lastAt": "2026-08-15T21:31:16.387Z",
       "example": "Sell 1 Mind rune for about 1 → Sell 1 Raw anchovies for about 7 → Sell 1 Mind rune for about 1"
     },
     "shop:sell:raw anchovies > shop:sell:mind rune > modal:close-shop": {
@@ -31612,57 +31647,45 @@
       "positive": 0,
       "lastAt": "2026-08-15T21:23:46.741Z",
       "example": "Talk-to Diango (level 0, distance 8) → Net Fishing spot (level 0, distance 2) → Wait and observe for a moment"
+    },
+    "wait > dialog:1:click here to continue > shop:sell:mind rune": {
+      "sequence": [
+        "wait",
+        "dialog:1:click here to continue",
+        "shop:sell:mind rune"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:31:04.392Z",
+      "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Sell 1 Mind rune for about 1"
+    },
+    "dialog:1:click here to continue > shop:sell:mind rune > shop:sell:raw anchovies": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "shop:sell:mind rune",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:31:10.075Z",
+      "example": "Dialog 1: Click here to continue → Sell 1 Mind rune for about 1 → Sell 1 Raw anchovies for about 7"
+    },
+    "shop:sell:raw anchovies > shop:sell:mind rune > shop:sell:raw anchovies": {
+      "sequence": [
+        "shop:sell:raw anchovies",
+        "shop:sell:mind rune",
+        "shop:sell:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T21:31:22.677Z",
+      "example": "Sell 1 Raw anchovies for about 7 → Sell 1 Mind rune for about 1 → Sell 1 Raw anchovies for about 7"
     }
   },
   "discoveries": [
-    {
-      "id": "place:willow:193:202:0",
-      "at": "2026-08-15T11:36:17.441Z",
-      "kind": "place",
-      "text": "Willow observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:193:202:0",
-      "at": "2026-08-15T11:36:17.441Z",
-      "kind": "place",
-      "text": "Crate observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:staircase:193:202:0",
-      "at": "2026-08-15T11:36:17.441Z",
-      "kind": "place",
-      "text": "Staircase observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3243:3085:3240:0",
-      "at": "2026-08-15T11:40:03.702Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3085,3240; +797 XP; 6 damage dealt; moved 3092,3243 → 3085,3240; execution rejected or failed",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
     {
       "id": "route:3085:3240:3092:3243:0",
       "at": "2026-08-15T11:40:17.147Z",
@@ -35226,9 +35249,45 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3081:3239:3077:3249:0",
+      "at": "2026-08-15T21:30:30.186Z",
+      "kind": "route",
+      "text": "Route learned: 3081,3239 → 3077,3249; +2 level(s); moved 3081,3239 → 3077,3249",
+      "location": {
+        "x": 3077,
+        "z": 3249,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "place:thistle:192:203:0",
+      "at": "2026-08-15T21:30:30.474Z",
+      "kind": "place",
+      "text": "Thistle observed near 3077, 3251, level 0.",
+      "location": {
+        "x": 3077,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:small fern:192:203:0",
+      "at": "2026-08-15T21:30:30.474Z",
+      "kind": "place",
+      "text": "Small fern observed near 3077, 3251, level 0.",
+      "location": {
+        "x": 3077,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T21:30:19.102Z",
+  "updatedAt": "2026-08-15T21:31:22.677Z",
   "activePlan": {
     "objective": "Navigate through the Bait Fishing spot and Net Fishing spot to gain experience and collect raw anchovies.",
     "focus": "Click Dialog 1: Click here to continue to proceed with the narrative.",
