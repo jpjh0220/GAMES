@@ -28,6 +28,9 @@ export interface ActivityMetrics {
   successRate: number; // fraction of attempts that succeed
   samples: number;
   lastObserved: number;
+  totalProfit?: number; // cumulative gp from this activity
+  totalXp?: number; // cumulative xp from this activity
+  totalTime?: number; // real seconds spent on this activity
 }
 
 export class EconomyModel {

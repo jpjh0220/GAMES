@@ -4,6 +4,7 @@ import { join, basename } from 'path';
 import { PrerequisiteTracker } from './prerequisites.js';
 import { GoalSystem } from './goals.js';
 import { EconomyModel } from './economy.js';
+import { SkillTree } from './skill-tree.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -134,6 +135,7 @@ export class SolAgentBrain {
   private paidResolutions=new Set<string>();
   private goals=new GoalSystem();
   private economy=new EconomyModel();
+  private skillTree=new SkillTree();
   private stagnationCounter=new Map<string,number>();
   private recentActions:string[]=[];
   private seenMessages=new Set<string>();
@@ -396,6 +398,18 @@ export class SolAgentBrain {
         const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
           [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
         this.goals.adoptGoal(activityGoal);
+      }else{
+        // Fallback: pursue skill progression
+        const skillLevels:Record<string,number>={};
+        for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
+        const targets=this.skillTree.getProgressionTargets(skillLevels);
+        if(targets.length>0){
+          const t=targets[0];
+          const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
+          const skillGoal=this.goals.createGoal(name,description,
+            [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
+          this.goals.adoptGoal(skillGoal);
+        }
       }
     }
     const choice=await this.askMotor(state,filteredCandidates,contextKey);
@@ -592,7 +606,14 @@ export class SolAgentBrain {
     const inv=new Set((state.inventory||[]).map(i=>String(i.name||'').toLowerCase()));
     if(msg.includes('no fishing spot')||msg.includes('net')&&!inv.has('fishing net'))return 'MISSING_NET';
     if(msg.includes('no bait')||msg.includes('bait'))return 'MISSING_BAIT';
-    if(msg.includes('skill'))return 'SKILL_TOO_LOW';
+    if(msg.includes('skill')||msg.includes('level')){
+      // Observe skill requirement for skill-tree
+      const skillMatch=msg.match(/(\w+)\s+(\d+)/);
+      if(skillMatch){
+        this.skillTree.observeSkillRequirement(msg,skillMatch[1],exp.candidate.label);
+      }
+      return 'SKILL_TOO_LOW';
+    }
     if(msg.includes('locked')||msg.includes('blocked'))return 'LOCATION_BLOCKED';
     if(msg.includes('died')||msg.includes('respawn'))return 'DIED_IN_COMBAT';
     if(msg.includes('full')||msg.includes('inventory'))return 'INVENTORY_FULL';
