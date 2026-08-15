@@ -5,6 +5,7 @@ import { PrerequisiteTracker } from './prerequisites.js';
 import { GoalSystem } from './goals.js';
 import { EconomyModel } from './economy.js';
 import { SkillTree } from './skill-tree.js';
+import { QuestSystem } from './quest-system.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -136,6 +137,7 @@ export class SolAgentBrain {
   private goals=new GoalSystem();
   private economy=new EconomyModel();
   private skillTree=new SkillTree();
+  private quests=new QuestSystem();
   private stagnationCounter=new Map<string,number>();
   private recentActions:string[]=[];
   private seenMessages=new Set<string>();
@@ -392,27 +394,50 @@ export class SolAgentBrain {
       const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
       if(goalFiltered.length>0)filteredCandidates=goalFiltered;
     }else{
-      // No active goal: query economy for best activity, adopt it
-      const bestActivity=this.economy.getBestActivityFor('money');
-      if(bestActivity){
-        const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
-          [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
-        this.goals.adoptGoal(activityGoal);
+      // No active goal: prioritize discovered quests, then economy, then skill progression
+      const discoveredQuests=this.quests.getDiscoveredQuests();
+      if(discoveredQuests.length>0){
+        const nextQuest=discoveredQuests[0];
+        this.quests.adoptQuest(nextQuest.id);
+        const questGoal=this.goals.createGoal(nextQuest.title,nextQuest.objective,
+          [{id:'quest-step',description:nextQuest.objective,targetAction:'explore'}],'high');
+        this.goals.adoptGoal(questGoal);
       }else{
-        // Fallback: pursue skill progression
-        const skillLevels:Record<string,number>={};
-        for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
-        const targets=this.skillTree.getProgressionTargets(skillLevels);
-        if(targets.length>0){
-          const t=targets[0];
-          const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
-          const skillGoal=this.goals.createGoal(name,description,
-            [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
-          this.goals.adoptGoal(skillGoal);
+        // Query economy for best activity
+        const bestActivity=this.economy.getBestActivityFor('money');
+        if(bestActivity){
+          const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
+            [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
+          this.goals.adoptGoal(activityGoal);
+        }else{
+          // Fallback: pursue skill progression
+          const skillLevels:Record<string,number>={};
+          for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
+          const targets=this.skillTree.getProgressionTargets(skillLevels);
+          if(targets.length>0){
+            const t=targets[0];
+            const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
+            const skillGoal=this.goals.createGoal(name,description,
+              [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
+            this.goals.adoptGoal(skillGoal);
+          }
         }
       }
     }
     const choice=await this.askMotor(state,filteredCandidates,contextKey);
+    // STUDENT SAMPLING: if student is promoted (agreement >= 65%), sample for decisions
+    if(this.studentPromoted() && Math.random()<0.3){
+      try{
+        const studentChoice=await this.askStudent(state,filteredCandidates,contextKey);
+        if(studentChoice){
+          this.memory.lifetime.studentDecisions=(this.memory.lifetime.studentDecisions||0)+1;
+          return studentChoice;
+        }
+      }catch(e){
+        console.log('AGENT_STUDENT_DECISION_FAILED',String(e).slice(0,200));
+        // Fallback to motor
+      }
+    }
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
     this.maybePromoteStudent();
@@ -575,7 +600,17 @@ export class SolAgentBrain {
     if(!this.memory.memories.some(x=>x.kind===m.kind&&x.text===m.text))this.memory.memories.push(m);if(this.memory.memories.length>400)this.memory.memories.splice(0,this.memory.memories.length-400);
   }
 
-  private computeActionCost(candidate:AgentCandidate,startTick:number,endTick:number):number{
+  private canPursueActivity(skillLevels:Record<string,number>,activity:string):boolean{
+    // Check if we have the skills to do this activity
+    const activityRequirements:Record<string,number>={
+      'fish':20,'catch-lobster':40,'cook':15,'craft':10,
+      'chop':10,'mine':15,'smelt':30,'smith':40,'thieve':25
+    };
+    const requiredLevel=activityRequirements[activity.toLowerCase()]||0;
+    const skillName=activity.split(':')[0]?.split('-')[0]||'combat';
+    const currentLevel=skillLevels[skillName]||0;
+    return currentLevel>=requiredLevel;
+  }
     const duration=Math.max(1,endTick-startTick);
     const fp=candidate.fingerprint;
     let cost=0;
@@ -601,9 +636,31 @@ export class SolAgentBrain {
     }
   }
 
+  private studentPromoted():boolean{
+    const totalAgree=this.memory.lifetime.shadowMatches||0;
+    const totalPredictions=this.memory.lifetime.shadowPredictions||0;
+    return totalPredictions>=10&&totalAgree/totalPredictions>=.65;
+  }
+
+  private async askStudent(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice|null>{
+    // Student makes decisions based on learned policy + recent outcomes
+    // For now, returns null (fallback to motor)
+    // Next commit: implement independent reasoning
+    return null;
+  }
+
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
     const msg=(outcome.summary||'').toLowerCase();
     const inv=new Set((state.inventory||[]).map(i=>String(i.name||'').toLowerCase()));
+    // QUEST DETECTION: parse NPC dialogue for quest hints
+    const npcDialogue=(state.gameMessages||[]).filter(m=>m.fromSelf===false).map(m=>m.text).join(' ');
+    if(npcDialogue.length>0){
+      const nearbyNpc=(state.nearbyNpcs||[])[0];
+      if(nearbyNpc){
+        const quest=this.quests.parseQuestHints(nearbyNpc.name,npcDialogue);
+        if(quest)console.log('AGENT_QUEST_DISCOVERED',JSON.stringify({quest:quest.title,giver:quest.giver,objective:quest.objective}));
+      }
+    }
     if(msg.includes('no fishing spot')||msg.includes('net')&&!inv.has('fishing net'))return 'MISSING_NET';
     if(msg.includes('no bait')||msg.includes('bait'))return 'MISSING_BAIT';
     if(msg.includes('skill')||msg.includes('level')){
