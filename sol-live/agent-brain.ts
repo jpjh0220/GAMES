@@ -246,7 +246,20 @@ export class SolAgentBrain {
       if(r.status===404){this.loadOutcome='absent';console.warn('AGENT_MEMORY_LOAD_ABSENT no archive on sol-memory yet');return;}
       if(!r.ok)throw new Error(`memory load ${r.status}`);
       const body:any=await r.json();this.githubSha=body.sha||null;
-      const parsed=JSON.parse(Buffer.from(String(body.content||'').replace(/\n/g,''),'base64').toString('utf8'));
+      // The Contents API refuses to inline files over 1MB: it returns
+      // encoding:'none' with an empty content field. state.json crossed that
+      // line, so every load silently decoded to '' and threw "Unexpected EOF",
+      // discarding all accumulated learning on every restart. The Git Blobs
+      // API serves the same object up to 100MB, so fall back to it.
+      let contentB64=String(body.content||'');
+      if(!contentB64.trim()&&this.githubSha){
+        console.warn('AGENT_MEMORY_LOAD_OVERSIZE',JSON.stringify({size:body.size,encoding:body.encoding,via:'git/blobs'}));
+        const rb=await fetch(`https://api.github.com/repos/${this.opts.githubRepo}/git/blobs/${this.githubSha}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${this.opts.githubToken}`,'X-GitHub-Api-Version':'2022-11-28'}});
+        if(!rb.ok)throw new Error(`memory blob load ${rb.status}`);
+        const blob:any=await rb.json();contentB64=String(blob.content||'');
+        if(!contentB64.trim())throw new Error('blob returned empty content');
+      }
+      const parsed=JSON.parse(Buffer.from(contentB64.replace(/\n/g,''),'base64').toString('utf8'));
       if(parsed?.version===1&&parsed?.identity&&parsed?.lifetime){
         this.memory=parsed;this.memory.identity.directive=this.opts.directive;
         this.memory.lifetime.shadowPredictions??=0;this.memory.lifetime.shadowMatches??=0;
