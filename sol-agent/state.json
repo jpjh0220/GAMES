@@ -6,41 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3743,
-    "teacherChoices": 3743,
+    "totalChoices": 3744,
+    "teacherChoices": 3744,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3741,
-    "totalReward": 1747.61,
-    "saves": 378,
+    "completedExperiences": 3742,
+    "totalReward": 1746.71,
+    "saves": 379,
     "shadowPredictions": 1904,
     "shadowMatches": 862,
     "strategistRefreshes": 242,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu75d0r-z2kks5",
-      "createdAt": "2026-08-15T09:51:48.267Z",
-      "tick": 44217,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 6). Result: moved 3092,3243 → 3087,3240; execution rejected or failed. Reward -1.17.",
-      "importance": 1.28,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent gpgather1",
-        "loc bullrushes"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3240,
-        "level": 0
-      }
-    },
     {
       "id": "msu75mzm-6npjd7",
       "createdAt": "2026-08-15T09:52:01.186Z",
@@ -8454,19 +8432,40 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "msuskqw9-ntqu3t",
+      "createdAt": "2026-08-15T19:51:38.025Z",
+      "tick": 44,
+      "runNumber": 67,
+      "kind": "episode",
+      "text": "AI motor: Use Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242; execution rejected or failed; new: agent:Gpgather1, agent:Joebot. Reward -0.9.",
+      "importance": 1.15,
+      "tags": [
+        "world",
+        "bank booth",
+        "use",
+        "agent gpgather1",
+        "agent joebot"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,say,wait,world": {
       "loc:use:bank booth": {
-        "n": 1,
-        "avgReward": -0.7,
+        "n": 2,
+        "avgReward": -0.8,
         "positive": 0,
-        "negative": 1,
-        "lastReward": -0.7,
-        "lastAt": "2026-08-14T21:35:14.164Z",
-        "exampleGoal": "Progress through world",
-        "exampleReason": "Use Bank booth (distance 1) to access resources and improve economy."
+        "negative": 2,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-15T19:51:38.025Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "Use Bank booth (distance 1) to deposit items."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
@@ -16967,8 +16966,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T11:40:17.436Z",
-      "encounters": 2024,
+      "lastSeenAt": "2026-08-15T19:51:25.113Z",
+      "encounters": 2025,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17390,8 +17389,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T11:36:57.351Z",
-      "encounters": 799,
+      "lastSeenAt": "2026-08-15T19:51:25.113Z",
+      "encounters": 800,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17932,6 +17931,21 @@
           "text": "I shall bask in lumbridge's fine architecture, unmoved."
         }
       ]
+    },
+    "bogwarden": {
+      "name": "Bogwarden",
+      "firstSeenAt": "2026-08-15T19:51:25.113Z",
+      "lastSeenAt": "2026-08-15T19:51:25.113Z",
+      "encounters": 1,
+      "combatLevel": 7,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -17941,8 +17955,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T11:40:17.436Z",
-      "visits": 973,
+      "lastSeenAt": "2026-08-15T19:51:25.113Z",
+      "visits": 974,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -29066,18 +29080,6 @@
   },
   "discoveries": [
     {
-      "id": "resource:tree stump:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:daisies:193:202:0",
       "at": "2026-08-15T09:32:42.601Z",
       "kind": "place",
@@ -32664,9 +32666,33 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:fern:193:202:0",
+      "at": "2026-08-15T19:51:25.113Z",
+      "kind": "place",
+      "text": "Fern observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3243:3092:3242:0",
+      "at": "2026-08-15T19:51:38.025Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3092,3242; moved 3092,3243 → 3092,3242; execution rejected or failed; new: agent:Gpgather1, agent:Joebot",
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-15T11:40:28.959Z",
+  "updatedAt": "2026-08-15T19:51:38.026Z",
   "activePlan": {
     "objective": "Deposit all items in the bank to avoid failed actions",
     "focus": "Open the bank to access the deposit functionality",
@@ -32706,6 +32732,6 @@
     ],
     "updatedAt": "2026-08-15T11:38:27.727Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
