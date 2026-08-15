@@ -6,6 +6,7 @@ import { GoalSystem } from './goals.js';
 import { EconomyModel } from './economy.js';
 import { SkillTree } from './skill-tree.js';
 import { QuestSystem } from './quest-system.js';
+import { TradeInference } from './trade-inference.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -138,6 +139,7 @@ export class SolAgentBrain {
   private economy=new EconomyModel();
   private skillTree=new SkillTree();
   private quests=new QuestSystem();
+  private trades=new TradeInference();
   private stagnationCounter=new Map<string,number>();
   private recentActions:string[]=[];
   private seenMessages=new Set<string>();
@@ -394,7 +396,7 @@ export class SolAgentBrain {
       const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
       if(goalFiltered.length>0)filteredCandidates=goalFiltered;
     }else{
-      // No active goal: prioritize discovered quests, then economy, then skill progression
+      // No active goal: prioritize by value: quests → arbitrage → economy → skills
       const discoveredQuests=this.quests.getDiscoveredQuests();
       if(discoveredQuests.length>0){
         const nextQuest=discoveredQuests[0];
@@ -403,23 +405,32 @@ export class SolAgentBrain {
           [{id:'quest-step',description:nextQuest.objective,targetAction:'explore'}],'high');
         this.goals.adoptGoal(questGoal);
       }else{
-        // Query economy for best activity
-        const bestActivity=this.economy.getBestActivityFor('money');
-        if(bestActivity){
-          const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
-            [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
-          this.goals.adoptGoal(activityGoal);
+        // Check for arbitrage opportunities
+        const bestTrade=this.trades.getMostProfitableRoute();
+        if(bestTrade&&bestTrade.profit>=50){
+          const tradeGoal=this.goals.createGoal(`Arbitrage: buy ${bestTrade.item} at ${bestTrade.sellPrice}gp, sell at ${bestTrade.buyPrice}gp`,
+            `Execute profitable trade route (+${bestTrade.profit}gp profit)`,
+            [{id:'trade',description:`Travel between ${bestTrade.sellNpc} and ${bestTrade.buyNpc}`,targetAction:'travel'}],'high');
+          this.goals.adoptGoal(tradeGoal);
         }else{
-          // Fallback: pursue skill progression
-          const skillLevels:Record<string,number>={};
-          for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
-          const targets=this.skillTree.getProgressionTargets(skillLevels);
-          if(targets.length>0){
-            const t=targets[0];
-            const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
-            const skillGoal=this.goals.createGoal(name,description,
-              [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
-            this.goals.adoptGoal(skillGoal);
+          // Query economy for best activity
+          const bestActivity=this.economy.getBestActivityFor('money');
+          if(bestActivity){
+            const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
+              [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
+            this.goals.adoptGoal(activityGoal);
+          }else{
+            // Fallback: pursue skill progression
+            const skillLevels:Record<string,number>={};
+            for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
+            const targets=this.skillTree.getProgressionTargets(skillLevels);
+            if(targets.length>0){
+              const t=targets[0];
+              const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
+              const skillGoal=this.goals.createGoal(name,description,
+                [{id:'levelup',description,targetAction:t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
+              this.goals.adoptGoal(skillGoal);
+            }
           }
         }
       }
@@ -652,13 +663,23 @@ export class SolAgentBrain {
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
     const msg=(outcome.summary||'').toLowerCase();
     const inv=new Set((state.inventory||[]).map(i=>String(i.name||'').toLowerCase()));
-    // QUEST DETECTION: parse NPC dialogue for quest hints
+    // QUEST DETECTION + TRADE OBSERVATION: parse NPC dialogue
     const npcDialogue=(state.gameMessages||[]).filter(m=>m.fromSelf===false).map(m=>m.text).join(' ');
     if(npcDialogue.length>0){
       const nearbyNpc=(state.nearbyNpcs||[])[0];
       if(nearbyNpc){
         const quest=this.quests.parseQuestHints(nearbyNpc.name,npcDialogue);
         if(quest)console.log('AGENT_QUEST_DISCOVERED',JSON.stringify({quest:quest.title,giver:quest.giver,objective:quest.objective}));
+        
+        // Extract prices (e.g., "net: 500gp")
+        const priceMatches=npcDialogue.matchAll(/(\w+)\s*:?\s*(\d+)\s*g?p?/gi);
+        for(const match of priceMatches){
+          const item=match[1];
+          const price=parseInt(match[2]);
+          if(price>0&&price<100000){
+            this.trades.recordTrade(nearbyNpc.name,item,price,'sell');
+          }
+        }
       }
     }
     if(msg.includes('no fishing spot')||msg.includes('net')&&!inv.has('fishing net'))return 'MISSING_NET';
