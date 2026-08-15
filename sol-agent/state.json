@@ -6,80 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3601,
-    "teacherChoices": 3601,
+    "totalChoices": 3611,
+    "teacherChoices": 3611,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3600,
-    "totalReward": 1647.38,
-    "saves": 363,
-    "shadowPredictions": 1797,
-    "shadowMatches": 806,
+    "completedExperiences": 3610,
+    "totalReward": 1649.84,
+    "saves": 364,
+    "shadowPredictions": 1798,
+    "shadowMatches": 807,
     "strategistRefreshes": 235,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu67fif-pmjrid",
-      "createdAt": "2026-08-15T09:25:25.191Z",
-      "tick": 0,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "AI strategist: Use the escape skill to flee from the Dark wizard. The escape skill is available and can be used to flee from the",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "use the escape skill to flee from the dark wizard",
-        "confirm escape success by checking the failed list for attack dark wizard level 7 distance 6",
-        "travel to the net fishing spot level 0 distance 1 to complete the escape mission"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu67v03-15o1nw",
-      "createdAt": "2026-08-15T09:25:45.267Z",
-      "tick": 39007,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 5). Result: +533 XP; 4 damage dealt; 2 damage taken; moved 3086,3231 → 3084,3236; execution rejected or failed. Reward 2.93.",
-      "importance": 2.17,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "npc diango",
-        "loc crate",
-        "loc staircase"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu67v03-9pcx9s",
-      "createdAt": "2026-08-15T09:25:45.267Z",
-      "tick": 39007,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 5) worked across 5 similar samples with average reward 2.67.",
-      "importance": 3.67,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
     {
       "id": "msu6841m-0xve7y",
       "createdAt": "2026-08-15T09:25:56.986Z",
@@ -8441,6 +8380,74 @@
         "z": 3238,
         "level": 0
       }
+    },
+    {
+      "id": "msua6zdx-djoopp",
+      "createdAt": "2026-08-15T11:17:02.757Z",
+      "tick": 61265,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 2). Result: +1730 XP; 13 damage dealt; moved 3085,3238 → 3083,3240; execution rejected or failed. Reward 4.78.",
+      "importance": 3.09,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves",
+        "loc door"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      }
+    },
+    {
+      "id": "msua6zdx-5jrzcr",
+      "createdAt": "2026-08-15T11:17:02.757Z",
+      "tick": 61265,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 2) worked across 25 similar samples with average reward 4.02.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      }
+    },
+    {
+      "id": "msua7ab9-108hvv",
+      "createdAt": "2026-08-15T11:17:16.917Z",
+      "tick": 61312,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3083,3240 → 3092,3243; new: agent:Testeee, loc:Bush, loc:Wardrobe, loc:Broom, loc:Mirror. Reward 1.35.",
+      "importance": 1.38,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent testeee",
+        "loc bush",
+        "loc wardrobe",
+        "loc broom",
+        "loc mirror"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9050,14 +9057,14 @@
         "exampleReason": "I have confirmed the message from Zemogemmae4b: Time to collect my due from the castle c."
       },
       "npc:attack:dark wizard": {
-        "n": 24,
-        "avgReward": 3.9891,
-        "positive": 21,
+        "n": 25,
+        "avgReward": 4.0207,
+        "positive": 22,
         "negative": 2,
-        "lastReward": 6.43,
-        "lastAt": "2026-08-15T11:11:45.975Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I am ready to attack the Dark wizard at level 7, distance 1, which is the next step in the plan to collect shrimps and anchovies from safe fishing locations in Draynor Village."
+        "lastReward": 4.78,
+        "lastAt": "2026-08-15T11:17:02.757Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I need to attack the Dark wizard to get the fish resources. The current action is to attack the Dark wizard (level 7, distance 1) to gain XP and level. I will proceed with this act"
       },
       "loc:chop down:tree": {
         "n": 2,
@@ -11750,14 +11757,14 @@
         "exampleReason": "I have picked up Bones (distance 3) from the location."
       },
       "skill:travel:draynor-bank": {
-        "n": 1,
-        "avgReward": 1.45,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 1.4,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 1.45,
-        "lastAt": "2026-08-15T07:42:42.791Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate the Al Kharid mine",
-        "exampleReason": "I am now at the Draynor Bank at 3092,3243 using verified waypoint navigation"
+        "lastReward": 1.35,
+        "lastAt": "2026-08-15T11:17:16.917Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I am traveling to the Draynor Bank at 3092,3243 using verified waypoint navigation"
       },
       "style:aggressive:strength": {
         "n": 1,
@@ -14454,6 +14461,16 @@
         "lastAt": "2026-08-15T07:47:49.679Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Talk to Diango (level 0, distance 12) to gather information about the fishing spots."
+      },
+      "npc:talk to:ned": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T11:17:27.063Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Talk-to Ned (level 0, distance 12)"
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,pickup,say": {
@@ -15116,46 +15133,46 @@
     },
     "area=387:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 4,
-        "avgReward": 0.9,
+        "n": 7,
+        "avgReward": 0.2571,
         "positive": 1,
-        "negative": 3,
-        "lastReward": 5.4,
-        "lastAt": "2026-08-15T09:32:30.651Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "negative": 6,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T11:18:02.773Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:yes i would like some rope": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T09:31:53.677Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I need some rope to secure the fishing locations"
+        "lastAt": "2026-08-15T11:17:50.795Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I would like some rope."
       },
       "dialog:1:okay please sell me some rope": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T09:32:17.387Z",
-        "exampleGoal": "Plan complete; form the next objective.",
+        "lastAt": "2026-08-15T11:18:07.601Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "exampleReason": "I will go and get some wool."
       }
     },
     "area=387:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T09:32:23.673Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Wait and observe for a moment"
+        "lastAt": "2026-08-15T11:17:59.190Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "I am waiting for the dialogue to open to proceed with my plan."
       }
     },
     "area=387:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,say,social,world": {
@@ -15466,6 +15483,16 @@
         "lastAt": "2026-08-15T10:54:17.171Z",
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "Open Door (distance 6)"
+      },
+      "social:say": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T11:17:41.163Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "exampleReason": "The cook's due is paid. This cake shall be delivered to the Draynor Bank."
       }
     },
     "area=386:407:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,social,wait,world": {
@@ -15912,8 +15939,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T11:16:12.691Z",
-      "encounters": 2297,
+      "lastSeenAt": "2026-08-15T11:17:03.108Z",
+      "encounters": 2299,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16776,8 +16803,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T11:16:25.850Z",
-      "encounters": 1878,
+      "lastSeenAt": "2026-08-15T11:18:03.063Z",
+      "encounters": 1888,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16787,11 +16814,6 @@
       "facts": [],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-15T09:52:29.413Z",
-          "direction": "outgoing",
-          "text": "I have spoken publicly about the message from zemogemmae4b: flour, eggs, milk. T"
-        },
         {
           "at": "2026-08-15T09:53:07.178Z",
           "direction": "outgoing",
@@ -16886,6 +16908,11 @@
           "at": "2026-08-15T11:01:27.067Z",
           "direction": "outgoing",
           "text": "I have confirmed the message from zemogemmae4b: time to collect my due from the"
+        },
+        {
+          "at": "2026-08-15T11:17:41.472Z",
+          "direction": "outgoing",
+          "text": "The cook's due is paid. This cake shall be delivered to the draynor bank."
         }
       ]
     },
@@ -17199,8 +17226,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T11:16:25.850Z",
-      "encounters": 721,
+      "lastSeenAt": "2026-08-15T11:18:03.063Z",
+      "encounters": 731,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17210,11 +17237,6 @@
       "facts": [],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-15T08:23:24.786Z",
-          "direction": "outgoing",
-          "text": "Latest message from henryatkins: walk! :3 If you drive 50m you'll just have..."
-        },
         {
           "at": "2026-08-15T08:24:51.216Z",
           "direction": "outgoing",
@@ -17309,6 +17331,11 @@
           "at": "2026-08-15T11:01:27.067Z",
           "direction": "outgoing",
           "text": "I have confirmed the message from zemogemmae4b: time to collect my due from the"
+        },
+        {
+          "at": "2026-08-15T11:17:41.472Z",
+          "direction": "outgoing",
+          "text": "The cook's due is paid. This cake shall be delivered to the draynor bank."
         }
       ]
     },
@@ -17381,8 +17408,8 @@
     "testeee": {
       "name": "Testeee",
       "firstSeenAt": "2026-08-15T07:35:49.413Z",
-      "lastSeenAt": "2026-08-15T11:06:39.371Z",
-      "encounters": 92,
+      "lastSeenAt": "2026-08-15T11:17:51.065Z",
+      "encounters": 97,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -17406,6 +17433,11 @@
           "at": "2026-08-15T10:00:28.588Z",
           "direction": "outgoing",
           "text": "Latest message from zemogemmae4b: flour, eggs, milk. The windmill is north."
+        },
+        {
+          "at": "2026-08-15T11:17:41.472Z",
+          "direction": "outgoing",
+          "text": "The cook's due is paid. This cake shall be delivered to the draynor bank."
         }
       ]
     },
@@ -17724,8 +17756,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T11:16:25.850Z",
-      "visits": 910,
+      "lastSeenAt": "2026-08-15T11:17:17.206Z",
+      "visits": 911,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17781,12 +17813,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3085,
-      "z": 3239,
+      "x": 3083,
+      "z": 3240,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T11:16:12.691Z",
-      "visits": 800,
+      "lastSeenAt": "2026-08-15T11:17:03.108Z",
+      "visits": 802,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -17938,12 +17970,12 @@
     },
     "193:203:0": {
       "key": "193:203:0",
-      "x": 3092,
-      "z": 3256,
+      "x": 3099,
+      "z": 3255,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:04:02.709Z",
-      "lastSeenAt": "2026-08-15T10:54:31.577Z",
-      "visits": 44,
+      "lastSeenAt": "2026-08-15T11:18:03.063Z",
+      "visits": 51,
       "npcs": [
         "Banker",
         "Ned",
@@ -17957,7 +17989,6 @@
         "Leela"
       ],
       "locs": [
-        "Wardrobe",
         "Standing torch",
         "Plant",
         "Willow",
@@ -17996,7 +18027,8 @@
         "Bush",
         "Bench",
         "Cauldron",
-        "Mystical wall chart"
+        "Mystical wall chart",
+        "Charms"
       ]
     },
     "193:203:1": {
@@ -18856,10 +18888,10 @@
         "npc:attack:dark wizard",
         "npc:attack:dark wizard"
       ],
-      "n": 60,
-      "avgReward": 8.272,
-      "positive": 58,
-      "lastAt": "2026-08-15T11:11:21.666Z",
+      "n": 61,
+      "avgReward": 8.404,
+      "positive": 59,
+      "lastAt": "2026-08-15T11:17:02.757Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 8) → Attack Dark wizard (level 7, distance 1)"
     },
     "npc:attack:dark wizard > npc:attack:dark wizard > npc:attack:dark wizard": {
@@ -19540,10 +19572,10 @@
         "npc:attack:dark wizard",
         "skill:travel:draynor-bank"
       ],
-      "n": 37,
-      "avgReward": 8.702,
-      "positive": 35,
-      "lastAt": "2026-08-15T11:07:42.373Z",
+      "n": 38,
+      "avgReward": 8.897,
+      "positive": 36,
+      "lastAt": "2026-08-15T11:17:16.917Z",
       "example": "Attack Dark wizard (level 7, distance 2) → Attack Dark wizard (level 7, distance 4) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "npc:attack:dark wizard > skill:travel:draynor-bank > skill:travel:draynor-fishing": {
@@ -22408,10 +22440,10 @@
         "skill:travel:draynor-bank",
         "npc:talk to:ned"
       ],
-      "n": 2,
-      "avgReward": 5.62,
-      "positive": 2,
-      "lastAt": "2026-08-15T09:31:43.198Z",
+      "n": 3,
+      "avgReward": 5.817,
+      "positive": 3,
+      "lastAt": "2026-08-15T11:17:27.063Z",
       "example": "Attack Dark wizard (level 7, distance 7) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Ned (level 0, distance 15)"
     },
     "skill:travel:draynor-bank > npc:talk to:ned > skill:travel:draynor-bank": {
@@ -26716,10 +26748,10 @@
         "dialog:1:yes i would like some rope",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-15T09:31:58.780Z",
+      "lastAt": "2026-08-15T11:17:54.998Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Yes, I would like some rope. → Dialog 1: Click here to continue"
     },
     "dialog:1:yes i would like some rope > dialog:1:click here to continue > wait": {
@@ -26728,10 +26760,10 @@
         "dialog:1:click here to continue",
         "wait"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T09:32:03.021Z",
+      "lastAt": "2026-08-15T11:17:59.190Z",
       "example": "Dialog 1: Yes, I would like some rope. → Dialog 1: Click here to continue → Wait and observe for a moment"
     },
     "dialog:1:click here to continue > wait > dialog:1:click here to continue": {
@@ -26740,10 +26772,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T09:32:10.483Z",
+      "lastAt": "2026-08-15T11:18:02.773Z",
       "example": "Dialog 1: Click here to continue → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:1:okay please sell me some rope": {
@@ -26752,10 +26784,10 @@
         "dialog:1:click here to continue",
         "dialog:1:okay please sell me some rope"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T09:32:17.387Z",
+      "lastAt": "2026-08-15T11:18:07.601Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Okay, please sell me some rope."
     },
     "dialog:1:click here to continue > dialog:1:okay please sell me some rope > wait": {
@@ -28485,417 +28517,45 @@
       "positive": 1,
       "lastAt": "2026-08-15T11:13:55.549Z",
       "example": "Pick up 4 Nature rune (distance 5) → Net Fishing spot (level 0, distance 3) → Wait and observe for a moment"
+    },
+    "skill:travel:draynor-bank > npc:talk to:ned > social:say": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "npc:talk to:ned",
+        "social:say"
+      ],
+      "n": 1,
+      "avgReward": 0.83,
+      "positive": 1,
+      "lastAt": "2026-08-15T11:17:41.163Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Ned (level 0, distance 12) → Speak publicly; latest message from Zemogemmae4b: The cook's due is paid. This cake shall be complete."
+    },
+    "npc:talk to:ned > social:say > dialog:1:click here to continue": {
+      "sequence": [
+        "npc:talk to:ned",
+        "social:say",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T11:17:45.953Z",
+      "example": "Talk-to Ned (level 0, distance 12) → Speak publicly; latest message from Zemogemmae4b: The cook's due is paid. This cake shall be complete. → Dialog 1: Click here to continue"
+    },
+    "social:say > dialog:1:click here to continue > dialog:1:yes i would like some rope": {
+      "sequence": [
+        "social:say",
+        "dialog:1:click here to continue",
+        "dialog:1:yes i would like some rope"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T11:17:50.795Z",
+      "example": "Speak publicly; latest message from Zemogemmae4b: The cook's due is paid. This cake shall be complete. → Dialog 1: Click here to continue → Dialog 1: Yes, I would like some rope."
     }
   },
   "discoveries": [
-    {
-      "id": "route:3085:3238:3084:3235:0",
-      "at": "2026-08-15T08:54:29.079Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3238 → 3084,3235; +397 XP; 3 damage dealt; moved 3085,3238 → 3084,3235; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3235,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3235:3086:3231:0",
-      "at": "2026-08-15T08:54:52.407Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3235 → 3086,3231; moved 3084,3235 → 3086,3231",
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3086:3231:3084:3237:0",
-      "at": "2026-08-15T08:55:29.122Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3231 → 3084,3237; +265 XP; 2 damage dealt; moved 3086,3231 → 3084,3237; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3092:3243:3084:3241:0",
-      "at": "2026-08-15T08:58:46.829Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3084,3241; +132 XP; 1 damage dealt; moved 3092,3243 → 3084,3241; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3241:3092:3243:0",
-      "at": "2026-08-15T08:58:59.976Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3241 → 3092,3243; moved 3084,3241 → 3092,3243; new: loc:Fireplace, loc:Standing torch, loc:Cauldron, loc:Rocking chair",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3084:3234:3084:3236:0",
-      "at": "2026-08-15T08:59:52.788Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3234 → 3084,3236; +665 XP; 5 damage dealt; 4 damage taken; moved 3084,3234 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3092:3243:3086:3247:0",
-      "at": "2026-08-15T09:00:18.334Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3086,3247; +2 level(s); moved 3092,3243 → 3086,3247",
-      "location": {
-        "x": 3086,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:mystical wall chart:192:202:0",
-      "at": "2026-08-15T09:00:18.649Z",
-      "kind": "place",
-      "text": "Mystical wall chart observed near 3084, 3247, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:charms:192:202:0",
-      "at": "2026-08-15T09:00:18.649Z",
-      "kind": "place",
-      "text": "Charms observed near 3084, 3247, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:chair:192:202:0",
-      "at": "2026-08-15T09:00:18.649Z",
-      "kind": "place",
-      "text": "Chair observed near 3084, 3247, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cart:192:202:0",
-      "at": "2026-08-15T09:00:18.649Z",
-      "kind": "place",
-      "text": "Cart observed near 3084, 3247, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3081:3249:3092:3243:0",
-      "at": "2026-08-15T09:00:31.223Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3249 → 3092,3243; moved 3081,3249 → 3092,3243; new: npc:Fishing spot, npc:Jail guard, loc:Bush, loc:Tree stump, loc:Boulder, loc:Pile of rope",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3239:3084:3237:0",
-      "at": "2026-08-15T09:02:54.593Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3239 → 3084,3237; +1598 XP; 12 damage dealt; moved 3085,3239 → 3084,3237; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3237:3086:3231:0",
-      "at": "2026-08-15T09:03:05.122Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3237 → 3086,3231; moved 3084,3237 → 3086,3231",
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3088:3247:0",
-      "at": "2026-08-15T09:04:43.538Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3088,3247; moved 3092,3243 → 3088,3247",
-      "location": {
-        "x": 3088,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3086:3230:3087:3238:0",
-      "at": "2026-08-15T09:04:53.725Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3230 → 3087,3238; +1 level(s); moved 3086,3230 → 3087,3238; new: npc:Diango, loc:Market stall, loc:Crate, loc:Staircase, loc:Oak",
-      "location": {
-        "x": 3087,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3242:3087:3237:0",
-      "at": "2026-08-15T09:05:05.683Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3242 → 3087,3237; +1332 XP; 10 damage dealt; moved 3092,3242 → 3087,3237; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3087:3237:3084:3235:0",
-      "at": "2026-08-15T09:05:18.030Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3237 → 3084,3235; +133 XP; 1 damage dealt; moved 3087,3237 → 3084,3235; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3235,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3086:3231:3086:3234:0",
-      "at": "2026-08-15T09:06:59.730Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3231 → 3086,3234; moved 3086,3231 → 3086,3234",
-      "location": {
-        "x": 3086,
-        "z": 3234,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3230:3084:3236:0",
-      "at": "2026-08-15T09:07:54.319Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3230 → 3084,3236; +1597 XP; +1 level(s); 12 damage dealt; moved 3087,3230 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3237:3092:3243:0",
-      "at": "2026-08-15T09:08:41.379Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3237 → 3092,3243; moved 3084,3237 → 3092,3243; new: npc:Ned, loc:Oak, loc:Bench, loc:Shelves, loc:Cooking shelves",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3085:3241:0",
-      "at": "2026-08-15T09:08:54.624Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3085,3241; +798 XP; 6 damage dealt; moved 3092,3243 → 3085,3241; execution rejected or failed",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3085:3241:3092:3243:0",
-      "at": "2026-08-15T09:09:09.012Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3241 → 3092,3243; moved 3085,3241 → 3092,3243; new: npc:Jail guard, loc:Standing torch, loc:Cauldron, loc:Rocking chair",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3083:3239:0",
-      "at": "2026-08-15T09:10:31.484Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3083,3239; moved 3092,3243 → 3083,3239",
-      "location": {
-        "x": 3083,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3087:3236:0",
-      "at": "2026-08-15T09:11:03.601Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3087,3236; +397 XP; moved 3092,3243 → 3087,3236; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3087:3236:3085:3237:0",
-      "at": "2026-08-15T09:11:16.549Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3236 → 3085,3237; +1462 XP; 11 damage dealt; moved 3087,3236 → 3085,3237; execution rejected or failed",
-      "location": {
-        "x": 3085,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3092:3243:3084:3236:0",
-      "at": "2026-08-15T09:12:37.517Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3084,3236; +133 XP; moved 3092,3243 → 3084,3236",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3086:3240:0",
-      "at": "2026-08-15T09:13:05.441Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3086,3240; +1332 XP; 10 damage dealt; moved 3092,3243 → 3086,3240; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3086:3240:3092:3243:0",
-      "at": "2026-08-15T09:13:19.850Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3240 → 3092,3243; moved 3086,3240 → 3092,3243; new: npc:Aggie, npc:Jail guard, loc:Oak, loc:Wardrobe, loc:Broom, loc:Mirror",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3239:3086:3237:0",
-      "at": "2026-08-15T09:13:47.731Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3239 → 3086,3237; moved 3085,3239 → 3086,3237",
-      "location": {
-        "x": 3086,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3084:3235:3092:3243:0",
-      "at": "2026-08-15T09:14:02.169Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3235 → 3092,3243; moved 3084,3235 → 3092,3243; new: agent:Jpnc4iyog9, npc:Dark wizard, npc:Jail guard, loc:Crate, loc:Staircase, loc:Oak",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3087:3240:0",
-      "at": "2026-08-15T09:14:15.971Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3087,3240; moved 3092,3243 → 3087,3240; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3087:3240:3086:3231:0",
-      "at": "2026-08-15T09:14:26.432Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3240 → 3086,3231; moved 3087,3240 → 3086,3231",
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:market stall:192:201:0",
-      "at": "2026-08-15T09:14:26.684Z",
-      "kind": "place",
-      "text": "Market stall observed near 3086, 3231, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "route:3084:3236:3084:3237:0",
       "at": "2026-08-15T09:16:00.281Z",
@@ -32087,9 +31747,417 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3085:3238:3083:3240:0",
+      "at": "2026-08-15T11:17:02.757Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3238 → 3083,3240; +1730 XP; 13 damage dealt; moved 3085,3238 → 3083,3240; execution rejected or failed",
+      "location": {
+        "x": 3083,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3092:3243:3095:3251:0",
+      "at": "2026-08-15T11:17:27.063Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3095,3251; moved 3092,3243 → 3095,3251",
+      "location": {
+        "x": 3095,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:ned:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "npc",
+      "text": "Ned observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Banker observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:dark wizard:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:leela:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "npc",
+      "text": "Leela observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:shelves:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Shelves observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cooking shelves:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Cooking shelves observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Crate observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:pile of rope:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Pile of rope observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Fern observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fireplace:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Fireplace observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rocking chair:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Rocking chair observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Tree observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Door observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Barrel observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Table observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Stool observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Staircase observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:charms:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Charms observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cart:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Cart observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Chair observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:painting:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Painting observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Plant observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Oak observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mirror:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Mirror observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broom:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Broom observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:warehouse shelves:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Warehouse shelves observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:closed chest:193:203:0",
+      "at": "2026-08-15T11:17:27.335Z",
+      "kind": "place",
+      "text": "Closed chest observed near 3097, 3253, level 0.",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T11:16:50.205Z",
+  "updatedAt": "2026-08-15T11:18:07.601Z",
   "activePlan": {
     "objective": "Reach Draynor fishing area and collect safe fish resources",
     "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
@@ -32099,12 +32167,13 @@
       {
         "id": "step-1",
         "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3083,3240 → 3092,3243; new: agent:Testeee, loc:Bush, loc:Wardrobe, loc:Broom, loc:Mirror"
       },
       {
         "id": "step-2",
         "label": "Explore north about 5 tiles to collect Shrimp/anchovies",
-        "status": "pending"
+        "status": "active"
       },
       {
         "id": "step-3",
