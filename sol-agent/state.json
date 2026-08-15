@@ -6,68 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3741,
-    "teacherChoices": 3741,
+    "totalChoices": 3743,
+    "teacherChoices": 3743,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3740,
-    "totalReward": 1746.16,
-    "saves": 377,
-    "shadowPredictions": 1902,
-    "shadowMatches": 861,
+    "completedExperiences": 3741,
+    "totalReward": 1747.61,
+    "saves": 378,
+    "shadowPredictions": 1904,
+    "shadowMatches": 862,
     "strategistRefreshes": 242,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu74qc6-ui00d4",
-      "createdAt": "2026-08-15T09:51:18.870Z",
-      "tick": 0,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Execute the current prerequisite and verify it.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
-        "explore north about 5 tiles to locate the safe fishing location at 3087 3230 and use it for level 1 fishing",
-        "speak publicly to receive the message flour eggs milk the windmill is north and use the wind"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3228,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu75424-rxcfc0",
-      "createdAt": "2026-08-15T09:51:36.652Z",
-      "tick": 44178,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3087,3227 → 3092,3243; new: agent:Goo002, agent:Goo003, npc:Diango, npc:Aggie, loc:Closed bank booth, loc:Crate. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent goo002",
-        "agent goo003",
-        "npc diango",
-        "npc aggie",
-        "loc closed bank booth",
-        "loc crate",
-        "loc staircase",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu75d0r-z2kks5",
       "createdAt": "2026-08-15T09:51:48.267Z",
@@ -8459,6 +8410,50 @@
         "z": 3240,
         "level": 0
       }
+    },
+    {
+      "id": "msub0vaz-15n5qf",
+      "createdAt": "2026-08-15T11:40:17.147Z",
+      "tick": 65913,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3240 → 3092,3243; new: npc:Aggie, loc:Wardrobe, loc:Broom, loc:Mirror, loc:Barrel. Reward 1.45.",
+      "importance": 1.42,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc aggie",
+        "loc wardrobe",
+        "loc broom",
+        "loc mirror",
+        "loc barrel"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msub0vaz-9qv19w",
+      "createdAt": "2026-08-15T11:40:17.147Z",
+      "tick": 65913,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 4 similar samples with average reward 2.85.",
+      "importance": 3.85,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -10654,14 +10649,14 @@
         "exampleReason": "I am ready to attack the Dark wizard at level 7, distance 1. I will use my combat skill to deal damage and increase XP. I will also move to the correct location to ensure the attac"
       },
       "skill:travel:draynor-bank": {
-        "n": 3,
-        "avgReward": 3.3167,
-        "positive": 3,
+        "n": 4,
+        "avgReward": 2.85,
+        "positive": 4,
         "negative": 0,
-        "lastReward": 0.85,
-        "lastAt": "2026-08-15T11:07:04.863Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I have confirmed the message from zemogemmae4b: time to collect my due from the castle c."
+        "lastReward": 1.45,
+        "lastAt": "2026-08-15T11:40:17.147Z",
+        "exampleGoal": "Open the bank to access the deposit functionality",
+        "exampleReason": "I shall travel to the Draynor Bank at 3092,3243 using verified waypoint navigation."
       },
       "loc:use:bank booth": {
         "n": 1,
@@ -16108,8 +16103,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T11:35:58.384Z",
-      "encounters": 2365,
+      "lastSeenAt": "2026-08-15T11:40:03.980Z",
+      "encounters": 2366,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16972,8 +16967,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T11:39:52.549Z",
-      "encounters": 2022,
+      "lastSeenAt": "2026-08-15T11:40:17.436Z",
+      "encounters": 2024,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17119,9 +17114,9 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T11:34:22.632Z",
-      "encounters": 390,
-      "combatLevel": 77,
+      "lastSeenAt": "2026-08-15T11:40:17.436Z",
+      "encounters": 391,
+      "combatLevel": 78,
       "trust": 0,
       "stance": "unknown",
       "conversations": 3,
@@ -17946,8 +17941,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T11:39:52.549Z",
-      "visits": 972,
+      "lastSeenAt": "2026-08-15T11:40:17.436Z",
+      "visits": 973,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -18003,12 +17998,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3087,
-      "z": 3247,
+      "x": 3085,
+      "z": 3240,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T11:36:08.194Z",
-      "visits": 834,
+      "lastSeenAt": "2026-08-15T11:40:03.980Z",
+      "visits": 835,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -18910,10 +18905,10 @@
         "npc:attack:dark wizard",
         "skill:travel:draynor-bank"
       ],
-      "n": 1,
-      "avgReward": -0.22,
-      "positive": 0,
-      "lastAt": "2026-08-14T21:54:39.950Z",
+      "n": 2,
+      "avgReward": 3.68,
+      "positive": 1,
+      "lastAt": "2026-08-15T11:40:17.147Z",
       "example": "Close the bank → Attack Dark wizard (level 7, distance 9) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "npc:attack:dark wizard > skill:travel:draynor-bank > npc:attack:dark wizard": {
@@ -29071,30 +29066,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3099:3255:3092:3243:0",
-      "at": "2026-08-15T09:32:42.270Z",
-      "kind": "route",
-      "text": "Route learned: 3099,3255 → 3092,3243; moved 3099,3255 → 3092,3243; new: npc:Dark wizard, npc:Fishing spot, npc:Diango, loc:Willow, loc:Tree stump, loc:Daisies",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:fern:193:202:0",
-      "at": "2026-08-15T09:32:42.601Z",
-      "kind": "place",
-      "text": "Fern observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "resource:tree stump:193:202:0",
       "at": "2026-08-15T09:32:42.601Z",
       "kind": "resource",
@@ -32681,9 +32652,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3085:3240:3092:3243:0",
+      "at": "2026-08-15T11:40:17.147Z",
+      "kind": "route",
+      "text": "Route learned: 3085,3240 → 3092,3243; moved 3085,3240 → 3092,3243; new: npc:Aggie, loc:Wardrobe, loc:Broom, loc:Mirror, loc:Barrel",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T11:40:03.702Z",
+  "updatedAt": "2026-08-15T11:40:28.959Z",
   "activePlan": {
     "objective": "Deposit all items in the bank to avoid failed actions",
     "focus": "Open the bank to access the deposit functionality",
@@ -32699,12 +32682,13 @@
       {
         "id": "step-2",
         "label": "Deposit all Coins using the bank slot",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3085,3240 → 3092,3243; new: npc:Aggie, loc:Wardrobe, loc:Broom, loc:Mirror, loc:Barrel"
       },
       {
         "id": "step-3",
         "label": "Verify that all items have been successfully deposited by checking the bank interface or inventory update",
-        "status": "pending"
+        "status": "active"
       }
     ],
     "successSignals": [
