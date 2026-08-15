@@ -6,46 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3431,
-    "teacherChoices": 3431,
+    "totalChoices": 3441,
+    "teacherChoices": 3441,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3430,
-    "totalReward": 1434.74,
-    "saves": 346,
-    "shadowPredictions": 1681,
-    "shadowMatches": 757,
-    "strategistRefreshes": 225,
+    "completedExperiences": 3440,
+    "totalReward": 1439.58,
+    "saves": 347,
+    "shadowPredictions": 1691,
+    "shadowMatches": 760,
+    "strategistRefreshes": 226,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu5berb-ppy301",
-      "createdAt": "2026-08-15T09:00:31.223Z",
-      "tick": 33960,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3081,3249 → 3092,3243; new: npc:Fishing spot, npc:Jail guard, loc:Bush, loc:Tree stump, loc:Boulder, loc:Pile of rope. Reward 1.35.",
-      "importance": 1.38,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc fishing spot",
-        "npc jail guard",
-        "loc bush",
-        "loc tree stump",
-        "loc boulder",
-        "loc pile of rope"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu5berb-25a9bo",
       "createdAt": "2026-08-15T09:00:31.223Z",
@@ -8449,6 +8422,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msu95em5-zv0g2i",
+      "createdAt": "2026-08-15T10:47:49.566Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Deposit all Coins using the 'Deposit all Coins' action.. These actions will ensure all items are deposited in the bank, freeing up inventory space for more useful items like the Shortbow and Chaos rune",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "deposit all coins using the deposit all coins action",
+        "deposit all earth rune using the deposit all earth rune action",
+        "deposit all raw rat meat using the deposit all raw rat meat action"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8538,14 +8531,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 195,
+        "n": 196,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:47:35.199Z",
-        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
-        "exampleReason": "Withdraw 1 Coins"
+        "lastAt": "2026-08-15T10:47:52.008Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "exampleReason": "Deposit all Raw rat meat"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8568,13 +8561,13 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 14,
+        "n": 16,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T10:41:19.560Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
+        "lastAt": "2026-08-15T10:48:09.095Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
         "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:chaos rune": {
@@ -8628,13 +8621,13 @@
         "exampleReason": "Close the bank"
       },
       "bank:deposit:earth rune": {
-        "n": 3,
-        "avgReward": -0.2933,
+        "n": 4,
+        "avgReward": -0.24,
         "positive": 0,
         "negative": 2,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T10:44:31.841Z",
-        "exampleGoal": "Withdraw 1 Chaos rune from the current position.",
+        "lastAt": "2026-08-15T10:47:42.400Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:bones": {
@@ -8830,24 +8823,24 @@
         "exampleReason": "I'm opening the bank to access the deposit functionality. I need to find the banker NPC or booth to proceed with depositing items. I'll start by opening the bank to access the depo"
       },
       "bank:withdraw:coins": {
-        "n": 30,
+        "n": 32,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:42:10.829Z",
-        "exampleGoal": "Withdraw 1 Chaos rune",
-        "exampleReason": "bank"
+        "lastAt": "2026-08-15T10:48:34.603Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "exampleReason": "I'm walking to the bank to deposit all the coins and items. I need to check if there are any items I haven't deposited yet. I'll proceed with the deposit action now."
       },
       "bank:deposit:coins": {
-        "n": 9,
-        "avgReward": -0.3,
+        "n": 11,
+        "avgReward": -0.2818,
         "positive": 0,
-        "negative": 7,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-15T10:41:58.835Z",
-        "exampleGoal": "Withdraw 1 Chaos rune",
-        "exampleReason": "I have successfully withdrawn 1 Chaos rune from my inventory. This contributes to my essential items for survival and combat."
+        "negative": 8,
+        "lastReward": -0.1,
+        "lastAt": "2026-08-15T10:48:27.701Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "exampleReason": "I'm preparing to open the bank and deposit all the coins. I'll start by walking to the bank coordinates and then proceed with the deposit process."
       },
       "bank:withdraw:raw anchovies": {
         "n": 2,
@@ -8878,6 +8871,26 @@
         "lastAt": "2026-08-15T02:20:56.390Z",
         "exampleGoal": "Open the bank to access deposit functionality.",
         "exampleReason": "Deposit all Bones"
+      },
+      "bank:deposit:raw rat meat": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T10:48:04.398Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "exampleReason": "I'm preparing to open the bank and deposit all the coins and items I have. I'll start by opening the bank and then depositing all the coins and items to maximize inventory space an"
+      },
+      "modal:close-bank": {
+        "n": 1,
+        "avgReward": 5.4,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 5.4,
+        "lastAt": "2026-08-15T10:48:43.248Z",
+        "exampleGoal": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "exampleReason": "Close the bank to free up space and prepare for further gameplay."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -15628,8 +15641,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T10:47:29.763Z",
-      "encounters": 2155,
+      "lastSeenAt": "2026-08-15T10:48:34.934Z",
+      "encounters": 2165,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16492,8 +16505,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:47:29.763Z",
-      "encounters": 1719,
+      "lastSeenAt": "2026-08-15T10:48:34.934Z",
+      "encounters": 1729,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16915,8 +16928,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T10:47:29.763Z",
-      "encounters": 620,
+      "lastSeenAt": "2026-08-15T10:48:34.934Z",
+      "encounters": 630,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17097,8 +17110,8 @@
     "testeee": {
       "name": "Testeee",
       "firstSeenAt": "2026-08-15T07:35:49.413Z",
-      "lastSeenAt": "2026-08-15T10:47:29.763Z",
-      "encounters": 80,
+      "lastSeenAt": "2026-08-15T10:48:34.934Z",
+      "encounters": 86,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -17418,8 +17431,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:47:29.763Z",
-      "visits": 878,
+      "lastSeenAt": "2026-08-15T10:48:34.934Z",
+      "visits": 888,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17866,10 +17879,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 57,
-      "avgReward": -0.06,
+      "n": 58,
+      "avgReward": -0.057,
       "positive": 0,
-      "lastAt": "2026-08-15T10:46:15.975Z",
+      "lastAt": "2026-08-15T10:48:34.603Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -17878,10 +17891,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 14,
-      "avgReward": -0.358,
+      "n": 15,
+      "avgReward": -0.354,
       "positive": 0,
-      "lastAt": "2026-08-15T10:47:16.902Z",
+      "lastAt": "2026-08-15T10:48:27.701Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:bronze sq shield": {
@@ -18358,10 +18371,10 @@
         "bank:withdraw:coins",
         "modal:close-bank"
       ],
-      "n": 2,
-      "avgReward": 0.75,
-      "positive": 1,
-      "lastAt": "2026-08-15T02:22:37.791Z",
+      "n": 3,
+      "avgReward": 2.3,
+      "positive": 2,
+      "lastAt": "2026-08-15T10:48:43.249Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Close the bank"
     },
     "bank:withdraw:coins > modal:close-bank > npc:attack:dark wizard": {
@@ -27430,10 +27443,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.35,
       "positive": 0,
-      "lastAt": "2026-08-15T10:41:35.156Z",
+      "lastAt": "2026-08-15T10:48:21.434Z",
       "example": "Wait and observe for a moment → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:withdraw:air rune": {
@@ -27699,6 +27712,78 @@
       "positive": 0,
       "lastAt": "2026-08-15T10:47:29.494Z",
       "example": "Deposit all Coins → Deposit all Air rune → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > bank:withdraw:coins > bank:deposit:earth rune": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:coins",
+        "bank:deposit:earth rune"
+      ],
+      "n": 1,
+      "avgReward": 0.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:47:42.400Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Earth rune"
+    },
+    "bank:withdraw:coins > bank:deposit:earth rune > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:deposit:earth rune",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:47:52.009Z",
+      "example": "Withdraw 1 Coins → Deposit all Earth rune → Withdraw 1 Coins"
+    },
+    "bank:deposit:earth rune > bank:withdraw:coins > wait": {
+      "sequence": [
+        "bank:deposit:earth rune",
+        "bank:withdraw:coins",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:47:57.689Z",
+      "example": "Deposit all Earth rune → Withdraw 1 Coins → Wait and observe for a moment"
+    },
+    "bank:withdraw:coins > wait > bank:deposit:raw rat meat": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "wait",
+        "bank:deposit:raw rat meat"
+      ],
+      "n": 1,
+      "avgReward": -0.13,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:48:04.398Z",
+      "example": "Withdraw 1 Coins → Wait and observe for a moment → Deposit all Raw rat meat"
+    },
+    "wait > bank:deposit:raw rat meat > wait": {
+      "sequence": [
+        "wait",
+        "bank:deposit:raw rat meat",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.38,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:48:09.095Z",
+      "example": "Wait and observe for a moment → Deposit all Raw rat meat → Wait and observe for a moment"
+    },
+    "bank:deposit:raw rat meat > wait > bank:deposit:coins": {
+      "sequence": [
+        "bank:deposit:raw rat meat",
+        "wait",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.53,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:48:15.055Z",
+      "example": "Deposit all Raw rat meat → Wait and observe for a moment → Deposit all Coins"
     }
   },
   "discoveries": [
@@ -31303,26 +31388,27 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T10:47:35.199Z",
+  "updatedAt": "2026-08-15T10:48:43.249Z",
   "activePlan": {
-    "objective": "Deposit all coins and withdraw necessary items from the bank",
-    "focus": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
-    "reason": "This plan ensures all coins are deposited and necessary items are withdrawn, providing clear observable evidence of the",
+    "objective": "Deposit all coins and items in the bank to maximize inventory space and prepare for further gameplay.",
+    "focus": "Deposit all Coins using the 'Deposit all Coins' action.",
+    "reason": "These actions will ensure all items are deposited in the bank, freeing up inventory space for more useful items like the Shortbow and Chaos rune",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
-        "status": "active"
+        "label": "Deposit all Coins using the 'Deposit all Coins' action.",
+        "status": "done",
+        "evidence": "+2 level(s)"
       },
       {
         "id": "step-2",
-        "label": "Withdraw 1 Coins from the bank to verify the deposit was successful.",
-        "status": "pending"
+        "label": "Deposit all Earth rune using the 'Deposit all Earth rune' action.",
+        "status": "active"
       },
       {
         "id": "step-3",
-        "label": "Withdraw 1 Bronze sq shield and 1 Chaos rune from the bank to complete the transaction and ensure proper inventory management.",
+        "label": "Deposit all Raw rat meat using the 'Deposit all Raw rat meat' action.",
         "status": "pending"
       }
     ],
@@ -31330,16 +31416,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Deposit all Coins using the 'Deposit all Coins' action to ensure they are stored in the bank.",
-      "Withdraw 1 Coins from the bank to verify the deposit was successful.",
-      "Withdraw 1 Bronze sq shield and 1 Chaos rune from the bank to complete the transaction and ensure proper inventory management."
+      "Deposit all Coins using the 'Deposit all Coins' action.",
+      "Deposit all Earth rune using the 'Deposit all Earth rune' action.",
+      "Deposit all Raw rat meat using the 'Deposit all Raw rat meat' action."
     ],
     "avoid": [
       "Deposit all Coins",
-      "Deposit all Earth rune",
-      "Deposit all Chaos rune"
+      "Deposit all Coins",
+      "Deposit all Air rune"
     ],
-    "updatedAt": "2026-08-15T10:45:37.971Z",
+    "updatedAt": "2026-08-15T10:47:49.565Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
