@@ -6,89 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2891,
-    "teacherChoices": 2891,
+    "totalChoices": 2901,
+    "teacherChoices": 2901,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2890,
-    "totalReward": 1218.09,
-    "saves": 292,
-    "shadowPredictions": 1296,
-    "shadowMatches": 571,
+    "completedExperiences": 2900,
+    "totalReward": 1220.97,
+    "saves": 293,
+    "shadowPredictions": 1298,
+    "shadowMatches": 572,
     "strategistRefreshes": 197,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu3ly5l-k7w7mo",
-      "createdAt": "2026-08-15T08:12:43.689Z",
-      "tick": 24402,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3238 → 3092,3243; new: loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu3mavt-7fp8dx",
-      "createdAt": "2026-08-15T08:13:00.185Z",
-      "tick": 24457,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to the Draynor fishing area at 3087,3230 and verify arrival. Result: +1 level(s); moved 3092,3243 → 3087,3230; new: agent:Gpgather1, npc:Black Knight, loc:Bullrushes, loc:Stones, loc:Thistle. Reward 3.85.",
-      "importance": 2.63,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "fishing",
-        "resource",
-        "repository coordinate",
-        "agent gpgather1",
-        "npc black knight",
-        "loc bullrushes",
-        "loc stones",
-        "loc thistle"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu3mb39-uwwoqk",
-      "createdAt": "2026-08-15T08:13:00.453Z",
-      "tick": 24421,
-      "runNumber": 48,
-      "kind": "relationship",
-      "text": "Zemogemmae4b said: \"I want to wash my car. The car wash is 50m away. Should i walk or drive\". Current stance unknown, trust 0.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "zemogemmae4b",
-        "unknown"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "msu3mskf-1djbzv",
       "createdAt": "2026-08-15T08:13:23.103Z",
@@ -8471,6 +8401,72 @@
         "z": 3237,
         "level": 0
       }
+    },
+    {
+      "id": "msu6f06d-b3cw0l",
+      "createdAt": "2026-08-15T09:31:18.565Z",
+      "tick": 40118,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 1). Result: +1598 XP; 12 damage dealt; execution rejected or failed. Reward 4.55.",
+      "importance": 2.97,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3236,
+        "level": 0
+      }
+    },
+    {
+      "id": "msu6f06d-run881",
+      "createdAt": "2026-08-15T09:31:18.565Z",
+      "tick": 40118,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 1) worked across 27 similar samples with average reward 3.10.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3084,
+        "z": 3236,
+        "level": 0
+      }
+    },
+    {
+      "id": "msu6falw-n5sh0h",
+      "createdAt": "2026-08-15T09:31:32.084Z",
+      "tick": 40163,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3236 → 3092,3243; new: agent:Ze0hqj0xy, npc:Ned, npc:Jail guard, loc:Oak, loc:Bench, loc:Shelves. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent ze0hqj0xy",
+        "npc ned",
+        "npc jail guard",
+        "loc oak",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -12314,14 +12310,14 @@
         "exampleReason": "I've successfully traveled to Draynor Bank at 3092,3243 using verified waypoint navigation. I've moved from 3084,3235 to 3092,3243. I feel weaker, but I'm on my"
       },
       "npc:attack:dark wizard": {
-        "n": 26,
-        "avgReward": 3.0396,
-        "positive": 20,
+        "n": 27,
+        "avgReward": 3.0955,
+        "positive": 21,
         "negative": 5,
-        "lastReward": -1.85,
-        "lastAt": "2026-08-15T09:27:26.075Z",
+        "lastReward": 4.55,
+        "lastAt": "2026-08-15T09:31:18.565Z",
         "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "I am ready to attack the Dark wizard (level 7, distance 1) with my combat skill."
+        "exampleReason": "I will attack the Dark wizard at level 7, distance 2 to gain XP and damage. This action will help me progress in the game."
       },
       "social:say": {
         "n": 10,
@@ -13328,6 +13324,16 @@
         "lastAt": "2026-08-15T09:00:18.334Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I need to talk to Ned to get more information about the Draynor village."
+      },
+      "npc:talk to:ned": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T09:31:43.198Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Talk-to Ned (level 0, distance 12) to gather more information about the location."
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,npc,social,wait,world": {
@@ -14344,6 +14350,16 @@
         "lastAt": "2026-08-15T08:54:52.407Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I found a net fishing spot at level 0, distance 4. I can use it to gather resources for progression."
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-15T09:31:32.084Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I have successfully traveled to Draynor Bank at 3092,3243 using verified waypoint navigation. I now have access to the necessary information to explore further."
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,inventory,navigation-skill,npc,pickup,say,social,wait,world": {
@@ -14482,6 +14498,50 @@
         "lastAt": "2026-08-15T09:28:17.399Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Bait Fishing spot (level 0, distance 1) - you have found a safe fishing spot."
+      }
+    },
+    "area=387:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
+      "dialog:1:click here to continue": {
+        "n": 3,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T09:32:10.483Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I will click to continue with the next objective to secure and explore safe fishing locations."
+      },
+      "dialog:1:yes i would like some rope": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T09:31:53.677Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I need some rope to secure the fishing locations"
+      },
+      "dialog:1:okay please sell me some rope": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T09:32:17.387Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "I will go and get some wool."
+      }
+    },
+    "area=387:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
+      "wait": {
+        "n": 2,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-15T09:32:23.673Z",
+        "exampleGoal": "Plan complete; form the next objective.",
+        "exampleReason": "Wait and observe for a moment"
       }
     }
   },
@@ -14882,8 +14942,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T09:30:38.079Z",
-      "encounters": 1706,
+      "lastSeenAt": "2026-08-15T09:31:18.876Z",
+      "encounters": 1708,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -15746,8 +15806,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T09:30:52.513Z",
-      "encounters": 1209,
+      "lastSeenAt": "2026-08-15T09:32:17.683Z",
+      "encounters": 1219,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -15893,8 +15953,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T09:26:39.617Z",
-      "encounters": 292,
+      "lastSeenAt": "2026-08-15T09:32:17.683Z",
+      "encounters": 293,
       "combatLevel": 72,
       "trust": 0,
       "stance": "unknown",
@@ -16297,8 +16357,8 @@
     "ze0hqj0xy": {
       "name": "Ze0hqj0xy",
       "firstSeenAt": "2026-08-15T07:42:04.691Z",
-      "lastSeenAt": "2026-08-15T09:27:50.731Z",
-      "encounters": 16,
+      "lastSeenAt": "2026-08-15T09:31:32.373Z",
+      "encounters": 17,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -16536,8 +16596,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T09:30:52.513Z",
-      "visits": 613,
+      "lastSeenAt": "2026-08-15T09:31:32.373Z",
+      "visits": 614,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -16594,11 +16654,11 @@
     "192:202:0": {
       "key": "192:202:0",
       "x": 3084,
-      "z": 3237,
+      "z": 3236,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T09:30:38.079Z",
-      "visits": 650,
+      "lastSeenAt": "2026-08-15T09:31:18.876Z",
+      "visits": 652,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -16751,11 +16811,11 @@
     "193:203:0": {
       "key": "193:203:0",
       "x": 3099,
-      "z": 3253,
+      "z": 3255,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:04:02.709Z",
-      "lastSeenAt": "2026-08-15T08:47:43.223Z",
-      "visits": 31,
+      "lastSeenAt": "2026-08-15T09:32:17.683Z",
+      "visits": 38,
       "npcs": [
         "Banker",
         "Ned",
@@ -16769,13 +16829,6 @@
         "Leela"
       ],
       "locs": [
-        "Door",
-        "Pile of rope",
-        "Fireplace",
-        "Broom",
-        "Rocking chair",
-        "Oak",
-        "Bush",
         "Bench",
         "Cauldron",
         "Mystical wall chart",
@@ -16808,7 +16861,14 @@
         "Cooking shelves",
         "Fern",
         "Crate",
-        "Mirror"
+        "Mirror",
+        "Barrel",
+        "Door",
+        "Pile of rope",
+        "Fireplace",
+        "Broom",
+        "Rocking chair",
+        "Oak"
       ]
     },
     "193:203:1": {
@@ -17668,10 +17728,10 @@
         "npc:attack:dark wizard",
         "npc:attack:dark wizard"
       ],
-      "n": 46,
-      "avgReward": 8.208,
-      "positive": 44,
-      "lastAt": "2026-08-15T09:30:37.891Z",
+      "n": 47,
+      "avgReward": 8.165,
+      "positive": 45,
+      "lastAt": "2026-08-15T09:31:18.565Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Attack Dark wizard (level 7, distance 8) → Attack Dark wizard (level 7, distance 1)"
     },
     "npc:attack:dark wizard > npc:attack:dark wizard > npc:attack:dark wizard": {
@@ -18352,10 +18412,10 @@
         "npc:attack:dark wizard",
         "skill:travel:draynor-bank"
       ],
-      "n": 30,
-      "avgReward": 8.734,
-      "positive": 28,
-      "lastAt": "2026-08-15T09:30:52.202Z",
+      "n": 31,
+      "avgReward": 8.652,
+      "positive": 29,
+      "lastAt": "2026-08-15T09:31:32.084Z",
       "example": "Attack Dark wizard (level 7, distance 2) → Attack Dark wizard (level 7, distance 4) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "npc:attack:dark wizard > skill:travel:draynor-bank > skill:travel:draynor-fishing": {
@@ -21220,10 +21280,10 @@
         "skill:travel:draynor-bank",
         "npc:talk to:ned"
       ],
-      "n": 1,
-      "avgReward": 5.06,
-      "positive": 1,
-      "lastAt": "2026-08-15T02:07:00.913Z",
+      "n": 2,
+      "avgReward": 5.62,
+      "positive": 2,
+      "lastAt": "2026-08-15T09:31:43.198Z",
       "example": "Attack Dark wizard (level 7, distance 7) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Ned (level 0, distance 15)"
     },
     "skill:travel:draynor-bank > npc:talk to:ned > skill:travel:draynor-bank": {
@@ -25497,129 +25557,93 @@
       "positive": 1,
       "lastAt": "2026-08-15T09:27:50.422Z",
       "example": "Net Fishing spot (level 0, distance 11) → Net Fishing spot (level 0, distance 4) → Dialog 1: Click here to continue"
+    },
+    "skill:travel:draynor-bank > npc:talk to:ned > dialog:1:click here to continue": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "npc:talk to:ned",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 1.03,
+      "positive": 1,
+      "lastAt": "2026-08-15T09:31:48.278Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Talk-to Ned (level 0, distance 12) → Dialog 1: Click here to continue"
+    },
+    "npc:talk to:ned > dialog:1:click here to continue > dialog:1:yes i would like some rope": {
+      "sequence": [
+        "npc:talk to:ned",
+        "dialog:1:click here to continue",
+        "dialog:1:yes i would like some rope"
+      ],
+      "n": 1,
+      "avgReward": -1.12,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:31:53.677Z",
+      "example": "Talk-to Ned (level 0, distance 12) → Dialog 1: Click here to continue → Dialog 1: Yes, I would like some rope."
+    },
+    "dialog:1:click here to continue > dialog:1:yes i would like some rope > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:yes i would like some rope",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:31:58.780Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: Yes, I would like some rope. → Dialog 1: Click here to continue"
+    },
+    "dialog:1:yes i would like some rope > dialog:1:click here to continue > wait": {
+      "sequence": [
+        "dialog:1:yes i would like some rope",
+        "dialog:1:click here to continue",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:32:03.021Z",
+      "example": "Dialog 1: Yes, I would like some rope. → Dialog 1: Click here to continue → Wait and observe for a moment"
+    },
+    "dialog:1:click here to continue > wait > dialog:1:click here to continue": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "wait",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:32:10.483Z",
+      "example": "Dialog 1: Click here to continue → Wait and observe for a moment → Dialog 1: Click here to continue"
+    },
+    "wait > dialog:1:click here to continue > dialog:1:okay please sell me some rope": {
+      "sequence": [
+        "wait",
+        "dialog:1:click here to continue",
+        "dialog:1:okay please sell me some rope"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:32:17.387Z",
+      "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Okay, please sell me some rope."
+    },
+    "dialog:1:click here to continue > dialog:1:okay please sell me some rope > wait": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:1:okay please sell me some rope",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T09:32:23.673Z",
+      "example": "Dialog 1: Click here to continue → Dialog 1: Okay, please sell me some rope. → Wait and observe for a moment"
     }
   },
   "discoveries": [
-    {
-      "id": "place:fern:193:202:0",
-      "at": "2026-08-15T07:54:53.337Z",
-      "kind": "place",
-      "text": "Fern observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree stump:193:202:0",
-      "at": "2026-08-15T07:54:53.337Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:193:202:0",
-      "at": "2026-08-15T07:54:53.337Z",
-      "kind": "place",
-      "text": "Daisies observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3087:3228:3084:3236:0",
-      "at": "2026-08-15T07:56:00.851Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3228 → 3084,3236; +1597 XP; 11 damage dealt; moved 3087,3228 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3087:3230:3092:3243:0",
-      "at": "2026-08-15T07:56:25.116Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3230 → 3092,3243; moved 3087,3230 → 3092,3243; new: npc:Diango, npc:Ned, loc:Crate, loc:Staircase, loc:Bench, loc:Shelves",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:oak:193:202:0",
-      "at": "2026-08-15T07:56:25.463Z",
-      "kind": "place",
-      "text": "Oak observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bench:193:202:0",
-      "at": "2026-08-15T07:56:25.463Z",
-      "kind": "place",
-      "text": "Bench observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:boulder:193:202:0",
-      "at": "2026-08-15T07:56:25.463Z",
-      "kind": "place",
-      "text": "Boulder observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:shelves:193:202:0",
-      "at": "2026-08-15T07:56:25.463Z",
-      "kind": "place",
-      "text": "Shelves observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking shelves:193:202:0",
-      "at": "2026-08-15T07:56:25.463Z",
-      "kind": "place",
-      "text": "Cooking shelves observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "route:3087:3230:3086:3230:0",
       "at": "2026-08-15T07:56:51.287Z",
@@ -29099,9 +29123,129 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "place:willow:193:202:0",
+      "at": "2026-08-15T09:31:32.373Z",
+      "kind": "place",
+      "text": "Willow observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:193:202:0",
+      "at": "2026-08-15T09:31:32.373Z",
+      "kind": "place",
+      "text": "Crate observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:staircase:193:202:0",
+      "at": "2026-08-15T09:31:32.373Z",
+      "kind": "place",
+      "text": "Staircase observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3243:3097:3253:0",
+      "at": "2026-08-15T09:31:43.199Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3097,3253; moved 3092,3243 → 3097,3253",
+      "location": {
+        "x": 3097,
+        "z": 3253,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:aggie:193:203:0",
+      "at": "2026-08-15T09:31:43.531Z",
+      "kind": "npc",
+      "text": "Aggie observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:morgan:193:203:0",
+      "at": "2026-08-15T09:31:43.531Z",
+      "kind": "npc",
+      "text": "Morgan observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wheat:193:203:0",
+      "at": "2026-08-15T09:31:43.531Z",
+      "kind": "place",
+      "text": "Wheat observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:193:203:0",
+      "at": "2026-08-15T09:31:43.531Z",
+      "kind": "place",
+      "text": "Bench observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:rat:193:203:0",
+      "at": "2026-08-15T09:31:53.986Z",
+      "kind": "npc",
+      "text": "Rat observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "danger:jail guard:193:203:0",
+      "at": "2026-08-15T09:32:10.791Z",
+      "kind": "danger",
+      "text": "Jail guard observed near 3099, 3255, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3255,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T09:31:05.673Z",
+  "updatedAt": "2026-08-15T09:32:23.673Z",
   "activePlan": {
     "objective": "Secure and explore safe fishing locations to gather resources and advance in the game.",
     "focus": "Plan complete; form the next objective.",
