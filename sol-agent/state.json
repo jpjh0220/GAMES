@@ -6,42 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1450,
-    "teacherChoices": 1450,
+    "totalChoices": 1460,
+    "teacherChoices": 1460,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1450,
-    "totalReward": 677.16,
-    "saves": 146,
-    "shadowPredictions": 607,
-    "shadowMatches": 268,
-    "strategistRefreshes": 79,
+    "completedExperiences": 1460,
+    "totalReward": 677.01,
+    "saves": 147,
+    "shadowPredictions": 617,
+    "shadowMatches": 271,
+    "strategistRefreshes": 80,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstloc3t-frzo3g",
-      "createdAt": "2026-08-14T23:50:41.993Z",
-      "tick": 27165,
-      "runNumber": 37,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 5). Result: +133 XP; 1 damage dealt; moved 3086,3231 → 3084,3236; execution rejected or failed. Reward 1.64.",
-      "importance": 1.52,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "npc diango",
-        "loc crate",
-        "loc staircase"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
     {
       "id": "mstlp6gh-ll7wf9",
       "createdAt": "2026-08-14T23:51:21.329Z",
@@ -8703,6 +8680,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "mstr0x4z-8cw6fy",
+      "createdAt": "2026-08-15T02:20:27.203Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Open the bank to access deposit functionality.. This plan ensures efficient resource management and maximizes available items for combat, using a named repository-tested escape or travel skill (bank slot deposit). Every step has observable evidence and aligns with",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "open the bank to access deposit functionality",
+        "deposit all coins bones and other items using the bank slot",
+        "verify that all items have been successfully deposited by checking the bank interface or inventory updates"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8822,14 +8819,14 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 7,
+        "n": 8,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T02:20:02.719Z",
+        "lastAt": "2026-08-15T02:20:19.494Z",
         "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "I need to wait for the bank to open before proceeding with my plan."
+        "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:chaos rune": {
         "n": 5,
@@ -8974,24 +8971,24 @@
         "exampleReason": "I'm opening the bank to access the deposit functionality. I need to find the banker NPC or booth to proceed with depositing items. I'll start by opening the bank to access the depo"
       },
       "bank:withdraw:coins": {
-        "n": 11,
+        "n": 14,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T02:18:20.419Z",
-        "exampleGoal": "Open the bank to access deposit functionality",
-        "exampleReason": "Open the bank to access deposit functionality"
+        "lastAt": "2026-08-15T02:21:16.785Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Banking action initiated successfully. You now have the opportunity to deposit items like Bones, Coins, and other bank-related items. The next step is to proceed with the deposit p"
       },
       "bank:deposit:coins": {
-        "n": 3,
-        "avgReward": -0.3333,
+        "n": 5,
+        "avgReward": -0.26,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -0.5,
-        "lastAt": "2026-08-14T21:52:17.993Z",
-        "exampleGoal": "Open the bank to access the deposit functionality.",
-        "exampleReason": "I have successfully opened the bank to access the deposit functionality. I now proceed to deposit all coins and raw anchovies as per the plan."
+        "negative": 3,
+        "lastReward": -0.2,
+        "lastAt": "2026-08-15T02:21:09.313Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Deposit all Coins"
       },
       "bank:withdraw:raw anchovies": {
         "n": 2,
@@ -9002,6 +8999,26 @@
         "lastAt": "2026-08-14T21:52:39.028Z",
         "exampleGoal": "Open the bank to access the deposit functionality.",
         "exampleReason": "I have successfully deposited all Raw anchovies in the bank to avoid failed actions."
+      },
+      "bank:withdraw:bones": {
+        "n": 2,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-15T02:20:50.097Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Withdraw 1 Bones"
+      },
+      "bank:deposit:bones": {
+        "n": 2,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T02:20:56.390Z",
+        "exampleGoal": "Open the bank to access deposit functionality.",
+        "exampleReason": "Deposit all Bones"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,wait,world": {
@@ -12803,8 +12820,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:18:06.922Z",
-      "encounters": 662,
+      "lastSeenAt": "2026-08-15T02:21:09.581Z",
+      "encounters": 665,
       "combatLevel": 54,
       "trust": 0,
       "stance": "unknown",
@@ -13196,8 +13213,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T02:19:56.427Z",
-      "encounters": 1079,
+      "lastSeenAt": "2026-08-15T02:21:09.581Z",
+      "encounters": 1089,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -13943,8 +13960,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T02:19:56.427Z",
-      "encounters": 426,
+      "lastSeenAt": "2026-08-15T02:21:09.581Z",
+      "encounters": 436,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14251,8 +14268,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:19:56.427Z",
-      "visits": 429,
+      "lastSeenAt": "2026-08-15T02:21:09.581Z",
+      "visits": 439,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -14673,10 +14690,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 38,
-      "avgReward": -0.06,
+      "n": 39,
+      "avgReward": -0.058,
       "positive": 0,
-      "lastAt": "2026-08-15T02:19:56.077Z",
+      "lastAt": "2026-08-15T02:21:16.785Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -19113,10 +19130,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
-      "avgReward": -0.08,
+      "n": 2,
+      "avgReward": -0.13,
       "positive": 0,
-      "lastAt": "2026-08-15T02:12:32.715Z",
+      "lastAt": "2026-08-15T02:21:09.313Z",
       "example": "Deposit all Bones → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:withdraw:coins > bank:withdraw:air rune": {
@@ -19197,10 +19214,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:bones"
       ],
-      "n": 1,
-      "avgReward": -0.22,
+      "n": 2,
+      "avgReward": -0.07,
       "positive": 0,
-      "lastAt": "2026-08-15T02:18:40.817Z",
+      "lastAt": "2026-08-15T02:20:50.097Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Bones"
     },
     "bank:withdraw:coins > bank:withdraw:bones > bank:deposit:bones": {
@@ -19209,10 +19226,10 @@
         "bank:withdraw:bones",
         "bank:deposit:bones"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.1,
       "positive": 0,
-      "lastAt": "2026-08-15T02:18:47.720Z",
+      "lastAt": "2026-08-15T02:20:56.390Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Bones → Deposit all Bones"
     },
     "bank:withdraw:bones > bank:deposit:bones > bank:withdraw:bones": {
@@ -19298,6 +19315,78 @@
       "positive": 0,
       "lastAt": "2026-08-15T02:19:42.613Z",
       "example": "Deposit all Fire rune → Withdraw 1 Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > wait > bank:withdraw:bones": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "wait",
+        "bank:withdraw:bones"
+      ],
+      "n": 1,
+      "avgReward": 0.03,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:20:09.921Z",
+      "example": "Withdraw 1 Coins → Wait and observe for a moment → Withdraw 1 Bones"
+    },
+    "wait > bank:withdraw:bones > wait": {
+      "sequence": [
+        "wait",
+        "bank:withdraw:bones",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.22,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:20:19.494Z",
+      "example": "Wait and observe for a moment → Withdraw 1 Bones → Wait and observe for a moment"
+    },
+    "bank:withdraw:bones > wait > bank:deposit:bones": {
+      "sequence": [
+        "bank:withdraw:bones",
+        "wait",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.15,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:20:28.806Z",
+      "example": "Withdraw 1 Bones → Wait and observe for a moment → Deposit all Bones"
+    },
+    "wait > bank:deposit:bones > bank:deposit:coins": {
+      "sequence": [
+        "wait",
+        "bank:deposit:bones",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.33,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:20:36.293Z",
+      "example": "Wait and observe for a moment → Deposit all Bones → Deposit all Coins"
+    },
+    "bank:deposit:bones > bank:deposit:coins > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:bones",
+        "bank:deposit:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:20:42.923Z",
+      "example": "Deposit all Bones → Deposit all Coins → Withdraw 1 Coins"
+    },
+    "bank:withdraw:bones > bank:deposit:bones > bank:withdraw:coins": {
+      "sequence": [
+        "bank:withdraw:bones",
+        "bank:deposit:bones",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:21:02.816Z",
+      "example": "Withdraw 1 Bones → Deposit all Bones → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -22902,43 +22991,43 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T02:20:02.719Z",
+  "updatedAt": "2026-08-15T02:21:16.785Z",
   "activePlan": {
-    "objective": "Deposit all items in the bank to avoid failed actions",
-    "focus": "Open the bank to access deposit functionality",
-    "reason": "This approach ensures all items are properly deposited, avoiding the failed actions listed in the guide.",
+    "objective": "Deposit all items in the bank to maximize resources for combat.",
+    "focus": "Open the bank to access deposit functionality.",
+    "reason": "This plan ensures efficient resource management and maximizes available items for combat, using a named repository-tested escape or travel skill (bank slot deposit). Every step has observable evidence and aligns with",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access deposit functionality",
+        "label": "Open the bank to access deposit functionality.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all Coins using the bank's deposit feature",
+        "label": "Deposit all coins, bones, and other items using the bank slot.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all items have been successfully deposited by checking the bank's inventory or logs",
+        "label": "Verify that all items have been successfully deposited by checking the bank interface or inventory updates.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Bank successfully opened and items deposited without errors."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Open the bank to access deposit functionality",
-      "Deposit all Coins using the bank's deposit feature",
-      "Verify that all items have been successfully deposited by checking the bank's inventory or logs"
+      "Open the bank to access deposit functionality.",
+      "Deposit all coins, bones, and other items using the bank slot.",
+      "Verify that all items have been successfully deposited by checking the bank interface or inventory updates."
     ],
     "avoid": [
-      "Deposit all Bronze arrow",
+      "Deposit all Fire rune",
       "Deposit all Coins",
-      "Deposit all Coins"
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T02:18:03.057Z",
+    "updatedAt": "2026-08-15T02:20:27.203Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
