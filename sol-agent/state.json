@@ -6,37 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 4282,
-    "teacherChoices": 4282,
+    "totalChoices": 4292,
+    "teacherChoices": 4292,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 4280,
-    "totalReward": 2080.26,
-    "saves": 433,
-    "shadowPredictions": 2262,
-    "shadowMatches": 992,
+    "completedExperiences": 4290,
+    "totalReward": 2080.99,
+    "saves": 434,
+    "shadowPredictions": 2266,
+    "shadowMatches": 993,
     "strategistRefreshes": 272,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msub0c34-29caig",
-      "createdAt": "2026-08-15T11:39:52.240Z",
-      "tick": 65830,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Close the bank. Result: +1 level(s). Reward 2.4.",
-      "importance": 1.9,
-      "tags": [
-        "modal",
-        "bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msub0c34-36q7n4",
       "createdAt": "2026-08-15T11:39:52.240Z",
@@ -8278,6 +8260,24 @@
         "z": 3231,
         "level": 0
       }
+    },
+    {
+      "id": "msuw1usf-ybc18b",
+      "createdAt": "2026-08-15T21:28:55.071Z",
+      "tick": 19486,
+      "runNumber": 67,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to the Draynor fishing area at 3087,3230 and verify arrival worked across 12 similar samples with average reward 1.23.",
+      "importance": 2.23,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor fishing"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9121,12 +9121,12 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 465,
-        "avgReward": -0.1549,
-        "positive": 58,
-        "negative": 407,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:27:35.578Z",
+        "n": 468,
+        "avgReward": -0.1514,
+        "positive": 59,
+        "negative": 409,
+        "lastReward": 2.4,
+        "lastAt": "2026-08-15T21:28:27.470Z",
         "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
         "exampleReason": "Click here to continue"
       },
@@ -9511,14 +9511,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 133,
+        "n": 135,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T21:23:46.740Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I'm waiting for a moment to observe the environment and gather information about the safe fishing locations."
+        "lastAt": "2026-08-15T21:28:22.973Z",
+        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "exampleReason": "I am waiting for the next step to progress."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
@@ -10649,14 +10649,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
       "skill:travel:draynor-fishing": {
-        "n": 11,
-        "avgReward": 1.2865,
-        "positive": 11,
+        "n": 12,
+        "avgReward": 1.2335,
+        "positive": 12,
         "negative": 0,
-        "lastReward": 3.65,
-        "lastAt": "2026-08-15T11:19:29.851Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "I need to verify my arrival at the Draynor fishing area at 3087,3230 to ensure I'm there. I'll check the coordinates and confirm the location before proceeding."
+        "lastReward": 0.65,
+        "lastAt": "2026-08-15T21:28:55.071Z",
+        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "exampleReason": "I have successfully reached the Draynor fishing area at 3087,3230 and verified arrival. I now proceed to explore other potential locations around the area to gather more anchovies "
       },
       "npc:net:fishing spot": {
         "n": 2,
@@ -11091,14 +11091,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait": {
       "npc:net:fishing spot": {
-        "n": 38,
-        "avgReward": -0.6982,
+        "n": 39,
+        "avgReward": -0.6957,
         "positive": 1,
-        "negative": 36,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-15T21:27:30.188Z",
+        "negative": 37,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T21:27:46.096Z",
         "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
-        "exampleReason": "I have successfully reached the Net Fishing spot (level 0, distance 2)."
+        "exampleReason": "I have successfully located a Net Fishing spot (level 0, distance 1) in the Draynor area. This is a good start for collecting anchovies and shrimps. Let's proceed with this action "
       },
       "walk:north": {
         "n": 3,
@@ -11233,14 +11233,14 @@
         "exampleReason": "I have completed the plan to navigate to Draynor Bank at 3092,3243 using verified waypoint navigation. This action contributes to my progress in the safe route strategy. I now have"
       },
       "npc:bait:fishing spot": {
-        "n": 13,
-        "avgReward": -0.6876,
+        "n": 15,
+        "avgReward": -0.7139,
         "positive": 0,
-        "negative": 12,
+        "negative": 14,
         "lastReward": -1.17,
-        "lastAt": "2026-08-15T21:22:14.599Z",
-        "exampleGoal": "Plan complete; form the next objective.",
-        "exampleReason": "Bait Fishing spot (level 0, distance 1)"
+        "lastAt": "2026-08-15T21:28:18.201Z",
+        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "exampleReason": "I need to explore the bait fishing spot to gather anchovies and shrimps for progression."
       },
       "style:aggressive:strength": {
         "n": 1,
@@ -15509,14 +15509,14 @@
         "exampleReason": "I am using the escape skill to flee from the dungeon, which is a key part of my active plan. I have 98 health, and I can perform a combat attack on the Black Knight (level 33, dist"
       },
       "skill:travel:draynor-bank": {
-        "n": 1,
+        "n": 2,
         "avgReward": 1.55,
-        "positive": 1,
+        "positive": 2,
         "negative": 0,
         "lastReward": 1.55,
-        "lastAt": "2026-08-15T09:51:36.652Z",
-        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
-        "exampleReason": "I am now at Draynor Bank, a verified waypoint. I will explore the area to gather resources for combat."
+        "lastAt": "2026-08-15T21:28:38.595Z",
+        "exampleGoal": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
+        "exampleReason": "I am currently exploring the area north of z=3240, which is a safe location to find fishing spots. I will continue to explore in the north and west directions to locate more safe f"
       },
       "npc:attack:dark wizard": {
         "n": 1,
@@ -16491,8 +16491,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 2832,
+      "lastSeenAt": "2026-08-15T21:28:27.798Z",
+      "encounters": 2841,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -17356,8 +17356,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 2511,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "encounters": 2521,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17784,8 +17784,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 1094,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "encounters": 1104,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17915,8 +17915,8 @@
     "stasis": {
       "name": "Stasis",
       "firstSeenAt": "2026-08-15T06:17:23.863Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 91,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "encounters": 101,
       "trust": 0.12,
       "stance": "unknown",
       "conversations": 5,
@@ -18356,8 +18356,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-15T19:51:38.287Z",
-      "lastSeenAt": "2026-08-15T21:12:54.161Z",
-      "encounters": 243,
+      "lastSeenAt": "2026-08-15T21:28:27.798Z",
+      "encounters": 245,
       "combatLevel": 125,
       "trust": 0,
       "stance": "unknown",
@@ -18962,8 +18962,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 181,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "encounters": 191,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -18993,8 +18993,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "encounters": 180,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "encounters": 190,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -19074,8 +19074,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T21:25:33.193Z",
-      "visits": 1109,
+      "lastSeenAt": "2026-08-15T21:28:38.884Z",
+      "visits": 1110,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -19194,11 +19194,11 @@
     "192:201:0": {
       "key": "192:201:0",
       "x": 3086,
-      "z": 3231,
+      "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-15T21:27:30.475Z",
-      "visits": 1469,
+      "lastSeenAt": "2026-08-15T21:28:27.798Z",
+      "visits": 1478,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -20171,10 +20171,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 122,
-      "avgReward": -1.146,
+      "n": 123,
+      "avgReward": -1.156,
       "positive": 20,
-      "lastAt": "2026-08-15T21:22:00.789Z",
+      "lastAt": "2026-08-15T21:27:46.096Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -20183,10 +20183,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 132,
-      "avgReward": -0.249,
+      "n": 133,
+      "avgReward": -0.261,
       "positive": 54,
-      "lastAt": "2026-08-15T21:22:05.876Z",
+      "lastAt": "2026-08-15T21:27:50.890Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -20195,10 +20195,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 54,
+      "n": 55,
       "avgReward": -1.803,
       "positive": 5,
-      "lastAt": "2026-08-15T21:22:14.599Z",
+      "lastAt": "2026-08-15T21:27:59.578Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > dialog:1:click here to continue": {
@@ -21239,10 +21239,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 81,
-      "avgReward": -0.866,
-      "positive": 11,
-      "lastAt": "2026-08-15T21:10:14.840Z",
+      "n": 83,
+      "avgReward": -0.848,
+      "positive": 12,
+      "lastAt": "2026-08-15T21:28:27.471Z",
       "example": "Bait Fishing spot (level 0, distance 9) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -21251,10 +21251,10 @@
         "dialog:1:click here to continue",
         "npc:bait:fishing spot"
       ],
-      "n": 62,
-      "avgReward": -1.056,
+      "n": 63,
+      "avgReward": -1.07,
       "positive": 8,
-      "lastAt": "2026-08-15T21:13:20.549Z",
+      "lastAt": "2026-08-15T21:28:18.201Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:bait:fishing spot > wait": {
@@ -21263,10 +21263,10 @@
         "npc:bait:fishing spot",
         "wait"
       ],
-      "n": 66,
-      "avgReward": -1.423,
+      "n": 68,
+      "avgReward": -1.429,
       "positive": 0,
-      "lastAt": "2026-08-15T21:10:10.355Z",
+      "lastAt": "2026-08-15T21:28:22.973Z",
       "example": "Dialog 1: Click here to continue → Bait Fishing spot (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > skill:travel:draynor-bank": {
@@ -21287,10 +21287,10 @@
         "skill:travel:draynor-bank",
         "skill:travel:draynor-fishing"
       ],
-      "n": 32,
-      "avgReward": 2.264,
-      "positive": 32,
-      "lastAt": "2026-08-15T21:04:13.370Z",
+      "n": 33,
+      "avgReward": 2.335,
+      "positive": 33,
+      "lastAt": "2026-08-15T21:28:55.071Z",
       "example": "Dialog 1: Click here to continue → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Travel to the Draynor fishing area at 3087,3230 and verify arrival"
     },
     "wait > dialog:1:click here to continue > walk:north": {
@@ -21347,10 +21347,10 @@
         "dialog:1:click here to continue",
         "skill:travel:draynor-bank"
       ],
-      "n": 27,
-      "avgReward": 1.8,
-      "positive": 27,
-      "lastAt": "2026-08-15T21:24:05.896Z",
+      "n": 28,
+      "avgReward": 1.871,
+      "positive": 28,
+      "lastAt": "2026-08-15T21:28:38.595Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
     },
     "dialog:1:click here to continue > skill:travel:draynor-bank > npc:net:fishing spot": {
@@ -31616,18 +31616,6 @@
   },
   "discoveries": [
     {
-      "id": "resource:tree:193:202:0",
-      "at": "2026-08-15T11:36:17.441Z",
-      "kind": "resource",
-      "text": "Tree observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:bush:193:202:0",
       "at": "2026-08-15T11:36:17.441Z",
       "kind": "place",
@@ -35214,9 +35202,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "place:stool:193:202:0",
+      "at": "2026-08-15T21:28:38.884Z",
+      "kind": "place",
+      "text": "Stool observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T21:27:35.578Z",
+  "updatedAt": "2026-08-15T21:28:55.072Z",
   "activePlan": {
     "objective": "Find and use safe fishing locations to collect anchovies and shrimps for progression.",
     "focus": "Travel to Draynor Fishing Area at (3087, 3230) using verified waypoint navigation.",
@@ -35232,12 +35232,13 @@
       {
         "id": "step-2",
         "label": "Explore north, south, east, and west to locate safe fishing spots, focusing on Net/Bait types.",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3092,3243 → 3087,3230; new: agent:Gpgather1, loc:Bullrushes, loc:Stones, loc:Thistle"
       },
       {
         "id": "step-3",
         "label": "Pick up Bones from the spot closest to the village and use them to complete the fishing task in the guide.",
-        "status": "pending"
+        "status": "active"
       }
     ],
     "successSignals": [
@@ -35255,6 +35256,6 @@
     ],
     "updatedAt": "2026-08-15T21:26:53.948Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 2
   }
 }
