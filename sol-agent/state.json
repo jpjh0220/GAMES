@@ -6,41 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 5112,
-    "teacherChoices": 5112,
+    "totalChoices": 5122,
+    "teacherChoices": 5122,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 5110,
-    "totalReward": 2690.304,
-    "saves": 516,
-    "shadowPredictions": 2805,
-    "shadowMatches": 1219,
-    "strategistRefreshes": 318,
+    "completedExperiences": 5120,
+    "totalReward": 2691.204,
+    "saves": 517,
+    "shadowPredictions": 2807,
+    "shadowMatches": 1220,
+    "strategistRefreshes": 319,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msuygn79-byi1rw",
-      "createdAt": "2026-08-15T22:36:24.309Z",
-      "tick": 32982,
-      "runNumber": 67,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 9). Result: +1198 XP; 9 damage dealt; moved 3092,3242 → 3085,3239; execution rejected or failed. Reward 4.18.",
-      "importance": 2.79,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "loc bullrushes",
-        "loc stones"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "msuygn79-or3fy4",
       "createdAt": "2026-08-15T22:36:24.309Z",
@@ -8300,6 +8278,25 @@
         "z": 3250,
         "level": 0
       }
+    },
+    {
+      "id": "msv1cgkd-mqtslx",
+      "createdAt": "2026-08-15T23:57:07.934Z",
+      "tick": 49103,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Jrsgoblin2 said: \"Woodcutting 91 (+544375 xp) firemaking 98 (+871000 xp) 871 fires in 185m 459378 xp hr total\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "jrsgoblin2",
+        "unknown"
+      ],
+      "location": {
+        "x": 3082,
+        "z": 3250,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9709,24 +9706,24 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 20,
+        "n": 21,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 20,
+        "negative": 21,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T23:55:39.118Z",
+        "lastAt": "2026-08-15T23:56:29.509Z",
         "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
-        "exampleReason": "Dialog 1: Click here to continue"
+        "exampleReason": "Click here to continue"
       },
       "dialog:1:toy horseys": {
-        "n": 9,
+        "n": 10,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 9,
+        "negative": 10,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T23:55:34.629Z",
+        "lastAt": "2026-08-15T23:56:35.530Z",
         "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
-        "exampleReason": "I want to talk to Diango to initiate the process."
+        "exampleReason": "I need to talk to the Toy Horseys to get their information. I'll proceed with the dialog to continue the plan."
       },
       "dialog:2:i m fine thanks": {
         "n": 1,
@@ -9887,25 +9884,25 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 6,
+        "n": 8,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T23:55:22.019Z",
-        "exampleGoal": "Use `async talkTo(target: NearbyNpc \\| string \\| RegExp)` to interact with the NPC and open the dialogue.",
-        "exampleReason": "I'm waiting for the NPC to open the dialogue to proceed with the interaction."
+        "lastAt": "2026-08-15T23:56:40.010Z",
+        "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
+        "exampleReason": "I need to wait for the dialogue to open before proceeding with the action"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal,shop": {
       "modal:close-shop": {
-        "n": 2,
-        "avgReward": 2.4,
+        "n": 3,
+        "avgReward": 1.4,
         "positive": 1,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:03:52.191Z",
-        "exampleGoal": "Click the shop interface option to close it",
+        "lastAt": "2026-08-15T23:57:12.699Z",
+        "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
         "exampleReason": "Close the shop"
       },
       "shop:sell:raw anchovies": {
@@ -9919,14 +9916,14 @@
         "exampleReason": "Sell 1 Raw anchovies for about 7"
       },
       "shop:buy:toy horsey": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T22:47:00.884Z",
-        "exampleGoal": "Use `interactLoc` to interact with the NPC location",
-        "exampleReason": "Buy 1 Toy horsey for about 150"
+        "lastAt": "2026-08-15T23:56:51.397Z",
+        "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
+        "exampleReason": "I have 150 coins to buy a Toy Horsey."
       },
       "shop:sell:mind rune": {
         "n": 1,
@@ -9941,14 +9938,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,say,social,world": {
       "npc:trade:diango": {
-        "n": 1,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T22:03:46.816Z",
-        "exampleGoal": "Click the shop interface option to close it",
-        "exampleReason": "Trade Diango (level 0, distance 1) to gain experience."
+        "lastAt": "2026-08-15T23:57:31.008Z",
+        "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
+        "exampleReason": "Talk-to Diango (level 0, distance 1) to initiate the trade with the local trader."
       },
       "skill:travel:draynor-bank": {
         "n": 1,
@@ -16395,14 +16392,14 @@
         "exampleReason": "I need to talk to the NPC to progress in the quest. The current state shows I'm at position 3080,3248,0, which is near the NPC. I'll start by clicking on Dialog 1: Toy horseys?"
       },
       "dialog:1:click here to continue": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T23:55:29.215Z",
+        "lastAt": "2026-08-15T23:56:45.401Z",
         "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
-        "exampleReason": "I need to continue the dialogue to proceed with the plan."
+        "exampleReason": "I clicked on the 'Dialog 1: Click here to continue' option"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=shop,wait": {
@@ -16453,14 +16450,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=1|cats=modal": {
       "modal:close-shop": {
-        "n": 1,
-        "avgReward": -0.6,
-        "positive": 0,
+        "n": 2,
+        "avgReward": 2.4,
+        "positive": 1,
         "negative": 1,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-15T21:17:50.599Z",
-        "exampleGoal": "Use `walkTo` with intermediate points that curve north around the danger zone to avoid the Dark Wizards.",
-        "exampleReason": "Modal"
+        "lastReward": 5.4,
+        "lastAt": "2026-08-15T23:56:55.019Z",
+        "exampleGoal": "Talk to Diango (level 0, distance 1) to initiate interaction.",
+        "exampleReason": "Close the shop"
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,pickup,say,world": {
@@ -18166,8 +18163,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "encounters": 3253,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "encounters": 3263,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -18604,8 +18601,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "encounters": 1523,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "encounters": 1533,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -18735,8 +18732,8 @@
     "stasis": {
       "name": "Stasis",
       "firstSeenAt": "2026-08-15T06:17:23.863Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "encounters": 685,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "encounters": 695,
       "trust": 0.12,
       "stance": "unknown",
       "conversations": 5,
@@ -19287,15 +19284,14 @@
     "jrsgoblin2": {
       "name": "Jrsgoblin2",
       "firstSeenAt": "2026-08-15T19:51:44.568Z",
-      "lastSeenAt": "2026-08-15T23:54:08.491Z",
+      "lastSeenAt": "2026-08-15T23:57:07.933Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 68,
+      "conversations": 69,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
-        "Woodcutting 86 (+364375 xp) firemaking 93 (+583000 xp) 583 fires in 122m 465523 xp hr total",
         "Woodcutting 86 (+369375 xp) firemaking 93 (+591000 xp) 591 fires in 125m 460519 xp hr total",
         "Woodcutting 87 (+384375 xp) firemaking 93 (+615000 xp) 615 fires in 128m 467780 xp hr total",
         "Woodcutting 87 (+393750 xp) firemaking 94 (+630000 xp) 630 fires in 132m 466983 xp hr total",
@@ -19314,15 +19310,11 @@
         "Woodcutting 90 (+511875 xp) firemaking 97 (+819000 xp) 819 fires in 173m 462899 xp hr total",
         "Woodcutting 90 (+517500 xp) firemaking 97 (+828000 xp) 828 fires in 176m 459256 xp hr total",
         "Woodcutting 91 (+526875 xp) firemaking 97 (+843000 xp) 843 fires in 179m 459614 xp hr total",
-        "Woodcutting 91 (+538750 xp) firemaking 98 (+862000 xp) 862 fires in 182m 462167 xp hr total"
+        "Woodcutting 91 (+538750 xp) firemaking 98 (+862000 xp) 862 fires in 182m 462167 xp hr total",
+        "Woodcutting 91 (+544375 xp) firemaking 98 (+871000 xp) 871 fires in 185m 459378 xp hr total"
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-15T22:54:31.374Z",
-          "direction": "incoming",
-          "text": "Woodcutting 86 (+364375 xp) firemaking 93 (+583000 xp) 583 fires in 122m 465523 xp hr total"
-        },
         {
           "at": "2026-08-15T22:57:31.379Z",
           "direction": "incoming",
@@ -19417,6 +19409,11 @@
           "at": "2026-08-15T23:54:08.491Z",
           "direction": "incoming",
           "text": "Woodcutting 91 (+538750 xp) firemaking 98 (+862000 xp) 862 fires in 182m 462167 xp hr total"
+        },
+        {
+          "at": "2026-08-15T23:57:07.933Z",
+          "direction": "incoming",
+          "text": "Woodcutting 91 (+544375 xp) firemaking 98 (+871000 xp) 871 fires in 185m 459378 xp hr total"
         }
       ]
     },
@@ -20375,8 +20372,8 @@
     "cosmicphonk": {
       "name": "Cosmicphonk",
       "firstSeenAt": "2026-08-15T23:14:25.762Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "encounters": 200,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "encounters": 210,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20491,8 +20488,8 @@
     "emberseekv4": {
       "name": "Emberseekv4",
       "firstSeenAt": "2026-08-15T23:51:58.595Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "encounters": 33,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "encounters": 43,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20675,8 +20672,8 @@
       "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-15T23:56:11.814Z",
-      "visits": 236,
+      "lastSeenAt": "2026-08-15T23:57:13.007Z",
+      "visits": 246,
       "npcs": [
         "Diango",
         "Banker",
@@ -21999,10 +21996,10 @@
         "npc:talk to:diango",
         "wait"
       ],
-      "n": 3,
-      "avgReward": 0.65,
+      "n": 4,
+      "avgReward": 0.15,
       "positive": 1,
-      "lastAt": "2026-08-15T21:16:11.280Z",
+      "lastAt": "2026-08-15T23:56:25.008Z",
       "example": "Close the shop → Talk-to Diango (level 0, distance 1) → Wait and observe for a moment"
     },
     "npc:talk to:diango > wait > dialog:1:click here to continue": {
@@ -22011,10 +22008,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 10,
-      "avgReward": -0.713,
+      "n": 11,
+      "avgReward": -0.771,
       "positive": 1,
-      "lastAt": "2026-08-15T23:55:29.215Z",
+      "lastAt": "2026-08-15T23:56:29.509Z",
       "example": "Talk-to Diango (level 0, distance 1) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > dialog:2:i m fine thanks": {
@@ -22071,10 +22068,10 @@
         "dialog:1:toy horseys",
         "wait"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T21:30:52.676Z",
+      "lastAt": "2026-08-15T23:56:40.010Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Toy horseys? → Wait and observe for a moment"
     },
     "dialog:1:toy horseys > wait > dialog:1:click here to continue": {
@@ -22083,10 +22080,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T21:30:57.769Z",
+      "lastAt": "2026-08-15T23:56:45.401Z",
       "example": "Dialog 1: Toy horseys? → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > modal:close-shop": {
@@ -22119,10 +22116,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 4.2,
-      "positive": 1,
-      "lastAt": "2026-08-14T22:03:52.191Z",
+      "positive": 2,
+      "lastAt": "2026-08-15T23:57:12.699Z",
       "example": "Close the shop → Trade Diango (level 0, distance 1) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:aggie": {
@@ -22923,10 +22920,10 @@
         "dialog:1:click here to continue",
         "dialog:1:toy horseys"
       ],
-      "n": 8,
+      "n": 9,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T23:55:34.629Z",
+      "lastAt": "2026-08-15T23:56:35.530Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Dialog 1: Toy horseys?"
     },
     "shop:sell:coins > modal:close-shop > npc:trade:diango": {
@@ -22983,10 +22980,10 @@
         "dialog:1:click here to continue",
         "shop:buy:toy horsey"
       ],
-      "n": 4,
+      "n": 5,
       "avgReward": -1.35,
       "positive": 0,
-      "lastAt": "2026-08-15T01:22:35.125Z",
+      "lastAt": "2026-08-15T23:56:51.397Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150"
     },
     "shop:sell:coins > modal:close-shop > skill:travel:draynor-bank": {
@@ -34359,10 +34356,10 @@
         "shop:buy:toy horsey",
         "modal:close-shop"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 4.2,
-      "positive": 1,
-      "lastAt": "2026-08-15T23:55:51.082Z",
+      "positive": 2,
+      "lastAt": "2026-08-15T23:56:55.019Z",
       "example": "Dialog 1: Click here to continue → Buy 1 Toy horsey for about 150 → Close the shop"
     },
     "shop:buy:toy horsey > modal:close-shop > npc:trade:diango": {
@@ -34371,11 +34368,23 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 4.2,
-      "positive": 1,
-      "lastAt": "2026-08-15T23:56:00.117Z",
+      "positive": 2,
+      "lastAt": "2026-08-15T23:57:07.617Z",
       "example": "Buy 1 Toy horsey for about 150 → Close the shop → Trade Diango (level 0, distance 1)"
+    },
+    "npc:trade:diango > modal:close-shop > npc:trade:diango": {
+      "sequence": [
+        "npc:trade:diango",
+        "modal:close-shop",
+        "npc:trade:diango"
+      ],
+      "n": 1,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T23:57:31.008Z",
+      "example": "Trade Diango (level 0, distance 1) → Close the shop → Trade Diango (level 0, distance 1)"
     }
   },
   "discoveries": [
@@ -37980,27 +37989,26 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T23:56:19.969Z",
+  "updatedAt": "2026-08-15T23:57:31.008Z",
   "activePlan": {
-    "objective": "Buy a Toy Horsey and sell Bones to increase inventory and progress.",
-    "focus": "Talk to Diango (level 0, distance 1) to initiate interaction.",
-    "reason": "This plan uses available skills and ensures observable progress through interaction and inventory changes. The steps are executable and measurable in the game context",
+    "objective": "Secure safe fishing locations and gather resources for progression",
+    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Talk to Diango (level 0, distance 1) to initiate interaction.",
-        "status": "done",
-        "evidence": "+2 level(s)"
-      },
-      {
-        "id": "step-2",
-        "label": "Buy 1 Toy Horsey for 150 using coins from inventory.",
+        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Verify arrival at Draynor fishing area at 3087,3230 and explore north, south, east, and west to identify safe fishing spots",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Sell 1 Bones for 0 to remove from inventory and gain experience points.",
+        "label": "Speak publicly to confirm woodcutting and firemaking progress, then trade Diango (level 0, distance 1) to",
         "status": "pending"
       }
     ],
@@ -38008,16 +38016,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Talk to Diango (level 0, distance 1) to initiate interaction.",
-      "Buy 1 Toy Horsey for 150 using coins from inventory.",
-      "Sell 1 Bones for 0 to remove from inventory and gain experience points."
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+      "Verify arrival at Draynor fishing area at 3087,3230 and explore north, south, east, and west to identify safe fishing spots",
+      "Speak publicly to confirm woodcutting and firemaking progress, then trade Diango (level 0, distance 1) to"
     ],
     "avoid": [
       "Buy 1 Toy horsey for about 150",
-      "Sell 1 Bones for about 0",
-      "Talk-to Diango (level 0, distance 1)"
+      "Trade Diango (level 0, distance 1)",
+      "Close the shop"
     ],
-    "updatedAt": "2026-08-15T23:55:27.787Z",
+    "updatedAt": "2026-08-15T23:57:30.256Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
