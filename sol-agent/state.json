@@ -6,48 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3371,
-    "teacherChoices": 3371,
+    "totalChoices": 3381,
+    "teacherChoices": 3381,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3370,
-    "totalReward": 1434.43,
-    "saves": 340,
-    "shadowPredictions": 1621,
-    "shadowMatches": 720,
-    "strategistRefreshes": 222,
+    "completedExperiences": 3380,
+    "totalReward": 1434.28,
+    "saves": 341,
+    "shadowPredictions": 1631,
+    "shadowMatches": 727,
+    "strategistRefreshes": 223,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu5avru-namsy6",
-      "createdAt": "2026-08-15T09:00:06.618Z",
-      "tick": 33878,
-      "runNumber": 48,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3236 → 3092,3243; new: agent:Ndzq5pll9, npc:Ned, npc:Jail guard, npc:Aggie, loc:Oak, loc:Bench. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent ndzq5pll9",
-        "npc ned",
-        "npc jail guard",
-        "npc aggie",
-        "loc oak",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msu5avru-sb6sf2",
       "createdAt": "2026-08-15T09:00:06.618Z",
@@ -8460,6 +8431,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msu8x6mq-ndneqm",
+      "createdAt": "2026-08-15T10:41:25.970Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Withdraw 1 Chaos rune. These items are critical for crafting and combat, and their withdrawal provides immediate utility in the game environment.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "withdraw 1 chaos rune",
+        "withdraw 1 air rune",
+        "withdraw 1 body rune"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8549,14 +8540,14 @@
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 164,
+        "n": 165,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:40:59.135Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
-        "exampleReason": "Withdraw 1 Coins"
+        "lastAt": "2026-08-15T10:42:17.473Z",
+        "exampleGoal": "Withdraw 1 Chaos rune",
+        "exampleReason": "Banking trip started successfully. I have successfully withdrawn 1 coin from the bank. I now have 5 coins in my inventory. I feel more confident about my survival and combat readin"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8579,14 +8570,14 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 13,
+        "n": 14,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T10:41:04.226Z",
+        "lastAt": "2026-08-15T10:41:19.560Z",
         "exampleGoal": "Open the bank to access deposit slots.",
-        "exampleReason": "I need to wait for the bank to open before proceeding."
+        "exampleReason": "Wait and observe for a moment"
       },
       "bank:withdraw:chaos rune": {
         "n": 5,
@@ -8821,24 +8812,24 @@
         "exampleReason": "I'm opening the bank to access the deposit functionality. I need to find the banker NPC or booth to proceed with depositing items. I'll start by opening the bank to access the depo"
       },
       "bank:withdraw:coins": {
-        "n": 24,
+        "n": 30,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:41:12.021Z",
-        "exampleGoal": "Open the bank to access deposit slots.",
-        "exampleReason": "Opening the bank to access deposit slots"
+        "lastAt": "2026-08-15T10:42:10.829Z",
+        "exampleGoal": "Withdraw 1 Chaos rune",
+        "exampleReason": "bank"
       },
       "bank:deposit:coins": {
-        "n": 7,
-        "avgReward": -0.2857,
+        "n": 9,
+        "avgReward": -0.3,
         "positive": 0,
-        "negative": 5,
+        "negative": 7,
         "lastReward": -0.4,
-        "lastAt": "2026-08-15T02:22:18.938Z",
-        "exampleGoal": "Open the bank to access deposit functionality.",
-        "exampleReason": "Deposit all Coins"
+        "lastAt": "2026-08-15T10:41:58.835Z",
+        "exampleGoal": "Withdraw 1 Chaos rune",
+        "exampleReason": "I have successfully withdrawn 1 Chaos rune from my inventory. This contributes to my essential items for survival and combat."
       },
       "bank:withdraw:raw anchovies": {
         "n": 2,
@@ -15226,8 +15217,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:41:04.535Z",
-      "encounters": 994,
+      "lastSeenAt": "2026-08-15T10:41:41.469Z",
+      "encounters": 999,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -15619,8 +15610,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T10:41:04.535Z",
-      "encounters": 2094,
+      "lastSeenAt": "2026-08-15T10:42:11.139Z",
+      "encounters": 2104,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16483,8 +16474,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:41:04.535Z",
-      "encounters": 1658,
+      "lastSeenAt": "2026-08-15T10:42:11.139Z",
+      "encounters": 1668,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16630,8 +16621,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T10:39:16.550Z",
-      "encounters": 346,
+      "lastSeenAt": "2026-08-15T10:41:35.424Z",
+      "encounters": 348,
       "combatLevel": 75,
       "trust": 0,
       "stance": "unknown",
@@ -17409,8 +17400,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:41:04.535Z",
-      "visits": 817,
+      "lastSeenAt": "2026-08-15T10:42:11.139Z",
+      "visits": 827,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17857,10 +17848,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 53,
-      "avgReward": -0.053,
+      "n": 54,
+      "avgReward": -0.056,
       "positive": 0,
-      "lastAt": "2026-08-15T10:40:53.752Z",
+      "lastAt": "2026-08-15T10:42:05.054Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -17953,10 +17944,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 28,
-      "avgReward": -0.171,
+      "n": 29,
+      "avgReward": -0.172,
       "positive": 0,
-      "lastAt": "2026-08-15T10:37:38.424Z",
+      "lastAt": "2026-08-15T10:41:58.835Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:raw anchovies": {
@@ -18001,10 +17992,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 43,
+      "n": 46,
       "avgReward": 0.3,
       "positive": 0,
-      "lastAt": "2026-08-15T10:38:36.684Z",
+      "lastAt": "2026-08-15T10:42:17.473Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:deposit:raw anchovies > wait": {
@@ -18181,10 +18172,10 @@
         "bank:withdraw:coins",
         "wait"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -0.2,
       "positive": 0,
-      "lastAt": "2026-08-15T02:21:36.284Z",
+      "lastAt": "2026-08-15T10:41:19.560Z",
       "example": "Wait and observe for a moment → Withdraw 1 Coins → Wait and observe for a moment"
     },
     "wait > bank:withdraw:coins > bank:withdraw:coins": {
@@ -20461,10 +20452,10 @@
         "bank:withdraw:coins",
         "bank:withdraw:coins"
       ],
-      "n": 22,
-      "avgReward": -0.097,
+      "n": 24,
+      "avgReward": -0.101,
       "positive": 0,
-      "lastAt": "2026-08-15T10:40:59.135Z",
+      "lastAt": "2026-08-15T10:42:10.829Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Withdraw 1 Coins"
     },
     "bank:withdraw:coins > bank:withdraw:chaos rune > bank:deposit:chaos rune": {
@@ -27402,6 +27393,30 @@
       "positive": 0,
       "lastAt": "2026-08-15T10:40:41.430Z",
       "example": "Deposit all Shortbow → Deposit all Raw anchovies → Withdraw 1 Coins"
+    },
+    "bank:withdraw:coins > wait > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "wait",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:41:28.555Z",
+      "example": "Withdraw 1 Coins → Wait and observe for a moment → Deposit all Coins"
+    },
+    "wait > bank:deposit:coins > bank:withdraw:coins": {
+      "sequence": [
+        "wait",
+        "bank:deposit:coins",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:41:35.156Z",
+      "example": "Wait and observe for a moment → Deposit all Coins → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -31006,43 +31021,43 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T10:41:12.021Z",
+  "updatedAt": "2026-08-15T10:42:17.473Z",
   "activePlan": {
-    "objective": "Deposit all items in the bank to maximize storage and efficiency.",
-    "focus": "Open the bank to access deposit slots.",
-    "reason": "Execute the current prerequisite and verify it.",
+    "objective": "Collect and withdraw essential items for survival and combat",
+    "focus": "Withdraw 1 Chaos rune",
+    "reason": "These items are critical for crafting and combat, and their withdrawal provides immediate utility in the game environment.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Open the bank to access deposit slots.",
+        "label": "Withdraw 1 Chaos rune",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Deposit all coins, raw anchovies, and raw bear meat using the bank's deposit functionality.",
+        "label": "Withdraw 1 Air rune",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify that all items have been successfully deposited by checking the bank's inventory or the player's inventory for remaining items. If an",
+        "label": "Withdraw 1 Body rune",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Observed position, inventory, XP, combat, or dialog change."
+      "Items collected: Chaos rune, Air rune, Body rune"
     ],
     "priorities": [
-      "Open the bank to access deposit slots.",
-      "Deposit all coins, raw anchovies, and raw bear meat using the bank's deposit functionality.",
-      "Verify that all items have been successfully deposited by checking the bank's inventory or the player's inventory for remaining items. If an"
+      "Withdraw 1 Chaos rune",
+      "Withdraw 1 Air rune",
+      "Withdraw 1 Body rune"
     ],
     "avoid": [
       "Deposit all Raw anchovies",
       "Deposit all Coins",
-      "Deposit all Coins"
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T10:39:21.921Z",
+    "updatedAt": "2026-08-15T10:41:25.970Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
