@@ -6,57 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3271,
-    "teacherChoices": 3271,
+    "totalChoices": 3281,
+    "teacherChoices": 3281,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3270,
-    "totalReward": 1434.86,
-    "saves": 330,
-    "shadowPredictions": 1521,
-    "shadowMatches": 682,
-    "strategistRefreshes": 217,
+    "completedExperiences": 3280,
+    "totalReward": 1434.9,
+    "saves": 331,
+    "shadowPredictions": 1531,
+    "shadowMatches": 683,
+    "strategistRefreshes": 218,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu59swd-p0uobd",
-      "createdAt": "2026-08-15T08:59:16.237Z",
-      "tick": 33710,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 7) worked across 30 similar samples with average reward 2.79.",
-      "importance": 3.79,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3083,
-        "z": 3244,
-        "level": 0
-      }
-    },
-    {
-      "id": "msu59t4g-12fyai",
-      "createdAt": "2026-08-15T08:59:16.528Z",
-      "tick": 33661,
-      "runNumber": 48,
-      "kind": "relationship",
-      "text": "Zemogemmae4b said: \"Leaving the chicken pen. I need a pot and a bucket. The cook demands tribute.\". Current stance unknown, trust 0.12.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "zemogemmae4b",
-        "unknown",
-        "potential help"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3244,
-        "level": 0
-      }
-    },
     {
       "id": "msu5a3bd-r2y3qf",
       "createdAt": "2026-08-15T08:59:29.737Z",
@@ -8462,6 +8424,46 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msu8jkih-7t3tvm",
+      "createdAt": "2026-08-15T10:30:50.777Z",
+      "tick": 52025,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Withdraw 1 Raw anchovies. Result: inventory changed. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "retrieve",
+        "raw anchovies",
+        "agent ndzq5pll9"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msu8k256-ymxysj",
+      "createdAt": "2026-08-15T10:31:13.626Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Deposit all Raw anchovies to maximize storage capacity.. These steps",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "deposit all raw anchovies to maximize storage capacity",
+        "withdraw 1 coins to obtain necessary items for trade or progression",
+        "withdraw 1 shortbow 1 bronze sq shield 1 chaos rune 1 air rune 1 body rune 1 raw bear meat 1 earth rune 1 fire rune 1 water rune to"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8511,13 +8513,13 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 54,
-        "avgReward": -0.2531,
+        "n": 56,
+        "avgReward": -0.2494,
         "positive": 0,
-        "negative": 29,
+        "negative": 30,
         "lastReward": -0.1,
-        "lastAt": "2026-08-15T10:30:22.533Z",
-        "exampleGoal": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
+        "lastAt": "2026-08-15T10:31:46.571Z",
+        "exampleGoal": "Deposit all Raw anchovies to maximize storage capacity.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8531,33 +8533,33 @@
         "exampleReason": "Deposit all Body rune"
       },
       "bank:deposit:raw anchovies": {
-        "n": 24,
+        "n": 26,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-14T21:53:15.309Z",
-        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "lastAt": "2026-08-15T10:31:06.934Z",
+        "exampleGoal": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
         "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:raw anchovies": {
-        "n": 25,
+        "n": 30,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T10:30:39.400Z",
-        "exampleGoal": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
+        "lastAt": "2026-08-15T10:31:33.625Z",
+        "exampleGoal": "Deposit all Raw anchovies to maximize storage capacity.",
         "exampleReason": "Withdraw 1 Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 129,
+        "n": 130,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T10:30:33.961Z",
-        "exampleGoal": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
+        "lastAt": "2026-08-15T10:31:40.283Z",
+        "exampleGoal": "Deposit all Raw anchovies to maximize storage capacity.",
         "exampleReason": "Withdraw 1 Coins"
       },
       "bank:withdraw:bronze sq shield": {
@@ -15571,8 +15573,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T10:30:34.231Z",
-      "encounters": 1993,
+      "lastSeenAt": "2026-08-15T10:31:40.574Z",
+      "encounters": 2003,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16435,8 +16437,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T10:30:34.231Z",
-      "encounters": 1557,
+      "lastSeenAt": "2026-08-15T10:31:40.574Z",
+      "encounters": 1567,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -16582,8 +16584,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T10:25:27.014Z",
-      "encounters": 333,
+      "lastSeenAt": "2026-08-15T10:31:40.574Z",
+      "encounters": 341,
       "combatLevel": 75,
       "trust": 0,
       "stance": "unknown",
@@ -17040,8 +17042,8 @@
     "testeee": {
       "name": "Testeee",
       "firstSeenAt": "2026-08-15T07:35:49.413Z",
-      "lastSeenAt": "2026-08-15T10:30:34.231Z",
-      "encounters": 67,
+      "lastSeenAt": "2026-08-15T10:30:39.737Z",
+      "encounters": 68,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -17346,8 +17348,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T10:30:34.231Z",
-      "visits": 716,
+      "lastSeenAt": "2026-08-15T10:31:40.574Z",
+      "visits": 726,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -17734,10 +17736,10 @@
         "bank:deposit:raw anchovies",
         "bank:withdraw:raw anchovies"
       ],
-      "n": 10,
+      "n": 11,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:48:07.519Z",
+      "lastAt": "2026-08-15T10:30:50.777Z",
       "example": "Withdraw 1 Raw anchovies → Deposit all Raw anchovies → Withdraw 1 Raw anchovies"
     },
     "bank:deposit:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
@@ -17746,10 +17748,10 @@
         "bank:withdraw:raw anchovies",
         "bank:withdraw:raw anchovies"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:37:42.291Z",
+      "lastAt": "2026-08-15T10:30:58.872Z",
       "example": "Deposit all Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
     },
     "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:raw anchovies": {
@@ -17758,10 +17760,10 @@
         "bank:withdraw:raw anchovies",
         "bank:withdraw:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.24,
       "positive": 0,
-      "lastAt": "2026-08-14T21:36:25.840Z",
+      "lastAt": "2026-08-15T10:31:33.625Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
     },
     "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:withdraw:coins": {
@@ -17770,10 +17772,10 @@
         "bank:withdraw:raw anchovies",
         "bank:withdraw:coins"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0.26,
       "positive": 0,
-      "lastAt": "2026-08-14T21:37:49.836Z",
+      "lastAt": "2026-08-15T10:31:40.283Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Withdraw 1 Coins"
     },
     "bank:withdraw:raw anchovies > bank:withdraw:coins > bank:deposit:coins": {
@@ -17782,10 +17784,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:36:39.013Z",
+      "lastAt": "2026-08-15T10:31:46.571Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:coins": {
@@ -18154,10 +18156,10 @@
         "bank:withdraw:raw anchovies",
         "bank:withdraw:raw anchovies"
       ],
-      "n": 1,
-      "avgReward": -0.34,
+      "n": 2,
+      "avgReward": -0.19,
       "positive": 0,
-      "lastAt": "2026-08-14T21:52:39.028Z",
+      "lastAt": "2026-08-15T10:31:28.225Z",
       "example": "Deposit all Coins → Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies"
     },
     "bank:withdraw:raw anchovies > bank:withdraw:raw anchovies > bank:deposit:raw anchovies": {
@@ -18166,10 +18168,10 @@
         "bank:withdraw:raw anchovies",
         "bank:deposit:raw anchovies"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:52:50.140Z",
+      "lastAt": "2026-08-15T10:31:06.934Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Raw anchovies → Deposit all Raw anchovies"
     },
     "bank:withdraw:raw anchovies > bank:deposit:raw anchovies > bank:withdraw:coins": {
@@ -27015,6 +27017,42 @@
       "positive": 0,
       "lastAt": "2026-08-15T10:30:39.400Z",
       "example": "Withdraw 1 Coins → Withdraw 1 Coins → Withdraw 1 Raw anchovies"
+    },
+    "bank:withdraw:coins > bank:withdraw:raw anchovies > bank:deposit:raw anchovies": {
+      "sequence": [
+        "bank:withdraw:coins",
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": 0.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:30:45.377Z",
+      "example": "Withdraw 1 Coins → Withdraw 1 Raw anchovies → Deposit all Raw anchovies"
+    },
+    "bank:withdraw:raw anchovies > bank:deposit:raw anchovies > bank:deposit:coins": {
+      "sequence": [
+        "bank:withdraw:raw anchovies",
+        "bank:deposit:raw anchovies",
+        "bank:deposit:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:31:15.040Z",
+      "example": "Withdraw 1 Raw anchovies → Deposit all Raw anchovies → Deposit all Coins"
+    },
+    "bank:deposit:raw anchovies > bank:deposit:coins > bank:withdraw:raw anchovies": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:deposit:coins",
+        "bank:withdraw:raw anchovies"
+      ],
+      "n": 1,
+      "avgReward": -0.2,
+      "positive": 0,
+      "lastAt": "2026-08-15T10:31:21.676Z",
+      "example": "Deposit all Raw anchovies → Deposit all Coins → Withdraw 1 Raw anchovies"
     }
   },
   "discoveries": [
@@ -30619,27 +30657,26 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T10:30:39.400Z",
+  "updatedAt": "2026-08-15T10:31:46.571Z",
   "activePlan": {
-    "objective": "Secure safe fishing locations and gather resources in Draynor Village",
-    "focus": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
-    "reason": "This plan ensures safe fishing location verification, resource collection, and public",
+    "objective": "Collect and withdraw essential resources for survival and progression.",
+    "focus": "Deposit all Raw anchovies to maximize storage capacity.",
+    "reason": "These steps",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
-        "status": "done",
-        "evidence": "moved 3084,3239 → 3092,3243; new: npc:Jail guard, npc:Ned, npc:Aggie, loc:Cooking shelves, loc:Wardrobe, loc:Broom"
-      },
-      {
-        "id": "step-2",
-        "label": "Explore north about 5 tiles to verify safe fishing location and collect Shrimp/anchovies",
+        "label": "Deposit all Raw anchovies to maximize storage capacity.",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Withdraw 1 Coins to obtain necessary items for trade or progression.",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Speak publicly to confirm Flour and milk secured and proceed with fishing activities in Draynor Village",
+        "label": "Withdraw 1 Shortbow, 1 Bronze sq shield, 1 Chaos rune, 1 Air rune, 1 Body rune, 1 Raw bear meat, 1 Earth rune, 1 Fire rune, 1 Water rune to ",
         "status": "pending"
       }
     ],
@@ -30647,17 +30684,17 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to Draynor Village at (3087, 3230) using verified waypoint navigation",
-      "Explore north about 5 tiles to verify safe fishing location and collect Shrimp/anchovies",
-      "Speak publicly to confirm Flour and milk secured and proceed with fishing activities in Draynor Village"
+      "Deposit all Raw anchovies to maximize storage capacity.",
+      "Withdraw 1 Coins to obtain necessary items for trade or progression.",
+      "Withdraw 1 Shortbow, 1 Bronze sq shield, 1 Chaos rune, 1 Air rune, 1 Body rune, 1 Raw bear meat, 1 Earth rune, 1 Fire rune, 1 Water rune to "
     ],
     "avoid": [
-      "Dialog 1: Click here to continue",
-      "Bait Fishing spot (level 0, distance 1)",
-      "Dialog 1: Click here to continue"
+      "Deposit all Bones",
+      "Deposit all Coins",
+      "Deposit all Raw anchovies"
     ],
-    "updatedAt": "2026-08-15T10:28:42.725Z",
+    "updatedAt": "2026-08-15T10:31:13.626Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 0
   }
 }
