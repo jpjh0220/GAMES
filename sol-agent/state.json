@@ -6,57 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 2201,
-    "teacherChoices": 2201,
+    "totalChoices": 2211,
+    "teacherChoices": 2211,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 2200,
-    "totalReward": 536.5,
-    "saves": 223,
-    "shadowPredictions": 874,
-    "shadowMatches": 376,
-    "strategistRefreshes": 157,
+    "completedExperiences": 2210,
+    "totalReward": 530.83,
+    "saves": 224,
+    "shadowPredictions": 875,
+    "shadowMatches": 377,
+    "strategistRefreshes": 158,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstp6twa-n0i7o0",
-      "createdAt": "2026-08-15T01:29:03.706Z",
-      "tick": 0,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival.. This plan uses a named repository-tested escape or travel skill (Net Fishing",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "travel to the draynor fishing area at 3087 3230 and verify arrival",
-        "explore north about 5 tiles to locate the net bait fishing spot",
-        "use the net bait fishing spot to catch shrimps anchovies for level 1 fishing"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mstp77g9-j1oscz",
-      "createdAt": "2026-08-15T01:29:21.273Z",
-      "tick": 46895,
-      "runNumber": 37,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 7) worked across 8 similar samples with average reward 3.01.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3083,
-        "z": 3244,
-        "level": 0
-      }
-    },
     {
       "id": "mstp7isj-0406cn",
       "createdAt": "2026-08-15T01:29:35.971Z",
@@ -8524,6 +8486,56 @@
         "z": 3255,
         "level": 1
       }
+    },
+    {
+      "id": "msu232vc-zei52e",
+      "createdAt": "2026-08-15T07:30:03.720Z",
+      "tick": 0,
+      "runNumber": 48,
+      "kind": "strategy",
+      "text": "AI strategist: Explore west about 5 tiles to locate a mineable rock. This plan uses a named repository-tested escape or travel skill ('Climb-down Staircase') for accessibility and ensures observable evidence of exploration",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore west about 5 tiles to locate a mineable rock",
+        "use the climb down staircase distance 2 action to access the rock",
+        "mine the rock using the mine action to collect items and gain experience"
+      ],
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      }
+    },
+    {
+      "id": "msu23nzd-9jo3f8",
+      "createdAt": "2026-08-15T07:30:31.081Z",
+      "tick": 16007,
+      "runNumber": 48,
+      "kind": "episode",
+      "text": "AI motor: Climb-down Staircase (distance 4). Result: moved 3094,3255 → 3089,3251; new: agent:Goo002, agent:Scrappydoo, agent:Ndzq5pll9, npc:Banker, npc:Aggie, npc:Diango. Reward 1.55.",
+      "importance": 1.48,
+      "tags": [
+        "world",
+        "staircase",
+        "climb down",
+        "agent goo002",
+        "agent scrappydoo",
+        "agent ndzq5pll9",
+        "npc banker",
+        "npc aggie",
+        "npc diango",
+        "npc dark wizard",
+        "loc crate",
+        "loc shelves",
+        "loc cooking shelves",
+        "loc door"
+      ],
+      "location": {
+        "x": 3089,
+        "z": 3251,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -13031,24 +13043,24 @@
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,wait,world": {
       "style:accurate:attack": {
-        "n": 76,
-        "avgReward": -0.2423,
+        "n": 78,
+        "avgReward": -0.2427,
         "positive": 0,
-        "negative": 36,
+        "negative": 37,
         "lastReward": -0.6,
-        "lastAt": "2026-08-15T07:28:29.586Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
-        "exampleReason": "I need to train my combat style to prepare for combat while mining."
+        "lastAt": "2026-08-15T07:30:08.317Z",
+        "exampleGoal": "Explore west about 5 tiles to locate a mineable rock",
+        "exampleReason": "I'm on my way - stay put, the soggiest fisherman in gielinor will be with you shortly!"
       },
       "walk:north": {
-        "n": 52,
-        "avgReward": -0.35,
-        "positive": 30,
-        "negative": 22,
-        "lastReward": 0.75,
-        "lastAt": "2026-08-15T07:28:16.075Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
-        "exampleReason": "I'm exploring the area north about 5 tiles to locate mining activity."
+        "n": 54,
+        "avgReward": -0.3574,
+        "positive": 31,
+        "negative": 23,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T07:30:23.914Z",
+        "exampleGoal": "Explore west about 5 tiles to locate a mineable rock",
+        "exampleReason": "Explore north about 5 tiles"
       },
       "style:aggressive:strength": {
         "n": 72,
@@ -13061,34 +13073,34 @@
         "exampleReason": "I'm ready to start combat training with the 'Combat style Pound: Aggressive; trains Strength' skill. This will help me improve my defensive capabilities and prepare for potential c"
       },
       "walk:south": {
-        "n": 69,
-        "avgReward": -1.2443,
+        "n": 70,
+        "avgReward": -1.253,
         "positive": 19,
-        "negative": 50,
+        "negative": 51,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:28:09.185Z",
-        "exampleGoal": "Explore southeast about 4 tiles to locate mining activity.",
-        "exampleReason": "Exploring south about 5 tiles to locate mining activity."
+        "lastAt": "2026-08-15T07:29:27.490Z",
+        "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
+        "exampleReason": "Exploring south about 5 tiles has moved me closer to the Draynor fishing location. I now have a better view of the area, which is crucial for gathering resources."
       },
       "walk:east": {
-        "n": 38,
-        "avgReward": -1.7025,
+        "n": 39,
+        "avgReward": -1.7063,
         "positive": 2,
-        "negative": 36,
+        "negative": 37,
         "lastReward": -1.85,
-        "lastAt": "2026-08-15T07:27:16.405Z",
-        "exampleGoal": "Use 'Explore east about 5 tiles' to reach the rock area",
-        "exampleReason": "Exploring east about 5 tiles is the next step to reach the rock area. It's a good way to gather experience and inventory items before proceeding to the next phase of the plan."
+        "lastAt": "2026-08-15T07:29:51.792Z",
+        "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
+        "exampleReason": "Exploring east about 5 tiles is the next logical step to reach Draynor fishing location."
       },
       "style:defensive:defence": {
-        "n": 60,
-        "avgReward": -0.1126,
+        "n": 61,
+        "avgReward": -0.1206,
         "positive": 0,
-        "negative": 17,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-15T07:29:19.741Z",
+        "negative": 18,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T07:29:34.438Z",
         "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
-        "exampleReason": "I'm preparing for combat, so I'll focus on defensive skills to survive while mining. This action will help me stay on track and improve my chances of survival."
+        "exampleReason": "I'm ready to train my defensive combat style to survive while mining. This will help me stay safe while exploring the area."
       },
       "walk:west": {
         "n": 26,
@@ -13129,6 +13141,16 @@
         "lastAt": "2026-08-15T07:13:10.397Z",
         "exampleGoal": "Explore east about 5 tiles to observe mining activity",
         "exampleReason": "I'm waiting for the necessary information to proceed. I'll observe for a moment before taking any action."
+      },
+      "loc:climb down:staircase": {
+        "n": 1,
+        "avgReward": 1.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.55,
+        "lastAt": "2026-08-15T07:30:31.081Z",
+        "exampleGoal": "Explore west about 5 tiles to locate a mineable rock",
+        "exampleReason": "Climb-down Staircase (distance 4) to access the rock"
       }
     },
     "area=386:406:1|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,wait,world": {
@@ -13143,14 +13165,14 @@
         "exampleReason": "Explore north about 5 tiles"
       },
       "walk:south": {
-        "n": 37,
-        "avgReward": 0.2905,
+        "n": 38,
+        "avgReward": 0.2342,
         "positive": 36,
-        "negative": 1,
-        "lastReward": 0.35,
-        "lastAt": "2026-08-15T07:29:11.909Z",
-        "exampleGoal": "Progress through explore",
-        "exampleReason": "Exploring the south about 5 tiles is the next step to advance the plan. The coordinates are within the main area, so it's a good move to check for any potential obstacles or resour"
+        "negative": 2,
+        "lastReward": -1.85,
+        "lastAt": "2026-08-15T07:29:41.916Z",
+        "exampleGoal": "Explore southeast about 4 tiles to reach Draynor fishing location",
+        "exampleReason": "Exploring south about 5 tiles is the next step to reach Draynor fishing location. The coordinates are (3093, 3251, 1) and the position is southeast. I will continue exploring to ga"
       },
       "walk:southeast": {
         "n": 1,
@@ -13234,14 +13256,26 @@
         "exampleGoal": "Explore east about 5 tiles to observe mining activity",
         "exampleReason": "I am exploring east about 5 tiles to observe mining activity"
       }
+    },
+    "area=386:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,say,wait,world": {
+      "loc:climb up:staircase": {
+        "n": 1,
+        "avgReward": 0.55,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.55,
+        "lastAt": "2026-08-15T07:30:43.087Z",
+        "exampleGoal": "Explore west about 5 tiles to locate a mineable rock",
+        "exampleReason": "Climb-up Staircase (distance 1) to gain climbing experience and access the Staircase."
+      }
     }
   },
   "relationships": {
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T06:14:50.276Z",
-      "encounters": 715,
+      "lastSeenAt": "2026-08-15T07:30:31.388Z",
+      "encounters": 716,
       "combatLevel": 55,
       "trust": 0,
       "stance": "unknown",
@@ -14434,8 +14468,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T06:16:45.781Z",
-      "encounters": 643,
+      "lastSeenAt": "2026-08-15T07:30:31.388Z",
+      "encounters": 644,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14581,9 +14615,9 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-15T06:16:28.105Z",
-      "encounters": 228,
-      "combatLevel": 60,
+      "lastSeenAt": "2026-08-15T07:30:31.388Z",
+      "encounters": 229,
+      "combatLevel": 67,
       "trust": 0,
       "stance": "unknown",
       "conversations": 3,
@@ -15125,12 +15159,12 @@
     },
     "193:203:0": {
       "key": "193:203:0",
-      "x": 3100,
-      "z": 3262,
+      "x": 3089,
+      "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:04:02.709Z",
-      "lastSeenAt": "2026-08-15T06:16:54.767Z",
-      "visits": 18,
+      "lastSeenAt": "2026-08-15T07:30:31.388Z",
+      "visits": 19,
       "npcs": [
         "Banker",
         "Ned",
@@ -15144,7 +15178,6 @@
         "Leela"
       ],
       "locs": [
-        "Stool",
         "Staircase",
         "Bank booth",
         "Bank table",
@@ -15183,17 +15216,18 @@
         "Mushroom",
         "Gate",
         "Sacks",
-        "Drawers"
+        "Drawers",
+        "Bank notice board"
       ]
     },
     "193:203:1": {
       "key": "193:203:1",
-      "x": 3093,
-      "z": 3251,
+      "x": 3094,
+      "z": 3255,
       "level": 1,
       "firstSeenAt": "2026-08-15T06:17:01.969Z",
-      "lastSeenAt": "2026-08-15T07:29:12.220Z",
-      "visits": 553,
+      "lastSeenAt": "2026-08-15T07:30:24.221Z",
+      "visits": 562,
       "npcs": [
         "Woman"
       ],
@@ -20339,10 +20373,10 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 7,
-      "avgReward": -1.26,
+      "n": 8,
+      "avgReward": -1.315,
       "positive": 1,
-      "lastAt": "2026-08-15T07:20:34.123Z",
+      "lastAt": "2026-08-15T07:30:23.914Z",
       "example": "Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles → Explore north about 5 tiles"
     },
     "walk:north > walk:north > loc:use:bank booth": {
@@ -20459,10 +20493,10 @@
         "style:accurate:attack",
         "walk:north"
       ],
-      "n": 12,
-      "avgReward": -0.637,
+      "n": 13,
+      "avgReward": -0.57,
       "positive": 0,
-      "lastAt": "2026-08-15T07:28:37.110Z",
+      "lastAt": "2026-08-15T07:30:15.807Z",
       "example": "Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack → Explore north about 5 tiles"
     },
     "walk:north > walk:north > style:aggressive:strength": {
@@ -20555,10 +20589,10 @@
         "walk:east",
         "style:accurate:attack"
       ],
-      "n": 3,
-      "avgReward": -2.847,
+      "n": 4,
+      "avgReward": -3.04,
       "positive": 0,
-      "lastAt": "2026-08-15T07:09:37.120Z",
+      "lastAt": "2026-08-15T07:30:01.400Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Combat style Jab: Accurate; trains Attack"
     },
     "walk:east > style:accurate:attack > style:accurate:attack": {
@@ -20567,10 +20601,10 @@
         "style:accurate:attack",
         "style:accurate:attack"
       ],
-      "n": 1,
-      "avgReward": 0.63,
+      "n": 2,
+      "avgReward": -0.87,
       "positive": 1,
-      "lastAt": "2026-08-15T06:18:41.312Z",
+      "lastAt": "2026-08-15T07:30:08.317Z",
       "example": "Explore east about 5 tiles → Combat style Jab: Accurate; trains Attack → Combat style Jab: Accurate; trains Attack"
     },
     "style:accurate:attack > style:accurate:attack > style:aggressive:strength": {
@@ -22528,57 +22562,69 @@
       "positive": 0,
       "lastAt": "2026-08-15T07:28:16.075Z",
       "example": "Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles → Explore north about 5 tiles"
+    },
+    "walk:south > style:defensive:defence > walk:south": {
+      "sequence": [
+        "walk:south",
+        "style:defensive:defence",
+        "walk:south"
+      ],
+      "n": 2,
+      "avgReward": -2.86,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:29:41.916Z",
+      "example": "Explore south about 5 tiles → Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles"
+    },
+    "style:defensive:defence > walk:south > style:defensive:defence": {
+      "sequence": [
+        "style:defensive:defence",
+        "walk:south",
+        "style:defensive:defence"
+      ],
+      "n": 1,
+      "avgReward": -2.37,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:29:34.438Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles → Combat style Focus: Defensive; trains Defence"
+    },
+    "style:defensive:defence > walk:south > walk:east": {
+      "sequence": [
+        "style:defensive:defence",
+        "walk:south",
+        "walk:east"
+      ],
+      "n": 1,
+      "avgReward": -4.3,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:29:51.792Z",
+      "example": "Combat style Focus: Defensive; trains Defence → Explore south about 5 tiles → Explore east about 5 tiles"
+    },
+    "walk:north > walk:north > loc:climb down:staircase": {
+      "sequence": [
+        "walk:north",
+        "walk:north",
+        "loc:climb down:staircase"
+      ],
+      "n": 1,
+      "avgReward": 0.45,
+      "positive": 1,
+      "lastAt": "2026-08-15T07:30:31.081Z",
+      "example": "Explore north about 5 tiles → Explore north about 5 tiles → Climb-down Staircase (distance 4)"
+    },
+    "walk:north > loc:climb down:staircase > loc:climb up:staircase": {
+      "sequence": [
+        "walk:north",
+        "loc:climb down:staircase",
+        "loc:climb up:staircase"
+      ],
+      "n": 1,
+      "avgReward": 0.25,
+      "positive": 0,
+      "lastAt": "2026-08-15T07:30:43.087Z",
+      "example": "Explore north about 5 tiles → Climb-down Staircase (distance 4) → Climb-up Staircase (distance 1)"
     }
   },
   "discoveries": [
-    {
-      "id": "npc:rat:192:203:0",
-      "at": "2026-08-15T01:23:44.086Z",
-      "kind": "npc",
-      "text": "Rat observed near 3079, 3249, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3249,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3079:3249:3087:3240:0",
-      "at": "2026-08-15T01:24:49.189Z",
-      "kind": "route",
-      "text": "Route learned: 3079,3249 → 3087,3240; +1597 XP; 5 damage dealt; moved 3079,3249 → 3087,3240; execution rejected or failed",
-      "location": {
-        "x": 3087,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "place:fire:192:202:0",
-      "at": "2026-08-15T01:24:49.519Z",
-      "kind": "place",
-      "text": "Fire observed near 3087, 3240, level 0.",
-      "location": {
-        "x": 3087,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3084:3236:3088:3237:0",
-      "at": "2026-08-15T01:25:18.600Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3236 → 3088,3237; +1595 XP; 12 damage dealt; moved 3084,3236 → 3088,3237; execution rejected or failed",
-      "location": {
-        "x": 3088,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
     {
       "id": "place:fire:193:202:0",
       "at": "2026-08-15T01:25:18.931Z",
@@ -26130,46 +26176,108 @@
         "level": 1
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3094:3255:3089:3251:0",
+      "at": "2026-08-15T07:30:31.081Z",
+      "kind": "route",
+      "text": "Route learned: 3094,3255 → 3089,3251; moved 3094,3255 → 3089,3251; new: agent:Goo002, agent:Scrappydoo, agent:Ndzq5pll9, npc:Banker, npc:Aggie, npc:Diango",
+      "location": {
+        "x": 3089,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:diango:193:203:0",
+      "at": "2026-08-15T07:30:31.388Z",
+      "kind": "npc",
+      "text": "Diango observed near 3089, 3251, level 0.",
+      "location": {
+        "x": 3089,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:193:203:0",
+      "at": "2026-08-15T07:30:31.388Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3089, 3251, level 0.",
+      "location": {
+        "x": 3089,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:market stall:193:203:0",
+      "at": "2026-08-15T07:30:31.388Z",
+      "kind": "place",
+      "text": "Market stall observed near 3089, 3251, level 0.",
+      "location": {
+        "x": 3089,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3089:3251:3093:3251:1",
+      "at": "2026-08-15T07:30:43.087Z",
+      "kind": "route",
+      "text": "Route learned: 3089,3251 → 3093,3251; moved 3089,3251 → 3093,3251; new: loc:Potted fern, loc:Bed",
+      "location": {
+        "x": 3093,
+        "z": 3251,
+        "level": 1
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-15T07:29:19.741Z",
+  "updatedAt": "2026-08-15T07:30:43.088Z",
   "activePlan": {
-    "objective": "Navigate to Draynor fishing location to gather resources",
-    "focus": "Explore southeast about 4 tiles to reach Draynor fishing location",
-    "reason": "This plan uses the 'Explore' skill to navigate to the target location and 'Collect' to gather resources, ensuring observable evidence of movement and resource acquisition. The",
+    "objective": "Mine a rock to gain experience and inventory items",
+    "focus": "Explore west about 5 tiles to locate a mineable rock",
+    "reason": "This plan uses a named repository-tested escape or travel skill ('Climb-down Staircase') for accessibility and ensures observable evidence of exploration",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore southeast about 4 tiles to reach Draynor fishing location",
-        "status": "active"
+        "label": "Explore west about 5 tiles to locate a mineable rock",
+        "status": "done",
+        "evidence": "moved 3093,3251 → 3094,3255; new: npc:Woman, loc:Cupboard, loc:Hat stand"
       },
       {
         "id": "step-2",
-        "label": "Use the 'Explore' skill to confirm arrival at Draynor fishing location",
-        "status": "pending"
+        "label": "Use the 'Climb-down Staircase (distance 2)' action to access the rock",
+        "status": "done",
+        "evidence": "moved 3094,3255 → 3089,3251; new: agent:Goo002, agent:Scrappydoo, agent:Ndzq5pll9, npc:Banker, npc:Aggie, npc:Diango"
       },
       {
         "id": "step-3",
-        "label": "Collect coins and earth runes at Draynor fishing location to strengthen resources",
-        "status": "pending"
+        "label": "Mine the rock using the 'Mine' action to collect items and gain experience",
+        "status": "active"
       }
     ],
     "successSignals": [
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore southeast about 4 tiles to reach Draynor fishing location",
-      "Use the 'Explore' skill to confirm arrival at Draynor fishing location",
-      "Collect coins and earth runes at Draynor fishing location to strengthen resources"
+      "Explore west about 5 tiles to locate a mineable rock",
+      "Use the 'Climb-down Staircase (distance 2)' action to access the rock",
+      "Mine the rock using the 'Mine' action to collect items and gain experience"
     ],
     "avoid": [
-      "Explore north about 5 tiles",
-      "Combat style Pound: Aggressive; trains Strength",
-      "Explore north about 5 tiles"
+      "Combat style Focus: Defensive; trains Defence",
+      "Explore south about 5 tiles",
+      "Explore east about 5 tiles"
     ],
-    "updatedAt": "2026-08-15T07:29:14.997Z",
+    "updatedAt": "2026-08-15T07:30:03.720Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
