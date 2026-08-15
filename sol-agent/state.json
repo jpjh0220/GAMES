@@ -6,37 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 3782,
-    "teacherChoices": 3782,
+    "totalChoices": 3792,
+    "teacherChoices": 3792,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 3780,
-    "totalReward": 1744.8,
-    "saves": 383,
-    "shadowPredictions": 1939,
-    "shadowMatches": 864,
+    "completedExperiences": 3790,
+    "totalReward": 1744.41,
+    "saves": 384,
+    "shadowPredictions": 1949,
+    "shadowMatches": 866,
     "strategistRefreshes": 245,
     "strategistFailures": 2
   },
   "memories": [
-    {
-      "id": "msu77lm3-it9ik5",
-      "createdAt": "2026-08-15T09:53:32.715Z",
-      "tick": 44565,
-      "runNumber": 48,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 15 similar samples with average reward 2.29.",
-      "importance": 3.29,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3088,
-        "z": 3238,
-        "level": 0
-      }
-    },
     {
       "id": "msu77w99-ouxbkd",
       "createdAt": "2026-08-15T09:53:46.509Z",
@@ -8427,6 +8409,26 @@
         "z": 3242,
         "level": 0
       }
+    },
+    {
+      "id": "msusvz0k-m7f19q",
+      "createdAt": "2026-08-15T20:00:21.764Z",
+      "tick": 1790,
+      "runNumber": 67,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Coins. Result: inventory changed; -1 coins. Reward -0.1.",
+      "importance": 0.75,
+      "tags": [
+        "bank",
+        "store",
+        "coins",
+        "agent jsf3bpvn6b"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8476,13 +8478,13 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 85,
-        "avgReward": -0.2613,
+        "n": 87,
+        "avgReward": -0.2576,
         "positive": 0,
         "negative": 52,
         "lastReward": -0.1,
-        "lastAt": "2026-08-15T19:54:38.562Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+        "lastAt": "2026-08-15T20:00:21.764Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8516,14 +8518,14 @@
         "exampleReason": "Deposit all Raw anchovies"
       },
       "bank:withdraw:coins": {
-        "n": 211,
+        "n": 213,
         "avgReward": 0.1,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.1,
-        "lastAt": "2026-08-15T19:52:54.458Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "exampleReason": "Banking is a prerequisite to collecting shrimps/anchovies in Draynor Village"
+        "lastAt": "2026-08-15T20:00:10.952Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "bank"
       },
       "bank:withdraw:bronze sq shield": {
         "n": 1,
@@ -8546,13 +8548,13 @@
         "exampleReason": "Deposit all Bronze sq shield"
       },
       "wait": {
-        "n": 19,
+        "n": 20,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-15T19:56:53.251Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
+        "lastAt": "2026-08-15T19:59:18.746Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Wait for a moment"
       },
       "bank:withdraw:chaos rune": {
@@ -8576,23 +8578,23 @@
         "exampleReason": "Deposit all Chaos rune to ensure the bank is fully stocked with the required items."
       },
       "bank:withdraw:bronze arrow": {
-        "n": 4,
+        "n": 5,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-15T19:56:02.555Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
-        "exampleReason": "Banking trip started successfully. The bank is open, and I'm ready to deposit items. I'll start by withdrawing raw bear meat first, which has a good reward of 0.08. Then I'll proce"
+        "lastAt": "2026-08-15T19:58:57.766Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "I have successfully deposited the 'Earth rune' item, which is a crucial survival item. This action contributes to my progress in the bank system, and I'm ready to move on to other "
       },
       "bank:deposit:bronze arrow": {
-        "n": 4,
+        "n": 5,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T19:56:13.057Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
+        "lastAt": "2026-08-15T19:59:37.652Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Bronze arrow"
       },
       "modal:close-bank": {
@@ -8616,13 +8618,13 @@
         "exampleReason": "Deposit all Earth rune"
       },
       "bank:deposit:bones": {
-        "n": 10,
+        "n": 11,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T19:57:11.254Z",
-        "exampleGoal": "Open the bank to access the deposit functionality",
+        "lastAt": "2026-08-15T19:59:09.199Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Bones"
       },
       "bank:deposit:nature rune": {
@@ -8716,13 +8718,13 @@
         "exampleReason": "I'm choosing to withdraw the 'Air rune' as it has the highest avgReward of 0.08 and a successRate of 0.08, which is a strong indicator of effectiveness. This action will help me co"
       },
       "bank:deposit:water rune": {
-        "n": 4,
-        "avgReward": -0.16,
+        "n": 5,
+        "avgReward": -0.144,
         "positive": 0,
         "negative": 1,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-15T11:36:57.041Z",
-        "exampleGoal": "Click Dialog 1: Click here to continue to advance the story.",
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T19:58:38.255Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
         "exampleReason": "Deposit all Water rune"
       },
       "bank:withdraw:raw bear meat": {
@@ -8868,14 +8870,14 @@
         "exampleReason": "Withdraw 1 Bones"
       },
       "bank:deposit:bones": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-15T02:20:56.390Z",
-        "exampleGoal": "Open the bank to access deposit functionality.",
-        "exampleReason": "Deposit all Bones"
+        "lastAt": "2026-08-15T19:59:27.167Z",
+        "exampleGoal": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
+        "exampleReason": "I'm ready to open the bank using the `Open bank` skill. I'll start by using the skill to access the banker NPC or booth."
       },
       "bank:deposit:raw rat meat": {
         "n": 1,
@@ -15693,8 +15695,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T19:58:16.977Z",
-      "encounters": 1105,
+      "lastSeenAt": "2026-08-15T19:58:38.564Z",
+      "encounters": 1107,
       "combatLevel": 56,
       "trust": 0,
       "stance": "unknown",
@@ -16086,8 +16088,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T19:58:16.977Z",
-      "encounters": 2404,
+      "lastSeenAt": "2026-08-15T20:00:11.281Z",
+      "encounters": 2414,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -16950,8 +16952,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T19:58:16.977Z",
-      "encounters": 2063,
+      "lastSeenAt": "2026-08-15T20:00:11.281Z",
+      "encounters": 2073,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -17373,8 +17375,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-15T19:52:55.030Z",
-      "encounters": 810,
+      "lastSeenAt": "2026-08-15T20:00:11.281Z",
+      "encounters": 818,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -17934,8 +17936,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-15T19:51:38.287Z",
-      "lastSeenAt": "2026-08-15T19:58:16.977Z",
-      "encounters": 22,
+      "lastSeenAt": "2026-08-15T19:59:09.467Z",
+      "encounters": 26,
       "combatLevel": 125,
       "trust": 0,
       "stance": "unknown",
@@ -18054,8 +18056,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T19:58:16.977Z",
-      "visits": 1012,
+      "lastSeenAt": "2026-08-15T20:00:11.281Z",
+      "visits": 1022,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -18502,10 +18504,10 @@
         "bank:deposit:coins",
         "bank:withdraw:coins"
       ],
-      "n": 63,
-      "avgReward": -0.059,
+      "n": 64,
+      "avgReward": -0.057,
       "positive": 0,
-      "lastAt": "2026-08-15T19:52:54.458Z",
+      "lastAt": "2026-08-15T20:00:10.952Z",
       "example": "Withdraw 1 Coins → Deposit all Coins → Withdraw 1 Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > bank:deposit:coins": {
@@ -18514,10 +18516,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 15,
-      "avgReward": -0.354,
+      "n": 16,
+      "avgReward": -0.338,
       "positive": 0,
-      "lastAt": "2026-08-15T10:48:27.701Z",
+      "lastAt": "2026-08-15T20:00:21.764Z",
       "example": "Deposit all Coins → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:withdraw:coins > bank:deposit:coins > bank:withdraw:bronze sq shield": {
@@ -18982,10 +18984,10 @@
         "bank:withdraw:coins",
         "bank:deposit:coins"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": -0.08,
       "positive": 0,
-      "lastAt": "2026-08-14T21:53:58.834Z",
+      "lastAt": "2026-08-15T20:00:00.153Z",
       "example": "Deposit all Bronze arrow → Withdraw 1 Coins → Deposit all Coins"
     },
     "bank:deposit:coins > bank:withdraw:coins > modal:close-bank": {
@@ -29499,6 +29501,90 @@
       "positive": 0,
       "lastAt": "2026-08-15T19:58:27.452Z",
       "example": "Withdraw 1 Raw anchovies → Withdraw 1 Water rune → Deposit all Raw anchovies"
+    },
+    "bank:withdraw:water rune > bank:deposit:raw anchovies > bank:deposit:water rune": {
+      "sequence": [
+        "bank:withdraw:water rune",
+        "bank:deposit:raw anchovies",
+        "bank:deposit:water rune"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:58:38.255Z",
+      "example": "Withdraw 1 Water rune → Deposit all Raw anchovies → Deposit all Water rune"
+    },
+    "bank:deposit:raw anchovies > bank:deposit:water rune > bank:withdraw:bronze arrow": {
+      "sequence": [
+        "bank:deposit:raw anchovies",
+        "bank:deposit:water rune",
+        "bank:withdraw:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:58:57.766Z",
+      "example": "Deposit all Raw anchovies → Deposit all Water rune → Withdraw 1 Bronze arrow"
+    },
+    "bank:deposit:water rune > bank:withdraw:bronze arrow > bank:deposit:bones": {
+      "sequence": [
+        "bank:deposit:water rune",
+        "bank:withdraw:bronze arrow",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:59:09.199Z",
+      "example": "Deposit all Water rune → Withdraw 1 Bronze arrow → Deposit all Bones"
+    },
+    "bank:withdraw:bronze arrow > bank:deposit:bones > wait": {
+      "sequence": [
+        "bank:withdraw:bronze arrow",
+        "bank:deposit:bones",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -0.15,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:59:18.746Z",
+      "example": "Withdraw 1 Bronze arrow → Deposit all Bones → Wait and observe for a moment"
+    },
+    "bank:deposit:bones > wait > bank:deposit:bones": {
+      "sequence": [
+        "bank:deposit:bones",
+        "wait",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.31,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:59:27.168Z",
+      "example": "Deposit all Bones → Wait and observe for a moment → Deposit all Bones"
+    },
+    "wait > bank:deposit:bones > bank:deposit:bronze arrow": {
+      "sequence": [
+        "wait",
+        "bank:deposit:bones",
+        "bank:deposit:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -0.31,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:59:37.652Z",
+      "example": "Wait and observe for a moment → Deposit all Bones → Deposit all Bronze arrow"
+    },
+    "bank:deposit:bones > bank:deposit:bronze arrow > bank:withdraw:coins": {
+      "sequence": [
+        "bank:deposit:bones",
+        "bank:deposit:bronze arrow",
+        "bank:withdraw:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.06,
+      "positive": 0,
+      "lastAt": "2026-08-15T19:59:48.450Z",
+      "example": "Deposit all Bones → Deposit all Bronze arrow → Withdraw 1 Coins"
     }
   },
   "discoveries": [
@@ -33103,7 +33189,7 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T19:58:27.452Z",
+  "updatedAt": "2026-08-15T20:00:21.764Z",
   "activePlan": {
     "objective": "Open the bank, deposit all items, and withdraw necessary items for survival.",
     "focus": "Open the bank using the `Open bank` skill to access the banker NPC or booth.",
