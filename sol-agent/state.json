@@ -6,39 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 1370,
-    "teacherChoices": 1370,
+    "totalChoices": 1380,
+    "teacherChoices": 1380,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 1370,
-    "totalReward": 680.89,
-    "saves": 138,
-    "shadowPredictions": 531,
+    "completedExperiences": 1380,
+    "totalReward": 677.36,
+    "saves": 139,
+    "shadowPredictions": 537,
     "shadowMatches": 223,
-    "strategistRefreshes": 75,
+    "strategistRefreshes": 76,
     "strategistFailures": 1
   },
   "memories": [
-    {
-      "id": "mstllklv-p2dwdr",
-      "createdAt": "2026-08-14T23:48:33.043Z",
-      "tick": 26734,
-      "runNumber": 37,
-      "kind": "relationship",
-      "text": "Oag0azhyi said: \"Eep! Busted at the stall, walking away casually :3\". Current stance cooperative, trust 0.60.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "oag0azhyi",
-        "cooperative",
-        "potential help"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
     {
       "id": "mstlmeo8-su3txx",
       "createdAt": "2026-08-14T23:49:12.008Z",
@@ -8711,6 +8691,26 @@
         "z": 3245,
         "level": 0
       }
+    },
+    {
+      "id": "mstqpmwj-uj6enl",
+      "createdAt": "2026-08-15T02:11:40.723Z",
+      "tick": 0,
+      "runNumber": 37,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. This plan leverages the safe fishing location guide provided in",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to draynor bank at 3092 3243 using verified waypoint navigation",
+        "use the safe fishing location at draynor village 3087 3230 to access bank account",
+        "confirm access to bank account by observing the bank interface and verifying account balance update"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -8728,14 +8728,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 6,
+        "n": 8,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 6,
+        "negative": 8,
         "lastReward": -0.6,
-        "lastAt": "2026-08-14T23:34:17.725Z",
-        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
-        "exampleReason": "You need a Woodcutting level of 30 to chop down this tree."
+        "lastAt": "2026-08-15T02:11:40.778Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I'd like to access my bank account, please."
       },
       "dialog:1:i d like to access my bank account please": {
         "n": 3,
@@ -8746,17 +8746,27 @@
         "lastAt": "2026-08-14T23:34:11.741Z",
         "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
         "exampleReason": "I'd like to access my bank account, please."
+      },
+      "wait": {
+        "n": 1,
+        "avgReward": -0.15,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.15,
+        "lastAt": "2026-08-15T02:11:24.875Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I need to wait for the Net Fishing spot to be revealed before proceeding."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal,wait": {
       "bank:deposit:coins": {
-        "n": 31,
-        "avgReward": -0.2175,
+        "n": 32,
+        "avgReward": -0.2138,
         "positive": 0,
         "negative": 13,
         "lastReward": -0.1,
-        "lastAt": "2026-08-14T23:34:39.042Z",
-        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "lastAt": "2026-08-15T02:11:49.776Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Deposit all Coins"
       },
       "bank:deposit:body rune": {
@@ -8840,13 +8850,13 @@
         "exampleReason": "Withdraw 1 Chaos rune"
       },
       "bank:deposit:chaos rune": {
-        "n": 4,
-        "avgReward": -0.08,
+        "n": 5,
+        "avgReward": -0.144,
         "positive": 0,
-        "negative": 0,
-        "lastReward": -0.08,
-        "lastAt": "2026-08-14T23:35:15.020Z",
-        "exampleGoal": "Open the bank using the `openBank` skill to access the banker NPC or booth.",
+        "negative": 1,
+        "lastReward": -0.4,
+        "lastAt": "2026-08-15T02:11:56.995Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "exampleReason": "Deposit all Chaos rune"
       },
       "bank:withdraw:bronze arrow": {
@@ -8888,6 +8898,26 @@
         "lastAt": "2026-08-14T23:32:51.619Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "Deposit all Earth rune"
+      },
+      "bank:deposit:bones": {
+        "n": 2,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-15T02:12:18.296Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Deposit all Bones"
+      },
+      "bank:deposit:nature rune": {
+        "n": 1,
+        "avgReward": -0.32,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.32,
+        "lastAt": "2026-08-15T02:12:11.125Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+        "exampleReason": "Deposit all Nature rune"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=1|shop=0|cats=bank,modal": {
@@ -11244,6 +11274,16 @@
         "lastAt": "2026-08-15T00:08:31.207Z",
         "exampleGoal": "Plan complete; form the next objective.",
         "exampleReason": "I am ready to attack the Dark wizard (level 7, distance 7) to strengthen my defenses."
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T02:11:13.220Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I have successfully traveled to Draynor Bank at 3092,3243 using verified waypoint navigation."
       }
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,inventory,navigation-skill,npc,say,social,wait,world": {
@@ -12703,6 +12743,18 @@
         "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
         "exampleReason": "I have successfully traveled to Draynor Bank at 3092,3243 using verified waypoint navigation. I now need to explore the fishing area to locate the Net Fishing spot."
       }
+    },
+    "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
+      "dialog:1:i d like to access my bank account please": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-15T02:11:32.686Z",
+        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
+        "exampleReason": "I'd like to access my bank account, please."
+      }
     }
   },
   "relationships": {
@@ -13102,8 +13154,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-15T02:10:42.589Z",
-      "encounters": 1000,
+      "lastSeenAt": "2026-08-15T02:12:11.372Z",
+      "encounters": 1009,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -13632,8 +13684,8 @@
     "goo010": {
       "name": "Goo010",
       "firstSeenAt": "2026-08-14T22:55:20.697Z",
-      "lastSeenAt": "2026-08-15T01:03:13.513Z",
-      "encounters": 13,
+      "lastSeenAt": "2026-08-15T02:10:52.822Z",
+      "encounters": 14,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -13849,8 +13901,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-15T02:10:42.589Z",
-      "encounters": 346,
+      "lastSeenAt": "2026-08-15T02:12:11.372Z",
+      "encounters": 356,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -14118,17 +14170,32 @@
       "facts": [],
       "questions": [],
       "lastMessages": []
+    },
+    "frenbot2y": {
+      "name": "Frenbot2y",
+      "firstSeenAt": "2026-08-15T02:10:52.822Z",
+      "lastSeenAt": "2026-08-15T02:10:52.822Z",
+      "encounters": 1,
+      "combatLevel": 7,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-15T02:09:21.908Z",
-      "visits": 350,
+      "lastSeenAt": "2026-08-15T02:12:11.372Z",
+      "visits": 359,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -14183,11 +14250,11 @@
     "192:202:0": {
       "key": "192:202:0",
       "x": 3087,
-      "z": 3235,
+      "z": 3247,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-15T02:10:42.589Z",
-      "visits": 364,
+      "lastSeenAt": "2026-08-15T02:10:52.822Z",
+      "visits": 365,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -14200,7 +14267,6 @@
         "Imp"
       ],
       "locs": [
-        "Broom",
         "Mirror",
         "Barrel",
         "Pile of rope",
@@ -14239,7 +14305,8 @@
         "Cooking shelves",
         "Door",
         "Stones",
-        "Bush"
+        "Bush",
+        "Wardrobe"
       ]
     },
     "192:201:0": {
@@ -14429,10 +14496,10 @@
         "dialog:1:click here to continue",
         "bank:deposit:coins"
       ],
-      "n": 3,
-      "avgReward": -1.48,
+      "n": 4,
+      "avgReward": -1.435,
       "positive": 0,
-      "lastAt": "2026-08-14T23:34:24.290Z",
+      "lastAt": "2026-08-15T02:11:49.776Z",
       "example": "Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue → Deposit all Coins"
     },
     "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:body rune": {
@@ -18862,117 +18929,117 @@
       "positive": 1,
       "lastAt": "2026-08-15T02:10:52.527Z",
       "example": "Explore north about 5 tiles → Chop down Willow (distance 1) → Use Bank booth (distance 7)"
+    },
+    "loc:chop down:willow > loc:use:bank booth > skill:travel:draynor-bank": {
+      "sequence": [
+        "loc:chop down:willow",
+        "loc:use:bank booth",
+        "skill:travel:draynor-bank"
+      ],
+      "n": 1,
+      "avgReward": 0.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:13.220Z",
+      "example": "Chop down Willow (distance 1) → Use Bank booth (distance 7) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation"
+    },
+    "loc:use:bank booth > skill:travel:draynor-bank > dialog:1:click here to continue": {
+      "sequence": [
+        "loc:use:bank booth",
+        "skill:travel:draynor-bank",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 0.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:18.867Z",
+      "example": "Use Bank booth (distance 7) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Dialog 1: Click here to continue"
+    },
+    "skill:travel:draynor-bank > dialog:1:click here to continue > wait": {
+      "sequence": [
+        "skill:travel:draynor-bank",
+        "dialog:1:click here to continue",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:24.875Z",
+      "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Dialog 1: Click here to continue → Wait and observe for a moment"
+    },
+    "dialog:1:click here to continue > wait > dialog:1:i d like to access my bank account please": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "wait",
+        "dialog:1:i d like to access my bank account please"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:32.686Z",
+      "example": "Dialog 1: Click here to continue → Wait and observe for a moment → Dialog 1: I'd like to access my bank account, please."
+    },
+    "wait > dialog:1:i d like to access my bank account please > dialog:1:click here to continue": {
+      "sequence": [
+        "wait",
+        "dialog:1:i d like to access my bank account please",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": -1.35,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:40.778Z",
+      "example": "Wait and observe for a moment → Dialog 1: I'd like to access my bank account, please. → Dialog 1: Click here to continue"
+    },
+    "dialog:1:click here to continue > bank:deposit:coins > bank:deposit:chaos rune": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "bank:deposit:coins",
+        "bank:deposit:chaos rune"
+      ],
+      "n": 1,
+      "avgReward": -1.1,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:11:56.995Z",
+      "example": "Dialog 1: Click here to continue → Deposit all Coins → Deposit all Chaos rune"
+    },
+    "bank:deposit:coins > bank:deposit:chaos rune > bank:deposit:bones": {
+      "sequence": [
+        "bank:deposit:coins",
+        "bank:deposit:chaos rune",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.58,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:12:03.581Z",
+      "example": "Deposit all Coins → Deposit all Chaos rune → Deposit all Bones"
+    },
+    "bank:deposit:chaos rune > bank:deposit:bones > bank:deposit:nature rune": {
+      "sequence": [
+        "bank:deposit:chaos rune",
+        "bank:deposit:bones",
+        "bank:deposit:nature rune"
+      ],
+      "n": 1,
+      "avgReward": -0.8,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:12:11.125Z",
+      "example": "Deposit all Chaos rune → Deposit all Bones → Deposit all Nature rune"
+    },
+    "bank:deposit:bones > bank:deposit:nature rune > bank:deposit:bones": {
+      "sequence": [
+        "bank:deposit:bones",
+        "bank:deposit:nature rune",
+        "bank:deposit:bones"
+      ],
+      "n": 1,
+      "avgReward": -0.48,
+      "positive": 0,
+      "lastAt": "2026-08-15T02:12:18.296Z",
+      "example": "Deposit all Bones → Deposit all Nature rune → Deposit all Bones"
     }
   },
   "discoveries": [
-    {
-      "id": "place:standing torch:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Standing torch observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cauldron:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Cauldron observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:broom:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Broom observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "resource",
-      "text": "Tree observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Crate observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:stool:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Stool observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mirror:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Mirror observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:plant:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Plant observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:table:192:203:0",
-      "at": "2026-08-15T00:06:54.634Z",
-      "kind": "place",
-      "text": "Table observed near 3079, 3251, level 0.",
-      "location": {
-        "x": 3079,
-        "z": 3251,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "resource:bank table:192:203:0",
       "at": "2026-08-15T00:06:54.634Z",
@@ -22476,29 +22543,124 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:cooking shelves:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Cooking shelves observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Door observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broom:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Broom observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mirror:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Mirror observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Barrel observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:pile of rope:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "place",
+      "text": "Pile of rope observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rocking chair:192:202:0",
+      "at": "2026-08-15T02:10:52.822Z",
+      "kind": "resource",
+      "text": "Rocking chair observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-15T02:10:52.528Z",
+  "updatedAt": "2026-08-15T02:12:18.296Z",
   "activePlan": {
-    "objective": "Locate and utilize safe fishing spots in Draynor Village for level 1 fishing.",
-    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-    "reason": "This action sequence ensures safe and effective fishing in the Draynor Village",
+    "objective": "Access Draynor Bank using safe fishing location coordinates",
+    "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+    "reason": "This plan leverages the safe fishing location guide provided in",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "status": "done",
-        "evidence": "moved 3103,3257 → 3092,3243; new: npc:Dark wizard, npc:Fishing spot, npc:Diango, loc:Bush, loc:Willow, loc:Tree stump"
-      },
-      {
-        "id": "step-2",
-        "label": "Explore north about 5 tiles to locate the Net Fishing spot.",
+        "label": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Use the safe fishing location at Draynor Village (3087, 3230) to access bank account",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Use the Net Fishing spot to catch Shrimp/anchovies and verify successful fishing.",
+        "label": "Confirm access to bank account by observing the bank interface and verifying account balance update",
         "status": "pending"
       }
     ],
@@ -22506,16 +22668,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-      "Explore north about 5 tiles to locate the Net Fishing spot.",
-      "Use the Net Fishing spot to catch Shrimp/anchovies and verify successful fishing."
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+      "Use the safe fishing location at Draynor Village (3087, 3230) to access bank account",
+      "Confirm access to bank account by observing the bank interface and verifying account balance update"
     ],
     "avoid": [
-      "Attack Dark wizard (level 7, distance 6)",
-      "Speak publicly to nearby agents: Goo002, Yr8wc2n6q, Un5wc8p3r, Gpgather1",
-      "Speak publicly to nearby agents: Goo002, Un5wc8p3r, Gpgather1, Yr8wc2n6q"
+      "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation",
+      "Dialog 1: Click here to continue",
+      "Wait and observe for a moment"
     ],
-    "updatedAt": "2026-08-15T02:06:53.753Z",
+    "updatedAt": "2026-08-15T02:11:40.723Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
