@@ -122,13 +122,13 @@ let snapshot:any = {
 const publicSnapshot=()=>({
   updatedAt:snapshot.updatedAt,online:snapshot.online,inGame:snapshot.inGame,tick:snapshot.tick,runNumber:snapshot.runNumber,
   sessionStartedAt:snapshot.sessionStartedAt,currentGoal:snapshot.currentGoal,currentWhy:snapshot.currentWhy,thinking:snapshot.thinking,
-  player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:0,worldZ:0,level:0,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:'none',targetIndex:-1}}:null,
+  player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:snapshot.player.worldX,worldZ:snapshot.player.worldZ,level:snapshot.player.level,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:snapshot.player.combat?.targetType||'none',targetIndex:snapshot.player.combat?.targetIndex??-1}}:null,
   skills:(snapshot.skills||[]).map((skill:any)=>({name:skill.name,level:skill.level})),
-  combatStyle:{weaponName:'Private',currentStyle:-1,styles:[]},nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],inventory:[],equipment:[],combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:[],movementTrail:[],lessons:[],
+  combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
-  viewerAccess:'summary'
+  viewerAccess:'summary',syncRevision:snapshot.revision??snapshot.tick??0
 });
 
 const refreshSnapshot = (state:BotWorldState|null) => {
