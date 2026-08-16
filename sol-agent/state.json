@@ -6,37 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7603,
-    "teacherChoices": 7603,
+    "totalChoices": 7604,
+    "teacherChoices": 7604,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8179,
-    "totalReward": 3752.125,
-    "saves": 876,
+    "completedExperiences": 8180,
+    "totalReward": 3752.205,
+    "saves": 877,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 519,
     "strategistFailures": 15
   },
   "memories": [
-    {
-      "id": "msvn9rhw-o0bx92",
-      "createdAt": "2026-08-16T10:10:53.684Z",
-      "tick": 218,
-      "runNumber": 125,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 1.47.",
-      "importance": 2.47,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msvna15q-23bps4",
       "createdAt": "2026-08-16T10:11:06.206Z",
@@ -8440,6 +8422,30 @@
       "location": {
         "x": 3182,
         "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1wky0-i384w1",
+      "createdAt": "2026-08-16T17:00:32.904Z",
+      "tick": 3013,
+      "runNumber": 135,
+      "kind": "episode",
+      "text": "AI motor: Pick up 15 Arrow shaft (distance 6). Result: moved 3181,3229 → 3184,3233. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "pickup",
+        "item",
+        "resource",
+        "arrow shaft",
+        "valuable drop",
+        "agent bowyer4417",
+        "loc oak",
+        "loc standard"
+      ],
+      "location": {
+        "x": 3184,
+        "z": 3233,
         "level": 0
       }
     }
@@ -21069,14 +21075,14 @@
     },
     "area=397:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
       "pickup:arrow shaft": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-16T16:57:51.615Z",
+        "lastAt": "2026-08-16T17:00:32.904Z",
         "exampleGoal": "Approach the Gerrants' Fishy Business",
-        "exampleReason": "I picked up 15 Arrow shaft (distance 5)"
+        "exampleReason": "I picked up 15 Arrow shaft (distance 8) at the Gerrants' Fishy Business. This is a valuable item for my progress. I have 100% HP, and I'm at level 117. I'm ready to move on to the "
       }
     },
     "area=398:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -30125,8 +30131,8 @@
     "binxnet": {
       "name": "Binxnet",
       "firstSeenAt": "2026-08-16T14:01:32.548Z",
-      "lastSeenAt": "2026-08-16T17:00:16.403Z",
-      "encounters": 11,
+      "lastSeenAt": "2026-08-16T17:00:23.675Z",
+      "encounters": 12,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -30208,8 +30214,8 @@
     "opusmaximus2": {
       "name": "Opusmaximus2",
       "firstSeenAt": "2026-08-16T16:54:39.505Z",
-      "lastSeenAt": "2026-08-16T17:00:16.403Z",
-      "encounters": 9,
+      "lastSeenAt": "2026-08-16T17:00:23.675Z",
+      "encounters": 10,
       "combatLevel": 115,
       "trust": 0,
       "stance": "unknown",
@@ -30946,12 +30952,12 @@
     },
     "198:201:0": {
       "key": "198:201:0",
-      "x": 3182,
-      "z": 3228,
+      "x": 3181,
+      "z": 3229,
       "level": 0,
       "firstSeenAt": "2026-08-16T16:56:27.840Z",
-      "lastSeenAt": "2026-08-16T16:57:42.826Z",
-      "visits": 4,
+      "lastSeenAt": "2026-08-16T17:00:23.675Z",
+      "visits": 5,
       "npcs": [
         "Butterfly",
         "Spider",
@@ -30972,7 +30978,8 @@
         "Standard",
         "Fallen tree",
         "Smashed chair",
-        "Tree stump"
+        "Tree stump",
+        "Fire"
       ]
     },
     "199:202:0": {
@@ -49209,33 +49216,22 @@
       "failed": 0,
       "lastAt": "2026-08-16T17:00:23.382Z",
       "example": "Pick up 15 Arrow shaft (distance 13) → Pick up 15 Arrow shaft (distance 3) → Pick up Raw bear meat (distance 9)"
+    },
+    "pickup:arrow shaft > pickup:raw bear meat > pickup:arrow shaft": {
+      "sequence": [
+        "pickup:arrow shaft",
+        "pickup:raw bear meat",
+        "pickup:arrow shaft"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 0,
+      "lastAt": "2026-08-16T17:00:32.904Z",
+      "example": "Pick up 15 Arrow shaft (distance 3) → Pick up Raw bear meat (distance 9) → Pick up 15 Arrow shaft (distance 6)"
     }
   },
   "discoveries": [
-    {
-      "id": "place:door:192:203:0",
-      "at": "2026-08-16T10:51:50.114Z",
-      "kind": "place",
-      "text": "Door observed near 3080, 3248, level 0.",
-      "location": {
-        "x": 3080,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:staircase:192:203:0",
-      "at": "2026-08-16T10:51:50.114Z",
-      "kind": "place",
-      "text": "Staircase observed near 3080, 3248, level 0.",
-      "location": {
-        "x": 3080,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:cooking shelves:192:203:0",
       "at": "2026-08-16T10:51:50.114Z",
@@ -52823,9 +52819,33 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:fire:198:201:0",
+      "at": "2026-08-16T17:00:23.675Z",
+      "kind": "place",
+      "text": "Fire observed near 3181, 3229, level 0.",
+      "location": {
+        "x": 3181,
+        "z": 3229,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3181:3229:3184:3233:0",
+      "at": "2026-08-16T17:00:32.905Z",
+      "kind": "route",
+      "text": "Route learned: 3181,3229 → 3184,3233; moved 3181,3229 → 3184,3233",
+      "location": {
+        "x": 3184,
+        "z": 3233,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T17:00:23.382Z",
+  "updatedAt": "2026-08-16T17:00:32.905Z",
   "activePlan": {
     "objective": "Shop at the Gerrants' Fishy Business",
     "focus": "Approach the Gerrants' Fishy Business",
