@@ -99,12 +99,46 @@ jobs:
       - name: Start public spectator tunnel
         id: tunnel
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
           curl -fL --retry 4 --retry-delay 2 -o /tmp/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-linux-amd64"
           chmod +x /tmp/cloudflared
-          nohup /tmp/cloudflared tunnel --url http://127.0.0.1:8787 --no-autoupdate > sol-tunnel.log 2>&1 &
-          echo $! > sol-tunnel.pid
+          cat > /tmp/sol-tunnel-supervisor.sh <<'TUNNELSUP'
+          #!/usr/bin/env bash
+          set -u
+          while true; do
+            : > sol-tunnel.log
+            /tmp/cloudflared tunnel --url http://127.0.0.1:8787 --no-autoupdate >> sol-tunnel.log 2>&1 &
+            TUNNEL_PID=$!
+            echo "$TUNNEL_PID" > sol-tunnel.pid
+            URL=''
+            for j in $(seq 1 45); do
+              URL=$(grep -oE 'https://[-a-z0-9]+\.trycloudflare\.com' sol-tunnel.log | head -1 || true)
+              [ -n "$URL" ] && break
+              sleep 1
+            done
+            if [ -n "$URL" ]; then
+              NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+              JSON=$(jq -cn --arg url "$URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"teacher-supervised-progression",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
+              CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
+              SHA=$(gh api "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" --jq .sha 2>/dev/null || true)
+              if [ -n "$SHA" ]; then
+                gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" -f message="Refresh Sol spectator tunnel" -f content="$CONTENT" -f sha="$SHA" >/dev/null || true
+              else
+                gh api --method PUT "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" -f message="Publish Sol spectator tunnel" -f content="$CONTENT" >/dev/null || true
+              fi
+              echo "url=$URL" > /tmp/sol-live-url
+            fi
+            wait "$TUNNEL_PID" || true
+            sleep 2
+          done
+          TUNNELSUP
+          chmod +x /tmp/sol-tunnel-supervisor.sh
+          nohup /tmp/sol-tunnel-supervisor.sh > /tmp/sol-tunnel-supervisor.log 2>&1 &
+          echo $! > sol-tunnel-supervisor.pid
           URL=''
           for i in $(seq 1 45); do
             URL=$(grep -oE 'https://[-a-z0-9]+\.trycloudflare\.com' sol-tunnel.log | head -1 || true)
