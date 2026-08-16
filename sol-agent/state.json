@@ -6,59 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 6941,
-    "teacherChoices": 6941,
+    "totalChoices": 6942,
+    "teacherChoices": 6942,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6930,
-    "totalReward": 4420.865,
-    "saves": 709,
-    "shadowPredictions": 3931,
-    "shadowMatches": 1896,
+    "completedExperiences": 6931,
+    "totalReward": 4422.375,
+    "saves": 710,
+    "shadowPredictions": 3932,
+    "shadowMatches": 1897,
     "strategistRefreshes": 463,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvffb8x-w62x8f",
-      "createdAt": "2026-08-16T06:31:15.633Z",
-      "tick": 14828,
-      "runNumber": 85,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 2). Result: +1595 XP; 8 damage dealt; moved 3085,3238 → 3084,3237; execution rejected or failed. Reward 3.382.",
-      "importance": 2.39,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent poseidon",
-        "npc black knight"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvffb8x-fqx323",
-      "createdAt": "2026-08-16T06:31:15.633Z",
-      "tick": 14828,
-      "runNumber": 85,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 2) worked across 36 similar samples with average reward 3.16.",
-      "importance": 4,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "msvffbhj-l3j8sr",
       "createdAt": "2026-08-16T06:31:15.943Z",
@@ -8671,6 +8631,53 @@
       "kind": "strategy",
       "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 5 similar samples with average reward 1.15.",
       "importance": 2.15,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhfy4m-wrvboa",
+      "createdAt": "2026-08-16T07:27:44.518Z",
+      "tick": 118,
+      "runNumber": 92,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3080,3250 → 3092,3243; new: agent:Swfish2, npc:Ned, npc:Jail guard, npc:Fishing spot, loc:Bush, loc:Tree stump. Reward 1.51.",
+      "importance": 1.46,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent swfish2",
+        "npc ned",
+        "npc jail guard",
+        "npc fishing spot",
+        "loc bush",
+        "loc tree stump",
+        "loc boulder",
+        "loc pile of rope"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhfy4n-tr2p30",
+      "createdAt": "2026-08-16T07:27:44.519Z",
+      "tick": 118,
+      "runNumber": 92,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 6 similar samples with average reward 1.21.",
+      "importance": 2.21,
       "tags": [
         "navigation skill",
         "skill travel draynor bank"
@@ -19437,14 +19444,14 @@
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=navigation-skill": {
       "skill:travel:draynor-bank": {
-        "n": 5,
-        "avgReward": 1.1512,
-        "positive": 5,
+        "n": 6,
+        "avgReward": 1.211,
+        "positive": 6,
         "negative": 0,
-        "lastReward": 1.237,
-        "lastAt": "2026-08-16T07:25:57.708Z",
+        "lastReward": 1.51,
+        "lastAt": "2026-08-16T07:27:44.518Z",
         "exampleGoal": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
-        "exampleReason": "I need to reach the Draynor Bank to collect resources. I'll use verified waypoint navigation to get there."
+        "exampleReason": "I'm at the Draynor Bank at 3092,3243. I need to deposit the raw shrimps and anchovies and retrieve any valuable items mentioned in the bank notice board. I'll start by using the ba"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=economy,pickup": {
@@ -20758,8 +20765,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 5011,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 5013,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -21206,8 +21213,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-16T07:19:57.363Z",
-      "encounters": 2521,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 2523,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -22135,8 +22142,8 @@
     "daytrader": {
       "name": "Daytrader",
       "firstSeenAt": "2026-08-15T19:55:19.652Z",
-      "lastSeenAt": "2026-08-16T07:11:13.545Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 4,
       "combatLevel": 38,
       "trust": 1,
       "stance": "cooperative",
@@ -22635,8 +22642,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 2399,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 2401,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -24987,8 +24994,8 @@
     "ares": {
       "name": "Ares",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 404,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 406,
       "combatLevel": 21,
       "trust": 0,
       "stance": "unknown",
@@ -25013,8 +25020,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 568,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 570,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -25058,8 +25065,8 @@
     "athena": {
       "name": "Athena",
       "firstSeenAt": "2026-08-16T02:33:31.622Z",
-      "lastSeenAt": "2026-08-16T07:24:36.316Z",
-      "encounters": 44,
+      "lastSeenAt": "2026-08-16T07:27:05.975Z",
+      "encounters": 45,
       "combatLevel": 79,
       "trust": 0,
       "stance": "unknown",
@@ -25226,8 +25233,8 @@
     "foodprobe1": {
       "name": "Foodprobe1",
       "firstSeenAt": "2026-08-16T03:14:46.597Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 579,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 581,
       "combatLevel": 18,
       "trust": 0,
       "stance": "unknown",
@@ -26767,8 +26774,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "encounters": 306,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 308,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27099,6 +27106,21 @@
           "text": "Kilk fm engine online picking up ground logs and burning."
         }
       ]
+    },
+    "wanderlark": {
+      "name": "Wanderlark",
+      "firstSeenAt": "2026-08-16T07:27:28.735Z",
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "encounters": 1,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -27269,12 +27291,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3081,
-      "z": 3249,
+      "x": 3080,
+      "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-16T07:25:46.569Z",
-      "visits": 559,
+      "lastSeenAt": "2026-08-16T07:27:28.735Z",
+      "visits": 561,
       "npcs": [
         "Diango",
         "Banker",
@@ -46858,7 +46880,7 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T07:25:57.708Z",
+  "updatedAt": "2026-08-16T07:27:44.520Z",
   "activePlan": {
     "objective": "Complete the bank dialogue and gain access to the bank for resource collection",
     "focus": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
@@ -46874,12 +46896,13 @@
       {
         "id": "step-2",
         "label": "Use the bank booth to deposit the raw shrimps and anchovies and retrieve any valuable items mentioned in the bank notice board",
-        "status": "active"
+        "status": "done",
+        "evidence": "moved 3080,3250 → 3092,3243; new: agent:Swfish2, npc:Ned, npc:Jail guard, npc:Fishing spot, loc:Bush, loc:Tree stump"
       },
       {
         "id": "step-3",
         "label": "Inspect the bank notice board for any additional resources or prerequisites that may be required to proceed with the bank dialogue or to unl",
-        "status": "pending"
+        "status": "active"
       }
     ],
     "successSignals": [
