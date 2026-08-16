@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 208,
-  "committedTick": 640,
+  "stateGeneration": 223,
+  "committedTick": 691,
   "identity": {
     "name": "Sol5"
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Raw shrimps (distance 7)"
+    "reason": "I picked up a small fishing net (distance 0)"
   },
   "objective": {
     "id": "boot",
-    "label": "Identify and record drop locations",
+    "label": "Identify safe fishing spots based on coordinates and spot types.",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|19:557:12",
-    "freeSlots": 13,
+    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|19:557:12",
+    "freeSlots": 11,
     "coins": 208,
-    "updatedTick": 640
+    "updatedTick": 691
   },
   "milestones": [
     {
@@ -43,6 +43,18 @@
       "label": "Train Woodcutting to level 15",
       "tick": 364,
       "evidence": "+132 XP"
+    },
+    {
+      "id": "fish-for-food:652",
+      "label": "Train Fishing only until a defined food milestone",
+      "tick": 652,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "fish-for-food:678",
+      "label": "Train Fishing only until a defined food milestone",
+      "tick": 678,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -52,5 +64,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:37:01.791Z"
+  "updatedAt": "2026-08-16T20:37:17.099Z"
 }\n
