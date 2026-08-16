@@ -28,7 +28,7 @@ type PolicyStat = {
 
 type MemoryEntry = {
   id:string; createdAt:string; tick:number; runNumber:number|null;
-  kind:'episode'|'strategy'|'relationship'|'place'; text:string; importance:number;
+  kind:'episode'|'strategy'|'relationship'|'place'|'lesson'; text:string; importance:number;
   tags:string[]; location?:{x:number;z:number;level:number};
 };
 
@@ -535,18 +535,12 @@ export class SolAgentBrain {
     if(this.plannerEnabled)this.maybeReevaluateGoal(state,500);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
     // ---------------------------------------------------------------
-    // PLANNER LAYER (opt-in, default OFF).
+    // PLANNER LAYER.
     //
-    // Everything below was added speculatively and measured WORSE than the
-    // motor alone: run 70 managed 11 actions/1000 ticks against run 48's 145.
-    // Two structural faults caused it:
-    //   1. this else-branch ran on EVERY decide() with no active step, so it
-    //      built and adopted a fresh Goal object every tick.
-    //   2. once a goal had a targetAction the filter hard-gated candidates,
-    //      and since no step ever carried a successCondition the goal never
-    //      completed, so the motor stayed straitjacketed for the whole run.
-    // Default off until a measured run shows it beats the motor. Enable with
-    // SOL_PLANNER=1.
+    // The planner is advisory and budgeted: it can narrow candidates only
+    // while its step has remaining budget, and it must yield to safety gates,
+    // observed failures, and deterministic recovery. It is enabled by default
+    // and can be disabled only with the explicit SOL_PLANNER=0 rollback.
     // ---------------------------------------------------------------
     let filteredCandidates=legal;
     if(this.plannerEnabled){
@@ -766,6 +760,7 @@ export class SolAgentBrain {
     ctx[exp.candidate.fingerprint]={n,avgReward:Number(avg.toFixed(4)),positive:old.positive+(outcome.reward>.15?1:0),negative:old.negative+(outcome.reward<-.15?1:0),lastReward:outcome.reward,lastAt:now(),exampleGoal:exp.choice.goal,exampleReason:exp.choice.reason};
     this.memory.lifetime.completedExperiences++;this.memory.lifetime.totalReward=Number((this.memory.lifetime.totalReward+outcome.reward).toFixed(3));
     if(Math.abs(outcome.reward)>=.8||outcome.kills>0||outcome.newThings.some(x=>x.startsWith('agent:'))||outcome.rejected)this.addMemory({kind:'episode',text:`AI motor: ${exp.candidate.label}. Result: ${outcome.summary}. Reward ${outcome.reward}.`,importance:clamp(.7+Math.abs(outcome.reward)/2,.7,5),tags:uniq([exp.candidate.category,...(exp.candidate.tags||[]),...outcome.newThings]).slice(0,14),tick:outcome.tick,state});
+    if(/bankDeposit|bankWithdraw|shopSell|useInventoryItem|dropItem/.test(outcome.actionType)||/item-policy|bank|sell|discard|bury|food|raw/i.test(exp.candidate.label))this.addMemory({kind:'lesson',text:`Item-purpose lesson: ${exp.candidate.label} produced ${outcome.summary} with reward ${outcome.reward}. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.`,importance:clamp(1+Math.abs(outcome.reward),1,3),tags:['item-purpose',exp.candidate.category,...(exp.candidate.tags||[])].slice(0,16),tick:outcome.tick,state});
     if(n>=3&&avg>.35&&ctx[exp.candidate.fingerprint].positive>=2)this.addMemory({kind:'strategy',text:`From AI demonstrations, ${exp.candidate.label} worked across ${n} similar samples with average reward ${avg.toFixed(2)}.`,importance:clamp(1+avg,1,4),tags:[exp.candidate.category,exp.candidate.fingerprint],tick:outcome.tick,state});
     this.recentSequence.push({fingerprint:exp.candidate.fingerprint,label:exp.candidate.label,reward:outcome.reward});if(this.recentSequence.length>12)this.recentSequence.shift();
     if(this.recentSequence.length>=3){const seq=this.recentSequence.slice(-3),key=seq.map(x=>x.fingerprint).join(' > '),total=seq.reduce((v,x)=>v+x.reward,0),oldSeq=this.memory.sequences[key]||{sequence:seq.map(x=>x.fingerprint),n:0,avgReward:0,positive:0,lastAt:now(),example:seq.map(x=>x.label).join(' → ')};const sn=oldSeq.n+1,savg=oldSeq.avgReward+(total-oldSeq.avgReward)/sn;this.memory.sequences[key]={...oldSeq,n:sn,avgReward:Number(savg.toFixed(3)),positive:oldSeq.positive+(total>.4?1:0),lastAt:now()};}
