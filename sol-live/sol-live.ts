@@ -418,6 +418,7 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   if(insideDraynorManor) add({label:`Execute rs-sdk skill: escape Draynor Manor${p.level>0?' by descending to ground first':''}, then use the documented east-wing doors`,category:'navigation-skill',fingerprint:'skill:escape-draynor-manor',settleTicks:18,action:{type:'worldSkill',skill:'escape-draynor-manor'},tags:['escape','draynor-manor','staircase','door','repository-tested','measurable-position']});
 
   const distance=(x:number,z:number)=>Math.hypot(p.worldX-x,p.worldZ-z);
+  const bankVisible=(state.nearbyLocs||[]).some((l:any)=>l.reachable!==false&&/bank/i.test(String(l.name||'')))||(state.nearbyNpcs||[]).some((n:any)=>n.reachable!==false&&/banker/i.test(String(n.name||'')));
   if(!insideDraynorManor&&p.level===0&&distance(3092,3243)>6&&distance(3092,3243)<230){
     const waypoints=p.worldZ>3300?[[3130,3320],[3120,3280],[3092,3243]]:[[3092,3243]];
     add({label:'Travel to Draynor Bank at 3092,3243 using verified waypoint navigation',category:'navigation-skill',fingerprint:'skill:travel:draynor-bank',settleTicks:16,action:{type:'worldSkill',skill:'travel-waypoints',destination:'Draynor Bank',waypoints},tags:['travel','bank','draynor','repository-coordinate']});
@@ -446,6 +447,7 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
       const lower=text.toLowerCase();
       const category=/attack/.test(lower)?'combat':/pickpocket|steal|trade|shop|sell|buy/.test(lower)?'economy':/talk/.test(lower)?'social':'npc';
       if(category==='combat'&&capacityPressure)continue;
+      if(capacityPressure&&bankVisible&&category==='economy'&&!/bank|deposit|banker/i.test(`${npc.name} ${text}`))continue;
       add({label:`${text} ${npc.name} (level ${npc.combatLevel||0}, distance ${npc.distance})`,category,fingerprint:`npc:${norm(text)}:${norm(npc.name)}`,settleTicks:category==='combat'?12:category==='economy'?8:6,action:{type:'interactNpc',npcIndex:npc.index,optionIndex:o.opIndex,reason:`Interact with ${npc.name}.`},tags:[npc.name,text,category,`level-${npc.combatLevel||0}`,capacityPressure?'capacity-pressure':'']});
     }
   }
