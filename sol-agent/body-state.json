@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 13,
-  "committedTick": 50,
+  "stateGeneration": 29,
+  "committedTick": 100,
   "identity": {
     "name": "Sol5"
   },
@@ -29,7 +29,7 @@
     "signature": "2:317:1|3:317:1|5:317:1|6:317:1|7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
     "freeSlots": 4,
     "coins": 0,
-    "updatedTick": 50
+    "updatedTick": 100
   },
   "milestones": [
     {
@@ -37,14 +37,26 @@
       "label": "Resolve inventory capacity before training",
       "tick": 44,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:80",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 80,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:86",
+      "label": "Resolve inventory capacity before training",
+      "tick": 86,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
     "activeVersion": "1.0.0",
-    "lastSwitchTick": 41
+    "lastSwitchTick": 81
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T09:12:26.463Z"
+  "updatedAt": "2026-08-16T09:12:41.751Z"
 }\n
