@@ -542,7 +542,7 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldState)=>{
   const rawReason=String(choice.reason||'');
   const bankAction=String(candidate.action?.type||'').match(/^(interactLoc|bankDeposit|closeModal)$/)&&(/bank/i.test(String(candidate.label||''))||candidate.category==='bank');
-  const reasonMismatch=(bankAction&&(/trade|fishing net|fish for/i.test(rawReason)&&!/(bank|deposit|storage|capacity)/i.test(rawReason)))||(!bankAction&&candidate.action?.type==='pickupItem'&&/bank|deposit/i.test(rawReason));
+  const reasonMismatch=(bankAction&&!/(bank|deposit|storage|capacity|inventory|item)/i.test(rawReason))||(!bankAction&&candidate.action?.type==='pickupItem'&&/bank|deposit/i.test(rawReason));
   if(reasonMismatch){const corrected=`Selected ${candidate.label} to satisfy the current objective and verify the resulting world-state change.`;void log('AGENT_REASON_MISMATCH',{tick,candidate:candidate.label,actionType:candidate.action?.type,original:rawReason,corrected});choice={...choice,reason:corrected};}
   const action={...candidate.action,reason:choice.reason};
   if(action.type==='say'){
@@ -581,6 +581,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
       }
       const interfaceOpen=!!(lastState?.bank?.isOpen||lastState?.interface?.isOpen);
       candidate.action.executionResult=interfaceOpen?{success:true,message:'Bank interface verified open'}:{success:false,message:'Bank booth interaction did not open a bank interface',reason:'bank_interface_not_open'};
+      if(!interfaceOpen){void log('AGENT_BANK_PROCEDURE_FAILED',{tick,action:candidate.label,fingerprint:candidate.fingerprint,reason:'bank_interface_not_open',recovery:'quarantine failed fingerprint and re-plan capacity objective'});brain.abortExperience(`bank procedure failed to open interface for ${candidate.fingerprint}`);}
       refreshSnapshot(lastState);
     })().catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'bank_open_exception'};refreshSnapshot(lastState);});
     void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-bank-open-procedure'});
