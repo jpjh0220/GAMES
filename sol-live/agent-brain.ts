@@ -87,7 +87,7 @@ export type SolRuntimeConfig = {
   strategistOutputTokens?:number;
 };
 
-const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:false,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:1536,strategistOutputTokens:120};
+const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:true,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:3072,strategistOutputTokens:256};
 
 const finiteOr=(value:unknown,fallback:number)=>{const n=Number(value);return Number.isFinite(n)?n:fallback;};
 const clampNum=(value:unknown,fallback:number,lo:number,hi:number)=>clamp(finiteOr(value,fallback),lo,hi);
@@ -188,8 +188,8 @@ export class SolAgentBrain {
   private lastRecommendedActivity:string='';
   private lastRecommendedProfit:number=0;
   private lastArbitrageKey:string='';
-  // Planner is opt-in because, measured, it hurt: see the note in decide().
-  private runtimeConfig:SolRuntimeConfig=clampConfig({plannerEnabled:String(process.env.SOL_PLANNER||'')==='1',motorModel:process.env.SOL_MOTOR_MODEL,strategistModel:process.env.SOL_STRATEGIST_MODEL});
+  // Strategic planning is enabled by default; SOL_PLANNER=0 is the explicit emergency rollback.
+  private runtimeConfig:SolRuntimeConfig=clampConfig({plannerEnabled:String(process.env.SOL_PLANNER||'1')!=='0',motorModel:process.env.SOL_MOTOR_MODEL,strategistModel:process.env.SOL_STRATEGIST_MODEL});
   private plannerEnabled:boolean=this.runtimeConfig.plannerEnabled===true;
   private goalTickBudget:number=400;
   private goalTicksRemaining:number=0;
