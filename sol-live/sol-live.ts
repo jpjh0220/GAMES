@@ -592,6 +592,24 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
     void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-bank-open-procedure'});
     return;
   }
+  if(action.type==='interactNpc'&&candidate.category==='economy'&&/trade|shop|sell|buy/i.test(String(candidate.label||''))){
+    candidate.action.executionResult={success:true,pending:true};
+    const procedure:ProcedureState={skill:'open-shop',label:`Open shop via ${candidate.label}`,status:'running',step:'Dispatch shop NPC interaction',startedTick:tick,start:position()||{x:0,z:0,level:0},primitiveActions:0};
+    procedureInFlight=procedure;
+    void (async()=>{
+      await dispatchPrimitive(candidate.label,action);
+      const deadline=Date.now()+10000;
+      while(Date.now()<deadline&&!lastState?.shop?.isOpen&&!lastState?.trade?.isOpen){procedure.step='Waiting for shop or trade interface';await waitTicks(1);}
+      const opened=!!(lastState?.shop?.isOpen||lastState?.trade?.isOpen);
+      procedure.status=opened?'completed':'failed';procedure.step=opened?'Shop interface verified open':'Shop interface verification failed';procedure.finishedTick=tick;procedure.end=position()||undefined;procedure.message=opened?'Shop/trade interface observed.':'No shop/trade interface observed after NPC interaction.';lastProcedureRun={...procedure};procedureInFlight=null;
+      candidate.action.executionResult=opened?{success:true,message:procedure.message}:{success:false,message:procedure.message,reason:'shop_interface_not_open'};
+      if(!opened){void log('AGENT_SHOP_PROCEDURE_FAILED',{tick,action:candidate.label,fingerprint:candidate.fingerprint,reason:'shop_interface_not_open'});brain.abortExperience(`shop procedure failed to open interface for ${candidate.fingerprint}`);}
+      else void log('AGENT_SHOP_PROCEDURE_VERIFIED',{tick,action:candidate.label,fingerprint:candidate.fingerprint});
+      refreshSnapshot(lastState);
+    })().catch(err=>{procedure.status='failed';procedure.step='Shop procedure exception';procedure.finishedTick=tick;procedure.message=String(err);lastProcedureRun={...procedure};procedureInFlight=null;candidate.action.executionResult={success:false,message:String(err),reason:'shop_open_exception'};void log('AGENT_SHOP_PROCEDURE_FAILED',{tick,action:candidate.label,error:String(err)});refreshSnapshot(lastState);});
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-shop-open-procedure'});
+    return;
+  }
   if(action.type==='worldSkill'){
     candidate.action.executionResult={success:true,pending:true};
     void executeWorldSkill(action).then(result=>{candidate.action.executionResult=result;refreshSnapshot(lastState);}).catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};procedureInFlight=null;refreshSnapshot(lastState);});
