@@ -4,7 +4,7 @@ import { ActionExecutor } from './src/bot/ActionExecutor.js';
 import type { Client } from './src/client/Client.js';
 import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
-import { SolAgentBrain, type AgentCandidate, type AgentChoice } from './agent-brain.js';
+import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
 
 const username = process.env.SOL_USER!;
 const password = process.env.SOL_PASS!;
@@ -49,9 +49,9 @@ const outgoingChat: OutgoingChat[] = [];
 const answeredChatIds = new Set<string>();
 let lastPublicSayTick = -9999;
 let lastPublicSayText = '';
-type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;updatedAt:string;source:'http'|'github'|'none'};
+type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
-let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,updatedAt:new Date(0).toISOString(),source:'none'};
+let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
 let controlPollInFlight=false;
 let lastControlPollAt=0;
 let controlSha:string|null=null;
@@ -84,6 +84,7 @@ const commandDirective=(command:string|null)=>command==='force_bank'?'Immediatel
 const applyLiveControl=(next:LiveControl)=>{
   const directive=next.directive||commandDirective(next.command);
   brain.applyExternalDirective(directive);
+  if(next.config)brain.applyRuntimeConfig(next.config);
   if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a new measurable progression goal.';nextDecisionTick=tick+1;}
   else if(next.command==='force_bank'){currentGoal='Force travel to Draynor Bank';currentWhy='Operator control requested verified bank travel.';nextDecisionTick=tick+1;}
   else if(next.command==='force_fishing'){currentGoal='Force travel to Draynor fishing';currentWhy='Operator control requested bounded fishing progression.';nextDecisionTick=tick+1;}
@@ -91,11 +92,12 @@ const applyLiveControl=(next:LiveControl)=>{
 const acceptControl=(doc:any,source:'http'|'github')=>{
   const revision=Number(doc?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return false;
   if(doc?.expiresAt&&Date.parse(String(doc.expiresAt))<=Date.now())return false;
-  const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing'];
+  const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config'];
   const command=allowed.includes(String(doc?.command))?String(doc.command):null;
   const directive=doc?.directive===null?null:String(doc?.directive||'').trim().slice(0,300)||null;
+  const config=doc?.config&&typeof doc.config==='object'?doc.config:undefined;
   if(!command&&!directive&&doc?.directive!==null)return false;
-  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,updatedAt:new Date().toISOString(),source};
+  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,updatedAt:new Date().toISOString(),source};
   applyLiveControl(controlState);return true;
 };
 const pollLiveControl=async()=>{
@@ -176,10 +178,11 @@ const server=Bun.serve({
       if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
       const revision=Number(body?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return Response.json({ok:false,error:'revision_must_increase',currentRevision:controlState.revision},{status:409,headers});
-      const command=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing'].includes(String(body?.command))?String(body.command):null;
+      const command=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config'].includes(String(body?.command))?String(body.command):null;
       const directive=body?.directive===null?null:String(body?.directive||'').trim().slice(0,300)||null;
+      const config=body?.config&&typeof body.config==='object'?body.config:undefined;
       if(!command&&!directive&&body?.directive!==null)return Response.json({ok:false,error:'missing_command_or_directive'},{status:400,headers});
-      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,updatedAt:new Date().toISOString(),source:'http'};
+      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,updatedAt:new Date().toISOString(),source:'http'};
       applyLiveControl(controlState);
       await log('LIVE_CONTROL_APPLIED',{revision,command,directive:controlState.directive,paused:controlState.paused,source:'http'});
       return Response.json({ok:true,control:controlState},{headers});
@@ -328,12 +331,12 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   const inventoryCapacity=28;
   const inventorySlots=(state.inventory||[]).length;
   const freeInventorySlots=Math.max(0,inventoryCapacity-inventorySlots);
-  const capacityPressure=freeInventorySlots<=3;
+  const capacityPressure=freeInventorySlots<=(brain.runtime.inventoryWarningSlots??3);
   const reachableGroundItems=(state.groundItems||[]).filter((g:any)=>g.reachable!==false);
   const valuableGroundItems=reachableGroundItems.filter((g:any)=>!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')));
 
   let seq=0;
-  const add=(c:Omit<AgentCandidate,'id'>)=>{ if(out.length<96) out.push({...c,id:`a${seq++}_${slug(c.category)}`}); };
+  const add=(c:Omit<AgentCandidate,'id'>)=>{ if(out.length<(brain.runtime.candidateLimit||96)) out.push({...c,id:`a${seq++}_${slug(c.category)}`}); };
 
   add({label:'Wait and observe for a moment',category:'wait',fingerprint:'wait',settleTicks:3,action:{type:'wait',reason:'Observe before acting.'},tags:['observe','patience']});
 

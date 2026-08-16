@@ -67,6 +67,38 @@ type PersistentState = {
   updatedAt:string;
 };
 
+export type SolRuntimeConfig = {
+  version:number;
+  motorModel?:string;
+  strategistModel?:string;
+  plannerEnabled?:boolean;
+  studentSamplingRate?:number;
+  strategyRefreshChoices?:number;
+  candidateLimit?:number;
+  inventoryWarningSlots?:number;
+  maxFishingTripsWithoutProgress?:number;
+  maxRepeatedCombatTarget?:number;
+  maxActionsWithoutMilestone?:number;
+  motorTemperature?:number;
+  motorContextTokens?:number;
+  motorOutputTokens?:number;
+  strategistTemperature?:number;
+  strategistContextTokens?:number;
+  strategistOutputTokens?:number;
+};
+
+const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:false,studentSamplingRate:.3,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:1536,strategistOutputTokens:120};
+
+const clampConfig=(raw:any):SolRuntimeConfig=>({
+  ...DEFAULT_RUNTIME_CONFIG,
+  ...(raw&&typeof raw==='object'?raw:{}),
+  version:1,
+  motorModel:typeof raw?.motorModel==='string'&&raw.motorModel.trim()?raw.motorModel.trim().slice(0,80):undefined,
+  strategistModel:typeof raw?.strategistModel==='string'&&raw.strategistModel.trim()?raw.strategistModel.trim().slice(0,80):undefined,
+  plannerEnabled:typeof raw?.plannerEnabled==='boolean'?raw.plannerEnabled:DEFAULT_RUNTIME_CONFIG.plannerEnabled,
+  studentSamplingRate:clamp(Number(raw?.studentSamplingRate??.3),0,1),strategyRefreshChoices:clamp(Number(raw?.strategyRefreshChoices??18),3,100),candidateLimit:clamp(Number(raw?.candidateLimit??96),12,160),inventoryWarningSlots:clamp(Number(raw?.inventoryWarningSlots??3),0,10),maxFishingTripsWithoutProgress:clamp(Number(raw?.maxFishingTripsWithoutProgress??2),1,10),maxRepeatedCombatTarget:clamp(Number(raw?.maxRepeatedCombatTarget??2),1,10),maxActionsWithoutMilestone:clamp(Number(raw?.maxActionsWithoutMilestone??3),1,20),motorTemperature:clamp(Number(raw?.motorTemperature??.12),0,.8),motorContextTokens:clamp(Number(raw?.motorContextTokens??2048),512,8192),motorOutputTokens:clamp(Number(raw?.motorOutputTokens??72),32,512),strategistTemperature:clamp(Number(raw?.strategistTemperature??.1),0,.8),strategistContextTokens:clamp(Number(raw?.strategistContextTokens??1536),512,8192),strategistOutputTokens:clamp(Number(raw?.strategistOutputTokens??120),64,512)
+});
+
 type Metrics = {
   hp:number;maxHp:number;lifeId:number;x:number;z:number;level:number;
   totalXp:number;totalLevels:number;inventoryCount:number;coins:number;
@@ -151,7 +183,8 @@ export class SolAgentBrain {
   private lastRecommendedProfit:number=0;
   private lastArbitrageKey:string='';
   // Planner is opt-in because, measured, it hurt: see the note in decide().
-  private plannerEnabled:boolean=String(process.env.SOL_PLANNER||'')==='1';
+  private runtimeConfig:SolRuntimeConfig=clampConfig({plannerEnabled:String(process.env.SOL_PLANNER||'')==='1',motorModel:process.env.SOL_MOTOR_MODEL,strategistModel:process.env.SOL_STRATEGIST_MODEL});
+  private plannerEnabled:boolean=this.runtimeConfig.plannerEnabled===true;
   private goalTickBudget:number=400;
   private goalTicksRemaining:number=0;
   private goalFormCooldown:number=40;
@@ -174,8 +207,16 @@ export class SolAgentBrain {
   }){this.memory=freshState(opts.name,opts.directive);}
 
   get model(){return this.motorModel;}
-  get motorModel(){return this.opts.motorModel||'qwen3:0.6b';}
-  get strategistModel(){return this.opts.strategistModel||this.opts.model||'qwen3:1.7b';}
+  get motorModel(){return this.runtimeConfig.motorModel||this.opts.motorModel||this.opts.model||'qwen3:0.6b';}
+  get strategistModel(){return this.runtimeConfig.strategistModel||this.opts.strategistModel||this.opts.model||'qwen3:1.7b';}
+  get runtime(){return this.runtimeConfig;}
+  applyRuntimeConfig(raw:unknown){
+    const previous=this.runtimeConfig;this.runtimeConfig=clampConfig({...this.runtimeConfig,...(raw&&typeof raw==='object'?raw:{})});this.plannerEnabled=this.runtimeConfig.plannerEnabled===true;
+    const modelChanged=previous.motorModel!==this.runtimeConfig.motorModel||previous.strategistModel!==this.runtimeConfig.strategistModel;
+    if(modelChanged){this.motorReady=false;this.strategistReady=false;void this.refreshAvailability();}
+    this.lastStrategySessionChoice=-9999;
+    console.log('AGENT_RUNTIME_CONFIG_APPLIED',JSON.stringify({config:this.runtimeConfig,modelChanged}));
+  }
   get ollamaUrl(){return this.opts.ollamaUrl||'http://127.0.0.1:11434';}
 
   applyExternalDirective(directive:string|null){
@@ -512,7 +553,7 @@ export class SolAgentBrain {
     // STUDENT SAMPLING: try the cheap learned policy before invoking the teacher.
     // This only activates after agreement is proven and falls back to the teacher
     // on uncertainty, making promotion a real latency optimization.
-    if(this.studentPromoted() && Math.random()<0.3){
+    if(this.studentPromoted() && Math.random()<(this.runtimeConfig.studentSamplingRate??.3)){
       try{
         const studentChoice=await this.askStudent(state,filteredCandidates,contextKey);
         if(studentChoice){
@@ -545,7 +586,7 @@ export class SolAgentBrain {
 
   private maybeRefreshStrategy(state:BotWorldState,candidates:AgentCandidate[]){
     // The strategist runs beside the motor, never on the motor's critical path.
-    const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=18;
+    const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=(this.runtimeConfig.strategyRefreshChoices||18);
     if(!due||this.strategistInFlight)return;
     if(!this.strategistReady){void this.refreshAvailability();return;}
     this.strategistInFlight=true;
@@ -559,14 +600,14 @@ export class SolAgentBrain {
 
   private async askStrategist(state:BotWorldState,candidates:AgentCandidate[]):Promise<Strategy>{
     const p=state.player!;
-    const executable=candidates.filter(c=>c.category!=='wait').slice(0,20).map(c=>c.label.slice(0,96));
+    const executable=candidates.filter(c=>c.category!=='wait').slice(0,this.runtimeConfig.candidateLimit||96).map(c=>c.label.slice(0,96));
     const negatives=this.recentOutcomes.filter(o=>o.reward<0).slice(-3).map(o=>o.candidateLabel.slice(0,90));
     const guidance=this.retrieveRepoGuidance(state,candidates,1,420);
     const skillLevels=Object.fromEntries((state.skills||[]).filter((skill:any)=>!/^Stat/.test(String(skill.name||''))).map((skill:any)=>[skill.name,skill.level]));
     const coins=(state.inventory||[]).filter((item:any)=>/coins?/i.test(String(item.name||''))).reduce((sum:number,item:any)=>sum+Number(item.count||0),0);
     const observation={directive:this.externalDirective,position:[p.worldX,p.worldZ,p.level],hp:[p.hp,p.maxHp],combatLevel:p.combatLevel,skills:skillLevels,coins,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),failed:negatives,actions:executable,nearby:(state.nearbyLocs||[]).slice(0,8).map((loc:any)=>loc.name),guide:guidance[0]||''};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},step_1:{type:'string'},step_2:{type:'string'},step_3:{type:'string'},reason:{type:'string'},success:{type:'string'}},required:['objective','step_1','step_2','step_3','reason','success']};
-    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.1,num_ctx:1536,num_predict:120},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the strategist. Return one concise objective and exactly three executable steps. An operator directive is authoritative: when present, make the objective and all steps serve it, and never reintroduce an explicitly abandoned loop. Build a prerequisite chain from current skills, coins, inventory capacity, nearby world, ground items, and failed attempts. Before combat, plan the loot and capacity resolution. If the bag is full or near full, plan pickup, bank deposit, or merchant selling before another fight. Every step needs observable evidence and a measurable terminal condition. Do not repeat a failed step unless the missing prerequisite has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.strategistTemperature,num_ctx:this.runtimeConfig.strategistContextTokens,num_predict:this.runtimeConfig.strategistOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the strategist. Return one concise objective and exactly three executable steps. An operator directive is authoritative: when present, make the objective and all steps serve it, and never reintroduce an explicitly abandoned loop. Build a prerequisite chain from current skills, coins, inventory capacity, nearby world, ground items, and failed attempts. Before combat, plan the loot and capacity resolution. If the bag is full or near full, plan pickup, bank deposit, or merchant selling before another fight. Every step needs observable evidence and a measurable terminal condition. Do not repeat a failed step unless the missing prerequisite has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
     let j:any;try{j=await ask(observation,32000)}catch(first){j=await ask({position:observation.position,actions:executable.slice(0,12),instruction:'Choose a concise objective and three steps.'},24000)}
     const labels=[j.step_1,j.step_2,j.step_3].map(String).filter(Boolean);if(labels.length<2)throw new Error('strategist returned fewer than two plan steps');
     const steps=labels.slice(0,5).map((label:string,i:number)=>({id:`step-${i+1}`,label:label.slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
@@ -625,7 +666,7 @@ export class SolAgentBrain {
         // costing the motor its action list. Measure both.
         const payloadChars=JSON.stringify(enriched).length;
         const t0=Date.now();
-        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Select one action_id yourself and produce measurable progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. If the inventory is full or near full, do not choose combat: pick up valuable nearby loot first, deposit at a bank, or interact with a reachable merchant/shop and sell low-value loot. After combat, verify and resolve ground loot before leaving. Avoid wait when another productive action exists. Never repeat the same target or the fishing-bank cycle without a new XP, item, coin, level, prerequisite, or discovery milestone. speech is empty unless selecting a say action. learnedActionValues shows average rewards from past attempts (higher = better); prefer actions with high avgReward and successRate > 0.5.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
+        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.motorTemperature,num_ctx:this.runtimeConfig.motorContextTokens,num_predict:this.runtimeConfig.motorOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Select one action_id yourself and produce measurable progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. If the inventory is full or near full, do not choose combat: pick up valuable nearby loot first, deposit at a bank, or interact with a reachable merchant/shop and sell low-value loot. After combat, verify and resolve ground loot before leaving. Avoid wait when another productive action exists. Never repeat the same target or the fishing-bank cycle without a new XP, item, coin, level, prerequisite, or discovery milestone. speech is empty unless selecting a say action. learnedActionValues shows average rewards from past attempts (higher = better); prefer actions with high avgReward and successRate > 0.5.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
         const ms=Date.now()-t0;const approxTokens=Math.round(payloadChars/4);
         console.log('AGENT_MOTOR_TIMING',JSON.stringify({ms,payloadChars,approxTokens,numCtx:2048,likelyTruncated:approxTokens>2048,candidates:(payload as any)?.actions?.length??null,evalCount:raw?.eval_count??null,promptEvalCount:raw?.prompt_eval_count??null}));
         return parseModelJson(raw?.message?.content);
