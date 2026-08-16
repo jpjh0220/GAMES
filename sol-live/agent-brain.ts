@@ -475,6 +475,9 @@ export class SolAgentBrain {
     // repeated combination produces no durable progress. Use persisted sequence
     // statistics plus a short live streak to force a different category.
     const recentFingerprints=this.recentSequence.slice(-3).map(x=>x.fingerprint);
+    const recentEconomy=this.recentOutcomes.slice(-6).filter(o=>/bank|shop|economy|modal|transaction/i.test(`${o.category} ${o.actionType} ${o.candidateLabel}`));
+    const economyNoProgress=recentEconomy.filter(o=>o.rejected||o.noProgress).length;
+    const economyInterfaceLoop=recentEconomy.length>=4&&economyNoProgress>=2;
     for(const c of candidates){
       const key=[...recentFingerprints.slice(-2),c.fingerprint].join(' > ');
       const learned=this.memory.sequences[key];
@@ -485,6 +488,7 @@ export class SolAgentBrain {
       if(fishingStreak>=2&&/fishing|bait|net|dialog/.test(c.fingerprint))blocked.add(c.fingerprint);
       const bankStreak=recentFingerprints.filter(fp=>fp.startsWith('bank:')).length;
       if(bankStreak>=2&&c.fingerprint.startsWith('bank:'))blocked.add(c.fingerprint);
+      if(economyInterfaceLoop&&/^(bank:|shop:|modal:close-|economy:)/.test(c.fingerprint)&&!/(bankDeposit|shopSell|useInventoryItem|dropItem)/.test(String(c.action?.type||'')))blocked.add(c.fingerprint);
     }
     const filtered=candidates.filter(c=>!blocked.has(c.fingerprint));
     const escape=filtered.filter(c=>/^(navigation-skill|explore|combat|recovery)$/.test(c.category));
