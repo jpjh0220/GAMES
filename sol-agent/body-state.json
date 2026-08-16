@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 96,
-  "committedTick": 350,
+  "stateGeneration": 1,
+  "committedTick": 1,
   "identity": {
     "name": "Sol5"
   },
@@ -11,34 +11,27 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1351:1|1:590:1|2:313:18|3:526:1|4:558:10|5:592:1|6:995:73|7:2146:1|8:562:5|15:303:1|21:303:1|22:303:1|25:1265:1|27:303:1",
-    "freeSlots": 14,
-    "coins": 73,
-    "updatedTick": 350
+    "signature": "",
+    "freeSlots": 28,
+    "coins": 0,
+    "updatedTick": 1
   },
-  "milestones": [
-    {
-      "id": "open-ended-play:202",
-      "label": "Explore, learn, and play purposefully",
-      "tick": 202,
-      "evidence": "+1465 XP"
-    }
-  ],
+  "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -46,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T22:51:16.248Z"
+  "updatedAt": "2026-08-16T22:52:28.213Z"
 }\n
