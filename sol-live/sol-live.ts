@@ -280,7 +280,7 @@ executor.setScanProvider(collector);
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slug=(s:string)=>norm(s).replace(/\s+/g,'-').slice(0,24)||'x';
 const isCurrency=(name:string)=>/^coins?$|^coin pouch$|^gp$/i.test(String(name||'').trim());
-const isCapacityPressure=(state:BotWorldState)=>Math.max(0,28-(state.inventory||[]).length)<=(brain.runtime.inventoryWarningSlots??3);
+const isCapacityPressure=(state:BotWorldState)=>Math.max(0,28-(state.inventory||[]).length)<8;
 const economyAction=(type:string)=>/^(shopSell|bankDeposit|clickDialogOption|shopBuy|bankWithdraw|closeShop|closeModal)$/.test(type);
 const position=()=>lastState?.player?{x:lastState.player.worldX,z:lastState.player.worldZ,level:lastState.player.level}:null;
 const tileDistance=(a:{x:number;z:number},b:{x:number;z:number})=>Math.hypot(a.x-b.x,a.z-b.z);
@@ -616,7 +616,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   const rawCandidates=buildCandidates(stateAtStart);
   const lootCandidates=lootGate(stateAtStart,rawCandidates);
   const gatedCandidates=capacityGate(stateAtStart,lootCandidates);
-  const obs={hp:stateAtStart.player?.hp||0,maxHp:stateAtStart.player?.maxHp||1,inCombat:!!stateAtStart.player?.combat?.inCombat,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),warningSlots:brain.runtime.inventoryWarningSlots??3,groundItems:(stateAtStart.groundItems||[]).map((g:any)=>({name:String(g.name||''),reachable:g.reachable,value:0})),bankOpen:!!stateAtStart.bank?.isOpen,shopOpen:!!stateAtStart.shop?.isOpen,dialogOpen:!!stateAtStart.dialog?.isOpen,interfaceOpen:!!stateAtStart.interface?.isOpen,nearbyBank:(stateAtStart.nearbyLocs||[]).some((l:any)=>/bank/i.test(String(l.name||''))),nearbyShop:(stateAtStart.nearbyNpcs||[]).some((n:any)=>/shop|merchant|diango/i.test(String(n.name||''))),actionStale:false,objectiveActive:true};
+  const obs={hp:stateAtStart.player?.hp||0,maxHp:stateAtStart.player?.maxHp||1,inCombat:!!stateAtStart.player?.combat?.inCombat,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),warningSlots:Math.max(7,brain.runtime.inventoryWarningSlots??3),groundItems:(stateAtStart.groundItems||[]).map((g:any)=>({name:String(g.name||''),reachable:g.reachable,value:0})),bankOpen:!!stateAtStart.bank?.isOpen,shopOpen:!!stateAtStart.shop?.isOpen,dialogOpen:!!stateAtStart.dialog?.isOpen,interfaceOpen:!!stateAtStart.interface?.isOpen,nearbyBank:(stateAtStart.nearbyLocs||[]).some((l:any)=>/bank/i.test(String(l.name||''))),nearbyShop:(stateAtStart.nearbyNpcs||[]).some((n:any)=>/shop|merchant|diango/i.test(String(n.name||''))),actionStale:false,objectiveActive:true};
   const legalActions=obligationExecutor.legalActions(obs,gatedCandidates.map(c=>c.action as any),tick);
   const legalSet=new Set(legalActions);
   const candidates=gatedCandidates.filter(c=>legalSet.has(c.action as any));
