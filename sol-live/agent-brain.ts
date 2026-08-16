@@ -452,12 +452,12 @@ export class SolAgentBrain {
     const gated=this.antiLoopCandidates(candidates);let legal=this.balancedCandidates(gated);
     const p=state.player!;const hpRatio=p.maxHp?p.hp/p.maxHp:1;
     const emergency=hpRatio<.45||!!p.combat?.inCombat;
-    const goalText=`${this.externalDirective||''} ${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`.toLowerCase();
+    const goalText=(this.externalDirective||`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`).toLowerCase();
     const leaveFishing=/\b(leave|abandon|avoid|outside|stop|break)\b/.test(goalText)&&/\b(fish|fishing|bait|bank)\b/.test(goalText);
     if(leaveFishing){legal=legal.filter(c=>!/(fishing|bait|net|bank:)/.test(c.fingerprint));if(!legal.length)legal=this.balancedCandidates(gated.filter(c=>c.category!=='wait'&&!/(fishing|bait|net|bank:)/.test(c.fingerprint)));}
     const escape=legal.filter(c=>c.fingerprint==='skill:escape-draynor-manor');
     const travel=legal.filter(c=>c.category==='navigation-skill'&&c.fingerprint.startsWith('skill:'));
-    const travelGoal=/travel|escape|bank|fishing|route|landmark|progress/.test(goalText);
+    const travelGoal=/\b(travel|escape|bank|route|landmark)\b/.test(goalText);
     // If a verified route exists for the active objective, do not let the motor
     // spend the turn on a combat-style toggle or wait. Emergency recovery/combat
     // remains eligible so survival always wins over the route.
