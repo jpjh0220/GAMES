@@ -10,43 +10,15 @@
     "teacherChoices": 6964,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6960,
-    "totalReward": 4414.899,
-    "saves": 714,
+    "completedExperiences": 6970,
+    "totalReward": 4408.899,
+    "saves": 715,
     "shadowPredictions": 3939,
     "shadowMatches": 1904,
-    "strategistRefreshes": 465,
+    "strategistRefreshes": 466,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvfkm2w-8ezdgk",
-      "createdAt": "2026-08-16T06:35:22.952Z",
-      "tick": 118,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 6). Result: +1065 XP; moved 3092,3243 → 3085,3237. Reward 4.056.",
-      "importance": 2.73,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent north",
-        "agent gpgather1",
-        "agent xbfr5x1f0",
-        "agent s0up",
-        "npc black knight",
-        "loc bullrushes",
-        "loc stones",
-        "loc fire"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "msvfkm2w-hdmwui",
       "createdAt": "2026-08-16T06:35:22.952Z",
@@ -8684,6 +8656,26 @@
         "use",
         "agent xbfr5x1f0",
         "npc jail guard"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhoci4-02w3ua",
+      "createdAt": "2026-08-16T07:34:16.396Z",
+      "tick": 0,
+      "runNumber": 94,
+      "kind": "strategy",
+      "text": "AI strategist: Travel to the Draynor fishing area at 3087,3230 and verify arrival. This objective ensures progress toward a quest by gathering",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "travel to the draynor fishing area at 3087 3230 and verify arrival",
+        "explore north about 5 tiles to look for fishing spots and gather food resources",
+        "collect valuable drops from the fishing area and deposit low value loot at the bank to prepare for the next quest step"
       ],
       "location": {
         "x": 3092,
@@ -19557,12 +19549,12 @@
         "exampleReason": "Deterministic fallback selected Trade Diango (level 0, distance 2) while the primary controller was unavailable."
       },
       "shop:sell:coins": {
-        "n": 8,
+        "n": 18,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 8,
+        "negative": 18,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T07:34:12.348Z",
+        "lastAt": "2026-08-16T07:34:30.773Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback selected Sell 1 Coins for about 0 while the primary controller was unavailable."
       }
@@ -43458,10 +43450,10 @@
         "shop:sell:coins",
         "shop:sell:coins"
       ],
-      "n": 6,
+      "n": 16,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:34:12.348Z",
+      "lastAt": "2026-08-16T07:34:30.773Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Coins for about 0 → Sell 1 Coins for about 0"
     }
   },
@@ -47091,26 +47083,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T07:34:12.349Z",
+  "updatedAt": "2026-08-16T07:34:30.773Z",
   "activePlan": {
-    "objective": "Sell valuable items to increase coins and prepare for a new activity",
-    "focus": "Sell 1 Raw anchovies for about 7",
-    "reason": "This action sequence addresses the failed attempts and leverages the available resources to maximize coin gain. Selling valuable items first ensures inventory capacity is maintained, and inspecting nearby shops helps identify a better profi",
+    "objective": "Explore the Draynor fishing area and gather resources to complete a prerequisite quest",
+    "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+    "reason": "This objective ensures progress toward a quest by gathering",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Sell 1 Raw anchovies for about 7",
+        "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Sell 1 Raw shrimps for about 2",
+        "label": "Explore north about 5 tiles to look for fishing spots and gather food/resources",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Inspect nearby shops and identify a specialized shop for better profit opportunities",
+        "label": "Collect valuable drops from the fishing area and deposit low-value loot at the bank to prepare for the next quest step",
         "status": "pending"
       }
     ],
@@ -47118,17 +47110,13 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Sell 1 Raw anchovies for about 7",
-      "Sell 1 Raw shrimps for about 2",
-      "Inspect nearby shops and identify a specialized shop for better profit opportunities"
+      "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
+      "Explore north about 5 tiles to look for fishing spots and gather food/resources",
+      "Collect valuable drops from the fishing area and deposit low-value loot at the bank to prepare for the next quest step"
     ],
-    "avoid": [
-      "Close the shop",
-      "Sell 1 Raw shrimps for about 2",
-      "Sell 1 Raw anchovies for about 7"
-    ],
-    "updatedAt": "2026-08-16T07:31:13.786Z",
+    "avoid": [],
+    "updatedAt": "2026-08-16T07:34:16.396Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
