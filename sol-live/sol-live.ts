@@ -679,7 +679,7 @@ const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
     return false;
   });
   if(safe.length>0&&(bankOpen||bankNearby||shopOpen||safe.some(c=>c.category==='pickup')))return safe;
-  return candidates.filter(c=>c.category==='navigation-skill'&&/bank/i.test(c.label)||c.category==='economy'||(c.category==='pickup'&&usefulPickup(c))||c.category==='bank'||c.category==='shop'||c.category==='modal');
+  return candidates.filter(c=>c.category==='navigation-skill'&&/bank/i.test(c.label)||c.category==='explore'||c.action?.type==='walkTo'||c.category==='economy'||(c.category==='pickup'&&usefulPickup(c))||c.category==='bank'||c.category==='shop'||c.category==='modal');
 };
 
 const launchDecision=(stateAtStart:BotWorldState)=>{
@@ -700,6 +700,10 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   if(productive.length)candidates=candidates.filter(c=>!['say','wait'].includes(String(c.action?.type||'')));
   if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
   currentProgression=progressionDirector.plan(stateAtStart,candidates,tick);
+  if(!candidates.length&&noCandidateStreak>=2){
+    const recovery=gatedCandidates.find(c=>c.category==='explore'||c.action?.type==='walkTo'||c.category==='navigation-skill');
+    if(recovery){candidates=[recovery];void log('AGENT_BLOCKED_ACTION_RECOVERY',{tick,phase:obligationExecutor.status().phase,streak:noCandidateStreak,action:recovery.label,reason:'All normal candidates were blocked; using a bounded safe movement recovery.'});}
+  }
   if(!candidates.length){
     noCandidateStreak++;
     nextDecisionTick=tick+Math.min(20,Math.max(2,noCandidateStreak*2));
