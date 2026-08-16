@@ -150,6 +150,20 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
           echo "Spectator tunnel: $URL"
 
+      - name: Verify Gemini provider availability
+        if: env.SOL_LLM_PROVIDER == 'gemini'
+        working-directory: rs-sdk/server/webclient
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SOL_MOTOR_MODEL: gemini-3.5-flash-lite
+          SOL_STRATEGIST_MODEL: gemini-3.7-flash
+        run: |
+          set -euo pipefail
+          test -n "$GEMINI_API_KEY"
+          curl -fsS --max-time 20 "https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}&pageSize=100" > /tmp/gemini-models.json
+          jq -e --arg motor "$SOL_MOTOR_MODEL" --arg strategist "$SOL_STRATEGIST_MODEL" '[.models[] | select((.supportedGenerationMethods // []) | index("generateContent")) | (.baseModelId // .name | sub("^models/"; ""))] as $names | ($names | index($motor)) and ($names | index($strategist))' /tmp/gemini-models.json >/dev/null
+          echo "Gemini preflight passed: selected models are available; key value is not printed."
+
       - name: Start Sol, verify health, and publish spectator endpoint
         working-directory: rs-sdk/server/webclient
         env:
