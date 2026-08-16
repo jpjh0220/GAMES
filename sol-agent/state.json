@@ -6,89 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7157,
-    "teacherChoices": 7157,
+    "totalChoices": 7159,
+    "teacherChoices": 7159,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7791,
-    "totalReward": 3726.384,
-    "saves": 812,
+    "completedExperiences": 7800,
+    "totalReward": 3726.304,
+    "saves": 813,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
-    "strategistRefreshes": 489,
+    "strategistRefreshes": 490,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvh5r0j-1k7tmo",
-      "createdAt": "2026-08-16T07:19:48.739Z",
-      "tick": 1154,
-      "runNumber": 90,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3078,3251 → 3092,3243; new: agent:Swfish1, agent:Swfish2, agent:Shrimpy, npc:Ned, npc:Fishing spot, loc:Bush. Reward 1.142.",
-      "importance": 1.27,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent swfish1",
-        "agent swfish2",
-        "agent shrimpy",
-        "npc ned",
-        "npc fishing spot",
-        "loc bush",
-        "loc tree stump",
-        "loc boulder",
-        "loc pile of rope"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvh5xft-irj7hl",
-      "createdAt": "2026-08-16T07:19:57.065Z",
-      "tick": 1182,
-      "runNumber": 90,
-      "kind": "episode",
-      "text": "AI motor: Use Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242; execution rejected or failed; new: agent:Xbfr5x1f0, agent:Minnow. Reward -0.9.",
-      "importance": 1.15,
-      "tags": [
-        "world",
-        "bank booth",
-        "use",
-        "agent xbfr5x1f0",
-        "agent minnow"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvh6d7u-o9k33q",
-      "createdAt": "2026-08-16T07:20:17.514Z",
-      "tick": 1233,
-      "runNumber": 90,
-      "kind": "relationship",
-      "text": "Boulder said: \"Miner delivering tin ore to kilk\". Current stance unknown, trust 0.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "boulder",
-        "unknown"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
     {
       "id": "msvh6rk4-gw9ld7",
       "createdAt": "2026-08-16T07:20:36.100Z",
@@ -8999,6 +8929,65 @@
         "npc jail guard",
         "npc fishing spot",
         "npc imp"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvl6tte-g2x3at",
+      "createdAt": "2026-08-16T09:12:37.490Z",
+      "tick": 67,
+      "runNumber": 115,
+      "kind": "relationship",
+      "text": "Gtmule said: \"Trading cowhides and bones -- want any ore logs raw fish\". Current stance cooperative, trust 1.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "gtmule",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvl79xb-feqkfr",
+      "createdAt": "2026-08-16T09:12:58.367Z",
+      "tick": 157,
+      "runNumber": 115,
+      "kind": "episode",
+      "text": "AI motor: Deposit all Fire rune. Result: inventory changed. Reward -0.08.",
+      "importance": 0.74,
+      "tags": [
+        "bank",
+        "store",
+        "fire rune",
+        "agent thanatos"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvl7fl4-v096fo",
+      "createdAt": "2026-08-16T09:13:05.704Z",
+      "tick": 0,
+      "runNumber": 115,
+      "kind": "strategy",
+      "text": "AI strategist: Explore northeast about 4 tiles to locate a new path or item. This objective aims to uncover a new path or resource that can advance the character's progression. The steps ensure exploration, verification",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore northeast about 4 tiles to locate a new path or item",
+        "check for ground items and verify if a new route or resource is accessible",
+        "if a new route is found mark it as a completed prerequisite and proceed to the next objective"
       ],
       "location": {
         "x": 3092,
@@ -20040,6 +20029,36 @@
         "lastAt": "2026-08-16T09:12:23.175Z",
         "exampleGoal": "Resolve inventory capacity before training",
         "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
+      },
+      "bank:deposit:bronze arrow": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-16T09:12:24.965Z",
+        "exampleGoal": "Resolve inventory capacity before training",
+        "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
+      },
+      "bank:withdraw:fire rune": {
+        "n": 4,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T09:13:12.770Z",
+        "exampleGoal": "Cook existing raw food into survival supplies",
+        "exampleReason": "Deterministic progression director: Cooking turns gathered fish into a verified survival buffer and prevents unnecessary merchant spending."
+      },
+      "bank:deposit:fire rune": {
+        "n": 4,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-16T09:13:23.805Z",
+        "exampleGoal": "Resolve inventory capacity before training",
+        "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=world": {
@@ -20305,8 +20324,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-16T08:50:41.074Z",
-      "encounters": 1533,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 1536,
       "combatLevel": 57,
       "trust": 0,
       "stance": "unknown",
@@ -21565,8 +21584,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 5242,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 5247,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -25641,8 +25660,8 @@
     "apollo": {
       "name": "Apollo",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 147,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 152,
       "combatLevel": 73,
       "trust": 0,
       "stance": "unknown",
@@ -25795,8 +25814,8 @@
     "ares": {
       "name": "Ares",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 596,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 601,
       "combatLevel": 23,
       "trust": 0,
       "stance": "unknown",
@@ -25821,8 +25840,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 799,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 804,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -25866,9 +25885,9 @@
     "athena": {
       "name": "Athena",
       "firstSeenAt": "2026-08-16T02:33:31.622Z",
-      "lastSeenAt": "2026-08-16T09:00:59.147Z",
-      "encounters": 54,
-      "combatLevel": 84,
+      "lastSeenAt": "2026-08-16T09:13:00.556Z",
+      "encounters": 56,
+      "combatLevel": 85,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -25962,8 +25981,8 @@
     "thanatos": {
       "name": "Thanatos",
       "firstSeenAt": "2026-08-16T02:49:50.169Z",
-      "lastSeenAt": "2026-08-16T09:01:58.059Z",
-      "encounters": 29,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 31,
       "combatLevel": 59,
       "trust": 0,
       "stance": "unknown",
@@ -25998,9 +26017,9 @@
     "helios": {
       "name": "Helios",
       "firstSeenAt": "2026-08-16T02:53:26.377Z",
-      "lastSeenAt": "2026-08-16T09:01:26.636Z",
-      "encounters": 41,
-      "combatLevel": 68,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 43,
+      "combatLevel": 69,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -26677,12 +26696,12 @@
     "gtnetter": {
       "name": "Gtnetter",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T09:06:50.447Z",
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
       "encounters": 237,
       "combatLevel": 6,
       "trust": 0.96,
       "stance": "cooperative",
-      "conversations": 82,
+      "conversations": 83,
       "cooperation": 8,
       "suspicion": 0,
       "facts": [
@@ -26693,11 +26712,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T07:25:21.705Z",
-          "direction": "incoming",
-          "text": "Netter delivering fish"
-        },
         {
           "at": "2026-08-16T07:28:16.551Z",
           "direction": "incoming",
@@ -26790,6 +26804,11 @@
         },
         {
           "at": "2026-08-16T09:06:50.447Z",
+          "direction": "incoming",
+          "text": "Netter delivering fish"
+        },
+        {
+          "at": "2026-08-16T09:13:13.122Z",
           "direction": "incoming",
           "text": "Netter delivering fish"
         }
@@ -26898,11 +26917,11 @@
     "gtmule": {
       "name": "Gtmule",
       "firstSeenAt": "2026-08-16T04:09:46.143Z",
-      "lastSeenAt": "2026-08-16T09:03:48.669Z",
+      "lastSeenAt": "2026-08-16T09:12:37.490Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 30,
+      "conversations": 31,
       "cooperation": 10,
       "suspicion": 0,
       "facts": [
@@ -26913,11 +26932,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T05:51:23.986Z",
-          "direction": "incoming",
-          "text": "Mule open for business: goods for goods, anything considered"
-        },
         {
           "at": "2026-08-16T05:58:00.875Z",
           "direction": "incoming",
@@ -27012,6 +27026,11 @@
           "at": "2026-08-16T09:03:48.669Z",
           "direction": "incoming",
           "text": "Mule open for business: goods for goods, anything considered"
+        },
+        {
+          "at": "2026-08-16T09:12:37.490Z",
+          "direction": "incoming",
+          "text": "Trading cowhides and bones -- want any ore logs raw fish"
         }
       ]
     },
@@ -27575,8 +27594,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 537,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 542,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -28082,8 +28101,8 @@
     "duncan": {
       "name": "Duncan",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 46,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 51,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -28097,8 +28116,8 @@
     "gurney": {
       "name": "Gurney",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 40,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 45,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -28112,8 +28131,8 @@
     "swcoin1": {
       "name": "Swcoin1",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "encounters": 106,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "encounters": 111,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -28244,8 +28263,8 @@
       "z": 3245,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-16T09:12:11.241Z",
-      "visits": 1853,
+      "lastSeenAt": "2026-08-16T09:13:13.122Z",
+      "visits": 1858,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -45051,6 +45070,54 @@
       "positive": 1,
       "lastAt": "2026-08-16T09:07:17.495Z",
       "example": "Pick up Raw anchovies (distance 12) → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Pick up Raw shrimps (distance 15)"
+    },
+    "bank:open:3091:3245 > bank:deposit:bronze arrow > bank:withdraw:fire rune": {
+      "sequence": [
+        "bank:open:3091:3245",
+        "bank:deposit:bronze arrow",
+        "bank:withdraw:fire rune"
+      ],
+      "n": 1,
+      "avgReward": -0.608,
+      "positive": 0,
+      "lastAt": "2026-08-16T09:12:35.496Z",
+      "example": "Bank at Bank booth (distance 1) → Deposit all Bronze arrow → Withdraw 1 Fire rune"
+    },
+    "bank:deposit:bronze arrow > bank:withdraw:fire rune > bank:deposit:fire rune": {
+      "sequence": [
+        "bank:deposit:bronze arrow",
+        "bank:withdraw:fire rune",
+        "bank:deposit:fire rune"
+      ],
+      "n": 1,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-16T09:12:37.126Z",
+      "example": "Deposit all Bronze arrow → Withdraw 1 Fire rune → Deposit all Fire rune"
+    },
+    "bank:withdraw:fire rune > bank:deposit:fire rune > bank:withdraw:fire rune": {
+      "sequence": [
+        "bank:withdraw:fire rune",
+        "bank:deposit:fire rune",
+        "bank:withdraw:fire rune"
+      ],
+      "n": 3,
+      "avgReward": 0.08,
+      "positive": 0,
+      "lastAt": "2026-08-16T09:13:12.770Z",
+      "example": "Withdraw 1 Fire rune → Deposit all Fire rune → Withdraw 1 Fire rune"
+    },
+    "bank:deposit:fire rune > bank:withdraw:fire rune > bank:deposit:fire rune": {
+      "sequence": [
+        "bank:deposit:fire rune",
+        "bank:withdraw:fire rune",
+        "bank:deposit:fire rune"
+      ],
+      "n": 3,
+      "avgReward": -0.08,
+      "positive": 0,
+      "lastAt": "2026-08-16T09:13:23.805Z",
+      "example": "Deposit all Fire rune → Withdraw 1 Fire rune → Deposit all Fire rune"
     }
   },
   "discoveries": [
@@ -48655,27 +48722,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T09:12:23.176Z",
+  "updatedAt": "2026-08-16T09:13:23.805Z",
   "activePlan": {
-    "objective": "Explore northeast about 4 tiles to locate a new quest prerequisite or resource",
-    "focus": "Explore northeast about 4 tiles to locate a new quest prerequisite or resource",
-    "reason": "This objective is concise, measurable, and aligns with the exploration directive. It ensures progress is made toward a new quest or resource",
+    "objective": "Explore northeast about 4 tiles to find a new route or resource",
+    "focus": "Explore northeast about 4 tiles to locate a new path or item",
+    "reason": "This objective aims to uncover a new path or resource that can advance the character's progression. The steps ensure exploration, verification",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore northeast about 4 tiles to locate a new quest prerequisite or resource",
-        "status": "done",
-        "evidence": "moved 3088,3247 → 3092,3245; new: agent:Duncan, npc:Jail guard, npc:Fishing spot, npc:Imp"
-      },
-      {
-        "id": "step-2",
-        "label": "Inspect ground items in the northeast area for valuable drops or resources",
+        "label": "Explore northeast about 4 tiles to locate a new path or item",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Check for ground items and verify if a new route or resource is accessible",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "If a new resource or prerequisite is found, move to the location and verify progress accordingly",
+        "label": "If a new route is found, mark it as a completed prerequisite and proceed to the next objective",
         "status": "pending"
       }
     ],
@@ -48683,12 +48749,12 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore northeast about 4 tiles to locate a new quest prerequisite or resource",
-      "Inspect ground items in the northeast area for valuable drops or resources",
-      "If a new resource or prerequisite is found, move to the location and verify progress accordingly"
+      "Explore northeast about 4 tiles to locate a new path or item",
+      "Check for ground items and verify if a new route or resource is accessible",
+      "If a new route is found, mark it as a completed prerequisite and proceed to the next objective"
     ],
     "avoid": [],
-    "updatedAt": "2026-08-16T09:07:13.557Z",
+    "updatedAt": "2026-08-16T09:13:05.704Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
