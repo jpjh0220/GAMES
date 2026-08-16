@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 37,
-  "committedTick": 170,
+  "stateGeneration": 50,
+  "committedTick": 220,
   "identity": {
     "name": "Sol5"
   },
@@ -11,27 +11,34 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
+    "reason": "I picked up Air rune (distance 0) from the goblin guard encounter. This is a valuable drop, and I will use it to improve my equipment."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Identify and record drop locations",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:19|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
+    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
     "freeSlots": 15,
     "coins": 208,
-    "updatedTick": 170
+    "updatedTick": 220
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "directed-exploration:212",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 212,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:34:40.783Z"
+  "updatedAt": "2026-08-16T20:34:55.836Z"
 }\n
