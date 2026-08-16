@@ -29,6 +29,7 @@ type FeedEvent = {
   at:string;
 };
 type TrailPoint = { x:number; z:number; level:number; tick:number };
+type CognitionEvent = {id:number;at:string;tick:number;kind:'observation'|'interpretation'|'objective'|'decision'|'execution'|'outcome'|'refusal'|'lesson'|'system';label:string;summary:string;reason?:string;source?:string;actionType?:string;objective?:string;state?:unknown;data?:unknown};
 type OutgoingChat = { id:string; tick:number; at:string; text:string; target:string|null; replyTo:string|null; status:'submitted' };
 type ProcedureState = { skill:string; label:string; status:'running'|'completed'|'failed'; step:string; startedTick:number; finishedTick?:number; start:{x:number;z:number;level:number}; end?:{x:number;z:number;level:number}; primitiveActions:number; message?:string };
 type EconomyResolution = { phase:'idle'|'capacity'|'loot'|'transaction'; noProgress:number; lastAction:string|null; lastProgressTick:number; blockedUntil:number; reason:string };
@@ -56,6 +57,10 @@ const answeredChatIds = new Set<string>();
 let lastPublicSayTick = -9999;
 let lastPublicSayText = '';
 let sessionEnd:any=null;
+let cognitionSequence=0;
+const cognitionLog:CognitionEvent[]=[];
+const cognitionLogPath='./sol-cognition.ndjson';
+const cognitionState=()=>{const s:any=lastState,p=s?.player;return{position:p?[Number(p.worldX||0),Number(p.worldZ||0),Number(p.level||0)]:undefined,skills:Object.fromEntries((s?.skills||[]).map((x:any)=>[String(x.name||''),Number(x.level||0)])),inventory:(s?.inventory||[]).map((x:any)=>String(x.name||'')),freeSlots:Math.max(0,28-(s?.inventory||[]).length),coins:Number((s?.inventory||[]).filter((x:any)=>/coins?/i.test(String(x.name||''))).reduce((n:number,x:any)=>n+Number(x.count||1),0)),hp:p?.hp,maxHp:p?.maxHp};};
 type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
 let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
@@ -124,9 +129,11 @@ controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candid
 controllerRegistry.stage('llm-brain','1.0.0');
 controllerRegistry.activateAtTick(0);
 
+const appendCognition = (event:Omit<CognitionEvent,'id'|'at'|'tick'> & {tick?:number}) => { const e:CognitionEvent={id:++cognitionSequence,at:new Date().toISOString(),tick:event.tick??tick,...event,state:event.state||cognitionState()}; cognitionLog.push(e);if(cognitionLog.length>2000)cognitionLog.shift();void appendFile(cognitionLogPath,JSON.stringify(e)+'\\n').catch(()=>{});return e;};
 const log = async (event:string,data?:unknown) => {
   const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
   process.stdout.write(line);
+  appendCognition({kind:'system',label:event,summary:event,reason:typeof data==='string'?data:undefined,data});
   await appendFile('../../sol-session.log',line).catch(()=>{});
 };
 const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&{setCurrent?:boolean}={}) => {
@@ -134,6 +141,8 @@ const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&
   if(data.setCurrent!==false) currentAction=e;
   actionHistory.push(e);
   if(actionHistory.length>200) actionHistory.shift();
+  const kind:CognitionEvent['kind']=label.includes('OUTCOME')?'outcome':label.includes('REFUS')?'refusal':label.includes('LESSON')?'lesson':label.startsWith('AGENT_')?'decision':'execution';
+  appendCognition({kind,label,summary,reason,source:data.source,actionType:data.actionType,objective:currentGoal,data:{target:data.target,item:data.item,reward:data.reward}});
 };
 
 const commandDirective=(command:string|null)=>command==='force_bank'?'Immediately travel to Draynor Bank using the verified waypoint route; do not fish or change combat style until arrival is verified.':command==='force_fishing'?'Travel to the Draynor fishing area and fish only if the action produces measurable XP or inventory progress; abandon fishing after one failed interaction.':command==='abandon_objective'?'Abandon the current objective and choose a new measurable progression goal outside the current bank-fishing loop.':null;
@@ -194,7 +203,7 @@ let snapshot:any = {
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],opFeedback:{opRejectedCount:0},sessionEnd:null,
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
-  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,economyResolution,obligationExecutor:obligationExecutor.status(),progression:currentProgression,durableState,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
+  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,economyResolution,obligationExecutor:obligationExecutor.status(),progression:currentProgression,durableState,actions:[],cognitionLog:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
 };
 
 const publicSnapshot=()=>({
@@ -202,7 +211,7 @@ const publicSnapshot=()=>({
   sessionStartedAt:snapshot.sessionStartedAt,currentGoal:snapshot.currentGoal,currentWhy:snapshot.currentWhy,thinking:snapshot.thinking,
   player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:snapshot.player.worldX,worldZ:snapshot.player.worldZ,level:snapshot.player.level,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:snapshot.player.combat?.targetType||'none',targetIndex:snapshot.player.combat?.targetIndex??-1}}:null,
   skills:(snapshot.skills||[]).map((skill:any)=>({name:skill.name,level:skill.level})),
-  combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],opFeedback:snapshot.opFeedback||{opRejectedCount:0},sessionEnd:snapshot.sessionEnd||null,inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
+  combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],opFeedback:snapshot.opFeedback||{opRejectedCount:0},sessionEnd:snapshot.sessionEnd||null,inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],cognitionLog:snapshot.cognitionLog||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,teacherOnline:!!snapshot.agent?.teacherOnline,strategistOnline:!!snapshot.agent?.strategistOnline,teacherConsecutiveFailures:snapshot.agent?.teacherConsecutiveFailures||0,lastTeacherHealthyAt:snapshot.agent?.lastTeacherHealthyAt||null,lastTeacherError:snapshot.agent?.lastTeacherError||null,lastStrategistError:snapshot.agent?.lastStrategistError||null,studentMode:snapshot.agent?.studentMode||'unknown',sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0,repoKnowledgeSegments:snapshot.agent?.repoKnowledgeSegments||0,repoKnowledgeSources:snapshot.agent?.repoKnowledgeSources||0,retrievedRepoKnowledge:snapshot.agent?.retrievedRepoKnowledge||[],planTree:snapshot.agent?.planTree||[]},
@@ -238,7 +247,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     opFeedback:s?.opFeedback??{opRejectedCount:0},sessionEnd,
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
-    currentAction,currentGoal,currentWhy,thinking:decisionInFlight||actionAwaitingOutcome,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
+    currentAction,currentGoal,currentWhy,thinking:decisionInFlight||actionAwaitingOutcome,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,cognitionLog:cognitionLog.slice(-500),actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
     lessons:(agent.recentMemories||[]).map((m:any)=>m.text),economyResolution,obligationExecutor:obligationExecutor.status(),progression:currentProgression,durableState,agent,controller:controllerRegistry.status,body:persistentBody.envelope
   };
 };
@@ -252,6 +261,7 @@ const server=Bun.serve({
     const bearer=req.headers.get('authorization')||'';
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
+    if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));return Response.json({cursor:cognitionSequence,events:cognitionLog.filter(e=>e.id>since).slice(-limit)},{headers});}
     if(path==='/control'&&req.method==='POST'){
       if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
