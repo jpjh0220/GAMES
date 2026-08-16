@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 47,
-  "committedTick": 211,
+  "stateGeneration": 60,
+  "committedTick": 270,
   "identity": {
     "name": "Sol5"
   },
@@ -11,27 +11,34 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I picked up Air rune (distance 0) at the goblin guard encounter."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Identify and record drop locations",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:17|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
+    "signature": "0:1931:1|1:1931:1|2:556:18|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
     "freeSlots": 15,
     "coins": 208,
-    "updatedTick": 211
+    "updatedTick": 270
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "directed-exploration:244",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 244,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:30:18.291Z"
+  "updatedAt": "2026-08-16T20:30:36.156Z"
 }\n
