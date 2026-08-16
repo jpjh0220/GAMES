@@ -6,68 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8226,
-    "teacherChoices": 8226,
+    "totalChoices": 8227,
+    "teacherChoices": 8227,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8600,
-    "totalReward": 3769.431,
-    "saves": 948,
+    "completedExperiences": 8601,
+    "totalReward": 3770.461,
+    "saves": 949,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 551,
     "strategistFailures": 54
   },
   "memories": [
-    {
-      "id": "msw7cs8y-trgkxl",
-      "createdAt": "2026-08-16T19:33:06.946Z",
-      "tick": 1122,
-      "runNumber": 139,
-      "kind": "episode",
-      "text": "AI motor: Pick up Earth talisman (distance 15). Result: moved 3205,3227 → 3210,3225. Reward 0.08.",
-      "importance": 0.74,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "earth talisman",
-        "valuable drop",
-        "agent kuroears",
-        "agent ironjarvis",
-        "agent gthawker",
-        "agent grokmaxer",
-        "agent pp1",
-        "agent vyipzwra7",
-        "agent lao4krsg0",
-        "agent booosrs",
-        "agent mankicker1"
-      ],
-      "location": {
-        "x": 3210,
-        "z": 3225,
-        "level": 0
-      }
-    },
-    {
-      "id": "msw7csfk-d3l62e",
-      "createdAt": "2026-08-16T19:33:07.184Z",
-      "tick": 1114,
-      "runNumber": 139,
-      "kind": "relationship",
-      "text": "Swcoin1 said: \"15 Mind runes on the ground here, cowboypure - pick up\". Current stance friendly, trust 0.36.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "swcoin1",
-        "friendly"
-      ],
-      "location": {
-        "x": 3211,
-        "z": 3224,
-        "level": 0
-      }
-    },
     {
       "id": "msw7cyxl-t4ti8n",
       "createdAt": "2026-08-16T19:33:15.609Z",
@@ -8527,6 +8478,47 @@
       "location": {
         "x": 3092,
         "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswetde2-2dm8jy",
+      "createdAt": "2026-08-16T23:01:58.154Z",
+      "tick": 64,
+      "runNumber": 167,
+      "kind": "episode",
+      "text": "AI motor: Explore north about 5 tiles. Result: moved 3092,3243 → 3092,3248; new: npc:Aggie, loc:Mystical wall chart, loc:Charms, loc:Chair, loc:Cart. Reward 1.03.",
+      "importance": 1.21,
+      "tags": [
+        "explore",
+        "north",
+        "npc aggie",
+        "loc mystical wall chart",
+        "loc charms",
+        "loc chair",
+        "loc cart"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswetde3-bd1cet",
+      "createdAt": "2026-08-16T23:01:58.155Z",
+      "tick": 64,
+      "runNumber": 167,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Explore north about 5 tiles worked across 8 similar samples with average reward 0.95.",
+      "importance": 1.95,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3248,
         "level": 0
       }
     }
@@ -18570,14 +18562,14 @@
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=explore": {
       "walk:north": {
-        "n": 7,
-        "avgReward": 0.935,
-        "positive": 7,
+        "n": 8,
+        "avgReward": 0.9469,
+        "positive": 8,
         "negative": 0,
-        "lastReward": 1.23,
-        "lastAt": "2026-08-16T07:07:57.329Z",
-        "exampleGoal": "Inspect inventory and nearby ground items to identify valuable loot or items that can be banked or sold.",
-        "exampleReason": "I will explore the north area to find valuable loot or items that can be banked or sold."
+        "lastReward": 1.03,
+        "lastAt": "2026-08-16T23:01:58.154Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Selected Explore north about 5 tiles to satisfy the current objective and verify the resulting world-state change."
       }
     },
     "area=386:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,explore": {
@@ -24353,8 +24345,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 5949,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 5950,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -26731,8 +26723,8 @@
     "dawgwhat": {
       "name": "Dawgwhat",
       "firstSeenAt": "2026-08-15T21:31:43.105Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 54,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 55,
       "trust": 0.24,
       "stance": "friendly",
       "conversations": 6,
@@ -28190,8 +28182,8 @@
     "xbfr5x1f0": {
       "name": "Xbfr5x1f0",
       "firstSeenAt": "2026-08-16T00:54:41.255Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 1030,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 1031,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -28837,8 +28829,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T22:43:47.339Z",
-      "encounters": 867,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 868,
       "combatLevel": 87,
       "trust": 0,
       "stance": "unknown",
@@ -29072,8 +29064,8 @@
     "erebus": {
       "name": "Erebus",
       "firstSeenAt": "2026-08-16T02:49:34.577Z",
-      "lastSeenAt": "2026-08-16T22:50:13.119Z",
-      "encounters": 73,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 74,
       "combatLevel": 65,
       "trust": 0,
       "stance": "unknown",
@@ -31422,8 +31414,8 @@
     "swcoin2": {
       "name": "Swcoin2",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T22:53:22.982Z",
-      "encounters": 48,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 49,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -32924,8 +32916,8 @@
     "tinymodel01": {
       "name": "Tinymodel01",
       "firstSeenAt": "2026-08-16T17:02:33.601Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 105,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 106,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -34046,8 +34038,8 @@
     "yg4hqxqljd": {
       "name": "Yg4hqxqljd",
       "firstSeenAt": "2026-08-16T17:49:28.035Z",
-      "lastSeenAt": "2026-08-16T22:23:01.234Z",
-      "encounters": 7,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 8,
       "combatLevel": 125,
       "trust": 0,
       "stance": "unknown",
@@ -36421,8 +36413,8 @@
     "fishmax2": {
       "name": "Fishmax2",
       "firstSeenAt": "2026-08-16T19:29:56.856Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 145,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 146,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -36536,8 +36528,8 @@
     "fishmax3": {
       "name": "Fishmax3",
       "firstSeenAt": "2026-08-16T19:31:01.397Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 83,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 84,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -36973,8 +36965,8 @@
     "fishmax4": {
       "name": "Fishmax4",
       "firstSeenAt": "2026-08-16T19:38:43.584Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 77,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 78,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -37033,8 +37025,8 @@
     "fishmax5": {
       "name": "Fishmax5",
       "firstSeenAt": "2026-08-16T19:40:27.115Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 96,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 97,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -37422,8 +37414,8 @@
     "rexruthor": {
       "name": "Rexruthor",
       "firstSeenAt": "2026-08-16T20:35:15.254Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 296,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 297,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -37828,8 +37820,8 @@
     "fishmax10": {
       "name": "Fishmax10",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 46,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 47,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37843,8 +37835,8 @@
     "fishmax9": {
       "name": "Fishmax9",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 80,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 81,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -37858,8 +37850,8 @@
     "fishmax8": {
       "name": "Fishmax8",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 79,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 80,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -37873,8 +37865,8 @@
     "fishmax6": {
       "name": "Fishmax6",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 37,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 38,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37888,8 +37880,8 @@
     "fishmax7": {
       "name": "Fishmax7",
       "firstSeenAt": "2026-08-16T21:39:14.603Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 51,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 52,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37903,8 +37895,8 @@
     "qatlg9yn3": {
       "name": "Qatlg9yn3",
       "firstSeenAt": "2026-08-16T21:39:34.276Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "encounters": 118,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 119,
       "combatLevel": 61,
       "trust": 0,
       "stance": "unknown",
@@ -37995,6 +37987,51 @@
       "facts": [],
       "questions": [],
       "lastMessages": []
+    },
+    "beggar01": {
+      "name": "Beggar01",
+      "firstSeenAt": "2026-08-16T23:01:35.425Z",
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 1,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "beggar02": {
+      "name": "Beggar02",
+      "firstSeenAt": "2026-08-16T23:01:35.425Z",
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 1,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
+    },
+    "beggar03": {
+      "name": "Beggar03",
+      "firstSeenAt": "2026-08-16T23:01:35.425Z",
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "encounters": 1,
+      "combatLevel": 3,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -38004,8 +38041,8 @@
       "z": 3243,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-16T22:58:54.798Z",
-      "visits": 2306,
+      "lastSeenAt": "2026-08-16T23:01:35.425Z",
+      "visits": 2307,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -61469,66 +61506,6 @@
   },
   "discoveries": [
     {
-      "id": "place:mirror:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "place",
-      "text": "Mirror observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "place",
-      "text": "Barrel observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:pile of rope:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "place",
-      "text": "Pile of rope observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fireplace:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "place",
-      "text": "Fireplace observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:plant:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "place",
-      "text": "Plant observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:standing torch:193:202:0",
       "at": "2026-08-16T20:35:15.254Z",
       "kind": "place",
@@ -65067,9 +65044,81 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "place:door:193:202:0",
+      "at": "2026-08-16T23:01:35.425Z",
+      "kind": "place",
+      "text": "Door observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:193:202:0",
+      "at": "2026-08-16T23:01:35.425Z",
+      "kind": "resource",
+      "text": "Rock observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:market stall:193:202:0",
+      "at": "2026-08-16T23:01:35.425Z",
+      "kind": "place",
+      "text": "Market stall observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wardrobe:193:202:0",
+      "at": "2026-08-16T23:01:35.425Z",
+      "kind": "place",
+      "text": "Wardrobe observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:broom:193:202:0",
+      "at": "2026-08-16T23:01:35.425Z",
+      "kind": "place",
+      "text": "Broom observed near 3092, 3243, level 0.",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3243:3092:3248:0",
+      "at": "2026-08-16T23:01:58.155Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3243 → 3092,3248; moved 3092,3243 → 3092,3248; new: npc:Aggie, loc:Mystical wall chart, loc:Charms, loc:Chair, loc:Cart",
+      "location": {
+        "x": 3092,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T22:59:03.944Z",
+  "updatedAt": "2026-08-16T23:01:58.155Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
