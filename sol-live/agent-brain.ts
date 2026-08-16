@@ -556,7 +556,17 @@ export class SolAgentBrain {
           if(s.n>=2) learnedValues[fp]={avgReward:Number(s.avgReward.toFixed(2)),count:s.n,successRate:Number((s.positive/s.n).toFixed(2))};
         }
         const enriched={...payload,learnedActionValues:learnedValues};
-        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:'You are Sol inside the rs-sdk RuneScape MMO. Select one action_id yourself. Advance the active plan and produce measurable game progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. Avoid wait when another action can progress or test a prerequisite. speech is empty unless selecting a say action. learnedActionValues shows average rewards from past attempts (higher = better); prefer actions with high avgReward and successRate > 0.5.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);
+        // Measured: ~19.2s median per decision (run 72, 20 AGENT_THINK events
+        // over 366s). That is the real throughput ceiling, not the planner.
+        // Also num_ctx is 2048 while this payload carries 25-38 candidates
+        // plus learnedActionValues, so it may be silently truncating and
+        // costing the motor its action list. Measure both.
+        const payloadChars=JSON.stringify(enriched).length;
+        const t0=Date.now();
+        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.12,num_ctx:2048,num_predict:72},messages:[{role:'system',content:'You are Sol inside the rs-sdk RuneScape MMO. Select one action_id yourself. Advance the active plan and produce measurable game progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. Avoid wait when another action can progress or test a prerequisite. speech is empty unless selecting a say action. learnedActionValues shows average rewards from past attempts (higher = better); prefer actions with high avgReward and successRate > 0.5.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
+        const ms=Date.now()-t0;const approxTokens=Math.round(payloadChars/4);
+        console.log('AGENT_MOTOR_TIMING',JSON.stringify({ms,payloadChars,approxTokens,numCtx:2048,likelyTruncated:approxTokens>2048,candidates:(payload as any)?.actions?.length??null,evalCount:raw?.eval_count??null,promptEvalCount:raw?.prompt_eval_count??null}));
+        return parseModelJson(raw?.message?.content);
       };
       let j:any;try{j=await ask(motorObservation,12000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},10000)}
       const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
