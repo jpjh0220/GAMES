@@ -6,48 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7578,
-    "teacherChoices": 7578,
+    "totalChoices": 7579,
+    "teacherChoices": 7579,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8162,
-    "totalReward": 3761.845,
-    "saves": 872,
+    "completedExperiences": 8163,
+    "totalReward": 3760.675,
+    "saves": 873,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 517,
     "strategistFailures": 13
   },
   "memories": [
-    {
-      "id": "msvmwjxa-gqqsnz",
-      "createdAt": "2026-08-16T10:00:37.342Z",
-      "tick": 404,
-      "runNumber": 122,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3230 → 3092,3243; new: agent:Poseidon, agent:Helios, npc:Ned, npc:Diango, loc:Crate, loc:Staircase. Reward 1.342.",
-      "importance": 1.37,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent poseidon",
-        "agent helios",
-        "npc ned",
-        "npc diango",
-        "loc crate",
-        "loc staircase",
-        "loc oak",
-        "loc bench"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msvmwjxa-79m1om",
       "createdAt": "2026-08-16T10:00:37.342Z",
@@ -8489,6 +8460,27 @@
       "location": {
         "x": 3148,
         "z": 3210,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1ds8w-1nnrry",
+      "createdAt": "2026-08-16T16:45:55.904Z",
+      "tick": 97,
+      "runNumber": 135,
+      "kind": "episode",
+      "text": "AI motor: Pick up Pot (distance 1). Result: moved 3148,3210 → 3148,3211; execution rejected or failed. Reward -1.17.",
+      "importance": 1.28,
+      "tags": [
+        "pickup",
+        "item",
+        "resource",
+        "pot",
+        "valuable drop"
+      ],
+      "location": {
+        "x": 3148,
+        "z": 3211,
         "level": 0
       }
     }
@@ -20983,6 +20975,18 @@
         "exampleGoal": "Identify safe fishing spots based on coordinates and spot types.",
         "exampleReason": "I have enough inventory space to hold that item."
       }
+    },
+    "area=393:401:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
+      "pickup:pot": {
+        "n": 1,
+        "avgReward": -1.17,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-16T16:45:55.904Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up a small fishing net from the Gerrants' Fishy Business shop. This is a useful resource for my objective of buying a fishing rod."
+      }
     }
   },
   "relationships": {
@@ -28357,11 +28361,11 @@
     "gtarb": {
       "name": "Gtarb",
       "firstSeenAt": "2026-08-16T04:13:38.241Z",
-      "lastSeenAt": "2026-08-16T14:01:32.548Z",
+      "lastSeenAt": "2026-08-16T16:45:38.140Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 63,
+      "conversations": 64,
       "cooperation": 22,
       "suspicion": 0,
       "facts": [
@@ -28378,11 +28382,6 @@
         "Need a net? trade me anything for it"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T10:50:33.473Z",
-          "direction": "incoming",
-          "text": "Arrows for trade! Bronze + iron arrows, want any goods"
-        },
         {
           "at": "2026-08-16T11:14:41.555Z",
           "direction": "incoming",
@@ -28477,6 +28476,11 @@
           "at": "2026-08-16T14:01:32.548Z",
           "direction": "incoming",
           "text": "Nets in stock here -- shop is empty, trade me. Goods or coins"
+        },
+        {
+          "at": "2026-08-16T16:45:38.140Z",
+          "direction": "incoming",
+          "text": "Small fishing nets available. The shop restocks slow, i dont"
         }
       ]
     },
@@ -30673,8 +30677,8 @@
       "z": 3210,
       "level": 0,
       "firstSeenAt": "2026-08-16T13:01:15.291Z",
-      "lastSeenAt": "2026-08-16T14:02:24.319Z",
-      "visits": 9,
+      "lastSeenAt": "2026-08-16T16:45:47.775Z",
+      "visits": 12,
       "npcs": [
         "Butterfly",
         "Warrior",
@@ -52344,9 +52348,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3148:3210:3148:3211:0",
+      "at": "2026-08-16T16:45:55.904Z",
+      "kind": "route",
+      "text": "Route learned: 3148,3210 → 3148,3211; moved 3148,3210 → 3148,3211; execution rejected or failed",
+      "location": {
+        "x": 3148,
+        "z": 3211,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T16:44:20.595Z",
+  "updatedAt": "2026-08-16T16:45:55.908Z",
   "activePlan": {
     "objective": "Shop at the Gerrants' Fishy Business",
     "focus": "Approach the Gerrants' Fishy Business",
@@ -52384,6 +52400,6 @@
     ],
     "updatedAt": "2026-08-16T14:02:23.440Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
