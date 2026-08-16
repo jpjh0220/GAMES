@@ -10,57 +10,15 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7430,
-    "totalReward": 3930.065,
-    "saves": 764,
+    "completedExperiences": 7440,
+    "totalReward": 3923.954,
+    "saves": 765,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 473,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvg5eka-izdjgt",
-      "createdAt": "2026-08-16T06:51:32.986Z",
-      "tick": 3349,
-      "runNumber": 86,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 44 similar samples with average reward 1.68.",
-      "importance": 2.68,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvg5ne1-g1jx0h",
-      "createdAt": "2026-08-16T06:51:44.425Z",
-      "tick": 3387,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +798 XP; 6 damage dealt; moved 3092,3243 → 3084,3240; execution rejected or failed. Reward 3.187.",
-      "importance": 2.29,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent gpgather1",
-        "agent xbfr5x1f0",
-        "loc fire",
-        "loc bullrushes"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      }
-    },
     {
       "id": "msvg5ne2-7h2xtq",
       "createdAt": "2026-08-16T06:51:44.426Z",
@@ -8732,6 +8690,50 @@
       ],
       "location": {
         "x": 3078,
+        "z": 3249,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj2ycl-t1njfs",
+      "createdAt": "2026-08-16T08:13:37.509Z",
+      "tick": 1742,
+      "runNumber": 101,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 4). Result: moved 3077,3252 → 3080,3251. Reward -0.136.",
+      "importance": 0.77,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure",
+        "agent swfish2",
+        "loc rock"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj36sy-39oyvh",
+      "createdAt": "2026-08-16T08:13:48.466Z",
+      "tick": 1774,
+      "runNumber": 101,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 3). Result: moved 3080,3251 → 3080,3249; execution rejected or failed. Reward -1.386.",
+      "importance": 1.39,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure"
+      ],
+      "location": {
+        "x": 3080,
         "z": 3249,
         "level": 0
       }
@@ -19622,12 +19624,12 @@
     },
     "fallback": {
       "npc:trade:diango": {
-        "n": 120,
-        "avgReward": -0.9134,
+        "n": 124,
+        "avgReward": -0.9042,
         "positive": 0,
-        "negative": 110,
-        "lastReward": -0.173,
-        "lastAt": "2026-08-16T08:13:25.700Z",
+        "negative": 113,
+        "lastReward": -1.386,
+        "lastAt": "2026-08-16T08:13:48.466Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
@@ -19642,22 +19644,22 @@
         "exampleReason": "Deterministic fallback selected Sell 1 Coins for about 0 while the primary controller was unavailable."
       },
       "shop:sell:bronze arrow": {
-        "n": 24,
+        "n": 27,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 24,
+        "negative": 27,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T08:13:06.084Z",
+        "lastAt": "2026-08-16T08:13:44.163Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
       "modal:close-shop": {
-        "n": 118,
+        "n": 121,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 118,
+        "negative": 121,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T08:13:26.952Z",
+        "lastAt": "2026-08-16T08:13:45.774Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       }
@@ -29302,10 +29304,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 106,
-      "avgReward": -2.018,
+      "n": 107,
+      "avgReward": -2.012,
       "positive": 2,
-      "lastAt": "2026-08-16T08:13:26.952Z",
+      "lastAt": "2026-08-16T08:13:38.762Z",
       "example": "Close the shop → Trade Diango (level 0, distance 1) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:aggie": {
@@ -41566,10 +41568,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 100,
-      "avgReward": -2.507,
+      "n": 102,
+      "avgReward": -2.483,
       "positive": 0,
-      "lastAt": "2026-08-16T08:13:25.700Z",
+      "lastAt": "2026-08-16T08:13:41.874Z",
       "example": "Trade Diango (level 0, distance 1) → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "npc:trade:diango > modal:close-shop > skill:travel:draynor-bank": {
@@ -44110,10 +44112,10 @@
         "shop:sell:bronze arrow",
         "shop:sell:bronze arrow"
       ],
-      "n": 6,
-      "avgReward": -1.31,
+      "n": 7,
+      "avgReward": -1.319,
       "positive": 0,
-      "lastAt": "2026-08-16T08:12:15.355Z",
+      "lastAt": "2026-08-16T08:13:33.767Z",
       "example": "Trade Diango (level 0, distance 10) → Sell 1 Bronze arrow for about 0 → Sell 1 Bronze arrow for about 0"
     },
     "shop:sell:bronze arrow > shop:sell:bronze arrow > modal:close-shop": {
@@ -44122,10 +44124,10 @@
         "shop:sell:bronze arrow",
         "modal:close-shop"
       ],
-      "n": 6,
+      "n": 7,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T08:12:17.030Z",
+      "lastAt": "2026-08-16T08:13:35.316Z",
       "example": "Sell 1 Bronze arrow for about 0 → Sell 1 Bronze arrow for about 0 → Close the shop"
     },
     "shop:sell:bronze arrow > modal:close-shop > npc:trade:diango": {
@@ -44134,10 +44136,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 18,
-      "avgReward": -2.035,
+      "n": 20,
+      "avgReward": -2.027,
       "positive": 0,
-      "lastAt": "2026-08-16T08:13:10.224Z",
+      "lastAt": "2026-08-16T08:13:48.466Z",
       "example": "Sell 1 Bronze arrow for about 0 → Close the shop → Trade Diango (level 0, distance 5)"
     },
     "modal:close-shop > npc:trade:diango > shop:sell:bronze arrow": {
@@ -44146,10 +44148,10 @@
         "npc:trade:diango",
         "shop:sell:bronze arrow"
       ],
-      "n": 17,
-      "avgReward": -2.075,
+      "n": 19,
+      "avgReward": -2.035,
       "positive": 0,
-      "lastAt": "2026-08-16T08:13:06.084Z",
+      "lastAt": "2026-08-16T08:13:44.163Z",
       "example": "Close the shop → Trade Diango (level 0, distance 4) → Sell 1 Bronze arrow for about 0"
     },
     "npc:trade:diango > shop:sell:bronze arrow > modal:close-shop": {
@@ -44158,10 +44160,10 @@
         "shop:sell:bronze arrow",
         "modal:close-shop"
       ],
-      "n": 12,
-      "avgReward": -2.38,
+      "n": 13,
+      "avgReward": -2.352,
       "positive": 0,
-      "lastAt": "2026-08-16T08:13:07.306Z",
+      "lastAt": "2026-08-16T08:13:45.774Z",
       "example": "Trade Diango (level 0, distance 1) → Sell 1 Bronze arrow for about 0 → Close the shop"
     }
   },
@@ -48605,9 +48607,33 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3081:3247:3077:3252:0",
+      "at": "2026-08-16T08:13:29.637Z",
+      "kind": "route",
+      "text": "Route learned: 3081,3247 → 3077,3252; moved 3081,3247 → 3077,3252",
+      "location": {
+        "x": 3077,
+        "z": 3252,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3077:3252:3080:3251:0",
+      "at": "2026-08-16T08:13:37.509Z",
+      "kind": "route",
+      "text": "Route learned: 3077,3252 → 3080,3251; moved 3077,3252 → 3080,3251",
+      "location": {
+        "x": 3080,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T08:13:26.952Z",
+  "updatedAt": "2026-08-16T08:13:48.466Z",
   "activePlan": {
     "objective": "Explore northeast about 4 tiles to find a new route or resource",
     "focus": "Explore northeast about 4 tiles to locate a new route or resource",
