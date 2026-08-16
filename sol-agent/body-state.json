@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 391,
-  "committedTick": 1121,
+  "stateGeneration": 422,
+  "committedTick": 1171,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3086,
-    "z": 3231,
+    "x": 3092,
+    "z": 3243,
     "level": 0
   },
   "currentObligation": {
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Find the next reachable progression resource or trainer",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:321:1|1:321:1|3:303:1|4:303:1|6:995:25|10:303:1|11:317:1|12:315:1|20:526:1|23:526:1|25:526:1|26:526:1",
     "freeSlots": 16,
     "coins": 25,
-    "updatedTick": 1121
+    "updatedTick": 1171
   },
   "milestones": [
     {
@@ -43,8 +43,8 @@
   "controller": {
     "activeId": "llm-brain",
     "activeVersion": "1.0.0",
-    "lastSwitchTick": 701
+    "lastSwitchTick": 1161
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T11:08:53.387Z"
+  "updatedAt": "2026-08-16T11:09:08.521Z"
 }\n
