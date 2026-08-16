@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 54,
-  "committedTick": 210,
+  "stateGeneration": 66,
+  "committedTick": 260,
   "identity": {
     "name": "Sol5"
   },
@@ -11,11 +11,11 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "capacity-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I picked up 4 Coins (distance 7)"
+    "reason": "I picked up a small fishing net (distance 0)."
   },
   "objective": {
     "id": "boot",
@@ -26,12 +26,19 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:212|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1",
-    "freeSlots": 7,
+    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:212|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1|21:303:1",
+    "freeSlots": 6,
     "coins": 212,
-    "updatedTick": 210
+    "updatedTick": 260
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "resolve-capacity:245",
+      "label": "Resolve inventory capacity before training",
+      "tick": 245,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:45:04.869Z"
+  "updatedAt": "2026-08-16T20:45:20.215Z"
 }\n
