@@ -162,6 +162,7 @@ export class SolAgentBrain {
   private studentDecisionOutcomes:{choice:string;reward:number}[]=[];
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
+  private externalDirective:string|null=null;
   private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
   private replay:{tick:number;perception:string;retrieved:string[];prediction:string|null;decision:string|null;action:string|null;outcome:string|null;lesson:string|null}[]=[];
   private lastAutonomousProposal:{goal:string;action:string;followUp:string[];planNote:string;speech:string;at:string}|null=null;
@@ -175,6 +176,13 @@ export class SolAgentBrain {
   get motorModel(){return this.opts.motorModel||'qwen3:0.6b';}
   get strategistModel(){return this.opts.strategistModel||this.opts.model||'qwen3:1.7b';}
   get ollamaUrl(){return this.opts.ollamaUrl||'http://127.0.0.1:11434';}
+
+  applyExternalDirective(directive:string|null){
+    const next=String(directive||'').trim().slice(0,300)||null;
+    if(next===this.externalDirective)return;
+    this.externalDirective=next;
+    if(next){this.strategy=null;this.memory.activePlan=null;this.lastStrategySessionChoice=-9999;this.markDirty();console.log('AGENT_EXTERNAL_DIRECTIVE',JSON.stringify({directive:next}));}
+  }
 
   async init(){
     await this.load();
@@ -444,7 +452,7 @@ export class SolAgentBrain {
     const gated=this.antiLoopCandidates(candidates);let legal=this.balancedCandidates(gated);
     const p=state.player!;const hpRatio=p.maxHp?p.hp/p.maxHp:1;
     const emergency=hpRatio<.45||!!p.combat?.inCombat;
-    const goalText=`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`.toLowerCase();
+    const goalText=`${this.externalDirective||''} ${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`.toLowerCase();
     const escape=legal.filter(c=>c.fingerprint==='skill:escape-draynor-manor');
     const travel=legal.filter(c=>c.category==='navigation-skill'&&c.fingerprint.startsWith('skill:'));
     const travelGoal=/travel|escape|bank|fishing|route|landmark|progress/.test(goalText);
@@ -569,6 +577,7 @@ export class SolAgentBrain {
     this.currentGuidance=this.retrieveRepoGuidance(state,allowed,5,900);
     const observation={
       gameCurriculum:this.gameplayCurriculum,
+      directive:this.externalDirective,
       strategy:this.strategy?{focus:this.strategy.focus,risk:this.strategy.risk,do:this.strategy.priorities,avoid:this.strategy.avoid}:null,
       longPlan:this.strategy?{objective:this.strategy.objective,steps:this.strategy.plan,success:this.strategy.successSignals}:null,
       status:{hp:[p.hp,p.maxHp],combat:p.combat?.inCombat?1:0,level:p.combatLevel,pos:[p.worldX,p.worldZ,p.level],run:p.runEnergy},
@@ -583,7 +592,7 @@ export class SolAgentBrain {
       successfulSequences:Object.values(this.memory.sequences).filter(s=>s.n>=2&&s.avgReward>0).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),
       learned:learnedCompact,
       student:this.lastShadowPrediction?[this.lastShadowPrediction.actionId,Number(this.lastShadowPrediction.confidence.toFixed(2))]:null,
-      authority:'You control all gameplay. Choose your own goal and one executable action. Heuristics do not choose for you.',
+      authority:'You control all gameplay. Choose your own goal and one executable action. An external operator directive, when present, is the highest-priority objective constraint; obey it unless survival requires an emergency action. Heuristics do not choose for you.',
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,120)])
     };
     const schema={type:'object',additionalProperties:false,properties:{action_id:{type:'string',enum:ids},why:{type:'string'},speech:{type:'string'},confidence:{type:'number',minimum:0,maximum:1}},required:['action_id','why','speech','confidence']};
@@ -908,6 +917,6 @@ export class SolAgentBrain {
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
     const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,loadOutcome:this.loadOutcome,loadError:this.loadError,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
-    return{architecture:'model-sovereign-gameplay-with-execution-validation',teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,lastStrategistError:this.lastStrategistError,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
+    return{architecture:'model-sovereign-gameplay-with-execution-validation',externalDirective:this.externalDirective,teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,lastStrategistError:this.lastStrategistError,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }

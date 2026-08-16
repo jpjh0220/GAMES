@@ -101,3 +101,22 @@ The following telemetry fields should be tracked across runs:
 | `AGENT_TELEMETRY` | XP velocity, completed experiences, distinct positions, and planner status. |
 
 A strategy improvement should be accepted only when it improves **measured progress per wall-clock minute**—not merely model confidence. Compare XP per 1,000 ticks, positive-reward rate, rejection rate, deaths, unique locations, action latency, and successful prerequisite resolutions across runs using the same SDK revision and model versions.
+
+## Live control without rebuilding
+
+The live runner now supports hot-reloadable operator control. Runtime code still requires a new runner, but directives and bounded commands are applied during the active session through either an authenticated HTTP request or the `sol-control` GitHub branch polling fallback.
+
+The supported commands are `pause`, `resume`, `abandon_objective`, `clear_directive`, `force_bank`, and `force_fishing`. Every control document requires a strictly increasing integer `revision` and expires after a bounded interval. The runner ignores stale, malformed, or expired documents.
+
+For direct control, send a request to the current private tunnel URL with the dedicated `SOL_CONTROL_TOKEN`:
+
+```bash
+curl -X POST "$SOL_URL/control" \
+  -H "Authorization: Bearer $SOL_CONTROL_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{"revision":1,"command":"abandon_objective","directive":"Leave the bank-fishing loop and pursue measurable combat or skill progression.","expiresAt":"2026-08-16T06:00:00Z"}'
+```
+
+For the polling fallback, configure `GH_TOKEN` and `GITHUB_REPOSITORY`, then run `npm run control -- force_bank` or `npm run control -- abandon_objective "Pursue a new measurable progression goal"`. The command creates or updates `sol-agent/control.json` on the private `sol-control` branch. The live process polls that branch every few seconds and applies the next revision atomically.
+
+Never place the control token in a URL or commit it to the repository. The viewer token and control token should be separate secrets; the viewer token is accepted as a compatibility fallback only when a dedicated control token is not configured.

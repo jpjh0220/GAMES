@@ -49,6 +49,12 @@ const outgoingChat: OutgoingChat[] = [];
 const answeredChatIds = new Set<string>();
 let lastPublicSayTick = -9999;
 let lastPublicSayText = '';
+type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;updatedAt:string;source:'http'|'github'|'none'};
+const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
+let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,updatedAt:new Date(0).toISOString(),source:'none'};
+let controlPollInFlight=false;
+let lastControlPollAt=0;
+let controlSha:string|null=null;
 
 const brain = new SolAgentBrain({
   name:username,
@@ -72,6 +78,37 @@ const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&
   if(data.setCurrent!==false) currentAction=e;
   actionHistory.push(e);
   if(actionHistory.length>200) actionHistory.shift();
+};
+
+const commandDirective=(command:string|null)=>command==='force_bank'?'Immediately travel to Draynor Bank using the verified waypoint route; do not fish or change combat style until arrival is verified.':command==='force_fishing'?'Travel to the Draynor fishing area and fish only if the action produces measurable XP or inventory progress; abandon fishing after one failed interaction.':command==='abandon_objective'?'Abandon the current objective and choose a new measurable progression goal outside the current bank-fishing loop.':null;
+const applyLiveControl=(next:LiveControl)=>{
+  const directive=next.directive||commandDirective(next.command);
+  brain.applyExternalDirective(directive);
+  if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a new measurable progression goal.';nextDecisionTick=tick+1;}
+  else if(next.command==='force_bank'){currentGoal='Force travel to Draynor Bank';currentWhy='Operator control requested verified bank travel.';nextDecisionTick=tick+1;}
+  else if(next.command==='force_fishing'){currentGoal='Force travel to Draynor fishing';currentWhy='Operator control requested bounded fishing progression.';nextDecisionTick=tick+1;}
+};
+const acceptControl=(doc:any,source:'http'|'github')=>{
+  const revision=Number(doc?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return false;
+  if(doc?.expiresAt&&Date.parse(String(doc.expiresAt))<=Date.now())return false;
+  const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing'];
+  const command=allowed.includes(String(doc?.command))?String(doc.command):null;
+  const directive=doc?.directive===null?null:String(doc?.directive||'').trim().slice(0,300)||null;
+  if(!command&&!directive&&doc?.directive!==null)return false;
+  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,updatedAt:new Date().toISOString(),source};
+  applyLiveControl(controlState);return true;
+};
+const pollLiveControl=async()=>{
+  if(controlPollInFlight||!process.env.GH_TOKEN||!process.env.GITHUB_REPOSITORY||Date.now()-lastControlPollAt<4000)return;
+  controlPollInFlight=true;lastControlPollAt=Date.now();
+  try{
+    const r=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/sol-agent/control.json?ref=sol-control&t=${Date.now()}`,{headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${process.env.GH_TOKEN}`,'X-GitHub-Api-Version':'2022-11-28'},signal:AbortSignal.timeout(3500)});
+    if(r.status===404)return;if(!r.ok)throw new Error(`control fetch ${r.status}`);
+    const body:any=await r.json();if(body.sha&&body.sha===controlSha)return;controlSha=body.sha||controlSha;
+    const content=Buffer.from(String(body.content||''),'base64').toString('utf8');const doc=JSON.parse(content);
+    if(acceptControl(doc,'github'))await log('LIVE_CONTROL_APPLIED',{revision:controlState.revision,command:controlState.command,directive:controlState.directive,paused:controlState.paused,source:'github'});
+  }catch(err){console.warn('LIVE_CONTROL_POLL_FAILED',String(err).slice(0,180));}
+  finally{controlPollInFlight=false;}
 };
 
 let snapshot:any = {
@@ -128,14 +165,28 @@ const refreshSnapshot = (state:BotWorldState|null) => {
 
 const server=Bun.serve({
   port:8787,
-  fetch(req){
+  async fetch(req){
     const url=new URL(req.url),path=url.pathname;
     const headers={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'};
     const fullAccess=viewerAccessToken.length>0&&url.searchParams.get('token')===viewerAccessToken;
-    if(path==='/state') return Response.json(fullAccess?{...snapshot,viewerAccess:'full'}:publicSnapshot(),{headers});
+    const bearer=req.headers.get('authorization')||'';
+    const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
+    if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
+    if(path==='/control'&&req.method==='POST'){
+      if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
+      let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
+      const revision=Number(body?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return Response.json({ok:false,error:'revision_must_increase',currentRevision:controlState.revision},{status:409,headers});
+      const command=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing'].includes(String(body?.command))?String(body.command):null;
+      const directive=body?.directive===null?null:String(body?.directive||'').trim().slice(0,300)||null;
+      if(!command&&!directive&&body?.directive!==null)return Response.json({ok:false,error:'missing_command_or_directive'},{status:400,headers});
+      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,updatedAt:new Date().toISOString(),source:'http'};
+      applyLiveControl(controlState);
+      await log('LIVE_CONTROL_APPLIED',{revision,command,directive:controlState.directive,paused:controlState.paused,source:'http'});
+      return Response.json({ok:true,control:controlState},{headers});
+    }
     if(path==='/health'){
       const ready=!!snapshot.online&&!!snapshot.inGame&&!!snapshot.player&&snapshot.agent?.motorOnline===true;
-      return Response.json({ok:ready,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline},{status:ready?200:503,headers});
+      return Response.json({ok:ready,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,controlRevision:controlState.revision,paused:controlState.paused},{status:ready?200:503,headers});
     }
     return new Response(viewerHtml,{headers:{...headers,'Content-Type':'text/html; charset=utf-8'}});
   }
@@ -458,6 +509,11 @@ client.setOnGameTickCallback(()=>{
       refreshSnapshot(state);return;
     }
     lastState=state;
+    void pollLiveControl();
+    if(controlState.paused){
+      currentGoal='Paused by operator';currentWhy='Live control is paused; no new gameplay actions will be dispatched.';
+      refreshSnapshot(state);return;
+    }
 
     const outcome=procedureInFlight?null:brain.maybeFinishExperience(state,tick);
     if(outcome){

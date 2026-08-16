@@ -38,6 +38,8 @@ jobs:
     steps:
       - name: Checkout viewer and agent code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
@@ -119,6 +121,7 @@ jobs:
           SOL_USER: ${{ secrets.SOL_USER }}
           SOL_PASS: ${{ secrets.SOL_PASS }}
           SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
+          SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}
           SOL_MOTOR_MODEL: qwen3:0.6b
           SOL_STRATEGIST_MODEL: qwen3:1.7b
           OLLAMA_URL: http://127.0.0.1:11434

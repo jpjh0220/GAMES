@@ -36,6 +36,7 @@ async function main() {
     '.github/workflows/ci.yml',
     '.github/workflows/rs-sol-live.yml',
     'scripts/stage-and-build.mjs',
+    'scripts/set-control.mjs',
     'sol-live/sol-live.ts',
     'sol-live/agent-brain.ts',
     'sol-live/viewer.html',
@@ -62,6 +63,7 @@ async function main() {
   if (packageJson.scripts?.test !== 'node scripts/verify-repository.mjs') failures.push('npm test must run the repository verification script.');
   if (packageJson.scripts?.['build:agent'] !== 'node scripts/stage-and-build.mjs') failures.push('build:agent must invoke the deterministic staging script.');
   if (packageJson.scripts?.['typecheck:agent'] !== 'node scripts/stage-and-build.mjs --typecheck') failures.push('typecheck:agent must invoke the focused staged-agent type-check.');
+  if (packageJson.scripts?.control !== 'node scripts/set-control.mjs') failures.push('control must invoke the versioned live-control writer.');
 
   const workflow = await readFile(join(root, '.github/workflows/ci.yml'), 'utf8');
   if (!workflow.includes('npm ci')) failures.push('CI must use npm ci for a reproducible root-tooling installation.');
@@ -72,6 +74,7 @@ async function main() {
   const liveWorkflow = await readFile(join(root, '.github/workflows/rs-sol-live.yml'), 'utf8');
   if (!liveWorkflow.includes('cp ../../../sol-live/*.ts ./')) failures.push('The live runner must stage all Sol TypeScript modules.');
   if (liveWorkflow.includes('SOL_PASS: ') && !liveWorkflow.includes('SOL_PASS: ${{ secrets.SOL_PASS }}')) failures.push('The live runner must not contain a hard-coded password value.');
+  if (!liveWorkflow.includes('SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}')) failures.push('The live runner must expose a dedicated control token secret.');
 
   const workflowDir = join(root, '.github/workflows');
   for (const name of await readdir(workflowDir)) {
@@ -88,6 +91,11 @@ async function main() {
   if (!scriptInfo.isFile()) failures.push('The staging build script is invalid.');
   const stagingScript = await readFile(scriptPath, 'utf8');
   if (!stagingScript.includes("git', ['fetch', '--depth', '1', 'origin', upstreamRef]")) failures.push('The staging build script must fetch the pinned upstream revision explicitly.');
+
+  const liveSource = await readFile(join(root, 'sol-live/sol-live.ts'), 'utf8');
+  for (const marker of ['SOL_CONTROL_TOKEN', '/control', 'pollLiveControl', 'applyLiveControl']) {
+    if (!liveSource.includes(marker)) failures.push(`Live control contract is incomplete: missing ${marker}.`);
+  }
 
   if (failures.length) {
     console.error('Repository verification failed:');
