@@ -46,7 +46,7 @@ type Relationship = {
   facts:string[];questions:string[];lastMessages:{at:string;direction:'incoming'|'outgoing';text:string}[];
 };
 
-type SequenceStat = {sequence:string[];n:number;avgReward:number;positive:number;lastAt:string;example:string};
+type SequenceStat = {sequence:string[];n:number;avgReward:number;positive:number;failed?:number;lastAt:string;example:string};
 
 type PersistentState = {
   version:number;
@@ -204,7 +204,7 @@ export class SolAgentBrain {
   private seenMessages=new Set<string>();
   private currentGuidance:string[]=[];
   private externalDirective:string|null=null;
-  private recentSequence:{fingerprint:string;label:string;reward:number}[]=[];
+  private recentSequence:{fingerprint:string;label:string;rejected:boolean;noProgress:boolean}[]=[];
   private replay:{tick:number;perception:string;retrieved:string[];prediction:string|null;decision:string|null;action:string|null;outcome:string|null;lesson:string|null}[]=[];
   private lastAutonomousProposal:{goal:string;action:string;followUp:string[];planNote:string;speech:string;at:string}|null=null;
 
@@ -448,14 +448,13 @@ export class SolAgentBrain {
     for(const c of candidates){
       const attempts=recentOutcomes.filter(o=>o.choice.fingerprint===c.fingerprint).slice(-4);
       if(attempts.length<2)continue;
-      const avg=attempts.reduce((n,o)=>n+o.reward,0)/attempts.length;
-      const failures=attempts.filter(o=>o.reward<0||o.rejected).length;
-      if(failures>=2&&avg<0)blocked.add(c.fingerprint);
+      const failures=attempts.filter(o=>o.rejected||o.noProgress).length;
+      if(failures>=2)blocked.add(c.fingerprint);
       const configurationOnly=attempts.some(o=>(o.equipmentChanged||o.styleChanged)&&!o.moved&&o.xpGain===0&&o.kills===0&&o.damageDealt===0);
       if(configurationOnly)blocked.add(c.fingerprint);
     }
     const last=recentOutcomes.at(-1);
-    if(last&&last.reward<0)blocked.add(last.choice.fingerprint);
+    if(last&&(last.rejected||last.noProgress))blocked.add(last.choice.fingerprint);
     // Engine-stated prerequisites. Clear any that are now satisfied, then bar the rest.
     // Bar candidates the engine has already refused. Resolution of blockers
     // happens in maybeFinishExperience, which has the world state; this path
@@ -470,7 +469,7 @@ export class SolAgentBrain {
     for(const c of candidates){
       const key=[...recentFingerprints.slice(-2),c.fingerprint].join(' > ');
       const learned=this.memory.sequences[key];
-      if(learned&&learned.n>=4&&learned.avgReward<-.4)blocked.add(c.fingerprint);
+      if(learned&&learned.n>=4&&learned.failed>=Math.ceil(learned.n/2))blocked.add(c.fingerprint);
       const sameStreak=recentFingerprints.length>=2&&recentFingerprints.slice(-2).every(fp=>fp===c.fingerprint);
       if(sameStreak)blocked.add(c.fingerprint);
       const fishingStreak=recentFingerprints.filter(fp=>/fishing|bait|net|dialog/.test(fp)).length;
@@ -529,7 +528,7 @@ export class SolAgentBrain {
     // remains eligible so survival always wins over the route.
     if(!emergency&&escape.length)legal=escape;
     else if(!emergency&&travelGoal&&travel.length)legal=travel;
-    const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=null; // historical reward policy is telemetry-only; it never proposes live actions
     console.log('AGENT_CANDIDATE_GATE',JSON.stringify({raw:candidates.length,afterAntiLoop:gated.length,allowed:legal.length,categories:uniq(legal.map(c=>c.category))}));
     this.maybeRefreshStrategy(state,legal);
     if(this.plannerEnabled)this.maybeReevaluateGoal(state,500);
@@ -602,11 +601,11 @@ export class SolAgentBrain {
   private async askStrategist(state:BotWorldState,candidates:AgentCandidate[]):Promise<Strategy>{
     const p=state.player!;
     const executable=candidates.filter(c=>c.category!=='wait').slice(0,this.runtimeConfig.candidateLimit||96).map(c=>c.label.slice(0,96));
-    const negatives=this.recentOutcomes.filter(o=>o.reward<0).slice(-3).map(o=>o.candidateLabel.slice(0,90));
+    const negatives=this.recentOutcomes.filter(o=>o.rejected||o.noProgress).slice(-3).map(o=>o.candidateLabel.slice(0,90));
     const guidance=this.retrieveRepoGuidance(state,candidates,1,420);
     const skillLevels=Object.fromEntries((state.skills||[]).filter((skill:any)=>!/^Stat/.test(String(skill.name||''))).map((skill:any)=>[skill.name,skill.level]));
     const coins=(state.inventory||[]).filter((item:any)=>/coins?/i.test(String(item.name||''))).reduce((sum:number,item:any)=>sum+Number(item.count||0),0);
-    const observation={game:{name:'RuneScape',engine:'rs-sdk',premise:'Persistent open-world skill, resource, combat, economy, and exploration simulation'},entity:{name:this.opts.name,role:'autonomous player agent'},world:{tick:Number((state as any).tick||0),position:[p.worldX,p.worldZ,p.level],nearbyPlayers:(state.nearbyPlayers||[]).slice(0,8).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance})),nearbyNpcs:(state.nearbyNpcs||[]).slice(0,12).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance,reachable:x.reachable})),objects:(state.nearbyLocs||[]).slice(0,12).map((x:any)=>({name:x.name,distance:x.distance,reachable:x.reachable,options:x.optionsWithIndex?.map((o:any)=>o.text)})),groundItems:(state.groundItems||[]).slice(0,12).map((x:any)=>({name:x.name,count:x.count,distance:x.distance,reachable:x.reachable}))},directive:this.externalDirective,goal:this.strategy?.focus||'Learn to survive and become increasingly capable in this world',secondaryGoals:['explore unknown areas','acquire useful resources','learn mechanics from outcomes','improve skills and equipment','avoid unnecessary death','form durable long-term objectives'],hp:[p.hp,p.maxHp],runEnergy:p.runEnergy,combatLevel:p.combatLevel,skills:skillLevels,coins,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),itemPolicy:(state.inventory||[]).slice(0,16).map(i=>[i.name,itemPurpose(i.name)]),equipment:(state.equipment||[]).map(i=>i.name),recentEvents:this.recentOutcomes.slice(-8).map(o=>({action:o.candidateLabel,type:o.actionType,result:o.summary,reward:o.reward,rejected:o.rejected,moved:o.moved,xpGain:o.xpGain,inventoryChanged:o.inventoryChanged})),longTermMemory:{places:Object.values(this.memory.places).slice(-8),discoveries:this.memory.discoveries.slice(-12),recentLessons:this.memory.memories.slice(-12).map(m=>m.text)},lastResult:this.lastOutcome?{action:this.lastOutcome.candidateLabel,result:this.lastOutcome.summary,reward:this.lastOutcome.reward}:null,failed:negatives,actions:executable,curriculum:this.gameplayCurriculum,guide:guidance[0]||''};
+    const observation={game:{name:'RuneScape',engine:'rs-sdk',premise:'Persistent open-world skill, resource, combat, economy, and exploration simulation'},entity:{name:this.opts.name,role:'autonomous player agent'},world:{tick:Number((state as any).tick||0),position:[p.worldX,p.worldZ,p.level],nearbyPlayers:(state.nearbyPlayers||[]).slice(0,8).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance})),nearbyNpcs:(state.nearbyNpcs||[]).slice(0,12).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance,reachable:x.reachable})),objects:(state.nearbyLocs||[]).slice(0,12).map((x:any)=>({name:x.name,distance:x.distance,reachable:x.reachable,options:x.optionsWithIndex?.map((o:any)=>o.text)})),groundItems:(state.groundItems||[]).slice(0,12).map((x:any)=>({name:x.name,count:x.count,distance:x.distance,reachable:x.reachable}))},directive:this.externalDirective,goal:this.strategy?.focus||'Learn to survive and become increasingly capable in this world',secondaryGoals:['explore unknown areas','acquire useful resources','learn mechanics from outcomes','improve skills and equipment','avoid unnecessary death','form durable long-term objectives'],hp:[p.hp,p.maxHp],runEnergy:p.runEnergy,combatLevel:p.combatLevel,skills:skillLevels,coins,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),itemPolicy:(state.inventory||[]).slice(0,16).map(i=>[i.name,itemPurpose(i.name)]),equipment:(state.equipment||[]).map(i=>i.name),recentEvents:this.recentOutcomes.slice(-8).map(o=>({action:o.candidateLabel,type:o.actionType,result:o.summary,verifiedChange:!o.noProgress,rejected:o.rejected,moved:o.moved,xpGain:o.xpGain,inventoryChanged:o.inventoryChanged})),longTermMemory:{places:Object.values(this.memory.places).slice(-8),discoveries:this.memory.discoveries.slice(-12),recentLessons:this.memory.memories.slice(-12).map(m=>m.text)},lastResult:this.lastOutcome?{action:this.lastOutcome.candidateLabel,result:this.lastOutcome.summary,verifiedChange:!this.lastOutcome.noProgress,rejected:this.lastOutcome.rejected}:null,failed:negatives,actions:executable,curriculum:this.gameplayCurriculum,guide:guidance[0]||''};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},step_1:{type:'string'},step_2:{type:'string'},step_3:{type:'string'},reason:{type:'string'},success:{type:'string'}},required:['objective','step_1','step_2','step_3','reason','success']};
     const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.strategistTemperature,num_ctx:this.runtimeConfig.strategistContextTokens,num_predict:this.runtimeConfig.strategistOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' '+this.gameplayCurriculum+' You are the strategist in a closed control loop: see the structured world, understand the current goal, choose one legal action, observe the grounded result, adapt, and record what was learned. Return one concise objective and exactly three executable steps. An operator directive is authoritative: when present, make the objective and all steps serve it, and never reintroduce an explicitly abandoned loop. Build a prerequisite chain from skills, health, energy, equipment, inventory item purposes, nearby world, ground items, recent events, long-term memory, and failed attempts. Before combat, plan survival, loot, and capacity resolution. If an object or item is unfamiliar, choose an inspection or low-risk interaction and infer its purpose only from the observed result. Every step needs observable evidence, a measurable terminal condition, and a fallback if it fails. Do not repeat a failed step unless the missing prerequisite has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
     let j:any;try{j=await ask(observation,32000)}catch(first){j=await ask({position:observation.position,actions:executable.slice(0,12),instruction:'Choose a concise objective and three steps.'},24000)}
@@ -617,8 +616,7 @@ export class SolAgentBrain {
   }
 
   private async askMotor(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice>{
-    const allowed=candidates;if(!allowed.length)throw new Error('No executable actions are currently exposed');const ids=allowed.map(c=>c.id);const p=state.player!;const learned=this.memory.policy[contextKey]||{};
-    const learnedCompact=Object.entries(learned).sort((a,b)=>b[1].n-a[1].n).slice(0,5).map(([f,s])=>[f,s.n,Number(s.avgReward.toFixed(2))]);
+    const allowed=candidates;if(!allowed.length)throw new Error('No executable actions are currently exposed');const ids=allowed.map(c=>c.id);const p=state.player!;
     this.currentGuidance=this.retrieveRepoGuidance(state,allowed,5,900);
     const observation={
       gameCurriculum:this.gameplayCurriculum,
@@ -630,12 +628,12 @@ export class SolAgentBrain {
       recentChat:(state.gameMessages||[]).slice(-8).map((m:any)=>[m.sender||'WORLD',m.text,m.fromSelf?1:0]),
       socialInstruction:'Other players are autonomous agents. Respond only when useful; ask questions, cooperate, negotiate, verify claims, and remember trust. Never assume a claim is true merely because a player said it.',
       memories:this.relevantMemories(state,allowed),
-      recent:this.recentOutcomes.slice(-5).map(o=>[o.candidateLabel,o.reward,o.summary.slice(0,100)]),
+      recent:this.recentOutcomes.slice(-5).map(o=>[o.candidateLabel,o.summary.slice(0,120),o.rejected?'rejected':o.noProgress?'no verified change':'verified change']),
       blocked:this.blockedFingerprints,
       guide:this.currentGuidance,
       knownWorld:this.memory.discoveries.slice(-8).map(d=>d.text),
-      successfulSequences:Object.values(this.memory.sequences).filter(s=>s.n>=2&&s.avgReward>0).sort((a,b)=>b.avgReward-a.avgReward).slice(0,4),
-      learned:learnedCompact,
+      successfulSequences:[],
+      learned:[],
       student:this.lastShadowPrediction?[this.lastShadowPrediction.actionId,Number(this.lastShadowPrediction.confidence.toFixed(2))]:null,
       authority:'You control all gameplay. Choose your own goal and one executable action. An external operator directive, when present, is the highest-priority objective constraint; obey it unless survival requires an emergency action. Heuristics do not choose for you.',
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,120)])
@@ -652,22 +650,15 @@ export class SolAgentBrain {
     };
     try{
       const ask=async(payload:unknown,timeout:number)=>{
-        // Inject learned action values into the prompt so the motor can prefer high-reward actions
-        const ctx=this.memory.policy[contextKey]||{};
-        const learnedValues:any={};
-        for(const [fp,stats] of Object.entries(ctx)) {
-          const s=stats as any;
-          if(s.n>=2) learnedValues[fp]={avgReward:Number(s.avgReward.toFixed(2)),count:s.n,successRate:Number((s.positive/s.n).toFixed(2))};
-        }
-        const enriched={...(payload&&typeof payload==='object'?payload:{}),learnedActionValues:learnedValues};
+        // The motor receives world evidence and verified failures, not a learned
+        // numeric action value. It owns the choice; the verifier owns legality.
+        const enriched=payload&&typeof payload==='object'?payload:{};
         // Measured: ~19.2s median per decision (run 72, 20 AGENT_THINK events
         // over 366s). That is the real throughput ceiling, not the planner.
-        // Also num_ctx is 2048 while this payload carries 25-38 candidates
-        // plus learnedActionValues, so it may be silently truncating and
-        // costing the motor its action list. Measure both.
+        // Measure prompt size because the action list must remain visible to the motor.
         const payloadChars=JSON.stringify(enriched).length;
         const t0=Date.now();
-        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.motorTemperature,num_ctx:this.runtimeConfig.motorContextTokens,num_predict:this.runtimeConfig.motorOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Select one action_id yourself and produce measurable progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. If the inventory is full or near full, do not choose combat: pick up valuable nearby loot first, deposit at a bank, or interact with a reachable merchant/shop and sell low-value loot. After combat, verify and resolve ground loot before leaving. Avoid wait when another productive action exists. Never repeat the same target or the fishing-bank cycle without a new XP, item, coin, level, prerequisite, or discovery milestone. speech is empty unless selecting a say action. learnedActionValues shows average rewards from past attempts (higher = better); prefer actions with high avgReward and successRate > 0.5.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
+        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.motorTemperature,num_ctx:this.runtimeConfig.motorContextTokens,num_predict:this.runtimeConfig.motorOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Select one action_id yourself and produce measurable progress. If urgentSkill contains the repository-tested manor escape, choose that before unrelated skilling because the current floor is trapped. If the inventory is full or near full, do not choose combat: pick up valuable nearby loot first, deposit at a bank, or interact with a reachable merchant/shop and sell low-value loot. After combat, verify and resolve ground loot before leaving. Avoid wait when another productive action exists. Never repeat the same target or the fishing-bank cycle without a new XP, item, coin, level, prerequisite, or discovery milestone. speech is empty unless selecting a say action. Choose from observed world facts and the stated objective; do not infer that an action is good because it was previously rewarded.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
         const ms=Date.now()-t0;const approxTokens=Math.round(payloadChars/4);
         console.log('AGENT_MOTOR_TIMING',JSON.stringify({ms,payloadChars,approxTokens,numCtx:2048,likelyTruncated:approxTokens>2048,candidates:(payload as any)?.actions?.length??null,evalCount:raw?.eval_count??null,promptEvalCount:raw?.prompt_eval_count??null}));
         return parseModelJson(raw?.message?.content);
@@ -763,14 +754,15 @@ export class SolAgentBrain {
     if(Math.abs(outcome.reward)>=.8||outcome.kills>0||outcome.newThings.some(x=>x.startsWith('agent:'))||outcome.rejected)this.addMemory({kind:'episode',text:`AI motor: ${exp.candidate.label}. Result: ${outcome.summary}. Reward ${outcome.reward}.`,importance:clamp(.7+Math.abs(outcome.reward)/2,.7,5),tags:uniq([exp.candidate.category,...(exp.candidate.tags||[]),...outcome.newThings]).slice(0,14),tick:outcome.tick,state});
     if(/bankDeposit|bankWithdraw|shopSell|useInventoryItem|dropItem/.test(outcome.actionType)||/item-policy|bank|sell|discard|bury|food|raw/i.test(exp.candidate.label))this.addMemory({kind:'lesson',text:`Item-purpose lesson: ${exp.candidate.label} produced ${outcome.summary} with reward ${outcome.reward}. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.`,importance:clamp(1+Math.abs(outcome.reward),1,3),tags:['item-purpose',exp.candidate.category,...(exp.candidate.tags||[])].slice(0,16),tick:outcome.tick,state});
     if(n>=3&&avg>.35&&ctx[exp.candidate.fingerprint].positive>=2)this.addMemory({kind:'strategy',text:`From AI demonstrations, ${exp.candidate.label} worked across ${n} similar samples with average reward ${avg.toFixed(2)}.`,importance:clamp(1+avg,1,4),tags:[exp.candidate.category,exp.candidate.fingerprint],tick:outcome.tick,state});
-    this.recentSequence.push({fingerprint:exp.candidate.fingerprint,label:exp.candidate.label,reward:outcome.reward});if(this.recentSequence.length>12)this.recentSequence.shift();
-    if(this.recentSequence.length>=3){const seq=this.recentSequence.slice(-3),key=seq.map(x=>x.fingerprint).join(' > '),total=seq.reduce((v,x)=>v+x.reward,0),oldSeq=this.memory.sequences[key]||{sequence:seq.map(x=>x.fingerprint),n:0,avgReward:0,positive:0,lastAt:now(),example:seq.map(x=>x.label).join(' → ')};const sn=oldSeq.n+1,savg=oldSeq.avgReward+(total-oldSeq.avgReward)/sn;this.memory.sequences[key]={...oldSeq,n:sn,avgReward:Number(savg.toFixed(3)),positive:oldSeq.positive+(total>.4?1:0),lastAt:now()};}
+    this.recentSequence.push({fingerprint:exp.candidate.fingerprint,label:exp.candidate.label,rejected:outcome.rejected,noProgress:outcome.noProgress});if(this.recentSequence.length>12)this.recentSequence.shift();
+    if(this.recentSequence.length>=3){const seq=this.recentSequence.slice(-3),key=seq.map(x=>x.fingerprint).join(' > '),failed=seq.filter(x=>x.rejected||x.noProgress).length,oldSeq=this.memory.sequences[key]||{sequence:seq.map(x=>x.fingerprint),n:0,avgReward:0,positive:0,failed:0,lastAt:now(),example:seq.map(x=>x.label).join(' → ')};const sn=oldSeq.n+1;this.memory.sequences[key]={...oldSeq,n:sn,failed:(oldSeq.failed||0)+failed,avgReward:0,positive:0,lastAt:now()};}
     if(outcome.moved&&state.player){const id=`route:${exp.before.x}:${exp.before.z}:${state.player.worldX}:${state.player.worldZ}:${state.player.level}`;if(!this.memory.discoveries.some(d=>d.id===id))this.memory.discoveries.push({id,at:now(),kind:'route',text:`Route learned: ${exp.before.x},${exp.before.z} → ${state.player.worldX},${state.player.worldZ}; ${outcome.summary}`,location:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},confidence:outcome.rejected?.35:.75});}
     const active=this.strategy?.plan?.find(x=>x.status==='active');
     if(active){const overlap=[...toks(active.label)].some(t=>toks(`${exp.candidate.label} ${outcome.summary}`).has(t));
-      const verifiedSuccess=outcome.reward>.45&&overlap&&!outcome.rejected&&!outcome.executionFailed&&!outcome.summary.includes('died/respawned');
+      const verifiedChange=outcome.moved||outcome.xpGain>0||outcome.kills>0||outcome.damageDealt>0||outcome.inventoryChanged||outcome.coinGain!==0||outcome.newThings.length>0;
+      const verifiedSuccess=verifiedChange&&overlap&&!outcome.rejected&&!outcome.executionFailed&&!outcome.summary.includes('died/respawned');
       if(verifiedSuccess){active.status='done';active.evidence=outcome.summary;const next=this.strategy!.plan!.find(x=>x.status==='pending');if(next)next.status='active';else this.strategy!.focus='Plan complete; form the next objective.';this.memory.activePlan=this.strategy;}
-      else if(outcome.reward<-.7||outcome.rejected){this.strategy!.failures=(this.strategy!.failures||0)+1;if((this.strategy!.failures||0)>=3){active.status='blocked';active.evidence='Repeated negative or rejected outcomes; strategist must replan.';this.memory.activePlan=this.strategy;this.strategy=null;}}
+      else if(outcome.noProgress||outcome.rejected){this.strategy!.failures=(this.strategy!.failures||0)+1;if((this.strategy!.failures||0)>=3){active.status='blocked';active.evidence='Repeated negative or rejected outcomes; strategist must replan.';this.memory.activePlan=this.strategy;this.strategy=null;}}
     }
     const replay=this.replay.at(-1);if(replay&&!replay.outcome){replay.outcome=outcome.summary;replay.lesson=outcome.reward>0?`Reinforce ${exp.candidate.fingerprint} (reward ${outcome.reward})`:`Avoid or revise ${exp.candidate.fingerprint} (reward ${outcome.reward})`;}
     this.markDirty();void this.save(false);
