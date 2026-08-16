@@ -602,7 +602,12 @@ client.setOnGameTickCallback(()=>{
     if(outcome){
       actionAwaitingOutcome=false;
       const verification=obligationExecutor.verify({type:outcome.actionType},{inventoryChanged:outcome.inventoryChanged,coinDelta:outcome.coinGain,moved:outcome.moved,success:!outcome.rejected},tick);
-      if(outcome.xpGain>0||outcome.inventoryChanged||outcome.coinGain!==0)progressionDirector.recordVerifiedProgress();
+      if(outcome.xpGain>0||outcome.inventoryChanged||outcome.coinGain!==0){
+        progressionDirector.recordVerifiedProgress();
+        const evidence=[outcome.xpGain?`+${outcome.xpGain} XP`:'',outcome.inventoryChanged?'inventory changed':'',outcome.coinGain?`${outcome.coinGain>0?'+':''}${outcome.coinGain} coins`:''].filter(Boolean).join(', ')||outcome.summary;
+        void durableStateStore.recordMilestone({id:`${currentProgression.id}:${tick}`,label:currentProgression.objective,tick,evidence},tick).then(next=>{durableState=next}).catch(err=>void log('MILESTONE_COMMIT_FAILED',String(err)));
+        void log('PROGRESSION_MILESTONE',{tick,stage:currentProgression.stage,id:currentProgression.id,objective:currentProgression.objective,evidence});
+      }
       if(outcome.category==='shop'||outcome.category==='bank'||outcome.category==='dialog'||outcome.category==='modal') economyResolution={...economyResolution,phase:verification.progressed?'idle':'transaction',noProgress:verification.noProgressAttempts,lastAction:outcome.actionType,lastProgressTick:verification.progressed?tick:economyResolution.lastProgressTick,blockedUntil:verification.blockedUntilTick,reason:verification.progressed?'Transaction verified.':'Transaction produced no measurable state change.'};
       feed('LEARNED_OUTCOME',outcome.summary,`Measured reward ${outcome.reward} from ${outcome.choice.source} action.`,{source:'learning',reward:outcome.reward,setCurrent:false});
       void log('AGENT_OUTCOME',{tick,reward:outcome.reward,summary:outcome.summary,source:outcome.choice.source,action:outcome.candidateLabel});
