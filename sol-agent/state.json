@@ -10,84 +10,15 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7460,
-    "totalReward": 3907.392,
-    "saves": 768,
+    "completedExperiences": 7470,
+    "totalReward": 3897.691,
+    "saves": 769,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 474,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvg76gb-cz19m3",
-      "createdAt": "2026-08-16T06:52:55.787Z",
-      "tick": 3625,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 9). Result: moved 3092,3243 → 3084,3236. Reward -0.463.",
-      "importance": 0.93,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent gpgather1",
-        "agent xbfr5x1f0",
-        "agent s0up",
-        "loc bullrushes",
-        "loc stones",
-        "loc fire"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvg76gb-31025a",
-      "createdAt": "2026-08-16T06:52:55.787Z",
-      "tick": 3625,
-      "runNumber": 86,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 9) worked across 5 similar samples with average reward 0.81.",
-      "importance": 1.81,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvg7flq-0cb00f",
-      "createdAt": "2026-08-16T06:53:07.646Z",
-      "tick": 3664,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3083,3236 → 3092,3243; new: loc:Bush, loc:Oak, loc:Bench, loc:Shelves. Reward 0.8.",
-      "importance": 1.1,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "loc bush",
-        "loc oak",
-        "loc bench",
-        "loc shelves"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msvg7flq-h3n2sp",
       "createdAt": "2026-08-16T06:53:07.646Z",
@@ -8738,6 +8669,81 @@
       "location": {
         "x": 3078,
         "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj7223-ts8bye",
+      "createdAt": "2026-08-16T08:16:48.939Z",
+      "tick": 185,
+      "runNumber": 102,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 2). Result: moved 3076,3251 → 3078,3251; execution rejected or failed. Reward -1.462.",
+      "importance": 1.43,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure",
+        "agent goo002",
+        "agent kitprep1",
+        "agent hephaestus",
+        "agent wanderlark",
+        "agent goo003",
+        "agent swcoin1",
+        "agent runebot26",
+        "agent apollo",
+        "agent testee5"
+      ],
+      "location": {
+        "x": 3078,
+        "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj75q2-a6lpu2",
+      "createdAt": "2026-08-16T08:16:53.690Z",
+      "tick": 198,
+      "runNumber": 102,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 3). Result: moved 3078,3251 → 3079,3249; execution rejected or failed. Reward -1.462.",
+      "importance": 1.43,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure",
+        "agent erebus"
+      ],
+      "location": {
+        "x": 3079,
+        "z": 3249,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj7c0w-r2rwx6",
+      "createdAt": "2026-08-16T08:17:01.856Z",
+      "tick": 224,
+      "runNumber": 102,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 2). Result: moved 3079,3249 → 3077,3250; execution rejected or failed. Reward -1.462.",
+      "importance": 1.43,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure",
+        "loc stones",
+        "loc warehouse shelves"
+      ],
+      "location": {
+        "x": 3077,
+        "z": 3250,
         "level": 0
       }
     }
@@ -19627,12 +19633,12 @@
     },
     "fallback": {
       "npc:trade:diango": {
-        "n": 134,
-        "avgReward": -0.9154,
+        "n": 139,
+        "avgReward": -0.9307,
         "positive": 0,
-        "negative": 123,
-        "lastReward": -0.853,
-        "lastAt": "2026-08-16T08:16:39.907Z",
+        "negative": 128,
+        "lastReward": -1.462,
+        "lastAt": "2026-08-16T08:17:01.856Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
@@ -19657,12 +19663,12 @@
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
       "modal:close-shop": {
-        "n": 130,
+        "n": 135,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 130,
+        "negative": 135,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T08:16:37.287Z",
+        "lastAt": "2026-08-16T08:16:58.928Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       }
@@ -29307,10 +29313,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 115,
-      "avgReward": -2.029,
+      "n": 120,
+      "avgReward": -2.044,
       "positive": 2,
-      "lastAt": "2026-08-16T08:16:37.287Z",
+      "lastAt": "2026-08-16T08:16:58.928Z",
       "example": "Close the shop → Trade Diango (level 0, distance 1) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:aggie": {
@@ -41571,10 +41577,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 110,
-      "avgReward": -2.503,
+      "n": 115,
+      "avgReward": -2.532,
       "positive": 0,
-      "lastAt": "2026-08-16T08:16:39.907Z",
+      "lastAt": "2026-08-16T08:17:01.856Z",
       "example": "Trade Diango (level 0, distance 1) → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "npc:trade:diango > modal:close-shop > skill:travel:draynor-bank": {
@@ -47842,9 +47848,45 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3076:3251:3078:3251:0",
+      "at": "2026-08-16T08:16:48.939Z",
+      "kind": "route",
+      "text": "Route learned: 3076,3251 → 3078,3251; moved 3076,3251 → 3078,3251; execution rejected or failed",
+      "location": {
+        "x": 3078,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3078:3251:3079:3249:0",
+      "at": "2026-08-16T08:16:53.690Z",
+      "kind": "route",
+      "text": "Route learned: 3078,3251 → 3079,3249; moved 3078,3251 → 3079,3249; execution rejected or failed",
+      "location": {
+        "x": 3079,
+        "z": 3249,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3079:3249:3077:3250:0",
+      "at": "2026-08-16T08:17:01.856Z",
+      "kind": "route",
+      "text": "Route learned: 3079,3249 → 3077,3250; moved 3079,3249 → 3077,3250; execution rejected or failed",
+      "location": {
+        "x": 3077,
+        "z": 3250,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T08:16:39.907Z",
+  "updatedAt": "2026-08-16T08:17:01.856Z",
   "activePlan": {
     "objective": "Explore northeast about 4 tiles to find a prerequisite for a quest or resource",
     "focus": "Explore northeast about 4 tiles to locate a relevant area or object",
@@ -47854,7 +47896,8 @@
       {
         "id": "step-1",
         "label": "Explore northeast about 4 tiles to locate a relevant area or object",
-        "status": "active"
+        "status": "blocked",
+        "evidence": "Repeated negative or rejected outcomes; strategist must replan."
       },
       {
         "id": "step-2",
@@ -47878,6 +47921,6 @@
     "avoid": [],
     "updatedAt": "2026-08-16T08:16:36.737Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 3
   }
 }
