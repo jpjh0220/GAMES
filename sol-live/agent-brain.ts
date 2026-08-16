@@ -149,6 +149,14 @@ export class SolAgentBrain {
   private lastRecommendedActivity:string='';
   private lastRecommendedProfit:number=0;
   private lastArbitrageKey:string='';
+  // Planner is opt-in because, measured, it hurt: see the note in decide().
+  private plannerEnabled:boolean=String(process.env.SOL_PLANNER||'')==='1';
+  private goalTickBudget:number=400;
+  private goalTicksRemaining:number=0;
+  private goalFormCooldown:number=40;
+  private lastGoalFormedAt:number=-9999;
+  private posHistory:string[]=[];
+  private lastTelemetryAt:number=0;
   private lastStudentChoice:AgentChoice|null=null;
   private studentDecisionOutcomes:{choice:string;reward:number}[]=[];
   private seenMessages=new Set<string>();
@@ -408,68 +416,49 @@ export class SolAgentBrain {
   }
 
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
-    this.observe(state);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    this.observe(state);this.emitTelemetry(state,state.tick||0);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     this.maybeRefreshStrategy(state,legal);
-    // REAL-TIME ADAPTATION: re-evaluate goal every 500 ticks if current goal isn't profitable
-    this.maybeReevaluateGoal(state,500);
+    if(this.plannerEnabled)this.maybeReevaluateGoal(state,500);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
-    // GOAL FILTERING & ECONOMY: check active goal, else form goal from economy
+    // ---------------------------------------------------------------
+    // PLANNER LAYER (opt-in, default OFF).
+    //
+    // Everything below was added speculatively and measured WORSE than the
+    // motor alone: run 70 managed 11 actions/1000 ticks against run 48's 145.
+    // Two structural faults caused it:
+    //   1. this else-branch ran on EVERY decide() with no active step, so it
+    //      built and adopted a fresh Goal object every tick.
+    //   2. once a goal had a targetAction the filter hard-gated candidates,
+    //      and since no step ever carried a successCondition the goal never
+    //      completed, so the motor stayed straitjacketed for the whole run.
+    // Default off until a measured run shows it beats the motor. Enable with
+    // SOL_PLANNER=1.
+    // ---------------------------------------------------------------
     let filteredCandidates=legal;
-    const activeGoalStep=this.goals.currentStep();
-    if(activeGoalStep?.targetAction){
-      const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
-      if(goalFiltered.length>0)filteredCandidates=goalFiltered;
-    }else{
-      // No active goal: prioritize by value: quests → arbitrage → economy → skills
-      const discoveredQuests=this.quests.getDiscoveredQuests();
-      if(discoveredQuests.length>0){
-        const nextQuest=discoveredQuests[0];
-        this.quests.adoptQuest(nextQuest.id);
-        // MULTI-STEP DECOMPOSITION: break quest into sub-steps
-        const questChain=this.decomposer.decomposeGoal(nextQuest.title,nextQuest.objective,'quest');
-        const firstStep=this.decomposer.getCurrentStep(questChain.id);
-        if(firstStep){
-          const questGoal=this.goals.createGoal(nextQuest.title,`Step 1: ${firstStep.label}`,
-            [{id:'quest-step',description:firstStep.description,targetAction:firstStep.targetAction||'explore'}],'high');
-          this.goals.adoptGoal(questGoal);
-          console.log('AGENT_QUEST_DECOMPOSED',JSON.stringify({quest:nextQuest.title,steps:questChain.steps.length,currentStep:firstStep.label}));
-        }
-      }else{
-        // Check for arbitrage opportunities
-        const bestTrade=this.trades.getMostProfitableRoute();
-        if(bestTrade&&bestTrade.profit>=50){
-          const tradeGoal=this.goals.createGoal(`Arbitrage: buy ${bestTrade.item} at ${bestTrade.sellPrice}gp, sell at ${bestTrade.buyPrice}gp`,
-            `Execute profitable trade route (+${bestTrade.profit}gp profit)`,
-            [{id:'trade',description:`Travel between ${bestTrade.sellNpc} and ${bestTrade.buyNpc}`,targetAction:'travel'}],'high');
-          this.goals.adoptGoal(tradeGoal);
+    if(this.plannerEnabled){
+      const activeGoalStep=this.goals.currentStep();
+      if(activeGoalStep?.targetAction){
+        // Advisory, not a hard gate: a goal may only narrow the candidate set
+        // while it still has budget, and never down to nothing.
+        if(this.goalTicksRemaining>0){
+          const goalFiltered=legal.filter(c=>c.fingerprint===activeGoalStep.targetAction||c.fingerprint.startsWith(activeGoalStep.targetAction+':'));
+          if(goalFiltered.length>0)filteredCandidates=goalFiltered;
+          this.goalTicksRemaining--;
         }else{
-          // Query economy for best activity (but filter by skill level)
-          const skillLevels:Record<string,number>={};
-          for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
-          const bestActivity=this.economy.getBestActivityFor('money');
-          if(bestActivity&&this.canPursueActivity(skillLevels,bestActivity.name)){
-            const activityGoal=this.goals.createGoal(`Focus on ${bestActivity.name}`,`Perform ${bestActivity.name} until profit drops`,
-              [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium');
-            this.goals.adoptGoal(activityGoal);
-          }else{
-            // Fallback: pursue skill progression
-            const skillLevels:Record<string,number>={};
-            for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
-            const targets=this.skillTree.getProgressionTargets(skillLevels);
-            if(targets.length>0){
-              const t=targets[0];
-              const {name,description}=this.skillTree.formLevelUpGoal(t.skill,skillLevels[t.skill]||0,t.nextLevel);
-              // MULTI-STEP DECOMPOSITION: break level-up into sub-steps
-              const skillChain=this.decomposer.decomposeGoal(name,description,'skill');
-              const firstStep=this.decomposer.getCurrentStep(skillChain.id);
-              if(firstStep){
-                const skillGoal=this.goals.createGoal(name,`Step 1: ${firstStep.label}`,
-                  [{id:'levelup',description:firstStep.description,targetAction:firstStep.targetAction||t.activity?.split(' ')[0]?.toLowerCase()||'combat'}],'high');
-                this.goals.adoptGoal(skillGoal);
-                console.log('AGENT_SKILL_DECOMPOSED',JSON.stringify({skill:t.skill,targetLevel:t.nextLevel,steps:skillChain.steps.length}));
-              }
-            }
-          }
+          console.log('AGENT_GOAL_EXPIRED',JSON.stringify({step:activeGoalStep.description}));
+          this.goals.failGoal('goal budget exhausted without completion');
+        }
+      }else if(this.sessionMotorChoices-this.lastGoalFormedAt>=this.goalFormCooldown){
+        // Form at most one goal per cooldown window, not one per tick.
+        this.lastGoalFormedAt=this.sessionMotorChoices;
+        this.goalTicksRemaining=this.goalTickBudget;
+        const skillLevels:Record<string,number>={};
+        for(const sk of (state.skills||[]) as any[])skillLevels[String(sk.name||'').toLowerCase()]=Number(sk.level)||0;
+        const bestActivity=this.economy.getBestActivityFor('money');
+        if(bestActivity&&this.canPursueActivity(skillLevels,bestActivity.name)){
+          this.goals.adoptGoal(this.goals.createGoal(`Focus on ${bestActivity.name}`,`Pursue ${bestActivity.name}`,
+            [{id:'activity',description:`Execute ${bestActivity.name}`,targetAction:bestActivity.name.split(' ')[0]?.toLowerCase()}],'medium'));
+          console.log('AGENT_GOAL_FORMED',JSON.stringify({goal:bestActivity.name,budget:this.goalTickBudget}));
         }
       }
     }
@@ -681,6 +670,30 @@ export class SolAgentBrain {
     const skillName=activity.split(':')[0]?.split('-')[0]||'combat';
     const currentLevel=skillLevels[skillName]||0;
     return currentLevel>=requiredLevel;
+  }
+
+  private emitTelemetry(state:BotWorldState,tick:number){
+    // The whole reason this exists: for six sessions there was no number to
+    // compare runs by, so "better" was an opinion. One line per 500 ticks.
+    if(tick-this.lastTelemetryAt<500)return;
+    this.lastTelemetryAt=tick;
+    const p=state.player;
+    if(p){
+      this.posHistory.push(`${p.worldX},${p.worldZ}`);
+      if(this.posHistory.length>40)this.posHistory.shift();
+    }
+    const acts=this.memory.lifetime.completedExperiences||0;
+    const xp=(state.skills||[]).reduce((n:number,s:any)=>n+(s.experience||0),0);
+    console.log('AGENT_TELEMETRY',JSON.stringify({
+      tick,
+      actions:acts,
+      actionsPer1000:tick>0?Number((acts*1000/tick).toFixed(1)):0,
+      distinctPositions:new Set(this.posHistory).size,
+      totalXp:xp,
+      planner:this.plannerEnabled,
+      goalActive:!!this.goals.getActiveGoal(),
+      goalTicksRemaining:this.goalTicksRemaining
+    }));
   }
 
   private computeActionCost(candidate:AgentCandidate,startTick:number,endTick:number):number{
