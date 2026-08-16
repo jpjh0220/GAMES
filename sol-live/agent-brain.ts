@@ -9,6 +9,7 @@ import { QuestSystem } from './quest-system.js';
 import { TradeInference } from './trade-inference.js';
 import { GoalDecomposer } from './goal-decomposition.js';
 import { GAMEPLAY_CONSTITUTION, GAMEPLAY_CONSTITUTION_VERSION, ECONOMY_POLICY } from './gameplay-constitution.js';
+import { chatJson } from './llm-provider.js';
 
 export type AgentCandidate = {
   id:string; label:string; category:string; fingerprint:string; action:any;
@@ -69,6 +70,7 @@ type PersistentState = {
 
 export type SolRuntimeConfig = {
   version:number;
+  provider?:'ollama'|'gemini';
   motorModel?:string;
   strategistModel?:string;
   plannerEnabled?:boolean;
@@ -87,7 +89,7 @@ export type SolRuntimeConfig = {
   strategistOutputTokens?:number;
 };
 
-const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:true,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:3072,strategistOutputTokens:256};
+const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,provider:'ollama',plannerEnabled:true,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:3072,strategistOutputTokens:256};
 
 const finiteOr=(value:unknown,fallback:number)=>{const n=Number(value);return Number.isFinite(n)?n:fallback;};
 const clampNum=(value:unknown,fallback:number,lo:number,hi:number)=>clamp(finiteOr(value,fallback),lo,hi);
@@ -95,6 +97,7 @@ const clampConfig=(raw:any):SolRuntimeConfig=>({
   ...DEFAULT_RUNTIME_CONFIG,
   ...(raw&&typeof raw==='object'?raw:{}),
   version:1,
+  provider:raw?.provider==='gemini'?'gemini':'ollama',
   motorModel:typeof raw?.motorModel==='string'&&raw.motorModel.trim()?raw.motorModel.trim().slice(0,80):undefined,
   strategistModel:typeof raw?.strategistModel==='string'&&raw.strategistModel.trim()?raw.strategistModel.trim().slice(0,80):undefined,
   plannerEnabled:typeof raw?.plannerEnabled==='boolean'?raw.plannerEnabled:DEFAULT_RUNTIME_CONFIG.plannerEnabled,
@@ -191,7 +194,7 @@ export class SolAgentBrain {
   private lastRecommendedProfit:number=0;
   private lastArbitrageKey:string='';
   // Strategic planning is enabled by default; SOL_PLANNER=0 is the explicit emergency rollback.
-  private runtimeConfig:SolRuntimeConfig=clampConfig({plannerEnabled:String(process.env.SOL_PLANNER||'1')!=='0',motorModel:process.env.SOL_MOTOR_MODEL,strategistModel:process.env.SOL_STRATEGIST_MODEL});
+  private runtimeConfig:SolRuntimeConfig=clampConfig({provider:process.env.SOL_LLM_PROVIDER==='gemini'?'gemini':'ollama',plannerEnabled:String(process.env.SOL_PLANNER||'1')!=='0',motorModel:process.env.SOL_MOTOR_MODEL,strategistModel:process.env.SOL_STRATEGIST_MODEL});
   private plannerEnabled:boolean=this.runtimeConfig.plannerEnabled===true;
   private goalTickBudget:number=400;
   private goalTicksRemaining:number=0;
@@ -223,7 +226,7 @@ export class SolAgentBrain {
   applyRuntimeConfig(raw:unknown){
     if(raw&&typeof raw==='object'&&'version' in (raw as any)&&Number((raw as any).version)!==1){console.warn('AGENT_RUNTIME_CONFIG_REJECTED',JSON.stringify({reason:'unsupported_version',version:(raw as any).version}));return false;}
     const previous=this.runtimeConfig;this.runtimeConfig=clampConfig({...this.runtimeConfig,...(raw&&typeof raw==='object'?raw:{})});this.plannerEnabled=this.runtimeConfig.plannerEnabled===true;
-    const modelChanged=previous.motorModel!==this.runtimeConfig.motorModel||previous.strategistModel!==this.runtimeConfig.strategistModel;
+    const modelChanged=previous.provider!==this.runtimeConfig.provider||previous.motorModel!==this.runtimeConfig.motorModel||previous.strategistModel!==this.runtimeConfig.strategistModel;
     if(modelChanged){this.motorReady=false;this.strategistReady=false;void this.refreshAvailability();}
     this.lastStrategySessionChoice=-9999;
     console.log('AGENT_RUNTIME_CONFIG_APPLIED',JSON.stringify({config:this.runtimeConfig,modelChanged}));
@@ -315,13 +318,18 @@ export class SolAgentBrain {
 
   private async refreshAvailability(){
     try{
-      const r=await fetch(`${this.ollamaUrl}/api/tags`,{signal:AbortSignal.timeout(4000)});
-      if(!r.ok){this.motorReady=false;this.strategistReady=false;return;}
-      const j:any=await r.json();const names=(j.models||[]).map((m:any)=>String(m.name||''));
-      this.motorReady=names.some((n:string)=>n===this.motorModel||n.startsWith(this.motorModel+'-'));
-      this.strategistReady=names.some((n:string)=>n===this.strategistModel||n.startsWith(this.strategistModel+'-'));
+      if(this.runtimeConfig.provider==='gemini'){
+        const key=process.env.GEMINI_API_KEY?.trim();if(!key)throw new Error('GEMINI_API_KEY unavailable');
+        const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(key)}&pageSize=100`,{signal:AbortSignal.timeout(6000)});
+        if(!r.ok)throw new Error(`Gemini models ${r.status}`);const j:any=await r.json();const names=(j.models||[]).filter((m:any)=>(m.supportedGenerationMethods||[]).includes('generateContent')).map((m:any)=>String(m.baseModelId||m.name||'').replace(/^models\//,''));
+        this.motorReady=names.some((n:string)=>n===this.motorModel||n.startsWith(this.motorModel+'-'));this.strategistReady=names.some((n:string)=>n===this.strategistModel||n.startsWith(this.strategistModel+'-'));
+      }else{
+        const r=await fetch(`${this.ollamaUrl}/api/tags`,{signal:AbortSignal.timeout(4000)});
+        if(!r.ok)throw new Error(`Ollama tags ${r.status}`);const j:any=await r.json();const names=(j.models||[]).map((m:any)=>String(m.name||''));
+        this.motorReady=names.some((n:string)=>n===this.motorModel||n.startsWith(this.motorModel+'-'));this.strategistReady=names.some((n:string)=>n===this.strategistModel||n.startsWith(this.strategistModel+'-'));
+      }
       if(this.motorReady){this.lastTeacherHealthyAt=Date.now();this.lastTeacherError=null;}
-    }catch{this.motorReady=false;this.strategistReady=false;}
+    }catch(err){this.motorReady=false;this.strategistReady=false;this.lastTeacherError=String(err).slice(0,180);}
   }
 
   private async load(){
@@ -609,7 +617,7 @@ export class SolAgentBrain {
     const coins=(state.inventory||[]).filter((item:any)=>/coins?/i.test(String(item.name||''))).reduce((sum:number,item:any)=>sum+Number(item.count||0),0);
     const observation={game:{name:'RuneScape',engine:'rs-sdk',premise:'Persistent open-world skill, resource, combat, economy, and exploration simulation'},entity:{name:this.opts.name,role:'autonomous player agent'},world:{tick:Number((state as any).tick||0),position:[p.worldX,p.worldZ,p.level],nearbyPlayers:(state.nearbyPlayers||[]).slice(0,8).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance})),nearbyNpcs:(state.nearbyNpcs||[]).slice(0,12).map((x:any)=>({name:x.name,combatLevel:x.combatLevel,distance:x.distance,reachable:x.reachable})),objects:(state.nearbyLocs||[]).slice(0,12).map((x:any)=>({name:x.name,distance:x.distance,reachable:x.reachable,options:x.optionsWithIndex?.map((o:any)=>o.text)})),groundItems:(state.groundItems||[]).slice(0,12).map((x:any)=>({name:x.name,count:x.count,distance:x.distance,reachable:x.reachable}))},directive:this.externalDirective,goal:this.liveObjective||this.strategy?.focus||'Learn to survive and become increasingly capable in this world',secondaryGoals:['explore unknown areas','acquire useful resources','learn mechanics from outcomes','improve skills and equipment','avoid unnecessary death','form durable long-term objectives'],hp:[p.hp,p.maxHp],runEnergy:p.runEnergy,combatLevel:p.combatLevel,skills:skillLevels,coins,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),itemPolicy:(state.inventory||[]).slice(0,16).map(i=>[i.name,itemPurpose(i.name)]),equipment:(state.equipment||[]).map(i=>i.name),recentEvents:this.recentOutcomes.slice(-8).map(o=>({action:o.candidateLabel,type:o.actionType,result:o.summary,verifiedChange:!o.noProgress,rejected:o.rejected,moved:o.moved,xpGain:o.xpGain,inventoryChanged:o.inventoryChanged})),longTermMemory:{places:Object.values(this.memory.places).slice(-8),discoveries:this.memory.discoveries.slice(-12),recentLessons:this.memory.memories.slice(-12).map(m=>m.text)},lastResult:this.lastOutcome?{action:this.lastOutcome.candidateLabel,result:this.lastOutcome.summary,verifiedChange:!this.lastOutcome.noProgress,rejected:this.lastOutcome.rejected}:null,failed:negatives,actions:executable,curriculum:this.gameplayCurriculum,guide:guidance[0]||''};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},step_1:{type:'string'},step_2:{type:'string'},step_3:{type:'string'},reason:{type:'string'},success:{type:'string'}},required:['objective','step_1','step_2','step_3','reason','success']};
-    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.strategistTemperature,num_ctx:this.runtimeConfig.strategistContextTokens,num_predict:this.runtimeConfig.strategistOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' '+this.gameplayCurriculum+' You are the strategist in a closed control loop: see the structured world, interpret it yourself, choose a temporary purposeful subgoal, select one legal action, observe the grounded result, adapt, and record what was learned. Return one concise self-selected subgoal and exactly three executable steps. The permanent mission is open-ended exploration, learning, survival, and play; do not invent a fixed level, skill, banking, fishing, combat, or progression mandate. An operator directive, when explicitly present, is authoritative, but absent that, let the current world and memory determine what is interesting and worthwhile. Build a prerequisite chain only when the chosen subgoal requires one. Before risky combat or economy actions, plan survival, loot, capacity, and postconditions. If an object or item is unfamiliar, choose an inspection or low-risk interaction and infer its purpose only from the observed result. Every step needs observable evidence, a reason to continue, a bounded attempt budget, and a fallback if it fails. Do not repeat a failed action unless the missing prerequisite or world evidence has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+    const ask=async(payload:unknown,timeout:number)=>{const result=await chatJson({provider:this.runtimeConfig.provider||'ollama',model:this.strategistModel,messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' '+this.gameplayCurriculum+' You are the strategist in a closed control loop: see the structured world, interpret it yourself, choose a temporary purposeful subgoal, select one legal action, observe the grounded result, adapt, and record what was learned. Return one concise self-selected subgoal and exactly three executable steps. The permanent mission is open-ended exploration, learning, survival, and play; do not invent a fixed level, skill, banking, fishing, combat, or progression mandate. An operator directive, when explicitly present, is authoritative, but absent that, let the current world and memory determine what is interesting and worthwhile. Build a prerequisite chain only when the chosen subgoal requires one. Before risky combat or economy actions, plan survival, loot, capacity, and postconditions. If an object or item is unfamiliar, choose an inspection or low-risk interaction and infer its purpose only from the observed result. Every step needs observable evidence, a reason to continue, a bounded attempt budget, and a fallback if it fails. Do not repeat a failed action unless the missing prerequisite or world evidence has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}],schema,temperature:this.runtimeConfig.strategistTemperature||.1,contextTokens:this.runtimeConfig.strategistContextTokens||3072,outputTokens:this.runtimeConfig.strategistOutputTokens||256,ollamaUrl:this.ollamaUrl,geminiApiKey:process.env.GEMINI_API_KEY,timeoutMs:timeout});return parseModelJson(result.content);};
     let j:any;try{j=await ask(observation,32000)}catch(first){j=await ask({position:observation.position,actions:executable.slice(0,12),instruction:'Choose a concise objective and three steps.'},24000)}
     const labels=[j.step_1,j.step_2,j.step_3].map(String).filter(Boolean);if(labels.length<2)throw new Error('strategist returned fewer than two plan steps');
     const steps=labels.slice(0,5).map((label:string,i:number)=>({id:`step-${i+1}`,label:label.slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
@@ -651,20 +659,7 @@ export class SolAgentBrain {
       actions:allowed.map(c=>[c.id,c.category,c.label.slice(0,90)])
     };
     try{
-      const ask=async(payload:unknown,timeout:number)=>{
-        // The motor receives world evidence and verified failures, not a learned
-        // numeric action value. It owns the choice; the verifier owns legality.
-        const enriched=payload&&typeof payload==='object'?payload:{};
-        // Measured: ~19.2s median per decision (run 72, 20 AGENT_THINK events
-        // over 366s). That is the real throughput ceiling, not the planner.
-        // Measure prompt size because the action list must remain visible to the motor.
-        const payloadChars=JSON.stringify(enriched).length;
-        const t0=Date.now();
-        const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.motorModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:this.runtimeConfig.motorTemperature,num_ctx:this.runtimeConfig.motorContextTokens,num_predict:this.runtimeConfig.motorOutputTokens},messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Interpret the observed world and current temporary subgoal yourself, then select one offered action_id. The permanent mission is open-ended exploration, learning, survival, and play; do not force a skill, level, banking, fishing, combat, or progression activity unless the current evidence makes it purposeful. A dispatched action is only an attempt. Prefer an action that tests a hypothesis, learns a mechanic, discovers a place or entity, obtains a useful capability, interacts meaningfully, or safely advances the current subgoal. If inventory is full or near full, resolve capacity before risky activity. After combat, verify and resolve ground loot before leaving. Avoid wait when another purposeful action exists. Never repeat an action without new evidence, a changed prerequisite, or a deliberate experiment. speech is empty unless selecting a say action. Do not infer that an action is good because it was previously rewarded.'},{role:'user',content:JSON.stringify(enriched)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`motor ${r.status}`);const raw:any=await r.json();
-        const ms=Date.now()-t0;const approxTokens=Math.round(payloadChars/4);
-        console.log('AGENT_MOTOR_TIMING',JSON.stringify({ms,payloadChars,approxTokens,numCtx:2048,likelyTruncated:approxTokens>2048,candidates:(payload as any)?.actions?.length??null,evalCount:raw?.eval_count??null,promptEvalCount:raw?.prompt_eval_count??null}));
-        return parseModelJson(raw?.message?.content);
-      };
+      const ask=async(payload:unknown,timeout:number)=>{const enriched=payload&&typeof payload==='object'?payload:{};const result=await chatJson({provider:this.runtimeConfig.provider||'ollama',model:this.motorModel,messages:[{role:'system',content:GAMEPLAY_CONSTITUTION+' You are the motor controller. Interpret the observed world and current temporary subgoal yourself, then select one offered action_id. The permanent mission is open-ended exploration, learning, survival, and play; do not force a skill, level, banking, fishing, combat, or progression activity unless the current evidence makes it purposeful. A dispatched action is only an attempt. Prefer an action that tests a hypothesis, learns a mechanic, discovers a place or entity, obtains a useful capability, interacts meaningfully, or safely advances the current subgoal. If inventory is full or near full, resolve capacity before risky activity. After combat, verify and resolve ground loot before leaving. Avoid wait when another purposeful action exists. Never repeat an action without new evidence, a changed prerequisite, or a deliberate experiment. speech is empty unless selecting a say action. Do not infer that an action is good because it was previously rewarded.'},{role:'user',content:JSON.stringify(enriched)}],schema,temperature:this.runtimeConfig.motorTemperature||.12,contextTokens:this.runtimeConfig.motorContextTokens||2048,outputTokens:this.runtimeConfig.motorOutputTokens||72,ollamaUrl:this.ollamaUrl,geminiApiKey:process.env.GEMINI_API_KEY,timeoutMs:timeout});return parseModelJson(result.content);};
       let j:any;try{j=await ask(motorObservation,24000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},5000)}
       const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.liveObjective||this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);

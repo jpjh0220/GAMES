@@ -123,7 +123,7 @@ jobs:
             done
             if [ -n "$URL" ]; then
               NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-              JSON=$(jq -cn --arg url "$URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"teacher-supervised-progression",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
+              JSON=$(jq -cn --arg url "$URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"model-sovereign-gameplay-with-execution-validation",provider:"ollama",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
               CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
               SHA=$(gh api "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" --jq .sha 2>/dev/null || true)
               if [ -n "$SHA" ]; then
@@ -157,8 +157,10 @@ jobs:
           SOL_PASS: ${{ secrets.SOL_PASS }}
           SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
           SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}
+          SOL_LLM_PROVIDER: ollama
           SOL_MOTOR_MODEL: qwen3:0.6b
           SOL_STRATEGIST_MODEL: qwen3:1.7b
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OLLAMA_URL: http://127.0.0.1:11434
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -186,7 +188,7 @@ jobs:
             exit 1
           fi
           NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"model-sovereign-gameplay-with-execution-validation",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
+          JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"model-sovereign-gameplay-with-execution-validation",provider:"ollama",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
           CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
           SHA=$(gh api "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" --jq .sha 2>/dev/null || true)
           if [ -n "$SHA" ]; then
