@@ -10,72 +10,15 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7600,
-    "totalReward": 3822.865,
-    "saves": 783,
+    "completedExperiences": 7601,
+    "totalReward": 3824.175,
+    "saves": 784,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 475,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvge54v-2meywm",
-      "createdAt": "2026-08-16T06:58:20.671Z",
-      "tick": 4708,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Explore north about 5 tiles. Result: moved 3092,3248 → 3102,3255; new: agent:Jnvhk8ago, agent:H4ngga98m, npc:Leela, npc:Jail guard, npc:Morgan, loc:Warehouse shelves. Reward 1.126.",
-      "importance": 1.26,
-      "tags": [
-        "explore",
-        "north",
-        "agent jnvhk8ago",
-        "agent h4ngga98m",
-        "npc leela",
-        "npc jail guard",
-        "npc morgan",
-        "loc warehouse shelves",
-        "loc closed chest",
-        "loc wheat",
-        "loc mushroom"
-      ],
-      "location": {
-        "x": 3102,
-        "z": 3255,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvgefsa-fn4ygk",
-      "createdAt": "2026-08-16T06:58:34.474Z",
-      "tick": 4754,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3092,3253 → 3093,3244; new: agent:Hestia, agent:Swfish2, agent:Joebot, npc:Jail guard, npc:Fishing spot, loc:Willow. Reward 0.5.",
-      "importance": 0.95,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent hestia",
-        "agent swfish2",
-        "agent joebot",
-        "npc jail guard",
-        "npc fishing spot",
-        "loc willow",
-        "loc tree stump",
-        "loc daisies",
-        "loc boulder"
-      ],
-      "location": {
-        "x": 3093,
-        "z": 3244,
-        "level": 0
-      }
-    },
     {
       "id": "msvgeo4u-psed33",
       "createdAt": "2026-08-16T06:58:45.294Z",
@@ -8851,6 +8794,54 @@
       "kind": "strategy",
       "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 14 similar samples with average reward 0.84.",
       "importance": 1.84,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvjhmuk-bces86",
+      "createdAt": "2026-08-16T08:25:02.444Z",
+      "tick": 47,
+      "runNumber": 105,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3079,3250 → 3092,3243; new: agent:Ares, agent:Duncan, agent:Gurney, npc:Ned, npc:Fishing spot, loc:Bush. Reward 1.31.",
+      "importance": 1.35,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent ares",
+        "agent duncan",
+        "agent gurney",
+        "npc ned",
+        "npc fishing spot",
+        "loc bush",
+        "loc tree stump",
+        "loc boulder",
+        "loc pile of rope"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvjhmul-ko0ujh",
+      "createdAt": "2026-08-16T08:25:02.445Z",
+      "tick": 47,
+      "runNumber": 105,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 15 similar samples with average reward 0.87.",
+      "importance": 1.87,
       "tags": [
         "navigation skill",
         "skill travel draynor bank"
@@ -19787,12 +19778,12 @@
         "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Deposit or sell, then verify free slots increased."
       },
       "skill:travel:draynor-bank": {
-        "n": 14,
-        "avgReward": 0.8424,
-        "positive": 14,
+        "n": 15,
+        "avgReward": 0.8736,
+        "positive": 15,
         "negative": 0,
-        "lastReward": 0.6,
-        "lastAt": "2026-08-16T08:23:31.710Z",
+        "lastReward": 1.31,
+        "lastAt": "2026-08-16T08:25:02.444Z",
         "exampleGoal": "Resolve inventory capacity before training",
         "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Deposit or sell, then verify free slots increased."
       }
@@ -21178,8 +21169,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T08:21:28.482Z",
-      "encounters": 5139,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 5140,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -23056,8 +23047,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T07:56:09.460Z",
-      "encounters": 2421,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 2422,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -25254,9 +25245,9 @@
     "apollo": {
       "name": "Apollo",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T08:00:26.465Z",
-      "encounters": 121,
-      "combatLevel": 71,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 122,
+      "combatLevel": 72,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -25290,9 +25281,9 @@
     "hestia": {
       "name": "Hestia",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T07:56:27.742Z",
-      "encounters": 506,
-      "combatLevel": 63,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 507,
+      "combatLevel": 65,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -25387,8 +25378,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "encounters": 389,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 390,
       "combatLevel": 75,
       "trust": 0,
       "stance": "unknown",
@@ -25434,8 +25425,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T08:21:28.482Z",
-      "encounters": 696,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 697,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -25747,8 +25738,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-16T03:26:32.361Z",
-      "lastSeenAt": "2026-08-16T08:01:03.843Z",
-      "encounters": 14,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 15,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -27188,8 +27179,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T08:21:28.482Z",
-      "encounters": 434,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 435,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27712,8 +27703,8 @@
     "swcoin1": {
       "name": "Swcoin1",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T08:21:28.482Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "encounters": 4,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27893,12 +27884,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3078,
-      "z": 3251,
+      "x": 3079,
+      "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-16T08:21:28.482Z",
-      "visits": 608,
+      "lastSeenAt": "2026-08-16T08:24:47.488Z",
+      "visits": 609,
       "npcs": [
         "Diango",
         "Banker",
@@ -44326,54 +44317,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3087:3235:3086:3234:0",
-      "at": "2026-08-16T06:55:54.875Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3235 → 3086,3234; moved 3087,3235 → 3086,3234",
-      "location": {
-        "x": 3086,
-        "z": 3234,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3088:3238:3092:3243:0",
-      "at": "2026-08-16T06:56:07.793Z",
-      "kind": "route",
-      "text": "Route learned: 3088,3238 → 3092,3243; moved 3088,3238 → 3092,3243; new: npc:Ned, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3248:3100:3254:0",
-      "at": "2026-08-16T06:57:44.999Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3248 → 3100,3254; moved 3092,3248 → 3100,3254; new: agent:Athena, agent:Erebus, agent:Thanatos, npc:Jail guard, npc:Leela, loc:Warehouse shelves",
-      "location": {
-        "x": 3100,
-        "z": 3254,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "danger:jail guard:193:203:0",
-      "at": "2026-08-16T06:57:45.272Z",
-      "kind": "danger",
-      "text": "Jail guard observed near 3102, 3255, level 0.",
-      "location": {
-        "x": 3102,
-        "z": 3255,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "npc:leela:193:203:0",
       "at": "2026-08-16T06:57:45.272Z",
       "kind": "npc",
@@ -47972,9 +47915,21 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3079:3250:3092:3243:0",
+      "at": "2026-08-16T08:25:02.445Z",
+      "kind": "route",
+      "text": "Route learned: 3079,3250 → 3092,3243; moved 3079,3250 → 3092,3243; new: agent:Ares, agent:Duncan, agent:Gurney, npc:Ned, npc:Fishing spot, loc:Bush",
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T08:23:31.711Z",
+  "updatedAt": "2026-08-16T08:25:02.449Z",
   "activePlan": {
     "objective": "Explore northeast about 4 tiles to find a new route or resource",
     "focus": "Plan complete; form the next objective.",
