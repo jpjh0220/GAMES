@@ -1,35 +1,35 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1426,
-  "committedTick": 4711,
+  "stateGeneration": 1446,
+  "committedTick": 4761,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3150,
-    "z": 3247,
+    "x": 3146,
+    "z": 3240,
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I need to attack the goblin guard to collect their drops"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Identify and record all drops from goblin guards",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:7|3:526:1|6:995:199|19:557:12",
+    "signature": "0:1931:1|1:1931:1|2:556:8|3:526:1|6:995:199|19:557:12",
     "freeSlots": 22,
     "coins": 199,
-    "updatedTick": 4711
+    "updatedTick": 4761
   },
   "milestones": [
     {
@@ -457,6 +457,18 @@
       "label": "Train Woodcutting to level 15",
       "tick": 4554,
       "evidence": "+265 XP"
+    },
+    {
+      "id": "directed-exploration:4726",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 4726,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "woodcut-to-15:4761",
+      "label": "Train Woodcutting to level 15",
+      "tick": 4761,
+      "evidence": "+665 XP"
     }
   ],
   "failures": [],
@@ -466,5 +478,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:51:11.145Z"
+  "updatedAt": "2026-08-16T19:51:26.276Z"
 }\n
