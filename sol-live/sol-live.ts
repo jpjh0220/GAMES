@@ -63,6 +63,8 @@ let lastControlPollAt=0;
 let controlSha:string|null=null;
 let teacherProbeInFlight=false;
 let lastTeacherProbeTick=-9999;
+let decisionLease=0;
+let decisionWatchdog:ReturnType<typeof setTimeout>|null=null;
 
 const brain = new SolAgentBrain({
   name:username,
@@ -525,13 +527,16 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
     candidate.action.executionResult={success:true,pending:true};
     void (async()=>{
       await dispatchPrimitive(candidate.label,action);
-      await waitTicks(3);
-      if(lastState?.dialog?.isOpen){
-        const option=Number(lastState.dialog.options?.[0]?.index||0);
-        if(option>0||lastState.dialog.options?.length===0){
-          await dispatchPrimitive('Advance bank access dialogue',{type:'clickDialogOption',optionIndex:option,reason:'SDK bank helper advances the first bank access dialogue option.'});
-          await waitTicks(2);
+      const bankDeadline=Date.now()+10000;
+      while(Date.now()<bankDeadline){
+        if(lastState?.bank?.isOpen||lastState?.interface?.isOpen)break;
+        if(lastState?.dialog?.isOpen){
+          const option=Number(lastState.dialog.options?.[0]?.index||0);
+          if(option>0||lastState.dialog.options?.length===0){
+            await dispatchPrimitive('Advance bank access dialogue',{type:'clickDialogOption',optionIndex:option,reason:'SDK bank helper advances the first bank access dialogue option.'});
+          }
         }
+        await waitTicks(1);
       }
       const interfaceOpen=!!(lastState?.bank?.isOpen||lastState?.interface?.isOpen);
       candidate.action.executionResult=interfaceOpen?{success:true,message:'Bank interface verified open'}:{success:false,message:'Bank booth interaction did not open a bank interface',reason:'bank_interface_not_open'};
@@ -621,11 +626,24 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   if(!candidates.length) return;
   const startedTick=tick;
   const startedLife=stateAtStart.player?.lifeId;
+  const lease=++decisionLease;
   decisionInFlight=true;
+  if(decisionWatchdog)clearTimeout(decisionWatchdog);
+  decisionWatchdog=setTimeout(()=>{
+    if(lease!==decisionLease||!decisionInFlight)return;
+    decisionInFlight=false;
+    nextDecisionTick=tick+1;
+    currentGoal='Recover stalled cognition';
+    currentWhy='The controller exceeded its body-level lease; discard the stale decision and resume with the deterministic safety path.';
+    void log('AGENT_DECISION_WATCHDOG',{startedTick,lease,tick,timeoutMs:30000});
+    refreshSnapshot(lastState);
+  },30000);
   refreshSnapshot(stateAtStart);
   void log('AGENT_THINK',{tick:startedTick,candidates:candidates.length,agent:brain.publicState()});
   controllerRegistry.activateAtTick(startedTick);
   controllerRegistry.decide(stateAtStart,candidates,{tick:startedTick,currentTask:currentProgression.objective,externalDirective:controlState.directive}).then(choice=>{
+    if(lease!==decisionLease){void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,reason:'body watchdog already released the decision lease'});return;}
+    if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;
     decisionInFlight=false;
     const latest=lastState;
     if(!latest?.player){nextDecisionTick=tick+2;return;}
@@ -653,6 +671,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     nextDecisionTick=tick+2;
     refreshSnapshot(latest);
   }).catch(err=>{
+    if(lease===decisionLease){if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;}
     decisionInFlight=false;
     currentGoal='Recover reasoning loop';
     currentWhy=`Agent decision failed: ${String(err).slice(0,180)}`;
