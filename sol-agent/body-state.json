@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1558,
-  "committedTick": 5180,
+  "stateGeneration": 1573,
+  "committedTick": 5231,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3164,
+    "x": 3165,
     "z": 3237,
     "level": 0
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I need to identify and record all drops from goblin guards. I should first move to the Draynor Bank to collect resources. I'll verify the arrival and then proceed to explore the ar"
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Identify and record all drops from goblin guards",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:9|3:526:1|4:526:1|6:995:199|19:557:12",
-    "freeSlots": 21,
+    "signature": "0:1931:1|1:1931:1|2:556:9|3:526:1|4:526:1|5:526:1|6:995:199|19:557:12",
+    "freeSlots": 20,
     "coins": 199,
-    "updatedTick": 5180
+    "updatedTick": 5231
   },
   "milestones": [
     {
@@ -487,6 +487,12 @@
       "label": "Train Woodcutting to level 15",
       "tick": 5113,
       "evidence": "+1065 XP"
+    },
+    {
+      "id": "directed-exploration:5189",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 5189,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -496,5 +502,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:53:33.180Z"
+  "updatedAt": "2026-08-16T19:53:48.290Z"
 }\n
