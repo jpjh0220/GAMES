@@ -10,33 +10,15 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7570,
-    "totalReward": 3813.733,
-    "saves": 779,
+    "completedExperiences": 7571,
+    "totalReward": 3815.243,
+    "saves": 780,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 474,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvgaapt-gfcuos",
-      "createdAt": "2026-08-16T06:55:21.281Z",
-      "tick": 4110,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Explore southwest about 4 tiles. Result: execution rejected or failed; detail: Failed to walk. Reward -1.87.",
-      "importance": 1.64,
-      "tags": [
-        "explore",
-        "southwest"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "msvgaj69-tldg2i",
       "createdAt": "2026-08-16T06:55:32.241Z",
@@ -8771,6 +8753,36 @@
       "location": {
         "x": 3079,
         "z": 3251,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvjdcmc-247i93",
+      "createdAt": "2026-08-16T08:21:42.564Z",
+      "tick": 45,
+      "runNumber": 103,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3078,3251 → 3092,3243; new: agent:Duncan, agent:Gurney, agent:Swrune1, npc:Ned, npc:Jail guard, npc:Fishing spot. Reward 1.51.",
+      "importance": 1.46,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "agent duncan",
+        "agent gurney",
+        "agent swrune1",
+        "npc ned",
+        "npc jail guard",
+        "npc fishing spot",
+        "loc bush",
+        "loc tree stump",
+        "loc boulder"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
         "level": 0
       }
     }
@@ -19698,6 +19710,16 @@
         "lastAt": "2026-08-16T08:20:23.368Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
+      },
+      "skill:travel:draynor-bank": {
+        "n": 1,
+        "avgReward": 1.51,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 1.51,
+        "lastAt": "2026-08-16T08:21:42.564Z",
+        "exampleGoal": "Resolve inventory capacity before training",
+        "exampleReason": "Deterministic progression director: Space is a prerequisite for every productive loop. Deposit or sell, then verify free slots increased."
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=world": {
@@ -21081,8 +21103,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "encounters": 5138,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "encounters": 5139,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -25172,8 +25194,8 @@
     "artemis": {
       "name": "Artemis",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T07:51:08.962Z",
-      "encounters": 214,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "encounters": 215,
       "combatLevel": 68,
       "trust": 0,
       "stance": "unknown",
@@ -25337,8 +25359,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "encounters": 695,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "encounters": 696,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -27091,8 +27113,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "encounters": 433,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "encounters": 434,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27615,8 +27637,8 @@
     "swcoin1": {
       "name": "Swcoin1",
       "firstSeenAt": "2026-08-16T08:04:32.772Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "encounters": 3,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27797,11 +27819,11 @@
     "192:203:0": {
       "key": "192:203:0",
       "x": 3078,
-      "z": 3248,
+      "z": 3251,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-16T08:15:50.796Z",
-      "visits": 607,
+      "lastSeenAt": "2026-08-16T08:21:28.482Z",
+      "visits": 608,
       "npcs": [
         "Diango",
         "Banker",
@@ -44205,306 +44227,6 @@
   },
   "discoveries": [
     {
-      "id": "place:daisies:192:202:0",
-      "at": "2026-08-16T06:51:44.742Z",
-      "kind": "place",
-      "text": "Daisies observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree stump:192:202:0",
-      "at": "2026-08-16T06:51:44.742Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bench:192:202:0",
-      "at": "2026-08-16T06:51:44.742Z",
-      "kind": "place",
-      "text": "Bench observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bush:192:202:0",
-      "at": "2026-08-16T06:51:44.742Z",
-      "kind": "place",
-      "text": "Bush observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:oak:192:202:0",
-      "at": "2026-08-16T06:52:03.589Z",
-      "kind": "place",
-      "text": "Oak observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:shelves:192:202:0",
-      "at": "2026-08-16T06:52:03.589Z",
-      "kind": "place",
-      "text": "Shelves observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bullrushes:192:202:0",
-      "at": "2026-08-16T06:52:03.589Z",
-      "kind": "place",
-      "text": "Bullrushes observed near 3084, 3240, level 0.",
-      "location": {
-        "x": 3084,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:ned:193:202:0",
-      "at": "2026-08-16T06:52:18.876Z",
-      "kind": "npc",
-      "text": "Ned observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:standing torch:193:202:0",
-      "at": "2026-08-16T06:52:18.876Z",
-      "kind": "place",
-      "text": "Standing torch observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3243:3086:3238:0",
-      "at": "2026-08-16T06:52:32.363Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3086,3238; moved 3092,3243 → 3086,3238; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "place:stones:192:202:0",
-      "at": "2026-08-16T06:52:32.670Z",
-      "kind": "place",
-      "text": "Stones observed near 3086, 3238, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3083:3236:3092:3243:0",
-      "at": "2026-08-16T06:53:07.646Z",
-      "kind": "route",
-      "text": "Route learned: 3083,3236 → 3092,3243; moved 3083,3236 → 3092,3243; new: loc:Bush, loc:Oak, loc:Bench, loc:Shelves",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3085:3241:0",
-      "at": "2026-08-16T06:53:18.590Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3085,3241; +132 XP; 1 damage dealt; moved 3092,3243 → 3085,3241; execution rejected or failed",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "place:wardrobe:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Wardrobe observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:broom:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Broom observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mirror:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Mirror observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Barrel observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:pile of rope:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Pile of rope observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fireplace:192:202:0",
-      "at": "2026-08-16T06:53:18.909Z",
-      "kind": "place",
-      "text": "Fireplace observed near 3085, 3241, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3085:3241:3084:3236:0",
-      "at": "2026-08-16T06:53:30.310Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3241 → 3084,3236; +1598 XP; 12 damage dealt; moved 3085,3241 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "npc:aggie:193:202:0",
-      "at": "2026-08-16T06:53:46.798Z",
-      "kind": "npc",
-      "text": "Aggie observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3243:3084:3239:0",
-      "at": "2026-08-16T06:54:02.091Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3084,3239; +132 XP; 1 damage dealt; moved 3092,3243 → 3084,3239; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3084:3239:3084:3236:0",
-      "at": "2026-08-16T06:54:14.678Z",
-      "kind": "route",
-      "text": "Route learned: 3084,3239 → 3084,3236; +1597 XP; 12 damage dealt; 2 damage taken; moved 3084,3239 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3092:3248:3085:3238:0",
-      "at": "2026-08-16T06:54:46.788Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3248 → 3085,3238; +133 XP; 1 damage dealt; moved 3092,3248 → 3085,3238; execution rejected or failed",
-      "location": {
-        "x": 3085,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "route:3092:3243:3087:3235:0",
-      "at": "2026-08-16T06:55:43.773Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3087,3235; +1065 XP; moved 3092,3243 → 3087,3235",
-      "location": {
-        "x": 3087,
-        "z": 3235,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
       "id": "route:3087:3235:3086:3234:0",
       "at": "2026-08-16T06:55:54.875Z",
       "kind": "route",
@@ -48105,7 +47827,7 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T08:20:26.076Z",
+  "updatedAt": "2026-08-16T08:21:42.570Z",
   "activePlan": {
     "objective": "Explore northeast about 4 tiles to find a prerequisite for a quest or resource",
     "focus": "Explore northeast about 4 tiles to locate a relevant area or object",
