@@ -151,7 +151,6 @@ jobs:
           echo "Spectator tunnel: $URL"
 
       - name: Verify Gemini provider availability
-        if: env.SOL_LLM_PROVIDER == 'gemini'
         working-directory: rs-sdk/server/webclient
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
