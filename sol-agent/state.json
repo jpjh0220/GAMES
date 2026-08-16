@@ -6,70 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8215,
-    "teacherChoices": 8215,
+    "totalChoices": 8217,
+    "teacherChoices": 8217,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8592,
-    "totalReward": 3765.024,
-    "saves": 946,
+    "completedExperiences": 8593,
+    "totalReward": 3769.33,
+    "saves": 947,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 551,
     "strategistFailures": 52
   },
   "memories": [
-    {
-      "id": "msw79hdf-gbmde8",
-      "createdAt": "2026-08-16T19:30:32.883Z",
-      "tick": 609,
-      "runNumber": 139,
-      "kind": "episode",
-      "text": "AI motor: Pick up 3 Coins (distance 1). Result: moved 3208,3225 → 3207,3225; inventory changed; +3 coins. Reward 0.38.",
-      "importance": 0.89,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "coins",
-        "valuable drop",
-        "agent pp2",
-        "agent pp3",
-        "agent pp4",
-        "agent mankicker5",
-        "agent mankicker1",
-        "agent swscout1",
-        "agent currency"
-      ],
-      "location": {
-        "x": 3207,
-        "z": 3225,
-        "level": 0
-      }
-    },
-    {
-      "id": "msw79o2z-ser8hz",
-      "createdAt": "2026-08-16T19:30:41.579Z",
-      "tick": 638,
-      "runNumber": 139,
-      "kind": "episode",
-      "text": "AI motor: Pick up Bronze arrow (distance 2). Result: moved 3207,3225 → 3205,3227. Reward 0.08.",
-      "importance": 0.74,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "bronze arrow",
-        "valuable drop",
-        "agent oralabd4",
-        "loc warehouse shelves"
-      ],
-      "location": {
-        "x": 3205,
-        "z": 3227,
-        "level": 0
-      }
-    },
     {
       "id": "msw79od2-ye3ac8",
       "createdAt": "2026-08-16T19:30:41.942Z",
@@ -8573,6 +8522,46 @@
       "location": {
         "x": 3087,
         "z": 3234,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswen98m-wl023f",
+      "createdAt": "2026-08-16T22:57:12.838Z",
+      "tick": 159,
+      "runNumber": 166,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 3). Result: +1330 XP; 10 damage dealt; moved 3087,3230 → 3086,3233; execution rejected or failed. Reward 4.306.",
+      "importance": 2.85,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent lobby142",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3233,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswen98m-q861nx",
+      "createdAt": "2026-08-16T22:57:12.838Z",
+      "tick": 159,
+      "runNumber": 166,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 3) worked across 24 similar samples with average reward 3.23.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3233,
         "level": 0
       }
     }
@@ -18640,14 +18629,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,explore,navigation-skill": {
       "npc:attack:dark wizard": {
-        "n": 23,
-        "avgReward": 3.1793,
-        "positive": 20,
+        "n": 24,
+        "avgReward": 3.2262,
+        "positive": 21,
         "negative": 3,
-        "lastReward": 4.456,
-        "lastAt": "2026-08-16T22:50:26.884Z",
+        "lastReward": 4.306,
+        "lastAt": "2026-08-16T22:57:12.838Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I will attack the Dark wizard at level 7, distance 6, which is a safe and effective target."
+        "exampleReason": "I attacked the Dark wizard (level 7, distance 3) with my weapon, causing damage to the target and reducing their HP. I now have 99 HP, and I've successfully completed the subgoal o"
       },
       "npc:attack:black knight": {
         "n": 4,
@@ -24367,8 +24356,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 5937,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 5940,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -24815,8 +24804,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 3074,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 3077,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -27201,8 +27190,8 @@
     "claudiusv": {
       "name": "Claudiusv",
       "firstSeenAt": "2026-08-15T23:32:04.166Z",
-      "lastSeenAt": "2026-08-16T22:43:09.603Z",
-      "encounters": 40,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 42,
       "combatLevel": 86,
       "trust": 0.12,
       "stance": "unknown",
@@ -28204,8 +28193,8 @@
     "xbfr5x1f0": {
       "name": "Xbfr5x1f0",
       "firstSeenAt": "2026-08-16T00:54:41.255Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 1018,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 1021,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -31126,8 +31115,8 @@
     "muad donk": {
       "name": "Muad Donk",
       "firstSeenAt": "2026-08-16T07:05:01.180Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 228,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 231,
       "trust": 0,
       "stance": "unknown",
       "conversations": 1,
@@ -31771,8 +31760,8 @@
     "orewright1": {
       "name": "Orewright1",
       "firstSeenAt": "2026-08-16T09:18:12.013Z",
-      "lastSeenAt": "2026-08-16T22:44:00.288Z",
-      "encounters": 52,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 53,
       "combatLevel": 7,
       "trust": 0,
       "stance": "unknown",
@@ -32936,8 +32925,8 @@
     "tinymodel01": {
       "name": "Tinymodel01",
       "firstSeenAt": "2026-08-16T17:02:33.601Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 93,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 96,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -36433,8 +36422,8 @@
     "fishmax2": {
       "name": "Fishmax2",
       "firstSeenAt": "2026-08-16T19:29:56.856Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 133,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 136,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -36548,8 +36537,8 @@
     "fishmax3": {
       "name": "Fishmax3",
       "firstSeenAt": "2026-08-16T19:31:01.397Z",
-      "lastSeenAt": "2026-08-16T22:50:13.119Z",
-      "encounters": 78,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 79,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -36985,8 +36974,8 @@
     "fishmax4": {
       "name": "Fishmax4",
       "firstSeenAt": "2026-08-16T19:38:43.584Z",
-      "lastSeenAt": "2026-08-16T22:43:09.603Z",
-      "encounters": 65,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 68,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -37045,8 +37034,8 @@
     "fishmax5": {
       "name": "Fishmax5",
       "firstSeenAt": "2026-08-16T19:40:27.115Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 84,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 87,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -37434,8 +37423,8 @@
     "rexruthor": {
       "name": "Rexruthor",
       "firstSeenAt": "2026-08-16T20:35:15.254Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 284,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 287,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -37840,8 +37829,8 @@
     "fishmax10": {
       "name": "Fishmax10",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 34,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 37,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37855,8 +37844,8 @@
     "fishmax9": {
       "name": "Fishmax9",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 68,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 71,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -37870,8 +37859,8 @@
     "fishmax8": {
       "name": "Fishmax8",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 67,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 70,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -37885,8 +37874,8 @@
     "fishmax6": {
       "name": "Fishmax6",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 25,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 28,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37900,8 +37889,8 @@
     "fishmax7": {
       "name": "Fishmax7",
       "firstSeenAt": "2026-08-16T21:39:14.603Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 39,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 42,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -37915,8 +37904,8 @@
     "qatlg9yn3": {
       "name": "Qatlg9yn3",
       "firstSeenAt": "2026-08-16T21:39:34.276Z",
-      "lastSeenAt": "2026-08-16T22:53:37.476Z",
-      "encounters": 106,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "encounters": 109,
       "combatLevel": 61,
       "trust": 0,
       "stance": "unknown",
@@ -38142,8 +38131,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-16T22:50:13.119Z",
-      "visits": 2454,
+      "lastSeenAt": "2026-08-16T22:56:51.056Z",
+      "visits": 2457,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -61416,30 +61405,6 @@
   },
   "discoveries": [
     {
-      "id": "npc:dark wizard:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "npc",
-      "text": "Dark wizard observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:diango:193:202:0",
-      "at": "2026-08-16T20:35:15.254Z",
-      "kind": "npc",
-      "text": "Diango observed near 3092, 3243, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "resource:fishing spot:193:202:0",
       "at": "2026-08-16T20:35:15.254Z",
       "kind": "resource",
@@ -65026,9 +64991,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "danger:jail guard:192:201:0",
+      "at": "2026-08-16T22:56:46.315Z",
+      "kind": "danger",
+      "text": "Jail guard observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-16T22:53:48.228Z",
+  "updatedAt": "2026-08-16T22:57:12.839Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
