@@ -421,7 +421,8 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   if(state.dialog?.isOpen){
     const recent=actionHistory.slice(-4).filter(e=>e.actionType==='clickDialogOption').length;
     if(economyResolution.noProgress>=2){
-      add({label:'Close stalled economy dialog and re-evaluate',category:'modal',fingerprint:'modal:close-stalled-dialog',settleTicks:3,action:{type:'closeModal',reason:'Close a dialog that has not produced inventory or coin progress.'},tags:['economy','dialog','anti-loop']});
+        const optionIndex=Number(state.dialog.options?.[0]?.index||0);
+        add({label:'Advance stalled economy dialog and re-evaluate',category:'dialog',fingerprint:'dialog:recover-stalled-economy',settleTicks:4,action:{type:'clickDialogOption',optionIndex,reason:'Use the SDK dialogue primitive; generic modal close cannot dismiss chat dialogs.'},tags:['economy','dialog','anti-loop','sdk-correct']});
     }else for(const o of state.dialog.options?.slice(0,8)||[]) add({label:`Dialog ${o.index}: ${o.text||'(continue)'}`,category:'dialog',fingerprint:`dialog:${o.index}:${norm(o.text||'continue')}`,settleTicks:4,action:{type:'clickDialogOption',optionIndex:o.index,reason:'Advance the merchant or bank dialog toward a transaction.'},tags:['conversation','dialog','economy',o.text||'continue']});
     return out;
   }
