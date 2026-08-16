@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 437,
-  "committedTick": 1611,
+  "stateGeneration": 1,
+  "committedTick": 1,
   "identity": {
     "name": "Sol5"
   },
@@ -11,82 +11,27 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "transaction",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1",
-    "freeSlots": 7,
-    "coins": 208,
-    "updatedTick": 1611
+    "signature": "",
+    "freeSlots": 28,
+    "coins": 0,
+    "updatedTick": 1
   },
-  "milestones": [
-    {
-      "id": "directed-exploration:212",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 212,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "woodcut-to-15:364",
-      "label": "Train Woodcutting to level 15",
-      "tick": 364,
-      "evidence": "+132 XP"
-    },
-    {
-      "id": "fish-for-food:652",
-      "label": "Train Fishing only until a defined food milestone",
-      "tick": 652,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "fish-for-food:678",
-      "label": "Train Fishing only until a defined food milestone",
-      "tick": 678,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "directed-exploration:703",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 703,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "directed-exploration:727",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 727,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "directed-exploration:749",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 749,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "directed-exploration:771",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 771,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "resolve-capacity:863",
-      "label": "Resolve inventory capacity before training",
-      "tick": 863,
-      "evidence": "+1595 XP"
-    }
-  ],
+  "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -94,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:42:57.882Z"
+  "updatedAt": "2026-08-16T20:44:01.081Z"
 }\n
