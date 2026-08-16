@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1717,
-  "committedTick": 5760,
+  "stateGeneration": 1729,
+  "committedTick": 5810,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3150,
-    "z": 3247,
+    "z": 3249,
     "level": 0
   },
   "currentObligation": {
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I need to travel to the Draynor Bank to collect valuable drops from the goblin guard encounters."
+    "reason": "I picked up 9 Coins (distance 2)"
   },
   "objective": {
     "id": "boot",
-    "label": "Identify and record drop locations",
+    "label": "Progress through pickup",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:13|3:526:1|4:526:1|5:526:1|6:995:199|7:526:1|19:557:12",
+    "signature": "0:1931:1|1:1931:1|2:556:13|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|19:557:12",
     "freeSlots": 19,
-    "coins": 199,
-    "updatedTick": 5760
+    "coins": 208,
+    "updatedTick": 5810
   },
   "milestones": [
     {
@@ -517,6 +517,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 5701,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "directed-exploration:5804",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 5804,
+      "evidence": "inventory changed, +9 coins"
     }
   ],
   "failures": [],
@@ -526,5 +532,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:56:27.154Z"
+  "updatedAt": "2026-08-16T19:56:42.233Z"
 }\n
