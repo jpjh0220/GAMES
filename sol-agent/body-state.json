@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1754,
-  "committedTick": 5910,
+  "stateGeneration": 1771,
+  "committedTick": 5970,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3150,
-    "z": 3247,
+    "x": 3149,
+    "z": 3238,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I will attack the Bear (level 21, distance 9) to test if it's safe."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Identify safe fishing spots based on coordinates and spot types.",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|2:556:14|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|19:557:12",
     "freeSlots": 19,
     "coins": 208,
-    "updatedTick": 5910
+    "updatedTick": 5970
   },
   "milestones": [
     {
@@ -529,6 +529,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 5866,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "woodcut-to-15:5948",
+      "label": "Train Woodcutting to level 15",
+      "tick": 5948,
+      "evidence": "+2663 XP"
     }
   ],
   "failures": [],
@@ -538,5 +544,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:57:12.617Z"
+  "updatedAt": "2026-08-16T19:57:30.361Z"
 }\n
