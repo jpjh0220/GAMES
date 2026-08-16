@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 189,
-  "committedTick": 700,
+  "stateGeneration": 1,
+  "committedTick": 1,
   "identity": {
     "name": "Sol5"
   },
@@ -11,40 +11,27 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=16,gated=15,legal=1,streak=11)."
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover legal action space",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:71|7:526:1|8:526:1|9:526:1|10:526:1|11:526:1|12:526:1|15:303:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
-    "freeSlots": 8,
-    "coins": 71,
-    "updatedTick": 700
+    "signature": "",
+    "freeSlots": 28,
+    "coins": 0,
+    "updatedTick": 1
   },
-  "milestones": [
-    {
-      "id": "equip-useful-gear:225",
-      "label": "Equip a useful weapon or armour upgrade",
-      "tick": 225,
-      "evidence": "+132 XP"
-    },
-    {
-      "id": "resolve-capacity:567",
-      "label": "Resolve inventory capacity before training",
-      "tick": 567,
-      "evidence": "inventory changed"
-    }
-  ],
+  "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -52,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:46:24.804Z"
+  "updatedAt": "2026-08-16T21:47:37.706Z"
 }\n
