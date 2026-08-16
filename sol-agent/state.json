@@ -6,40 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7952,
-    "teacherChoices": 7952,
+    "totalChoices": 7956,
+    "teacherChoices": 7956,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8440,
-    "totalReward": 3724.021,
-    "saves": 906,
+    "completedExperiences": 8441,
+    "totalReward": 3724.101,
+    "saves": 907,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 542,
-    "strategistFailures": 23
+    "strategistFailures": 24
   },
   "memories": [
-    {
-      "id": "msvt5bf8-qj64uu",
-      "createdAt": "2026-08-16T12:55:23.924Z",
-      "tick": 20002,
-      "runNumber": 134,
-      "kind": "episode",
-      "text": "AI motor: Explore northeast about 4 tiles. Result: +1 level(s); moved 3111,3232 → 3110,3237; execution rejected or failed; new: agent:Hestia, agent:Hermes, agent:Argus. Reward 1.996.",
-      "importance": 1.7,
-      "tags": [
-        "explore",
-        "northeast",
-        "agent hestia",
-        "agent hermes",
-        "agent argus"
-      ],
-      "location": {
-        "x": 3110,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "msvt6aci-ygct6n",
       "createdAt": "2026-08-16T12:56:09.186Z",
@@ -9044,6 +9023,29 @@
       "location": {
         "x": 3150,
         "z": 3249,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw8c6kw-ggugyj",
+      "createdAt": "2026-08-16T20:00:38.480Z",
+      "tick": 214,
+      "runNumber": 140,
+      "kind": "episode",
+      "text": "AI motor: Pick up Air rune (distance 11). Result: moved 3149,3236 → 3149,3242. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "pickup",
+        "item",
+        "resource",
+        "air rune",
+        "valuable drop",
+        "agent swwood1",
+        "npc butterfly"
+      ],
+      "location": {
+        "x": 3149,
+        "z": 3242,
         "level": 0
       }
     }
@@ -22916,6 +22918,18 @@
         "exampleGoal": "Identify and record drop locations",
         "exampleReason": "I picked up Bones (distance 1)"
       }
+    },
+    "area=393:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
+      "pickup:air rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T20:00:38.480Z",
+        "exampleGoal": "Identify and record drop locations",
+        "exampleReason": "I picked up Air rune (distance 11) from the goblin guard encounter."
+      }
     }
   },
   "relationships": {
@@ -29545,11 +29559,11 @@
     "gttimber": {
       "name": "Gttimber",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T19:55:38.487Z",
+      "lastSeenAt": "2026-08-16T20:00:04.698Z",
       "encounters": 19,
       "trust": 0.24,
       "stance": "friendly",
-      "conversations": 134,
+      "conversations": 135,
       "cooperation": 2,
       "suspicion": 0,
       "facts": [
@@ -29559,11 +29573,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T17:00:33.324Z",
-          "direction": "incoming",
-          "text": "Timber delivering logs"
-        },
         {
           "at": "2026-08-16T17:46:38.449Z",
           "direction": "incoming",
@@ -29658,6 +29667,11 @@
           "at": "2026-08-16T19:55:38.487Z",
           "direction": "incoming",
           "text": "Timber delivering logs"
+        },
+        {
+          "at": "2026-08-16T20:00:04.698Z",
+          "direction": "incoming",
+          "text": "Timber delivering logs"
         }
       ],
       "combatLevel": 3
@@ -29665,12 +29679,12 @@
     "gtnetter": {
       "name": "Gtnetter",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T19:50:40.074Z",
+      "lastSeenAt": "2026-08-16T20:00:15.514Z",
       "encounters": 352,
       "combatLevel": 10,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 152,
+      "conversations": 154,
       "cooperation": 10,
       "suspicion": 0,
       "facts": [
@@ -29681,16 +29695,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T16:54:39.505Z",
-          "direction": "incoming",
-          "text": "Netter delivering fish"
-        },
-        {
-          "at": "2026-08-16T16:57:42.826Z",
-          "direction": "incoming",
-          "text": "Netter delivering fish"
-        },
         {
           "at": "2026-08-16T17:01:25.411Z",
           "direction": "incoming",
@@ -29778,6 +29782,16 @@
         },
         {
           "at": "2026-08-16T19:41:54.366Z",
+          "direction": "incoming",
+          "text": "Netter delivering fish"
+        },
+        {
+          "at": "2026-08-16T19:59:45.671Z",
+          "direction": "incoming",
+          "text": "Netter delivering fish"
+        },
+        {
+          "at": "2026-08-16T20:00:15.514Z",
           "direction": "incoming",
           "text": "Netter delivering fish"
         }
@@ -31137,8 +31151,8 @@
     "swwood1": {
       "name": "Swwood1",
       "firstSeenAt": "2026-08-16T07:57:22.198Z",
-      "lastSeenAt": "2026-08-16T07:59:06.905Z",
-      "encounters": 11,
+      "lastSeenAt": "2026-08-16T20:00:26.483Z",
+      "encounters": 12,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -36031,9 +36045,9 @@
     "fishmax2": {
       "name": "Fishmax2",
       "firstSeenAt": "2026-08-16T19:29:56.856Z",
-      "lastSeenAt": "2026-08-16T19:53:55.215Z",
-      "encounters": 12,
-      "combatLevel": 4,
+      "lastSeenAt": "2026-08-16T20:00:26.483Z",
+      "encounters": 13,
+      "combatLevel": 6,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -38215,18 +38229,19 @@
     },
     "196:202:0": {
       "key": "196:202:0",
-      "x": 3150,
-      "z": 3247,
+      "x": 3149,
+      "z": 3236,
       "level": 0,
       "firstSeenAt": "2026-08-16T19:47:04.080Z",
-      "lastSeenAt": "2026-08-16T19:55:38.487Z",
-      "visits": 22,
+      "lastSeenAt": "2026-08-16T20:00:26.483Z",
+      "visits": 28,
       "npcs": [
         "Goblin",
         "Bear",
         "Butterfly",
         "Giant spider",
-        "Spider"
+        "Spider",
+        "Unicorn"
       ],
       "locs": [
         "Tree",
@@ -38240,7 +38255,9 @@
         "Dead tree",
         "Fern",
         "Tree stump",
-        "Nettles"
+        "Nettles",
+        "Small fern",
+        "Flower"
       ]
     },
     "197:203:0": {
@@ -59131,54 +59148,6 @@
   },
   "discoveries": [
     {
-      "id": "npc:woman:201:201:0",
-      "at": "2026-08-16T19:31:09.487Z",
-      "kind": "npc",
-      "text": "Woman observed near 3216, 3219, level 0.",
-      "location": {
-        "x": 3216,
-        "z": 3219,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:large door:201:201:0",
-      "at": "2026-08-16T19:31:09.487Z",
-      "kind": "place",
-      "text": "Large door observed near 3216, 3219, level 0.",
-      "location": {
-        "x": 3216,
-        "z": 3219,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bush:201:201:0",
-      "at": "2026-08-16T19:31:09.487Z",
-      "kind": "place",
-      "text": "Bush observed near 3216, 3219, level 0.",
-      "location": {
-        "x": 3216,
-        "z": 3219,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:landscape:201:201:0",
-      "at": "2026-08-16T19:31:09.487Z",
-      "kind": "place",
-      "text": "Landscape observed near 3216, 3219, level 0.",
-      "location": {
-        "x": 3216,
-        "z": 3219,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:suit of armour:201:201:0",
       "at": "2026-08-16T19:31:09.487Z",
       "kind": "place",
@@ -62741,9 +62710,57 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "place:small fern:196:202:0",
+      "at": "2026-08-16T19:59:34.640Z",
+      "kind": "place",
+      "text": "Small fern observed near 3149, 3236, level 0.",
+      "location": {
+        "x": 3149,
+        "z": 3236,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flower:196:202:0",
+      "at": "2026-08-16T19:59:34.640Z",
+      "kind": "place",
+      "text": "Flower observed near 3149, 3236, level 0.",
+      "location": {
+        "x": 3149,
+        "z": 3236,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:unicorn:196:202:0",
+      "at": "2026-08-16T20:00:15.514Z",
+      "kind": "npc",
+      "text": "Unicorn observed near 3149, 3236, level 0.",
+      "location": {
+        "x": 3149,
+        "z": 3236,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3149:3236:3149:3242:0",
+      "at": "2026-08-16T20:00:38.480Z",
+      "kind": "route",
+      "text": "Route learned: 3149,3236 → 3149,3242; moved 3149,3236 → 3149,3242",
+      "location": {
+        "x": 3149,
+        "z": 3242,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T19:55:59.739Z",
+  "updatedAt": "2026-08-16T20:00:38.481Z",
   "activePlan": {
     "objective": "Collect and manage resources from goblin guard encounters",
     "focus": "Identify and record drop locations",
