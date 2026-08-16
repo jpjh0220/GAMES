@@ -78,7 +78,40 @@ const brain = new SolAgentBrain({
   runNumber
 });
 await brain.init();
-const durableStateStore=await PersistentStateStore.open(process.env.SOL_STATE_PATH||'./sol-state.json',username);
+const durablePath=process.env.SOL_STATE_PATH||'./sol-state.json';
+const durableRemotePath='sol-agent/body-state.json';
+const githubJsonHeaders={Accept:'application/vnd.github+json',Authorization:`Bearer ${process.env.GH_TOKEN||''}`,'X-GitHub-Api-Version':'2022-11-28'};
+let remoteDurableSha:string|null=null;
+let lastRemoteDurableAt=0;
+let remoteDurableInFlight=false;
+const restoreRemoteDurableState=async()=>{
+  if(!process.env.GH_TOKEN||!process.env.GITHUB_REPOSITORY)return;
+  try{
+    const r=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/${durableRemotePath}?ref=sol-memory&t=${Date.now()}`,{headers:githubJsonHeaders,signal:AbortSignal.timeout(5000)});
+    if(r.status===404)return;
+    if(!r.ok)throw new Error(`remote durable load ${r.status}`);
+    const body:any=await r.json();remoteDurableSha=body.sha||null;
+    const parsed=JSON.parse(Buffer.from(String(body.content||'').replace(/\\n/g,''),'base64').toString('utf8'));
+    if(parsed?.schemaVersion===1&&parsed?.identity?.name===username)await Bun.write(durablePath,JSON.stringify(parsed,null,2)+'\\n');
+  }catch(err){console.warn('REMOTE_DURABLE_LOAD_FAILED',String(err).slice(0,180));}
+};
+const persistRemoteDurableState=async(state:PersistentState)=>{
+  if(!process.env.GH_TOKEN||!process.env.GITHUB_REPOSITORY||remoteDurableInFlight||Date.now()-lastRemoteDurableAt<15000)return;
+  remoteDurableInFlight=true;lastRemoteDurableAt=Date.now();
+  try{
+    const get=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/${durableRemotePath}?ref=sol-memory&t=${Date.now()}`,{headers:githubJsonHeaders,signal:AbortSignal.timeout(5000)});
+    if(get.ok){const existing:any=await get.json();remoteDurableSha=existing.sha||remoteDurableSha;}
+    const payload:any={message:`Persist Sol body ledger generation ${state.stateGeneration}`,content:Buffer.from(JSON.stringify(state,null,2)+'\\n').toString('base64'),branch:'sol-memory'};
+    if(remoteDurableSha)payload.sha=remoteDurableSha;
+    const put=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/${durableRemotePath}`,{method:'PUT',headers:{...githubJsonHeaders,'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(7000)});
+    if(put.status===409||put.status===422){remoteDurableSha=null;return;}
+    if(!put.ok)throw new Error(`remote durable save ${put.status}`);
+    const saved:any=await put.json();remoteDurableSha=saved?.content?.sha||remoteDurableSha;
+  }catch(err){console.warn('REMOTE_DURABLE_SAVE_FAILED',String(err).slice(0,180));}
+  finally{remoteDurableInFlight=false;}
+};
+await restoreRemoteDurableState();
+const durableStateStore=await PersistentStateStore.open(durablePath,username);
 let durableState:PersistentState=durableStateStore.snapshot();
 const persistentBody=new PersistentBodyState(username,'llm-brain@1.0.0');
 const controllerRegistry=new ControllerRegistry(createFallbackController());
@@ -643,7 +676,7 @@ client.setOnGameTickCallback(()=>{
      const freeSlots=Math.max(0,28-(state.inventory||[]).length);const coins=(state.inventory||[]).filter((i:any)=>isCurrency(i.name)).reduce((n:number,i:any)=>n+Number(i.count||0),0);const invSig=(state.inventory||[]).map((i:any)=>`${i.slot}:${i.id}:${i.count}`).join('|');
      const obligationKind=state.player.hp<=Math.max(8,state.player.maxHp*.32)?'survival':(state.groundItems||[]).some((g:any)=>g.reachable!==false&&!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')))?'loot-resolution':isCapacityPressure(state)?(state.bank?.isOpen||state.shop?.isOpen||state.dialog?.isOpen?'transaction':'capacity-resolution'):'objective';
      const durableFingerprint=`${tick%10===0?'checkpoint':'event'}|${obligationKind}|${state.player.worldX},${state.player.worldZ},${state.player.level}|${invSig}|${coins}|${controllerRegistry.status.activeId}@${controllerRegistry.status.activeVersion}|${currentGoal}`;
-     if(durableFingerprint!==lastDurableFingerprint){lastDurableFingerprint=durableFingerprint;void durableStateStore.commit({position:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},currentObligation:{...durableState.currentObligation,kind:obligationKind as any,reason:currentWhy},objective:{...durableState.objective,label:currentGoal},inventoryLedger:{signature:invSig,freeSlots,coins,updatedTick:tick},controller:{activeId:controllerRegistry.status.activeId,activeVersion:controllerRegistry.status.activeVersion,pendingId:controllerRegistry.status.pendingId||undefined,pendingVersion:controllerRegistry.status.pendingVersion||undefined,lastSwitchTick:controllerRegistry.status.lastSwitchTick}},tick).then(next=>{durableState=next}).catch(err=>void log('PERSISTENT_STATE_COMMIT_FAILED',String(err)));}
+     if(durableFingerprint!==lastDurableFingerprint){lastDurableFingerprint=durableFingerprint;void durableStateStore.commit({position:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},currentObligation:{...durableState.currentObligation,kind:obligationKind as any,reason:currentWhy},objective:{...durableState.objective,label:currentGoal},inventoryLedger:{signature:invSig,freeSlots,coins,updatedTick:tick},controller:{activeId:controllerRegistry.status.activeId,activeVersion:controllerRegistry.status.activeVersion,pendingId:controllerRegistry.status.pendingId||undefined,pendingVersion:controllerRegistry.status.pendingVersion||undefined,lastSwitchTick:controllerRegistry.status.lastSwitchTick}},tick).then(next=>{durableState=next;void persistRemoteDurableState(next)}).catch(err=>void log('PERSISTENT_STATE_COMMIT_FAILED',String(err)));}
      if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
     refreshSnapshot(state);
   }catch(err){void log('TICK_ERROR',String(err));}
