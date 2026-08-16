@@ -3,6 +3,12 @@ name: Sol Live Continuous Runner
 
 on:
   workflow_dispatch:
+    inputs:
+      chain_depth:
+        description: Number of automatic runner handoffs already completed
+        required: false
+        default: '0'
+        type: string
   push:
     paths:
       - '.github/workflows/rs-sol-live.yml'
@@ -11,6 +17,15 @@ on:
 permissions:
   contents: write
   actions: write
+
+# This runner is intentionally long-lived, but all runtime inputs are pinned or secret-backed.
+env:
+  RS_SDK_REF: 2ae032c99813a72d8d749d6d105fc7378255b03a
+  BUN_VERSION: '1.3.3'
+  CLOUDFLARED_VERSION: '2026.8.2'
+  OLLAMA_VERSION: '0.32.13'
+  MAX_CHAIN_DEPTH: '3'
+  CHAIN_DEPTH: ${{ inputs.chain_depth || '0' }}
 
 concurrency:
   group: sol-continuous-world
@@ -27,10 +42,14 @@ jobs:
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: ${{ env.BUN_VERSION }}
 
-      - name: Clone RS-SDK
-        run: git clone --depth 1 https://github.com/MaxBittker/rs-sdk.git rs-sdk
+      - name: Clone pinned RS-SDK
+        run: |
+          set -euo pipefail
+          git clone https://github.com/MaxBittker/rs-sdk.git rs-sdk
+          git -C rs-sdk checkout --detach "$RS_SDK_REF"
+          test "$(git -C rs-sdk rev-parse HEAD)" = "$RS_SDK_REF"
 
       - name: Install dependencies and stage agent
         run: |
@@ -40,18 +59,23 @@ jobs:
           cp ../../../sol-live/viewer.html ./viewer.html
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
 
-      - name: Install local Ollama runtime
+      - name: Install pinned local Ollama runtime
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL https://ollama.com/install.sh | sh
-          nohup env OLLAMA_CONTEXT_LENGTH=4096 ollama serve > sol-ollama.log 2>&1 &
-          echo $! > sol-ollama.pid
+          BASE_URL="https://github.com/ollama/ollama/releases/download/v${OLLAMA_VERSION}"
+          curl -fL --retry 4 --retry-delay 2 -o /tmp/ollama-linux-amd64.tar.zst "${BASE_URL}/ollama-linux-amd64.tar.zst"
+          curl -fL --retry 4 --retry-delay 2 -o /tmp/ollama-sha256sum.txt "${BASE_URL}/sha256sum.txt"
+          cd /tmp
+          grep 'ollama-linux-amd64.tar.zst' ollama-sha256sum.txt | sha256sum -c -
+          sudo tar --zstd -xf ollama-linux-amd64.tar.zst -C /usr
+          nohup env OLLAMA_CONTEXT_LENGTH=4096 ollama serve > "$GITHUB_WORKSPACE/sol-ollama.log" 2>&1 &
+          echo $! > "$GITHUB_WORKSPACE/sol-ollama.pid"
           for i in $(seq 1 45); do
             if curl -fsS http://127.0.0.1:11434/api/tags >/dev/null; then exit 0; fi
             sleep 1
           done
-          cat sol-ollama.log
+          cat "$GITHUB_WORKSPACE/sol-ollama.log"
           exit 1
 
       - name: Restore local AI model cache
@@ -75,7 +99,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fL --retry 4 --retry-delay 2 -o /tmp/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          curl -fL --retry 4 --retry-delay 2 -o /tmp/cloudflared "https://github.com/cloudflare/cloudflared/releases/download/${CLOUDFLARED_VERSION}/cloudflared-linux-amd64"
           chmod +x /tmp/cloudflared
           nohup /tmp/cloudflared tunnel --url http://127.0.0.1:8787 --no-autoupdate > sol-tunnel.log 2>&1 &
           echo $! > sol-tunnel.pid
@@ -92,8 +116,9 @@ jobs:
       - name: Start Sol, verify health, and publish spectator endpoint
         working-directory: rs-sdk/server/webclient
         env:
-          SOL_USER: Sol5
-          SOL_PASS: run-31675285392-1
+          SOL_USER: ${{ secrets.SOL_USER }}
+          SOL_PASS: ${{ secrets.SOL_PASS }}
+          SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
           SOL_MOTOR_MODEL: qwen3:0.6b
           SOL_STRATEGIST_MODEL: qwen3:1.7b
           OLLAMA_URL: http://127.0.0.1:11434
@@ -102,6 +127,8 @@ jobs:
           LIVE_URL: ${{ steps.tunnel.outputs.url }}
         run: |
           set -euo pipefail
+          : "${SOL_USER:?Repository secret SOL_USER is required}"
+          : "${SOL_PASS:?Repository secret SOL_PASS is required}"
           bun sol-live.ts > >(tee ../../sol-console.log) 2>&1 &
           AGENT_PID=$!
           READY=''
@@ -121,7 +148,7 @@ jobs:
             exit 1
           fi
           NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol5",controller:"repository-taught-model-player",motor:"qwen3:0.6b",strategist:"qwen3:1.7b"}')
+          JSON=$(jq -cn --arg url "$LIVE_URL" --arg updatedAt "$NOW" --argjson runNumber "$GITHUB_RUN_NUMBER" --argjson runId "$GITHUB_RUN_ID" '{url:$url,updatedAt:$updatedAt,runNumber:$runNumber,runId:$runId,agent:"Sol",controller:"model-sovereign-gameplay-with-execution-validation",motor:"qwen3:0.6b",strategist:"qwen3:1.7b",viewerAccess:"token-required-when-configured"}')
           CONTENT=$(printf '%s\n' "$JSON" | base64 -w0)
           SHA=$(gh api "repos/$GITHUB_REPOSITORY/contents/sol-watch/live.json" --jq .sha 2>/dev/null || true)
           if [ -n "$SHA" ]; then
@@ -144,14 +171,15 @@ jobs:
             sol-ollama.log
           if-no-files-found: warn
 
-      # Rechain if the session actually went live, whether it ended cleanly or
-      # crashed mid-run. Guarded on the tunnel step so a staging/build failure
-      # cannot crash-loop: if Sol never got live, the chain stops and waits for
-      # a human, which is what happened on run 42.
+      # Rechain only healthy sessions and cap the retry chain. Failed live runs
+      # now stop for diagnosis instead of consuming Actions capacity indefinitely.
       - name: Hand Sol to the next live runner
-        if: always() && steps.tunnel.outputs.url != ''
+        if: success() && steps.tunnel.outputs.url != '' && fromJSON(env.CHAIN_DEPTH) < fromJSON(env.MAX_CHAIN_DEPTH)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo "Rechaining after job status: ${{ job.status }}"
-          curl --fail-with-body --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GH_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol-live.yml/dispatches" -d '{"ref":"main"}'
+          set -euo pipefail
+          NEXT_DEPTH=$((CHAIN_DEPTH + 1))
+          echo "Rechaining healthy session depth $NEXT_DEPTH of $MAX_CHAIN_DEPTH"
+          PAYLOAD=$(jq -cn --arg depth "$NEXT_DEPTH" '{ref:"main",inputs:{chain_depth:$depth}}')
+          curl --fail-with-body --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GH_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol-live.yml/dispatches" -d "$PAYLOAD"

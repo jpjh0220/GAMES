@@ -1,1 +1,0 @@
-Earthbound deployment trigger.

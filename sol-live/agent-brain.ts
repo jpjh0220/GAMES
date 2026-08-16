@@ -381,7 +381,7 @@ export class SolAgentBrain {
       if(configurationOnly)blocked.add(c.fingerprint);
     }
     const last=recent.at(-1);
-    if(last?.reward<0)blocked.add(last.choice.fingerprint);
+    if(last&&last.reward<0)blocked.add(last.choice.fingerprint);
     // Engine-stated prerequisites. Clear any that are now satisfied, then bar the rest.
     // Bar candidates the engine has already refused. Resolution of blockers
     // happens in maybeFinishExperience, which has the world state; this path
@@ -555,7 +555,7 @@ export class SolAgentBrain {
           const s=stats as any;
           if(s.n>=2) learnedValues[fp]={avgReward:Number(s.avgReward.toFixed(2)),count:s.n,successRate:Number((s.positive/s.n).toFixed(2))};
         }
-        const enriched={...payload,learnedActionValues:learnedValues};
+        const enriched={...(payload&&typeof payload==='object'?payload:{}),learnedActionValues:learnedValues};
         // Measured: ~19.2s median per decision (run 72, 20 AGENT_THINK events
         // over 366s). That is the real throughput ceiling, not the planner.
         // Also num_ctx is 2048 while this payload carries 25-38 candidates

@@ -1,0 +1,22 @@
+# Build artifacts
+dist/
+coverage/
+
+# Local integration workspaces and runtime logs
+.rs-sdk/
+sol-session.log
+sol-console.log
+sol-ollama.log
+sol-tunnel.log
+*.pid
+
+# Local agent state and secret material
+.env
+.env.*
+!.env.example
+sol-agent/state.json
+
+# Package-manager and editor noise
+node_modules/
+.bun/
+.DS_Store

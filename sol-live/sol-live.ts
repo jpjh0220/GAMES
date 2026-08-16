@@ -11,6 +11,7 @@ const password = process.env.SOL_PASS!;
 const RUN_MS = 19_800_000; // 5h30m, leaving ~30m for setup/persistence/artifacts/handoff.
 const viewerHtml = await Bun.file('./viewer.html').text();
 const sessionStartedAt = new Date().toISOString();
+const viewerAccessToken = process.env.SOL_VIEWER_TOKEN?.trim() || '';
 const directive = 'Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players.';
 const runNumber = Number(process.env.GITHUB_RUN_NUMBER || 0) || null;
 
@@ -81,6 +82,18 @@ let snapshot:any = {
   currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState()
 };
 
+const publicSnapshot=()=>({
+  updatedAt:snapshot.updatedAt,online:snapshot.online,inGame:snapshot.inGame,tick:snapshot.tick,runNumber:snapshot.runNumber,
+  sessionStartedAt:snapshot.sessionStartedAt,currentGoal:snapshot.currentGoal,currentWhy:snapshot.currentWhy,thinking:snapshot.thinking,
+  player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:0,worldZ:0,level:0,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:'none',targetIndex:-1}}:null,
+  skills:(snapshot.skills||[]).map((skill:any)=>({name:skill.name,level:skill.level})),
+  combatStyle:{weaponName:'Private',currentStyle:-1,styles:[]},nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],inventory:[],equipment:[],combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:[],movementTrail:[],lessons:[],
+  currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reward:snapshot.currentAction.reward}:null,
+  actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,
+  agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
+  viewerAccess:'summary'
+});
+
 const refreshSnapshot = (state:BotWorldState|null) => {
   const s:any=state;
   if(state?.player && (tick%2===0 || movementTrail.length===0)){
@@ -116,12 +129,13 @@ const refreshSnapshot = (state:BotWorldState|null) => {
 const server=Bun.serve({
   port:8787,
   fetch(req){
-    const path=new URL(req.url).pathname;
-    const headers={'Cache-Control':'no-store','Access-Control-Allow-Origin':'*'};
-    if(path==='/state') return Response.json(snapshot,{headers});
+    const url=new URL(req.url),path=url.pathname;
+    const headers={'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'};
+    const fullAccess=viewerAccessToken.length>0&&url.searchParams.get('token')===viewerAccessToken;
+    if(path==='/state') return Response.json(fullAccess?{...snapshot,viewerAccess:'full'}:publicSnapshot(),{headers});
     if(path==='/health'){
       const ready=!!snapshot.online&&!!snapshot.inGame&&!!snapshot.player&&snapshot.agent?.motorOnline===true;
-      return Response.json({ok:ready,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline,learnedActions:snapshot.agent?.learnedActions??0,memoryCount:snapshot.agent?.memoryCount??0,persistence:snapshot.agent?.persistence??null},{status:ready?200:503,headers});
+      return Response.json({ok:ready,online:snapshot.online,inGame:snapshot.inGame,tick,actionCount:actions,sessionStartedAt,runNumber,agentController:snapshot.agent?.currentController,teacherOnline:snapshot.agent?.teacherOnline},{status:ready?200:503,headers});
     }
     return new Response(viewerHtml,{headers:{...headers,'Content-Type':'text/html; charset=utf-8'}});
   }
@@ -464,7 +478,8 @@ await Bun.sleep(RUN_MS);
 client.setOnGameTickCallback(null);
 refreshSnapshot(lastState);
 await brain.save(true);
-await log('SOL_HANDOFF',{ticks:tick,actions,agent:brain.publicState(),final:lastState?{player:lastState.player,skills:Object.fromEntries(lastState.skills.map(s=>[s.name,s.level])),inventory:lastState.inventory.map(i=>({name:i.name,count:i.count}))}:null});
+const finalState:BotWorldState|null=lastState as BotWorldState|null;
+await log('SOL_HANDOFF',{ticks:tick,actions,agent:brain.publicState(),final:finalState?{player:finalState.player,skills:Object.fromEntries(finalState.skills.map(s=>[s.name,s.level])),inventory:finalState.inventory.map(i=>({name:i.name,count:i.count}))}:null});
 session.stop();
 await session.stopped;
 server.stop(true);
