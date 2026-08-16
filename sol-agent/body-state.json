@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 150,
-  "committedTick": 524,
+  "stateGeneration": 168,
+  "committedTick": 570,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3079,
-    "z": 3250,
+    "x": 3092,
+    "z": 3242,
     "level": 0
   },
   "currentObligation": {
-    "kind": "capacity-resolution",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Bank at Bank booth (distance 14)"
+    "reason": "I have a bank and can deposit all of the Earth rune, which is a useful resource. I will do that now."
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:271|7:526:1|8:526:1|9:526:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|19:557:12|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
-    "freeSlots": 7,
+    "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:271|7:526:1|8:526:1|9:526:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
+    "freeSlots": 8,
     "coins": 271,
-    "updatedTick": 524
+    "updatedTick": 570
   },
   "milestones": [
     {
@@ -37,6 +37,12 @@
       "label": "Equip a useful weapon or armour upgrade",
       "tick": 150,
       "evidence": "+1333 XP"
+    },
+    {
+      "id": "resolve-capacity:564",
+      "label": "Resolve inventory capacity before training",
+      "tick": 564,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -46,5 +52,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:39:27.640Z"
+  "updatedAt": "2026-08-16T21:39:42.990Z"
 }\n
