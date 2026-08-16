@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 276,
-  "committedTick": 871,
+  "stateGeneration": 293,
+  "committedTick": 920,
   "identity": {
     "name": "Sol5"
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary."
+    "reason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
   },
   "objective": {
     "id": "boot",
-    "label": "Cook existing raw food into survival supplies",
+    "label": "Resolve inventory capacity before training",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:554:1|7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
-    "freeSlots": 7,
+    "signature": "7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 8,
     "coins": 0,
-    "updatedTick": 871
+    "updatedTick": 920
   },
   "milestones": [
     {
@@ -241,14 +241,32 @@
       "label": "Cook existing raw food into survival supplies",
       "tick": 843,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:879",
+      "label": "Resolve inventory capacity before training",
+      "tick": 879,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:885",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 885,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:906",
+      "label": "Resolve inventory capacity before training",
+      "tick": 906,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
     "activeVersion": "1.0.0",
-    "lastSwitchTick": 841
+    "lastSwitchTick": 881
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T09:21:13.332Z"
+  "updatedAt": "2026-08-16T09:21:29.200Z"
 }\n
