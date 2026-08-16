@@ -671,6 +671,7 @@ const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
   const usefulPickup=(c:AgentCandidate)=>!capacityObjective&&c.category==='pickup'&&/(coins?|pickaxe|axe|fishing net|fishing rod|tinderbox|food|shrimp|anchov|rune|weapon|armou?r)/i.test(String(c.label||''));
   const safe=candidates.filter(c=>{
     if(c.category==='pickup')return usefulPickup(c);
+    if(c.category==='bank'&&c.action?.type==='interactLoc'&&economyResolution.noProgress>=2)return false;
     if(['bank','shop','modal','dialog'].includes(c.category))return true;
     if(c.category==='economy')return true;
     if(c.action?.type==='worldSkill'&&/travel:draynor-bank/.test(c.fingerprint))return true;
