@@ -691,14 +691,16 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     const latestPlan=progressionDirector.plan(latest,usableFresh,tick);currentProgression=latestPlan;
     const modelCandidate=usableFresh.find(c=>c.fingerprint===choice.fingerprint);
     const directedCandidate=usableFresh.find(c=>latestPlan.priorityFingerprints.includes(c.fingerprint));
-    const forceProgression=progressionDirector.shouldOverride(latestPlan,directedCandidate,tick);
-    const candidate=forceProgression?directedCandidate:modelCandidate;
-    const effectiveChoice=forceProgression&&candidate?{...choice,source:'deterministic' as const,goal:latestPlan.objective,reason:`Deterministic progression director: ${latestPlan.reason}`,expectedOutcome:latestPlan.success,fingerprint:candidate.fingerprint,actionId:candidate.id,confidence:.98}:choice;
+    // The progression director is advisory only. The LLM owns interpretation and
+    // action selection; deterministic code may reject stale/blocked actions but
+    // must not replace a valid model choice with a curriculum choice.
+    const candidate=modelCandidate;
+    const effectiveChoice=choice;
     if(!candidate){
       void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:'action no longer available'});
       nextDecisionTick=tick+1;return;
     }
-    if(forceProgression)void log('PROGRESSION_DIRECTOR',{tick,stage:latestPlan.stage,id:latestPlan.id,objective:latestPlan.objective,action:candidate.label,success:latestPlan.success});
+    if(directedCandidate&&directedCandidate.fingerprint!==choice.fingerprint)void log('PROGRESSION_ADVISORY',{tick,stage:latestPlan.stage,id:latestPlan.id,objective:latestPlan.objective,advisoryAction:directedCandidate.label,selectedAction:candidate.label});
     executeChoice(candidate,effectiveChoice,latest);
     nextDecisionTick=tick+2;
     refreshSnapshot(latest);
