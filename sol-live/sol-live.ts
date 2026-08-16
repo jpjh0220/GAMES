@@ -542,9 +542,10 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldState)=>{
   const rawReason=String(choice.reason||'');
   const bankAction=String(candidate.action?.type||'').match(/^(interactLoc|bankDeposit|closeModal)$/)&&(/bank/i.test(String(candidate.label||''))||candidate.category==='bank');
+  const economyAction=candidate.category==='shop'||candidate.category==='economy'||/^(shopSell|shopBuy|trade)$/.test(String(candidate.action?.type||''))||/diango|merchant|shop|sell|trade/i.test(String(candidate.label||''));
   const freeAtChoice=Math.max(0,28-(state.inventory||[]).length);
   const falseCapacityCompletion=/resolved|complete|finished/i.test(rawReason)&&/capacity|inventory/i.test(rawReason)&&freeAtChoice<8;
-  const reasonMismatch=(bankAction&&!/(bank|deposit|storage|capacity|inventory|item)/i.test(rawReason))||(!bankAction&&candidate.action?.type==='pickupItem'&&/bank|deposit/i.test(rawReason))||falseCapacityCompletion;
+  const reasonMismatch=(bankAction&&!/(bank|deposit|storage|capacity|inventory|item)/i.test(rawReason))||(economyAction&&!/(bank|deposit|storage|capacity|inventory|item|shop|sell|trade|merchant|coins|gold)/i.test(rawReason))||(!bankAction&&!economyAction&&candidate.action?.type==='pickupItem'&&/bank|deposit/i.test(rawReason))||falseCapacityCompletion;
   if(reasonMismatch){const corrected=`Selected ${candidate.label} to satisfy the current objective and verify the resulting world-state change.`;void log('AGENT_REASON_MISMATCH',{tick,candidate:candidate.label,actionType:candidate.action?.type,original:rawReason,corrected});choice={...choice,reason:corrected};}
   const action={...candidate.action,reason:choice.reason};
   if(action.type==='say'){
