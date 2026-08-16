@@ -262,7 +262,7 @@ const server=Bun.serve({
     const bearer=req.headers.get('authorization')||'';
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
-    if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const events=cognitionLog.filter(e=>e.id>since&& (includeSystem||e.kind!=='system'));return Response.json({cursor:cognitionSequence,events:events.slice(-limit),omittedSystem:!includeSystem},{headers});}
+    if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const includeState=url.searchParams.get('includeState')==='1';const selected=cognitionLog.filter(e=>e.id>since&&(includeSystem||e.kind!=='system')).slice(-limit);const events=includeState?selected:selected.map(({state,...event}:any)=>event);return Response.json({cursor:cognitionSequence,events,omittedSystem:!includeSystem,omittedState:!includeState},{headers});}
     if(path==='/control'&&req.method==='POST'){
       if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
