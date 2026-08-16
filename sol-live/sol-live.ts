@@ -126,7 +126,7 @@ const controllerRegistry=new ControllerRegistry(createFallbackController());
 const obligationExecutor=new ObligationExecutor();
 const progressionDirector=new ProgressionDirector();
 let currentProgression:any={id:'boot',objective:'Initialize progression curriculum',reason:'Await first verified observation.',success:'First milestone selected.',priorityFingerprints:[],stage:0,blocked:false};
-controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candidates)=>brain.decide(state,candidates)});
+controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candidates,context)=>brain.decide(state,candidates,context.currentTask)});
 controllerRegistry.stage('llm-brain','1.0.0');
 controllerRegistry.activateAtTick(0);
 
