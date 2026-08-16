@@ -81,3 +81,23 @@ Operational changes should preserve this separation: the model proposes a legal 
 ## License
 
 Released under the [MIT License](LICENSE).
+
+## Decision-loop optimization
+
+The runtime uses a two-speed controller. The local teacher model receives a bounded, structured observation and at most twelve diverse executable candidates; raw candidates are first filtered for repeated negative outcomes and then balanced across recovery, navigation, combat, economy, social, world, inventory, and exploration categories. Candidate fingerprints—not display labels—are used for deduplication and anti-loop blocking.
+
+After the shadow policy reaches a measured agreement threshold, a cheap student-policy path may make up to thirty percent of decisions **before** the teacher request. This is an actual latency-saving fast path rather than a second opinion after the teacher has already spent inference time. Student and teacher decisions share the same persistence counters, replay records, and outcome credit assignment.
+
+Every action is evaluated against a before/after snapshot. The reward includes XP, level gains, combat effects, movement, discovery, inventory and equipment changes, currency, prerequisite resolution, rejection signals, death, stagnation, repetition, and elapsed decision time. A dispatched action without observable evidence is therefore not treated as success.
+
+The following telemetry fields should be tracked across runs:
+
+| Signal | Interpretation |
+|---|---|
+| `AGENT_CANDIDATE_GATE` | Raw, anti-loop, and final candidate counts; use it to detect prompt bloat or over-filtering. |
+| `AGENT_MOTOR_TIMING` | Local model request latency and approximate prompt size. |
+| `AGENT_DECISION_TIMING` | End-to-end teacher or student decision latency. |
+| `AGENT_OUTCOME` | Measured reward and observable effects after action settlement. |
+| `AGENT_TELEMETRY` | XP velocity, completed experiences, distinct positions, and planner status. |
+
+A strategy improvement should be accepted only when it improves **measured progress per wall-clock minute**—not merely model confidence. Compare XP per 1,000 ticks, positive-reward rate, rejection rate, deaths, unique locations, action latency, and successful prerequisite resolutions across runs using the same SDK revision and model versions.

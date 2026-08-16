@@ -411,13 +411,21 @@ export class SolAgentBrain {
 
   private balancedCandidates(candidates:AgentCandidate[]){
     const productive=candidates.some(c=>c.category!=='wait')?candidates.filter(c=>c.category!=='wait'):candidates;
-    const order=['dialog','modal','recovery','combat','economy','pickup','social','world','inventory','combat-style','explore','wait'];const out:AgentCandidate[]=[];
-    for(const category of order)for(const c of productive.filter(x=>x.category===category).slice(0,1)){if(out.length<12&&!out.some(x=>x.id===c.id))out.push(c);}
-    for(const c of productive){if(out.length>=12)break;if(!out.some(x=>x.id===c.id))out.push(c);}return out;
+    const order=['dialog','modal','recovery','navigation-skill','combat','economy','pickup','social','world','inventory','combat-style','explore','wait'];
+    const out:AgentCandidate[]=[];const seen=new Set<string>();
+    const add=(candidate:AgentCandidate)=>{if(out.length>=12||seen.has(candidate.fingerprint))return;seen.add(candidate.fingerprint);out.push(candidate);};
+    for(const category of order)for(const c of productive.filter(x=>x.category===category).slice(0,2))add(c);
+    for(const c of productive)add(c);
+    if(!out.length&&candidates.length)add(candidates[0]);
+    return out;
   }
 
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
-    this.observe(state);this.emitTelemetry(state,state.tick||0);const legal=this.antiLoopCandidates(candidates);const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    const decisionStarted=Date.now();
+    this.observe(state);this.emitTelemetry(state,state.tick||0);
+    const gated=this.antiLoopCandidates(candidates);const legal=this.balancedCandidates(gated);
+    const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
+    console.log('AGENT_CANDIDATE_GATE',JSON.stringify({raw:candidates.length,afterAntiLoop:gated.length,allowed:legal.length,categories:uniq(legal.map(c=>c.category))}));
     this.maybeRefreshStrategy(state,legal);
     if(this.plannerEnabled)this.maybeReevaluateGoal(state,500);
     if(!this.motorReady){await this.refreshAvailability();if(!this.motorReady)throw new Error(`AI motor unavailable: ${this.motorModel}`);}
@@ -463,20 +471,31 @@ export class SolAgentBrain {
         }
       }
     }
-    const choice=await this.askMotor(state,filteredCandidates,contextKey);
-    // STUDENT SAMPLING: if student is promoted (agreement >= 65%), sample for decisions
+    // STUDENT SAMPLING: try the cheap learned policy before invoking the teacher.
+    // This only activates after agreement is proven and falls back to the teacher
+    // on uncertainty, making promotion a real latency optimization.
     if(this.studentPromoted() && Math.random()<0.3){
       try{
         const studentChoice=await this.askStudent(state,filteredCandidates,contextKey);
         if(studentChoice){
+          this.sessionMotorChoices++;
+          this.memory.lifetime.totalChoices++;
+          this.memory.lifetime.studentChoices++;
           this.memory.lifetime.studentDecisions=(this.memory.lifetime.studentDecisions||0)+1;
+          this.lastChoice=studentChoice;
+          this.markDirty();
+          this.replay.push({tick:(state as any).tick||0,perception:`HP ${state.player?.hp}/${state.player?.maxHp}; ${state.nearbyPlayers?.length||0} agents; ${state.nearbyNpcs?.length||0} NPCs; ${state.nearbyLocs?.length||0} objects`,retrieved:this.currentGuidance,prediction:this.lastShadowPrediction?.fingerprint||null,decision:studentChoice.reason,action:studentChoice.fingerprint,outcome:null,lesson:null});
+          if(this.replay.length>80)this.replay.shift();
+          console.log('AGENT_DECISION_TIMING',JSON.stringify({ms:Date.now()-decisionStarted,controller:'student',allowed:filteredCandidates.length}));
           return studentChoice;
         }
       }catch(e){
         console.log('AGENT_STUDENT_DECISION_FAILED',String(e).slice(0,200));
-        // Fallback to motor
+        // Fallback to teacher model.
       }
     }
+    const choice=await this.askMotor(state,filteredCandidates,contextKey);
+    console.log('AGENT_DECISION_TIMING',JSON.stringify({ms:Date.now()-decisionStarted,controller:'teacher',allowed:filteredCandidates.length}));
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
     this.maybePromoteStudent();
@@ -503,9 +522,11 @@ export class SolAgentBrain {
     const executable=candidates.filter(c=>c.category!=='wait').slice(0,20).map(c=>c.label.slice(0,96));
     const negatives=this.recentOutcomes.filter(o=>o.reward<0).slice(-3).map(o=>o.candidateLabel.slice(0,90));
     const guidance=this.retrieveRepoGuidance(state,candidates,1,420);
-    const observation={position:[p.worldX,p.worldZ,p.level],hp:[p.hp,p.maxHp],combatLevel:p.combatLevel,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),failed:negatives,actions:executable,guide:guidance[0]||''};
+    const skillLevels=Object.fromEntries((state.skills||[]).filter((skill:any)=>!/^Stat/.test(String(skill.name||''))).map((skill:any)=>[skill.name,skill.level]));
+    const coins=(state.inventory||[]).filter((item:any)=>/coins?/i.test(String(item.name||''))).reduce((sum:number,item:any)=>sum+Number(item.count||0),0);
+    const observation={position:[p.worldX,p.worldZ,p.level],hp:[p.hp,p.maxHp],combatLevel:p.combatLevel,skills:skillLevels,coins,inventory:(state.inventory||[]).slice(0,16).map(i=>[i.name,i.count]),equipment:(state.equipment||[]).map(i=>i.name),failed:negatives,actions:executable,nearby:(state.nearbyLocs||[]).slice(0,8).map((loc:any)=>loc.name),guide:guidance[0]||''};
     const schema={type:'object',additionalProperties:false,properties:{objective:{type:'string'},step_1:{type:'string'},step_2:{type:'string'},step_3:{type:'string'},reason:{type:'string'},success:{type:'string'}},required:['objective','step_1','step_2','step_3','reason','success']};
-    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.1,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You plan gameplay for Sol in the rs-sdk RuneScape MMO. Return one concise objective and exactly three executable steps. Prefer a named repository-tested escape or travel skill when available. Every step needs observable evidence. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
+    const ask=async(payload:unknown,timeout:number)=>{const r=await fetch(`${this.ollamaUrl}/api/chat`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:this.strategistModel,stream:false,think:false,format:schema,keep_alive:'6h',options:{temperature:.1,num_ctx:1536,num_predict:120},messages:[{role:'system',content:'You plan gameplay for Sol in the rs-sdk RuneScape MMO. Return one concise objective and exactly three executable steps. Prefer a named repository-tested escape or travel skill when available. Build a prerequisite chain from the current skills, coins, inventory, nearby world, and failed attempts. Every step needs observable evidence and a measurable terminal condition. Do not repeat a failed step unless the missing prerequisite has changed. Use only listed actions.'},{role:'user',content:JSON.stringify(payload)}]}),signal:AbortSignal.timeout(timeout)});if(!r.ok)throw new Error(`strategist ${r.status}`);const raw:any=await r.json();return parseModelJson(raw?.message?.content);};
     let j:any;try{j=await ask(observation,32000)}catch(first){j=await ask({position:observation.position,actions:executable.slice(0,12),instruction:'Choose a concise objective and three steps.'},24000)}
     const labels=[j.step_1,j.step_2,j.step_3].map(String).filter(Boolean);if(labels.length<2)throw new Error('strategist returned fewer than two plan steps');
     const steps=labels.slice(0,5).map((label:string,i:number)=>({id:`step-${i+1}`,label:label.slice(0,140),status:(i===0?'active':'pending') as 'active'|'pending'}));
@@ -715,14 +736,19 @@ export class SolAgentBrain {
     const duration=Math.max(1,endTick-startTick);
     const fp=candidate.fingerprint;
     let cost=0;
-    // Base costs: walking and style changes are time-wasting
+    // Base costs: walking and style changes are time-wasting, but not harmful.
     if(fp.startsWith('walk:'))cost=0.02;
     else if(fp.startsWith('style:'))cost=0.01;
-    // Repetition penalty: nth repeat = base_cost * n^2
+    else if(candidate.category==='wait')cost=0.08;
+    // Charge for elapsed decision time after the normal observation window. This
+    // makes the policy prefer actions that produce evidence sooner without
+    // punishing legitimate multi-tick movement or combat actions.
+    cost+=Math.max(0,duration-6)*0.004;
+    // Repetition penalty: nth repeat = base_cost * n^2.
     const repeatCount=this.recentActions.filter(a=>a===fp).length;
     if(repeatCount>0)cost*=Math.pow(repeatCount+1,1.5);
     this.recentActions.push(fp);if(this.recentActions.length>20)this.recentActions.shift();
-    return Math.min(cost,.5);
+    return Math.min(cost,.75);
   }
 
   private maybePromoteStudent(){
