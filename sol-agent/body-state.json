@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1334,
-  "committedTick": 4400,
+  "stateGeneration": 1351,
+  "committedTick": 4450,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3150,
-    "z": 3247,
+    "x": 3161,
+    "z": 3249,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I picked up the Air rune (distance 0)"
+    "reason": "I will attack the Spider (level 1, distance 12) to gain XP and damage, while verifying the outcome to ensure it's successful."
   },
   "objective": {
     "id": "boot",
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|2:556:5|3:526:1|6:995:199|19:557:12",
     "freeSlots": 22,
     "coins": 199,
-    "updatedTick": 4400
+    "updatedTick": 4450
   },
   "milestones": [
     {
@@ -439,6 +439,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 4374,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "woodcut-to-15:4413",
+      "label": "Train Woodcutting to level 15",
+      "tick": 4413,
+      "evidence": "+665 XP"
     }
   ],
   "failures": [],
@@ -448,5 +454,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:49:37.845Z"
+  "updatedAt": "2026-08-16T19:49:52.863Z"
 }\n
