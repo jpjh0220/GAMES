@@ -6,64 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 6703,
-    "teacherChoices": 6703,
+    "totalChoices": 6704,
+    "teacherChoices": 6704,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6700,
-    "totalReward": 4169.203,
-    "saves": 684,
-    "shadowPredictions": 3775,
-    "shadowMatches": 1763,
+    "completedExperiences": 6701,
+    "totalReward": 4170.713,
+    "saves": 685,
+    "shadowPredictions": 3776,
+    "shadowMatches": 1764,
     "strategistRefreshes": 441,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msve1zqn-t4bgmx",
-      "createdAt": "2026-08-16T05:52:54.575Z",
-      "tick": 7159,
-      "runNumber": 85,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3239 → 3092,3243; new: agent:Poseidon, npc:Ned, loc:Oak, loc:Cooking shelves, loc:Wardrobe, loc:Broom. Reward 0.962.",
-      "importance": 1.18,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent poseidon",
-        "npc ned",
-        "loc oak",
-        "loc cooking shelves",
-        "loc wardrobe",
-        "loc broom"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msve1zqn-2o6rpf",
-      "createdAt": "2026-08-16T05:52:54.575Z",
-      "tick": 7159,
-      "runNumber": 85,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 0.86.",
-      "importance": 1.86,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msve28zu-o8hhr5",
       "createdAt": "2026-08-16T05:53:06.570Z",
@@ -8643,6 +8598,51 @@
       "location": {
         "x": 3086,
         "z": 3241,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvfkcc9-ju2ce9",
+      "createdAt": "2026-08-16T06:35:10.329Z",
+      "tick": 76,
+      "runNumber": 86,
+      "kind": "episode",
+      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3084,3236 → 3092,3243; new: npc:Diango, npc:Aggie, loc:Oak, loc:Bench, loc:Shelves, loc:Cooking shelves. Reward 1.51.",
+      "importance": 1.46,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "bank",
+        "draynor",
+        "repository coordinate",
+        "npc diango",
+        "npc aggie",
+        "loc oak",
+        "loc bench",
+        "loc shelves",
+        "loc cooking shelves"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvfkcc9-j7fr9n",
+      "createdAt": "2026-08-16T06:35:10.329Z",
+      "tick": 76,
+      "runNumber": 86,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 15 similar samples with average reward 1.71.",
+      "importance": 2.71,
+      "tags": [
+        "navigation skill",
+        "skill travel draynor bank"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3243,
         "level": 0
       }
     }
@@ -18526,14 +18526,14 @@
     },
     "area=385:404:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=explore,navigation-skill": {
       "skill:travel:draynor-bank": {
-        "n": 14,
-        "avgReward": 1.7203,
-        "positive": 14,
+        "n": 15,
+        "avgReward": 1.7063,
+        "positive": 15,
         "negative": 0,
-        "lastReward": 0.8,
-        "lastAt": "2026-08-16T06:26:46.535Z",
-        "exampleGoal": "Progress through navigation-skill",
-        "exampleReason": "I'm moving to the Draynor Bank to verify my location and gather some experience points. This action will help me stay on track with my progress and ensure I'm in the right place to"
+        "lastReward": 1.51,
+        "lastAt": "2026-08-16T06:35:10.329Z",
+        "exampleGoal": "Attack the nearest enemy in the vicinity to gain combat experience and verify XP or kill progress.",
+        "exampleReason": "I need to verify my location and reach the nearest enemy in the vicinity to gain combat experience and verify progress."
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,explore,navigation-skill": {
@@ -19570,8 +19570,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-16T06:31:48.157Z",
-      "encounters": 4435,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 4436,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -20437,8 +20437,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 4772,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 4773,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -20885,8 +20885,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 2404,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 2405,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -22314,8 +22314,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 2174,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 2175,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -22430,8 +22430,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 2242,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 2243,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -23090,8 +23090,8 @@
     "s0up": {
       "name": "S0up",
       "firstSeenAt": "2026-08-15T23:50:05.514Z",
-      "lastSeenAt": "2026-08-16T06:31:48.157Z",
-      "encounters": 894,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 895,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -24064,8 +24064,8 @@
     "xbfr5x1f0": {
       "name": "Xbfr5x1f0",
       "firstSeenAt": "2026-08-16T00:54:41.255Z",
-      "lastSeenAt": "2026-08-16T06:31:48.157Z",
-      "encounters": 428,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 429,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -24548,8 +24548,8 @@
     "hestia": {
       "name": "Hestia",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 331,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 332,
       "combatLevel": 59,
       "trust": 0,
       "stance": "unknown",
@@ -24645,8 +24645,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 177,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 178,
       "combatLevel": 71,
       "trust": 0,
       "stance": "unknown",
@@ -24666,8 +24666,8 @@
     "ares": {
       "name": "Ares",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 186,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 187,
       "combatLevel": 21,
       "trust": 0,
       "stance": "unknown",
@@ -24692,8 +24692,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 328,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 329,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -24905,8 +24905,8 @@
     "foodprobe1": {
       "name": "Foodprobe1",
       "firstSeenAt": "2026-08-16T03:14:46.597Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 452,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 453,
       "combatLevel": 17,
       "trust": 0,
       "stance": "unknown",
@@ -26386,8 +26386,8 @@
     "north": {
       "name": "North",
       "firstSeenAt": "2026-08-16T05:09:15.021Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 232,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 233,
       "combatLevel": 42,
       "trust": 0,
       "stance": "unknown",
@@ -26416,8 +26416,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T06:31:38.274Z",
-      "encounters": 67,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 68,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -26468,8 +26468,8 @@
     "earldemo": {
       "name": "Earldemo",
       "firstSeenAt": "2026-08-16T06:25:11.148Z",
-      "lastSeenAt": "2026-08-16T06:31:48.157Z",
-      "encounters": 30,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 31,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -26498,8 +26498,8 @@
     "sardine": {
       "name": "Sardine",
       "firstSeenAt": "2026-08-16T06:32:03.038Z",
-      "lastSeenAt": "2026-08-16T06:32:03.038Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "encounters": 2,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -26576,12 +26576,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3087,
-      "z": 3235,
+      "x": 3084,
+      "z": 3236,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-16T06:31:48.157Z",
-      "visits": 1658,
+      "lastSeenAt": "2026-08-16T06:34:47.915Z",
+      "visits": 1659,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -42085,18 +42085,6 @@
   },
   "discoveries": [
     {
-      "id": "place:bench:193:203:0",
-      "at": "2026-08-16T05:40:22.490Z",
-      "kind": "place",
-      "text": "Bench observed near 3099, 3250, level 0.",
-      "location": {
-        "x": 3099,
-        "z": 3250,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "route:3099:3250:3109:3243:0",
       "at": "2026-08-16T05:40:35.771Z",
       "kind": "route",
@@ -45697,7 +45685,7 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T06:32:17.253Z",
+  "updatedAt": "2026-08-16T06:35:10.330Z",
   "activePlan": {
     "objective": "Attack an appropriate nearby enemy to gain combat experience and verify progress, then proceed to the next non-fishing skill objective.",
     "focus": "Attack the nearest enemy in the vicinity to gain combat experience and verify XP or kill progress.",
