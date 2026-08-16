@@ -65,6 +65,8 @@ let controlSha:string|null=null;
 let teacherProbeInFlight=false;
 let lastTeacherProbeTick=-9999;
 let decisionLease=0;
+let decisionStartedTick=-1;
+let actionStartedTick=-1;
 let decisionWatchdog:ReturnType<typeof setTimeout>|null=null;
 
 const brain = new SolAgentBrain({
@@ -236,7 +238,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     opFeedback:s?.opFeedback??{opRejectedCount:0},sessionEnd,
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
-    currentAction,currentGoal,currentWhy,thinking:decisionInFlight,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
+    currentAction,currentGoal,currentWhy,thinking:decisionInFlight||actionAwaitingOutcome,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
     lessons:(agent.recentMemories||[]).map((m:any)=>m.text),economyResolution,obligationExecutor:obligationExecutor.status(),progression:currentProgression,durableState,agent,controller:controllerRegistry.status,body:persistentBody.envelope
   };
 };
@@ -546,6 +548,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   brain.beginExperience(choice,candidate,state,tick);
   obligationExecutor.begin(action,tick);
   actionAwaitingOutcome=true;
+  actionStartedTick=tick;
   if(candidate.category==='bank'&&action.type==='interactLoc'){
     candidate.action.executionResult={success:true,pending:true};
     void (async()=>{
@@ -651,10 +654,12 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   const startedLife=stateAtStart.player?.lifeId;
   const lease=++decisionLease;
   decisionInFlight=true;
+  decisionStartedTick=startedTick;
   if(decisionWatchdog)clearTimeout(decisionWatchdog);
   decisionWatchdog=setTimeout(()=>{
     if(lease!==decisionLease||!decisionInFlight)return;
     decisionInFlight=false;
+    decisionStartedTick=-1;
     nextDecisionTick=tick+1;
     currentGoal='Recover stalled cognition';
     currentWhy='The controller exceeded its body-level lease; discard the stale decision and resume with the deterministic safety path.';
@@ -668,6 +673,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     if(lease!==decisionLease){void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,reason:'body watchdog already released the decision lease'});return;}
     if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;
     decisionInFlight=false;
+    decisionStartedTick=-1;
     const latest=lastState;
     if(!latest?.player){nextDecisionTick=tick+2;return;}
     if(latest.player.lifeId!==startedLife||lastReflexTick>startedTick){
@@ -696,6 +702,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   }).catch(err=>{
     if(lease===decisionLease){if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;}
     decisionInFlight=false;
+    decisionStartedTick=-1;
     currentGoal='Recover reasoning loop';
     currentWhy=`Agent decision failed: ${String(err).slice(0,180)}`;
     void log('AGENT_DECISION_ERROR',String(err));
@@ -709,6 +716,9 @@ client.setOnGameTickCallback(()=>{
   tick++;
   try{
     const state=client.collectBotState(tick) as BotWorldState|null;
+    if(decisionInFlight&&decisionStartedTick>=0&&tick-decisionStartedTick>35){const stalledStart=decisionStartedTick;decisionInFlight=false;decisionStartedTick=-1;decisionLease++;nextDecisionTick=tick+1;currentGoal='Recover stalled cognition';currentWhy='Tick watchdog released a decision that exceeded the body lease.';void log('AGENT_DECISION_TICK_WATCHDOG',{tick,startedTick:stalledStart,timeoutTicks:35});}
+    if(actionAwaitingOutcome&&actionStartedTick>=0&&tick-actionStartedTick>35&&(!procedureInFlight||tick-actionStartedTick>120)){const actionStart=actionStartedTick;const procedure=procedureInFlight?.label||null;procedureInFlight=null;const aborted=brain.abortExperience(`body action lease exceeded ${procedure?'120':'35'} ticks after action at tick ${actionStart}`);actionAwaitingOutcome=false;actionStartedTick=-1;nextDecisionTick=tick+1;currentGoal='Recover stalled action';currentWhy='Tick watchdog discarded a pending action outcome and quarantined the stale action.';void log('AGENT_ACTION_TICK_WATCHDOG',{tick,aborted,procedure,startedTick:actionStart,timeoutTicks:procedure?'120':'35'});}
+
     if(!state?.player){
       currentGoal='Reconnect to world state';currentWhy='No player state is available; decisions are held until perception returns.';
       refreshSnapshot(state);return;
@@ -724,6 +734,7 @@ client.setOnGameTickCallback(()=>{
     const outcome=procedureInFlight?null:brain.maybeFinishExperience(state,tick);
     if(outcome){
       actionAwaitingOutcome=false;
+      actionStartedTick=-1;
       const verification=obligationExecutor.verify({type:outcome.actionType},{inventoryChanged:outcome.inventoryChanged,coinDelta:outcome.coinGain,moved:outcome.moved,success:!outcome.rejected},tick);
       if(outcome.xpGain>0||outcome.inventoryChanged||outcome.coinGain!==0){
         progressionDirector.recordVerifiedProgress();

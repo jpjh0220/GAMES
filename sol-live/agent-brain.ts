@@ -681,6 +681,7 @@ export class SolAgentBrain {
   }
 
   beginExperience(choice:AgentChoice,candidate:AgentCandidate,state:BotWorldState,tick:number){this.pending={choice,candidate,startTick:tick,settleTick:tick+Math.max(2,candidate.settleTicks||6),before:this.metrics(state)};}
+  abortExperience(reason:string){if(!this.pending)return false;const fingerprint=this.pending.candidate.fingerprint;this.blockedFingerprints=[...new Set([...this.blockedFingerprints,fingerprint])].slice(-80);this.pending=null;this.lastTeacherError=`Experience aborted: ${reason}`;this.markDirty();console.warn('AGENT_EXPERIENCE_ABORT',JSON.stringify({fingerprint,reason}));return true;}
 
   maybeFinishExperience(state:BotWorldState,tick:number):AgentOutcome|null{
     if(!this.pending||tick<this.pending.settleTick)return null;
