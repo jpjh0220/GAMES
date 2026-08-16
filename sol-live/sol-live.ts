@@ -637,15 +637,17 @@ const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
   const bankOpen=!!state.bank?.isOpen;
   const bankNearby=(state.nearbyNpcs||[]).some((n:any)=>n.reachable!==false&&/banker|bank/i.test(String(n.name||''))&&(n.optionsWithIndex||[]).some((o:any)=>/bank|deposit/i.test(String(o.text||''))))||(state.nearbyLocs||[]).some((l:any)=>l.reachable!==false&&/bank/i.test(String(l.name||'')));
   const shopOpen=!!state.shop?.isOpen;
+  const usefulPickup=(c:AgentCandidate)=>c.category==='pickup'&&/(coins?|pickaxe|axe|fishing net|fishing rod|tinderbox|food|shrimp|anchov|rune|weapon|armou?r)/i.test(String(c.label||''));
   const safe=candidates.filter(c=>{
-    if(['bank','shop','pickup','modal','dialog'].includes(c.category))return true;
+    if(c.category==='pickup')return usefulPickup(c);
+    if(['bank','shop','modal','dialog'].includes(c.category))return true;
     if(c.category==='economy')return true;
     if(c.action?.type==='worldSkill'&&/travel:draynor-bank/.test(c.fingerprint))return true;
     if(c.action?.type==='interactLoc'&&/bank/i.test(String(c.label)))return true;
     return false;
   });
   if(safe.length>0&&(bankOpen||bankNearby||shopOpen||safe.some(c=>c.category==='pickup')))return safe;
-  return candidates.filter(c=>c.category==='navigation-skill'&&/bank/i.test(c.label)||c.category==='economy'||c.category==='pickup'||c.category==='bank'||c.category==='shop'||c.category==='modal');
+  return candidates.filter(c=>c.category==='navigation-skill'&&/bank/i.test(c.label)||c.category==='economy'||(c.category==='pickup'&&usefulPickup(c))||c.category==='bank'||c.category==='shop'||c.category==='modal');
 };
 
 const launchDecision=(stateAtStart:BotWorldState)=>{
