@@ -249,7 +249,21 @@ export class SolAgentBrain {
       const dir=join(root,'learnings');
       for(const name of await readdir(dir)){if(name.endsWith('.md'))files.push({path:join(dir,name),source:`learnings/${name}`});}
     }catch(err){console.warn('RS_KNOWLEDGE_LEARNINGS_FAILED',String(err));}
-    for(const [rel,path] of [['README.md',join(root,'README.md')],['sdk/API.md',join(root,'sdk','API.md')]] as const)files.push({path,source:rel});
+    for(const [rel,path] of [
+      ['README.md',join(root,'README.md')],
+      ['sdk/API.md',join(root,'sdk','API.md')],
+      ['sdk/README.md',join(root,'sdk','README.md')],
+      ['mcp/README.md',join(root,'mcp','README.md')],
+      ['server/PATCHES.md',join(root,'server','PATCHES.md')],
+      ['bots/_template/script.ts',join(root,'bots','_template','script.ts')]
+    ] as const)files.push({path,source:rel});
+    const wikiPattern=/(bank|draynor|lumbridge|tree|wood|fish|fishing|goblin|food|axe|pickaxe|net|rod|door|manor|general-store|shop|combat|mine|ore|quest)/i;
+    for(const category of ['npcs','items','shops','quests','skills']){
+      try{
+        const wikiDir=join(root,'wiki',category);
+        for(const name of await readdir(wikiDir)){if(name.endsWith('.md')&&wikiPattern.test(name))files.push({path:join(wikiDir,name),source:`wiki/${category}/${name}`});}
+      }catch(err){console.warn('RS_KNOWLEDGE_WIKI_FAILED',category,String(err));}
+    }
     const segments:{source:string;text:string}[]=[];
     for(const file of files){
       try{
