@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 23,
-  "committedTick": 100,
+  "stateGeneration": 41,
+  "committedTick": 150,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3092,
-    "z": 3248,
+    "x": 3086,
+    "z": 3241,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Attack Dark wizard (level 7, distance 10) to satisfy the current objective and verify the resulting world-state change."
+    "reason": "Selected Travel to Draynor Bank at 3092,3243 using verified waypoint navigation to satisfy the current objective and verify the resulting world-state change."
   },
   "objective": {
     "id": "boot",
@@ -29,9 +29,16 @@
     "signature": "0:1351:1|1:590:1|2:313:18|5:592:1|6:995:73|7:2146:1|8:562:5|10:561:4|15:303:1|21:303:1|22:303:1|25:1265:1|27:303:1",
     "freeSlots": 15,
     "coins": 73,
-    "updatedTick": 100
+    "updatedTick": 150
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "open-ended-play:111",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 111,
+      "evidence": "+265 XP"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T23:02:11.056Z"
+  "updatedAt": "2026-08-16T23:02:28.161Z"
 }\n
