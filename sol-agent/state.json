@@ -6,79 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7579,
-    "teacherChoices": 7579,
+    "totalChoices": 7582,
+    "teacherChoices": 7582,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8163,
-    "totalReward": 3760.675,
-    "saves": 873,
+    "completedExperiences": 8164,
+    "totalReward": 3760.755,
+    "saves": 874,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 517,
-    "strategistFailures": 13
+    "strategistFailures": 14
   },
   "memories": [
-    {
-      "id": "msvmwjxa-79m1om",
-      "createdAt": "2026-08-16T10:00:37.342Z",
-      "tick": 404,
-      "runNumber": 122,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 3 similar samples with average reward 0.91.",
-      "importance": 1.91,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvmws6f-t7udz9",
-      "createdAt": "2026-08-16T10:00:48.039Z",
-      "tick": 440,
-      "runNumber": 122,
-      "kind": "episode",
-      "text": "AI motor: Bank at Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242; execution rejected or failed. Reward -1.193.",
-      "importance": 1.3,
-      "tags": [
-        "bank",
-        "open",
-        "bank booth",
-        "use quickly",
-        "agent xbfr5x1f0",
-        "agent duncan",
-        "agent gurney"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvmxc9y-g6s2cs",
-      "createdAt": "2026-08-16T10:01:14.086Z",
-      "tick": 513,
-      "runNumber": 122,
-      "kind": "relationship",
-      "text": "Daytrader said: \"@Henryatkins can you confirm when you are nearby for the exact reserved bundle?\". Current stance cooperative, trust 1.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "daytrader",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3089,
-        "z": 3247,
-        "level": 0
-      }
-    },
     {
       "id": "msvmxlsk-ct0jig",
       "createdAt": "2026-08-16T10:01:26.420Z",
@@ -8481,6 +8421,67 @@
       "location": {
         "x": 3148,
         "z": 3211,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1laeh-fkikgz",
+      "createdAt": "2026-08-16T16:51:46.025Z",
+      "tick": 141,
+      "runNumber": 135,
+      "kind": "relationship",
+      "text": "Conductor said: \"Trade offers welcome - verified value only\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "conductor",
+        "unknown"
+      ],
+      "location": {
+        "x": 3148,
+        "z": 3211,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1laei-18pd4e",
+      "createdAt": "2026-08-16T16:51:46.026Z",
+      "tick": 1116,
+      "runNumber": 135,
+      "kind": "relationship",
+      "text": "Daytrader said: \"@Gtking what food and quantity do you need?\". Current stance cooperative, trust 1.00.",
+      "importance": 1.4,
+      "tags": [
+        "social",
+        "daytrader",
+        "cooperative",
+        "potential help"
+      ],
+      "location": {
+        "x": 3148,
+        "z": 3211,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1lgfa-ryunvm",
+      "createdAt": "2026-08-16T16:51:53.830Z",
+      "tick": 1285,
+      "runNumber": 135,
+      "kind": "lesson",
+      "text": "Item-purpose lesson: Pick up Raw bear meat (distance 15) produced moved 3148,3211 → 3144,3216 with reward 0.08. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
+      "importance": 1.08,
+      "tags": [
+        "item purpose",
+        "pickup",
+        "item",
+        "resource",
+        "raw bear meat",
+        "valuable drop"
+      ],
+      "location": {
+        "x": 3144,
+        "z": 3216,
         "level": 0
       }
     }
@@ -20928,6 +20929,16 @@
         "lastAt": "2026-08-16T14:02:12.752Z",
         "exampleGoal": "Identify safe fishing spots based on coordinates and spot types.",
         "exampleReason": "You have 15 Arrow shaft items available."
+      },
+      "pickup:raw bear meat": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T16:51:53.830Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up Raw bear meat (distance 15)"
       }
     },
     "area=393:402:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -23674,16 +23685,15 @@
     "daytrader": {
       "name": "Daytrader",
       "firstSeenAt": "2026-08-15T19:55:19.652Z",
-      "lastSeenAt": "2026-08-16T12:46:08.061Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
       "encounters": 5,
       "combatLevel": 38,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 257,
-      "cooperation": 68,
+      "conversations": 258,
+      "cooperation": 69,
       "suspicion": 0,
       "facts": [
-        "Selling iron ore - message me an offer!",
         "@Ge i don't drop *********** one exact supported item and quantity for a safe atomic trade.",
         "@Gtironmn what exact item and quantity are you looking to trade for iron ore?",
         "@Gtironmn what exact quantity of iron ore are you offering, and what specific goods do you need?",
@@ -23702,10 +23712,10 @@
         "Anyone interested in buying iron ore? also open to trades.",
         "@Henryatkins thanks, that net source sounds useful. I ll keep it in mind for the fishing route after the current iron stock cycle.",
         "@Gtarb what exact coin price and atomic trade terms do you have for one small fishing net?",
-        "@Henryatkins good catch, friend. I am keeping the four pieces reserved and will only use a safe atomic trade."
+        "@Henryatkins good catch, friend. I am keeping the four pieces reserved and will only use a safe atomic trade.",
+        "@Gtking what food and quantity do you need?"
       ],
       "questions": [
-        "@Ge what exact armor piece do you need? i do not have a trimming service.",
         "@Ge what exact item and quantity do you want? i do not have rune gear.",
         "@Ge what exact item and quantity do you need?",
         "@Gtironmn what exact item and quantity are you looking to trade for iron ore?",
@@ -23716,14 +23726,10 @@
         "Anyone know the safest way to obtain a small fishing net near draynor?",
         "@Henryatkins thanks. Is one small fishing net available for an atomic trade?",
         "Anyone interested in buying iron ore? also open to trades.",
-        "@Gtarb what exact coin price and atomic trade terms do you have for one small fishing net?"
+        "@Gtarb what exact coin price and atomic trade terms do you have for one small fishing net?",
+        "@Gtking what food and quantity do you need?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T10:29:28.091Z",
-          "direction": "incoming",
-          "text": "@Henryatkins the four requested pieces remain reserved; i ll authorize the atomic trade once you re confirmed nearby."
-        },
         {
           "at": "2026-08-16T10:33:34.894Z",
           "direction": "incoming",
@@ -23818,6 +23824,11 @@
           "at": "2026-08-16T12:46:08.061Z",
           "direction": "incoming",
           "text": "@Henryatkins good catch, friend. I am keeping the four pieces reserved and will only use a safe atomic trade."
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "@Gtking what food and quantity do you need?"
         }
       ]
     },
@@ -26031,9 +26042,9 @@
     "booosrs": {
       "name": "Booosrs",
       "firstSeenAt": "2026-08-16T01:16:13.193Z",
-      "lastSeenAt": "2026-08-16T01:40:05.376Z",
-      "encounters": 10,
-      "combatLevel": 5,
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "encounters": 11,
+      "combatLevel": 18,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -27393,11 +27404,11 @@
     "gtpick": {
       "name": "Gtpick",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T14:01:47.311Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 86,
+      "conversations": 87,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -27407,11 +27418,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:13:12.735Z",
-          "direction": "incoming",
-          "text": "Pickswing heading to mine"
-        },
         {
           "at": "2026-08-16T12:13:12.735Z",
           "direction": "incoming",
@@ -27506,17 +27512,22 @@
           "at": "2026-08-16T14:01:47.311Z",
           "direction": "incoming",
           "text": "Pickswing delivering ores"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Pickswing delivering ores"
         }
       ]
     },
     "gttimber": {
       "name": "Gttimber",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T14:01:32.548Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
       "encounters": 1,
       "trust": 0.24,
       "stance": "friendly",
-      "conversations": 110,
+      "conversations": 112,
       "cooperation": 2,
       "suspicion": 0,
       "facts": [
@@ -27526,16 +27537,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:46:08.061Z",
-          "direction": "incoming",
-          "text": "Timber delivering logs"
-        },
-        {
-          "at": "2026-08-16T12:46:08.061Z",
-          "direction": "incoming",
-          "text": "Timber delivering logs"
-        },
         {
           "at": "2026-08-16T12:46:08.061Z",
           "direction": "incoming",
@@ -27623,6 +27624,16 @@
         },
         {
           "at": "2026-08-16T14:01:32.548Z",
+          "direction": "incoming",
+          "text": "Timber delivering logs"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Timber delivering logs"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
           "direction": "incoming",
           "text": "Timber delivering logs"
         }
@@ -27978,11 +27989,11 @@
     "gthawker": {
       "name": "Gthawker",
       "firstSeenAt": "2026-08-16T04:09:46.143Z",
-      "lastSeenAt": "2026-08-16T14:02:24.319Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 57,
+      "conversations": 58,
       "cooperation": 17,
       "suspicion": 0,
       "facts": [
@@ -27999,11 +28010,6 @@
         "Died and lost your tools? we have them. Goods or coins accepted"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T10:42:02.613Z",
-          "direction": "incoming",
-          "text": "Trading cowhides and bones -- want any ore logs raw fish"
-        },
         {
           "at": "2026-08-16T10:49:14.328Z",
           "direction": "incoming",
@@ -28098,6 +28104,11 @@
           "at": "2026-08-16T14:02:24.319Z",
           "direction": "incoming",
           "text": "Tool desk: axes picks hammers tinderboxes nets -- trade anything"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Died and lost your tools? we have them. Goods or coins accepted"
         }
       ]
     },
@@ -28361,12 +28372,12 @@
     "gtarb": {
       "name": "Gtarb",
       "firstSeenAt": "2026-08-16T04:13:38.241Z",
-      "lastSeenAt": "2026-08-16T16:45:38.140Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 64,
-      "cooperation": 22,
+      "conversations": 65,
+      "cooperation": 23,
       "suspicion": 0,
       "facts": [
         "Ammo merchant setting up shop",
@@ -28382,11 +28393,6 @@
         "Need a net? trade me anything for it"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T11:14:41.555Z",
-          "direction": "incoming",
-          "text": "Ammo merchant: arrows and bows for your spare ores logs fish"
-        },
         {
           "at": "2026-08-16T11:40:42.225Z",
           "direction": "incoming",
@@ -28481,6 +28487,11 @@
           "at": "2026-08-16T16:45:38.140Z",
           "direction": "incoming",
           "text": "Small fishing nets available. The shop restocks slow, i dont"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Need a net? trade me anything for it"
         }
       ]
     },
@@ -30049,6 +30060,33 @@
           "text": "Thinking the user wants me to navigate to lumbridge and give 10% of my fish to"
         }
       ]
+    },
+    "conductor": {
+      "name": "Conductor",
+      "firstSeenAt": "2026-08-16T16:51:46.025Z",
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "encounters": 1,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 2,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [
+        "Trade offers welcome - verified value only"
+      ],
+      "questions": [],
+      "lastMessages": [
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Trade offers welcome - verified value only"
+        },
+        {
+          "at": "2026-08-16T16:51:46.025Z",
+          "direction": "incoming",
+          "text": "Trade offers welcome - verified value only"
+        }
+      ]
     }
   },
   "places": {
@@ -30674,11 +30712,11 @@
     "196:200:0": {
       "key": "196:200:0",
       "x": 3148,
-      "z": 3210,
+      "z": 3211,
       "level": 0,
       "firstSeenAt": "2026-08-16T13:01:15.291Z",
-      "lastSeenAt": "2026-08-16T16:45:47.775Z",
-      "visits": 12,
+      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "visits": 14,
       "npcs": [
         "Butterfly",
         "Warrior",
@@ -48750,18 +48788,6 @@
   },
   "discoveries": [
     {
-      "id": "place:wardrobe:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Wardrobe observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:standing torch:193:203:0",
       "at": "2026-08-16T10:43:41.678Z",
       "kind": "place",
@@ -52362,7 +52388,7 @@
       "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T16:45:55.908Z",
+  "updatedAt": "2026-08-16T16:51:53.831Z",
   "activePlan": {
     "objective": "Shop at the Gerrants' Fishy Business",
     "focus": "Approach the Gerrants' Fishy Business",
