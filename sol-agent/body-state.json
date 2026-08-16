@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 60,
-  "committedTick": 270,
+  "stateGeneration": 72,
+  "committedTick": 321,
   "identity": {
     "name": "Sol5"
   },
@@ -11,15 +11,15 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I picked up Air rune (distance 0) at the goblin guard encounter."
+    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
   },
   "objective": {
     "id": "boot",
-    "label": "Identify and record drop locations",
+    "label": "Recover reasoning loop",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|2:556:18|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
     "freeSlots": 15,
     "coins": 208,
-    "updatedTick": 270
+    "updatedTick": 321
   },
   "milestones": [
     {
@@ -46,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:30:36.156Z"
+  "updatedAt": "2026-08-16T20:30:51.291Z"
 }\n
