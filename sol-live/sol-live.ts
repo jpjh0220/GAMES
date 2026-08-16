@@ -784,7 +784,7 @@ client.setOnGameTickCallback(()=>{
   tick++;
   try{
     const state=client.collectBotState(tick) as BotWorldState|null;
-    if(decisionInFlight&&decisionStartedTick>=0&&tick-decisionStartedTick>35){const stalledStart=decisionStartedTick;decisionInFlight=false;decisionStartedTick=-1;decisionLease++;nextDecisionTick=tick+1;currentGoal='Recover stalled cognition';currentWhy='Tick watchdog released a decision that exceeded the body lease.';void log('AGENT_DECISION_TICK_WATCHDOG',{tick,startedTick:stalledStart,timeoutTicks:35});}
+    if(decisionInFlight&&decisionStartedTick>=0&&tick-decisionStartedTick>75){const stalledStart=decisionStartedTick;decisionInFlight=false;decisionStartedTick=-1;decisionLease++;nextDecisionTick=tick+1;currentGoal='Recover stalled cognition';currentWhy='Tick watchdog released a decision that exceeded the body lease.';void log('AGENT_DECISION_TICK_WATCHDOG',{tick,startedTick:stalledStart,timeoutTicks:75});}
     if(actionAwaitingOutcome&&actionStartedTick>=0&&tick-actionStartedTick>35&&(!procedureInFlight||tick-actionStartedTick>120)){const actionStart=actionStartedTick;const procedure=procedureInFlight?.label||null;procedureInFlight=null;const aborted=brain.abortExperience(`body action lease exceeded ${procedure?'120':'35'} ticks after action at tick ${actionStart}`);actionAwaitingOutcome=false;actionStartedTick=-1;nextDecisionTick=tick+1;currentGoal='Recover stalled action';currentWhy='Tick watchdog discarded a pending action outcome and quarantined the stale action.';void log('AGENT_ACTION_TICK_WATCHDOG',{tick,aborted,procedure,startedTick:actionStart,timeoutTicks:procedure?'120':'35'});}
 
     if(!state?.player){
