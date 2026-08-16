@@ -111,9 +111,10 @@ type Metrics = {
 type Experience = {choice:AgentChoice;candidate:AgentCandidate;startTick:number;settleTick:number;before:Metrics};
 
 export type AgentOutcome = {
-  tick:number;reward:number;summary:string;choice:AgentChoice;candidateLabel:string;
+  tick:number;reward:number;summary:string;choice:AgentChoice;candidateLabel:string;category:string;actionType:string;
   xpGain:number;hpDelta:number;moved:boolean;kills:number;damageDealt:number;
   damageTaken:number;newThings:string[];rejected:boolean;inventoryChanged:boolean;
+  inventoryGain:number;coinGain:number;noProgress:boolean;
   equipmentChanged:boolean;styleChanged:boolean;executionFailed:boolean;
 };
 
@@ -729,7 +730,7 @@ export class SolAgentBrain {
     const noProgress=!moved&&xpGain===0&&kills===0&&damageDealt===0&&coinGain===0&&inventoryGain===0&&!(configures&&(equipmentChanged||styleChanged))&&!unlocked.length;if(noProgress)reward-=exp.candidate.category==='wait'?.15:.6;reward=Number(clamp(reward,-10,10).toFixed(3));
     const newThings=[...newPlayers.map(x=>`agent:${x}`),...newNpc.slice(0,4).map(x=>`npc:${x}`),...newLocs.slice(0,4).map(x=>`loc:${x}`)];
     const parts=[xpGain?`+${xpGain} XP`:'',levelGain?`+${levelGain} level(s)`:'',damageDealt?`${damageDealt} damage dealt`:'',damageTaken?`${damageTaken} damage taken`:'',kills?`${kills} kill(s)`:'',moved?`moved ${exp.before.x},${exp.before.z} → ${after.x},${after.z}`:'',inventoryChanged?'inventory changed':'',equipmentChanged?'equipment changed':'',styleChanged?'combat style changed':'',coinGain?`${coinGain>0?'+':''}${coinGain} coins`:'',rejected?'execution rejected or failed':'',executionMessage?`detail: ${executionMessage}`:'',died?'died/respawned':'',unlocked.length?`unlocked: ${unlocked.join(', ')}`:'',discovers&&newThings.length?`new: ${newThings.slice(0,6).join(', ')}`:''].filter(Boolean);
-    const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected,inventoryChanged,equipmentChanged,styleChanged,executionFailed};
+    const outcome:AgentOutcome={tick,reward,summary:parts.length?parts.join('; '):'No measurable change.',choice:exp.choice,candidateLabel:exp.candidate.label,category:exp.candidate.category,actionType:String(exp.candidate.action?.type||'unknown'),xpGain,hpDelta,moved,kills,damageDealt,damageTaken,newThings,rejected,inventoryChanged,inventoryGain,coinGain,noProgress, equipmentChanged,styleChanged,executionFailed};
     // FAILURE ANALYSIS: if action failed, analyze why and form subgoal if recoverable
     if(rejected&&!outcome.executionFailed){
       const failureReason=this.extractFailureReason(state,exp,outcome);

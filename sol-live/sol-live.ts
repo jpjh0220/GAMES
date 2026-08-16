@@ -6,6 +6,8 @@ import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
 import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
 import { ControllerRegistry, PersistentBodyState, createFallbackController } from './controller-runtime.js';
+import { PersistentStateStore, type PersistentState } from './persistent-state.js';
+import { ObligationExecutor } from './obligation-executor.js';
 
 const username = process.env.SOL_USER!;
 const password = process.env.SOL_PASS!;
@@ -31,6 +33,8 @@ type FeedEvent = {
 type TrailPoint = { x:number; z:number; level:number; tick:number };
 type OutgoingChat = { id:string; tick:number; at:string; text:string; target:string|null; replyTo:string|null; status:'submitted' };
 type ProcedureState = { skill:string; label:string; status:'running'|'completed'|'failed'; step:string; startedTick:number; finishedTick?:number; start:{x:number;z:number;level:number}; end?:{x:number;z:number;level:number}; primitiveActions:number; message?:string };
+type EconomyResolution = { phase:'idle'|'capacity'|'loot'|'transaction'; noProgress:number; lastAction:string|null; lastProgressTick:number; blockedUntil:number; reason:string };
+
 
 let tick = 0;
 let actions = 0;
@@ -45,6 +49,8 @@ let lastProcedureRun: ProcedureState | null = null;
 let currentAction: FeedEvent | null = null;
 let currentGoal = 'Initialize persistent agent';
 let currentWhy = 'Load memory, perception, learned policy, and local teacher model.';
+let economyResolution:EconomyResolution={phase:'idle',noProgress:0,lastAction:null,lastProgressTick:0,blockedUntil:0,reason:'No economy obligation is active.'};
+let lastDurableFingerprint='';
 const actionHistory: FeedEvent[] = [];
 const movementTrail: TrailPoint[] = [];
 const outgoingChat: OutgoingChat[] = [];
@@ -69,8 +75,11 @@ const brain = new SolAgentBrain({
   runNumber
 });
 await brain.init();
+const durableStateStore=await PersistentStateStore.open(process.env.SOL_STATE_PATH||'./sol-state.json',username);
+let durableState:PersistentState=durableStateStore.snapshot();
 const persistentBody=new PersistentBodyState(username,'llm-brain@1.0.0');
 const controllerRegistry=new ControllerRegistry(createFallbackController());
+const obligationExecutor=new ObligationExecutor();
 controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candidates)=>brain.decide(state,candidates)});
 controllerRegistry.stage('llm-brain','1.0.0');
 controllerRegistry.activateAtTick(0);
@@ -128,7 +137,7 @@ let snapshot:any = {
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
-  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
+  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,economyResolution,obligationExecutor:obligationExecutor.status(),durableState,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
 };
 
 const publicSnapshot=()=>({
@@ -140,7 +149,7 @@ const publicSnapshot=()=>({
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
-  controller:snapshot.controller,body:snapshot.body,
+  controller:snapshot.controller,body:snapshot.body,economyResolution:snapshot.economyResolution,obligationExecutor:snapshot.obligationExecutor,durableState:snapshot.durableState,
   viewerAccess:'summary',syncRevision:snapshot.revision??snapshot.tick??0
 });
 
@@ -172,7 +181,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
     currentAction,currentGoal,currentWhy,thinking:decisionInFlight,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
-    lessons:(agent.recentMemories||[]).map((m:any)=>m.text),agent,controller:controllerRegistry.status,body:persistentBody.envelope
+    lessons:(agent.recentMemories||[]).map((m:any)=>m.text),economyResolution,obligationExecutor:obligationExecutor.status(),durableState,agent,controller:controllerRegistry.status,body:persistentBody.envelope
   };
 };
 
@@ -215,6 +224,9 @@ executor.setScanProvider(collector);
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slug=(s:string)=>norm(s).replace(/\s+/g,'-').slice(0,24)||'x';
+const isCurrency=(name:string)=>/^coins?$|^coin pouch$|^gp$/i.test(String(name||'').trim());
+const isCapacityPressure=(state:BotWorldState)=>Math.max(0,28-(state.inventory||[]).length)<=(brain.runtime.inventoryWarningSlots??3);
+const economyAction=(type:string)=>/^(shopSell|bankDeposit|clickDialogOption|shopBuy|bankWithdraw|closeShop|closeModal)$/.test(type);
 const position=()=>lastState?.player?{x:lastState.player.worldX,z:lastState.player.worldZ,level:lastState.player.level}:null;
 const tileDistance=(a:{x:number;z:number},b:{x:number;z:number})=>Math.hypot(a.x-b.x,a.z-b.z);
 const waitTicks=async(count:number)=>{const start=tick,deadline=Date.now()+Math.max(4000,count*1100);while(tick<start+count&&Date.now()<deadline)await Bun.sleep(180);};
@@ -448,6 +460,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   currentWhy=choice.reason;
   feed(choice.source==='teacher'?'AGENT_TEACHER':'AGENT_STUDENT',candidate.label,choice.reason,{source:choice.source,target:candidate.label,actionType:String(action?.type||'unknown')});
   brain.beginExperience(choice,candidate,state,tick);
+  obligationExecutor.begin(action,tick);
   actionAwaitingOutcome=true;
   if(action.type==='worldSkill'){
     candidate.action.executionResult={success:true,pending:true};
@@ -519,8 +532,12 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   if(decisionInFlight||actionAwaitingOutcome) return;
   const rawCandidates=buildCandidates(stateAtStart);
   const lootCandidates=lootGate(stateAtStart,rawCandidates);
-  const candidates=capacityGate(stateAtStart,lootCandidates);
-  if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'capacity_or_loot',before:rawCandidates.length,after:candidates.length,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),groundItems:(stateAtStart.groundItems||[]).map((g:any)=>g.name).slice(0,8)});
+  const gatedCandidates=capacityGate(stateAtStart,lootCandidates);
+  const obs={hp:stateAtStart.player?.hp||0,maxHp:stateAtStart.player?.maxHp||1,inCombat:!!stateAtStart.player?.combat?.inCombat,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),warningSlots:brain.runtime.inventoryWarningSlots??3,groundItems:(stateAtStart.groundItems||[]).map((g:any)=>({name:String(g.name||''),reachable:g.reachable,value:0})),bankOpen:!!stateAtStart.bank?.isOpen,shopOpen:!!stateAtStart.shop?.isOpen,dialogOpen:!!stateAtStart.dialog?.isOpen,interfaceOpen:!!stateAtStart.interface?.isOpen,nearbyBank:(stateAtStart.nearbyLocs||[]).some((l:any)=>/bank/i.test(String(l.name||''))),nearbyShop:(stateAtStart.nearbyNpcs||[]).some((n:any)=>/shop|merchant|diango/i.test(String(n.name||''))),actionStale:false,objectiveActive:true};
+  const legalActions=obligationExecutor.legalActions(obs,gatedCandidates.map(c=>c.action as any),tick);
+  const legalSet=new Set(legalActions);
+  const candidates=gatedCandidates.filter(c=>legalSet.has(c.action as any));
+  if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
   if(!candidates.length) return;
   const startedTick=tick;
   const startedLife=stateAtStart.player?.lifeId;
@@ -574,6 +591,8 @@ client.setOnGameTickCallback(()=>{
     const outcome=procedureInFlight?null:brain.maybeFinishExperience(state,tick);
     if(outcome){
       actionAwaitingOutcome=false;
+      const verification=obligationExecutor.verify({type:outcome.actionType},{inventoryChanged:outcome.inventoryChanged,coinDelta:outcome.coinGain,moved:outcome.moved,success:!outcome.rejected},tick);
+      if(outcome.category==='shop'||outcome.category==='bank'||outcome.category==='dialog'||outcome.category==='modal') economyResolution={...economyResolution,phase:verification.progressed?'idle':'transaction',noProgress:verification.noProgressAttempts,lastAction:outcome.actionType,lastProgressTick:verification.progressed?tick:economyResolution.lastProgressTick,blockedUntil:verification.blockedUntilTick,reason:verification.progressed?'Transaction verified.':'Transaction produced no measurable state change.'};
       feed('LEARNED_OUTCOME',outcome.summary,`Measured reward ${outcome.reward} from ${outcome.choice.source} action.`,{source:'learning',reward:outcome.reward,setCurrent:false});
       void log('AGENT_OUTCOME',{tick,reward:outcome.reward,summary:outcome.summary,source:outcome.choice.source,action:outcome.candidateLabel});
       nextDecisionTick=Math.max(nextDecisionTick,tick+1);
@@ -582,6 +601,10 @@ client.setOnGameTickCallback(()=>{
     if(tick<=3||tick%100===0) void log('OBSERVE',{tick,pos:[state.player.worldX,state.player.worldZ,state.player.level],hp:[state.player.hp,state.player.maxHp],combatLevel:state.player.combatLevel,skills:Object.fromEntries(state.skills.map(s=>[s.name,s.level])),inventory:state.inventory.map(i=>i.name),nearbyAgents:state.nearbyPlayers.map(p=>p.name),agent:brain.publicState()});
 
      persistentBody.commitTick(tick,currentGoal,`${controllerRegistry.status.activeId}@${controllerRegistry.status.activeVersion}`);
+     const freeSlots=Math.max(0,28-(state.inventory||[]).length);const coins=(state.inventory||[]).filter((i:any)=>isCurrency(i.name)).reduce((n:number,i:any)=>n+Number(i.count||0),0);const invSig=(state.inventory||[]).map((i:any)=>`${i.slot}:${i.id}:${i.count}`).join('|');
+     const obligationKind=state.player.hp<=Math.max(8,state.player.maxHp*.32)?'survival':(state.groundItems||[]).some((g:any)=>g.reachable!==false&&!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')))?'loot-resolution':isCapacityPressure(state)?(state.bank?.isOpen||state.shop?.isOpen||state.dialog?.isOpen?'transaction':'capacity-resolution'):'objective';
+     const durableFingerprint=`${tick%10===0?'checkpoint':'event'}|${obligationKind}|${state.player.worldX},${state.player.worldZ},${state.player.level}|${invSig}|${coins}|${controllerRegistry.status.activeId}@${controllerRegistry.status.activeVersion}|${currentGoal}`;
+     if(durableFingerprint!==lastDurableFingerprint){lastDurableFingerprint=durableFingerprint;void durableStateStore.commit({position:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},currentObligation:{...durableState.currentObligation,kind:obligationKind as any,reason:currentWhy},objective:{...durableState.objective,label:currentGoal},inventoryLedger:{signature:invSig,freeSlots,coins,updatedTick:tick},controller:{activeId:controllerRegistry.status.activeId,activeVersion:controllerRegistry.status.activeVersion,pendingId:controllerRegistry.status.pendingId||undefined,pendingVersion:controllerRegistry.status.pendingVersion||undefined,lastSwitchTick:controllerRegistry.status.lastSwitchTick}},tick).then(next=>{durableState=next}).catch(err=>void log('PERSISTENT_STATE_COMMIT_FAILED',String(err)));}
      if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
     refreshSnapshot(state);
   }catch(err){void log('TICK_ERROR',String(err));}
