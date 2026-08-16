@@ -369,10 +369,10 @@ export class SolAgentBrain {
   }
 
   private antiLoopCandidates(candidates:AgentCandidate[]){
-    const recent=this.recentOutcomes.slice(-10);
+    const recentOutcomes=this.recentOutcomes.slice(-10);
     const blocked=new Set<string>();
     for(const c of candidates){
-      const attempts=recent.filter(o=>o.choice.fingerprint===c.fingerprint).slice(-4);
+      const attempts=recentOutcomes.filter(o=>o.choice.fingerprint===c.fingerprint).slice(-4);
       if(attempts.length<2)continue;
       const avg=attempts.reduce((n,o)=>n+o.reward,0)/attempts.length;
       const failures=attempts.filter(o=>o.reward<0||o.rejected).length;
@@ -380,16 +380,34 @@ export class SolAgentBrain {
       const configurationOnly=attempts.some(o=>(o.equipmentChanged||o.styleChanged)&&!o.moved&&o.xpGain===0&&o.kills===0&&o.damageDealt===0);
       if(configurationOnly)blocked.add(c.fingerprint);
     }
-    const last=recent.at(-1);
+    const last=recentOutcomes.at(-1);
     if(last&&last.reward<0)blocked.add(last.choice.fingerprint);
     // Engine-stated prerequisites. Clear any that are now satisfied, then bar the rest.
     // Bar candidates the engine has already refused. Resolution of blockers
     // happens in maybeFinishExperience, which has the world state; this path
     // only reads the already-resolved blocker set.
     for(const c of candidates){if(this.prereqs.isBlocked(c.fingerprint))blocked.add(c.fingerprint);}
+
+    // Sequence-level anti-loop gating. Individual actions such as fishing,
+    // clicking a dialog, and withdrawing coins may each look legal, while their
+    // repeated combination produces no durable progress. Use persisted sequence
+    // statistics plus a short live streak to force a different category.
+    const recentFingerprints=this.recentSequence.slice(-3).map(x=>x.fingerprint);
+    for(const c of candidates){
+      const key=[...recentFingerprints.slice(-2),c.fingerprint].join(' > ');
+      const learned=this.memory.sequences[key];
+      if(learned&&learned.n>=4&&learned.avgReward<-.4)blocked.add(c.fingerprint);
+      const sameStreak=recentFingerprints.length>=2&&recentFingerprints.slice(-2).every(fp=>fp===c.fingerprint);
+      if(sameStreak)blocked.add(c.fingerprint);
+      const fishingStreak=recentFingerprints.filter(fp=>/fishing|bait|net|dialog/.test(fp)).length;
+      if(fishingStreak>=2&&/fishing|bait|net|dialog/.test(c.fingerprint))blocked.add(c.fingerprint);
+      const bankStreak=recentFingerprints.filter(fp=>fp.startsWith('bank:')).length;
+      if(bankStreak>=2&&c.fingerprint.startsWith('bank:'))blocked.add(c.fingerprint);
+    }
     const filtered=candidates.filter(c=>!blocked.has(c.fingerprint));
+    const escape=filtered.filter(c=>/^(navigation-skill|explore|combat|recovery)$/.test(c.category));
     this.blockedFingerprints=[...blocked];
-    return filtered.length?filtered:candidates;
+    return escape.length?escape:(filtered.length?filtered:candidates);
   }
 
   private shadowPrediction(candidates:AgentCandidate[],contextKey:string):AgentChoice|null{
@@ -423,7 +441,18 @@ export class SolAgentBrain {
   async decide(state:BotWorldState,candidates:AgentCandidate[]):Promise<AgentChoice>{
     const decisionStarted=Date.now();
     this.observe(state);this.emitTelemetry(state,state.tick||0);
-    const gated=this.antiLoopCandidates(candidates);const legal=this.balancedCandidates(gated);
+    const gated=this.antiLoopCandidates(candidates);let legal=this.balancedCandidates(gated);
+    const p=state.player!;const hpRatio=p.maxHp?p.hp/p.maxHp:1;
+    const emergency=hpRatio<.45||!!p.combat?.inCombat;
+    const goalText=`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`.toLowerCase();
+    const escape=legal.filter(c=>c.fingerprint==='skill:escape-draynor-manor');
+    const travel=legal.filter(c=>c.category==='navigation-skill'&&c.fingerprint.startsWith('skill:'));
+    const travelGoal=/travel|escape|bank|fishing|route|landmark|progress/.test(goalText);
+    // If a verified route exists for the active objective, do not let the motor
+    // spend the turn on a combat-style toggle or wait. Emergency recovery/combat
+    // remains eligible so survival always wins over the route.
+    if(!emergency&&escape.length)legal=escape;
+    else if(!emergency&&travelGoal&&travel.length)legal=travel;
     const contextKey=this.contextKey(state,legal);this.lastShadowPrediction=this.shadowPrediction(legal,contextKey);
     console.log('AGENT_CANDIDATE_GATE',JSON.stringify({raw:candidates.length,afterAntiLoop:gated.length,allowed:legal.length,categories:uniq(legal.map(c=>c.category))}));
     this.maybeRefreshStrategy(state,legal);
@@ -682,7 +711,11 @@ export class SolAgentBrain {
     if(this.recentSequence.length>=3){const seq=this.recentSequence.slice(-3),key=seq.map(x=>x.fingerprint).join(' > '),total=seq.reduce((v,x)=>v+x.reward,0),oldSeq=this.memory.sequences[key]||{sequence:seq.map(x=>x.fingerprint),n:0,avgReward:0,positive:0,lastAt:now(),example:seq.map(x=>x.label).join(' → ')};const sn=oldSeq.n+1,savg=oldSeq.avgReward+(total-oldSeq.avgReward)/sn;this.memory.sequences[key]={...oldSeq,n:sn,avgReward:Number(savg.toFixed(3)),positive:oldSeq.positive+(total>.4?1:0),lastAt:now()};}
     if(outcome.moved&&state.player){const id=`route:${exp.before.x}:${exp.before.z}:${state.player.worldX}:${state.player.worldZ}:${state.player.level}`;if(!this.memory.discoveries.some(d=>d.id===id))this.memory.discoveries.push({id,at:now(),kind:'route',text:`Route learned: ${exp.before.x},${exp.before.z} → ${state.player.worldX},${state.player.worldZ}; ${outcome.summary}`,location:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},confidence:outcome.rejected?.35:.75});}
     const active=this.strategy?.plan?.find(x=>x.status==='active');
-    if(active){const overlap=[...toks(active.label)].some(t=>toks(`${exp.candidate.label} ${outcome.summary}`).has(t));if(outcome.reward>.45&&overlap){active.status='done';active.evidence=outcome.summary;const next=this.strategy!.plan!.find(x=>x.status==='pending');if(next)next.status='active';else this.strategy!.focus='Plan complete; form the next objective.';this.memory.activePlan=this.strategy;}else if(outcome.reward<-.7){this.strategy!.failures=(this.strategy!.failures||0)+1;if((this.strategy!.failures||0)>=3){active.status='blocked';active.evidence='Repeated negative outcomes; strategist must replan.';this.memory.activePlan=this.strategy;this.strategy=null;}}}
+    if(active){const overlap=[...toks(active.label)].some(t=>toks(`${exp.candidate.label} ${outcome.summary}`).has(t));
+      const verifiedSuccess=outcome.reward>.45&&overlap&&!outcome.rejected&&!outcome.executionFailed&&!outcome.summary.includes('died/respawned');
+      if(verifiedSuccess){active.status='done';active.evidence=outcome.summary;const next=this.strategy!.plan!.find(x=>x.status==='pending');if(next)next.status='active';else this.strategy!.focus='Plan complete; form the next objective.';this.memory.activePlan=this.strategy;}
+      else if(outcome.reward<-.7||outcome.rejected){this.strategy!.failures=(this.strategy!.failures||0)+1;if((this.strategy!.failures||0)>=3){active.status='blocked';active.evidence='Repeated negative or rejected outcomes; strategist must replan.';this.memory.activePlan=this.strategy;this.strategy=null;}}
+    }
     const replay=this.replay.at(-1);if(replay&&!replay.outcome){replay.outcome=outcome.summary;replay.lesson=outcome.reward>0?`Reinforce ${exp.candidate.fingerprint} (reward ${outcome.reward})`:`Avoid or revise ${exp.candidate.fingerprint} (reward ${outcome.reward})`;}
     this.markDirty();void this.save(false);
   }
