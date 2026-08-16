@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 134,
-  "committedTick": 566,
+  "stateGeneration": 145,
+  "committedTick": 610,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Deposit all Arrow shaft because it is persistent material or future-use stock"
+    "reason": "Selected Close the bank to process item-purpose actions to satisfy the current objective and verify the resulting world-state change."
   },
   "objective": {
     "id": "boot",
-    "label": "Resolve inventory capacity before training",
+    "label": "Find the next reachable progression resource or trainer",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,9 +29,16 @@
     "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:271|7:526:1|8:526:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|19:557:12|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
     "freeSlots": 8,
     "coins": 271,
-    "updatedTick": 566
+    "updatedTick": 610
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "resolve-capacity:568",
+      "label": "Resolve inventory capacity before training",
+      "tick": 568,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:32:38.660Z"
+  "updatedAt": "2026-08-16T21:32:53.905Z"
 }\n
