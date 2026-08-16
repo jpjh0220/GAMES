@@ -365,25 +365,25 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 
   if(state.dialog?.isOpen){
     const recent=actionHistory.slice(-4).filter(e=>e.actionType==='clickDialogOption').length;
-    if(recent>=4){
+    if(economyResolution.noProgress>=2){
       add({label:'Close stalled economy dialog and re-evaluate',category:'modal',fingerprint:'modal:close-stalled-dialog',settleTicks:3,action:{type:'closeModal',reason:'Close a dialog that has not produced inventory or coin progress.'},tags:['economy','dialog','anti-loop']});
     }else for(const o of state.dialog.options?.slice(0,8)||[]) add({label:`Dialog ${o.index}: ${o.text||'(continue)'}`,category:'dialog',fingerprint:`dialog:${o.index}:${norm(o.text||'continue')}`,settleTicks:4,action:{type:'clickDialogOption',optionIndex:o.index,reason:'Advance the merchant or bank dialog toward a transaction.'},tags:['conversation','dialog','economy',o.text||'continue']});
     return out;
   }
 
   if(state.shop?.isOpen){
-    const pressure=Math.max(0,28-(state.inventory||[]).length)<=(brain.runtime.inventoryWarningSlots??3);
-    if(!pressure)for(const item of (state.shop.shopItems||[]).slice(0,14)) add({label:`Buy 1 ${item.name} for about ${item.buyPrice}`,category:'shop',fingerprint:`shop:buy:${norm(item.name)}`,settleTicks:5,action:{type:'shopBuy',slot:item.slot,amount:1,reason:'Buy from the open shop.'},tags:['economy','buy',item.name]});
-    for(const item of (state.shop.playerItems||[]).slice(0,10)) add({label:`Sell 1 ${item.name} for about ${item.sellPrice}`,category:'shop',fingerprint:`shop:sell:${norm(item.name)}`,settleTicks:5,action:{type:'shopSell',slot:item.slot,amount:1,reason:pressure?'Sell surplus to create inventory capacity.':'Sell to the open shop.'},tags:['economy','sell',item.name]});
-    add({label:'Close the shop',category:'modal',fingerprint:'modal:close-shop',settleTicks:3,action:{type:'closeShop',reason:'Close the shop.'},tags:['shop']});
+    const pressure=isCapacityPressure(state);
+    if(economyResolution.noProgress<2&&!pressure)for(const item of (state.shop.shopItems||[]).slice(0,14)) add({label:`Buy 1 ${item.name} for about ${item.buyPrice}`,category:'shop',fingerprint:`shop:buy:${norm(item.name)}`,settleTicks:5,action:{type:'shopBuy',slot:item.slot,amount:1,reason:'Buy from the open shop.'},tags:['economy','buy',item.name]});
+    if(economyResolution.noProgress<2)for(const item of (state.shop.playerItems||[]).filter((i:any)=>!isCurrency(i.name)).slice(0,10)) add({label:`Sell 1 ${item.name} for about ${item.sellPrice}`,category:'shop',fingerprint:`shop:sell:${norm(item.name)}`,settleTicks:5,action:{type:'shopSell',slot:item.slot,amount:1,reason:pressure?'Sell surplus to create inventory capacity.':'Sell to the open shop.'},tags:['economy','sell',item.name]});
+    add({label:'Close the shop',category:'modal',fingerprint:'modal:close-shop',settleTicks:3,action:{type:'closeShop',reason:economyResolution.noProgress>=2?'Abort stalled shop transaction.':'Close the shop.'},tags:['shop','transaction-abort']});
     return out;
   }
 
   if(state.bank?.isOpen){
-    const pressure=Math.max(0,28-(state.inventory||[]).length)<=(brain.runtime.inventoryWarningSlots??3);
-    for(const item of (state.inventory||[]).slice(0,14)) add({label:`Deposit all ${item.name}`,category:'bank',fingerprint:`bank:deposit:${norm(item.name)}`,settleTicks:5,action:{type:'bankDeposit',slot:item.slot,amount:item.count||1,reason:pressure?'Deposit surplus to create inventory capacity.':'Deposit into the bank.'},tags:['bank','store',item.name]});
-    if(!pressure)for(const item of (state.bank.items||[]).slice(0,14)) add({label:`Withdraw 1 ${item.name}`,category:'bank',fingerprint:`bank:withdraw:${norm(item.name)}`,settleTicks:5,action:{type:'bankWithdraw',slot:item.slot,amount:1,reason:'Withdraw from the bank.'},tags:['bank','retrieve',item.name]});
-    add({label:'Close the bank',category:'modal',fingerprint:'modal:close-bank',settleTicks:3,action:{type:'closeModal',reason:'Close the bank.'},tags:['bank']});
+    const pressure=isCapacityPressure(state);
+    if(economyResolution.noProgress<2)for(const item of (state.inventory||[]).filter((i:any)=>!isCurrency(i.name)).slice(0,14)) add({label:`Deposit all ${item.name}`,category:'bank',fingerprint:`bank:deposit:${norm(item.name)}`,settleTicks:5,action:{type:'bankDeposit',slot:item.slot,amount:item.count||1,reason:pressure?'Deposit surplus to create inventory capacity.':'Deposit into the bank.'},tags:['bank','store',item.name]});
+    if(!pressure&&economyResolution.noProgress<2)for(const item of (state.bank.items||[]).slice(0,14)) add({label:`Withdraw 1 ${item.name}`,category:'bank',fingerprint:`bank:withdraw:${norm(item.name)}`,settleTicks:5,action:{type:'bankWithdraw',slot:item.slot,amount:1,reason:'Withdraw from the bank.'},tags:['bank','retrieve',item.name]});
+    add({label:'Close the bank',category:'modal',fingerprint:'modal:close-bank',settleTicks:3,action:{type:'closeModal',reason:economyResolution.noProgress>=2?'Abort stalled bank transaction.':'Close the bank.'},tags:['bank','transaction-abort']});
     return out;
   }
 
