@@ -5,6 +5,7 @@ import type { Client } from './src/client/Client.js';
 import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
 import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
+import { ControllerRegistry, PersistentBodyState, createFallbackController } from './controller-runtime.js';
 
 const username = process.env.SOL_USER!;
 const password = process.env.SOL_PASS!;
@@ -50,7 +51,7 @@ const outgoingChat: OutgoingChat[] = [];
 const answeredChatIds = new Set<string>();
 let lastPublicSayTick = -9999;
 let lastPublicSayText = '';
-type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;updatedAt:string;source:'http'|'github'|'none'};
+type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
 let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
 let controlPollInFlight=false;
@@ -68,6 +69,11 @@ const brain = new SolAgentBrain({
   runNumber
 });
 await brain.init();
+const persistentBody=new PersistentBodyState(username,'llm-brain@1.0.0');
+const controllerRegistry=new ControllerRegistry(createFallbackController());
+controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candidates)=>brain.decide(state,candidates)});
+controllerRegistry.stage('llm-brain','1.0.0');
+controllerRegistry.activateAtTick(0);
 
 const log = async (event:string,data?:unknown) => {
   const line = `[${new Date().toISOString()}] ${event}${data === undefined ? '' : ' ' + JSON.stringify(data)}\n`;
@@ -86,6 +92,7 @@ const applyLiveControl=(next:LiveControl)=>{
   const directive=next.directive||commandDirective(next.command);
   brain.applyExternalDirective(directive);
   if(next.config)brain.applyRuntimeConfig(next.config);
+  if(next.controllerId&&next.controllerVersion){try{controllerRegistry.stage(next.controllerId,next.controllerVersion);void log('CONTROLLER_STAGED',{id:next.controllerId,version:next.controllerVersion,activation:'next_tick'});}catch(err){void log('CONTROLLER_STAGE_REJECTED',{id:next.controllerId,version:next.controllerVersion,error:String(err)});}}
   if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a new measurable progression goal.';nextDecisionTick=tick+1;}
   else if(next.command==='force_bank'){currentGoal='Force travel to Draynor Bank';currentWhy='Operator control requested verified bank travel.';nextDecisionTick=tick+1;}
   else if(next.command==='force_fishing'){currentGoal='Force travel to Draynor fishing';currentWhy='Operator control requested bounded fishing progression.';nextDecisionTick=tick+1;}
@@ -97,8 +104,10 @@ const acceptControl=(doc:any,source:'http'|'github')=>{
   const command=allowed.includes(String(doc?.command))?String(doc.command):null;
   const directive=doc?.directive===null?null:String(doc?.directive||'').trim().slice(0,300)||null;
   const config=doc?.config&&typeof doc.config==='object'?doc.config:undefined;
+  const controllerId=typeof doc?.controllerId==='string'?doc.controllerId.trim().slice(0,80):undefined;
+  const controllerVersion=typeof doc?.controllerVersion==='string'?doc.controllerVersion.trim().slice(0,40):undefined;
   if(!command&&!directive&&doc?.directive!==null)return false;
-  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,updatedAt:new Date().toISOString(),source};
+  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
   applyLiveControl(controlState);return true;
 };
 const pollLiveControl=async()=>{
@@ -119,7 +128,7 @@ let snapshot:any = {
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
-  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState()
+  currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
 };
 
 const publicSnapshot=()=>({
@@ -131,6 +140,7 @@ const publicSnapshot=()=>({
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
+  controller:snapshot.controller,body:snapshot.body,
   viewerAccess:'summary',syncRevision:snapshot.revision??snapshot.tick??0
 });
 
@@ -162,7 +172,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
     currentAction,currentGoal,currentWhy,thinking:decisionInFlight,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
-    lessons:(agent.recentMemories||[]).map((m:any)=>m.text),agent
+    lessons:(agent.recentMemories||[]).map((m:any)=>m.text),agent,controller:controllerRegistry.status,body:persistentBody.envelope
   };
 };
 
@@ -183,7 +193,7 @@ const server=Bun.serve({
       const directive=body?.directive===null?null:String(body?.directive||'').trim().slice(0,300)||null;
       const config=body?.config&&typeof body.config==='object'?body.config:undefined;
       if(!command&&!directive&&body?.directive!==null)return Response.json({ok:false,error:'missing_command_or_directive'},{status:400,headers});
-      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,updatedAt:new Date().toISOString(),source:'http'};
+      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,controllerId:typeof body?.controllerId==='string'?body.controllerId.trim().slice(0,80):undefined,controllerVersion:typeof body?.controllerVersion==='string'?body.controllerVersion.trim().slice(0,40):undefined,updatedAt:new Date().toISOString(),source:'http'};
       applyLiveControl(controlState);
       await log('LIVE_CONTROL_APPLIED',{revision,command,directive:controlState.directive,paused:controlState.paused,source:'http'});
       return Response.json({ok:true,control:controlState},{headers});
@@ -517,7 +527,8 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   decisionInFlight=true;
   refreshSnapshot(stateAtStart);
   void log('AGENT_THINK',{tick:startedTick,candidates:candidates.length,agent:brain.publicState()});
-  brain.decide(stateAtStart,candidates).then(choice=>{
+  controllerRegistry.activateAtTick(startedTick);
+  controllerRegistry.decide(stateAtStart,candidates,{tick:startedTick,currentTask:currentGoal,externalDirective:controlState.directive}).then(choice=>{
     decisionInFlight=false;
     const latest=lastState;
     if(!latest?.player){nextDecisionTick=tick+2;return;}
@@ -570,7 +581,8 @@ client.setOnGameTickCallback(()=>{
 
     if(tick<=3||tick%100===0) void log('OBSERVE',{tick,pos:[state.player.worldX,state.player.worldZ,state.player.level],hp:[state.player.hp,state.player.maxHp],combatLevel:state.player.combatLevel,skills:Object.fromEntries(state.skills.map(s=>[s.name,s.level])),inventory:state.inventory.map(i=>i.name),nearbyAgents:state.nearbyPlayers.map(p=>p.name),agent:brain.publicState()});
 
-    if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
+     persistentBody.commitTick(tick,currentGoal,`${controllerRegistry.status.activeId}@${controllerRegistry.status.activeVersion}`);
+     if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
     refreshSnapshot(state);
   }catch(err){void log('TICK_ERROR',String(err));}
 });

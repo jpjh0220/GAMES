@@ -25,7 +25,9 @@ if(command==='set_config'){
   try{config=JSON.parse(raw);directive=null;}catch(err){throw new Error(`set_config requires a JSON object: ${err}`);}
   if(!config||typeof config!=='object'||Array.isArray(config))throw new Error('set_config requires a JSON object');
 }
-const document={revision,command,directive,config,expiresAt:new Date(Date.now()+30*60*1000).toISOString(),updatedAt:new Date().toISOString()};
+const controllerId=process.env.SOL_CONTROLLER_ID||undefined;
+const controllerVersion=process.env.SOL_CONTROLLER_VERSION||undefined;
+const document={revision,command,directive,config,controllerId,controllerVersion,expiresAt:new Date(Date.now()+30*60*1000).toISOString(),updatedAt:new Date().toISOString()};
 const payload={message:`control: ${command} (revision ${revision})`,content:Buffer.from(JSON.stringify(document,null,2)+'\n').toString('base64'),branch:'sol-control'};
 if(current?.sha)payload.sha=current.sha;
 const response=await fetch(`${api}/contents/sol-agent/control.json`,{method:'PUT',headers,body:JSON.stringify(payload)});
