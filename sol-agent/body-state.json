@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 4143,
-  "committedTick": 19720,
+  "stateGeneration": 4156,
+  "committedTick": 19771,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: Error: controller timeout after 20000ms"
+    "reason": "I need to attack the Jail guard (level 26, distance 5) to progress toward the Gerrants' Fishy Business."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Approach the Gerrants' Fishy Business",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:82|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|18:526:1|19:557:10|20:526:1|23:526:1|25:526:1|26:526:1",
     "freeSlots": 4,
     "coins": 82,
-    "updatedTick": 19720
+    "updatedTick": 19771
   },
   "milestones": [
     {
@@ -127,6 +127,12 @@
       "label": "Resolve inventory capacity before training",
       "tick": 19700,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:19747",
+      "label": "Resolve inventory capacity before training",
+      "tick": 19747,
+      "evidence": "+1198 XP"
     }
   ],
   "failures": [],
@@ -136,5 +142,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T12:53:59.328Z"
+  "updatedAt": "2026-08-16T12:54:14.610Z"
 }\n
