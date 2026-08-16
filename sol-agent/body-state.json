@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 7308,
-  "committedTick": 31221,
+  "stateGeneration": 1,
+  "committedTick": 1,
   "identity": {
     "name": "Sol5"
   },
@@ -11,70 +11,27 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "economy"
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Inspect Bones to determine their purpose and verify their value",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:137|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|18:526:1|19:557:18|20:526:1|21:1931:1|22:1931:1|23:526:1|24:526:1|25:526:1|26:526:1|27:1931:1",
-    "freeSlots": 0,
-    "coins": 137,
-    "updatedTick": 31221
+    "signature": "",
+    "freeSlots": 28,
+    "coins": 0,
+    "updatedTick": 1
   },
-  "milestones": [
-    {
-      "id": "resolve-capacity:13844",
-      "label": "Resolve inventory capacity before training",
-      "tick": 13844,
-      "evidence": "inventory changed, +5 coins"
-    },
-    {
-      "id": "resolve-capacity:15153",
-      "label": "Resolve inventory capacity before training",
-      "tick": 15153,
-      "evidence": "inventory changed, +3 coins"
-    },
-    {
-      "id": "resolve-capacity:15395",
-      "label": "Resolve inventory capacity before training",
-      "tick": 15395,
-      "evidence": "+200 XP, inventory changed, +3 coins"
-    },
-    {
-      "id": "resolve-capacity:15432",
-      "label": "Resolve inventory capacity before training",
-      "tick": 15432,
-      "evidence": "+200 XP, inventory changed, +3 coins"
-    },
-    {
-      "id": "resolve-capacity:16460",
-      "label": "Resolve inventory capacity before training",
-      "tick": 16460,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "resolve-capacity:16883",
-      "label": "Resolve inventory capacity before training",
-      "tick": 16883,
-      "evidence": "inventory changed, +3 coins"
-    },
-    {
-      "id": "resolve-capacity:18011",
-      "label": "Resolve inventory capacity before training",
-      "tick": 18011,
-      "evidence": "+200 XP, inventory changed, +3 coins"
-    }
-  ],
+  "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -82,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:22:06.483Z"
+  "updatedAt": "2026-08-16T19:24:12.116Z"
 }\n
