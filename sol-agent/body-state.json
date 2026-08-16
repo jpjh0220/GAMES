@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1,
-  "committedTick": 1,
+  "stateGeneration": 12,
+  "committedTick": 50,
   "identity": {
     "name": "Sol5"
   },
@@ -11,25 +11,25 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "survival",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Load memory, perception, learned policy, and local teacher model."
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Initialize persistent agent",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "",
-    "freeSlots": 28,
-    "coins": 0,
-    "updatedTick": 1
+    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:25|10:303:1|11:317:1|12:315:1|20:526:1|23:526:1|25:526:1|26:526:1",
+    "freeSlots": 14,
+    "coins": 25,
+    "updatedTick": 50
   },
   "milestones": [],
   "failures": [],
@@ -39,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T11:14:20.691Z"
+  "updatedAt": "2026-08-16T11:14:37.542Z"
 }\n
