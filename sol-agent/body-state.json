@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 147,
-  "committedTick": 680,
+  "stateGeneration": 1,
+  "committedTick": 1,
   "identity": {
     "name": "Sol5"
   },
@@ -11,40 +11,27 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=40,gated=2,legal=1,streak=16)."
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover legal action space",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:19|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|19:557:12",
-    "freeSlots": 15,
-    "coins": 208,
-    "updatedTick": 680
+    "signature": "",
+    "freeSlots": 28,
+    "coins": 0,
+    "updatedTick": 1
   },
-  "milestones": [
-    {
-      "id": "directed-exploration:244",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 244,
-      "evidence": "inventory changed"
-    },
-    {
-      "id": "directed-exploration:373",
-      "label": "Find the next reachable progression resource or trainer",
-      "tick": 373,
-      "evidence": "inventory changed"
-    }
-  ],
+  "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -52,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:32:39.898Z"
+  "updatedAt": "2026-08-16T20:33:50.438Z"
 }\n
