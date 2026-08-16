@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 308,
-  "committedTick": 970,
+  "stateGeneration": 326,
+  "committedTick": 1023,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
+    "reason": "Deterministic progression director: Cooking turns gathered fish into a verified survival buffer and prevents unnecessary merchant spending."
   },
   "objective": {
     "id": "boot",
-    "label": "Resolve inventory capacity before training",
+    "label": "Cook existing raw food into survival supplies",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
     "freeSlots": 8,
     "coins": 0,
-    "updatedTick": 970
+    "updatedTick": 1023
   },
   "milestones": [
     {
@@ -271,6 +271,18 @@
       "label": "Resolve inventory capacity before training",
       "tick": 953,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:977",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 977,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:1000",
+      "label": "Resolve inventory capacity before training",
+      "tick": 1000,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -280,5 +292,5 @@
     "lastSwitchTick": 881
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T09:21:44.432Z"
+  "updatedAt": "2026-08-16T09:21:59.860Z"
 }\n
