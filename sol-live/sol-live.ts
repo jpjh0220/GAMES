@@ -125,7 +125,7 @@ const persistentBody=new PersistentBodyState(username,'llm-brain@1.0.0');
 const controllerRegistry=new ControllerRegistry(createFallbackController());
 const obligationExecutor=new ObligationExecutor();
 const progressionDirector=new ProgressionDirector();
-let currentProgression:any={id:'boot',objective:'Initialize progression curriculum',reason:'Await first verified observation.',success:'First milestone selected.',priorityFingerprints:[],stage:0,blocked:false};
+let currentProgression:any={id:'boot',objective:'Observe the world and choose a worthwhile first experiment',reason:'Await the first verified observation so the language model can choose what is interesting, useful, or safe.',success:'A verified discovery, interaction, learned mechanic, or useful world change.',priorityFingerprints:[],stage:0,blocked:false};
 controllerRegistry.register({id:'llm-brain',version:'1.0.0',decide:(state,candidates,context)=>brain.decide(state,candidates,context.currentTask)});
 controllerRegistry.stage('llm-brain','1.0.0');
 controllerRegistry.activateAtTick(0);
@@ -146,13 +146,13 @@ const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&
   appendCognition({kind,label,summary,reason,source:data.source,actionType:data.actionType,objective:currentGoal,data:{target:data.target,item:data.item,reward:data.reward}});
 };
 
-const commandDirective=(command:string|null)=>command==='force_bank'?'Immediately travel to Draynor Bank using the verified waypoint route; do not fish or change combat style until arrival is verified.':command==='force_fishing'?'Travel to the Draynor fishing area and fish only if the action produces measurable XP or inventory progress; abandon fishing after one failed interaction.':command==='abandon_objective'?'Abandon the current objective and choose a new measurable progression goal outside the current bank-fishing loop.':null;
+const commandDirective=(command:string|null)=>command==='force_bank'?'Immediately travel to Draynor Bank using the verified waypoint route; do not fish or change combat style until arrival is verified.':command==='force_fishing'?'Travel to the Draynor fishing area and fish only if the action produces measurable XP or inventory progress; abandon fishing after one failed interaction.':command==='abandon_objective'?'Abandon the current objective and choose a new purposeful activity outside the current loop, guided by fresh world evidence.':null;
 const applyLiveControl=(next:LiveControl)=>{
   const directive=next.directive||commandDirective(next.command);
   brain.applyExternalDirective(directive);
   if(next.config)brain.applyRuntimeConfig(next.config);
   if(next.controllerId&&next.controllerVersion){try{controllerRegistry.stage(next.controllerId,next.controllerVersion);void log('CONTROLLER_STAGED',{id:next.controllerId,version:next.controllerVersion,activation:'next_tick'});}catch(err){void log('CONTROLLER_STAGE_REJECTED',{id:next.controllerId,version:next.controllerVersion,error:String(err)});}}
-  if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a new measurable progression goal.';nextDecisionTick=tick+1;}
+  if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a fresh self-selected activity based on new world evidence.';nextDecisionTick=tick+1;}
   else if(next.command==='force_bank'){currentGoal='Force travel to Draynor Bank';currentWhy='Operator control requested verified bank travel.';nextDecisionTick=tick+1;}
   else if(next.command==='force_fishing'){currentGoal='Force travel to Draynor fishing';currentWhy='Operator control requested bounded fishing progression.';nextDecisionTick=tick+1;}
 };
@@ -176,7 +176,7 @@ const superviseTeacher=()=>{
     const active=controllerRegistry.status.activeId;
     if(!online&&active==='llm-brain'){
       controllerRegistry.stage('deterministic-fallback','1.0.0');controllerRegistry.activateAtTick(tick);
-      currentGoal='Maintain verified progression while teacher reconnects';currentWhy='Teacher model is unavailable; deterministic progression owns the body until a health probe succeeds.';
+      currentGoal='Survive and preserve the world state while the teacher reconnects';currentWhy='Teacher model is unavailable; deterministic control is restricted to emergency recovery and cannot pursue ordinary progression or farming.';
       void log('TEACHER_OFFLINE_DETERMINISTIC_FALLBACK',{tick,teacher:brain.motorModel});
     }else if(online&&active!=='llm-brain'){
       controllerRegistry.stage('llm-brain','1.0.0');controllerRegistry.activateAtTick(tick);
