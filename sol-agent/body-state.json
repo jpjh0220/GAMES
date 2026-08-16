@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 60,
-  "committedTick": 211,
+  "stateGeneration": 73,
+  "committedTick": 270,
   "identity": {
     "name": "Sol5"
   },
@@ -11,27 +11,34 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "transaction",
+    "kind": "capacity-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I'm ready to explore the north area to identify potential quest targets or resources. I'll check the inventory and see if there are any useful items or resources I can use to compl"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Resolve inventory capacity before training",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1351:1|1:590:1|3:526:1|4:526:1|5:526:1|6:995:270|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1|21:303:1|22:303:1|23:317:1|24:526:1|25:1265:1|26:52:45|27:303:1",
-    "freeSlots": 1,
+    "signature": "0:1351:1|1:590:1|3:526:1|4:526:1|5:526:1|6:995:270|7:526:1|8:526:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1|21:303:1|22:303:1|23:317:1|24:526:1|25:1265:1|26:52:45|27:303:1",
+    "freeSlots": 2,
     "coins": 270,
-    "updatedTick": 211
+    "updatedTick": 270
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "resolve-capacity:235",
+      "label": "Resolve inventory capacity before training",
+      "tick": 235,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:09:17.175Z"
+  "updatedAt": "2026-08-16T21:09:34.926Z"
 }\n
