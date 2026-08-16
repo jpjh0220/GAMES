@@ -645,8 +645,11 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   const obs={hp:stateAtStart.player?.hp||0,maxHp:stateAtStart.player?.maxHp||1,inCombat:!!stateAtStart.player?.combat?.inCombat,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),warningSlots:Math.max(7,brain.runtime.inventoryWarningSlots??3),groundItems:(stateAtStart.groundItems||[]).map((g:any)=>({name:String(g.name||''),reachable:g.reachable,value:0})),bankOpen:!!stateAtStart.bank?.isOpen,shopOpen:!!stateAtStart.shop?.isOpen,dialogOpen:!!stateAtStart.dialog?.isOpen,interfaceOpen:!!stateAtStart.interface?.isOpen,nearbyBank:(stateAtStart.nearbyLocs||[]).some((l:any)=>/bank/i.test(String(l.name||''))),nearbyShop:(stateAtStart.nearbyNpcs||[]).some((n:any)=>/shop|merchant|diango/i.test(String(n.name||''))),actionStale:false,objectiveActive:true};
   const legalActions=obligationExecutor.legalActions(obs,gatedCandidates.map(c=>c.action as any),tick);
   const legalSet=new Set(legalActions);
-  let candidates=gatedCandidates.filter(c=>legalSet.has(c.action as any));
+  const blockedFingerprints=new Set<string>((brain.publicState() as any).blockedFingerprints||[]);
+  let candidates=gatedCandidates.filter(c=>legalSet.has(c.action as any)&&!blockedFingerprints.has(c.fingerprint));
   candidates=candidates.filter(meaningfulWithdrawal);
+  const productive=candidates.filter(c=>/^(worldSkill|walkTo|interactNpc|interactLoc|bankDeposit|shopSell|pickupItem|useInventoryItem|travelToBank|openBank)$/.test(String(c.action?.type||''))||['bank','economy','navigation-skill','pickup','world','explore','inventory'].includes(c.category));
+  if(productive.length)candidates=candidates.filter(c=>!['say','wait'].includes(String(c.action?.type||'')));
   if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
   currentProgression=progressionDirector.plan(stateAtStart,candidates,tick);
   if(!candidates.length) return;
@@ -743,6 +746,7 @@ client.setOnGameTickCallback(()=>{
         void log('PROGRESSION_MILESTONE',{tick,stage:currentProgression.stage,id:currentProgression.id,objective:currentProgression.objective,evidence});
       }
       if(outcome.category==='shop'||outcome.category==='bank'||outcome.category==='dialog'||outcome.category==='modal') economyResolution={...economyResolution,phase:verification.progressed?'idle':'transaction',noProgress:verification.noProgressAttempts,lastAction:outcome.actionType,lastProgressTick:verification.progressed?tick:economyResolution.lastProgressTick,blockedUntil:verification.blockedUntilTick,reason:verification.progressed?'Transaction verified.':'Transaction produced no measurable state change.'};
+      else if(outcome.moved&&economyResolution.phase==='transaction') economyResolution={phase:'idle',noProgress:0,lastAction:null,lastProgressTick:tick,blockedUntil:0,reason:'Transaction context cleared after verified non-economy movement.'};
       feed('LEARNED_OUTCOME',outcome.summary,`Measured reward ${outcome.reward} from ${outcome.choice.source} action.`,{source:'learning',reward:outcome.reward,setCurrent:false});
       void log('AGENT_OUTCOME',{tick,reward:outcome.reward,summary:outcome.summary,source:outcome.choice.source,action:outcome.candidateLabel});
       nextDecisionTick=Math.max(nextDecisionTick,tick+1);
