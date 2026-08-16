@@ -10,33 +10,15 @@
     "teacherChoices": 6964,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6970,
-    "totalReward": 4408.899,
-    "saves": 715,
+    "completedExperiences": 6980,
+    "totalReward": 4386.899,
+    "saves": 716,
     "shadowPredictions": 3939,
     "shadowMatches": 1904,
     "strategistRefreshes": 466,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvfkm2w-hdmwui",
-      "createdAt": "2026-08-16T06:35:22.952Z",
-      "tick": 118,
-      "runNumber": 86,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 71 similar samples with average reward 2.44.",
-      "importance": 3.44,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3237,
-        "level": 0
-      }
-    },
     {
       "id": "msvfkw0k-3l3wd8",
       "createdAt": "2026-08-16T06:35:35.828Z",
@@ -8680,6 +8662,26 @@
       "location": {
         "x": 3092,
         "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhorv5-2njzck",
+      "createdAt": "2026-08-16T07:34:36.305Z",
+      "tick": 217,
+      "runNumber": 94,
+      "kind": "episode",
+      "text": "AI motor: Sell 1 Coins for about 0. Result: No measurable change.. Reward -2.6.",
+      "importance": 2,
+      "tags": [
+        "shop",
+        "economy",
+        "sell",
+        "coins"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3252,
         "level": 0
       }
     }
@@ -19549,12 +19551,12 @@
         "exampleReason": "Deterministic fallback selected Trade Diango (level 0, distance 2) while the primary controller was unavailable."
       },
       "shop:sell:coins": {
-        "n": 18,
-        "avgReward": -0.6,
+        "n": 28,
+        "avgReward": -1.1715,
         "positive": 0,
-        "negative": 18,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-16T07:34:30.773Z",
+        "negative": 28,
+        "lastReward": -2.6,
+        "lastAt": "2026-08-16T07:34:48.581Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback selected Sell 1 Coins for about 0 while the primary controller was unavailable."
       }
@@ -43450,10 +43452,10 @@
         "shop:sell:coins",
         "shop:sell:coins"
       ],
-      "n": 16,
-      "avgReward": -1.8,
+      "n": 26,
+      "avgReward": -3.415,
       "positive": 0,
-      "lastAt": "2026-08-16T07:34:30.773Z",
+      "lastAt": "2026-08-16T07:34:48.581Z",
       "example": "Sell 1 Coins for about 0 → Sell 1 Coins for about 0 → Sell 1 Coins for about 0"
     }
   },
@@ -47083,7 +47085,7 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T07:34:30.773Z",
+  "updatedAt": "2026-08-16T07:34:48.581Z",
   "activePlan": {
     "objective": "Explore the Draynor fishing area and gather resources to complete a prerequisite quest",
     "focus": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
@@ -47093,7 +47095,8 @@
       {
         "id": "step-1",
         "label": "Travel to the Draynor fishing area at 3087,3230 and verify arrival",
-        "status": "active"
+        "status": "blocked",
+        "evidence": "Repeated negative or rejected outcomes; strategist must replan."
       },
       {
         "id": "step-2",
@@ -47117,6 +47120,6 @@
     "avoid": [],
     "updatedAt": "2026-08-16T07:34:16.396Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 3
   }
 }
