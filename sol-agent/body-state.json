@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 196,
-  "committedTick": 621,
+  "stateGeneration": 213,
+  "committedTick": 670,
   "identity": {
     "name": "Sol5"
   },
@@ -15,7 +15,7 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
+    "reason": "Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary."
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:554:1|7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
-    "freeSlots": 7,
+    "signature": "7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 8,
     "coins": 0,
-    "updatedTick": 621
+    "updatedTick": 670
   },
   "milestones": [
     {
@@ -181,14 +181,32 @@
       "label": "Cook existing raw food into survival supplies",
       "tick": 619,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:625",
+      "label": "Resolve inventory capacity before training",
+      "tick": 625,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:658",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 658,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:664",
+      "label": "Resolve inventory capacity before training",
+      "tick": 664,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
   "controller": {
-    "activeId": "deterministic-fallback",
+    "activeId": "llm-brain",
     "activeVersion": "1.0.0",
-    "lastSwitchTick": 201
+    "lastSwitchTick": 661
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T09:19:56.800Z"
+  "updatedAt": "2026-08-16T09:20:11.984Z"
 }\n
