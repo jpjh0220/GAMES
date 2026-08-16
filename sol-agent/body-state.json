@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 260,
-  "committedTick": 826,
+  "stateGeneration": 274,
+  "committedTick": 870,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3085,
-    "z": 3234,
+    "x": 3084,
+    "z": 3237,
     "level": 0
   },
   "currentObligation": {
-    "kind": "capacity-resolution",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Explore south about 5 tiles"
+    "reason": "I am attacking a Dark wizard (level 7, distance 1) while exploring the area. I will check my HP, food, and equipment before attacking. I will ensure I have the necessary resources "
   },
   "objective": {
     "id": "boot",
-    "label": "Identify safe fishing spots based on coordinates and spot types.",
+    "label": "Plan complete; form the next objective.",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:208|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1",
     "freeSlots": 7,
     "coins": 208,
-    "updatedTick": 826
+    "updatedTick": 870
   },
   "milestones": [
     {
@@ -79,6 +79,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 771,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:863",
+      "label": "Resolve inventory capacity before training",
+      "tick": 863,
+      "evidence": "+1595 XP"
     }
   ],
   "failures": [],
@@ -88,5 +94,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:38:06.255Z"
+  "updatedAt": "2026-08-16T20:38:22.585Z"
 }\n
