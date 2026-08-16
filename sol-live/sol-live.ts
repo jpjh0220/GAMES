@@ -658,7 +658,10 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   const legalSet=new Set(legalActions);
   const blockedFingerprints=new Set<string>((brain.publicState() as any).blockedFingerprints||[]);
   let candidates=gatedCandidates.filter(c=>legalSet.has(c.action as any)&&!blockedFingerprints.has(c.fingerprint));
-  candidates=candidates.filter(meaningfulWithdrawal);
+  const meaningfulCandidates=candidates.filter(meaningfulWithdrawal);
+  // Do not turn an unknown-but-legal withdrawal into an empty action space.
+  // The language model must be allowed to inspect and interpret it.
+  if(meaningfulCandidates.length)candidates=meaningfulCandidates;
   const productive=candidates.filter(c=>/^(worldSkill|walkTo|interactNpc|interactLoc|bankDeposit|shopSell|pickupItem|useInventoryItem|travelToBank|openBank)$/.test(String(c.action?.type||''))||['bank','economy','navigation-skill','pickup','world','explore','inventory'].includes(c.category));
   if(productive.length)candidates=candidates.filter(c=>!['say','wait'].includes(String(c.action?.type||'')));
   if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
@@ -703,7 +706,8 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
       nextDecisionTick=tick+1;return;
     }
     let freshCandidates=capacityGate(latest,lootGate(latest,buildCandidates(latest)));
-    freshCandidates=freshCandidates.filter(meaningfulWithdrawal);
+    const meaningfulFresh=freshCandidates.filter(meaningfulWithdrawal);
+    if(meaningfulFresh.length)freshCandidates=meaningfulFresh;
     const blockedByBrain=new Set<string>((brain.publicState() as any).blockedFingerprints||[]);
     const unblockedFresh=freshCandidates.filter(c=>!blockedByBrain.has(c.fingerprint));
     const usableFresh=unblockedFresh.length?unblockedFresh:freshCandidates;
