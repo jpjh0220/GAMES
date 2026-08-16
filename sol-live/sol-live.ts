@@ -641,9 +641,12 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     }
     let freshCandidates=capacityGate(latest,lootGate(latest,buildCandidates(latest)));
     freshCandidates=freshCandidates.filter(meaningfulWithdrawal);
-    const latestPlan=progressionDirector.plan(latest,freshCandidates,tick);currentProgression=latestPlan;
-    const modelCandidate=freshCandidates.find(c=>c.fingerprint===choice.fingerprint);
-    const directedCandidate=freshCandidates.find(c=>latestPlan.priorityFingerprints.includes(c.fingerprint));
+    const blockedByBrain=new Set<string>((brain.publicState() as any).blockedFingerprints||[]);
+    const unblockedFresh=freshCandidates.filter(c=>!blockedByBrain.has(c.fingerprint));
+    const usableFresh=unblockedFresh.length?unblockedFresh:freshCandidates;
+    const latestPlan=progressionDirector.plan(latest,usableFresh,tick);currentProgression=latestPlan;
+    const modelCandidate=usableFresh.find(c=>c.fingerprint===choice.fingerprint);
+    const directedCandidate=usableFresh.find(c=>latestPlan.priorityFingerprints.includes(c.fingerprint));
     const forceProgression=progressionDirector.shouldOverride(latestPlan,directedCandidate,tick);
     const candidate=forceProgression?directedCandidate:modelCandidate;
     const effectiveChoice=forceProgression&&candidate?{...choice,source:'deterministic' as const,goal:latestPlan.objective,reason:`Deterministic progression director: ${latestPlan.reason}`,expectedOutcome:latestPlan.success,fingerprint:candidate.fingerprint,actionId:candidate.id,confidence:.98}:choice;
