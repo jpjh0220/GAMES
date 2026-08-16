@@ -73,6 +73,7 @@ let decisionLease=0;
 let decisionStartedTick=-1;
 let actionStartedTick=-1;
 let decisionWatchdog:ReturnType<typeof setTimeout>|null=null;
+let noCandidateStreak=0;
 
 const brain = new SolAgentBrain({
   name:username,
@@ -261,7 +262,7 @@ const server=Bun.serve({
     const bearer=req.headers.get('authorization')||'';
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
-    if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));return Response.json({cursor:cognitionSequence,events:cognitionLog.filter(e=>e.id>since).slice(-limit)},{headers});}
+    if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const events=cognitionLog.filter(e=>e.id>since&& (includeSystem||e.kind!=='system'));return Response.json({cursor:cognitionSequence,events:events.slice(-limit),omittedSystem:!includeSystem},{headers});}
     if(path==='/control'&&req.method==='POST'){
       if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
@@ -662,7 +663,15 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   if(productive.length)candidates=candidates.filter(c=>!['say','wait'].includes(String(c.action?.type||'')));
   if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
   currentProgression=progressionDirector.plan(stateAtStart,candidates,tick);
-  if(!candidates.length) return;
+  if(!candidates.length){
+    noCandidateStreak++;
+    nextDecisionTick=tick+Math.min(20,Math.max(2,noCandidateStreak*2));
+    currentGoal='Recover legal action space';
+    currentWhy=`No legal candidate survived safety/capacity/blocked-action gates (raw=${rawCandidates.length},gated=${gatedCandidates.length},legal=${legalActions.length},streak=${noCandidateStreak}).`;
+    if(noCandidateStreak===1||noCandidateStreak%5===0)void log('AGENT_NO_LEGAL_ACTIONS',{tick,raw:rawCandidates.length,gated:gatedCandidates.length,legal:legalActions.length,blocked:blockedFingerprints.size,freeSlots:obs.freeSlots,phase:obligationExecutor.status().phase,retryAt:nextDecisionTick});
+    refreshSnapshot(stateAtStart);return;
+  }
+  noCandidateStreak=0;
   const startedTick=tick;
   const startedLife=stateAtStart.player?.lifeId;
   const lease=++decisionLease;
