@@ -519,7 +519,7 @@ export class SolAgentBrain {
     const gated=this.antiLoopCandidates(candidates);let legal=this.balancedCandidates(gated);
     const p=state.player!;const hpRatio=p.maxHp?p.hp/p.maxHp:1;
     const emergency=hpRatio<.45||!!p.combat?.inCombat;
-    const goalText=(this.externalDirective||this.liveObjective||`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`).toLowerCase();
+    const goalText=(this.liveObjective||this.externalDirective||`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`).toLowerCase();
     const leaveFishing=/\b(leave|abandon|avoid|outside|stop|break)\b/.test(goalText)&&/\b(fish|fishing|bait|bank)\b/.test(goalText);
     if(leaveFishing){legal=legal.filter(c=>!/(fishing|bait|net|bank:)/.test(c.fingerprint));if(!legal.length)legal=this.balancedCandidates(gated.filter(c=>c.category!=='wait'&&!/(fishing|bait|net|bank:)/.test(c.fingerprint)));}
     const escape=legal.filter(c=>c.fingerprint==='skill:escape-draynor-manor');
@@ -667,7 +667,7 @@ export class SolAgentBrain {
       };
       let j:any;try{j=await ask(motorObservation,24000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},5000)}
       const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
-      const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
+      const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.liveObjective||this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
       this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
       return{source:'teacher',goal,reason:why,expectedOutcome:`Observe whether ${c.label} changes game state.`,actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
     }catch(err){this.motorFailures++;this.teacherConsecutiveFailures++;this.lastTeacherError=String(err).slice(0,240);if(this.teacherConsecutiveFailures>=3)this.motorReady=false;throw err;}
