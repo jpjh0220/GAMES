@@ -1,43 +1,43 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1,
-  "committedTick": 1,
+  "stateGeneration": 26,
+  "committedTick": 60,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3092,
-    "z": 3245,
+    "z": 3243,
     "level": 0
   },
   "currentObligation": {
-    "kind": "survival",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Load memory, perception, learned policy, and local teacher model."
+    "reason": "Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary."
   },
   "objective": {
     "id": "boot",
-    "label": "Initialize persistent agent",
+    "label": "Resolve inventory capacity before training",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "",
-    "freeSlots": 28,
+    "signature": "0:882:1|2:317:1|3:317:1|5:317:1|6:317:1|7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 3,
     "coins": 0,
-    "updatedTick": 1
+    "updatedTick": 60
   },
   "milestones": [],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
     "activeVersion": "1.0.0",
-    "lastSwitchTick": 0
+    "lastSwitchTick": 41
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T08:50:07.185Z"
+  "updatedAt": "2026-08-16T08:50:25.021Z"
 }\n
