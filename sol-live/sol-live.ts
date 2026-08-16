@@ -55,6 +55,7 @@ const outgoingChat: OutgoingChat[] = [];
 const answeredChatIds = new Set<string>();
 let lastPublicSayTick = -9999;
 let lastPublicSayText = '';
+let sessionEnd:any=null;
 type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
 let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
@@ -188,7 +189,7 @@ const pollLiveControl=async()=>{
 
 let snapshot:any = {
   updatedAt:new Date().toISOString(),online:false,inGame:false,tick:0,revision:0,sessionStartedAt,directive,runNumber,runtimeConfig:brain.runtime,
-  player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
+  player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],opFeedback:{opRejectedCount:0},sessionEnd:null,
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
   currentAction:null,currentGoal,currentWhy,thinking:false,currentProcedure:null,economyResolution,obligationExecutor:obligationExecutor.status(),progression:currentProgression,durableState,actions:[],actionCount:0,primitiveActionCount:0,movementTrail:[],lessons:[],agent:brain.publicState(),controller:controllerRegistry.status,body:persistentBody.envelope
@@ -199,7 +200,7 @@ const publicSnapshot=()=>({
   sessionStartedAt:snapshot.sessionStartedAt,currentGoal:snapshot.currentGoal,currentWhy:snapshot.currentWhy,thinking:snapshot.thinking,
   player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:snapshot.player.worldX,worldZ:snapshot.player.worldZ,level:snapshot.player.level,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:snapshot.player.combat?.targetType||'none',targetIndex:snapshot.player.combat?.targetIndex??-1}}:null,
   skills:(snapshot.skills||[]).map((skill:any)=>({name:skill.name,level:skill.level})),
-  combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
+  combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],opFeedback:snapshot.opFeedback||{opRejectedCount:0},sessionEnd:snapshot.sessionEnd||null,inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,teacherOnline:!!snapshot.agent?.teacherOnline,strategistOnline:!!snapshot.agent?.strategistOnline,teacherConsecutiveFailures:snapshot.agent?.teacherConsecutiveFailures||0,lastTeacherHealthyAt:snapshot.agent?.lastTeacherHealthyAt||null,lastTeacherError:snapshot.agent?.lastTeacherError||null,studentMode:snapshot.agent?.studentMode||'unknown',sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
@@ -232,6 +233,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     gameMessages:s?.gameMessages?.slice?.(-50)?.map((m:any)=>({type:m.type,text:m.text,sender:m.sender,tick:m.tick,observationId:m.observationId,fromSelf:m.fromSelf}))??[],
     outgoingChat:outgoingChat.slice(-50),
     recentDialogs:s?.recentDialogs?.slice?.(-20)?.map((d:any)=>({text:d.text,tick:d.tick,observationId:d.observationId,interfaceId:d.interfaceId}))??[],
+    opFeedback:s?.opFeedback??{opRejectedCount:0},sessionEnd,
     prayers:s?.prayers??null,
     worldUi:{shopOpen:!!s?.shop?.isOpen,bankOpen:!!s?.bank?.isOpen,tradeOpen:!!s?.trade?.isOpen,tradePartner:s?.trade?.partner??null,dialogOpen:!!s?.dialog?.isOpen,modalOpen:!!s?.modalOpen},
     currentAction,currentGoal,currentWhy,thinking:decisionInFlight,currentProcedure:procedureInFlight||lastProcedureRun,actions:actionHistory,actionCount:actions,primitiveActionCount:primitiveActions,movementTrail,
@@ -270,7 +272,7 @@ const server=Bun.serve({
 });
 await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 
-const session=await startSession({host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true});
+const session=await startSession({host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}});
 const client=session.client;
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
