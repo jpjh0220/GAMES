@@ -6,88 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 6919,
-    "teacherChoices": 6919,
+    "totalChoices": 6929,
+    "teacherChoices": 6929,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6910,
-    "totalReward": 4429.271,
-    "saves": 707,
+    "completedExperiences": 6920,
+    "totalReward": 4422.971,
+    "saves": 708,
     "shadowPredictions": 3925,
     "shadowMatches": 1892,
-    "strategistRefreshes": 462,
+    "strategistRefreshes": 463,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvfdl7g-9ch502",
-      "createdAt": "2026-08-16T06:29:55.228Z",
-      "tick": 14542,
-      "runNumber": 85,
-      "kind": "relationship",
-      "text": "Gtironmn said: \"Iron baron: iron ore for trade, goods only\". Current stance unknown, trust 0.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "gtironmn",
-        "unknown"
-      ],
-      "location": {
-        "x": 3109,
-        "z": 3228,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvfdrg6-cxji86",
-      "createdAt": "2026-08-16T06:30:03.318Z",
-      "tick": 0,
-      "runNumber": 85,
-      "kind": "strategy",
-      "text": "AI strategist: Attack Jail guard (level 26, distance 14) using Attack skill to gain combat experience and verify progress.. Execute the current prerequisite and verify it.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "attack jail guard level 26 distance 14 using attack skill to gain combat experience and verify progress",
-        "verify combat progress by checking xp gain or enemy kill count in the game interface",
-        "choose the next non fishing skill objective such as defence or smithing based on"
-      ],
-      "location": {
-        "x": 3105,
-        "z": 3220,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvfdv5w-9ssut2",
-      "createdAt": "2026-08-16T06:30:08.132Z",
-      "tick": 14603,
-      "runNumber": 85,
-      "kind": "episode",
-      "text": "AI motor: Attack Jail guard (level 26, distance 7). Result: +1333 XP; +1 level(s); moved 3109,3228 → 3101,3235; execution rejected or failed. Reward 5.638.",
-      "importance": 3.52,
-      "tags": [
-        "combat",
-        "jail guard",
-        "attack",
-        "level 26",
-        "agent foodprobe1",
-        "agent hephaestus",
-        "agent ares",
-        "agent goo002",
-        "agent goo003",
-        "agent scrappydoo",
-        "agent qstboot1",
-        "agent s0up",
-        "agent gpgather1",
-        "agent xbfr5x1f0"
-      ],
-      "location": {
-        "x": 3101,
-        "z": 3235,
-        "level": 0
-      }
-    },
     {
       "id": "msvfeap4-mtjzx8",
       "createdAt": "2026-08-16T06:30:28.264Z",
@@ -8708,6 +8639,68 @@
         "z": 3243,
         "level": 0
       }
+    },
+    {
+      "id": "msvh9y7r-s59ihu",
+      "createdAt": "2026-08-16T07:23:04.695Z",
+      "tick": 1803,
+      "runNumber": 90,
+      "kind": "episode",
+      "text": "AI motor: Use Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242; execution rejected or failed; new: agent:Xbfr5x1f0, agent:Earldemo, agent:Sardine. Reward -0.9.",
+      "importance": 1.15,
+      "tags": [
+        "world",
+        "bank booth",
+        "use",
+        "agent xbfr5x1f0",
+        "agent earldemo",
+        "agent sardine"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhauv0-lku93o",
+      "createdAt": "2026-08-16T07:23:47.004Z",
+      "tick": 0,
+      "runNumber": 90,
+      "kind": "strategy",
+      "text": "AI strategist: Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank. Execute the current prerequisite and verify it.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "click dialog 1 click here to continue to advance the conversation and gain access to the bank",
+        "use the bank booth to deposit the raw shrimps and anchovies and retrieve any valuable items mentioned in the bank notice board",
+        "inspect the bank notice board for any additional resources or prerequisites that may be required to proceed with the bank dialogue or to unl"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvhaxe3-o8exlf",
+      "createdAt": "2026-08-16T07:23:50.283Z",
+      "tick": 1953,
+      "runNumber": 90,
+      "kind": "episode",
+      "text": "AI motor: Dialog 1: And what do you do?. Result: No measurable change.. Reward -0.6.",
+      "importance": 1,
+      "tags": [
+        "dialog",
+        "conversation",
+        "and what do you do",
+        "agent minnow"
+      ],
+      "location": {
+        "x": 3092,
+        "z": 3242,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -15323,34 +15316,34 @@
         "exampleReason": "I'd like to access my bank account, please."
       },
       "dialog:1:click here to continue": {
-        "n": 10,
+        "n": 16,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 10,
+        "negative": 16,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T07:21:49.445Z",
-        "exampleGoal": "Click dialog option by its visible text: 'Click here to continue'",
-        "exampleReason": "Click here to continue"
+        "lastAt": "2026-08-16T07:24:20.731Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
+        "exampleReason": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank"
       },
       "dialog:2:what is this place": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T07:21:15.184Z",
+        "lastAt": "2026-08-16T07:23:20.972Z",
         "exampleGoal": "Click dialog option by its visible text: 'Click here to continue'",
-        "exampleReason": "I'd like to access my bank account, please."
+        "exampleReason": "What is this place?"
       },
       "dialog:1:and what do you do": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T07:21:35.610Z",
-        "exampleGoal": "Click dialog option by its visible text: 'Click here to continue'",
-        "exampleReason": "Click 'Click here to continue' to proceed with the bank dialogue. This action will allow you to interact with the bank and gain valuable resources."
+        "lastAt": "2026-08-16T07:23:50.283Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
+        "exampleReason": "And what do you do?"
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat-style,explore,navigation-skill,npc,pickup,say,social,wait,world": {
@@ -19453,14 +19446,14 @@
         "exampleReason": "Use-quickly Bank booth (distance 1)"
       },
       "loc:use:bank booth": {
-        "n": 2,
-        "avgReward": -0.65,
+        "n": 4,
+        "avgReward": -0.7,
         "positive": 0,
-        "negative": 2,
-        "lastReward": -0.4,
-        "lastAt": "2026-08-16T07:20:57.540Z",
-        "exampleGoal": "Sell 1 Raw shrimps for about 2",
-        "exampleReason": "I have a bank booth nearby and can sell low-value items to acquire resources to meet a prerequisite."
+        "negative": 4,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T07:24:14.096Z",
+        "exampleGoal": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
+        "exampleReason": "Bank booth (distance 1)"
       }
     },
     "area=385:406:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=navigation-skill": {
@@ -20786,8 +20779,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T07:22:43.568Z",
-      "encounters": 4989,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 4999,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -22663,8 +22656,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T07:22:43.568Z",
-      "encounters": 2377,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 2387,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -22779,8 +22772,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-16T07:22:26.159Z",
-      "encounters": 2423,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 2433,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -24413,8 +24406,8 @@
     "xbfr5x1f0": {
       "name": "Xbfr5x1f0",
       "firstSeenAt": "2026-08-16T00:54:41.255Z",
-      "lastSeenAt": "2026-08-16T07:21:49.659Z",
-      "encounters": 538,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 547,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -24994,8 +24987,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-16T07:22:35.313Z",
-      "encounters": 294,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 304,
       "combatLevel": 72,
       "trust": 0,
       "stance": "unknown",
@@ -25015,8 +25008,8 @@
     "ares": {
       "name": "Ares",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T07:22:43.568Z",
-      "encounters": 382,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 392,
       "combatLevel": 21,
       "trust": 0,
       "stance": "unknown",
@@ -25041,8 +25034,8 @@
     "hephaestus": {
       "name": "Hephaestus",
       "firstSeenAt": "2026-08-16T02:28:33.754Z",
-      "lastSeenAt": "2026-08-16T07:22:43.568Z",
-      "encounters": 546,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 556,
       "combatLevel": 36,
       "trust": 0,
       "stance": "unknown",
@@ -25254,8 +25247,8 @@
     "foodprobe1": {
       "name": "Foodprobe1",
       "firstSeenAt": "2026-08-16T03:14:46.597Z",
-      "lastSeenAt": "2026-08-16T07:22:26.159Z",
-      "encounters": 562,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 567,
       "combatLevel": 18,
       "trust": 0,
       "stance": "unknown",
@@ -25897,8 +25890,8 @@
     "gtnetter": {
       "name": "Gtnetter",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T07:22:26.159Z",
-      "encounters": 210,
+      "lastSeenAt": "2026-08-16T07:23:28.654Z",
+      "encounters": 215,
       "combatLevel": 4,
       "trust": 0.84,
       "stance": "cooperative",
@@ -26795,8 +26788,8 @@
     "kitprep1": {
       "name": "Kitprep1",
       "firstSeenAt": "2026-08-16T05:31:55.499Z",
-      "lastSeenAt": "2026-08-16T07:22:43.568Z",
-      "encounters": 284,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 294,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -26847,8 +26840,8 @@
     "earldemo": {
       "name": "Earldemo",
       "firstSeenAt": "2026-08-16T06:25:11.148Z",
-      "lastSeenAt": "2026-08-16T07:21:49.659Z",
-      "encounters": 53,
+      "lastSeenAt": "2026-08-16T07:24:07.249Z",
+      "encounters": 61,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -26877,8 +26870,8 @@
     "sardine": {
       "name": "Sardine",
       "firstSeenAt": "2026-08-16T06:32:03.038Z",
-      "lastSeenAt": "2026-08-16T07:21:49.659Z",
-      "encounters": 44,
+      "lastSeenAt": "2026-08-16T07:23:50.518Z",
+      "encounters": 50,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -26930,8 +26923,8 @@
     "minnow": {
       "name": "Minnow",
       "firstSeenAt": "2026-08-16T06:43:49.378Z",
-      "lastSeenAt": "2026-08-16T07:21:49.659Z",
-      "encounters": 59,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "encounters": 63,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -27133,11 +27126,11 @@
     "193:202:0": {
       "key": "193:202:0",
       "x": 3092,
-      "z": 3243,
+      "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-16T07:22:26.159Z",
-      "visits": 1700,
+      "lastSeenAt": "2026-08-16T07:24:14.268Z",
+      "visits": 1710,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -43073,10 +43066,10 @@
         "skill:travel:draynor-bank",
         "loc:use:bank booth"
       ],
-      "n": 1,
-      "avgReward": -0.358,
+      "n": 2,
+      "avgReward": -0.51,
       "positive": 0,
-      "lastAt": "2026-08-16T07:19:57.065Z",
+      "lastAt": "2026-08-16T07:23:04.695Z",
       "example": "Close the shop → Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Use Bank booth (distance 1)"
     },
     "skill:travel:draynor-bank > loc:use:bank booth > dialog:1:click here to continue": {
@@ -43085,10 +43078,10 @@
         "loc:use:bank booth",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": -0.358,
+      "n": 2,
+      "avgReward": -0.51,
       "positive": 0,
-      "lastAt": "2026-08-16T07:20:04.189Z",
+      "lastAt": "2026-08-16T07:23:12.568Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Use Bank booth (distance 1) → Dialog 1: Click here to continue"
     },
     "loc:use:bank booth > dialog:1:click here to continue > dialog:2:what is this place": {
@@ -43097,10 +43090,10 @@
         "dialog:1:click here to continue",
         "dialog:2:what is this place"
       ],
-      "n": 2,
-      "avgReward": -1.85,
+      "n": 3,
+      "avgReward": -1.933,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:15.184Z",
+      "lastAt": "2026-08-16T07:23:20.972Z",
       "example": "Use Bank booth (distance 1) → Dialog 1: Click here to continue → Dialog 2: What is this place?"
     },
     "dialog:1:click here to continue > dialog:2:what is this place > dialog:1:click here to continue": {
@@ -43109,10 +43102,10 @@
         "dialog:2:what is this place",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:21.398Z",
+      "lastAt": "2026-08-16T07:23:28.293Z",
       "example": "Dialog 1: Click here to continue → Dialog 2: What is this place? → Dialog 1: Click here to continue"
     },
     "dialog:2:what is this place > dialog:1:click here to continue > dialog:1:click here to continue": {
@@ -43121,10 +43114,10 @@
         "dialog:1:click here to continue",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:27.851Z",
+      "lastAt": "2026-08-16T07:23:38.988Z",
       "example": "Dialog 2: What is this place? → Dialog 1: Click here to continue → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > dialog:1:click here to continue > dialog:1:and what do you do": {
@@ -43133,10 +43126,10 @@
         "dialog:1:click here to continue",
         "dialog:1:and what do you do"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:35.610Z",
+      "lastAt": "2026-08-16T07:23:50.283Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Click here to continue → Dialog 1: And what do you do?"
     },
     "dialog:1:click here to continue > dialog:1:and what do you do > dialog:1:click here to continue": {
@@ -43145,10 +43138,10 @@
         "dialog:1:and what do you do",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:42.876Z",
+      "lastAt": "2026-08-16T07:23:59.044Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: And what do you do? → Dialog 1: Click here to continue"
     },
     "dialog:1:and what do you do > dialog:1:click here to continue > dialog:1:click here to continue": {
@@ -43157,10 +43150,10 @@
         "dialog:1:click here to continue",
         "dialog:1:click here to continue"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": -1.8,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:49.445Z",
+      "lastAt": "2026-08-16T07:24:07.014Z",
       "example": "Dialog 1: And what do you do? → Dialog 1: Click here to continue → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > dialog:1:click here to continue > loc:use:bank booth": {
@@ -43169,10 +43162,10 @@
         "dialog:1:click here to continue",
         "loc:use:bank booth"
       ],
-      "n": 1,
-      "avgReward": -1.6,
+      "n": 2,
+      "avgReward": -1.7,
       "positive": 0,
-      "lastAt": "2026-08-16T07:20:57.540Z",
+      "lastAt": "2026-08-16T07:24:14.096Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Click here to continue → Use Bank booth (distance 1)"
     },
     "dialog:1:click here to continue > loc:use:bank booth > dialog:1:click here to continue": {
@@ -43181,10 +43174,10 @@
         "loc:use:bank booth",
         "dialog:1:click here to continue"
       ],
-      "n": 1,
-      "avgReward": -1.6,
+      "n": 2,
+      "avgReward": -1.7,
       "positive": 0,
-      "lastAt": "2026-08-16T07:21:06.452Z",
+      "lastAt": "2026-08-16T07:24:20.731Z",
       "example": "Dialog 1: Click here to continue → Use Bank booth (distance 1) → Dialog 1: Click here to continue"
     },
     "dialog:1:click here to continue > dialog:1:click here to continue > npc:trade:diango": {
@@ -43225,18 +43218,6 @@
     }
   },
   "discoveries": [
-    {
-      "id": "route:3087:3230:3084:3236:0",
-      "at": "2026-08-16T06:36:28.938Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3230 → 3084,3236; moved 3087,3230 → 3084,3236; execution rejected or failed",
-      "location": {
-        "x": 3084,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
     {
       "id": "route:3086:3238:3085:3239:0",
       "at": "2026-08-16T06:37:06.585Z",
@@ -46838,26 +46819,26 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T07:22:56.141Z",
+  "updatedAt": "2026-08-16T07:24:20.731Z",
   "activePlan": {
-    "objective": "Complete the bank dialogue and gain valuable resources",
-    "focus": "Click dialog option by its visible text: 'Click here to continue'",
-    "reason": "This objective is to complete the bank dialogue and gain valuable resources. The steps involve clicking the dialog option, moving to the bank booth, and verifying completion of the",
+    "objective": "Complete the bank dialogue and gain access to the bank for resource collection",
+    "focus": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
+    "reason": "Execute the current prerequisite and verify it.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Click dialog option by its visible text: 'Click here to continue'",
+        "label": "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Move to the bank booth to interact with the bank notice board",
+        "label": "Use the bank booth to deposit the raw shrimps and anchovies and retrieve any valuable items mentioned in the bank notice board",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Verify completion of the bank dialogue and gain any valuable resources or coins from the bank notice board",
+        "label": "Inspect the bank notice board for any additional resources or prerequisites that may be required to proceed with the bank dialogue or to unl",
         "status": "pending"
       }
     ],
@@ -46865,16 +46846,16 @@
       "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Click dialog option by its visible text: 'Click here to continue'",
-      "Move to the bank booth to interact with the bank notice board",
-      "Verify completion of the bank dialogue and gain any valuable resources or coins from the bank notice board"
+      "Click Dialog 1: Click here to continue to advance the conversation and gain access to the bank",
+      "Use the bank booth to deposit the raw shrimps and anchovies and retrieve any valuable items mentioned in the bank notice board",
+      "Inspect the bank notice board for any additional resources or prerequisites that may be required to proceed with the bank dialogue or to unl"
     ],
     "avoid": [
       "Dialog 1: Click here to continue",
-      "Dialog 1: And what do you do?",
+      "Dialog 2: What is this place?",
       "Dialog 1: Click here to continue"
     ],
-    "updatedAt": "2026-08-16T07:21:04.043Z",
+    "updatedAt": "2026-08-16T07:23:47.004Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
