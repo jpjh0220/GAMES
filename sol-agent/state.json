@@ -10,9 +10,9 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7171,
-    "totalReward": 4125.053,
-    "saves": 738,
+    "completedExperiences": 7180,
+    "totalReward": 4120.948,
+    "saves": 739,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 472,
@@ -19599,12 +19599,12 @@
     },
     "fallback": {
       "npc:trade:diango": {
-        "n": 3,
-        "avgReward": 0.067,
+        "n": 5,
+        "avgReward": 0.0592,
         "positive": 0,
         "negative": 0,
-        "lastReward": 0.072,
-        "lastAt": "2026-08-16T08:04:44.250Z",
+        "lastReward": 0.038,
+        "lastAt": "2026-08-16T08:04:58.674Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
@@ -19617,6 +19617,26 @@
         "lastAt": "2026-08-16T07:37:50.022Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback selected Sell 1 Coins for about 0 while the primary controller was unavailable."
+      },
+      "shop:sell:bronze arrow": {
+        "n": 4,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 4,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T08:05:01.872Z",
+        "exampleGoal": "Initialize persistent agent",
+        "exampleReason": "Deterministic fallback: primary controller unavailable"
+      },
+      "modal:close-shop": {
+        "n": 3,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 3,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T08:05:03.079Z",
+        "exampleGoal": "Initialize persistent agent",
+        "exampleReason": "Deterministic fallback: primary controller unavailable"
       }
     },
     "area=386:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=world": {
@@ -29259,10 +29279,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 6,
-      "avgReward": 0.2,
+      "n": 7,
+      "avgReward": 0.008,
       "positive": 2,
-      "lastAt": "2026-08-16T03:27:15.647Z",
+      "lastAt": "2026-08-16T08:04:56.080Z",
       "example": "Close the shop → Trade Diango (level 0, distance 1) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:aggie": {
@@ -41523,10 +41543,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 1,
-      "avgReward": -1.8,
+      "n": 2,
+      "avgReward": -1.152,
       "positive": 0,
-      "lastAt": "2026-08-15T23:57:31.008Z",
+      "lastAt": "2026-08-16T08:04:58.674Z",
       "example": "Trade Diango (level 0, distance 1) → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "npc:trade:diango > modal:close-shop > skill:travel:draynor-bank": {
@@ -44060,6 +44080,54 @@
       "positive": 0,
       "lastAt": "2026-08-16T08:01:37.204Z",
       "example": "Withdraw 1 Bronze arrow → Close the bank → Trade Diango (level 0, distance 12)"
+    },
+    "npc:trade:diango > shop:sell:bronze arrow > shop:sell:bronze arrow": {
+      "sequence": [
+        "npc:trade:diango",
+        "shop:sell:bronze arrow",
+        "shop:sell:bronze arrow"
+      ],
+      "n": 2,
+      "avgReward": -1.145,
+      "positive": 0,
+      "lastAt": "2026-08-16T08:05:01.872Z",
+      "example": "Trade Diango (level 0, distance 10) → Sell 1 Bronze arrow for about 0 → Sell 1 Bronze arrow for about 0"
+    },
+    "shop:sell:bronze arrow > shop:sell:bronze arrow > modal:close-shop": {
+      "sequence": [
+        "shop:sell:bronze arrow",
+        "shop:sell:bronze arrow",
+        "modal:close-shop"
+      ],
+      "n": 2,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-16T08:05:03.079Z",
+      "example": "Sell 1 Bronze arrow for about 0 → Sell 1 Bronze arrow for about 0 → Close the shop"
+    },
+    "shop:sell:bronze arrow > modal:close-shop > npc:trade:diango": {
+      "sequence": [
+        "shop:sell:bronze arrow",
+        "modal:close-shop",
+        "npc:trade:diango"
+      ],
+      "n": 1,
+      "avgReward": -1.143,
+      "positive": 0,
+      "lastAt": "2026-08-16T08:04:54.937Z",
+      "example": "Sell 1 Bronze arrow for about 0 → Close the shop → Trade Diango (level 0, distance 5)"
+    },
+    "modal:close-shop > npc:trade:diango > shop:sell:bronze arrow": {
+      "sequence": [
+        "modal:close-shop",
+        "npc:trade:diango",
+        "shop:sell:bronze arrow"
+      ],
+      "n": 1,
+      "avgReward": -1.162,
+      "positive": 0,
+      "lastAt": "2026-08-16T08:05:00.012Z",
+      "example": "Close the shop → Trade Diango (level 0, distance 4) → Sell 1 Bronze arrow for about 0"
     }
   },
   "discoveries": [
@@ -47674,9 +47742,33 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3083:3250:3077:3251:0",
+      "at": "2026-08-16T08:04:54.937Z",
+      "kind": "route",
+      "text": "Route learned: 3083,3250 → 3077,3251; moved 3083,3250 → 3077,3251",
+      "location": {
+        "x": 3077,
+        "z": 3251,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3077:3251:3081:3248:0",
+      "at": "2026-08-16T08:04:58.674Z",
+      "kind": "route",
+      "text": "Route learned: 3077,3251 → 3081,3248; moved 3077,3251 → 3081,3248",
+      "location": {
+        "x": 3081,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T08:04:44.253Z",
+  "updatedAt": "2026-08-16T08:05:03.080Z",
   "activePlan": {
     "objective": "Open the bank and deposit all raw shrimps and shrimps",
     "focus": "Open the bank",
