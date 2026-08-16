@@ -92,8 +92,9 @@ jobs:
           set -euo pipefail
           ollama pull qwen3:0.6b
           ollama pull qwen3:1.7b
-          ollama list | grep -q 'qwen3:0.6b'
-          ollama list | grep -q 'qwen3:1.7b'
+          ollama list > /tmp/ollama-models.txt
+          grep -Fq 'qwen3:0.6b' /tmp/ollama-models.txt
+          grep -Fq 'qwen3:1.7b' /tmp/ollama-models.txt
           echo 'Fast motor AI and strategist AI are ready.'
 
       - name: Start public spectator tunnel
