@@ -1,7 +1,4 @@
 import { startSession } from './src/lite/session.js';
-import { BotStateCollector } from './src/bot/StateCollector.js';
-import { ActionExecutor } from './src/bot/ActionExecutor.js';
-import type { Client } from './src/client/Client.js';
 import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
 import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
@@ -273,9 +270,6 @@ await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 
 const session=await startSession({host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true});
 const client=session.client;
-const collector=new BotStateCollector(client as unknown as Client);
-const executor=new ActionExecutor(client as unknown as Client);
-executor.setScanProvider(collector);
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slug=(s:string)=>norm(s).replace(/\s+/g,'-').slice(0,24)||'x';
@@ -290,7 +284,7 @@ const dispatchPrimitive=async(label:string,action:any)=>{
   primitiveActions++;
   if(procedureInFlight){procedureInFlight.step=label;procedureInFlight.primitiveActions++;}
   try{
-    const result:any=await Promise.resolve(executor.execute(action));
+    const result:any=await Promise.resolve(client.executeBotAction(action));
     const normalized={success:result?.success!==false,message:String(result?.message||label),phase:result?.phase,reason:result?.reason};
     void log('WORLD_SKILL_PRIMITIVE',{tick,label,action:action.type,result:normalized});
     return normalized;
@@ -553,7 +547,7 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
     return;
   }
   try{
-    const result:any=executor.execute(action);
+    const result:any=client.executeBotAction(action);
     if(result instanceof Promise)void result.then((resolved:any)=>{candidate.action.executionResult=resolved;}).catch((err:any)=>{candidate.action.executionResult={success:false,message:String(err),reason:'executor_exception'};});
     else candidate.action.executionResult=result;
     void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:result instanceof Promise?'async':result});
@@ -568,7 +562,7 @@ const runEmergencyReflex=(state:BotWorldState)=>{
   const food=state.inventory.find(i=>i.optionsWithIndex?.some(o=>/^eat$/i.test(o.text)));
   const eat=food?.optionsWithIndex?.find(o=>/^eat$/i.test(o.text));
   if(food&&eat){
-    executor.execute({type:'useInventoryItem',slot:food.slot,optionIndex:eat.opIndex,reason:'Emergency reflex: health crossed the imminent-danger threshold.'});
+    client.executeBotAction({type:'useInventoryItem',slot:food.slot,optionIndex:eat.opIndex,reason:'Emergency reflex: health crossed the imminent-danger threshold.'});
     actions++;lastReflexTick=tick;brain.noteReflex();
     currentGoal='Survive immediate danger';currentWhy='Emergency reflex temporarily overrides deliberation because HP is critically low.';
     feed('REFLEX_EAT',`Eat ${food.name}`,currentWhy,{source:'reflex',item:food.name});
@@ -576,7 +570,7 @@ const runEmergencyReflex=(state:BotWorldState)=>{
     return true;
   }
   if(p.combat.inCombat){
-    executor.execute({type:'walkTo',x:p.worldX+8,z:p.worldZ+8,running:true,reason:'Emergency reflex: critically low HP with no food; create distance.'});
+    client.executeBotAction({type:'walkTo',x:p.worldX+8,z:p.worldZ+8,running:true,reason:'Emergency reflex: critically low HP with no food; create distance.'});
     actions++;lastReflexTick=tick;brain.noteReflex();
     currentGoal='Escape immediate danger';currentWhy='Emergency reflex temporarily overrides deliberation because HP is critical and no food is available.';
     feed('REFLEX_RETREAT','Run away from combat',currentWhy,{source:'reflex'});
@@ -672,7 +666,7 @@ await log('SOL_AWAKE',{username,directive,architecture:'local Qwen teacher + out
 client.setOnGameTickCallback(()=>{
   tick++;
   try{
-    const state=collector.collectState(tick,true) as BotWorldState|null;
+    const state=client.collectBotState(tick) as BotWorldState|null;
     if(!state?.player){
       currentGoal='Reconnect to world state';currentWhy='No player state is available; decisions are held until perception returns.';
       refreshSnapshot(state);return;
