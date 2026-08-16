@@ -1,7 +1,24 @@
 {
-  "revision": 4,
-  "command": "abandon_objective",
-  "directive": "Abandon the current fishing-bank cycle immediately. Inspect inventory and nearby ground items now; pick up reachable valuable loot, then bank useful items or find a reachable merchant/shop and sell low-value surplus if capacity is pressured. Do not fish or attack again until loot/capacity is resolved. Choose a different measurable progression objective afterward, such as a new skill, route, NPC interaction, equipment upgrade, or profitable resource activity. Do not repeat the same objective without a new XP, item, coin, level, prerequisite, or discovery milestone.",
-  "expiresAt": "2026-08-16T07:28:36.777Z",
-  "updatedAt": "2026-08-16T06:58:36.777Z"
+  "revision": 5,
+  "command": "set_config",
+  "directive": null,
+  "config": {
+    "version": 1,
+    "candidateLimit": 48,
+    "inventoryWarningSlots": 3,
+    "studentSamplingRate": 0.3,
+    "strategyRefreshChoices": 18,
+    "plannerEnabled": false,
+    "maxFishingTripsWithoutProgress": 2,
+    "maxRepeatedCombatTarget": 2,
+    "maxActionsWithoutMilestone": 3,
+    "motorTemperature": 0.12,
+    "motorContextTokens": 2048,
+    "motorOutputTokens": 72,
+    "strategistTemperature": 0.1,
+    "strategistContextTokens": 1536,
+    "strategistOutputTokens": 120
+  },
+  "expiresAt": "2026-08-16T07:32:35.147Z",
+  "updatedAt": "2026-08-16T07:02:35.147Z"
 }
