@@ -83,6 +83,13 @@ export class GoalSystem {
   }
 
   /**
+   * The goal currently being pursued, if any.
+   */
+  getActiveGoal(): Goal | null {
+    return this.activeGoal ?? null;
+  }
+
+  /**
    * Check if an action matches the current goal step
    */
   matchesCurrentGoal(actionFingerprint: string): boolean {

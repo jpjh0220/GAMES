@@ -148,6 +148,7 @@ export class SolAgentBrain {
   private lastGoalReeval:number=0;
   private lastRecommendedActivity:string='';
   private lastRecommendedProfit:number=0;
+  private lastArbitrageKey:string='';
   private lastStudentChoice:AgentChoice|null=null;
   private studentDecisionOutcomes:{choice:string;reward:number}[]=[];
   private seenMessages=new Set<string>();
@@ -626,8 +627,15 @@ export class SolAgentBrain {
     if(rejected&&!outcome.executionFailed){
       const failureReason=this.extractFailureReason(state,exp,outcome);
       if(failureReason){
-        const subgoal=this.goals.formSubgoalFromFailure(exp.candidate.label,failureReason);
-        if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.name}));
+        // Don't re-form a subgoal we are already pursuing. INVENTORY_FULL fired
+        // repeatedly in run 67 and re-adopted "Visit bank to store items" 26
+        // times, resetting progress each time.
+        const active=this.goals.getActiveGoal?.();
+        const alreadyPursuing=!!active&&/bank|net|bait/i.test(String(active.name||''))&&failureReason!=='EXECUTION_FAILED';
+        if(!alreadyPursuing){
+          const subgoal=this.goals.formSubgoalFromFailure(exp.candidate.label,failureReason);
+          if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.name}));
+        }
       }
     }
     this.learn(exp,outcome,state);this.lastOutcome=outcome;this.recentOutcomes.push(outcome);if(this.recentOutcomes.length>20)this.recentOutcomes.shift();
@@ -710,12 +718,17 @@ export class SolAgentBrain {
     const activeGoal=this.goals.currentStep();
     if(!activeGoal)return; // No goal to re-evaluate
     
-    // Check if arbitrage is now more profitable
+    // Only abandon the active goal for an arbitrage we have not already acted
+    // on. Without this the same opportunity re-fires every interval and the
+    // goal never survives long enough to make progress (166 kills in run 67).
     const bestTrade=this.trades.getMostProfitableRoute();
     if(bestTrade&&bestTrade.profit>=100){
-      console.log('AGENT_GOAL_REEVAL_SWITCH',JSON.stringify({from:'current',to:'arbitrage',profit:bestTrade.profit}));
-      // Abandon current goal, switch to arbitrage
-      this.goals.failGoal('Better opportunity found: arbitrage');
+      const oppKey=`${bestTrade.item}:${bestTrade.sellNpc}:${bestTrade.buyNpc}`;
+      if(oppKey!==this.lastArbitrageKey){
+        this.lastArbitrageKey=oppKey;
+        console.log('AGENT_GOAL_REEVAL_SWITCH',JSON.stringify({to:'arbitrage',opp:oppKey,profit:bestTrade.profit}));
+        this.goals.failGoal('Better opportunity found: arbitrage');
+      }
     }
     
     // Check if economy has shifted significantly
@@ -761,22 +774,24 @@ export class SolAgentBrain {
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
     const msg=(outcome.summary||'').toLowerCase();
     const inv=new Set((state.inventory||[]).map(i=>String(i.name||'').toLowerCase()));
-    // QUEST DETECTION + TRADE OBSERVATION: parse NPC dialogue
-    const npcDialogue=(state.gameMessages||[]).filter(m=>m.fromSelf===false).map(m=>m.text).join(' ');
+    // NPC DIALOGUE: use recentDialogs (real NPC dialogue), NOT gameMessages.
+    // gameMessages with fromSelf===false is ALL public player chat. Feeding it
+    // here made a Watcher bot's "Thieves: 5311 picks, 14415 gp banked" into a
+    // price record attributed to whatever NPC happened to be nearest, which
+    // manufactured a phantom 173gp arbitrage that killed the active goal 166
+    // times in run 67. Chat is not trade data.
+    const npcDialogue=(state.recentDialogs||[]).map((x:any)=>String(x?.text||x?.message||'')).join(' ');
     if(npcDialogue.length>0){
       const nearbyNpc=(state.nearbyNpcs||[])[0];
       if(nearbyNpc){
         const quest=this.quests.parseQuestHints(nearbyNpc.name,npcDialogue);
         if(quest)console.log('AGENT_QUEST_DISCOVERED',JSON.stringify({quest:quest.title,giver:quest.giver,objective:quest.objective}));
-        
-        // Extract prices (e.g., "net: 500gp")
-        const priceMatches=npcDialogue.matchAll(/(\w+)\s*:?\s*(\d+)\s*g?p?/gi);
+        // Only accept an explicit currency amount tied to a named item.
+        const priceMatches=npcDialogue.matchAll(/([A-Za-z][A-Za-z ]{2,24}?)\s*(?:for|costs?|:)\s*(\d{1,6})\s*(?:gp|coins)\b/gi);
         for(const match of priceMatches){
-          const item=match[1];
+          const item=match[1].trim().toLowerCase();
           const price=parseInt(match[2]);
-          if(price>0&&price<100000){
-            this.trades.recordTrade(nearbyNpc.name,item,price,'sell');
-          }
+          if(price>0&&price<100000)this.trades.recordTrade(nearbyNpc.name,item,price,'sell');
         }
       }
     }
