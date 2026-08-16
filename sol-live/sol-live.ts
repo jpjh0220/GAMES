@@ -701,8 +701,8 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'hierarchical_obligation',before:rawCandidates.length,after:candidates.length,phase:obligationExecutor.status().phase,freeSlots:obs.freeSlots,groundItems:obs.groundItems.map((g:any)=>g.name).slice(0,8)});
   currentProgression=progressionDirector.plan(stateAtStart,candidates,tick);
   if(!candidates.length&&noCandidateStreak>=2){
-    const recovery=gatedCandidates.find(c=>c.category==='explore'||c.action?.type==='walkTo'||c.category==='navigation-skill');
-    if(recovery){candidates=[recovery];void log('AGENT_BLOCKED_ACTION_RECOVERY',{tick,phase:obligationExecutor.status().phase,streak:noCandidateStreak,action:recovery.label,reason:'All normal candidates were blocked; using a bounded safe movement recovery.'});}
+    const recovery=gatedCandidates.find(c=>c.category==='explore'||/^(walkTo|travelToBank|closeModal|closeShop|clickDialogOption)$/.test(String(c.action?.type||''))||c.category==='navigation-skill');
+    if(recovery){candidates=[recovery];void log('AGENT_BLOCKED_ACTION_RECOVERY',{tick,phase:obligationExecutor.status().phase,streak:noCandidateStreak,action:recovery.label,actionType:recovery.action?.type,reason:'All normal candidates were blocked; using a bounded safe recovery action and allowing it past stale fingerprint memory.'});}
   }
   if(!candidates.length){
     noCandidateStreak++;
