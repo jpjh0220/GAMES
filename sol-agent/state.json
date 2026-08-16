@@ -10,58 +10,15 @@
     "teacherChoices": 7064,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 7470,
-    "totalReward": 3897.691,
-    "saves": 769,
+    "completedExperiences": 7480,
+    "totalReward": 3889.091,
+    "saves": 770,
     "shadowPredictions": 3975,
     "shadowMatches": 1936,
     "strategistRefreshes": 474,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msvg7flq-h3n2sp",
-      "createdAt": "2026-08-16T06:53:07.646Z",
-      "tick": 3664,
-      "runNumber": 86,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Travel to Draynor Bank at 3092,3243 using verified waypoint navigation worked across 46 similar samples with average reward 1.64.",
-      "importance": 2.64,
-      "tags": [
-        "navigation skill",
-        "skill travel draynor bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvg7o1p-1di3x1",
-      "createdAt": "2026-08-16T06:53:18.589Z",
-      "tick": 3701,
-      "runNumber": 86,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 7). Result: +132 XP; 1 damage dealt; moved 3092,3243 → 3085,3241; execution rejected or failed. Reward 1.077.",
-      "importance": 1.24,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent atlas",
-        "agent gpgather1",
-        "agent xbfr5x1f0",
-        "agent s0up",
-        "loc fire"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      }
-    },
     {
       "id": "msvg7o1p-bf3bf1",
       "createdAt": "2026-08-16T06:53:18.589Z",
@@ -8744,6 +8701,48 @@
       "location": {
         "x": 3077,
         "z": 3250,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj7fcd-yfm2l4",
+      "createdAt": "2026-08-16T08:17:06.157Z",
+      "tick": 237,
+      "runNumber": 102,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 2). Result: moved 3077,3250 → 3078,3250; execution rejected or failed. Reward -1.462.",
+      "importance": 1.43,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure"
+      ],
+      "location": {
+        "x": 3078,
+        "z": 3250,
+        "level": 0
+      }
+    },
+    {
+      "id": "msvj7p1n-1513is",
+      "createdAt": "2026-08-16T08:17:18.731Z",
+      "tick": 276,
+      "runNumber": 102,
+      "kind": "episode",
+      "text": "AI motor: Trade Diango (level 0, distance 2). Result: moved 3078,3250 → 3080,3249; execution rejected or failed. Reward -1.462.",
+      "importance": 1.43,
+      "tags": [
+        "economy",
+        "diango",
+        "trade",
+        "level 0",
+        "capacity pressure"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3249,
         "level": 0
       }
     }
@@ -19633,12 +19632,12 @@
     },
     "fallback": {
       "npc:trade:diango": {
-        "n": 139,
-        "avgReward": -0.9307,
+        "n": 144,
+        "avgReward": -0.9373,
         "positive": 0,
-        "negative": 128,
-        "lastReward": -1.462,
-        "lastAt": "2026-08-16T08:17:01.856Z",
+        "negative": 133,
+        "lastReward": -0.892,
+        "lastAt": "2026-08-16T08:17:22.590Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
@@ -19663,12 +19662,12 @@
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       },
       "modal:close-shop": {
-        "n": 135,
+        "n": 140,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 135,
+        "negative": 140,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T08:16:58.928Z",
+        "lastAt": "2026-08-16T08:17:19.833Z",
         "exampleGoal": "Initialize persistent agent",
         "exampleReason": "Deterministic fallback: primary controller unavailable"
       }
@@ -29313,10 +29312,10 @@
         "npc:trade:diango",
         "modal:close-shop"
       ],
-      "n": 120,
-      "avgReward": -2.044,
+      "n": 125,
+      "avgReward": -2.059,
       "positive": 2,
-      "lastAt": "2026-08-16T08:16:58.928Z",
+      "lastAt": "2026-08-16T08:17:19.833Z",
       "example": "Close the shop → Trade Diango (level 0, distance 1) → Close the shop"
     },
     "npc:trade:diango > modal:close-shop > npc:talk to:aggie": {
@@ -41577,10 +41576,10 @@
         "modal:close-shop",
         "npc:trade:diango"
       ],
-      "n": 115,
-      "avgReward": -2.532,
+      "n": 120,
+      "avgReward": -2.55,
       "positive": 0,
-      "lastAt": "2026-08-16T08:17:01.856Z",
+      "lastAt": "2026-08-16T08:17:22.590Z",
       "example": "Trade Diango (level 0, distance 1) → Close the shop → Trade Diango (level 0, distance 1)"
     },
     "npc:trade:diango > modal:close-shop > skill:travel:draynor-bank": {
@@ -47884,9 +47883,33 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3077:3250:3078:3250:0",
+      "at": "2026-08-16T08:17:06.157Z",
+      "kind": "route",
+      "text": "Route learned: 3077,3250 → 3078,3250; moved 3077,3250 → 3078,3250; execution rejected or failed",
+      "location": {
+        "x": 3078,
+        "z": 3250,
+        "level": 0
+      },
+      "confidence": 0.35
+    },
+    {
+      "id": "route:3078:3250:3080:3249:0",
+      "at": "2026-08-16T08:17:18.731Z",
+      "kind": "route",
+      "text": "Route learned: 3078,3250 → 3080,3249; moved 3078,3250 → 3080,3249; execution rejected or failed",
+      "location": {
+        "x": 3080,
+        "z": 3249,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T08:17:01.856Z",
+  "updatedAt": "2026-08-16T08:17:22.590Z",
   "activePlan": {
     "objective": "Explore northeast about 4 tiles to find a prerequisite for a quest or resource",
     "focus": "Explore northeast about 4 tiles to locate a relevant area or object",
