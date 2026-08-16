@@ -6,76 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 7582,
-    "teacherChoices": 7582,
+    "totalChoices": 7590,
+    "teacherChoices": 7590,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8164,
-    "totalReward": 3760.755,
-    "saves": 874,
+    "completedExperiences": 8170,
+    "totalReward": 3759.875,
+    "saves": 875,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 517,
-    "strategistFailures": 14
+    "strategistRefreshes": 518,
+    "strategistFailures": 15
   },
   "memories": [
-    {
-      "id": "msvmxlsk-ct0jig",
-      "createdAt": "2026-08-16T10:01:26.420Z",
-      "tick": 566,
-      "runNumber": 122,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3239 → 3092,3243; new: npc:Jail guard, npc:Ned, loc:Cooking shelves, loc:Door, loc:Wardrobe, loc:Broom. Reward 1.23.",
-      "importance": 1.31,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc jail guard",
-        "npc ned",
-        "loc cooking shelves",
-        "loc door",
-        "loc wardrobe",
-        "loc broom"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "msvmy4uk-0lnenl",
-      "createdAt": "2026-08-16T10:01:51.116Z",
-      "tick": 649,
-      "runNumber": 122,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3086,3230 → 3092,3243; new: agent:Ares, agent:Erebus, npc:Diango, npc:Ned, npc:Aggie, npc:Jail guard. Reward 1.103.",
-      "importance": 1.25,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "agent ares",
-        "agent erebus",
-        "npc diango",
-        "npc ned",
-        "npc aggie",
-        "npc jail guard",
-        "loc crate",
-        "loc staircase",
-        "loc oak"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msvmy4uk-1tukhv",
       "createdAt": "2026-08-16T10:01:51.116Z",
@@ -8482,6 +8425,48 @@
       "location": {
         "x": 3144,
         "z": 3216,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1lnn7-ugdm61",
+      "createdAt": "2026-08-16T16:52:03.187Z",
+      "tick": 1316,
+      "runNumber": 135,
+      "kind": "lesson",
+      "text": "Item-purpose lesson: Pick up Raw bear meat (distance 0) produced No measurable change. with reward -0.6. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
+      "importance": 1.6,
+      "tags": [
+        "item purpose",
+        "pickup",
+        "item",
+        "resource",
+        "raw bear meat",
+        "valuable drop"
+      ],
+      "location": {
+        "x": 3153,
+        "z": 3226,
+        "level": 0
+      }
+    },
+    {
+      "id": "msw1p89i-wxqug1",
+      "createdAt": "2026-08-16T16:54:49.878Z",
+      "tick": 0,
+      "runNumber": 135,
+      "kind": "strategy",
+      "text": "AI strategist: Approach the Gerrants' Fishy Business. The Gerrants' Fishy Business offers a variety of fishing items with different prices. By understanding the current inventory and the next objective, you can make informed decisions about what to buy or sell.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "approach the gerrants fishy business",
+        "inspect the available items and their prices",
+        "evaluate the current inventory and determine what to buy sell"
+      ],
+      "location": {
+        "x": 3153,
+        "z": 3223,
         "level": 0
       }
     }
@@ -20943,14 +20928,24 @@
     },
     "area=393:402:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
       "pickup:pot": {
-        "n": 1,
-        "avgReward": 0.08,
+        "n": 2,
+        "avgReward": -0.26,
         "positive": 0,
-        "negative": 0,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-16T13:19:20.244Z",
-        "exampleGoal": "Identify safe fishing spots based on coordinates and spot types.",
-        "exampleReason": "I picked up a small fishing net at a safe location with coordinates 3146,3216,0. I verified that this location is safe and has a good stock of small fishing nets. I have 99 HP, 117"
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T16:52:24.847Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up a Pot (distance 10)"
+      },
+      "pickup:raw bear meat": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T16:52:03.187Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up Raw bear meat (distance 10) at the Gerrants' Fishy Business. This is a valuable drop, and I've used my inventory space to do so. I've verified that this action was succ"
       }
     },
     "area=393:402:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -20985,6 +20980,16 @@
         "lastAt": "2026-08-16T14:01:55.062Z",
         "exampleGoal": "Identify safe fishing spots based on coordinates and spot types.",
         "exampleReason": "I have enough inventory space to hold that item."
+      },
+      "pickup:bones": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T16:54:59.016Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up Bones (distance 14)"
       }
     },
     "area=393:401:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -20997,6 +21002,40 @@
         "lastAt": "2026-08-16T16:45:55.904Z",
         "exampleGoal": "Approach the Gerrants' Fishy Business",
         "exampleReason": "I picked up a small fishing net from the Gerrants' Fishy Business shop. This is a useful resource for my objective of buying a fishing rod."
+      },
+      "pickup:ashes": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T16:52:42.147Z",
+        "exampleGoal": "Progress through pickup",
+        "exampleReason": "I need to pick up some valuable loot to continue my progress."
+      }
+    },
+    "area=394:403:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
+      "pickup:pot": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T16:52:12.537Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up a small fishing net at the Gerrants' Fishy Business."
+      }
+    },
+    "area=395:402:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
+      "pickup:bones": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-16T16:55:07.345Z",
+        "exampleGoal": "Approach the Gerrants' Fishy Business",
+        "exampleReason": "I picked up Bones (distance 6)"
       }
     }
   },
@@ -27160,11 +27199,11 @@
     "gtking": {
       "name": "Gtking",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T14:01:32.548Z",
+      "lastSeenAt": "2026-08-16T16:54:39.505Z",
       "encounters": 1,
       "trust": 0.6,
       "stance": "cooperative",
-      "conversations": 30,
+      "conversations": 31,
       "cooperation": 5,
       "suspicion": 0,
       "facts": [
@@ -27178,11 +27217,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T05:07:23.120Z",
-          "direction": "incoming",
-          "text": "The king rides to war"
-        },
         {
           "at": "2026-08-16T12:13:12.735Z",
           "direction": "incoming",
@@ -27275,6 +27309,11 @@
         },
         {
           "at": "2026-08-16T14:01:32.548Z",
+          "direction": "incoming",
+          "text": "King needs food deliver now"
+        },
+        {
+          "at": "2026-08-16T16:54:39.505Z",
           "direction": "incoming",
           "text": "King needs food deliver now"
         }
@@ -27404,11 +27443,11 @@
     "gtpick": {
       "name": "Gtpick",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "lastSeenAt": "2026-08-16T16:52:25.234Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 87,
+      "conversations": 88,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -27418,11 +27457,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:13:12.735Z",
-          "direction": "incoming",
-          "text": "Pickswing delivering ores"
-        },
         {
           "at": "2026-08-16T12:46:08.061Z",
           "direction": "incoming",
@@ -27517,17 +27551,22 @@
           "at": "2026-08-16T16:51:46.025Z",
           "direction": "incoming",
           "text": "Pickswing delivering ores"
+        },
+        {
+          "at": "2026-08-16T16:52:25.234Z",
+          "direction": "incoming",
+          "text": "Pickswing delivering ores"
         }
       ]
     },
     "gttimber": {
       "name": "Gttimber",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "lastSeenAt": "2026-08-16T16:54:39.505Z",
       "encounters": 1,
       "trust": 0.24,
       "stance": "friendly",
-      "conversations": 112,
+      "conversations": 113,
       "cooperation": 2,
       "suspicion": 0,
       "facts": [
@@ -27537,11 +27576,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:46:08.061Z",
-          "direction": "incoming",
-          "text": "Timber delivering logs"
-        },
         {
           "at": "2026-08-16T12:46:08.061Z",
           "direction": "incoming",
@@ -27636,18 +27670,23 @@
           "at": "2026-08-16T16:51:46.025Z",
           "direction": "incoming",
           "text": "Timber delivering logs"
+        },
+        {
+          "at": "2026-08-16T16:54:39.505Z",
+          "direction": "incoming",
+          "text": "Timber delivering logs"
         }
       ]
     },
     "gtnetter": {
       "name": "Gtnetter",
       "firstSeenAt": "2026-08-16T03:49:45.181Z",
-      "lastSeenAt": "2026-08-16T14:01:32.548Z",
-      "encounters": 339,
-      "combatLevel": 8,
+      "lastSeenAt": "2026-08-16T16:54:50.634Z",
+      "encounters": 340,
+      "combatLevel": 9,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 131,
+      "conversations": 133,
       "cooperation": 10,
       "suspicion": 0,
       "facts": [
@@ -27658,16 +27697,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:49:23.288Z",
-          "direction": "incoming",
-          "text": "Netter delivering fish"
-        },
-        {
-          "at": "2026-08-16T12:59:05.108Z",
-          "direction": "incoming",
-          "text": "Netter delivering fish"
-        },
         {
           "at": "2026-08-16T13:19:01.658Z",
           "direction": "incoming",
@@ -27755,6 +27784,16 @@
         },
         {
           "at": "2026-08-16T14:01:32.548Z",
+          "direction": "incoming",
+          "text": "Netter delivering fish"
+        },
+        {
+          "at": "2026-08-16T16:54:39.505Z",
+          "direction": "incoming",
+          "text": "Netter delivering fish"
+        },
+        {
+          "at": "2026-08-16T16:54:39.505Z",
           "direction": "incoming",
           "text": "Netter delivering fish"
         }
@@ -27863,12 +27902,12 @@
     "gtmule": {
       "name": "Gtmule",
       "firstSeenAt": "2026-08-16T04:09:46.143Z",
-      "lastSeenAt": "2026-08-16T14:01:32.548Z",
+      "lastSeenAt": "2026-08-16T16:52:42.494Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 54,
-      "cooperation": 16,
+      "conversations": 55,
+      "cooperation": 17,
       "suspicion": 0,
       "facts": [
         "The merchant guild is open",
@@ -27884,11 +27923,6 @@
         "Died and lost your tools? we have them. Goods or coins accepted"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T10:33:34.894Z",
-          "direction": "incoming",
-          "text": "Mule open for business: goods for goods, anything considered"
-        },
         {
           "at": "2026-08-16T10:42:17.611Z",
           "direction": "incoming",
@@ -27983,6 +28017,11 @@
           "at": "2026-08-16T14:01:32.548Z",
           "direction": "incoming",
           "text": "Hides bones and tools in stock -- the swarm supplies the swarm"
+        },
+        {
+          "at": "2026-08-16T16:52:42.494Z",
+          "direction": "incoming",
+          "text": "Buying law runes trade tools hides for your laws, here at spawn"
         }
       ]
     },
@@ -30064,11 +30103,11 @@
     "conductor": {
       "name": "Conductor",
       "firstSeenAt": "2026-08-16T16:51:46.025Z",
-      "lastSeenAt": "2026-08-16T16:51:46.025Z",
+      "lastSeenAt": "2026-08-16T16:54:39.505Z",
       "encounters": 1,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 2,
+      "conversations": 3,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -30085,8 +30124,28 @@
           "at": "2026-08-16T16:51:46.025Z",
           "direction": "incoming",
           "text": "Trade offers welcome - verified value only"
+        },
+        {
+          "at": "2026-08-16T16:54:39.505Z",
+          "direction": "incoming",
+          "text": "Trade offers welcome - verified value only"
         }
       ]
+    },
+    "opusmaximus2": {
+      "name": "Opusmaximus2",
+      "firstSeenAt": "2026-08-16T16:54:39.505Z",
+      "lastSeenAt": "2026-08-16T16:54:39.505Z",
+      "encounters": 1,
+      "combatLevel": 115,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -30676,12 +30735,12 @@
     },
     "196:201:0": {
       "key": "196:201:0",
-      "x": 3146,
+      "x": 3144,
       "z": 3216,
       "level": 0,
       "firstSeenAt": "2026-08-16T13:00:50.387Z",
-      "lastSeenAt": "2026-08-16T14:01:55.374Z",
-      "visits": 5,
+      "lastSeenAt": "2026-08-16T16:52:42.494Z",
+      "visits": 8,
       "npcs": [
         "Unicorn",
         "Goblin",
@@ -30715,8 +30774,8 @@
       "z": 3211,
       "level": 0,
       "firstSeenAt": "2026-08-16T13:01:15.291Z",
-      "lastSeenAt": "2026-08-16T16:51:46.025Z",
-      "visits": 14,
+      "lastSeenAt": "2026-08-16T16:52:36.288Z",
+      "visits": 16,
       "npcs": [
         "Butterfly",
         "Warrior",
@@ -30747,12 +30806,12 @@
     },
     "197:201:0": {
       "key": "197:201:0",
-      "x": 3156,
-      "z": 3219,
+      "x": 3161,
+      "z": 3223,
       "level": 0,
       "firstSeenAt": "2026-08-16T14:01:47.311Z",
-      "lastSeenAt": "2026-08-16T14:01:47.311Z",
-      "visits": 1,
+      "lastSeenAt": "2026-08-16T16:54:59.328Z",
+      "visits": 6,
       "npcs": [
         "Unicorn",
         "Goblin",
@@ -30772,7 +30831,10 @@
         "Bush",
         "Flower",
         "Yew",
-        "Well"
+        "Well",
+        "Fire",
+        "Fern",
+        "Daisies"
       ]
     }
   },
@@ -48784,81 +48846,87 @@
       "failed": 1,
       "lastAt": "2026-08-16T14:02:04.400Z",
       "example": "Pick up 15 Arrow shaft (distance 3) → Pick up Pot (distance 8) → Pick up Pot (distance 0)"
+    },
+    "pickup:pot > pickup:raw bear meat > pickup:raw bear meat": {
+      "sequence": [
+        "pickup:pot",
+        "pickup:raw bear meat",
+        "pickup:raw bear meat"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-16T16:52:03.187Z",
+      "example": "Pick up Pot (distance 1) → Pick up Raw bear meat (distance 15) → Pick up Raw bear meat (distance 0)"
+    },
+    "pickup:raw bear meat > pickup:raw bear meat > pickup:pot": {
+      "sequence": [
+        "pickup:raw bear meat",
+        "pickup:raw bear meat",
+        "pickup:pot"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-16T16:52:12.537Z",
+      "example": "Pick up Raw bear meat (distance 15) → Pick up Raw bear meat (distance 0) → Pick up Pot (distance 15)"
+    },
+    "pickup:raw bear meat > pickup:pot > pickup:pot": {
+      "sequence": [
+        "pickup:raw bear meat",
+        "pickup:pot",
+        "pickup:pot"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-16T16:52:24.847Z",
+      "example": "Pick up Raw bear meat (distance 0) → Pick up Pot (distance 15) → Pick up Pot (distance 0)"
+    },
+    "pickup:pot > pickup:pot > pickup:ashes": {
+      "sequence": [
+        "pickup:pot",
+        "pickup:pot",
+        "pickup:ashes"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-16T16:52:42.147Z",
+      "example": "Pick up Pot (distance 15) → Pick up Pot (distance 0) → Pick up Ashes (distance 15)"
+    },
+    "pickup:pot > pickup:ashes > pickup:bones": {
+      "sequence": [
+        "pickup:pot",
+        "pickup:ashes",
+        "pickup:bones"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-16T16:54:59.016Z",
+      "example": "Pick up Pot (distance 0) → Pick up Ashes (distance 15) → Pick up Bones (distance 14)"
+    },
+    "pickup:ashes > pickup:bones > pickup:bones": {
+      "sequence": [
+        "pickup:ashes",
+        "pickup:bones",
+        "pickup:bones"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 0,
+      "lastAt": "2026-08-16T16:55:07.345Z",
+      "example": "Pick up Ashes (distance 15) → Pick up Bones (distance 14) → Pick up Bones (distance 6)"
     }
   },
   "discoveries": [
-    {
-      "id": "place:standing torch:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Standing torch observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cauldron:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Cauldron observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:rocking chair:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "resource",
-      "text": "Rocking chair observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:oak:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Oak observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:willow:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Willow observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mystical wall chart:193:203:0",
-      "at": "2026-08-16T10:43:41.678Z",
-      "kind": "place",
-      "text": "Mystical wall chart observed near 3092, 3248, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3248,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:charms:193:203:0",
       "at": "2026-08-16T10:43:41.678Z",
@@ -52386,13 +52454,97 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "place:fire:197:201:0",
+      "at": "2026-08-16T16:52:03.529Z",
+      "kind": "place",
+      "text": "Fire observed near 3153, 3226, level 0.",
+      "location": {
+        "x": 3153,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:197:201:0",
+      "at": "2026-08-16T16:52:03.529Z",
+      "kind": "place",
+      "text": "Fern observed near 3153, 3226, level 0.",
+      "location": {
+        "x": 3153,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3153:3226:3149:3222:0",
+      "at": "2026-08-16T16:52:12.537Z",
+      "kind": "route",
+      "text": "Route learned: 3153,3226 → 3149,3222; moved 3153,3226 → 3149,3222",
+      "location": {
+        "x": 3149,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3148:3211:3144:3214:0",
+      "at": "2026-08-16T16:52:42.150Z",
+      "kind": "route",
+      "text": "Route learned: 3148,3211 → 3144,3214; moved 3148,3211 → 3144,3214",
+      "location": {
+        "x": 3144,
+        "z": 3214,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3153:3223:3159:3223:0",
+      "at": "2026-08-16T16:54:59.016Z",
+      "kind": "route",
+      "text": "Route learned: 3153,3223 → 3159,3223; moved 3153,3223 → 3159,3223",
+      "location": {
+        "x": 3159,
+        "z": 3223,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "place:daisies:197:201:0",
+      "at": "2026-08-16T16:54:59.328Z",
+      "kind": "place",
+      "text": "Daisies observed near 3161, 3223, level 0.",
+      "location": {
+        "x": 3161,
+        "z": 3223,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3167:3226:3161:3228:0",
+      "at": "2026-08-16T16:55:07.345Z",
+      "kind": "route",
+      "text": "Route learned: 3167,3226 → 3161,3228; moved 3167,3226 → 3161,3228",
+      "location": {
+        "x": 3161,
+        "z": 3228,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T16:51:53.831Z",
+  "updatedAt": "2026-08-16T16:55:07.345Z",
   "activePlan": {
     "objective": "Shop at the Gerrants' Fishy Business",
     "focus": "Approach the Gerrants' Fishy Business",
-    "reason": "The Gerrants' Fishy Business offers a variety of fishing items with different buy and sell prices. By understanding the current inventory and goals, you can make informed decisions about what to purchase or sell.",
+    "reason": "The Gerrants' Fishy Business offers a variety of fishing items with different prices. By understanding the current inventory and the next objective, you can make informed decisions about what to buy or sell.",
     "risk": "balanced",
     "plan": [
       {
@@ -52412,7 +52564,7 @@
       }
     ],
     "successSignals": [
-      "You successfully"
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
       "Approach the Gerrants' Fishy Business",
@@ -52420,12 +52572,12 @@
       "Evaluate the current inventory and determine what to buy/sell"
     ],
     "avoid": [
-      "Pick up Pot (distance 0)",
-      "Pick up Pot (distance 0)",
-      "Pick up 15 Arrow shaft (distance 1)"
+      "Pick up Pot (distance 1)",
+      "Pick up Raw bear meat (distance 0)",
+      "Pick up Pot (distance 0)"
     ],
-    "updatedAt": "2026-08-16T14:02:23.440Z",
+    "updatedAt": "2026-08-16T16:54:49.878Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 0
   }
 }
