@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 103,
-  "committedTick": 370,
+  "stateGeneration": 115,
+  "committedTick": 420,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3086,
-    "z": 3230,
+    "z": 3231,
     "level": 0
   },
   "currentObligation": {
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I picked up Raw anchovies (distance 1)"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Progress through pickup",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:25|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:315:1|20:526:1|23:526:1|25:526:1|26:526:1",
-    "freeSlots": 11,
+    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:25|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:315:1|13:321:1|20:526:1|23:526:1|25:526:1|26:526:1",
+    "freeSlots": 10,
     "coins": 25,
-    "updatedTick": 370
+    "updatedTick": 420
   },
   "milestones": [
     {
@@ -43,6 +43,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 327,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "directed-exploration:384",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 384,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -52,5 +58,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T11:16:14.269Z"
+  "updatedAt": "2026-08-16T11:16:29.333Z"
 }\n
