@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 197,
-  "committedTick": 670,
+  "stateGeneration": 208,
+  "committedTick": 720,
   "identity": {
     "name": "Sol5"
   },
@@ -11,11 +11,11 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "transaction",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I want to sell a Bronze axe for 8 GP. I have a 100 GP bag, so I can do this. I'll go to the shop and sell the axe. I expect to get 8 GP, which will help me with my progression."
+    "reason": "Selected Buy 1 Toy horsey for about 150 to satisfy the current objective and verify the resulting world-state change."
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:271|7:526:1|8:526:1|9:526:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
-    "freeSlots": 8,
-    "coins": 271,
-    "updatedTick": 670
+    "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:121|7:526:1|8:526:1|9:526:1|10:2520:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
+    "freeSlots": 7,
+    "coins": 121,
+    "updatedTick": 720
   },
   "milestones": [
     {
@@ -43,6 +43,12 @@
       "label": "Resolve inventory capacity before training",
       "tick": 564,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "directed-exploration:694",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 694,
+      "evidence": "inventory changed, -150 coins"
     }
   ],
   "failures": [],
@@ -52,5 +58,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:40:15.549Z"
+  "updatedAt": "2026-08-16T21:40:31.176Z"
 }\n
