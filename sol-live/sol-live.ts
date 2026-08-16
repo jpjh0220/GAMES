@@ -325,6 +325,13 @@ const executeWorldSkill=async(action:any)=>{
 const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   const p=state.player!;
   const out:AgentCandidate[]=[];
+  const inventoryCapacity=28;
+  const inventorySlots=(state.inventory||[]).length;
+  const freeInventorySlots=Math.max(0,inventoryCapacity-inventorySlots);
+  const capacityPressure=freeInventorySlots<=3;
+  const reachableGroundItems=(state.groundItems||[]).filter((g:any)=>g.reachable!==false);
+  const valuableGroundItems=reachableGroundItems.filter((g:any)=>!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')));
+
   let seq=0;
   const add=(c:Omit<AgentCandidate,'id'>)=>{ if(out.length<96) out.push({...c,id:`a${seq++}_${slug(c.category)}`}); };
 
@@ -384,12 +391,13 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
     for(const o of (npc.optionsWithIndex||[]).slice(0,4)){
       const text=o.text||`option ${o.opIndex}`;
       const lower=text.toLowerCase();
-      const category=/attack/.test(lower)?'combat':/pickpocket|steal/.test(lower)?'economy':/talk/.test(lower)?'social':'npc';
-      add({label:`${text} ${npc.name} (level ${npc.combatLevel||0}, distance ${npc.distance})`,category,fingerprint:`npc:${norm(text)}:${norm(npc.name)}`,settleTicks:category==='combat'?12:category==='economy'?8:6,action:{type:'interactNpc',npcIndex:npc.index,optionIndex:o.opIndex,reason:`Interact with ${npc.name}.`},tags:[npc.name,text,category,`level-${npc.combatLevel||0}`]});
+      const category=/attack/.test(lower)?'combat':/pickpocket|steal|trade|shop|sell|buy/.test(lower)?'economy':/talk/.test(lower)?'social':'npc';
+      if(category==='combat'&&capacityPressure)continue;
+      add({label:`${text} ${npc.name} (level ${npc.combatLevel||0}, distance ${npc.distance})`,category,fingerprint:`npc:${norm(text)}:${norm(npc.name)}`,settleTicks:category==='combat'?12:category==='economy'?8:6,action:{type:'interactNpc',npcIndex:npc.index,optionIndex:o.opIndex,reason:`Interact with ${npc.name}.`},tags:[npc.name,text,category,`level-${npc.combatLevel||0}`,capacityPressure?'capacity-pressure':'']});
     }
   }
 
-  for(const g of (state.groundItems||[]).filter(g=>g.reachable!==false).sort((a,b)=>a.distance-b.distance).slice(0,8)) add({label:`Pick up ${g.count>1?g.count+' ':''}${g.name} (distance ${g.distance})`,category:'pickup',fingerprint:`pickup:${norm(g.name)}`,settleTicks:5,action:{type:'pickupItem',x:g.x,z:g.z,itemId:g.id,reason:`Pick up ${g.name}.`},tags:['item','resource',g.name]});
+  for(const g of reachableGroundItems.sort((a,b)=>Number(a.distance||999)-Number(b.distance||999)).slice(0,8)) add({label:`Pick up ${g.count>1?g.count+' ':''}${g.name} (distance ${g.distance})`,category:'pickup',fingerprint:`pickup:${norm(g.name)}`,settleTicks:5,action:{type:'pickupItem',x:g.x,z:g.z,itemId:g.id,reason:`Pick up ${g.name}.`},tags:['item','resource',g.name,valuableGroundItems.includes(g)?'valuable-drop':'']});
 
   for(const loc of (state.nearbyLocs||[]).filter(l=>l.reachable!==false).sort((a,b)=>a.distance-b.distance).slice(0,12)){
     for(const o of (loc.optionsWithIndex||[]).slice(0,2)) add({label:`${o.text} ${loc.name} (distance ${loc.distance})`,category:'world',fingerprint:`loc:${norm(o.text)}:${norm(loc.name)}`,settleTicks:6,action:{type:'interactLoc',x:loc.x,z:loc.z,locId:loc.id,optionIndex:o.opIndex,reason:`Interact with ${loc.name}.`},tags:['world',loc.name,o.text]});
