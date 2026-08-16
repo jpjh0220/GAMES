@@ -600,7 +600,10 @@ export class SolAgentBrain {
 
   private maybeRefreshStrategy(state:BotWorldState,candidates:AgentCandidate[]){
     // The strategist runs beside the motor, never on the motor's critical path.
-    const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=(this.runtimeConfig.strategyRefreshChoices||18);
+    const recent=this.recentOutcomes.slice(-4);
+    const stalled=recent.length>=3&&recent.slice(-3).every(o=>o.noProgress||o.rejected);
+    const repeatedCategory=recent.length>=3&&new Set(recent.slice(-3).map(o=>o.category)).size===1;
+    const due=this.strategy===null||this.sessionMotorChoices-this.lastStrategySessionChoice>=(this.runtimeConfig.strategyRefreshChoices||18)||stalled||repeatedCategory;
     if(!due||this.strategistInFlight)return;
     if(!this.strategistReady){void this.refreshAvailability();return;}
     this.strategistInFlight=true;
