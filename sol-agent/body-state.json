@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1528,
-  "committedTick": 5080,
+  "stateGeneration": 1548,
+  "committedTick": 5130,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3150,
-    "z": 3247,
+    "x": 3164,
+    "z": 3237,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I want to pick up the Air rune (distance 13) to improve my skills and progress."
+    "reason": "I need to attack the bear to collect its drop of air runes"
   },
   "objective": {
     "id": "boot",
-    "label": "Progress through pickup",
+    "label": "Identify and record all drops from goblin guards",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|2:556:9|3:526:1|4:526:1|6:995:199|19:557:12",
     "freeSlots": 21,
     "coins": 199,
-    "updatedTick": 5080
+    "updatedTick": 5130
   },
   "milestones": [
     {
@@ -481,6 +481,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 5002,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "woodcut-to-15:5113",
+      "label": "Train Woodcutting to level 15",
+      "tick": 5113,
+      "evidence": "+1065 XP"
     }
   ],
   "failures": [],
@@ -490,5 +496,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:53:03.010Z"
+  "updatedAt": "2026-08-16T19:53:18.109Z"
 }\n
