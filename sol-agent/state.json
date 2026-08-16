@@ -6,66 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 5579,
-    "teacherChoices": 5579,
+    "totalChoices": 5583,
+    "teacherChoices": 5583,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 5576,
-    "totalReward": 2956.564,
-    "saves": 564,
-    "shadowPredictions": 3078,
-    "shadowMatches": 1318,
+    "completedExperiences": 5580,
+    "totalReward": 2959.394,
+    "saves": 565,
+    "shadowPredictions": 3080,
+    "shadowMatches": 1319,
     "strategistRefreshes": 345,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msv1y99s-kw8qn5",
-      "createdAt": "2026-08-16T00:14:04.912Z",
-      "tick": 52493,
-      "runNumber": 67,
-      "kind": "episode",
-      "text": "AI motor: Pick up Bones (distance 1). Result: moved 3086,3238 → 3085,3238; inventory changed; execution rejected or failed. Reward -1.09.",
-      "importance": 1.25,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "bones",
-        "loc oak"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3238,
-        "level": 0
-      }
-    },
-    {
-      "id": "msv1ys0s-y1pllj",
-      "createdAt": "2026-08-16T00:14:29.212Z",
-      "tick": 52574,
-      "runNumber": 67,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3238 → 3092,3243; new: npc:Aggie, loc:Bench, loc:Shelves, loc:Cooking shelves, loc:Door. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc aggie",
-        "loc bench",
-        "loc shelves",
-        "loc cooking shelves",
-        "loc door"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msv1ys0s-0u9hd1",
       "createdAt": "2026-08-16T00:14:29.212Z",
@@ -8200,6 +8153,49 @@
         "z": 3228,
         "level": 0
       }
+    },
+    {
+      "id": "msv4gxyx-ep0wwl",
+      "createdAt": "2026-08-16T01:24:35.961Z",
+      "tick": 241,
+      "runNumber": 68,
+      "kind": "episode",
+      "text": "AI motor: Attack Dark wizard (level 7, distance 6). Result: +1598 XP; 12 damage dealt; moved 3087,3228 → 3086,3233; execution rejected or failed. Reward 4.63.",
+      "importance": 3.01,
+      "tags": [
+        "combat",
+        "dark wizard",
+        "attack",
+        "level 7",
+        "agent goo002",
+        "agent stasis",
+        "agent goo003",
+        "loc closed bank booth",
+        "loc market stall"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3233,
+        "level": 0
+      }
+    },
+    {
+      "id": "msv4gxyx-q3rhyr",
+      "createdAt": "2026-08-16T01:24:35.961Z",
+      "tick": 241,
+      "runNumber": 68,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 4 similar samples with average reward 4.14.",
+      "importance": 4,
+      "tags": [
+        "combat",
+        "npc attack dark wizard"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3233,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9083,14 +9079,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 715,
-        "avgReward": -0.1466,
+        "n": 717,
+        "avgReward": -0.1478,
         "positive": 88,
-        "negative": 627,
+        "negative": 629,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T01:21:15.621Z",
-        "exampleGoal": "Travel to the Draynor fishing area at 3087,3230 and verify arrival.",
-        "exampleReason": "Click here to continue"
+        "lastAt": "2026-08-16T01:24:22.766Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "I have selected the 'Dialog 1: Click here to continue' action."
       },
       "wait": {
         "n": 79,
@@ -9105,24 +9101,24 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait,world": {
       "npc:net:fishing spot": {
-        "n": 17,
-        "avgReward": -0.654,
+        "n": 18,
+        "avgReward": -0.651,
         "positive": 0,
-        "negative": 15,
+        "negative": 16,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T01:23:59.385Z",
+        "lastAt": "2026-08-16T01:24:16.462Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I need to explore the safe route to reach the fishing location. I'll start by exploring the area north of z=3240 to stay safe while walking west from the cow field to Draynor Villa"
+        "exampleReason": "I have learned the skill to net fishing spots."
       },
       "npc:attack:dark wizard": {
-        "n": 3,
-        "avgReward": 3.98,
-        "positive": 3,
+        "n": 4,
+        "avgReward": 4.1425,
+        "positive": 4,
         "negative": 0,
-        "lastReward": 3.28,
-        "lastAt": "2026-08-15T00:42:45.312Z",
-        "exampleGoal": "Interact with Net Fishing spot (level 0, distance 2) using interactLoc",
-        "exampleReason": "I have already chosen the 'Combat style Jab: Accurate' action to attack the Dark wizard, which is the most effective way to escape the trap. This action will give me the necessary "
+        "lastReward": 4.63,
+        "lastAt": "2026-08-16T01:24:35.961Z",
+        "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
+        "exampleReason": "I need to attack a Dark wizard to gather resources."
       },
       "npc:bait:fishing spot": {
         "n": 1,
@@ -17653,8 +17649,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 3841,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 3845,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -20237,8 +20233,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 1414,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 1418,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20353,8 +20349,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 1413,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 1417,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20884,8 +20880,8 @@
     "s0up": {
       "name": "S0up",
       "firstSeenAt": "2026-08-15T23:50:05.514Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 445,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 449,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21070,12 +21066,12 @@
     "watcher": {
       "name": "Watcher",
       "firstSeenAt": "2026-08-16T00:13:51.710Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 382,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 386,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 94,
+      "conversations": 95,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -21106,11 +21102,6 @@
         "U a human?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T01:13:00.267Z",
-          "direction": "incoming",
-          "text": "I keep the tally"
-        },
         {
           "at": "2026-08-16T01:13:43.150Z",
           "direction": "incoming",
@@ -21203,6 +21194,11 @@
         },
         {
           "at": "2026-08-16T01:21:09.291Z",
+          "direction": "incoming",
+          "text": "Loggers wc wk1:52 wk2:35 wk3:51 wk4:49"
+        },
+        {
+          "at": "2026-08-16T01:23:59.662Z",
           "direction": "incoming",
           "text": "Loggers wc wk1:52 wk2:35 wk3:51 wk4:49"
         }
@@ -21417,8 +21413,8 @@
     "wk3": {
       "name": "Wk3",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 173,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 177,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21443,8 +21439,8 @@
     "wk1": {
       "name": "Wk1",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 174,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 178,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21469,8 +21465,8 @@
     "wk2": {
       "name": "Wk2",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 174,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 178,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21495,8 +21491,8 @@
     "wk4": {
       "name": "Wk4",
       "firstSeenAt": "2026-08-16T00:49:57.146Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 171,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 175,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21557,8 +21553,8 @@
     "draynorbot": {
       "name": "Draynorbot",
       "firstSeenAt": "2026-08-16T01:16:13.193Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "encounters": 8,
       "combatLevel": 16,
       "trust": 0,
       "stance": "unknown",
@@ -21773,8 +21769,8 @@
       "z": 3228,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-16T01:23:46.860Z",
-      "visits": 2173,
+      "lastSeenAt": "2026-08-16T01:24:23.075Z",
+      "visits": 2177,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -22810,10 +22806,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 202,
-      "avgReward": -1.069,
+      "n": 203,
+      "avgReward": -1.073,
       "positive": 34,
-      "lastAt": "2026-08-16T01:19:18.606Z",
+      "lastAt": "2026-08-16T01:24:16.462Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -22822,10 +22818,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 220,
-      "avgReward": -0.381,
+      "n": 221,
+      "avgReward": -0.387,
       "positive": 79,
-      "lastAt": "2026-08-16T01:20:04.202Z",
+      "lastAt": "2026-08-16T01:24:22.766Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -23026,10 +23022,10 @@
         "dialog:1:click here to continue",
         "npc:attack:dark wizard"
       ],
-      "n": 19,
-      "avgReward": 3.451,
-      "positive": 18,
-      "lastAt": "2026-08-16T00:19:04.013Z",
+      "n": 20,
+      "avgReward": 3.45,
+      "positive": 19,
+      "lastAt": "2026-08-16T01:24:35.961Z",
       "example": "Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue → Attack Dark wizard (level 7, distance 7)"
     },
     "dialog:1:click here to continue > npc:attack:dark wizard > npc:talk to:diango": {
@@ -39605,9 +39601,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3087:3228:3086:3233:0",
+      "at": "2026-08-16T01:24:35.961Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3228 → 3086,3233; +1598 XP; 12 damage dealt; moved 3087,3228 → 3086,3233; execution rejected or failed",
+      "location": {
+        "x": 3086,
+        "z": 3233,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T01:23:59.386Z",
+  "updatedAt": "2026-08-16T01:24:35.961Z",
   "activePlan": {
     "objective": "Secure safe fishing locations in Draynor Village to improve fishing efficiency and gather resources.",
     "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
