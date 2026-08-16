@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 202,
-  "committedTick": 680,
+  "stateGeneration": 211,
+  "committedTick": 720,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I picked up 10 Mind rune (distance 0)"
+    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Recover reasoning loop",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1351:1|1:590:1|2:313:18|3:526:1|4:558:10|6:995:71|15:303:1|21:303:1|22:303:1|25:1265:1|27:303:1",
     "freeSlots": 17,
     "coins": 71,
-    "updatedTick": 680
+    "updatedTick": 720
   },
   "milestones": [
     {
@@ -58,5 +58,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T22:40:58.818Z"
+  "updatedAt": "2026-08-16T22:41:14.366Z"
 }\n
