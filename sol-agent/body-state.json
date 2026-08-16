@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 177,
-  "committedTick": 570,
+  "stateGeneration": 196,
+  "committedTick": 621,
   "identity": {
     "name": "Sol5"
   },
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
-    "freeSlots": 8,
+    "signature": "0:554:1|7:317:1|8:317:1|9:317:1|10:317:1|11:317:1|12:317:1|13:317:1|15:317:1|16:317:1|17:317:1|18:317:1|19:317:1|20:526:1|21:317:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 7,
     "coins": 0,
-    "updatedTick": 570
+    "updatedTick": 621
   },
   "milestones": [
     {
@@ -163,14 +163,32 @@
       "label": "Resolve inventory capacity before training",
       "tick": 560,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:578",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 578,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:613",
+      "label": "Resolve inventory capacity before training",
+      "tick": 613,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "cook-foundation:619",
+      "label": "Cook existing raw food into survival supplies",
+      "tick": 619,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
   "controller": {
-    "activeId": "llm-brain",
+    "activeId": "deterministic-fallback",
     "activeVersion": "1.0.0",
     "lastSwitchTick": 201
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T09:19:41.618Z"
+  "updatedAt": "2026-08-16T09:19:56.800Z"
 }\n
