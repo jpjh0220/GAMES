@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1138,
-  "committedTick": 3786,
+  "stateGeneration": 1165,
+  "committedTick": 3836,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3214,
-    "z": 3245,
+    "x": 3199,
+    "z": 3239,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I attacked the Goblin (level 2, distance 3) with my combat skill, which resulted in 6 damage taken, an inventory change of -1 coins, and a verified change in the inventory. I now h"
+    "reason": "I need to travel to the Draynor Bank at 3092,3243 to shop for items. I can verify my movement and XP, level, and inventory change before leaving."
   },
   "objective": {
     "id": "boot",
-    "label": "Identify shop locations",
+    "label": "Identify safe fishing spots based on coordinates and spot types.",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1931:1|1:1931:1|6:995:198|19:557:12",
     "freeSlots": 24,
     "coins": 198,
-    "updatedTick": 3786
+    "updatedTick": 3836
   },
   "milestones": [
     {
@@ -409,6 +409,12 @@
       "label": "Buy only a named productive gathering tool",
       "tick": 3695,
       "evidence": "inventory changed, -1 coins"
+    },
+    {
+      "id": "woodcut-to-15:3797",
+      "label": "Train Woodcutting to level 15",
+      "tick": 3797,
+      "evidence": "+665 XP"
     }
   ],
   "failures": [],
@@ -418,5 +424,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:46:27.431Z"
+  "updatedAt": "2026-08-16T19:46:42.456Z"
 }\n
