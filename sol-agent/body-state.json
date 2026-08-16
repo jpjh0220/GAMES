@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 163,
-  "committedTick": 471,
+  "stateGeneration": 173,
+  "committedTick": 521,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary."
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Find the next reachable progression resource or trainer",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:321:1|1:321:1|2:321:1|4:303:1|5:321:1|7:321:1|8:321:1|9:321:1|10:303:1|12:315:1|13:321:1|20:526:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
     "freeSlots": 10,
     "coins": 0,
-    "updatedTick": 471
+    "updatedTick": 521
   },
   "milestones": [],
   "failures": [],
@@ -39,5 +39,5 @@
     "lastSwitchTick": 441
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T11:05:32.218Z"
+  "updatedAt": "2026-08-16T11:05:47.421Z"
 }\n
