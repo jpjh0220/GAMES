@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 654,
-  "committedTick": 1943,
+  "stateGeneration": 670,
+  "committedTick": 2000,
   "identity": {
     "name": "Sol5"
   },
@@ -15,7 +15,7 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I want to shop at the Gerrants' Fishy Business"
+    "reason": "Shop at the Gerrants' Fishy Business"
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "6:995:184|8:321:1|9:317:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|18:526:1|19:557:22|20:526:1|21:1931:1|22:1931:1|23:526:1|24:526:1|25:526:1|26:526:1|27:1931:1",
-    "freeSlots": 8,
-    "coins": 184,
-    "updatedTick": 1943
+    "signature": "6:995:190|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|18:526:1|19:557:22|20:526:1|21:1931:1|22:1931:1|23:526:1|24:526:1|25:526:1|26:526:1|27:1931:1",
+    "freeSlots": 10,
+    "coins": 190,
+    "updatedTick": 2000
   },
   "milestones": [
     {
@@ -91,6 +91,24 @@
       "label": "Resolve inventory capacity before training",
       "tick": 1920,
       "evidence": "inventory changed, +2 coins"
+    },
+    {
+      "id": "resolve-capacity:1945",
+      "label": "Resolve inventory capacity before training",
+      "tick": 1945,
+      "evidence": "inventory changed, +2 coins"
+    },
+    {
+      "id": "acquire-pickaxe:1968",
+      "label": "Buy only a named productive gathering tool",
+      "tick": 1968,
+      "evidence": "inventory changed, +5 coins"
+    },
+    {
+      "id": "acquire-pickaxe:1991",
+      "label": "Buy only a named productive gathering tool",
+      "tick": 1991,
+      "evidence": "inventory changed, +1 coins"
     }
   ],
   "failures": [],
@@ -100,5 +118,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:37:14.049Z"
+  "updatedAt": "2026-08-16T19:37:31.211Z"
 }\n
