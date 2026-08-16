@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1221,
-  "committedTick": 3988,
+  "stateGeneration": 1234,
+  "committedTick": 4040,
   "identity": {
     "name": "Sol5"
   },
@@ -11,25 +11,25 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I picked up the Air rune (distance 0) at 3150,3247,0. This is a safe fishing spot with no nearby threats. I have 99 HP, 117 level, and a verified waypoint to Draynor Bank. I"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Identify safe fishing spots based on coordinates and spot types.",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:1|6:995:198|19:557:12",
+    "signature": "0:1931:1|1:1931:1|2:556:2|6:995:198|19:557:12",
     "freeSlots": 23,
     "coins": 198,
-    "updatedTick": 3988
+    "updatedTick": 4040
   },
   "milestones": [
     {
@@ -415,6 +415,12 @@
       "label": "Train Woodcutting to level 15",
       "tick": 3797,
       "evidence": "+665 XP"
+    },
+    {
+      "id": "directed-exploration:4023",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 4023,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -424,5 +430,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:47:28.891Z"
+  "updatedAt": "2026-08-16T19:47:44.829Z"
 }\n
