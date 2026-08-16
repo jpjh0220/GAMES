@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 78,
-  "committedTick": 200,
+  "stateGeneration": 90,
+  "committedTick": 250,
   "identity": {
     "name": "Sol5"
   },
@@ -26,12 +26,19 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:317:1|1:321:1|2:317:1|3:317:1|4:303:1|5:321:1|6:317:1|7:321:1|8:321:1|9:321:1|10:303:1|11:317:1|12:315:1|13:321:1|20:526:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
-    "freeSlots": 7,
+    "signature": "1:321:1|4:303:1|5:321:1|7:321:1|8:321:1|9:321:1|10:303:1|12:315:1|13:321:1|20:526:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 12,
     "coins": 0,
-    "updatedTick": 200
+    "updatedTick": 250
   },
-  "milestones": [],
+  "milestones": [
+    {
+      "id": "resolve-capacity:230",
+      "label": "Resolve inventory capacity before training",
+      "tick": 230,
+      "evidence": "inventory changed"
+    }
+  ],
   "failures": [],
   "controller": {
     "activeId": "llm-brain",
@@ -39,5 +46,5 @@
     "lastSwitchTick": 81
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T10:58:49.348Z"
+  "updatedAt": "2026-08-16T10:59:04.494Z"
 }\n
