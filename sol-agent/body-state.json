@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 190,
-  "committedTick": 850,
+  "stateGeneration": 204,
+  "committedTick": 900,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3086,
-    "z": 3233,
+    "x": 3089,
+    "z": 3232,
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "capacity-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I have a small fishing net (distance 3) and a raw anchovies (distance 3). I will pick up the anchovies first to gain inventory space and progress."
+    "reason": "I picked up Raw shrimps (distance 0)"
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:252|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1|21:303:1|22:303:1|23:317:1|24:526:1|25:1265:1|26:52:45|27:303:1",
+    "signature": "0:1931:1|1:1931:1|2:556:20|3:526:1|4:526:1|5:526:1|6:995:259|7:526:1|8:526:1|9:948:1|10:2136:1|11:526:1|12:526:1|13:317:1|14:317:1|15:303:1|16:321:1|17:317:1|18:526:1|19:557:12|20:317:1|21:303:1|22:303:1|23:317:1|24:526:1|25:1265:1|26:52:45|27:303:1",
     "freeSlots": 0,
-    "coins": 252,
-    "updatedTick": 850
+    "coins": 259,
+    "updatedTick": 900
   },
   "milestones": [
     {
@@ -37,6 +37,12 @@
       "label": "Resolve inventory capacity before training",
       "tick": 779,
       "evidence": "inventory changed, +4 coins"
+    },
+    {
+      "id": "resolve-capacity:870",
+      "label": "Resolve inventory capacity before training",
+      "tick": 870,
+      "evidence": "inventory changed, +7 coins"
     }
   ],
   "failures": [],
@@ -46,5 +52,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T20:58:43.022Z"
+  "updatedAt": "2026-08-16T20:58:58.021Z"
 }\n
