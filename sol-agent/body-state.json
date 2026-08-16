@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 4058,
-  "committedTick": 19401,
+  "stateGeneration": 4071,
+  "committedTick": 19451,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3086,
-    "z": 3231,
+    "x": 3085,
+    "z": 3234,
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "capacity-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I picked up Bones (distance 2)."
+    "reason": "I attacked the Dark wizard (level 7, distance 4) and received damage. I verified the ground items and picked up valuable or progression-relevant drops before leaving. I have comple"
   },
   "objective": {
     "id": "boot",
@@ -26,10 +26,10 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:82|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|20:526:1|23:526:1|25:526:1|26:526:1",
-    "freeSlots": 7,
+    "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:82|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|20:526:1|23:526:1|25:526:1|26:526:1",
+    "freeSlots": 6,
     "coins": 82,
-    "updatedTick": 19401
+    "updatedTick": 19451
   },
   "milestones": [
     {
@@ -97,6 +97,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 19359,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:19418",
+      "label": "Resolve inventory capacity before training",
+      "tick": 19418,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -106,5 +112,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T12:52:23.631Z"
+  "updatedAt": "2026-08-16T12:52:38.673Z"
 }\n
