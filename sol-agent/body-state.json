@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 184,
-  "committedTick": 680,
+  "stateGeneration": 197,
+  "committedTick": 730,
   "identity": {
     "name": "Sol5"
   },
@@ -11,15 +11,15 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "transaction",
+    "kind": "capacity-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=2,gated=1,legal=1,streak=2)."
+    "reason": "Selected Close the bank to process item-purpose actions to satisfy the current objective and verify the resulting world-state change."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover legal action space",
+    "label": "{\"objective\":\"Resolve inventory capacity before training\",\"reason\":\"Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:71|7:526:1|8:526:1|9:526:1|10:526:1|11:526:1|12:526:1|13:526:1|14:526:1|15:303:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
     "freeSlots": 6,
     "coins": 71,
-    "updatedTick": 680
+    "updatedTick": 730
   },
   "milestones": [],
   "failures": [],
@@ -39,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T22:33:55.275Z"
+  "updatedAt": "2026-08-16T22:34:10.285Z"
 }\n
