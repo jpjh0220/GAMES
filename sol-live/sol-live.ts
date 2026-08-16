@@ -277,7 +277,19 @@ const client=session.client;
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 const slug=(s:string)=>norm(s).replace(/\s+/g,'-').slice(0,24)||'x';
+type ItemDisposition='use'|'keep'|'bank'|'sell'|'discard';
 const isCurrency=(name:string)=>/^coins?$|^coin pouch$|^gp$/i.test(String(name||'').trim());
+const itemDisposition=(item:any,state:BotWorldState):ItemDisposition=>{
+  const name=String(item?.name||'').trim();
+  if(isCurrency(name)||/^(bronze|iron|steel|mithril|adamant|rune) (axe|pickaxe)|tinderbox|fishing (net|rod)|fly fishing rod/i.test(name))return 'keep';
+  if(/^bones?$/i.test(name)||/^(big )?bones$/i.test(name))return item?.optionsWithIndex?.some((o:any)=>/bury/i.test(String(o.text||'')))?'use':'bank';
+  if(/^raw /i.test(name)&&/(shrimp|anchov|fish|sardine|herring|trout|salmon)/i.test(name))return 'bank';
+  if(/^(cooked |burnt )?(shrimp|anchov|fish|sardine|herring|trout|salmon|lobster|bread|cake)/i.test(name))return 'keep';
+  if(/^(ash|empty|junk|weed|rotten food)$/i.test(name))return 'discard';
+  if(/(logs?|ore|bar|rune|coal|leather|herb|seed|quest|key)/i.test(name))return 'bank';
+  return state.shop?.isOpen?'sell':'bank';
+};
+const dispositionLabel=(item:any,state:BotWorldState)=>itemDisposition(item,state);
 const isCapacityPressure=(state:BotWorldState)=>Math.max(0,28-(state.inventory||[]).length)<8;
 const economyAction=(type:string)=>/^(shopSell|bankDeposit|clickDialogOption|shopBuy|bankWithdraw|closeShop|closeModal)$/.test(type);
 const meaningfulWithdrawal=(c:AgentCandidate)=>c.action?.type!=='bankWithdraw'||/withdraw.*(pickaxe|axe|fishing net|fishing rod|tinderbox|shrimp|anchov|bread|food|cooked|lobster|trout|salmon)/i.test(`${c.label} ${(c.tags||[]).join(' ')}`);
@@ -436,10 +448,19 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 
   if(state.bank?.isOpen){
     const pressure=isCapacityPressure(state);
-    if(economyResolution.noProgress<2)for(const item of (state.inventory||[]).filter((i:any)=>!isCurrency(i.name)).slice(0,14)) add({label:`Deposit all ${item.name}`,category:'bank',fingerprint:`bank:deposit:${norm(item.name)}`,settleTicks:5,action:{type:'bankDeposit',slot:item.slot,amount:item.count||1,reason:pressure?'Deposit surplus to create inventory capacity.':'Deposit into the bank.'},tags:['bank','store',item.name]});
-    if(!pressure&&economyResolution.noProgress<2)for(const item of (state.bank.items||[]).slice(0,14)) add({label:`Withdraw 1 ${item.name}`,category:'bank',fingerprint:`bank:withdraw:${norm(item.name)}`,settleTicks:5,action:{type:'bankWithdraw',slot:item.slot,amount:1,reason:'Withdraw from the bank.'},tags:['bank','retrieve',item.name]});
-    add({label:'Close the bank',category:'modal',fingerprint:'modal:close-bank',settleTicks:3,action:{type:'closeModal',reason:economyResolution.noProgress>=2?'Abort stalled bank transaction.':'Close the bank.'},tags:['bank','transaction-abort']});
+    const purposeful=(state.inventory||[]).filter((item:any)=>!isCurrency(item.name)&&itemDisposition(item,state)!=='keep');
+    if(economyResolution.noProgress<2)for(const item of purposeful.filter((i:any)=>itemDisposition(i,state)==='bank').slice(0,14)) add({label:`Deposit all ${item.name} because it is persistent material or future-use stock`,category:'bank',fingerprint:`bank:deposit:${norm(item.name)}`,settleTicks:5,action:{type:'bankDeposit',slot:item.slot,amount:-1,reason:`Item policy classified ${item.name} as bank: preserve it for a future skill, quest, or resource goal.`},tags:['bank','store','learned-item-policy',item.name]});
+    if(!pressure&&economyResolution.noProgress<2)for(const item of (state.bank.items||[]).slice(0,14)) add({label:`Withdraw 1 ${item.name}`,category:'bank',fingerprint:`bank:withdraw:${norm(item.name)}`,settleTicks:5,action:{type:'bankWithdraw',slot:item.slot,amount:1,reason:'Withdraw only when the active plan explicitly needs this item.'},tags:['bank','retrieve',item.name]});
+    add({label:purposeful.some((i:any)=>/^(use|discard)$/.test(itemDisposition(i,state)))?'Close the bank to process item-purpose actions':'Close the bank',category:'modal',fingerprint:'modal:close-bank',settleTicks:3,action:{type:'closeModal',reason:economyResolution.noProgress>=2?'Abort stalled bank transaction.':'Close the bank after storage decisions.'},tags:['bank','transaction-abort','item-policy']});
     return out;
+  }
+
+  if(isCapacityPressure(state)){
+    for(const item of (state.inventory||[]).filter((i:any)=>itemDisposition(i,state)==='use').slice(0,6)){
+      const opt=(item.optionsWithIndex||[]).find((o:any)=>/bury|eat|use/i.test(String(o.text||'')));
+      if(opt)add({label:`Use ${item.name} according to item policy (${opt.text})`,category:'inventory',fingerprint:`inventory:use:${norm(item.name)}:${opt.opIndex}`,settleTicks:4,action:{type:'useInventoryItem',slot:item.slot,optionIndex:opt.opIndex,reason:`Learned item policy classified ${item.name} as a consumable/use item, not storage.`},tags:['item-policy','use',item.name]});
+    }
+    for(const item of (state.inventory||[]).filter((i:any)=>itemDisposition(i,state)==='discard').slice(0,4)) add({label:`Discard ${item.name} as confirmed junk`,category:'inventory',fingerprint:`inventory:drop:${norm(item.name)}:${item.slot}`,settleTicks:3,action:{type:'dropItem',slot:item.slot,reason:`Learned item policy classified ${item.name} as junk with no current or future use.`},tags:['item-policy','discard',item.name]});
   }
 
   if(state.interface?.isOpen){
