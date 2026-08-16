@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1707,
-  "committedTick": 5340,
+  "stateGeneration": 1720,
+  "committedTick": 5390,
   "identity": {
     "name": "Sol5"
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Deterministic progression director: Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased."
+    "reason": "I need to close the bank to process item-purpose actions"
   },
   "objective": {
     "id": "boot",
-    "label": "Resolve inventory capacity before training",
+    "label": "Identify safe fishing spots based on coordinates and spot types.",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:317:1|1:321:1|2:317:1|3:317:1|4:303:1|5:321:1|6:317:1|7:321:1|8:321:1|9:321:1|10:303:1|11:317:1|12:315:1|13:321:1|20:526:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
-    "freeSlots": 7,
+    "signature": "1:321:1|4:303:1|5:321:1|7:321:1|8:321:1|9:321:1|10:303:1|12:315:1|13:321:1|20:526:1|22:321:1|23:526:1|24:321:1|25:526:1|26:526:1|27:321:1",
+    "freeSlots": 12,
     "coins": 0,
-    "updatedTick": 5340
+    "updatedTick": 5390
   },
   "milestones": [
     {
@@ -43,6 +43,12 @@
       "label": "Find the next reachable progression resource or trainer",
       "tick": 5273,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "resolve-capacity:5346",
+      "label": "Resolve inventory capacity before training",
+      "tick": 5346,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -52,5 +58,5 @@
     "lastSwitchTick": 4321
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T10:54:21.698Z"
+  "updatedAt": "2026-08-16T10:54:37.004Z"
 }\n
