@@ -1,0 +1,1 @@
+Confirmed result: GitHub displayed “Repository secret added.” The Actions secret list now contains GEMINI_API_KEY alongside SOL_CONTROL_TOKEN, SOL_PASS, and SOL_USER. The Gemini credential value is not recorded in this file or repository.
