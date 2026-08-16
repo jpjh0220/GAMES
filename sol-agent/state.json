@@ -6,63 +6,19 @@
     "directive": "Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players."
   },
   "lifetime": {
-    "totalChoices": 5562,
-    "teacherChoices": 5562,
+    "totalChoices": 5572,
+    "teacherChoices": 5572,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 5560,
-    "totalReward": 2956.804,
-    "saves": 561,
-    "shadowPredictions": 3069,
+    "completedExperiences": 5570,
+    "totalReward": 2957.134,
+    "saves": 562,
+    "shadowPredictions": 3073,
     "shadowMatches": 1316,
     "strategistRefreshes": 343,
     "strategistFailures": 3
   },
   "memories": [
-    {
-      "id": "msv1w6ih-mbeurp",
-      "createdAt": "2026-08-16T00:12:28.025Z",
-      "tick": 52170,
-      "runNumber": 67,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 6) worked across 155 similar samples with average reward 2.98.",
-      "importance": 3.98,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3083,
-        "z": 3244,
-        "level": 0
-      }
-    },
-    {
-      "id": "msv1wj04-he7m9g",
-      "createdAt": "2026-08-16T00:12:44.212Z",
-      "tick": 52224,
-      "runNumber": 67,
-      "kind": "episode",
-      "text": "AI motor: Travel to Draynor Bank at 3092,3243 using verified waypoint navigation. Result: moved 3085,3240 → 3092,3243; new: npc:Aggie, loc:Wardrobe, loc:Broom, loc:Mirror, loc:Barrel. Reward 1.55.",
-      "importance": 1.48,
-      "tags": [
-        "navigation skill",
-        "travel",
-        "bank",
-        "draynor",
-        "repository coordinate",
-        "npc aggie",
-        "loc wardrobe",
-        "loc broom",
-        "loc mirror",
-        "loc barrel"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "msv1wj04-udcgbs",
       "createdAt": "2026-08-16T00:12:44.212Z",
@@ -8200,6 +8156,44 @@
         "z": 3230,
         "level": 0
       }
+    },
+    {
+      "id": "msv49wj6-0ypvu2",
+      "createdAt": "2026-08-16T01:19:07.506Z",
+      "tick": 65456,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "Watcher said: \"Thieves: 2933 picks, 8136 gp banked\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "watcher",
+        "unknown"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
+    },
+    {
+      "id": "msv4a5bs-r4bauy",
+      "createdAt": "2026-08-16T01:19:18.904Z",
+      "tick": 65473,
+      "runNumber": 67,
+      "kind": "relationship",
+      "text": "S0up said: \"Fishing 97 923,500 xp 92.5% To 99\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "s0up",
+        "unknown"
+      ],
+      "location": {
+        "x": 3086,
+        "z": 3231,
+        "level": 0
+      }
     }
   ],
   "policy": {
@@ -9083,14 +9077,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=dialog,wait": {
       "dialog:1:click here to continue": {
-        "n": 709,
-        "avgReward": -0.143,
+        "n": 713,
+        "avgReward": -0.1454,
         "positive": 88,
-        "negative": 621,
+        "negative": 625,
         "lastReward": -0.6,
-        "lastAt": "2026-08-16T01:18:37.197Z",
+        "lastAt": "2026-08-16T01:19:50.683Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "Click here to continue"
+        "exampleReason": "I need to continue the dialogue to proceed with the plan."
       },
       "wait": {
         "n": 79,
@@ -9493,14 +9487,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=1|bank=0|shop=0|cats=wait": {
       "wait": {
-        "n": 215,
+        "n": 217,
         "avgReward": -0.15,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.15,
-        "lastAt": "2026-08-16T01:18:18.600Z",
+        "lastAt": "2026-08-16T01:19:45.295Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I need to observe for a moment to gather information about the safe fishing locations."
+        "exampleReason": "I'm waiting for the necessary information to proceed with my plan. I'll observe for a moment before taking any action."
       }
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,say,wait,world": {
@@ -11253,14 +11247,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say,wait": {
       "npc:net:fishing spot": {
-        "n": 106,
-        "avgReward": -0.5343,
+        "n": 108,
+        "avgReward": -0.5408,
         "positive": 4,
-        "negative": 100,
-        "lastReward": -0.6,
-        "lastAt": "2026-08-16T01:18:13.492Z",
+        "negative": 102,
+        "lastReward": -1.17,
+        "lastAt": "2026-08-16T01:19:39.883Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I will explore the Net Fishing spot (level 0, distance 1) to gather fishing resources. This action has a 4% success rate and a positive reward of -0.53, which is a good starting po"
+        "exampleReason": "I have successfully reached the Net Fishing spot (level 0, distance 1) and picked up raw shrimps. This action contributes to my progress in fishing and shrimps. I will continue exp"
       },
       "walk:north": {
         "n": 4,
@@ -15365,14 +15359,14 @@
     },
     "area=385:403:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,combat-style,explore,navigation-skill,npc,pickup,say": {
       "npc:net:fishing spot": {
-        "n": 30,
-        "avgReward": -0.5446,
-        "positive": 1,
-        "negative": 28,
-        "lastReward": -1.17,
-        "lastAt": "2026-08-16T01:18:46.793Z",
+        "n": 32,
+        "avgReward": -0.3605,
+        "positive": 2,
+        "negative": 29,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T01:19:59.731Z",
         "exampleGoal": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
-        "exampleReason": "I have successfully found the Net Fishing spot (level 0, distance 1) at 3086,3230, which gives me +2 level(s) and moved to the correct position. This is a great step towards progre"
+        "exampleReason": "I have seen the shape of the water"
       },
       "skill:travel:draynor-bank": {
         "n": 10,
@@ -17260,8 +17254,8 @@
     "scrappydoo": {
       "name": "Scrappydoo",
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 1413,
+      "lastSeenAt": "2026-08-16T01:18:52.495Z",
+      "encounters": 1415,
       "combatLevel": 56,
       "trust": 0,
       "stance": "unknown",
@@ -17653,8 +17647,8 @@
     "gpgather1": {
       "name": "Gpgather1",
       "firstSeenAt": "2026-08-14T21:49:13.846Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 3824,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 3834,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -18520,8 +18514,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 3650,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 3660,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -19089,8 +19083,8 @@
     "stasis": {
       "name": "Stasis",
       "firstSeenAt": "2026-08-15T06:17:23.863Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 1082,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 1092,
       "trust": 0.24,
       "stance": "friendly",
       "conversations": 7,
@@ -19605,8 +19599,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-15T19:51:38.287Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 426,
+      "lastSeenAt": "2026-08-16T01:19:02.400Z",
+      "encounters": 429,
       "combatLevel": 125,
       "trust": 0,
       "stance": "unknown",
@@ -20237,8 +20231,8 @@
     "swfish1": {
       "name": "Swfish1",
       "firstSeenAt": "2026-08-15T20:54:18.465Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 1395,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 1405,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20353,8 +20347,8 @@
     "swfish2": {
       "name": "Swfish2",
       "firstSeenAt": "2026-08-15T20:54:24.459Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 1394,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 1404,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20783,8 +20777,8 @@
     "cosmicphonk": {
       "name": "Cosmicphonk",
       "firstSeenAt": "2026-08-15T23:14:25.762Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 507,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 517,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -20884,16 +20878,15 @@
     "s0up": {
       "name": "S0up",
       "firstSeenAt": "2026-08-15T23:50:05.514Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 426,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 436,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 58,
+      "conversations": 59,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
-        "Fishing 93 698,500 xp 70.0% To 99",
         "Fishing 94 710,750 xp 71.2% To 99",
         "Fishing 94 722,000 xp 72.3% To 99",
         "Fishing 94 730,750 xp 73.2% To 99",
@@ -20912,15 +20905,11 @@
         "Fishing 96 854,750 xp 85.6% To 99",
         "Fishing 96 865,000 xp 86.6% To 99",
         "Fishing 97 874,500 xp 87.6% To 99",
-        "Fishing 97 889,250 xp 89.1% To 99"
+        "Fishing 97 889,250 xp 89.1% To 99",
+        "Fishing 97 923,500 xp 92.5% To 99"
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-16T01:00:41.851Z",
-          "direction": "incoming",
-          "text": "Fishing 94 710,750 xp 71.2% To 99"
-        },
         {
           "at": "2026-08-16T01:01:28.956Z",
           "direction": "incoming",
@@ -21015,6 +21004,11 @@
           "at": "2026-08-16T01:16:13.193Z",
           "direction": "incoming",
           "text": "Fishing 97 889,250 xp 89.1% To 99"
+        },
+        {
+          "at": "2026-08-16T01:19:18.903Z",
+          "direction": "incoming",
+          "text": "Fishing 97 923,500 xp 92.5% To 99"
         }
       ]
     },
@@ -21070,17 +21064,15 @@
     "watcher": {
       "name": "Watcher",
       "firstSeenAt": "2026-08-16T00:13:51.710Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 363,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 373,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 90,
+      "conversations": 92,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
-        "When he stops, i stop",
-        "The ground is full of what he threw away",
         "@Daytrader how much?",
         "S0up: fishing 93 @ 721,139 hr eta 0.5H",
         "Loggers wc wk1:52 wk2:35 wk3:51 wk4:49",
@@ -21098,7 +21090,9 @@
         "U a human?",
         "Nice",
         "Me 2",
-        ":Wave: ok"
+        ":Wave: ok",
+        "Thieves: 2933 picks, 8136 gp banked",
+        "I have seen the shape of the water"
       ],
       "questions": [
         "@Daytrader how much?",
@@ -21106,16 +21100,6 @@
         "U a human?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T01:10:50.108Z",
-          "direction": "incoming",
-          "text": "Ant humans he?r"
-        },
-        {
-          "at": "2026-08-16T01:10:50.108Z",
-          "direction": "incoming",
-          "text": "S0up: fishing 94 @ 737,893 hr eta 0.4H"
-        },
         {
           "at": "2026-08-16T01:11:35.085Z",
           "direction": "incoming",
@@ -21205,6 +21189,16 @@
           "at": "2026-08-16T01:18:32.991Z",
           "direction": "incoming",
           "text": ":Wave: ok"
+        },
+        {
+          "at": "2026-08-16T01:19:07.506Z",
+          "direction": "incoming",
+          "text": "Thieves: 2933 picks, 8136 gp banked"
+        },
+        {
+          "at": "2026-08-16T01:19:50.993Z",
+          "direction": "incoming",
+          "text": "I have seen the shape of the water"
         }
       ]
     },
@@ -21417,8 +21411,8 @@
     "wk3": {
       "name": "Wk3",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 154,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 164,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21443,8 +21437,8 @@
     "wk1": {
       "name": "Wk1",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 155,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 165,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21469,8 +21463,8 @@
     "wk2": {
       "name": "Wk2",
       "firstSeenAt": "2026-08-16T00:49:42.459Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 155,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 165,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21495,8 +21489,8 @@
     "wk4": {
       "name": "Wk4",
       "firstSeenAt": "2026-08-16T00:49:57.146Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "encounters": 152,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "encounters": 162,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -21572,8 +21566,8 @@
     "booosrs": {
       "name": "Booosrs",
       "firstSeenAt": "2026-08-16T01:16:13.193Z",
-      "lastSeenAt": "2026-08-16T01:16:50.991Z",
-      "encounters": 4,
+      "lastSeenAt": "2026-08-16T01:19:23.981Z",
+      "encounters": 6,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -21587,8 +21581,9 @@
     "sirbuns": {
       "name": "Sirbuns",
       "firstSeenAt": "2026-08-16T01:17:11.127Z",
-      "lastSeenAt": "2026-08-16T01:18:32.991Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-16T01:19:40.215Z",
+      "encounters": 3,
+      "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
       "conversations": 3,
@@ -21750,8 +21745,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-16T01:18:37.505Z",
-      "visits": 2156,
+      "lastSeenAt": "2026-08-16T01:19:50.993Z",
+      "visits": 2166,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -22787,10 +22782,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 200,
-      "avgReward": -1.119,
-      "positive": 32,
-      "lastAt": "2026-08-16T01:18:46.793Z",
+      "n": 202,
+      "avgReward": -1.069,
+      "positive": 34,
+      "lastAt": "2026-08-16T01:19:18.606Z",
       "example": "Net Fishing spot (level 0, distance 9) → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "dialog:1:click here to continue > npc:net:fishing spot > dialog:1:click here to continue": {
@@ -22799,10 +22794,10 @@
         "npc:net:fishing spot",
         "dialog:1:click here to continue"
       ],
-      "n": 217,
-      "avgReward": -0.387,
-      "positive": 78,
-      "lastAt": "2026-08-16T01:18:37.197Z",
+      "n": 219,
+      "avgReward": -0.375,
+      "positive": 79,
+      "lastAt": "2026-08-16T01:19:07.177Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1) → Dialog 1: Click here to continue"
     },
     "npc:net:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -22943,10 +22938,10 @@
         "npc:net:fishing spot",
         "wait"
       ],
-      "n": 132,
-      "avgReward": -1.374,
+      "n": 134,
+      "avgReward": -1.378,
       "positive": 2,
-      "lastAt": "2026-08-16T01:18:18.600Z",
+      "lastAt": "2026-08-16T01:19:45.295Z",
       "example": "Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 2) → Wait and observe for a moment"
     },
     "npc:net:fishing spot > wait > dialog:1:click here to continue": {
@@ -22955,10 +22950,10 @@
         "wait",
         "dialog:1:click here to continue"
       ],
-      "n": 159,
-      "avgReward": -0.675,
+      "n": 161,
+      "avgReward": -0.687,
       "positive": 28,
-      "lastAt": "2026-08-16T01:18:23.083Z",
+      "lastAt": "2026-08-16T01:19:50.683Z",
       "example": "Net Fishing spot (level 0, distance 2) → Wait and observe for a moment → Dialog 1: Click here to continue"
     },
     "wait > dialog:1:click here to continue > npc:net:fishing spot": {
@@ -22967,10 +22962,10 @@
         "dialog:1:click here to continue",
         "npc:net:fishing spot"
       ],
-      "n": 109,
-      "avgReward": -0.679,
+      "n": 111,
+      "avgReward": -0.696,
       "positive": 19,
-      "lastAt": "2026-08-16T01:18:32.703Z",
+      "lastAt": "2026-08-16T01:19:59.731Z",
       "example": "Wait and observe for a moment → Dialog 1: Click here to continue → Net Fishing spot (level 0, distance 1)"
     },
     "npc:bait:fishing spot > dialog:1:click here to continue > npc:bait:fishing spot": {
@@ -35984,18 +35979,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3087:3239:3092:3243:0",
-      "at": "2026-08-15T23:24:28.809Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3239 → 3092,3243; moved 3087,3239 → 3092,3243; new: npc:Aggie, npc:Ned, npc:Black Knight, loc:Cooking shelves, loc:Wardrobe, loc:Broom",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
       "id": "route:3092:3243:3087:3241:0",
       "at": "2026-08-15T23:25:48.322Z",
       "kind": "route",
@@ -39582,9 +39565,21 @@
         "level": 0
       },
       "confidence": 0.35
+    },
+    {
+      "id": "route:3086:3231:3086:3230:0",
+      "at": "2026-08-16T01:19:39.883Z",
+      "kind": "route",
+      "text": "Route learned: 3086,3231 → 3086,3230; moved 3086,3231 → 3086,3230; execution rejected or failed",
+      "location": {
+        "x": 3086,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.35
     }
   ],
-  "updatedAt": "2026-08-16T01:18:46.793Z",
+  "updatedAt": "2026-08-16T01:19:59.731Z",
   "activePlan": {
     "objective": "Find and use safe fishing locations to catch shrimps and anchovies for progression.",
     "focus": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation.",
@@ -39622,6 +39617,6 @@
     ],
     "updatedAt": "2026-08-16T01:18:11.200Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 1
+    "failures": 2
   }
 }
