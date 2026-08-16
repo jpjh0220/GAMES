@@ -23,8 +23,9 @@ type FeedEvent = {
   target?: string;
   item?: string;
   source?: string;
-  reward?: number;
-  at: string;
+  reward?:number;
+  actionType?:string;
+  at:string;
 };
 type TrailPoint = { x:number; z:number; level:number; tick:number };
 type OutgoingChat = { id:string; tick:number; at:string; text:string; target:string|null; replyTo:string|null; status:'submitted' };
@@ -74,7 +75,7 @@ const log = async (event:string,data?:unknown) => {
   await appendFile('../../sol-session.log',line).catch(()=>{});
 };
 const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&{setCurrent?:boolean}={}) => {
-  const e:FeedEvent = {tick,label,summary,reason,target:data.target,item:data.item,source:data.source,reward:data.reward,at:new Date().toISOString()};
+  const e:FeedEvent = {tick,label,summary,reason,target:data.target,item:data.item,source:data.source,reward:data.reward,actionType:data.actionType,at:new Date().toISOString()};
   if(data.setCurrent!==false) currentAction=e;
   actionHistory.push(e);
   if(actionHistory.length>200) actionHistory.shift();
@@ -114,7 +115,7 @@ const pollLiveControl=async()=>{
 };
 
 let snapshot:any = {
-  updatedAt:new Date().toISOString(),online:false,inGame:false,tick:0,revision:0,sessionStartedAt,directive,runNumber,
+  updatedAt:new Date().toISOString(),online:false,inGame:false,tick:0,revision:0,sessionStartedAt,directive,runNumber,runtimeConfig:brain.runtime,
   player:null,skills:[],inventory:[],equipment:[],nearbyNpcs:[],nearbyPlayers:[],groundItems:[],nearbyLocs:[],
   combatStyle:null,combatEvents:[],gameMessages:[],outgoingChat:[],recentDialogs:[],prayers:null,
   worldUi:{shopOpen:false,bankOpen:false,tradeOpen:false,dialogOpen:false,modalOpen:false},
@@ -127,8 +128,8 @@ const publicSnapshot=()=>({
   player:snapshot.player?{combatLevel:snapshot.player.combatLevel,hp:snapshot.player.hp,maxHp:snapshot.player.maxHp,runEnergy:snapshot.player.runEnergy,isDead:snapshot.player.isDead,respawnCount:snapshot.player.respawnCount,worldX:snapshot.player.worldX,worldZ:snapshot.player.worldZ,level:snapshot.player.level,combat:{inCombat:!!snapshot.player.combat?.inCombat,targetType:snapshot.player.combat?.targetType||'none',targetIndex:snapshot.player.combat?.targetIndex??-1}}:null,
   skills:(snapshot.skills||[]).map((skill:any)=>({name:skill.name,level:skill.level})),
   combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
-  currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reward:snapshot.currentAction.reward}:null,
-  actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,
+  currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
+  actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
   agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
   viewerAccess:'summary',syncRevision:snapshot.revision??snapshot.tick??0
 });
@@ -145,7 +146,7 @@ const refreshSnapshot = (state:BotWorldState|null) => {
   }
   const agent=brain.publicState();
   snapshot={
-    updatedAt:new Date().toISOString(),online:!!state?.player,inGame:!!s?.inGame,tick,revision:s?.revision??0,
+    updatedAt:new Date().toISOString(),online:!!state?.player,inGame:!!s?.inGame,tick,revision:s?.revision??0,runtimeConfig:brain.runtime,
     sessionStartedAt,directive,runNumber,player:state?.player?{...state.player,animId:(state.player as any).animId}:null,skills:state?.skills??[],
     inventory:state?.inventory?.map(i=>({id:i.id,name:i.name,count:i.count,slot:i.slot}))??[],
     equipment:state?.equipment?.map(i=>({id:i.id,name:i.name,count:i.count,slot:i.slot}))??[],
@@ -430,20 +431,20 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   actions++;
   currentGoal=choice.goal;
   currentWhy=choice.reason;
-  feed(choice.source==='teacher'?'AGENT_TEACHER':'AGENT_STUDENT',candidate.label,choice.reason,{source:choice.source,target:candidate.label});
+  feed(choice.source==='teacher'?'AGENT_TEACHER':'AGENT_STUDENT',candidate.label,choice.reason,{source:choice.source,target:candidate.label,actionType:String(action?.type||'unknown')});
   brain.beginExperience(choice,candidate,state,tick);
   actionAwaitingOutcome=true;
   if(action.type==='worldSkill'){
     candidate.action.executionResult={success:true,pending:true};
     void executeWorldSkill(action).then(result=>{candidate.action.executionResult=result;refreshSnapshot(lastState);}).catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};procedureInFlight=null;refreshSnapshot(lastState);});
-    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,fingerprint:candidate.fingerprint,result:'verified-world-skill'});
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-world-skill'});
     return;
   }
   try{
     const result:any=executor.execute(action);
     if(result instanceof Promise)void result.then((resolved:any)=>{candidate.action.executionResult=resolved;}).catch((err:any)=>{candidate.action.executionResult={success:false,message:String(err),reason:'executor_exception'};});
     else candidate.action.executionResult=result;
-    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,fingerprint:candidate.fingerprint,result:result instanceof Promise?'async':result});
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:result instanceof Promise?'async':result});
   }catch(err){candidate.action.executionResult={success:false,message:String(err),reason:'executor_exception'};void log('AGENT_ACTION_ERROR',{tick,action:candidate.label,error:String(err)});}
 };
 
@@ -473,9 +474,38 @@ const runEmergencyReflex=(state:BotWorldState)=>{
   return false;
 };
 
+const lootGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
+  if(state.player?.combat?.inCombat)return candidates;
+  const drops=(state.groundItems||[]).filter((g:any)=>g.reachable!==false&&!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')));
+  if(!drops.length)return candidates;
+  const safe=candidates.filter(c=>['pickup','bank','shop','economy','modal'].includes(c.category)||c.action?.type==='pickupItem'||c.action?.type==='worldSkill'&&/travel:draynor-bank/.test(c.fingerprint));
+  return safe.length?safe:candidates;
+};
+
+const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
+  const free=Math.max(0,28-(state.inventory||[]).length);
+  const pressured=free<=(brain.runtime.inventoryWarningSlots??3);
+  if(!pressured)return candidates;
+  const bankOpen=!!state.bank?.isOpen;
+  const bankNearby=(state.nearbyNpcs||[]).some((n:any)=>n.reachable!==false&&/banker|bank/i.test(String(n.name||''))&&(n.optionsWithIndex||[]).some((o:any)=>/bank|deposit/i.test(String(o.text||''))))||(state.nearbyLocs||[]).some((l:any)=>l.reachable!==false&&/bank/i.test(String(l.name||'')));
+  const shopOpen=!!state.shop?.isOpen;
+  const safe=candidates.filter(c=>{
+    if(['bank','shop','pickup','modal','dialog'].includes(c.category))return true;
+    if(c.category==='economy')return true;
+    if(c.action?.type==='worldSkill'&&/travel:draynor-bank/.test(c.fingerprint))return true;
+    if(c.action?.type==='interactLoc'&&/bank/i.test(String(c.label)))return true;
+    return false;
+  });
+  if(safe.length>0&&(bankOpen||bankNearby||shopOpen||safe.some(c=>c.category==='pickup')))return safe;
+  return candidates.filter(c=>c.category==='navigation-skill'&&/bank/i.test(c.label)||c.category==='economy'||c.category==='pickup'||c.category==='bank'||c.category==='shop'||c.category==='modal');
+};
+
 const launchDecision=(stateAtStart:BotWorldState)=>{
   if(decisionInFlight||actionAwaitingOutcome) return;
-  const candidates=buildCandidates(stateAtStart);
+  const rawCandidates=buildCandidates(stateAtStart);
+  const lootCandidates=lootGate(stateAtStart,rawCandidates);
+  const candidates=capacityGate(stateAtStart,lootCandidates);
+  if(rawCandidates.length!==candidates.length)void log('SAFETY_GATE',{tick,gate:'capacity_or_loot',before:rawCandidates.length,after:candidates.length,freeSlots:Math.max(0,28-(stateAtStart.inventory||[]).length),groundItems:(stateAtStart.groundItems||[]).map((g:any)=>g.name).slice(0,8)});
   if(!candidates.length) return;
   const startedTick=tick;
   const startedLife=stateAtStart.player?.lifeId;
@@ -490,9 +520,8 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
       void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,reason:'life changed or emergency reflex intervened'});
       nextDecisionTick=tick+1;return;
     }
-    const fresh=buildCandidates(latest).find(c=>c.fingerprint===choice.fingerprint);
-    const original=candidates.find(c=>c.id===choice.actionId);
-    const candidate=fresh||original;
+    const fresh=capacityGate(latest,lootGate(latest,buildCandidates(latest))).find(c=>c.fingerprint===choice.fingerprint);
+    const candidate=fresh;
     if(!candidate){
       void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:'action no longer available'});
       nextDecisionTick=tick+1;return;

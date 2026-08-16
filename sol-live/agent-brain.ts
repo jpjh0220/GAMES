@@ -89,6 +89,8 @@ export type SolRuntimeConfig = {
 
 const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:false,studentSamplingRate:.3,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:1536,strategistOutputTokens:120};
 
+const finiteOr=(value:unknown,fallback:number)=>{const n=Number(value);return Number.isFinite(n)?n:fallback;};
+const clampNum=(value:unknown,fallback:number,lo:number,hi:number)=>clamp(finiteOr(value,fallback),lo,hi);
 const clampConfig=(raw:any):SolRuntimeConfig=>({
   ...DEFAULT_RUNTIME_CONFIG,
   ...(raw&&typeof raw==='object'?raw:{}),
@@ -96,7 +98,7 @@ const clampConfig=(raw:any):SolRuntimeConfig=>({
   motorModel:typeof raw?.motorModel==='string'&&raw.motorModel.trim()?raw.motorModel.trim().slice(0,80):undefined,
   strategistModel:typeof raw?.strategistModel==='string'&&raw.strategistModel.trim()?raw.strategistModel.trim().slice(0,80):undefined,
   plannerEnabled:typeof raw?.plannerEnabled==='boolean'?raw.plannerEnabled:DEFAULT_RUNTIME_CONFIG.plannerEnabled,
-  studentSamplingRate:clamp(Number(raw?.studentSamplingRate??.3),0,1),strategyRefreshChoices:clamp(Number(raw?.strategyRefreshChoices??18),3,100),candidateLimit:clamp(Number(raw?.candidateLimit??96),12,160),inventoryWarningSlots:clamp(Number(raw?.inventoryWarningSlots??3),0,10),maxFishingTripsWithoutProgress:clamp(Number(raw?.maxFishingTripsWithoutProgress??2),1,10),maxRepeatedCombatTarget:clamp(Number(raw?.maxRepeatedCombatTarget??2),1,10),maxActionsWithoutMilestone:clamp(Number(raw?.maxActionsWithoutMilestone??3),1,20),motorTemperature:clamp(Number(raw?.motorTemperature??.12),0,.8),motorContextTokens:clamp(Number(raw?.motorContextTokens??2048),512,8192),motorOutputTokens:clamp(Number(raw?.motorOutputTokens??72),32,512),strategistTemperature:clamp(Number(raw?.strategistTemperature??.1),0,.8),strategistContextTokens:clamp(Number(raw?.strategistContextTokens??1536),512,8192),strategistOutputTokens:clamp(Number(raw?.strategistOutputTokens??120),64,512)
+  studentSamplingRate:clampNum(raw?.studentSamplingRate,.3,0,1),strategyRefreshChoices:clampNum(raw?.strategyRefreshChoices,18,3,100),candidateLimit:clampNum(raw?.candidateLimit,96,12,160),inventoryWarningSlots:clampNum(raw?.inventoryWarningSlots,3,0,10),maxFishingTripsWithoutProgress:clampNum(raw?.maxFishingTripsWithoutProgress,2,1,10),maxRepeatedCombatTarget:clampNum(raw?.maxRepeatedCombatTarget,2,1,10),maxActionsWithoutMilestone:clampNum(raw?.maxActionsWithoutMilestone,3,1,20),motorTemperature:clampNum(raw?.motorTemperature,.12,0,.8),motorContextTokens:clampNum(raw?.motorContextTokens,2048,512,8192),motorOutputTokens:clampNum(raw?.motorOutputTokens,72,32,512),strategistTemperature:clampNum(raw?.strategistTemperature,.1,0,.8),strategistContextTokens:clampNum(raw?.strategistContextTokens,1536,512,8192),strategistOutputTokens:clampNum(raw?.strategistOutputTokens,120,64,512)
 });
 
 type Metrics = {
@@ -211,11 +213,13 @@ export class SolAgentBrain {
   get strategistModel(){return this.runtimeConfig.strategistModel||this.opts.strategistModel||this.opts.model||'qwen3:1.7b';}
   get runtime(){return this.runtimeConfig;}
   applyRuntimeConfig(raw:unknown){
+    if(raw&&typeof raw==='object'&&'version' in (raw as any)&&Number((raw as any).version)!==1){console.warn('AGENT_RUNTIME_CONFIG_REJECTED',JSON.stringify({reason:'unsupported_version',version:(raw as any).version}));return false;}
     const previous=this.runtimeConfig;this.runtimeConfig=clampConfig({...this.runtimeConfig,...(raw&&typeof raw==='object'?raw:{})});this.plannerEnabled=this.runtimeConfig.plannerEnabled===true;
     const modelChanged=previous.motorModel!==this.runtimeConfig.motorModel||previous.strategistModel!==this.runtimeConfig.strategistModel;
     if(modelChanged){this.motorReady=false;this.strategistReady=false;void this.refreshAvailability();}
     this.lastStrategySessionChoice=-9999;
     console.log('AGENT_RUNTIME_CONFIG_APPLIED',JSON.stringify({config:this.runtimeConfig,modelChanged}));
+    return true;
   }
   get ollamaUrl(){return this.opts.ollamaUrl||'http://127.0.0.1:11434';}
 
