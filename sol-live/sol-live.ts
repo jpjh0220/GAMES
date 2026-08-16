@@ -64,6 +64,8 @@ let controlState:LiveControl={revision:0,directive:null,paused:false,command:nul
 let controlPollInFlight=false;
 let lastControlPollAt=0;
 let controlSha:string|null=null;
+let teacherProbeInFlight=false;
+let lastTeacherProbeTick=-9999;
 
 const brain = new SolAgentBrain({
   name:username,
@@ -122,6 +124,23 @@ const acceptControl=(doc:any,source:'http'|'github')=>{
   controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
   applyLiveControl(controlState);return true;
 };
+const superviseTeacher=()=>{
+  if(teacherProbeInFlight||tick-lastTeacherProbeTick<20)return;
+  teacherProbeInFlight=true;lastTeacherProbeTick=tick;
+  void brain.checkTeacherHealth().then(online=>{
+    const active=controllerRegistry.status.activeId;
+    if(!online&&active==='llm-brain'){
+      controllerRegistry.stage('deterministic-fallback','1.0.0');controllerRegistry.activateAtTick(tick);
+      currentGoal='Maintain verified progression while teacher reconnects';currentWhy='Teacher model is unavailable; deterministic progression owns the body until a health probe succeeds.';
+      void log('TEACHER_OFFLINE_DETERMINISTIC_FALLBACK',{tick,teacher:brain.motorModel});
+    }else if(online&&active!=='llm-brain'){
+      controllerRegistry.stage('llm-brain','1.0.0');controllerRegistry.activateAtTick(tick);
+      currentWhy='Teacher model health probe succeeded; restoring teacher-supervised decisions at this tick boundary.';
+      void log('TEACHER_RECOVERED',{tick,teacher:brain.motorModel});
+    }
+  }).catch(err=>void log('TEACHER_HEALTH_PROBE_FAILED',{tick,error:String(err).slice(0,180)})).finally(()=>{teacherProbeInFlight=false;});
+};
+
 const pollLiveControl=async()=>{
   if(controlPollInFlight||!process.env.GH_TOKEN||!process.env.GITHUB_REPOSITORY||Date.now()-lastControlPollAt<4000)return;
   controlPollInFlight=true;lastControlPollAt=Date.now();
@@ -151,7 +170,7 @@ const publicSnapshot=()=>({
   combatStyle:snapshot.combatStyle||null,nearbyNpcs:snapshot.nearbyNpcs||[],nearbyPlayers:snapshot.nearbyPlayers||[],groundItems:snapshot.groundItems||[],nearbyLocs:snapshot.nearbyLocs||[],inventory:snapshot.inventory||[],equipment:snapshot.equipment||[],combatEvents:snapshot.combatEvents||[],gameMessages:[],outgoingChat:[],recentDialogs:[],actions:snapshot.actions||[],movementTrail:snapshot.movementTrail||[],lessons:snapshot.lessons||[],
   currentAction:snapshot.currentAction?{tick:snapshot.currentAction.tick,label:snapshot.currentAction.label,summary:snapshot.currentAction.summary,reason:snapshot.currentAction.reason,actionType:snapshot.currentAction.actionType,reward:snapshot.currentAction.reward}:null,
   actionCount:snapshot.actionCount,primitiveActionCount:snapshot.primitiveActionCount,runtimeConfig:snapshot.runtimeConfig,
-  agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,strategistOnline:!!snapshot.agent?.strategistOnline,sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
+  agent:{currentController:snapshot.agent?.currentController||'offline',motorOnline:!!snapshot.agent?.motorOnline,teacherOnline:!!snapshot.agent?.teacherOnline,strategistOnline:!!snapshot.agent?.strategistOnline,teacherConsecutiveFailures:snapshot.agent?.teacherConsecutiveFailures||0,lastTeacherHealthyAt:snapshot.agent?.lastTeacherHealthyAt||null,lastTeacherError:snapshot.agent?.lastTeacherError||null,studentMode:snapshot.agent?.studentMode||'unknown',sessionMotorChoices:snapshot.agent?.sessionMotorChoices||0},
   controller:snapshot.controller,body:snapshot.body,economyResolution:snapshot.economyResolution,obligationExecutor:snapshot.obligationExecutor,progression:snapshot.progression,durableState:snapshot.durableState,
   viewerAccess:'summary',syncRevision:snapshot.revision??snapshot.tick??0
 });
@@ -461,7 +480,8 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   actions++;
   currentGoal=choice.goal;
   currentWhy=choice.reason;
-  feed(choice.source==='teacher'?'AGENT_TEACHER':'AGENT_STUDENT',candidate.label,choice.reason,{source:choice.source,target:candidate.label,actionType:String(action?.type||'unknown')});
+  const decisionLabel=choice.source==='teacher'?'AGENT_TEACHER':choice.source==='student'?'AGENT_STUDENT':'AGENT_DETERMINISTIC';
+  feed(decisionLabel,candidate.label,choice.reason,{source:choice.source,target:candidate.label,actionType:String(action?.type||'unknown')});
   brain.beginExperience(choice,candidate,state,tick);
   obligationExecutor.begin(action,tick);
   actionAwaitingOutcome=true;
@@ -563,7 +583,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     const directedCandidate=freshCandidates.find(c=>latestPlan.priorityFingerprints.includes(c.fingerprint));
     const forceProgression=progressionDirector.shouldOverride(latestPlan,directedCandidate,tick);
     const candidate=forceProgression?directedCandidate:modelCandidate;
-    const effectiveChoice=forceProgression&&candidate?{...choice,source:'student' as const,goal:latestPlan.objective,reason:`Deterministic progression director: ${latestPlan.reason}`,expectedOutcome:latestPlan.success,fingerprint:candidate.fingerprint,actionId:candidate.id,confidence:.98}:choice;
+    const effectiveChoice=forceProgression&&candidate?{...choice,source:'deterministic' as const,goal:latestPlan.objective,reason:`Deterministic progression director: ${latestPlan.reason}`,expectedOutcome:latestPlan.success,fingerprint:candidate.fingerprint,actionId:candidate.id,confidence:.98}:choice;
     if(!candidate){
       void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:'action no longer available'});
       nextDecisionTick=tick+1;return;
@@ -593,6 +613,7 @@ client.setOnGameTickCallback(()=>{
     }
     lastState=state;
     void pollLiveControl();
+    superviseTeacher();
     if(controlState.paused){
       currentGoal='Paused by operator';currentWhy='Live control is paused; no new gameplay actions will be dispatched.';
       refreshSnapshot(state);return;

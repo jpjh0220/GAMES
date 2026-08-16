@@ -16,7 +16,7 @@ export type AgentCandidate = {
 };
 
 export type AgentChoice = {
-  source:'teacher'|'student'; goal:string; reason:string; expectedOutcome:string;
+  source:'teacher'|'student'|'deterministic'; goal:string; reason:string; expectedOutcome:string;
   actionId:string; speech?:string; confidence:number; contextKey:string; fingerprint:string;
   followUp?:string[]; planNote?:string;
 };
@@ -87,7 +87,7 @@ export type SolRuntimeConfig = {
   strategistOutputTokens?:number;
 };
 
-const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:false,studentSamplingRate:.3,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:1536,strategistOutputTokens:120};
+const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,plannerEnabled:false,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:1536,strategistOutputTokens:120};
 
 const finiteOr=(value:unknown,fallback:number)=>{const n=Number(value);return Number.isFinite(n)?n:fallback;};
 const clampNum=(value:unknown,fallback:number,lo:number,hi:number)=>clamp(finiteOr(value,fallback),lo,hi);
@@ -98,7 +98,7 @@ const clampConfig=(raw:any):SolRuntimeConfig=>({
   motorModel:typeof raw?.motorModel==='string'&&raw.motorModel.trim()?raw.motorModel.trim().slice(0,80):undefined,
   strategistModel:typeof raw?.strategistModel==='string'&&raw.strategistModel.trim()?raw.strategistModel.trim().slice(0,80):undefined,
   plannerEnabled:typeof raw?.plannerEnabled==='boolean'?raw.plannerEnabled:DEFAULT_RUNTIME_CONFIG.plannerEnabled,
-  studentSamplingRate:clampNum(raw?.studentSamplingRate,.3,0,1),strategyRefreshChoices:clampNum(raw?.strategyRefreshChoices,18,3,100),candidateLimit:clampNum(raw?.candidateLimit,96,12,160),inventoryWarningSlots:clampNum(raw?.inventoryWarningSlots,3,0,10),maxFishingTripsWithoutProgress:clampNum(raw?.maxFishingTripsWithoutProgress,2,1,10),maxRepeatedCombatTarget:clampNum(raw?.maxRepeatedCombatTarget,2,1,10),maxActionsWithoutMilestone:clampNum(raw?.maxActionsWithoutMilestone,3,1,20),motorTemperature:clampNum(raw?.motorTemperature,.12,0,.8),motorContextTokens:clampNum(raw?.motorContextTokens,2048,512,8192),motorOutputTokens:clampNum(raw?.motorOutputTokens,72,32,512),strategistTemperature:clampNum(raw?.strategistTemperature,.1,0,.8),strategistContextTokens:clampNum(raw?.strategistContextTokens,1536,512,8192),strategistOutputTokens:clampNum(raw?.strategistOutputTokens,120,64,512)
+  studentSamplingRate:clampNum(raw?.studentSamplingRate,0,0,0),strategyRefreshChoices:clampNum(raw?.strategyRefreshChoices,18,3,100),candidateLimit:clampNum(raw?.candidateLimit,96,12,160),inventoryWarningSlots:clampNum(raw?.inventoryWarningSlots,3,0,10),maxFishingTripsWithoutProgress:clampNum(raw?.maxFishingTripsWithoutProgress,2,1,10),maxRepeatedCombatTarget:clampNum(raw?.maxRepeatedCombatTarget,2,1,10),maxActionsWithoutMilestone:clampNum(raw?.maxActionsWithoutMilestone,3,1,20),motorTemperature:clampNum(raw?.motorTemperature,.12,0,.8),motorContextTokens:clampNum(raw?.motorContextTokens,2048,512,8192),motorOutputTokens:clampNum(raw?.motorOutputTokens,72,32,512),strategistTemperature:clampNum(raw?.strategistTemperature,.1,0,.8),strategistContextTokens:clampNum(raw?.strategistContextTokens,1536,512,8192),strategistOutputTokens:clampNum(raw?.strategistOutputTokens,120,64,512)
 });
 
 type Metrics = {
@@ -159,6 +159,9 @@ export class SolAgentBrain {
   private motorReady=false;
   private strategistReady=false;
   private motorFailures=0;
+  private teacherConsecutiveFailures=0;
+  private lastTeacherHealthyAt:number|null=null;
+  private lastTeacherError:string|null=null;
   private strategistInFlight=false;
   private lastStrategistError:string|null=null;
   private strategy:Strategy|null=null;
@@ -213,6 +216,8 @@ export class SolAgentBrain {
   get motorModel(){return this.runtimeConfig.motorModel||this.opts.motorModel||this.opts.model||'qwen3:0.6b';}
   get strategistModel(){return this.runtimeConfig.strategistModel||this.opts.strategistModel||this.opts.model||'qwen3:1.7b';}
   get runtime(){return this.runtimeConfig;}
+  get teacherOnline(){return this.motorReady;}
+  async checkTeacherHealth(){await this.refreshAvailability();return this.motorReady;}
   applyRuntimeConfig(raw:unknown){
     if(raw&&typeof raw==='object'&&'version' in (raw as any)&&Number((raw as any).version)!==1){console.warn('AGENT_RUNTIME_CONFIG_REJECTED',JSON.stringify({reason:'unsupported_version',version:(raw as any).version}));return false;}
     const previous=this.runtimeConfig;this.runtimeConfig=clampConfig({...this.runtimeConfig,...(raw&&typeof raw==='object'?raw:{})});this.plannerEnabled=this.runtimeConfig.plannerEnabled===true;
@@ -299,6 +304,7 @@ export class SolAgentBrain {
       const j:any=await r.json();const names=(j.models||[]).map((m:any)=>String(m.name||''));
       this.motorReady=names.some((n:string)=>n===this.motorModel||n.startsWith(this.motorModel+'-'));
       this.strategistReady=names.some((n:string)=>n===this.strategistModel||n.startsWith(this.strategistModel+'-'));
+      if(this.motorReady){this.lastTeacherHealthyAt=Date.now();this.lastTeacherError=null;}
     }catch{this.motorReady=false;this.strategistReady=false;}
   }
 
@@ -555,30 +561,11 @@ export class SolAgentBrain {
         }
       }
     }
-    // STUDENT SAMPLING: try the cheap learned policy before invoking the teacher.
-    // This only activates after agreement is proven and falls back to the teacher
-    // on uncertainty, making promotion a real latency optimization.
-    if(this.studentPromoted() && Math.random()<(this.runtimeConfig.studentSamplingRate??.3)){
-      try{
-        const studentChoice=await this.askStudent(state,filteredCandidates,contextKey);
-        if(studentChoice){
-          this.sessionMotorChoices++;
-          this.memory.lifetime.totalChoices++;
-          this.memory.lifetime.studentChoices++;
-          this.memory.lifetime.studentDecisions=(this.memory.lifetime.studentDecisions||0)+1;
-          this.lastChoice=studentChoice;
-          this.markDirty();
-          this.replay.push({tick:(state as any).tick||0,perception:`HP ${state.player?.hp}/${state.player?.maxHp}; ${state.nearbyPlayers?.length||0} agents; ${state.nearbyNpcs?.length||0} NPCs; ${state.nearbyLocs?.length||0} objects`,retrieved:this.currentGuidance,prediction:this.lastShadowPrediction?.fingerprint||null,decision:studentChoice.reason,action:studentChoice.fingerprint,outcome:null,lesson:null});
-          if(this.replay.length>80)this.replay.shift();
-          console.log('AGENT_DECISION_TIMING',JSON.stringify({ms:Date.now()-decisionStarted,controller:'student',allowed:filteredCandidates.length}));
-          return studentChoice;
-        }
-      }catch(e){
-        console.log('AGENT_STUDENT_DECISION_FAILED',String(e).slice(0,200));
-        // Fallback to teacher model.
-      }
-    }
+    // The learned student is a shadow evaluator only. It never controls gameplay
+    // without a successful teacher decision in the same cycle. If the teacher is
+    // unavailable, the controller registry routes to deterministic progression.
     const choice=await this.askMotor(state,filteredCandidates,contextKey);
+    this.teacherConsecutiveFailures=0;this.lastTeacherHealthyAt=Date.now();this.lastTeacherError=null;
     console.log('AGENT_DECISION_TIMING',JSON.stringify({ms:Date.now()-decisionStarted,controller:'teacher',allowed:filteredCandidates.length}));
     this.sessionMotorChoices++;this.memory.lifetime.totalChoices++;this.memory.lifetime.teacherChoices++;
     if(this.lastShadowPrediction){this.memory.lifetime.shadowPredictions=(this.memory.lifetime.shadowPredictions||0)+1;if(this.lastShadowPrediction.fingerprint===choice.fingerprint)this.memory.lifetime.shadowMatches=(this.memory.lifetime.shadowMatches||0)+1;}
@@ -681,7 +668,7 @@ export class SolAgentBrain {
       const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
       this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
       return{source:'teacher',goal,reason:why,expectedOutcome:`Observe whether ${c.label} changes game state.`,actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
-    }catch(err){this.motorFailures++;if(this.motorFailures>=3)this.motorReady=false;throw err;}
+    }catch(err){this.motorFailures++;this.teacherConsecutiveFailures++;this.lastTeacherError=String(err).slice(0,240);if(this.teacherConsecutiveFailures>=1)this.motorReady=false;throw err;}
   }
 
   beginExperience(choice:AgentChoice,candidate:AgentCandidate,state:BotWorldState,tick:number){this.pending={choice,candidate,startTick:tick,settleTick:tick+Math.max(2,candidate.settleTicks||6),before:this.metrics(state)};}
@@ -966,6 +953,6 @@ export class SolAgentBrain {
     const relationships=Object.values(this.memory.relationships).sort((a,b)=>b.lastSeenAt.localeCompare(a.lastSeenAt)).slice(0,20);
     const sequences=Object.values(this.memory.sequences).sort((a,b)=>b.avgReward-a.avgReward).slice(0,12);
     const persistence={configured:!!(this.opts.githubToken&&this.opts.githubRepo),branch:'sol-memory',loaded:this.persistenceLoaded,loadedAt:this.persistenceLoadedAt,loadOutcome:this.loadOutcome,loadError:this.loadError,dirty:this.dirty,saveInFlight:!!this.saveInFlight,lastSavedAt:this.lastSaveSucceededAt,lastError:this.lastSaveError,consecutiveFailures:this.saveFailures};
-    return{architecture:'model-sovereign-gameplay-with-execution-validation',externalDirective:this.externalDirective,teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,currentController:this.motorReady?'autonomous-model':'model-offline',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,lastStrategistError:this.lastStrategistError,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
+    return{architecture:'teacher-supervised-progression-with-deterministic-fallback',externalDirective:this.externalDirective,teacherModel:this.motorModel,motorModel:this.motorModel,strategistModel:this.strategistModel,teacherOnline:this.motorReady,motorOnline:this.motorReady,strategistOnline:this.strategistReady,motorFailures:this.motorFailures,teacherConsecutiveFailures:this.teacherConsecutiveFailures,lastTeacherHealthyAt:this.lastTeacherHealthyAt?new Date(this.lastTeacherHealthyAt).toISOString():null,lastTeacherError:this.lastTeacherError,studentMode:'shadow-only',currentController:this.motorReady?'teacher-model':'deterministic-recovery',autonomy:{modelControlsGameplay:true,heuristicActionRanking:false,executionValidation:true,emergencyOverride:false,lastProposal:this.lastAutonomousProposal},strategy:this.strategy||this.memory.activePlan,planTree:(this.strategy||this.memory.activePlan)?.plan||[],strategistInFlight:this.strategistInFlight,lastStrategistError:this.lastStrategistError,sessionMotorChoices:this.sessionMotorChoices,lastChoice:this.lastChoice,lastOutcome:this.lastOutcome,blockedFingerprints:this.blockedFingerprints,shadowStudentPrediction:this.lastShadowPrediction,retrievedRepoKnowledge:this.currentGuidance,shadowAgreementRate:predictions?Number((matches/predictions).toFixed(3)):null,learnedContexts:contexts,learnedActions,memoryCount:this.memory.memories.length,relationshipCount:Object.keys(this.memory.relationships).length,placeCount:Object.keys(this.memory.places).length,repoKnowledgeSegments:this.repoKnowledge.length,persistence,relationships,worldDiscoveries:this.memory.discoveries.slice(-30).reverse(),learnedSequences:sequences,mindReplay:this.replay.slice(-30).reverse(),lifetime:this.memory.lifetime,recentMemories:this.memory.memories.slice(-12),recentOutcomes:this.recentOutcomes.slice(-12)};
   }
 }
