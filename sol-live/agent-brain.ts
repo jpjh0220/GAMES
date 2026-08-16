@@ -157,6 +157,7 @@ export class SolAgentBrain {
   private lastGoalFormedAt:number=-9999;
   private posHistory:string[]=[];
   private lastTelemetryAt:number=0;
+  private lastTelemetryXp:number=0;
   private lastStudentChoice:AgentChoice|null=null;
   private studentDecisionOutcomes:{choice:string;reward:number}[]=[];
   private seenMessages=new Set<string>();
@@ -673,26 +674,30 @@ export class SolAgentBrain {
   }
 
   private emitTelemetry(state:BotWorldState,tick:number){
-    // The whole reason this exists: for six sessions there was no number to
-    // compare runs by, so "better" was an opinion. One line per 500 ticks.
+    // Metric note: action COUNT is a bad progress measure here. A single
+    // action can span hundreds of ticks (combat, woodcutting, travel), so a
+    // low actions/1000 reads as "stuck" when the agent is working fine. XP
+    // delta per tick is the honest measure. Measured on run 72: +4,658 XP
+    // over 403 ticks while "actions/1000" looked alarming at 6.9.
     if(tick-this.lastTelemetryAt<500)return;
+    const span=tick-this.lastTelemetryAt;
     this.lastTelemetryAt=tick;
     const p=state.player;
     if(p){
       this.posHistory.push(`${p.worldX},${p.worldZ}`);
       if(this.posHistory.length>40)this.posHistory.shift();
     }
-    const acts=this.memory.lifetime.completedExperiences||0;
     const xp=(state.skills||[]).reduce((n:number,s:any)=>n+(s.experience||0),0);
+    const xpDelta=this.lastTelemetryXp>0?xp-this.lastTelemetryXp:0;
+    this.lastTelemetryXp=xp;
     console.log('AGENT_TELEMETRY',JSON.stringify({
       tick,
-      actions:acts,
-      actionsPer1000:tick>0?Number((acts*1000/tick).toFixed(1)):0,
+      xpPer1000Ticks:span>0?Number((xpDelta*1000/span).toFixed(1)):0,
+      xpDelta,
+      actions:this.memory.lifetime.completedExperiences||0,
       distinctPositions:new Set(this.posHistory).size,
-      totalXp:xp,
       planner:this.plannerEnabled,
-      goalActive:!!this.goals.getActiveGoal(),
-      goalTicksRemaining:this.goalTicksRemaining
+      goalActive:!!this.goals.getActiveGoal()
     }));
   }
 
