@@ -488,7 +488,12 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 
   for(const g of reachableGroundItems.sort((a,b)=>Number(a.distance||999)-Number(b.distance||999)).slice(0,8)) add({label:`Pick up ${g.count>1?g.count+' ':''}${g.name} (distance ${g.distance})`,category:'pickup',fingerprint:`pickup:${norm(g.name)}`,settleTicks:5,action:{type:'pickupItem',x:g.x,z:g.z,itemId:g.id,reason:`Pick up ${g.name}.`},tags:['item','resource',g.name,valuableGroundItems.includes(g)?'valuable-drop':'']});
 
-  for(const loc of (state.nearbyLocs||[]).filter(l=>l.reachable!==false).sort((a,b)=>a.distance-b.distance).slice(0,12)){
+  const bankLocs=(state.nearbyLocs||[]).filter((loc:any)=>loc.reachable!==false&&/bank booth|bank chest/i.test(String(loc.name||''))&&Array.isArray(loc.optionsWithIndex)&&loc.optionsWithIndex.length>0).sort((a:any,b:any)=>a.distance-b.distance).slice(0,4);
+  for(const loc of bankLocs){
+    const option=loc.optionsWithIndex.find((o:any)=>/use[- ]quickly/i.test(String(o.text||'')))||loc.optionsWithIndex.find((o:any)=>/^use$/i.test(String(o.text||'')))||loc.optionsWithIndex[0];
+    add({label:`Bank at ${loc.name} (distance ${loc.distance})`,category:'bank',fingerprint:`bank:open:${loc.x}:${loc.z}`,settleTicks:8,action:{type:'interactLoc',x:loc.x,z:loc.z,locId:loc.id,optionIndex:option.opIndex,reason:'Open the nearest usable bank booth; prefer the SDK quick-use operation and verify the bank interface.'},tags:['bank','open',loc.name,option.text]});
+  }
+  for(const loc of (state.nearbyLocs||[]).filter((l:any)=>l.reachable!==false&&!/bank booth|bank chest/i.test(String(l.name||''))).sort((a:any,b:any)=>a.distance-b.distance).slice(0,12)){
     for(const o of (loc.optionsWithIndex||[]).slice(0,2)) add({label:`${o.text} ${loc.name} (distance ${loc.distance})`,category:'world',fingerprint:`loc:${norm(o.text)}:${norm(loc.name)}`,settleTicks:6,action:{type:'interactLoc',x:loc.x,z:loc.z,locId:loc.id,optionIndex:o.opIndex,reason:`Interact with ${loc.name}.`},tags:['world',loc.name,o.text]});
   }
 
@@ -521,6 +526,25 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   brain.beginExperience(choice,candidate,state,tick);
   obligationExecutor.begin(action,tick);
   actionAwaitingOutcome=true;
+  if(candidate.category==='bank'&&action.type==='interactLoc'){
+    candidate.action.executionResult={success:true,pending:true};
+    void (async()=>{
+      await dispatchPrimitive(candidate.label,action);
+      await waitTicks(3);
+      if(lastState?.dialog?.isOpen){
+        const option=Number(lastState.dialog.options?.[0]?.index||0);
+        if(option>0||lastState.dialog.options?.length===0){
+          await dispatchPrimitive('Advance bank access dialogue',{type:'clickDialogOption',optionIndex:option,reason:'SDK bank helper advances the first bank access dialogue option.'});
+          await waitTicks(2);
+        }
+      }
+      const interfaceOpen=!!(lastState?.bank?.isOpen||lastState?.interface?.isOpen);
+      candidate.action.executionResult=interfaceOpen?{success:true,message:'Bank interface verified open'}:{success:false,message:'Bank booth interaction did not open a bank interface',reason:'bank_interface_not_open'};
+      refreshSnapshot(lastState);
+    })().catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'bank_open_exception'};refreshSnapshot(lastState);});
+    void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-bank-open-procedure'});
+    return;
+  }
   if(action.type==='worldSkill'){
     candidate.action.executionResult={success:true,pending:true};
     void executeWorldSkill(action).then(result=>{candidate.action.executionResult=result;refreshSnapshot(lastState);}).catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};procedureInFlight=null;refreshSnapshot(lastState);});
