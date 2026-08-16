@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1690,
-  "committedTick": 5651,
+  "stateGeneration": 1706,
+  "committedTick": 5701,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3150,
-    "z": 3248,
+    "z": 3247,
     "level": 0
   },
   "currentObligation": {
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I need to attack a Goblin (level 2, distance 5) to collect more resources."
+    "reason": "I collected the Air rune (distance 2) from the goblin guard encounter. This is a valuable drop, and I've recorded its location. I've also verified that the drop is of the correct r"
   },
   "objective": {
     "id": "boot",
-    "label": "Identify and record all drops from goblin guards",
+    "label": "Identify and record drop locations",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:12|3:526:1|4:526:1|5:526:1|6:995:199|19:557:12",
-    "freeSlots": 20,
+    "signature": "0:1931:1|1:1931:1|2:556:13|3:526:1|4:526:1|5:526:1|6:995:199|7:526:1|19:557:12",
+    "freeSlots": 19,
     "coins": 199,
-    "updatedTick": 5651
+    "updatedTick": 5701
   },
   "milestones": [
     {
@@ -505,6 +505,18 @@
       "label": "Train Woodcutting to level 15",
       "tick": 5632,
       "evidence": "+665 XP"
+    },
+    {
+      "id": "directed-exploration:5669",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 5669,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "directed-exploration:5701",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 5701,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -514,5 +526,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:55:54.351Z"
+  "updatedAt": "2026-08-16T19:56:09.360Z"
 }\n
