@@ -10,9 +10,9 @@
     "teacherChoices": 6964,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 6951,
-    "totalReward": 4419.642,
-    "saves": 713,
+    "completedExperiences": 6960,
+    "totalReward": 4414.899,
+    "saves": 714,
     "shadowPredictions": 3939,
     "shadowMatches": 1904,
     "strategistRefreshes": 465,
@@ -19547,14 +19547,24 @@
     },
     "fallback": {
       "npc:trade:diango": {
-        "n": 1,
-        "avgReward": 0.072,
+        "n": 2,
+        "avgReward": 0.0645,
         "positive": 0,
         "negative": 0,
-        "lastReward": 0.072,
-        "lastAt": "2026-08-16T07:33:55.354Z",
+        "lastReward": 0.057,
+        "lastAt": "2026-08-16T07:33:57.960Z",
         "exampleGoal": "Initialize persistent agent",
-        "exampleReason": "Deterministic fallback selected Trade Diango (level 0, distance 12) while the primary controller was unavailable."
+        "exampleReason": "Deterministic fallback selected Trade Diango (level 0, distance 2) while the primary controller was unavailable."
+      },
+      "shop:sell:coins": {
+        "n": 8,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 8,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-16T07:34:12.348Z",
+        "exampleGoal": "Initialize persistent agent",
+        "exampleReason": "Deterministic fallback selected Sell 1 Coins for about 0 while the primary controller was unavailable."
       }
     }
   },
@@ -43417,6 +43427,42 @@
       "positive": 0,
       "lastAt": "2026-08-16T07:31:15.968Z",
       "example": "Sell 1 Raw anchovies for about 7 → Sell 1 Raw anchovies for about 7 → Close the shop"
+    },
+    "npc:trade:diango > npc:trade:diango > shop:sell:coins": {
+      "sequence": [
+        "npc:trade:diango",
+        "npc:trade:diango",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -0.471,
+      "positive": 0,
+      "lastAt": "2026-08-16T07:33:59.533Z",
+      "example": "Trade Diango (level 0, distance 12) → Trade Diango (level 0, distance 2) → Sell 1 Coins for about 0"
+    },
+    "npc:trade:diango > shop:sell:coins > shop:sell:coins": {
+      "sequence": [
+        "npc:trade:diango",
+        "shop:sell:coins",
+        "shop:sell:coins"
+      ],
+      "n": 1,
+      "avgReward": -1.143,
+      "positive": 0,
+      "lastAt": "2026-08-16T07:34:01.351Z",
+      "example": "Trade Diango (level 0, distance 2) → Sell 1 Coins for about 0 → Sell 1 Coins for about 0"
+    },
+    "shop:sell:coins > shop:sell:coins > shop:sell:coins": {
+      "sequence": [
+        "shop:sell:coins",
+        "shop:sell:coins",
+        "shop:sell:coins"
+      ],
+      "n": 6,
+      "avgReward": -1.8,
+      "positive": 0,
+      "lastAt": "2026-08-16T07:34:12.348Z",
+      "example": "Sell 1 Coins for about 0 → Sell 1 Coins for about 0 → Sell 1 Coins for about 0"
     }
   },
   "discoveries": [
@@ -47031,9 +47077,21 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3081:3252:3080:3252:0",
+      "at": "2026-08-16T07:33:57.960Z",
+      "kind": "route",
+      "text": "Route learned: 3081,3252 → 3080,3252; moved 3081,3252 → 3080,3252",
+      "location": {
+        "x": 3080,
+        "z": 3252,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-16T07:33:55.355Z",
+  "updatedAt": "2026-08-16T07:34:12.349Z",
   "activePlan": {
     "objective": "Sell valuable items to increase coins and prepare for a new activity",
     "focus": "Sell 1 Raw anchovies for about 7",
