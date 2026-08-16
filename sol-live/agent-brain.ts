@@ -728,7 +728,7 @@ export class SolAgentBrain {
         // repeatedly in run 67 and re-adopted "Visit bank to store items" 26
         // times, resetting progress each time.
         const active=this.goals.getActiveGoal?.();
-        const alreadyPursuing=!!active&&/bank|net|bait/i.test(String(active.name||''))&&failureReason!=='EXECUTION_FAILED';
+        const alreadyPursuing=failureReason==='INVENTORY_FULL'||(!!active&&/bank|net|bait/i.test(String(active.name||''))&&failureReason!=='EXECUTION_FAILED');
         if(!alreadyPursuing){
           const subgoal=this.goals.formSubgoalFromFailure(exp.candidate.label,failureReason);
           if(subgoal)console.log('AGENT_SUBGOAL_FORMED',JSON.stringify({parent:exp.candidate.label,failure:failureReason,subgoal:subgoal.name}));

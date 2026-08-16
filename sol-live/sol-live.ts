@@ -664,13 +664,13 @@ const lootGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
 
 const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
   const free=Math.max(0,28-(state.inventory||[]).length);
-  const capacityObjective=currentProgression.id==='resolve-capacity'||/capacity/i.test(String(currentProgression.objective||''));
-  const pressured=free<=(capacityObjective?8:(brain.runtime.inventoryWarningSlots??3));
+  // Capacity is a measured safety constraint, never an autonomous objective.
+  const pressured=free<=(brain.runtime.inventoryWarningSlots??3);
   if(!pressured)return candidates;
   const bankOpen=!!state.bank?.isOpen;
   const bankNearby=(state.nearbyNpcs||[]).some((n:any)=>n.reachable!==false&&/banker|bank/i.test(String(n.name||''))&&(n.optionsWithIndex||[]).some((o:any)=>/bank|deposit/i.test(String(o.text||''))))||(state.nearbyLocs||[]).some((l:any)=>l.reachable!==false&&/bank/i.test(String(l.name||'')));
   const shopOpen=!!state.shop?.isOpen;
-  const usefulPickup=(c:AgentCandidate)=>!capacityObjective&&c.category==='pickup'&&/(coins?|pickaxe|axe|fishing net|fishing rod|tinderbox|food|shrimp|anchov|rune|weapon|armou?r)/i.test(String(c.label||''));
+  const usefulPickup=(c:AgentCandidate)=>c.category==='pickup'&&/(coins?|pickaxe|axe|fishing net|fishing rod|tinderbox|food|shrimp|anchov|rune|weapon|armou?r)/i.test(String(c.label||''));
   const safe=candidates.filter(c=>{
     if(c.category==='pickup')return usefulPickup(c);
     if(c.category==='bank'&&c.action?.type==='interactLoc'&&economyResolution.noProgress>=2)return false;
