@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 23,
-  "committedTick": 100,
+  "stateGeneration": 32,
+  "committedTick": 140,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:271|7:526:1|8:526:1|11:526:1|12:526:1|15:303:1|16:321:1|18:526:1|19:557:12|21:303:1|22:303:1|24:526:1|25:1265:1|26:52:45|27:303:1",
     "freeSlots": 7,
     "coins": 271,
-    "updatedTick": 100
+    "updatedTick": 140
   },
   "milestones": [],
   "failures": [],
@@ -39,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T21:26:43.274Z"
+  "updatedAt": "2026-08-16T21:26:59.155Z"
 }\n
