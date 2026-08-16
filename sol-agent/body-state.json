@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 3692,
-  "committedTick": 15171,
+  "stateGeneration": 3703,
+  "committedTick": 15223,
   "identity": {
     "name": "Sol5"
   },
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I have 3 coins, so I can pick them up."
+    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: Error: controller timeout after 20000ms"
   },
   "objective": {
     "id": "boot",
-    "label": "Approach the Gerrants' Fishy Business",
+    "label": "Recover reasoning loop",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:321:1|1:321:1|2:321:1|3:303:1|4:303:1|5:321:1|6:995:90|7:317:1|8:321:1|9:317:1|10:303:1|11:317:1|12:303:1|13:321:1|14:317:1|15:526:1|16:526:1|17:303:1|18:526:1|19:557:10|20:526:1|21:1931:1|22:1931:1|23:526:1|24:526:1|25:526:1|26:526:1|27:1931:1",
     "freeSlots": 0,
     "coins": 90,
-    "updatedTick": 15171
+    "updatedTick": 15223
   },
   "milestones": [
     {
@@ -52,5 +52,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T18:01:26.864Z"
+  "updatedAt": "2026-08-16T18:01:42.405Z"
 }\n
