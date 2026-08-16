@@ -1,7 +1,8 @@
 import type { BotWorldState } from './src/bot/types.js';
 import type { AgentCandidate } from './agent-brain.js';
 
-export type ProgressionPlan={id:string;objective:string;reason:string;success:string;priorityFingerprints:string[];stage:number;blocked:boolean};
+export type ProgressionContract={prerequisites:string[];requiredResources:string[];terminalEvidence:string[];forbiddenWhileActive:string[];replanTriggers:string[]};
+export type ProgressionPlan={id:string;objective:string;reason:string;success:string;priorityFingerprints:string[];stage:number;blocked:boolean;contract:ProgressionContract};
 const lvl=(state:BotWorldState,name:string)=>Number((state.skills||[]).find((s:any)=>String(s.name||'').toLowerCase()===name)?.level||1);
 const text=(c:AgentCandidate)=>`${c.label} ${(c.tags||[]).join(' ')}`.toLowerCase();
 const matching=(candidates:AgentCandidate[],re:RegExp)=>candidates.filter(c=>re.test(text(c))).map(c=>c.fingerprint);
@@ -26,7 +27,7 @@ export class ProgressionDirector{
     const cook=matching(candidates,/cook|range|fire/i);
     const combat=matching(candidates,/attack.*(man|goblin|chicken|rat)|combat/i);
     const explore=matching(candidates,/explore|walk|travel/i);
-    const plan=(id:string,objective:string,reason:string,success:string,priorityFingerprints:string[],stage:number,blocked=false):ProgressionPlan=>{this.lastPlan=id;this.lastPlanTick=tick;return{id,objective,reason,success,priorityFingerprints,stage,blocked};};
+    const plan=(id:string,objective:string,reason:string,success:string,priorityFingerprints:string[],stage:number,blocked=false):ProgressionPlan=>{this.lastPlan=id;this.lastPlanTick=tick;const capacity=/capacity|bank|merchant|shop|store|deposit|sell/i.test(objective);const training=/train|fish|mine|smith|woodcut|cook|combat/i.test(objective);const contract:ProgressionContract={prerequisites:capacity?['reachable bank, shop, or valid use/discard route']:training?['required tool or interaction','survival resources','reachable target']:['reachable legal action'],requiredResources:capacity?['inventory slots','item disposition evidence']:training?['food or safe HP margin','tool/equipment if required']:['position and legal action'],terminalEvidence:[success,'measured state delta compatible with the selected action'],forbiddenWhileActive:capacity?['unrelated combat','low-value pickup','zero-value sale']:training?['indefinite gathering','unverified target repetition']:['repeated no-progress action'],replanTriggers:['SDK refusal','no measurable change','postcondition failure','stale world state','resource threshold changed']};return{id,objective,reason,success,priorityFingerprints,stage,blocked,contract};};
 
     if(free<8)return plan('resolve-capacity','Resolve inventory capacity before training','Space is a prerequisite for every productive loop. Prefer depositing at a bank; use a merchant only when no bank route is visible, then verify free slots increased.','At least 8 free inventory slots.',capacityRoute,0,true);
     if(equip.length)return plan('equip-useful-gear','Equip a useful weapon or armour upgrade','Useful gear in inventory is not progression until it is equipped and the equipment state verifies the change.','Equipment signature changes to include the selected upgrade.',equip,1);

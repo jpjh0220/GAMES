@@ -13,7 +13,7 @@ const RUN_MS = 19_800_000; // 5h30m, leaving ~30m for setup/persistence/artifact
 const viewerHtml = await Bun.file('./viewer.html').text();
 const sessionStartedAt = new Date().toISOString();
 const viewerAccessToken = process.env.SOL_VIEWER_TOKEN?.trim() || '';
-const directive = 'Understand that you are an autonomous player inside a persistent RuneScape-style MMO. Learn its mechanics from the cloned rs-sdk repository and live outcomes; pursue connected long-term progression through skills, resources, coins, equipment, exploration, combat, NPCs, and relationships with other autonomous players.';
+const directive = 'You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes.';
 const runNumber = Number(process.env.GITHUB_RUN_NUMBER || 0) || null;
 
 type FeedEvent = {
@@ -732,7 +732,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
   refreshSnapshot(stateAtStart);
   void log('AGENT_THINK',{tick:startedTick,candidates:candidates.length,agent:brain.publicState()});
   controllerRegistry.activateAtTick(startedTick);
-  controllerRegistry.decide(stateAtStart,candidates,{tick:startedTick,currentTask:currentProgression.objective,externalDirective:controlState.directive}).then(choice=>{
+  controllerRegistry.decide(stateAtStart,candidates,{tick:startedTick,currentTask:JSON.stringify({objective:currentProgression.objective,reason:currentProgression.reason,success:currentProgression.success,contract:currentProgression.contract,stage:currentProgression.stage,blocked:currentProgression.blocked}),externalDirective:controlState.directive}).then(choice=>{
     if(lease!==decisionLease){void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,reason:'body watchdog already released the decision lease'});return;}
     if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;
     decisionInFlight=false;
