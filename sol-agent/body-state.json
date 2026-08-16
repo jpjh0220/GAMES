@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 110,
-  "committedTick": 437,
+  "stateGeneration": 123,
+  "committedTick": 490,
   "identity": {
     "name": "Sol5"
   },
@@ -11,15 +11,15 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "capacity-resolution",
+    "kind": "transaction",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Banking is a valid activity as it provides a way to gain coins and space. I will proceed with this action to start the banking process."
+    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=2,gated=1,legal=1,streak=7)."
   },
   "objective": {
     "id": "boot",
-    "label": "Resolve inventory capacity before training",
+    "label": "Recover legal action space",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:1351:1|1:590:1|2:526:1|3:526:1|4:526:1|5:526:1|6:995:71|7:526:1|8:526:1|9:526:1|10:526:1|11:526:1|12:526:1|13:526:1|14:526:1|15:303:1|18:526:1|21:303:1|22:303:1|24:526:1|25:1265:1|27:303:1",
     "freeSlots": 6,
     "coins": 71,
-    "updatedTick": 437
+    "updatedTick": 490
   },
   "milestones": [],
   "failures": [],
@@ -39,5 +39,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T22:14:53.089Z"
+  "updatedAt": "2026-08-16T22:15:09.095Z"
 }\n
