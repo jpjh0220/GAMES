@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1496,
-  "committedTick": 4970,
+  "stateGeneration": 1509,
+  "committedTick": 5021,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3162,
+    "x": 3163,
     "z": 3236,
     "level": 0
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I picked up Bones (distance 1)"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Progress through pickup",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:1931:1|1:1931:1|2:556:8|3:526:1|6:995:199|19:557:12",
-    "freeSlots": 22,
+    "signature": "0:1931:1|1:1931:1|2:556:8|3:526:1|4:526:1|6:995:199|19:557:12",
+    "freeSlots": 21,
     "coins": 199,
-    "updatedTick": 4970
+    "updatedTick": 5021
   },
   "milestones": [
     {
@@ -475,6 +475,12 @@
       "label": "Train Woodcutting to level 15",
       "tick": 4801,
       "evidence": "+265 XP"
+    },
+    {
+      "id": "directed-exploration:5002",
+      "label": "Find the next reachable progression resource or trainer",
+      "tick": 5002,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -484,5 +490,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-16T19:52:30.165Z"
+  "updatedAt": "2026-08-16T19:52:45.336Z"
 }\n
