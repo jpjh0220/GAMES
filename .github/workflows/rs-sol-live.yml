@@ -190,9 +190,13 @@ jobs:
               wait "$AGENT_PID"
               exit 1
             fi
-            if curl -fsS --max-time 3 http://127.0.0.1:8787/health | jq -e '.ok == true' >/dev/null; then
+            HEALTH=$(curl -sS --max-time 3 http://127.0.0.1:8787/health || true)
+            if [ -n "$HEALTH" ] && printf '%s' "$HEALTH" | jq -e '.ok == true' >/dev/null; then
               READY=1
               break
+            fi
+            if [ "$i" = 1 ] || [ $((i % 15)) -eq 0 ]; then
+              printf 'Sol readiness pending: '; printf '%s' "${HEALTH:-no response}" | jq -c '{ok,online,inGame,tick,actionCount,agentController,teacherOnline}' 2>/dev/null || printf '%s\n' 'unparseable health response'
             fi
             sleep 2
           done
