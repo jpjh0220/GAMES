@@ -663,12 +663,12 @@ export class SolAgentBrain {
         console.log('AGENT_MOTOR_TIMING',JSON.stringify({ms,payloadChars,approxTokens,numCtx:2048,likelyTruncated:approxTokens>2048,candidates:(payload as any)?.actions?.length??null,evalCount:raw?.eval_count??null,promptEvalCount:raw?.prompt_eval_count??null}));
         return parseModelJson(raw?.message?.content);
       };
-      let j:any;try{j=await ask(motorObservation,12000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},10000)}
+      let j:any;try{j=await ask(motorObservation,24000)}catch(first){j=await ask({plan:motorObservation.plan,actions:motorObservation.actions,instruction:'Choose one action now. Do not wait if any productive action exists.'},5000)}
       const c=allowed.find(x=>x.id===j.action_id);if(!c)throw new Error(`invalid motor action ${j.action_id}`);this.motorFailures=0;
       const why=String(j.why||`Selected ${c.label}`).slice(0,180),goal=String(this.strategy?.focus||`Progress through ${c.category}`).slice(0,180),followUp:string[]=[],planNote='Immediate action chosen by the motor model.',speech=String(j.speech||'').slice(0,80);
       this.lastAutonomousProposal={goal,action:c.fingerprint,followUp,planNote,speech,at:now()};
       return{source:'teacher',goal,reason:why,expectedOutcome:`Observe whether ${c.label} changes game state.`,actionId:c.id,speech,confidence:clamp(Number(j.confidence)||.5,0,1),contextKey,fingerprint:c.fingerprint,followUp,planNote};
-    }catch(err){this.motorFailures++;this.teacherConsecutiveFailures++;this.lastTeacherError=String(err).slice(0,240);if(this.teacherConsecutiveFailures>=1)this.motorReady=false;throw err;}
+    }catch(err){this.motorFailures++;this.teacherConsecutiveFailures++;this.lastTeacherError=String(err).slice(0,240);if(this.teacherConsecutiveFailures>=3)this.motorReady=false;throw err;}
   }
 
   beginExperience(choice:AgentChoice,candidate:AgentCandidate,state:BotWorldState,tick:number){this.pending={choice,candidate,startTick:tick,settleTick:tick+Math.max(2,candidate.settleTicks||6),before:this.metrics(state)};}
