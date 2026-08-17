@@ -6,58 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 9042,
-    "teacherChoices": 9042,
+    "totalChoices": 9043,
+    "teacherChoices": 9043,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9340,
-    "totalReward": 3818.37,
-    "saves": 1043,
+    "completedExperiences": 9341,
+    "totalReward": 3818.7,
+    "saves": 1044,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1080,
     "strategistFailures": 85
   },
   "memories": [
-    {
-      "id": "mswru834-ehhb7k",
-      "createdAt": "2026-08-17T05:06:32.944Z",
-      "tick": 5325,
-      "runNumber": 190,
-      "kind": "relationship",
-      "text": "Brannock said: \"Pn7dmmqthi my guy lmao\". Current stance distrusted, trust -0.76.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "brannock",
-        "distrusted"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswrulk2-ysc614",
-      "createdAt": "2026-08-17T05:06:50.402Z",
-      "tick": 0,
-      "runNumber": 190,
-      "kind": "strategy",
-      "text": "AI strategist: Identify and record essential locations for navigation and resource gathering. Accurate location data is critical for survival, resource management, and efficient travel in the game world.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "identify and record essential locations for navigation and resource gathering",
-        "ensure safe passage by avoiding dangerous zones and using proper tools",
-        "document coordinates for future reference and map based navigation"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
     {
       "id": "mswrurg1-6ok1lw",
       "createdAt": "2026-08-17T05:06:58.033Z",
@@ -7460,6 +7421,41 @@
       "location": {
         "x": 3143,
         "z": 3356,
+        "level": 0
+      }
+    },
+    {
+      "id": "msws2ans-jbb1kv",
+      "createdAt": "2026-08-17T05:12:49.528Z",
+      "tick": 1,
+      "runNumber": 192,
+      "kind": "observation",
+      "text": "SDK feedback (sdk_feedback): Welcome to RuneScape.",
+      "importance": 1,
+      "tags": [
+        "sdk feedback"
+      ],
+      "location": {
+        "x": 3147,
+        "z": 3360,
+        "level": 0
+      }
+    },
+    {
+      "id": "msws3cq0-dkpy2c",
+      "createdAt": "2026-08-17T05:13:38.856Z",
+      "tick": 95,
+      "runNumber": 192,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3147, 3365)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3146,
+        "z": 3364,
         "level": 0
       }
     }
@@ -24479,6 +24475,18 @@
         "lastAt": "2026-08-17T05:09:40.890Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "Selected Pick up Small fishing net (distance 0) to satisfy the current objective and verify the resulting world-state change."
+      }
+    },
+    "area=393:420:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.33,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.33,
+        "lastAt": "2026-08-17T05:13:38.857Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Selected Explore north about 5 tiles to satisfy the current objective and verify the resulting world-state change."
       }
     }
   },
@@ -71806,12 +71814,12 @@
     },
     "196:210:0": {
       "key": "196:210:0",
-      "x": 3142,
+      "x": 3147,
       "z": 3360,
       "level": 0,
       "firstSeenAt": "2026-08-17T04:54:30.567Z",
-      "lastSeenAt": "2026-08-17T05:07:18.552Z",
-      "visits": 23,
+      "lastSeenAt": "2026-08-17T05:13:19.636Z",
+      "visits": 25,
       "npcs": [
         "Tree",
         "Duck",
@@ -71824,7 +71832,9 @@
         "Tree stump",
         "Tree",
         "Mushroom",
-        "Daisies"
+        "Daisies",
+        "Plant",
+        "Fern"
       ]
     }
   },
@@ -96336,30 +96346,6 @@
   },
   "discoveries": [
     {
-      "id": "resource:tree stump:197:205:0",
-      "at": "2026-08-17T02:46:48.420Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3158, 3281, level 0.",
-      "location": {
-        "x": 3158,
-        "z": 3281,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:197:205:0",
-      "at": "2026-08-17T02:46:48.420Z",
-      "kind": "place",
-      "text": "Fern observed near 3158, 3281, level 0.",
-      "location": {
-        "x": 3158,
-        "z": 3281,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "resource:tree:197:205:0",
       "at": "2026-08-17T02:46:48.420Z",
       "kind": "resource",
@@ -99934,9 +99920,45 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:plant:196:210:0",
+      "at": "2026-08-17T05:12:49.528Z",
+      "kind": "place",
+      "text": "Plant observed near 3147, 3360, level 0.",
+      "location": {
+        "x": 3147,
+        "z": 3360,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:196:210:0",
+      "at": "2026-08-17T05:12:49.528Z",
+      "kind": "place",
+      "text": "Fern observed near 3147, 3360, level 0.",
+      "location": {
+        "x": 3147,
+        "z": 3360,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3147:3360:3146:3364:0",
+      "at": "2026-08-17T05:13:38.857Z",
+      "kind": "route",
+      "text": "Route learned: 3147,3360 → 3146,3364; moved 3147,3360 → 3146,3364",
+      "location": {
+        "x": 3146,
+        "z": 3364,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T05:09:40.891Z",
+  "updatedAt": "2026-08-17T05:13:38.858Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots based on the provided table.",
