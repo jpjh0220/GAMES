@@ -33,7 +33,8 @@ if(command==='set_config'){
 }
 const controllerId=process.env.SOL_CONTROLLER_ID||undefined;
 const controllerVersion=process.env.SOL_CONTROLLER_VERSION||undefined;
-const document={revision,command,directive,config,manualAction,controllerId,controllerVersion,expiresAt:new Date(Date.now()+30*60*1000).toISOString(),updatedAt:new Date().toISOString()};
+const expiresAt=new Date(Date.now()+(command==='manual_action'?5*60*1000:30*60*1000)).toISOString();
+const document={revision,command,directive,config,manualAction,controllerId,controllerVersion,expiresAt,updatedAt:new Date().toISOString()};
 const payload={message:`control: ${command} (revision ${revision})`,content:Buffer.from(JSON.stringify(document,null,2)+'\n').toString('base64'),branch:'sol-control'};
 if(current?.sha)payload.sha=current.sha;
 const response=await fetch(`${api}/contents/sol-agent/control.json`,{method:'PUT',headers,body:JSON.stringify(payload)});
