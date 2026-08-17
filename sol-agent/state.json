@@ -10,9 +10,9 @@
     "teacherChoices": 9098,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9390,
-    "totalReward": 3819.465,
-    "saves": 1057,
+    "completedExperiences": 9391,
+    "totalReward": 3818.865,
+    "saves": 1058,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1107,
@@ -24864,12 +24864,12 @@
     },
     "llm-timeout:97": {
       "modal:close-interface": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 1,
+        "negative": 2,
         "lastReward": -0.6,
-        "lastAt": "2026-08-17T07:42:08.471Z",
+        "lastAt": "2026-08-17T07:49:25.014Z",
         "exampleGoal": "Maintain safe verified play while the language model reconnects",
         "exampleReason": "The language model timed out. Use the already-observed safe candidate “Close the blocking interface” once, verify its outcome, then retry language reasoning."
       }
@@ -72301,12 +72301,12 @@
     },
     "193:194:0": {
       "key": "193:194:0",
-      "x": 3097,
-      "z": 3107,
+      "x": 3094,
+      "z": 3106,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T07:46:07.254Z",
-      "visits": 32,
+      "lastSeenAt": "2026-08-17T07:49:18.411Z",
+      "visits": 34,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -100740,7 +100740,7 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T07:46:30.358Z",
+  "updatedAt": "2026-08-17T07:49:25.015Z",
   "activePlan": {
     "objective": "Explore and document key coordinates for safe and efficient travel",
     "focus": "Identify and record all known coordinates that are reachable and relevant to current travel goals.",
@@ -100750,7 +100750,8 @@
       {
         "id": "step-1",
         "label": "Identify and record all known coordinates that are reachable and relevant to current travel goals.",
-        "status": "active"
+        "status": "blocked",
+        "evidence": "Repeated negative or rejected outcomes; strategist must replan."
       },
       {
         "id": "step-2",
@@ -100778,6 +100779,6 @@
     ],
     "updatedAt": "2026-08-17T07:45:58.811Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 3
   }
 }
