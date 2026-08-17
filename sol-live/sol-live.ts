@@ -1,4 +1,5 @@
 import { startSession } from './src/lite/session.js';
+import { LoginError } from './src/lite/net/GameConnection.js';
 import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
 import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
@@ -306,7 +307,24 @@ const server=Bun.serve({
 });
 await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 
-const session=await startSession({host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}});
+const sessionOptions={host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
+const startSessionWithLoginRetry=async()=>{
+  let lastError:unknown;
+  for(let attempt=0;attempt<5;attempt++){
+    try{return await startSession(sessionOptions);}
+    catch(err){
+      lastError=err;
+      const code=Number((err as any)?.code);
+      const retryable=err instanceof LoginError&&code===8;
+      if(!retryable)throw err;
+      const delayMs=Math.min(60000,10000*(2**attempt));
+      console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:5,code,delayMs,message:String(err)});
+      await Bun.sleep(delayMs);
+    }
+  }
+  throw lastError;
+};
+const session=await startSessionWithLoginRetry();
 const client=session.client;
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
