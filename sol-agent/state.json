@@ -6,77 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8528,
-    "teacherChoices": 8528,
+    "totalChoices": 8529,
+    "teacherChoices": 8529,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8840,
-    "totalReward": 3916.553,
-    "saves": 987,
+    "completedExperiences": 8841,
+    "totalReward": 3916.633,
+    "saves": 988,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 604,
     "strategistFailures": 81
   },
   "memories": [
-    {
-      "id": "mswgbmou-mjsudt",
-      "createdAt": "2026-08-16T23:44:09.630Z",
-      "tick": 283,
-      "runNumber": 172,
-      "kind": "relationship",
-      "text": "Beggar05 said: \"Trade plz ill take anything\". Current stance cooperative, trust 1.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar05",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswgbmou-k1g3xy",
-      "createdAt": "2026-08-16T23:44:09.630Z",
-      "tick": 287,
-      "runNumber": 172,
-      "kind": "relationship",
-      "text": "Beggar10 said: \"Need coins for food\". Current stance cooperative, trust 1.00.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "beggar10",
-        "cooperative",
-        "potential help"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswgbmou-yikd9l",
-      "createdAt": "2026-08-16T23:44:09.630Z",
-      "tick": 295,
-      "runNumber": 172,
-      "kind": "relationship",
-      "text": "Beggar10 said: \"Open trade with me\". Current stance cooperative, trust 1.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar10",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mswgbmou-hf1ap3",
       "createdAt": "2026-08-16T23:44:09.630Z",
@@ -8052,6 +7994,72 @@
       "location": {
         "x": 3081,
         "z": 3248,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswm1ih4-v0qgxv",
+      "createdAt": "2026-08-17T02:24:15.304Z",
+      "tick": 25,
+      "runNumber": 184,
+      "kind": "relationship",
+      "text": "Deneb836 said: \"Trade with me archmagus! I have what you need!\". Current stance cooperative, trust 1.00.",
+      "importance": 1.4,
+      "tags": [
+        "social",
+        "deneb836",
+        "cooperative",
+        "potential help"
+      ],
+      "location": {
+        "x": 3080,
+        "z": 3250,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswm1xvd-u4oumz",
+      "createdAt": "2026-08-17T02:24:35.257Z",
+      "tick": 120,
+      "runNumber": 184,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Picking up item 555",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "pickup"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswm1xvf-ufvs77",
+      "createdAt": "2026-08-17T02:24:35.259Z",
+      "tick": 120,
+      "runNumber": 184,
+      "kind": "episode",
+      "text": "AI motor: Pick up 6 Water rune (distance 5). Result: moved 3080,3250 → 3085,3245. Reward 0.08.",
+      "importance": 0.74,
+      "tags": [
+        "pickup",
+        "item",
+        "resource",
+        "water rune",
+        "valuable drop",
+        "agent xbfr5x1f0",
+        "agent nooblumber",
+        "npc fishing spot",
+        "loc boulder",
+        "loc pile of rope",
+        "loc tree stump",
+        "loc bush"
+      ],
+      "location": {
+        "x": 3085,
+        "z": 3245,
         "level": 0
       }
     }
@@ -19951,6 +19959,16 @@
         "lastAt": "2026-08-16T23:52:44.057Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I picked up Bones (distance 10)."
+      },
+      "pickup:water rune": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-17T02:24:35.259Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I have the 6 Water rune (distance 5) from the Magic Guild Store. I can use it to enhance my magic."
       }
     },
     "area=385:405:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -24994,8 +25012,8 @@
     "goo018": {
       "name": "Goo018",
       "firstSeenAt": "2026-08-14T22:55:40.531Z",
-      "lastSeenAt": "2026-08-17T02:00:43.160Z",
-      "encounters": 18,
+      "lastSeenAt": "2026-08-17T02:23:45.298Z",
+      "encounters": 19,
       "combatLevel": 123,
       "trust": 0,
       "stance": "unknown",
@@ -25144,8 +25162,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "encounters": 6230,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 6232,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -26565,8 +26583,8 @@
     "daytrader": {
       "name": "Daytrader",
       "firstSeenAt": "2026-08-15T19:55:19.652Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "encounters": 10,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 12,
       "combatLevel": 38,
       "trust": 1,
       "stance": "cooperative",
@@ -29079,8 +29097,8 @@
     "booosrs": {
       "name": "Booosrs",
       "firstSeenAt": "2026-08-16T01:16:13.193Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "encounters": 148,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 150,
       "combatLevel": 68,
       "trust": 0,
       "stance": "unknown",
@@ -30072,8 +30090,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-16T03:26:32.361Z",
-      "lastSeenAt": "2026-08-17T02:19:37.220Z",
-      "encounters": 79,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 81,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -38369,8 +38387,8 @@
     "rexruthor": {
       "name": "Rexruthor",
       "firstSeenAt": "2026-08-16T20:35:15.254Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "encounters": 575,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 577,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -38852,8 +38870,8 @@
     "fishmax10": {
       "name": "Fishmax10",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-17T02:21:09.465Z",
-      "encounters": 167,
+      "lastSeenAt": "2026-08-17T02:23:45.298Z",
+      "encounters": 168,
       "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
@@ -41166,8 +41184,8 @@
     "inarihelper1": {
       "name": "Inarihelper1",
       "firstSeenAt": "2026-08-16T23:44:44.417Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "encounters": 28,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "encounters": 30,
       "combatLevel": 96,
       "trust": 0,
       "stance": "unknown",
@@ -41497,12 +41515,12 @@
     "deneb836": {
       "name": "Deneb836",
       "firstSeenAt": "2026-08-17T02:04:17.146Z",
-      "lastSeenAt": "2026-08-17T02:21:22.600Z",
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 37,
-      "cooperation": 10,
+      "conversations": 38,
+      "cooperation": 11,
       "suspicion": 0,
       "facts": [
         "Selling cowhides cheap! Buy in bulk!",
@@ -41520,11 +41538,6 @@
       ],
       "questions": [],
       "lastMessages": [
-        {
-          "at": "2026-08-17T02:11:08.380Z",
-          "direction": "incoming",
-          "text": "Trading 28 noted cowhides for any ore!"
-        },
         {
           "at": "2026-08-17T02:11:49.133Z",
           "direction": "incoming",
@@ -41619,6 +41632,11 @@
           "at": "2026-08-17T02:21:22.600Z",
           "direction": "incoming",
           "text": "Trade with me ares! I have what you need!"
+        },
+        {
+          "at": "2026-08-17T02:24:15.298Z",
+          "direction": "incoming",
+          "text": "Trade with me archmagus! I have what you need!"
         }
       ]
     },
@@ -41807,12 +41825,12 @@
     },
     "192:203:0": {
       "key": "192:203:0",
-      "x": 3081,
-      "z": 3248,
+      "x": 3080,
+      "z": 3250,
       "level": 0,
       "firstSeenAt": "2026-08-14T22:01:41.994Z",
-      "lastSeenAt": "2026-08-17T02:21:41.604Z",
-      "visits": 724,
+      "lastSeenAt": "2026-08-17T02:24:15.298Z",
+      "visits": 726,
       "npcs": [
         "Diango",
         "Banker",
@@ -67281,18 +67299,6 @@
   },
   "discoveries": [
     {
-      "id": "place:spear wall:196:203:0",
-      "at": "2026-08-17T00:37:33.505Z",
-      "kind": "place",
-      "text": "Spear wall observed near 3136, 3250, level 0.",
-      "location": {
-        "x": 3136,
-        "z": 3250,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:nettles:196:203:0",
       "at": "2026-08-17T00:37:33.505Z",
       "kind": "place",
@@ -70891,9 +70897,21 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3080:3250:3085:3245:0",
+      "at": "2026-08-17T02:24:35.259Z",
+      "kind": "route",
+      "text": "Route learned: 3080,3250 → 3085,3245; moved 3080,3250 → 3085,3245",
+      "location": {
+        "x": 3085,
+        "z": 3245,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T02:21:59.314Z",
+  "updatedAt": "2026-08-17T02:24:35.260Z",
   "activePlan": {
     "objective": "Buy and sell runes in the Magic Guild Store",
     "focus": "Explore the Magic Guild Store to locate the runes.",
