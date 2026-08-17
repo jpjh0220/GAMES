@@ -6,75 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 9079,
-    "teacherChoices": 9079,
+    "totalChoices": 9081,
+    "teacherChoices": 9081,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9378,
-    "totalReward": 3828.975,
-    "saves": 1051,
+    "completedExperiences": 9380,
+    "totalReward": 3829.075,
+    "saves": 1052,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1104,
     "strategistFailures": 94
   },
   "memories": [
-    {
-      "id": "mswrv7a2-c7j14r",
-      "createdAt": "2026-08-17T05:07:18.554Z",
-      "tick": 5396,
-      "runNumber": 190,
-      "kind": "relationship",
-      "text": "Miwgovde said: \"Lc014 my guy\". Current stance unknown, trust 0.12.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "miwgovde",
-        "unknown"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswrv7a2-i6narm",
-      "createdAt": "2026-08-17T05:07:18.554Z",
-      "tick": 5398,
-      "runNumber": 190,
-      "kind": "observation",
-      "text": "SDK feedback (dialogue): Bud trade you my iron mace for all your coins, trust",
-      "importance": 1,
-      "tags": [
-        "sdk feedback",
-        "dialogue"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswrv7a2-ymbjvu",
-      "createdAt": "2026-08-17T05:07:18.554Z",
-      "tick": 5398,
-      "runNumber": 190,
-      "kind": "relationship",
-      "text": "Memlevmo61 said: \"Bud trade you my iron mace for all your coins, trust\". Current stance unknown, trust 0.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "memlevmo61",
-        "unknown"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
     {
       "id": "mswrv7a2-7fmm9v",
       "createdAt": "2026-08-17T05:07:18.554Z",
@@ -7489,6 +7433,59 @@
       "location": {
         "x": 3087,
         "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswwlf7q-vhfklw",
+      "createdAt": "2026-08-17T07:19:40.358Z",
+      "tick": 3796,
+      "runNumber": 211,
+      "kind": "observation",
+      "text": "SDK feedback (sdk_feedback): You feel weakened.",
+      "importance": 1,
+      "tags": [
+        "sdk feedback"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswwlpvf-8g4f1o",
+      "createdAt": "2026-08-17T07:19:54.171Z",
+      "tick": 3862,
+      "runNumber": 211,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3087, 3235)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswwm0a4-eunocf",
+      "createdAt": "2026-08-17T07:20:07.660Z",
+      "tick": 3907,
+      "runNumber": 211,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3087, 3240)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3240,
         "level": 0
       }
     }
@@ -24826,6 +24823,30 @@
         "lastAt": "2026-08-17T07:19:40.063Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "Selected Travel to the Draynor fishing area at 3087,3230 and verify arrival to satisfy the current objective and verify the resulting world-state change."
+      }
+    },
+    "area=385:403:0|hp=hurt|combat=1|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": -0.1,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.1,
+        "lastAt": "2026-08-17T07:19:54.171Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the area north about 5 tiles, discovering new locations and opportunities."
+      }
+    },
+    "area=385:404:0|hp=hurt|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.2,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.2,
+        "lastAt": "2026-08-17T07:20:07.661Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the area around 5 tiles north, discovering a new location and an NPC nearby. I verified the arrival and found the location marked as Bullrushes, Stones, and Thistles. I "
       }
     }
   },
@@ -70023,11 +70044,11 @@
     "192:202:0": {
       "key": "192:202:0",
       "x": 3087,
-      "z": 3247,
+      "z": 3235,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-17T02:25:56.018Z",
-      "visits": 1965,
+      "lastSeenAt": "2026-08-17T07:19:54.463Z",
+      "visits": 1966,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -70089,8 +70110,8 @@
       "z": 3230,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:55:37.191Z",
-      "lastSeenAt": "2026-08-17T01:00:38.196Z",
-      "visits": 2465,
+      "lastSeenAt": "2026-08-17T07:19:40.358Z",
+      "visits": 2466,
       "npcs": [
         "Fishing spot",
         "Dark wizard",
@@ -80220,11 +80241,12 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 1,
-      "avgReward": 2.45,
-      "positive": 1,
-      "lastAt": "2026-08-15T07:51:43.418Z",
-      "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Explore north about 5 tiles → Explore north about 5 tiles"
+      "n": 2,
+      "avgReward": 0,
+      "positive": 0,
+      "lastAt": "2026-08-17T07:20:07.661Z",
+      "example": "Travel to the Draynor fishing area at 3087,3230 and verify arrival → Explore north about 5 tiles → Explore north about 5 tiles",
+      "failed": 0
     },
     "walk:north > walk:north > npc:attack:dark wizard": {
       "sequence": [
@@ -96980,573 +97002,22 @@
       "failed": 0,
       "lastAt": "2026-08-17T07:19:40.063Z",
       "example": "Travel to Draynor Bank at 3092,3243 using verified waypoint navigation → Eat Bread → Travel to the Draynor fishing area at 3087,3230 and verify arrival"
+    },
+    "inventory:eat:bread > skill:travel:draynor-fishing > walk:north": {
+      "sequence": [
+        "inventory:eat:bread",
+        "skill:travel:draynor-fishing",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 0,
+      "lastAt": "2026-08-17T07:19:54.171Z",
+      "example": "Eat Bread → Travel to the Draynor fishing area at 3087,3230 and verify arrival → Explore north about 5 tiles"
     }
   },
   "discoveries": [
-    {
-      "id": "route:3147:3355:3142:3355:0",
-      "at": "2026-08-17T05:08:22.627Z",
-      "kind": "route",
-      "text": "Route learned: 3147,3355 → 3142,3355; moved 3147,3355 → 3142,3355; new: npc:Giant spider",
-      "location": {
-        "x": 3142,
-        "z": 3355,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3142:3355:3143:3356:0",
-      "at": "2026-08-17T05:09:08.112Z",
-      "kind": "route",
-      "text": "Route learned: 3142,3355 → 3143,3356; moved 3142,3355 → 3143,3356",
-      "location": {
-        "x": 3143,
-        "z": 3356,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:plant:196:210:0",
-      "at": "2026-08-17T05:12:49.528Z",
-      "kind": "place",
-      "text": "Plant observed near 3147, 3360, level 0.",
-      "location": {
-        "x": 3147,
-        "z": 3360,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:196:210:0",
-      "at": "2026-08-17T05:12:49.528Z",
-      "kind": "place",
-      "text": "Fern observed near 3147, 3360, level 0.",
-      "location": {
-        "x": 3147,
-        "z": 3360,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3147:3360:3146:3364:0",
-      "at": "2026-08-17T05:13:38.857Z",
-      "kind": "route",
-      "text": "Route learned: 3147,3360 → 3146,3364; moved 3147,3360 → 3146,3364",
-      "location": {
-        "x": 3146,
-        "z": 3364,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3146:3364:3145:3369:0",
-      "at": "2026-08-17T05:13:54.315Z",
-      "kind": "route",
-      "text": "Route learned: 3146,3364 → 3145,3369; moved 3146,3364 → 3145,3369",
-      "location": {
-        "x": 3145,
-        "z": 3369,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3145:3369:3145:3364:0",
-      "at": "2026-08-17T05:14:05.856Z",
-      "kind": "route",
-      "text": "Route learned: 3145,3369 → 3145,3364; moved 3145,3369 → 3145,3364",
-      "location": {
-        "x": 3145,
-        "z": 3364,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3145:3364:3145:3359:0",
-      "at": "2026-08-17T05:14:23.451Z",
-      "kind": "route",
-      "text": "Route learned: 3145,3364 → 3145,3359; moved 3145,3364 → 3145,3359; new: npc:Cow, loc:Nettles",
-      "location": {
-        "x": 3145,
-        "z": 3359,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3145:3359:3144:3366:0",
-      "at": "2026-08-17T05:14:26.073Z",
-      "kind": "route",
-      "text": "Route learned: 3145,3359 → 3144,3366; moved 3145,3359 → 3144,3366",
-      "location": {
-        "x": 3144,
-        "z": 3366,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3142:3367:3142:3372:0",
-      "at": "2026-08-17T05:14:45.777Z",
-      "kind": "route",
-      "text": "Route learned: 3142,3367 → 3142,3372; moved 3142,3367 → 3142,3372; new: loc:Fern, loc:Boulder, loc:Stones",
-      "location": {
-        "x": 3142,
-        "z": 3372,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:boulder:196:210:0",
-      "at": "2026-08-17T05:14:46.226Z",
-      "kind": "place",
-      "text": "Boulder observed near 3142, 3372, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3372,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:stones:196:210:0",
-      "at": "2026-08-17T05:14:46.226Z",
-      "kind": "place",
-      "text": "Stones observed near 3142, 3372, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3372,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3142:3372:3142:3377:0",
-      "at": "2026-08-17T05:14:58.663Z",
-      "kind": "route",
-      "text": "Route learned: 3142,3372 → 3142,3377; moved 3142,3372 → 3142,3377",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:duck:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "npc",
-      "text": "Duck observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "resource",
-      "text": "Tree observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:dead tree:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "resource",
-      "text": "Dead tree observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mushroom:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Mushroom observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bush:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Bush observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree stump:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "resource",
-      "text": "Tree stump observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Fern observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:boulder:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Boulder observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:stones:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Stones observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:196:211:0",
-      "at": "2026-08-17T05:14:59.091Z",
-      "kind": "place",
-      "text": "Daisies observed near 3142, 3377, level 0.",
-      "location": {
-        "x": 3142,
-        "z": 3377,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3142:3377:3142:3372:0",
-      "at": "2026-08-17T05:15:11.116Z",
-      "kind": "route",
-      "text": "Route learned: 3142,3377 → 3142,3372; moved 3142,3377 → 3142,3372; new: agent:Matpi",
-      "location": {
-        "x": 3142,
-        "z": 3372,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3142:3372:3142:3367:0",
-      "at": "2026-08-17T05:15:29.922Z",
-      "kind": "route",
-      "text": "Route learned: 3142,3372 → 3142,3367; moved 3142,3372 → 3142,3367",
-      "location": {
-        "x": 3142,
-        "z": 3367,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:warehouse shelves:196:210:0",
-      "at": "2026-08-17T05:19:38.475Z",
-      "kind": "place",
-      "text": "Warehouse shelves observed near 3140, 3370, level 0.",
-      "location": {
-        "x": 3140,
-        "z": 3370,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:196:210:0",
-      "at": "2026-08-17T05:19:38.475Z",
-      "kind": "place",
-      "text": "Barrel observed near 3140, 3370, level 0.",
-      "location": {
-        "x": 3140,
-        "z": 3370,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fungus:196:210:0",
-      "at": "2026-08-17T05:19:38.475Z",
-      "kind": "place",
-      "text": "Fungus observed near 3140, 3370, level 0.",
-      "location": {
-        "x": 3140,
-        "z": 3370,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:196:210:0",
-      "at": "2026-08-17T05:19:38.475Z",
-      "kind": "place",
-      "text": "Crate observed near 3140, 3370, level 0.",
-      "location": {
-        "x": 3140,
-        "z": 3370,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3140:3370:3141:3374:0",
-      "at": "2026-08-17T05:20:11.068Z",
-      "kind": "route",
-      "text": "Route learned: 3140,3370 → 3141,3374; moved 3140,3370 → 3141,3374",
-      "location": {
-        "x": 3141,
-        "z": 3374,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:drawers:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Drawers observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:flowers:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Flowers observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:potted plant:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Potted plant observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:sink:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Sink observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:portrait:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Portrait observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:painting:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Painting observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:rocking chair:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "resource",
-      "text": "Rocking chair observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fireplace:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Fireplace observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bench:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Bench observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:oak:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Oak observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:door:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Door observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:chair:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Chair observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:grandfather clock:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Grandfather clock observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bookcase:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Bookcase observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:table:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Table observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:closed chest:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Closed chest observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cabinet:193:194:0",
-      "at": "2026-08-17T07:00:35.807Z",
-      "kind": "place",
-      "text": "Cabinet observed near 3094, 3106, level 0.",
-      "location": {
-        "x": 3094,
-        "z": 3106,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "place:hat stand:193:194:0",
       "at": "2026-08-17T07:00:35.807Z",
@@ -100594,9 +100065,573 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "resource:fishing spot:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:dark wizard:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Banker observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:willow:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Willow observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bullrushes:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Bullrushes observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Boulder observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stones:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Stones observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Rock observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Daisies observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Stool observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Table observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Fern observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Tree observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Bush observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Plant observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:thistle:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Thistle observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:192:201:0",
+      "at": "2026-08-17T07:19:40.358Z",
+      "kind": "place",
+      "text": "Oak observed near 3087, 3230, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3087:3230:3087:3235:0",
+      "at": "2026-08-17T07:19:54.171Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3230 → 3087,3235; moved 3087,3230 → 3087,3235; new: npc:Diango, loc:Market stall",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:dark wizard:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "npc",
+      "text": "Dark wizard observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:fishing spot:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:banker:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Banker observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:diango:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "npc",
+      "text": "Diango observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:willow:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Willow observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Boulder observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank table:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Bank table observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank booth:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Bank booth observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:bank notice board:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Bank notice board observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Stool observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Table observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Tree observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rock:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Rock observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:closed bank booth:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Closed bank booth observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Daisies observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Fern observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bullrushes:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Bullrushes observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:market stall:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Market stall observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stones:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Stones observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Bush observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Plant observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:192:202:0",
+      "at": "2026-08-17T07:19:54.463Z",
+      "kind": "place",
+      "text": "Oak observed near 3087, 3235, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3235,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3087:3235:3087:3240:0",
+      "at": "2026-08-17T07:20:07.661Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3235 → 3087,3240; moved 3087,3235 → 3087,3240; new: loc:Crate, loc:Staircase, loc:Bench, loc:Shelves",
+      "location": {
+        "x": 3087,
+        "z": 3240,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T07:19:40.063Z",
+  "updatedAt": "2026-08-17T07:20:07.661Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
