@@ -609,6 +609,19 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
   return out;
 };
 
+const chooseTimeoutFallback=(state:BotWorldState,candidates:AgentCandidate[]):{candidate:AgentCandidate;choice:AgentChoice}|null=>{
+  const ranked=[
+    ...candidates.filter(c=>c.category==='dialog'),
+    ...candidates.filter(c=>c.category==='modal'),
+    ...candidates.filter(c=>c.category==='wait'),
+    ...candidates.filter(c=>c.category==='explore'&&c.action?.type==='walkTo')
+  ];
+  const candidate=ranked.find(c=>c.action&&typeof c.fingerprint==='string');
+  if(!candidate||!state.player)return null;
+  const label=candidate.label;
+  return {candidate,choice:{source:'deterministic',goal:'Maintain safe verified play while the language model reconnects',reason:`The language model timed out. Use the already-observed safe candidate “${label}” once, verify its outcome, then retry language reasoning.`,expectedOutcome:'A legal bounded action with a measurable world-state result or a refreshed observation.',actionId:candidate.id,speech:undefined,confidence:0.15,contextKey:`llm-timeout:${tick}`,fingerprint:candidate.fingerprint,followUp:['Retry the language model after this verified fallback.']}};
+};
+
 const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldState)=>{
   const rawReason=String(choice.reason||'');
   const bankAction=String(candidate.action?.type||'').match(/^(interactLoc|bankDeposit|closeModal)$/)&&(/bank/i.test(String(candidate.label||''))||candidate.category==='bank');
@@ -854,9 +867,21 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     if(lease===decisionLease){if(decisionWatchdog)clearTimeout(decisionWatchdog);decisionWatchdog=null;}
     decisionInFlight=false;
     decisionStartedTick=-1;
+    const errorText=String(err);
+    const llmUnavailable=/LLM unavailable|TimeoutError|timed out|timeout/i.test(errorText);
+    const fallback=llmUnavailable?chooseTimeoutFallback(lastState||stateAtStart,candidates):null;
+    if(lease===decisionLease&&fallback&&lastState?.player&&lastState.player.lifeId===startedLife){
+      currentGoal=fallback.choice.goal;
+      currentWhy=fallback.choice.reason;
+      void log('LLM_TIMEOUT_EMERGENCY_FALLBACK',{tick,startedTick,error:errorText.slice(0,240),candidate:fallback.candidate.label,actionType:fallback.candidate.action?.type,fingerprint:fallback.candidate.fingerprint});
+      executeChoice(fallback.candidate,fallback.choice,lastState);
+      nextDecisionTick=tick+2;
+      refreshSnapshot(lastState);
+      return;
+    }
     currentGoal='Recover reasoning loop';
-    currentWhy=`Agent decision failed: ${String(err).slice(0,180)}`;
-    void log('AGENT_DECISION_ERROR',String(err));
+    currentWhy=`Agent decision failed: ${errorText.slice(0,180)}`;
+    void log('AGENT_DECISION_ERROR',errorText);
     nextDecisionTick=tick+3;
   });
 };
