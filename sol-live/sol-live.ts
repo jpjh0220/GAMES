@@ -310,18 +310,18 @@ await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 const sessionOptions={host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
 const startSessionWithLoginRetry=async()=>{
   let lastError:unknown;
-  for(let attempt=0;attempt<5;attempt++){
+  for(let attempt=0;attempt<3;attempt++){
     try{
       const attempt=startSession(sessionOptions);
-      return await Promise.race([attempt,Bun.sleep(35000).then(()=>{const timeout:any=new Error('SDK login attempt timed out');timeout.code='SDK_LOGIN_TIMEOUT';throw timeout;})]);
+      return await Promise.race([attempt,Bun.sleep(25000).then(()=>{const timeout:any=new Error('SDK login attempt timed out');timeout.code='SDK_LOGIN_TIMEOUT';throw timeout;})]);
     }catch(err){
       lastError=err;
       const code=Number((err as any)?.code);
       const closedSdkSocket=String((err as any)?.url||'')==='wss://rs-sdk-demo.fly.dev/'&&Number((err as any)?.readyState)===3;
       const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||code===0&&/SDK login attempt timed out/i.test(String(err));
       if(!retryable)throw err;
-      const delayMs=Math.min(60000,10000*(2**attempt));
-      console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:5,code,delayMs,message:String(err)});
+      const delayMs=Math.min(15000,5000*(2**attempt));
+      console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:3,code,delayMs,message:String(err)});
       await Bun.sleep(delayMs);
     }
   }
