@@ -430,11 +430,15 @@ const executeWorldSkill=async(action:any)=>{
       message=success?`Verified arrival at ${action.destination||'the selected landmark'}.`:`Could not verify arrival at ${action.destination||'the selected landmark'}.`;
     }else message=`Unknown world skill ${skill}.`;
   }catch(err){message=String(err);success=false;}
-  const end=position(),failedStep=procedure.step;
-  if(!success){const game=(lastState?.gameMessages||[]).slice(-3).map((m:any)=>String(m.text||'')).filter(Boolean).join(' | ');message=`${message} Last attempted step: ${failedStep}.${game?` Recent game messages: ${game}`:''}`.slice(0,700);}
-  procedure.status=success?'completed':'failed';procedure.step=success?'Outcome verified':'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
-  void log('WORLD_SKILL_OUTCOME',{tick,skill,success,message,start,end,primitiveActions:procedure.primitiveActions});
-  return{success,message,phase:'completion',reason:success?undefined:'verification_failed'};
+   const end=position(),failedStep=procedure.step;
+   const displacement=start&&end?Math.hypot(end.x-start.x,end.z-start.z):0;
+   const arrivalVerified=success;
+   let partial=false;
+   if(!success&&displacement>=24){partial=true;success=true;message=`Partial route progress verified: moved ${Math.round(displacement)} tiles toward ${action.destination||'the selected landmark'}; arrival is not yet verified. Replan from the new region.`;}
+   if(!success){const game=(lastState?.gameMessages||[]).slice(-3).map((m:any)=>String(m.text||'')).filter(Boolean).join(' | ');message=`${message} Last attempted step: ${failedStep}.${game?` Recent game messages: ${game}`:''}`.slice(0,700);}
+   procedure.status=success?'completed':'failed';procedure.step=success?(partial?'Partial progress verified':'Outcome verified'):'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
+   void log('WORLD_SKILL_OUTCOME',{tick,skill,success,partial,arrivalVerified,message,start,end,primitiveActions:procedure.primitiveActions});
+   return{success,partial,arrivalVerified,message,phase:'completion',reason:success?undefined:'verification_failed'};
 };
 
 const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
