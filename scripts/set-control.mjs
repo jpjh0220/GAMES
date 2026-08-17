@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const [command='abandon_objective', ...rest] = process.argv.slice(2);
-const allowed = new Set(['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config']);
+const allowed = new Set(['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config','manual_action']);
 if (!allowed.has(command)) throw new Error(`Unknown command: ${command}`);
 const token = process.env.GH_TOKEN;
 const repo = process.env.GITHUB_REPOSITORY;
@@ -21,13 +21,19 @@ const revision=(current?.sha?JSON.parse(Buffer.from(current.content.replace(/\n/
 const raw=rest.join(' ').trim();
 let directive=raw||null;
 let config;
+let manualAction;
+if(command==='manual_action'){
+  try{manualAction=JSON.parse(raw);}catch(err){throw new Error(`manual_action requires a JSON object: ${err}`);}
+  if(!manualAction||typeof manualAction!=='object'||Array.isArray(manualAction))throw new Error('manual_action requires a JSON object');
+  directive=null;
+}
 if(command==='set_config'){
   try{config=JSON.parse(raw);directive=null;}catch(err){throw new Error(`set_config requires a JSON object: ${err}`);}
   if(!config||typeof config!=='object'||Array.isArray(config))throw new Error('set_config requires a JSON object');
 }
 const controllerId=process.env.SOL_CONTROLLER_ID||undefined;
 const controllerVersion=process.env.SOL_CONTROLLER_VERSION||undefined;
-const document={revision,command,directive,config,controllerId,controllerVersion,expiresAt:new Date(Date.now()+30*60*1000).toISOString(),updatedAt:new Date().toISOString()};
+const document={revision,command,directive,config,manualAction,controllerId,controllerVersion,expiresAt:new Date(Date.now()+30*60*1000).toISOString(),updatedAt:new Date().toISOString()};
 const payload={message:`control: ${command} (revision ${revision})`,content:Buffer.from(JSON.stringify(document,null,2)+'\n').toString('base64'),branch:'sol-control'};
 if(current?.sha)payload.sha=current.sha;
 const response=await fetch(`${api}/contents/sol-agent/control.json`,{method:'PUT',headers,body:JSON.stringify(payload)});

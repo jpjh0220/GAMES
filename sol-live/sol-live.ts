@@ -61,9 +61,11 @@ let cognitionSequence=0;
 const cognitionLog:CognitionEvent[]=[];
 const cognitionLogPath='./sol-cognition.ndjson';
 const cognitionState=()=>{const s:any=lastState,p=s?.player;return{position:p?[Number(p.worldX||0),Number(p.worldZ||0),Number(p.level||0)]:undefined,skills:Object.fromEntries((s?.skills||[]).map((x:any)=>[String(x.name||''),Number(x.level||0)])),inventory:(s?.inventory||[]).map((x:any)=>String(x.name||'')),freeSlots:Math.max(0,28-(s?.inventory||[]).length),coins:Number((s?.inventory||[]).filter((x:any)=>/coins?/i.test(String(x.name||''))).reduce((n:number,x:any)=>n+Number(x.count||1),0)),hp:p?.hp,maxHp:p?.maxHp};};
-type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
+type ManualAction = {type:'walkTo'|'interactLoc'|'interactNpc'|'useInventoryItem'|'clickDialogOption'|'bankDeposit';[key:string]:any};
+type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;manualAction?:ManualAction;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
-let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
+let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,manualAction:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
+let pendingManualAction:ManualAction|null=null;
 let controlPollInFlight=false;
 let lastControlPollAt=0;
 let controlSha:string|null=null;
@@ -148,9 +150,23 @@ const feed = (label:string,summary:string,reason:string,data:Partial<FeedEvent>&
 };
 
 const commandDirective=(command:string|null)=>command==='force_bank'?'Immediately travel to Draynor Bank using the verified waypoint route; do not fish or change combat style until arrival is verified.':command==='force_fishing'?'Travel to the Draynor fishing area and fish only if the action produces measurable XP or inventory progress; abandon fishing after one failed interaction.':command==='abandon_objective'?'Abandon the current objective and choose a new purposeful activity outside the current loop, guided by fresh world evidence.':null;
+const normalizeManualAction=(raw:any):ManualAction|null=>{
+  if(!raw||typeof raw!=='object'||Array.isArray(raw))return null;
+  const type=String(raw.type||'');
+  const allowed=new Set(['walkTo','interactLoc','interactNpc','useInventoryItem','clickDialogOption','bankDeposit']);
+  if(!allowed.has(type))return null;
+  const action:any={...raw,type,reason:String(raw.reason||'Bounded operator diagnostic action.').slice(0,240)};
+  for(const key of ['x','z','level','npcIndex','locId','slot','amount','optionIndex'])if(key in action){const n=Number(action[key]);if(!Number.isSafeInteger(n))return null;action[key]=n;}
+  if(type==='walkTo'&&(!Number.isSafeInteger(action.x)||!Number.isSafeInteger(action.z)))return null;
+  if(type==='interactNpc'&&!Number.isSafeInteger(action.npcIndex))return null;
+  if(type==='useInventoryItem'&&!Number.isSafeInteger(action.slot))return null;
+  if(type==='clickDialogOption'&&!Number.isSafeInteger(action.optionIndex))return null;
+  return action as ManualAction;
+};
 const applyLiveControl=(next:LiveControl)=>{
   const directive=next.directive||commandDirective(next.command);
   brain.applyExternalDirective(directive);
+  if(next.manualAction){pendingManualAction=next.manualAction;nextDecisionTick=tick+1;void log('MANUAL_ACTION_QUEUED',{tick,action:next.manualAction});}
   if(next.config)brain.applyRuntimeConfig(next.config);
   if(next.controllerId&&next.controllerVersion){try{controllerRegistry.stage(next.controllerId,next.controllerVersion);void log('CONTROLLER_STAGED',{id:next.controllerId,version:next.controllerVersion,activation:'next_tick'});}catch(err){void log('CONTROLLER_STAGE_REJECTED',{id:next.controllerId,version:next.controllerVersion,error:String(err)});}}
   if(next.command==='abandon_objective'){currentGoal='Abandon current objective';currentWhy='Operator control requested a fresh self-selected activity based on new world evidence.';nextDecisionTick=tick+1;}
@@ -160,14 +176,16 @@ const applyLiveControl=(next:LiveControl)=>{
 const acceptControl=(doc:any,source:'http'|'github')=>{
   const revision=Number(doc?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return false;
   if(doc?.expiresAt&&Date.parse(String(doc.expiresAt))<=Date.now())return false;
-  const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config'];
-  const command=allowed.includes(String(doc?.command))?String(doc.command):null;
+const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config','manual_action'];
+      const command=allowed.includes(String(doc?.command))?String(doc.command):null;
+      const manualAction=command==='manual_action'?normalizeManualAction(doc?.manualAction):undefined;
+      if(command==='manual_action'&&!manualAction)return false;
   const directive=doc?.directive===null?null:String(doc?.directive||'').trim().slice(0,300)||null;
   const config=doc?.config&&typeof doc.config==='object'?doc.config:undefined;
   const controllerId=typeof doc?.controllerId==='string'?doc.controllerId.trim().slice(0,80):undefined;
   const controllerVersion=typeof doc?.controllerVersion==='string'?doc.controllerVersion.trim().slice(0,40):undefined;
   if(!command&&!directive&&doc?.directive!==null)return false;
-  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
+  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,manualAction:manualAction??(command==='clear_directive'?undefined:controlState.manualAction),controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
   applyLiveControl(controlState);return true;
 };
 const superviseTeacher=()=>{
@@ -862,7 +880,13 @@ client.setOnGameTickCallback(()=>{
      const obligationKind=state.player.hp<=Math.max(8,state.player.maxHp*.32)?'survival':(state.groundItems||[]).some((g:any)=>g.reachable!==false&&!/(ash|bones|empty|junk|weed)/i.test(String(g.name||'')))?'loot-resolution':isCapacityPressure(state)?(state.bank?.isOpen||state.shop?.isOpen||state.dialog?.isOpen?'transaction':'capacity-resolution'):'objective';
      const durableFingerprint=`${tick%10===0?'checkpoint':'event'}|${obligationKind}|${state.player.worldX},${state.player.worldZ},${state.player.level}|${invSig}|${coins}|${controllerRegistry.status.activeId}@${controllerRegistry.status.activeVersion}|${currentGoal}`;
      if(durableFingerprint!==lastDurableFingerprint){lastDurableFingerprint=durableFingerprint;void durableStateStore.commit({position:{x:state.player.worldX,z:state.player.worldZ,level:state.player.level},currentObligation:{...durableState.currentObligation,kind:obligationKind as any,reason:currentWhy},objective:{...durableState.objective,label:currentGoal},inventoryLedger:{signature:invSig,freeSlots,coins,updatedTick:tick},controller:{activeId:controllerRegistry.status.activeId,activeVersion:controllerRegistry.status.activeVersion,pendingId:controllerRegistry.status.pendingId||undefined,pendingVersion:controllerRegistry.status.pendingVersion||undefined,lastSwitchTick:controllerRegistry.status.lastSwitchTick}},tick).then(next=>{durableState=next;void persistRemoteDurableState(next)}).catch(err=>void log('PERSISTENT_STATE_COMMIT_FAILED',String(err)));}
-     if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
+     if(pendingManualAction&&!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick){
+       const manual=pendingManualAction;pendingManualAction=null;
+       const candidate:AgentCandidate={id:`manual-${tick}`,label:`Manual diagnostic ${manual.type}`,category:'manual-diagnostic',fingerprint:`manual:${manual.type}:${tick}`,action:manual,tags:['manual-diagnostic'],settleTicks:5};
+       const choice:AgentChoice={source:'deterministic',goal:'Bounded manual diagnostic',reason:String(manual.reason||'Perform one bounded operator diagnostic action and verify the SDK outcome.'),expectedOutcome:'Observe a measurable world-state or SDK-feedback change.',actionId:candidate.id,speech:'',confidence:1,contextKey:'manual-diagnostic',fingerprint:candidate.fingerprint};
+       executeChoice(candidate,choice,state);
+       void log('MANUAL_ACTION_DISPATCHED',{tick,action:manual,candidate:candidate.label});
+     }else if(!decisionInFlight&&!actionAwaitingOutcome&&tick>=nextDecisionTick) launchDecision(state);
     refreshSnapshot(state);
   }catch(err){void log('TICK_ERROR',String(err));}
 });
