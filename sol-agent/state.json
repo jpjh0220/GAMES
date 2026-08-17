@@ -6,84 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8657,
-    "teacherChoices": 8657,
+    "totalChoices": 8667,
+    "teacherChoices": 8667,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8960,
-    "totalReward": 3887.575,
-    "saves": 1003,
+    "completedExperiences": 8970,
+    "totalReward": 3886.055,
+    "saves": 1004,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 700,
+    "strategistRefreshes": 710,
     "strategistFailures": 85
   },
   "memories": [
-    {
-      "id": "mswj2rri-xki8ck",
-      "createdAt": "2026-08-17T01:01:15.150Z",
-      "tick": 208,
-      "runNumber": 181,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 5). Result: +932 XP; 7 damage dealt; moved 3092,3243 → 3084,3239. Reward 5.106.",
-      "importance": 3.25,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent fishmax2",
-        "agent fishmax10",
-        "agent fishmax7",
-        "agent fishmax4",
-        "agent fishmax5",
-        "agent fishmax3",
-        "agent fishmax9",
-        "agent fishmax6",
-        "agent fishmax8"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswj2rrj-xvot8e",
-      "createdAt": "2026-08-17T01:01:15.151Z",
-      "tick": 208,
-      "runNumber": 181,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 5) worked across 89 similar samples with average reward 2.41.",
-      "importance": 3.41,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswj352f-300rhb",
-      "createdAt": "2026-08-17T01:01:32.391Z",
-      "tick": 242,
-      "runNumber": 181,
-      "kind": "observation",
-      "text": "SDK feedback (dialogue): Outrageous angles, destroy themselves in unheard-of contradictions. The color is",
-      "importance": 1,
-      "tags": [
-        "sdk feedback",
-        "dialogue"
-      ],
-      "location": {
-        "x": 3084,
-        "z": 3239,
-        "level": 0
-      }
-    },
     {
       "id": "mswj352f-biepwn",
       "createdAt": "2026-08-17T01:01:32.391Z",
@@ -7763,6 +7698,66 @@
       "location": {
         "x": 3177,
         "z": 3314,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnmrpv-1hqt1o",
+      "createdAt": "2026-08-17T03:08:46.675Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record essential locations for navigation and resource gathering. Accurate coordinates are vital for survival, resource management, and efficient exploration. They help in avoiding traps, finding safe paths, and locating useful items or NPCs.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record essential locations for navigation and resource gathering",
+        "verify coordinates through observation and interaction to ensure accuracy",
+        "use these coordinates to plan efficient routes and avoid unnecessary backtracking"
+      ],
+      "location": {
+        "x": 3177,
+        "z": 3309,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnoga4-53yd5h",
+      "createdAt": "2026-08-17T03:10:05.164Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record essential locations for navigation and resource gathering. Accurate location data is critical for survival, resource management, and efficient travel in the game world.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record essential locations for navigation and resource gathering",
+        "ensure safe passage by avoiding dangerous zones and using proper tools",
+        "document coordinates for future reference and map based navigation"
+      ],
+      "location": {
+        "x": 3177,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnpry2-5jvocj",
+      "createdAt": "2026-08-17T03:11:06.938Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record all known coordinates that are reachable and relevant to current travel goals.. Coordinates are essential for navigation, resource management, and efficient movement between locations. Documenting them ensures that travel",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record all known coordinates that are reachable and relevant to current travel goals",
+        "prioritize locations that offer utility such as shops banks or safe zones and note their coordinates",
+        "avoid revisiting locations that do not contribute to the current objective or are not necessary for survival"
+      ],
+      "location": {
+        "x": 3177,
+        "z": 3304,
         "level": 0
       }
     }
@@ -24314,24 +24309,24 @@
         "exampleReason": "I am exploring west about 5 tiles, which is a new location and a good opportunity to gather resources. I will continue to explore and learn from this area."
       },
       "walk:north": {
-        "n": 7,
-        "avgReward": 0.0887,
+        "n": 12,
+        "avgReward": 0.0096,
         "positive": 3,
-        "negative": 1,
-        "lastReward": -0.282,
-        "lastAt": "2026-08-17T03:08:20.800Z",
+        "negative": 3,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-17T03:11:11.103Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I'm exploring the area around 5 tiles to the north. I've already moved to (3177, 3309) and verified that this location is a valid place to explore."
+        "exampleReason": "I identified and recorded essential locations for navigation and resource gathering."
       },
       "walk:south": {
-        "n": 2,
-        "avgReward": -0.09,
+        "n": 4,
+        "avgReward": -0.113,
         "positive": 0,
-        "negative": 0,
-        "lastReward": -0.09,
-        "lastAt": "2026-08-17T03:07:49.864Z",
+        "negative": 1,
+        "lastReward": -0.182,
+        "lastAt": "2026-08-17T03:09:54.789Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I've identified and recorded key locations for navigation and resource gathering, including Thistle, the Cow field, and the Varrock West bank. These locations are essential for my "
+        "exampleReason": "I identified and recorded essential locations for navigation and resource gathering, including Lumbridge spawn, Lumbridge cows, and Varrock West bank. This action confirms my curre"
       }
     },
     "area=396:412:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
@@ -24368,14 +24363,14 @@
         "exampleReason": "I explored northwest about 4 tiles, and found a new location. The coordinates are (3178, 3313). I recorded this as a new location for navigation."
       },
       "walk:south": {
-        "n": 4,
-        "avgReward": -0.0383,
+        "n": 6,
+        "avgReward": -0.1358,
         "positive": 1,
-        "negative": 0,
-        "lastReward": -0.103,
-        "lastAt": "2026-08-17T03:08:36.407Z",
+        "negative": 2,
+        "lastReward": -0.38,
+        "lastAt": "2026-08-17T03:10:42.271Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "Exploring the south about 5 tiles reveals a new location, which is a useful discovery. The coordinates are (3177, 3314), and the location is a tree stump. This action confirms the "
+        "exampleReason": "I've identified key locations for navigation and resource gathering, including the Tree stump, Thistle, and Farmer. I've verified the movement and location changes. I'm now ready t"
       },
       "walk:north": {
         "n": 1,
@@ -24400,14 +24395,14 @@
         "exampleReason": "I identified and recorded essential locations for navigation and resource gathering, including Lumbridge spawn, Lumbridge cows, and the Tree stump."
       },
       "walk:south": {
-        "n": 1,
-        "avgReward": 0.18,
+        "n": 2,
+        "avgReward": 0.05,
         "positive": 1,
         "negative": 0,
-        "lastReward": 0.18,
-        "lastAt": "2026-08-17T03:05:45.085Z",
+        "lastReward": -0.08,
+        "lastAt": "2026-08-17T03:10:56.948Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I am exploring the south about 5 tiles, and I have verified that I have moved from (3178, 3308) to (3178, 3308) successfully. I have learned that I have a new location, and I have "
+        "exampleReason": "I identified and recorded the location of the Thistle, which is a key location for navigation and resource gathering. I also verified that moving from (3177, 3309) to (3177, 3314) "
       }
     },
     "area=397:414:0|hp=healthy|combat=0|agents=1|food=1|dialog=0|bank=0|shop=0|cats=explore": {
@@ -38551,8 +38546,8 @@
     "goo001": {
       "name": "Goo001",
       "firstSeenAt": "2026-08-16T19:39:51.852Z",
-      "lastSeenAt": "2026-08-17T02:44:16.736Z",
-      "encounters": 2,
+      "lastSeenAt": "2026-08-17T03:10:42.726Z",
+      "encounters": 3,
       "combatLevel": 126,
       "trust": 0,
       "stance": "unknown",
@@ -39035,11 +39030,11 @@
     "fqqwgnybg": {
       "name": "Fqqwgnybg",
       "firstSeenAt": "2026-08-16T20:57:57.664Z",
-      "lastSeenAt": "2026-08-17T03:07:50.378Z",
+      "lastSeenAt": "2026-08-17T03:10:57.241Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 40,
+      "conversations": 42,
       "cooperation": 15,
       "suspicion": 0,
       "facts": [
@@ -39060,16 +39055,6 @@
         "Buying a rune axe. What would you trade for one?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-17T02:47:36.685Z",
-          "direction": "incoming",
-          "text": "Buying a rune axe. What would you trade for one?"
-        },
-        {
-          "at": "2026-08-17T02:48:29.730Z",
-          "direction": "incoming",
-          "text": "Buying a rune axe. What would you trade for one?"
-        },
         {
           "at": "2026-08-17T02:49:33.345Z",
           "direction": "incoming",
@@ -39157,6 +39142,16 @@
         },
         {
           "at": "2026-08-17T03:07:50.378Z",
+          "direction": "incoming",
+          "text": "Buying a rune axe. What would you trade for one?"
+        },
+        {
+          "at": "2026-08-17T03:09:55.303Z",
+          "direction": "incoming",
+          "text": "Buying a rune axe. What would you trade for one?"
+        },
+        {
+          "at": "2026-08-17T03:10:57.241Z",
           "direction": "incoming",
           "text": "Buying a rune axe. What would you trade for one?"
         }
@@ -44534,8 +44529,8 @@
       "z": 3314,
       "level": 0,
       "firstSeenAt": "2026-08-17T03:00:15.003Z",
-      "lastSeenAt": "2026-08-17T03:08:21.252Z",
-      "visits": 12,
+      "lastSeenAt": "2026-08-17T03:10:26.794Z",
+      "visits": 14,
       "npcs": [
         "Cow",
         "Farmer"
@@ -44567,14 +44562,15 @@
     "198:206:0": {
       "key": "198:206:0",
       "x": 3177,
-      "z": 3309,
+      "z": 3304,
       "level": 0,
       "firstSeenAt": "2026-08-17T03:01:29.187Z",
-      "lastSeenAt": "2026-08-17T03:08:05.406Z",
-      "visits": 19,
+      "lastSeenAt": "2026-08-17T03:10:57.241Z",
+      "visits": 27,
       "npcs": [
         "Cow",
-        "Farmer"
+        "Farmer",
+        "Imp"
       ],
       "locs": [
         "Crate",
@@ -49913,10 +49909,10 @@
         "walk:south",
         "walk:south"
       ],
-      "n": 33,
+      "n": 36,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T03:07:49.864Z",
+      "lastAt": "2026-08-17T03:10:56.948Z",
       "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore south about 5 tiles",
       "failed": 2
     },
@@ -50060,10 +50056,10 @@
         "walk:north",
         "walk:south"
       ],
-      "n": 28,
+      "n": 30,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T03:08:36.407Z",
+      "lastAt": "2026-08-17T03:10:42.271Z",
       "example": "Explore north about 5 tiles → Explore north about 5 tiles → Explore south about 5 tiles",
       "failed": 1
     },
@@ -50086,10 +50082,10 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 24,
+      "n": 26,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T03:08:20.800Z",
+      "lastAt": "2026-08-17T03:10:26.242Z",
       "example": "Explore south about 5 tiles → Explore north about 5 tiles → Explore north about 5 tiles",
       "failed": 3
     },
@@ -51030,10 +51026,10 @@
         "walk:south",
         "walk:north"
       ],
-      "n": 13,
+      "n": 16,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T03:08:04.993Z",
+      "lastAt": "2026-08-17T03:11:11.103Z",
       "example": "Explore south about 5 tiles → Explore south about 5 tiles → Explore north about 5 tiles",
       "failed": 2
     },
@@ -68927,18 +68923,6 @@
   },
   "discoveries": [
     {
-      "id": "npc:goblin:198:201:0",
-      "at": "2026-08-17T02:36:57.029Z",
-      "kind": "npc",
-      "text": "Goblin observed near 3179, 3224, level 0.",
-      "location": {
-        "x": 3179,
-        "z": 3224,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "resource:tree:198:201:0",
       "at": "2026-08-17T02:36:57.029Z",
       "kind": "resource",
@@ -72525,45 +72509,53 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "npc:imp:198:206:0",
+      "at": "2026-08-17T03:10:57.241Z",
+      "kind": "npc",
+      "text": "Imp observed near 3177, 3304, level 0.",
+      "location": {
+        "x": 3177,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T03:08:36.407Z",
+  "updatedAt": "2026-08-17T03:11:11.103Z",
   "activePlan": {
     "objective": "Explore and document key coordinates for safe and efficient travel",
-    "focus": "Identify and record essential locations for navigation and resource gathering",
-    "reason": "Accurate knowledge of key coordinates ensures safe travel, efficient resource gathering, and strategic planning in the game world.",
+    "focus": "Identify and record all known coordinates that are reachable and relevant to current travel goals.",
+    "reason": "Coordinates are essential for navigation, resource management, and efficient movement between locations. Documenting them ensures that travel",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Identify and record essential locations for navigation and resource gathering",
+        "label": "Identify and record all known coordinates that are reachable and relevant to current travel goals.",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Verify coordinates through observation and interaction",
+        "label": "Prioritize locations that offer utility, such as shops, banks, or safe zones, and note their coordinates.",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Document findings in a structured manner for future reference",
+        "label": "Avoid revisiting locations that do not contribute to the current objective or are not necessary for survival.",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Successfully documented key coordinates for safe and efficient travel, ensuring accurate navigation and resource gathering in the game world."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Identify and record essential locations for navigation and resource gathering",
-      "Verify coordinates through observation and interaction",
-      "Document findings in a structured manner for future reference"
+      "Identify and record all known coordinates that are reachable and relevant to current travel goals.",
+      "Prioritize locations that offer utility, such as shops, banks, or safe zones, and note their coordinates.",
+      "Avoid revisiting locations that do not contribute to the current objective or are not necessary for survival."
     ],
-    "avoid": [
-      "Explore northwest about 4 tiles",
-      "Explore northwest about 4 tiles",
-      "Explore north about 5 tiles"
-    ],
-    "updatedAt": "2026-08-17T03:08:31.142Z",
+    "avoid": [],
+    "updatedAt": "2026-08-17T03:11:06.938Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
