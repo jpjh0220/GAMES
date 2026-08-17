@@ -74,6 +74,7 @@ let decisionStartedTick=-1;
 let actionStartedTick=-1;
 let decisionWatchdog:ReturnType<typeof setTimeout>|null=null;
 let noCandidateStreak=0;
+let staleDecisionStreak=0;
 
 const brain = new SolAgentBrain({
   name:username,
@@ -763,10 +764,20 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
       const staleReason='action no longer available after the world/obligation phase changed';
       brain.noteStaleDecision(choice.fingerprint,tick,staleReason);
       void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:staleReason,replan:'transient fingerprint quarantine for 40 ticks'});
+      staleDecisionStreak++;
       currentGoal='Re-observe after stale choice';currentWhy=`The selected action ${choice.fingerprint} disappeared before execution; the model must choose from the refreshed legal set.`;
+      if(staleDecisionStreak>=3){
+        const interfaceOpen=!!(latest.bank?.isOpen||latest.shop?.isOpen||latest.dialog?.isOpen||latest.interface?.isOpen);
+        if(interfaceOpen){
+          staleDecisionStreak=0;
+          const recoveryAction=latest.dialog?.isOpen?{type:'clickDialogOption',optionIndex:Number(latest.dialog.options?.[0]?.index||0),reason:'Emergency deadlock recovery: close or advance the blocking dialogue, then return control to the language model.'}:{type:'closeModal',reason:'Emergency deadlock recovery: close the stale economy interface, then return control to the language model.'};
+          void dispatchPrimitive('Emergency stale-interface recovery',recoveryAction).then(result=>{void log('AGENT_STALE_INTERFACE_RECOVERY',{tick,startedTick,recoveryAction:recoveryAction.type,result});refreshSnapshot(lastState);});
+        }
+      }
       nextDecisionTick=tick+1;return;
     }
     if(directedCandidate&&directedCandidate.fingerprint!==choice.fingerprint)void log('PROGRESSION_ADVISORY',{tick,stage:latestPlan.stage,id:latestPlan.id,objective:latestPlan.objective,advisoryAction:directedCandidate.label,selectedAction:candidate.label});
+    staleDecisionStreak=0;
     executeChoice(candidate,effectiveChoice,latest);
     nextDecisionTick=tick+2;
     refreshSnapshot(latest);
