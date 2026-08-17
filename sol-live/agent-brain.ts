@@ -74,7 +74,6 @@ export type SolRuntimeConfig = {
   motorModel?:string;
   strategistModel?:string;
   plannerEnabled?:boolean;
-  studentSamplingRate?:number;
   strategyRefreshChoices?:number;
   candidateLimit?:number;
   inventoryWarningSlots?:number;
@@ -89,7 +88,7 @@ export type SolRuntimeConfig = {
   strategistOutputTokens?:number;
 };
 
-const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,provider:'ollama',plannerEnabled:true,studentSamplingRate:0,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:3072,strategistOutputTokens:256};
+const DEFAULT_RUNTIME_CONFIG:SolRuntimeConfig={version:1,provider:'ollama',plannerEnabled:true,strategyRefreshChoices:18,candidateLimit:96,inventoryWarningSlots:3,maxFishingTripsWithoutProgress:2,maxRepeatedCombatTarget:2,maxActionsWithoutMilestone:3,motorTemperature:.12,motorContextTokens:2048,motorOutputTokens:72,strategistTemperature:.1,strategistContextTokens:3072,strategistOutputTokens:256};
 
 const finiteOr=(value:unknown,fallback:number)=>{const n=Number(value);return Number.isFinite(n)?n:fallback;};
 const clampNum=(value:unknown,fallback:number,lo:number,hi:number)=>clamp(finiteOr(value,fallback),lo,hi);
@@ -101,7 +100,7 @@ const clampConfig=(raw:any):SolRuntimeConfig=>({
   motorModel:typeof raw?.motorModel==='string'&&raw.motorModel.trim()?raw.motorModel.trim().slice(0,80):undefined,
   strategistModel:typeof raw?.strategistModel==='string'&&raw.strategistModel.trim()?raw.strategistModel.trim().slice(0,80):undefined,
   plannerEnabled:typeof raw?.plannerEnabled==='boolean'?raw.plannerEnabled:DEFAULT_RUNTIME_CONFIG.plannerEnabled,
-  studentSamplingRate:clampNum(raw?.studentSamplingRate,0,0,0),strategyRefreshChoices:clampNum(raw?.strategyRefreshChoices,18,3,100),candidateLimit:clampNum(raw?.candidateLimit,96,12,160),inventoryWarningSlots:clampNum(raw?.inventoryWarningSlots,3,0,10),maxFishingTripsWithoutProgress:clampNum(raw?.maxFishingTripsWithoutProgress,2,1,10),maxRepeatedCombatTarget:clampNum(raw?.maxRepeatedCombatTarget,2,1,10),maxActionsWithoutMilestone:clampNum(raw?.maxActionsWithoutMilestone,3,1,20),motorTemperature:clampNum(raw?.motorTemperature,.12,0,.8),motorContextTokens:clampNum(raw?.motorContextTokens,2048,512,8192),motorOutputTokens:clampNum(raw?.motorOutputTokens,72,32,512),strategistTemperature:clampNum(raw?.strategistTemperature,.1,0,.8),strategistContextTokens:clampNum(raw?.strategistContextTokens,1536,512,8192),strategistOutputTokens:clampNum(raw?.strategistOutputTokens,120,64,512)
+  strategyRefreshChoices:clampNum(raw?.strategyRefreshChoices,18,3,100),candidateLimit:clampNum(raw?.candidateLimit,96,12,160),inventoryWarningSlots:clampNum(raw?.inventoryWarningSlots,3,0,10),maxFishingTripsWithoutProgress:clampNum(raw?.maxFishingTripsWithoutProgress,2,1,10),maxRepeatedCombatTarget:clampNum(raw?.maxRepeatedCombatTarget,2,1,10),maxActionsWithoutMilestone:clampNum(raw?.maxActionsWithoutMilestone,3,1,20),motorTemperature:clampNum(raw?.motorTemperature,.12,0,.8),motorContextTokens:clampNum(raw?.motorContextTokens,2048,512,8192),motorOutputTokens:clampNum(raw?.motorOutputTokens,72,32,512),strategistTemperature:clampNum(raw?.strategistTemperature,.1,0,.8),strategistContextTokens:clampNum(raw?.strategistContextTokens,1536,512,8192),strategistOutputTokens:clampNum(raw?.strategistOutputTokens,120,64,512)
 });
 
 type Metrics = {
@@ -893,35 +892,6 @@ export class SolAgentBrain {
     }
   }
 
-  private studentPromoted():boolean{
-    const totalAgree=this.memory.lifetime.shadowMatches||0;
-    const totalPredictions=this.memory.lifetime.shadowPredictions||0;
-    return totalPredictions>=10&&totalAgree/totalPredictions>=.65;
-  }
-
-  private async askStudent(state:BotWorldState,candidates:AgentCandidate[],contextKey:string):Promise<AgentChoice|null>{
-    // Student makes decisions using learned policy + simple heuristics
-    // Prefer actions with positive expected value
-    const ctx=this.memory.policy[contextKey]||{};
-    let bestChoice:AgentChoice|null=null;
-    let bestValue=-999;
-    
-    for(const candidate of candidates){
-      const stats=ctx[candidate.fingerprint];
-      // Value = learned reward + category bonus
-      let value=stats?.avgReward||0;
-      if(candidate.category==='combat')value+=0.1; // combat bonus
-      if(candidate.category==='explore')value+=0.05; // explore bonus
-      
-      if(value>bestValue){
-        bestValue=value;
-        bestChoice={source:'student',goal:'Act on learned policy',reason:stats?`learned avg reward ${stats.avgReward}`:'exploring unseen action',expectedOutcome:`expected value ${bestValue.toFixed(2)}`,actionId:candidate.id,confidence:Math.max(0.4,Math.min(0.9,bestValue)),contextKey,fingerprint:candidate.fingerprint};
-      }
-    }
-    
-    if(bestChoice)console.log('AGENT_STUDENT_DECISION',JSON.stringify({action:bestChoice.actionId,confidence:bestChoice.confidence}));
-    return bestChoice;
-  }
 
   private extractFailureReason(state:BotWorldState,exp:Experience,outcome:AgentOutcome):string|null{
     const msg=(outcome.summary||'').toLowerCase();
