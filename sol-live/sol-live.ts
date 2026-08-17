@@ -526,7 +526,7 @@ const executeWorldSkill=async(action:any)=>{
       const point=beforeLeg&&points.length?points.filter(p=>tileDistance(beforeLeg,p)>4).sort((a,b)=>tileDistance(beforeLeg,a)-tileDistance(beforeLeg,b))[0]||points[points.length-1]:null;
       if(!point){success=false;message='No valid waypoint was available for the requested route.';}
       else {
-        const reachedLeg=await walkToward(point,4,true,10);
+        const reachedLeg=await walkToward(point,4,true,3);
         const afterLeg=position();
         const moved=!!beforeLeg&&!!afterLeg&&tileDistance(beforeLeg,afterLeg)>=2;
         const finalPoint=points[points.length-1];
