@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 17578,
+  "stateGeneration": 17589,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog discarded a pending action outcome and quarantined the stale action."
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled action",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "",
     "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 371
+    "updatedTick": 426
   },
   "milestones": [
     {
@@ -138,5 +138,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-17T20:26:48.029Z"
+  "updatedAt": "2026-08-17T20:27:04.533Z"
 }
