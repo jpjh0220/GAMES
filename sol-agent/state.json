@@ -10,9 +10,9 @@
     "teacherChoices": 9181,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9439,
-    "totalReward": 3789.976,
-    "saves": 1069,
+    "completedExperiences": 9440,
+    "totalReward": 3789.186,
+    "saves": 1070,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1141,
@@ -25028,6 +25028,18 @@
         "lastAt": "2026-08-17T08:29:31.139Z",
         "exampleGoal": "Maintain safe verified play while the language model reconnects",
         "exampleReason": "The language model timed out. Use the already-observed safe candidate “Advance stalled economy dialog and re-evaluate” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:2548": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.79,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.79,
+        "lastAt": "2026-08-17T08:31:29.629Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
       }
     }
   },
@@ -72508,6 +72520,46 @@
         "Oak",
         "Bookcase"
       ]
+    },
+    "193:193:0": {
+      "key": "193:193:0",
+      "x": 3099,
+      "z": 3101,
+      "level": 0,
+      "firstSeenAt": "2026-08-17T08:31:11.034Z",
+      "lastSeenAt": "2026-08-17T08:31:11.034Z",
+      "visits": 1,
+      "npcs": [
+        "RuneScape Guide",
+        "Survival Expert",
+        "Fishing spot",
+        "Butterfly"
+      ],
+      "locs": [
+        "Oak",
+        "Bench",
+        "Flowers",
+        "Tree",
+        "Hat stand",
+        "Fireplace",
+        "Drawers",
+        "Cabinet",
+        "Rocking chair",
+        "Potted plant",
+        "Door",
+        "Grandfather clock",
+        "Portrait",
+        "Sink",
+        "Painting",
+        "Daisies",
+        "Gate",
+        "Chair",
+        "Bookcase",
+        "Table",
+        "Closed chest",
+        "Flower",
+        "Bullrushes"
+      ]
     }
   },
   "sequences": {
@@ -79517,11 +79569,12 @@
         "walk:south",
         "wait"
       ],
-      "n": 1,
-      "avgReward": -1.65,
+      "n": 2,
+      "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-15T07:12:44.612Z",
-      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Wait and observe for a moment"
+      "lastAt": "2026-08-17T08:31:29.629Z",
+      "example": "Explore north about 5 tiles → Explore south about 5 tiles → Wait and observe for a moment",
+      "failed": 2
     },
     "walk:south > wait > walk:south": {
       "sequence": [
@@ -97514,342 +97567,6 @@
   },
   "discoveries": [
     {
-      "id": "npc:duck:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "npc",
-      "text": "Duck observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:goblin:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "npc",
-      "text": "Goblin observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:plant:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Plant observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Fern observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:flower:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Flower observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:flowers:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Flowers observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "resource",
-      "text": "Tree observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:door:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Door observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:painting:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Painting observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:portrait:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Portrait observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bed:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Bed observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:small fern:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Small fern observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Daisies observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bookcase:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Bookcase observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking pot:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Cooking pot observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:candles:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Candles observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Crate observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:stool:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Stool observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking shelves:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Cooking shelves observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fountain:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Fountain observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:willow:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Willow observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:warehouse shelves:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Warehouse shelves observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:ladder:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Ladder observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:throne:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Throne observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:counter:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Counter observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fireplace:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Fireplace observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:signpost:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Signpost observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:suit of armour:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "place",
-      "text": "Suit of armour observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:chair:201:202:0",
       "at": "2026-08-17T07:06:07.193Z",
       "kind": "place",
@@ -101124,9 +100841,333 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "npc:runescape guide:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "npc",
+      "text": "RuneScape Guide observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:survival expert:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "npc",
+      "text": "Survival Expert observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:fishing spot:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "resource",
+      "text": "Fishing spot observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:butterfly:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "npc",
+      "text": "Butterfly observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Oak observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bench:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Bench observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flowers:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Flowers observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "resource",
+      "text": "Tree observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:hat stand:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Hat stand observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fireplace:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Fireplace observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:drawers:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Drawers observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cabinet:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Cabinet observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rocking chair:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "resource",
+      "text": "Rocking chair observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:potted plant:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Potted plant observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Door observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:grandfather clock:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Grandfather clock observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Portrait observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:sink:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Sink observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:painting:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Painting observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Daisies observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:gate:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Gate observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Chair observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookcase:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Bookcase observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Table observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:closed chest:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Closed chest observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flower:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Flower observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bullrushes:193:193:0",
+      "at": "2026-08-17T08:31:11.034Z",
+      "kind": "place",
+      "text": "Bullrushes observed near 3099, 3101, level 0.",
+      "location": {
+        "x": 3099,
+        "z": 3101,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T08:31:10.738Z",
+  "updatedAt": "2026-08-17T08:31:29.629Z",
   "activePlan": {
     "objective": "Explore and learn about Al Kharid coordinates and nearby locations",
     "focus": "Identify the toll gate positions and their coordinates",
@@ -101164,6 +101205,6 @@
     ],
     "updatedAt": "2026-08-17T08:31:02.990Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 0
+    "failures": 1
   }
 }
