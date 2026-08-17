@@ -869,7 +869,9 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     decisionStartedTick=-1;
     const errorText=String(err);
     const llmUnavailable=/LLM unavailable|TimeoutError|timed out|timeout/i.test(errorText);
-    const fallback=llmUnavailable?chooseTimeoutFallback(lastState||stateAtStart,candidates):null;
+    const fallbackState=lastState||stateAtStart;
+    const fallbackCandidates=fallbackState?.player?capacityGate(fallbackState,lootGate(fallbackState,buildCandidates(fallbackState))):[];
+    const fallback=llmUnavailable?chooseTimeoutFallback(fallbackState,fallbackCandidates):null;
     if(lease===decisionLease&&fallback&&lastState?.player&&lastState.player.lifeId===startedLife){
       currentGoal=fallback.choice.goal;
       currentWhy=fallback.choice.reason;
