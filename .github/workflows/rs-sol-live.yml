@@ -120,11 +120,18 @@ jobs:
           set -euo pipefail
           bun install --frozen-lockfile
           bun run sqlite:migrate
-          RECOVERY_SAVE="./data/players/main/${SOL_USER}.sav"
-          if [ ! -f "$RECOVERY_SAVE" ]; then
-            node ../webclient/recover-sol5-save.mjs "$RECOVERY_SAVE"
+          RECOVERY_DIR="./data/players/main"
+          RECOVERY_MARKER="$RECOVERY_DIR/.sol-verified-recovery-v1"
+          NORMALIZED_SOL_USER="$(printf '%s' "$SOL_USER" | tr '[:upper:]' '[:lower:]')"
+          if [ ! -f "$RECOVERY_MARKER" ]; then
+            mkdir -p "$RECOVERY_DIR"
+            node ../webclient/recover-sol5-save.mjs "$RECOVERY_DIR/${SOL_USER}.sav" --force
+            if [ "$NORMALIZED_SOL_USER" != "$SOL_USER" ]; then
+              node ../webclient/recover-sol5-save.mjs "$RECOVERY_DIR/${NORMALIZED_SOL_USER}.sav" --force
+            fi
+            printf 'verified remote Sol5 skill recovery v1\n' > "$RECOVERY_MARKER"
           else
-            echo "Preserving restored player save: $RECOVERY_SAVE"
+            echo "Preserving verified recovered player saves from $RECOVERY_DIR"
           fi
           nohup env EASY_STARTUP="$EASY_STARTUP" LOGIN_SERVER="$LOGIN_SERVER" FRIEND_SERVER="$FRIEND_SERVER" LOGGER_SERVER="$LOGGER_SERVER" WEB_PORT="$WEB_PORT" NODE_PORT="$NODE_PORT" NODE_MEMBERS="$NODE_MEMBERS" NODE_RANDOM_EVENTS="$NODE_RANDOM_EVENTS" NODE_TICKRATE="$NODE_TICKRATE" NODE_XPRATE="$NODE_XPRATE" WEBSITE_REGISTRATION="$WEBSITE_REGISTRATION" bun run src/app.ts > "$GITHUB_WORKSPACE/rs-engine.log" 2>&1 &
           ENGINE_PID=$!
