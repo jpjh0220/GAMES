@@ -6,58 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8402,
-    "teacherChoices": 8402,
+    "totalChoices": 8403,
+    "teacherChoices": 8403,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8750,
-    "totalReward": 3844.128,
-    "saves": 974,
+    "completedExperiences": 8751,
+    "totalReward": 3844.938,
+    "saves": 975,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 591,
     "strategistFailures": 66
   },
   "memories": [
-    {
-      "id": "mswf1qro-8etene",
-      "createdAt": "2026-08-16T23:08:28.740Z",
-      "tick": 1143,
-      "runNumber": 167,
-      "kind": "relationship",
-      "text": "Beggar07 said: \"Do u have anything u dont need\". Current stance cooperative, trust 0.84.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "beggar07",
-        "cooperative",
-        "potential help"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswf1qro-w4wnos",
-      "createdAt": "2026-08-16T23:08:28.740Z",
-      "tick": 1147,
-      "runNumber": 167,
-      "kind": "relationship",
-      "text": "Beggar15 said: \"Accept my trade plz\". Current stance cooperative, trust 0.96.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar15",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3087,
-        "z": 3230,
-        "level": 0
-      }
-    },
     {
       "id": "mswf1qro-o4a2zt",
       "createdAt": "2026-08-16T23:08:28.740Z",
@@ -8061,6 +8022,54 @@
       "location": {
         "x": 3078,
         "z": 3252,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswj1yvn-2eccud",
+      "createdAt": "2026-08-17T01:00:37.715Z",
+      "tick": 120,
+      "runNumber": 181,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Verified arrival at Draynor fishing area.",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "navigation skill"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswj1yvo-lm4bdb",
+      "createdAt": "2026-08-17T01:00:37.716Z",
+      "tick": 120,
+      "runNumber": 181,
+      "kind": "episode",
+      "text": "AI motor: Travel to the Draynor fishing area at 3087,3230 and verify arrival. Result: moved 3087,3247 → 3087,3230; new: agent:Xbfr5x1f0, agent:Fishmax6, agent:Fishmax2, agent:Fishmax10, agent:Fishmax7, agent:Fishmax4. Reward 0.81.",
+      "importance": 1.1,
+      "tags": [
+        "navigation skill",
+        "travel",
+        "fishing",
+        "resource",
+        "repository coordinate",
+        "agent xbfr5x1f0",
+        "agent fishmax6",
+        "agent fishmax2",
+        "agent fishmax10",
+        "agent fishmax7",
+        "agent fishmax4",
+        "agent fishmax5",
+        "agent fishmax3",
+        "agent fishmax9"
+      ],
+      "location": {
+        "x": 3087,
+        "z": 3230,
         "level": 0
       }
     }
@@ -20104,6 +20113,16 @@
         "lastAt": "2026-08-16T22:39:29.700Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I am traveling to the Draynor Bank at 3092,3243 using verified waypoint navigation. This action confirms my movement and sets up the next step in exploring the area."
+      },
+      "skill:travel:draynor-fishing": {
+        "n": 1,
+        "avgReward": 0.81,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.81,
+        "lastAt": "2026-08-17T01:00:37.716Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Selected Travel to the Draynor fishing area at 3087,3230 and verify arrival to satisfy the current objective and verify the resulting world-state change."
       }
     },
     "area=385:405:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=pickup": {
@@ -24833,8 +24852,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-17T00:56:54.773Z",
-      "encounters": 6092,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 6094,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -29318,8 +29337,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-17T00:56:23.063Z",
-      "encounters": 938,
+      "lastSeenAt": "2026-08-17T00:59:47.500Z",
+      "encounters": 939,
       "combatLevel": 88,
       "trust": 0,
       "stance": "unknown",
@@ -29486,8 +29505,8 @@
     "hermes": {
       "name": "Hermes",
       "firstSeenAt": "2026-08-16T02:33:57.759Z",
-      "lastSeenAt": "2026-08-17T00:36:38.414Z",
-      "encounters": 187,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 188,
       "combatLevel": 69,
       "trust": 0,
       "stance": "unknown",
@@ -29655,8 +29674,8 @@
     "foodprobe1": {
       "name": "Foodprobe1",
       "firstSeenAt": "2026-08-16T03:14:46.597Z",
-      "lastSeenAt": "2026-08-17T00:32:29.189Z",
-      "encounters": 782,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 784,
       "combatLevel": 18,
       "trust": 0,
       "stance": "unknown",
@@ -29755,8 +29774,8 @@
     "anduril": {
       "name": "Anduril",
       "firstSeenAt": "2026-08-16T03:26:32.361Z",
-      "lastSeenAt": "2026-08-17T00:53:56.381Z",
-      "encounters": 69,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 70,
       "combatLevel": 122,
       "trust": 0,
       "stance": "unknown",
@@ -36137,8 +36156,8 @@
     "nonoriri": {
       "name": "Nonoriri",
       "firstSeenAt": "2026-08-16T18:05:01.257Z",
-      "lastSeenAt": "2026-08-17T00:56:54.773Z",
-      "encounters": 52,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 54,
       "combatLevel": 26,
       "trust": 0.24,
       "stance": "friendly",
@@ -36772,8 +36791,8 @@
     "fishmax1": {
       "name": "Fishmax1",
       "firstSeenAt": "2026-08-16T19:27:30.321Z",
-      "lastSeenAt": "2026-08-17T00:56:00.983Z",
-      "encounters": 172,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 173,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -37988,8 +38007,8 @@
     "rexruthor": {
       "name": "Rexruthor",
       "firstSeenAt": "2026-08-16T20:35:15.254Z",
-      "lastSeenAt": "2026-08-17T00:56:54.773Z",
-      "encounters": 437,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 439,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -38491,9 +38510,9 @@
     "fishmax6": {
       "name": "Fishmax6",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-17T00:56:00.983Z",
-      "encounters": 91,
-      "combatLevel": 6,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "encounters": 93,
+      "combatLevel": 7,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -40972,12 +40991,12 @@
     },
     "192:202:0": {
       "key": "192:202:0",
-      "x": 3086,
-      "z": 3238,
+      "x": 3087,
+      "z": 3247,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:54:24.904Z",
-      "lastSeenAt": "2026-08-17T00:56:00.983Z",
-      "visits": 1899,
+      "lastSeenAt": "2026-08-17T01:00:17.674Z",
+      "visits": 1901,
       "npcs": [
         "Dark wizard",
         "Banker",
@@ -65737,90 +65756,6 @@
   },
   "discoveries": [
     {
-      "id": "resource:bank notice board:194:203:0",
-      "at": "2026-08-17T00:32:29.189Z",
-      "kind": "resource",
-      "text": "Bank notice board observed near 3106, 3258, level 0.",
-      "location": {
-        "x": 3106,
-        "z": 3258,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:shelves:194:203:0",
-      "at": "2026-08-17T00:32:29.189Z",
-      "kind": "place",
-      "text": "Shelves observed near 3106, 3258, level 0.",
-      "location": {
-        "x": 3106,
-        "z": 3258,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking shelves:194:203:0",
-      "at": "2026-08-17T00:32:29.189Z",
-      "kind": "place",
-      "text": "Cooking shelves observed near 3106, 3258, level 0.",
-      "location": {
-        "x": 3106,
-        "z": 3258,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:closed bank booth:194:203:0",
-      "at": "2026-08-17T00:32:29.189Z",
-      "kind": "resource",
-      "text": "Closed bank booth observed near 3106, 3258, level 0.",
-      "location": {
-        "x": 3106,
-        "z": 3258,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3106:3258:3113:3255:0",
-      "at": "2026-08-17T00:32:48.828Z",
-      "kind": "route",
-      "text": "Route learned: 3106,3258 → 3113,3255; +2398 XP; 18 damage dealt; moved 3106,3258 → 3113,3255",
-      "location": {
-        "x": 3113,
-        "z": 3255,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3113:3255:3117:3257:0",
-      "at": "2026-08-17T00:33:04.870Z",
-      "kind": "route",
-      "text": "Route learned: 3113,3255 → 3117,3257; +2263 XP; 17 damage dealt; 5 damage taken; moved 3113,3255 → 3117,3257",
-      "location": {
-        "x": 3117,
-        "z": 3257,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:goblin:194:203:0",
-      "at": "2026-08-17T00:33:05.529Z",
-      "kind": "npc",
-      "text": "Goblin observed near 3117, 3257, level 0.",
-      "location": {
-        "x": 3117,
-        "z": 3257,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "route:3117:3257:3112:3257:0",
       "at": "2026-08-17T00:33:19.031Z",
       "kind": "route",
@@ -69335,9 +69270,105 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "place:standing torch:192:202:0",
+      "at": "2026-08-17T00:59:47.500Z",
+      "kind": "place",
+      "text": "Standing torch observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cauldron:192:202:0",
+      "at": "2026-08-17T00:59:47.500Z",
+      "kind": "place",
+      "text": "Cauldron observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mystical wall chart:192:202:0",
+      "at": "2026-08-17T00:59:47.500Z",
+      "kind": "place",
+      "text": "Mystical wall chart observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:charms:192:202:0",
+      "at": "2026-08-17T00:59:47.500Z",
+      "kind": "place",
+      "text": "Charms observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:rocking chair:192:202:0",
+      "at": "2026-08-17T00:59:47.500Z",
+      "kind": "resource",
+      "text": "Rocking chair observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:ned:192:202:0",
+      "at": "2026-08-17T01:00:17.674Z",
+      "kind": "npc",
+      "text": "Ned observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:aggie:192:202:0",
+      "at": "2026-08-17T01:00:17.674Z",
+      "kind": "npc",
+      "text": "Aggie observed near 3087, 3247, level 0.",
+      "location": {
+        "x": 3087,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3087:3247:3087:3230:0",
+      "at": "2026-08-17T01:00:37.716Z",
+      "kind": "route",
+      "text": "Route learned: 3087,3247 → 3087,3230; moved 3087,3247 → 3087,3230; new: agent:Xbfr5x1f0, agent:Fishmax6, agent:Fishmax2, agent:Fishmax10, agent:Fishmax7, agent:Fishmax4",
+      "location": {
+        "x": 3087,
+        "z": 3230,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T00:57:00.897Z",
+  "updatedAt": "2026-08-17T01:00:37.717Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots in Draynor Village.",
