@@ -10,9 +10,9 @@
     "teacherChoices": 9087,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9383,
-    "totalReward": 3827.275,
-    "saves": 1055,
+    "completedExperiences": 9384,
+    "totalReward": 3826.675,
+    "saves": 1056,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1105,
@@ -24849,6 +24849,18 @@
         "lastAt": "2026-08-17T07:20:07.661Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I explored the area around 5 tiles north, discovering a new location and an NPC nearby. I verified the arrival and found the location marked as Bullrushes, Stones, and Thistles. I "
+      }
+    },
+    "llm-timeout:97": {
+      "modal:close-interface": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-17T07:42:08.471Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Close the blocking interface” once, verify its outcome, then retry language reasoning."
       }
     }
   },
@@ -72238,8 +72250,8 @@
       "z": 3106,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T07:38:25.143Z",
-      "visits": 18,
+      "lastSeenAt": "2026-08-17T07:42:01.841Z",
+      "visits": 20,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -100621,7 +100633,7 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T07:38:40.415Z",
+  "updatedAt": "2026-08-17T07:42:08.472Z",
   "activePlan": {
     "objective": "Explore and document key coordinates for safe and efficient travel",
     "focus": "Identify and record all known coordinates that are reachable and relevant to current objectives",
@@ -100631,7 +100643,8 @@
       {
         "id": "step-1",
         "label": "Identify and record all known coordinates that are reachable and relevant to current objectives",
-        "status": "active"
+        "status": "blocked",
+        "evidence": "Repeated negative or rejected outcomes; strategist must replan."
       },
       {
         "id": "step-2",
@@ -100655,6 +100668,6 @@
     "avoid": [],
     "updatedAt": "2026-08-17T07:34:37.769Z",
     "sourceModel": "qwen3:1.7b",
-    "failures": 2
+    "failures": 3
   }
 }
