@@ -63,9 +63,9 @@ const cognitionLog:CognitionEvent[]=[];
 const cognitionLogPath='./sol-cognition.ndjson';
 const cognitionState=()=>{const s:any=lastState,p=s?.player;return{position:p?[Number(p.worldX||0),Number(p.worldZ||0),Number(p.level||0)]:undefined,skills:Object.fromEntries((s?.skills||[]).map((x:any)=>[String(x.name||''),Number(x.level||0)])),inventory:(s?.inventory||[]).map((x:any)=>String(x.name||'')),freeSlots:Math.max(0,28-(s?.inventory||[]).length),coins:Number((s?.inventory||[]).filter((x:any)=>/coins?/i.test(String(x.name||''))).reduce((n:number,x:any)=>n+Number(x.count||1),0)),hp:p?.hp,maxHp:p?.maxHp};};
 type ManualAction = {type:'walkTo'|'interactLoc'|'interactNpc'|'useInventoryItem'|'clickDialogOption'|'bankDeposit';[key:string]:any};
-type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;config?:Partial<SolRuntimeConfig>;manualAction?:ManualAction;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
+type LiveControl = {revision:number;directive:string|null;paused:boolean;command:string|null;teacherMessage?:string;teacherLessonId?:string;config?:Partial<SolRuntimeConfig>;manualAction?:ManualAction;controllerId?:string;controllerVersion?:string;updatedAt:string;source:'http'|'github'|'none'};
 const controlToken=process.env.SOL_CONTROL_TOKEN?.trim()||viewerAccessToken;
-let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,config:undefined,manualAction:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
+let controlState:LiveControl={revision:0,directive:null,paused:false,command:null,teacherMessage:undefined,teacherLessonId:undefined,config:undefined,manualAction:undefined,updatedAt:new Date(0).toISOString(),source:'none'};
 let pendingManualAction:ManualAction|null=null;
 let controlPollInFlight=false;
 let lastControlPollAt=0;
@@ -168,6 +168,15 @@ const normalizeManualAction=(raw:any):ManualAction|null=>{
 };
 const applyLiveControl=(next:LiveControl)=>{
   const directive=next.directive||commandDirective(next.command);
+  if(next.teacherMessage){
+    const lessonId=next.teacherLessonId||`teacher-${next.revision}-${Date.now()}`;
+    const lesson={id:lessonId,text:next.teacherMessage.slice(0,1000),tick,applied:false as boolean};
+    durableState={...durableState,teacherLessons:[...(durableState.teacherLessons||[]),lesson].slice(-200)};
+    void durableStateStore.commit({teacherLessons:durableState.teacherLessons},tick).then(nextState=>{durableState=nextState;void persistRemoteDurableState(nextState);});
+    void log('TEACHER_MESSAGE_RECEIVED',{lessonId,text:next.teacherMessage,tick});
+    brain.applyExternalDirective(`Teacher lesson: ${next.teacherMessage}. Treat this as instruction and knowledge to test against verified world outcomes; do not perform an action unless it is one of the currently legal candidates.`);
+    currentGoal='Apply teacher lesson through verified play';currentWhy=`Teacher message received: ${next.teacherMessage.slice(0,180)}`;nextDecisionTick=tick+1;
+  }
   brain.applyExternalDirective(directive);
   if(next.manualAction){pendingManualAction=next.manualAction;nextDecisionTick=tick+1;void log('MANUAL_ACTION_QUEUED',{tick,action:next.manualAction});}
   if(next.config)brain.applyRuntimeConfig(next.config);
@@ -179,16 +188,17 @@ const applyLiveControl=(next:LiveControl)=>{
 const acceptControl=(doc:any,source:'http'|'github')=>{
   const revision=Number(doc?.revision);if(!Number.isSafeInteger(revision)||revision<=controlState.revision)return false;
   if(doc?.expiresAt&&Date.parse(String(doc.expiresAt))<=Date.now())return false;
-const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config','manual_action'];
+  const allowed=['pause','resume','abandon_objective','clear_directive','force_bank','force_fishing','set_config','manual_action','teach'];
       const command=allowed.includes(String(doc?.command))?String(doc.command):null;
       const manualAction=command==='manual_action'?normalizeManualAction(doc?.manualAction):undefined;
       if(command==='manual_action'&&!manualAction)return false;
   const directive=doc?.directive===null?null:String(doc?.directive||'').trim().slice(0,300)||null;
+  const teacherMessage=String(doc?.teacherMessage||'').trim().slice(0,1000)||undefined;
   const config=doc?.config&&typeof doc.config==='object'?doc.config:undefined;
   const controllerId=typeof doc?.controllerId==='string'?doc.controllerId.trim().slice(0,80):undefined;
   const controllerVersion=typeof doc?.controllerVersion==='string'?doc.controllerVersion.trim().slice(0,40):undefined;
-  if(!command&&!directive&&doc?.directive!==null)return false;
-  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,manualAction:manualAction??(command==='clear_directive'?undefined:controlState.manualAction),controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
+  if(!command&&!directive&&!teacherMessage&&doc?.directive!==null)return false;
+  controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,teacherMessage,teacherLessonId:teacherMessage?`teacher-${revision}-${Date.now()}`:controlState.teacherLessonId,config:config??controlState.config,manualAction:manualAction??(command==='clear_directive'?undefined:controlState.manualAction),controllerId,controllerVersion,updatedAt:new Date().toISOString(),source};
   applyLiveControl(controlState);return true;
 };
 const superviseTeacher=()=>{
@@ -285,6 +295,18 @@ const server=Bun.serve({
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
     if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const includeState=url.searchParams.get('includeState')==='1';const selected=cognitionLog.filter(e=>e.id>since&&(includeSystem||e.kind!=='system')).slice(-limit);const events=includeState?selected:selected.map(({state,...event}:any)=>event);return Response.json({cursor:cognitionSequence,events,omittedSystem:!includeSystem,omittedState:!includeState},{headers});}
+    if(path==='/teacher'&&req.method==='POST'){
+      if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
+      let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
+      const text=String(body?.message||body?.text||'').trim().slice(0,1000);
+      if(!text)return Response.json({ok:false,error:'message_required'},{status:400,headers});
+      const revision=Math.max(controlState.revision+1,Number(body?.revision)||0);
+      const teacherLessonId=`teacher-${revision}-${Date.now()}`;
+      controlState={...controlState,revision,command:'teach',teacherMessage:text,teacherLessonId,updatedAt:new Date().toISOString(),source:'http'};
+      applyLiveControl(controlState);
+      await log('TEACHER_MESSAGE_APPLIED',{revision,teacherLessonId,text});
+      return Response.json({ok:true,revision,teacherLessonId,message:text,appliedAtTick:tick},{headers});
+    }
     if(path==='/control'&&req.method==='POST'){
       if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
@@ -293,7 +315,7 @@ const server=Bun.serve({
       const directive=body?.directive===null?null:String(body?.directive||'').trim().slice(0,300)||null;
       const config=body?.config&&typeof body.config==='object'?body.config:undefined;
       if(!command&&!directive&&body?.directive!==null)return Response.json({ok:false,error:'missing_command_or_directive'},{status:400,headers});
-      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,config:config??controlState.config,controllerId:typeof body?.controllerId==='string'?body.controllerId.trim().slice(0,80):undefined,controllerVersion:typeof body?.controllerVersion==='string'?body.controllerVersion.trim().slice(0,40):undefined,updatedAt:new Date().toISOString(),source:'http'};
+      controlState={revision,directive:command==='clear_directive'?null:directive??controlState.directive,paused:command==='pause'?true:command==='resume'?false:controlState.paused,command,teacherMessage:typeof body?.teacherMessage==='string'?body.teacherMessage.trim().slice(0,1000):controlState.teacherMessage,teacherLessonId:typeof body?.teacherLessonId==='string'?body.teacherLessonId.trim().slice(0,120):controlState.teacherLessonId,config:config??controlState.config,controllerId:typeof body?.controllerId==='string'?body.controllerId.trim().slice(0,80):undefined,controllerVersion:typeof body?.controllerVersion==='string'?body.controllerVersion.trim().slice(0,40):undefined,updatedAt:new Date().toISOString(),source:'http'};
       applyLiveControl(controlState);
       await log('LIVE_CONTROL_APPLIED',{revision,command,directive:controlState.directive,paused:controlState.paused,source:'http'});
       return Response.json({ok:true,control:controlState},{headers});

@@ -31,6 +31,7 @@ export type PersistentState = {
   inventoryLedger: { signature: string; freeSlots: number; coins: number; updatedTick: number };
   milestones: Array<{ id: string; label: string; tick: number; evidence: string }>;
   failures: Array<{ fingerprint: string; count: number; lastTick: number; lastReason: string }>;
+  teacherLessons: Array<{ id: string; text: string; tick: number; applied: boolean; outcome?: string }>;
   controller: { activeId: string; activeVersion: string; pendingId?: string; pendingVersion?: string; lastSwitchTick: number };
   lastObservationHash: string;
   updatedAt: string;
@@ -47,6 +48,7 @@ const initialState = (name: string): PersistentState => ({
   inventoryLedger: { signature: '', freeSlots: 28, coins: 0, updatedTick: 0 },
   milestones: [],
   failures: [],
+  teacherLessons: [],
   controller: { activeId: 'deterministic-fallback', activeVersion: '1.0.0', lastSwitchTick: 0 },
   lastObservationHash: '',
   updatedAt: new Date(0).toISOString(),
@@ -66,6 +68,7 @@ function normalize(raw: unknown, name: string): PersistentState {
   state.identity = isRecord(raw.identity) ? { name: String(raw.identity.name || name).slice(0, 80), accountId: raw.identity.accountId ? String(raw.identity.accountId).slice(0, 120) : undefined } : { name };
   state.milestones = Array.isArray(raw.milestones) ? raw.milestones.slice(-200) as PersistentState['milestones'] : [];
   state.failures = Array.isArray(raw.failures) ? raw.failures.slice(-200) as PersistentState['failures'] : [];
+  state.teacherLessons = Array.isArray(raw.teacherLessons) ? raw.teacherLessons.slice(-200) as PersistentState['teacherLessons'] : [];
   return state;
 }
 
