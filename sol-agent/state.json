@@ -6,56 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 9131,
-    "teacherChoices": 9131,
+    "totalChoices": 9141,
+    "teacherChoices": 9141,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9412,
-    "totalReward": 3803.463,
-    "saves": 1064,
+    "completedExperiences": 9420,
+    "totalReward": 3801.592,
+    "saves": 1065,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 1126,
-    "strategistFailures": 101
+    "strategistRefreshes": 1129,
+    "strategistFailures": 102
   },
   "memories": [
-    {
-      "id": "mswrvm26-plec9r",
-      "createdAt": "2026-08-17T05:07:37.710Z",
-      "tick": 5418,
-      "runNumber": 190,
-      "kind": "observation",
-      "text": "SDK feedback (dialogue): Sup trdb435",
-      "importance": 1,
-      "tags": [
-        "sdk feedback",
-        "dialogue"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3355,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswrvm27-wst7ua",
-      "createdAt": "2026-08-17T05:07:37.711Z",
-      "tick": 5418,
-      "runNumber": 190,
-      "kind": "relationship",
-      "text": "Litekuw said: \"Sup trdb435\". Current stance distrusted, trust -0.36.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "litekuw",
-        "distrusted"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3355,
-        "level": 0
-      }
-    },
     {
       "id": "mswrvm27-9icc6p",
       "createdAt": "2026-08-17T05:07:37.711Z",
@@ -7507,6 +7470,44 @@
       "location": {
         "x": 3097,
         "z": 3107,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswyg4rr-ykw2ev",
+      "createdAt": "2026-08-17T08:11:32.775Z",
+      "tick": 0,
+      "runNumber": 225,
+      "kind": "strategy",
+      "text": "AI strategist: Inspect the artifact to gather initial information about its material and design.. This approach allows for safe exploration of the artifact, gathering data, and verifying its relevance to the ongoing quest",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "inspect the artifact to gather initial information about its material and design",
+        "interact with the artifact to observe any effects or clues that may indicate its significance",
+        "record observations and determine if the artifact aligns with the current quest s goals or requires further investigation"
+      ],
+      "location": {
+        "x": 3097,
+        "z": 3107,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswyi5sn-3rhjfe",
+      "createdAt": "2026-08-17T08:13:07.415Z",
+      "tick": 780,
+      "runNumber": 225,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Explore north about 5 tiles worked across 5 similar samples with average reward 0.74.",
+      "importance": 1.74,
+      "tags": [
+        "explore",
+        "walk north"
+      ],
+      "location": {
+        "x": 3223,
+        "z": 3231,
         "level": 0
       }
     }
@@ -22594,12 +22595,12 @@
         "exampleReason": "Selected Close the bank to process item-purpose actions to satisfy the current objective and verify the resulting world-state change."
       },
       "npc:talk to:runescape guide": {
-        "n": 1,
+        "n": 2,
         "avgReward": 0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": 0.08,
-        "lastAt": "2026-08-17T07:02:24.127Z",
+        "lastAt": "2026-08-17T08:12:20.029Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
         "exampleReason": "Emergency-only fallback: TimeoutError: The operation timed out."
       },
@@ -24666,24 +24667,34 @@
     },
     "area=387:388:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=dialog": {
       "dialog:1:click here to continue": {
-        "n": 3,
+        "n": 5,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 3,
+        "negative": 5,
         "lastReward": -0.6,
-        "lastAt": "2026-08-17T07:50:29.283Z",
+        "lastAt": "2026-08-17T08:12:32.003Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I clicked the continue button to proceed with Dialog 1."
+        "exampleReason": "I will identify and record essential locations for safe travel and resource gathering."
       },
       "dialog:recover-stalled-economy": {
-        "n": 9,
+        "n": 10,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 9,
+        "negative": 10,
         "lastReward": -0.6,
-        "lastAt": "2026-08-17T08:01:47.709Z",
+        "lastAt": "2026-08-17T08:11:36.510Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I want to explore the economy and re-evaluate the dialogue to see if there are any opportunities to learn or improve."
+        "exampleReason": "I clicked the dialog option 1, which is a meaningful action to explore the world and learn from the experience."
+      },
+      "dialog:1:yes please": {
+        "n": 1,
+        "avgReward": 0.58,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.58,
+        "lastAt": "2026-08-17T08:12:41.016Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I want to identify and record essential locations for safe travel and resource gathering."
       }
     },
     "area=386:388:0|hp=healthy|combat=0|agents=0|food=0|dialog=1|bank=0|shop=0|cats=wait": {
@@ -24722,26 +24733,26 @@
     },
     "area=402:402:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=combat,explore,navigation-skill,recovery": {
       "walk:north": {
-        "n": 1,
-        "avgReward": 0.53,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 0.5115,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 0.53,
-        "lastAt": "2026-08-17T07:03:23.922Z",
+        "lastReward": 0.493,
+        "lastAt": "2026-08-17T08:12:53.921Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I explored north about 5 tiles, discovering new locations and opportunities."
+        "exampleReason": "Exploring north about 5 tiles reveals the location of the Lumbridge general store, which is a valuable resource for Sol's exploration and learning. This action confirms the locatio"
       }
     },
     "area=402:403:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=combat,explore,navigation-skill,recovery": {
       "walk:north": {
-        "n": 4,
-        "avgReward": 0.7638,
-        "positive": 4,
+        "n": 5,
+        "avgReward": 0.7402,
+        "positive": 5,
         "negative": 0,
-        "lastReward": 0.326,
-        "lastAt": "2026-08-17T07:08:25.424Z",
+        "lastReward": 0.646,
+        "lastAt": "2026-08-17T08:13:07.415Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "Exploring the Draynor Bank at 3092,3243 using verified waypoint navigation"
+        "exampleReason": "Exploring the north about 5 tiles reveals a new location: **Cooking pot** and **Willow**. This discovery supports my subgoal of learning safe travel and resource gathering."
       },
       "walk:south": {
         "n": 1,
@@ -24906,14 +24917,14 @@
     },
     "area=387:388:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=explore,navigation-skill": {
       "walk:north": {
-        "n": 2,
-        "avgReward": -1.77,
+        "n": 3,
+        "avgReward": -1.8033,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -1.87,
-        "lastAt": "2026-08-17T07:57:35.734Z",
+        "lastAt": "2026-08-17T08:11:55.705Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I'm exploring north about 5 tiles to find more resources and locations that could help with my temporary subgoal of exploring and learning about the world."
+        "exampleReason": "I'm exploring north about 5 tiles to find any interesting places or objects that might be relevant to my subgoal of learning and exploring the world."
       },
       "walk:south": {
         "n": 2,
@@ -71044,12 +71055,12 @@
     },
     "201:201:0": {
       "key": "201:201:0",
-      "x": 3227,
-      "z": 3220,
+      "x": 3223,
+      "z": 3226,
       "level": 0,
       "firstSeenAt": "2026-08-16T17:02:33.601Z",
-      "lastSeenAt": "2026-08-17T07:08:25.722Z",
-      "visits": 77,
+      "lastSeenAt": "2026-08-17T08:12:54.219Z",
+      "visits": 79,
       "npcs": [
         "Man",
         "Cook",
@@ -71066,10 +71077,6 @@
         "Shop assistant"
       ],
       "locs": [
-        "Cooking shelves",
-        "Sink",
-        "Potted fern",
-        "Fireplace",
         "Dragon's head",
         "Statue of a king",
         "Daisies",
@@ -71105,7 +71112,11 @@
         "Plant",
         "Candles",
         "Ladder",
-        "Cooking range"
+        "Cooking range",
+        "Tree",
+        "Trapdoor",
+        "Chair",
+        "Bed"
       ]
     },
     "200:200:0": {
@@ -72355,12 +72366,12 @@
     },
     "193:194:0": {
       "key": "193:194:0",
-      "x": 3094,
-      "z": 3106,
+      "x": 3096,
+      "z": 3107,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T08:09:36.714Z",
-      "visits": 74,
+      "lastSeenAt": "2026-08-17T08:12:32.321Z",
+      "visits": 83,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -97054,11 +97065,11 @@
         "dialog:1:yes please",
         "walk:north"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0,
       "positive": 0,
-      "failed": 1,
-      "lastAt": "2026-08-17T07:03:23.922Z",
+      "failed": 2,
+      "lastAt": "2026-08-17T08:12:53.921Z",
       "example": "Dialog 1: Click here to continue → Dialog 1: Yes please. → Explore north about 5 tiles"
     },
     "dialog:1:yes please > walk:north > walk:north": {
@@ -97067,11 +97078,11 @@
         "walk:north",
         "walk:north"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0,
       "positive": 0,
       "failed": 0,
-      "lastAt": "2026-08-17T07:03:41.909Z",
+      "lastAt": "2026-08-17T08:13:07.415Z",
       "example": "Dialog 1: Yes please. → Explore north about 5 tiles → Explore north about 5 tiles"
     },
     "walk:north > walk:north > inventory:eat:shrimps": {
@@ -97145,11 +97156,11 @@
         "dialog:1:click here to continue",
         "dialog:recover-stalled-economy"
       ],
-      "n": 2,
+      "n": 3,
       "avgReward": 0,
       "positive": 0,
-      "failed": 6,
-      "lastAt": "2026-08-17T07:51:19.445Z",
+      "failed": 9,
+      "lastAt": "2026-08-17T08:11:36.510Z",
       "example": "Close the blocking interface → Dialog 1: Click here to continue → Advance stalled economy dialog and re-evaluate"
     },
     "dialog:1:click here to continue > dialog:recover-stalled-economy > dialog:recover-stalled-economy": {
@@ -97268,441 +97279,61 @@
       "failed": 3,
       "lastAt": "2026-08-17T08:00:10.821Z",
       "example": "Explore south about 5 tiles → Advance stalled economy dialog and re-evaluate → Wait and observe for a moment"
+    },
+    "dialog:1:click here to continue > dialog:recover-stalled-economy > walk:north": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:recover-stalled-economy",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 3,
+      "lastAt": "2026-08-17T08:11:55.705Z",
+      "example": "Dialog 1: Click here to continue → Advance stalled economy dialog and re-evaluate → Explore north about 5 tiles"
+    },
+    "dialog:recover-stalled-economy > walk:north > npc:talk to:runescape guide": {
+      "sequence": [
+        "dialog:recover-stalled-economy",
+        "walk:north",
+        "npc:talk to:runescape guide"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-17T08:12:20.029Z",
+      "example": "Advance stalled economy dialog and re-evaluate → Explore north about 5 tiles → Talk-to RuneScape Guide (level 0, distance 1)"
+    },
+    "walk:north > npc:talk to:runescape guide > dialog:1:click here to continue": {
+      "sequence": [
+        "walk:north",
+        "npc:talk to:runescape guide",
+        "dialog:1:click here to continue"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-17T08:12:32.003Z",
+      "example": "Explore north about 5 tiles → Talk-to RuneScape Guide (level 0, distance 1) → Dialog 1: Click here to continue"
+    },
+    "npc:talk to:runescape guide > dialog:1:click here to continue > dialog:1:yes please": {
+      "sequence": [
+        "npc:talk to:runescape guide",
+        "dialog:1:click here to continue",
+        "dialog:1:yes please"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-17T08:12:41.016Z",
+      "example": "Talk-to RuneScape Guide (level 0, distance 1) → Dialog 1: Click here to continue → Dialog 1: Yes please."
     }
   },
   "discoveries": [
-    {
-      "id": "place:candles:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Candles observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:tree:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "resource",
-      "text": "Tree observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:statue of a king:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Statue of a king observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:daisies:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Daisies observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:fern:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Fern observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:cooking range:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "resource",
-      "text": "Cooking range observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Barrel observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:table:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Table observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:stool:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Stool observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:throne:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Throne observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:trapdoor:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Trapdoor observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:small fern:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Small fern observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:chair:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Chair observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bookcase:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Bookcase observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:signpost:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Signpost observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bed:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Bed observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:painting:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Painting observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3222:3222:3223:3226:0",
-      "at": "2026-08-17T07:03:23.922Z",
-      "kind": "route",
-      "text": "Route learned: 3222,3222 → 3223,3226; moved 3222,3222 → 3223,3226; new: loc:Cooking pot, loc:Willow",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:hans:201:201:0",
-      "at": "2026-08-17T07:03:24.223Z",
-      "kind": "npc",
-      "text": "Hans observed near 3223, 3226, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking pot:201:201:0",
-      "at": "2026-08-17T07:03:24.223Z",
-      "kind": "place",
-      "text": "Cooking pot observed near 3223, 3226, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:willow:201:201:0",
-      "at": "2026-08-17T07:03:24.223Z",
-      "kind": "place",
-      "text": "Willow observed near 3223, 3226, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3223:3226:3223:3231:0",
-      "at": "2026-08-17T07:03:41.909Z",
-      "kind": "route",
-      "text": "Route learned: 3223,3226 → 3223,3231; moved 3223,3226 → 3223,3231; new: npc:Duck, npc:Shop keeper, loc:Warehouse shelves, loc:Crate, loc:Counter, loc:Cooking shelves",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "resource:shop keeper:201:201:0",
-      "at": "2026-08-17T07:03:42.224Z",
-      "kind": "resource",
-      "text": "Shop keeper observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:warehouse shelves:201:201:0",
-      "at": "2026-08-17T07:03:42.224Z",
-      "kind": "place",
-      "text": "Warehouse shelves observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:crate:201:201:0",
-      "at": "2026-08-17T07:03:42.224Z",
-      "kind": "place",
-      "text": "Crate observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:counter:201:201:0",
-      "at": "2026-08-17T07:03:42.224Z",
-      "kind": "place",
-      "text": "Counter observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:imp:201:201:0",
-      "at": "2026-08-17T07:04:05.354Z",
-      "kind": "npc",
-      "text": "Imp observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3223:3231:3223:3226:0",
-      "at": "2026-08-17T07:04:27.228Z",
-      "kind": "route",
-      "text": "Route learned: 3223,3231 → 3223,3226; moved 3223,3231 → 3223,3226; new: npc:Cook, loc:Cooking range",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:cook:201:201:0",
-      "at": "2026-08-17T07:04:27.529Z",
-      "kind": "npc",
-      "text": "Cook observed near 3223, 3226, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3226,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3223:3231:3225:3221:0",
-      "at": "2026-08-17T07:05:43.703Z",
-      "kind": "route",
-      "text": "Route learned: 3223,3231 → 3225,3221; moved 3223,3231 → 3225,3221; new: npc:Butterfly, loc:Cooking range, loc:Sink",
-      "location": {
-        "x": 3225,
-        "z": 3221,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:sink:201:201:0",
-      "at": "2026-08-17T07:05:44.021Z",
-      "kind": "place",
-      "text": "Sink observed near 3227, 3220, level 0.",
-      "location": {
-        "x": 3227,
-        "z": 3220,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:oak:201:201:0",
-      "at": "2026-08-17T07:05:44.021Z",
-      "kind": "place",
-      "text": "Oak observed near 3227, 3220, level 0.",
-      "location": {
-        "x": 3227,
-        "z": 3220,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:grandfather clock:201:201:0",
-      "at": "2026-08-17T07:05:44.021Z",
-      "kind": "place",
-      "text": "Grandfather clock observed near 3227, 3220, level 0.",
-      "location": {
-        "x": 3227,
-        "z": 3220,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bench:201:201:0",
-      "at": "2026-08-17T07:05:44.021Z",
-      "kind": "place",
-      "text": "Bench observed near 3227, 3220, level 0.",
-      "location": {
-        "x": 3227,
-        "z": 3220,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:imp:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "npc",
-      "text": "Imp observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:man:201:202:0",
-      "at": "2026-08-17T07:06:07.193Z",
-      "kind": "npc",
-      "text": "Man observed near 3223, 3236, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3236,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "npc:woman:201:202:0",
       "at": "2026-08-17T07:06:07.193Z",
@@ -100870,8 +100501,490 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3097:3107:3096:3107:0",
+      "at": "2026-08-17T08:12:20.029Z",
+      "kind": "route",
+      "text": "Route learned: 3097,3107 → 3096,3107; moved 3097,3107 → 3096,3107",
+      "location": {
+        "x": 3096,
+        "z": 3107,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3096:3107:3222:3222:0",
+      "at": "2026-08-17T08:12:41.016Z",
+      "kind": "route",
+      "text": "Route learned: 3096,3107 → 3222,3222; moved 3096,3107 → 3222,3222; inventory changed",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:man:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "npc",
+      "text": "Man observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:rat:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "npc",
+      "text": "Rat observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:butterfly:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "npc",
+      "text": "Butterfly observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:woman:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "npc",
+      "text": "Woman observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bush:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Bush observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fountain:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Fountain observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Door observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flower:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Flower observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flowers:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Flowers observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:large door:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Large door observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:suit of armour:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Suit of armour observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:ladder:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Ladder observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Plant observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:portrait:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Portrait observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:landscape:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Landscape observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:candles:201:201:0",
+      "at": "2026-08-17T08:12:41.313Z",
+      "kind": "place",
+      "text": "Candles observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3222:3222:3223:3226:0",
+      "at": "2026-08-17T08:12:53.921Z",
+      "kind": "route",
+      "text": "Route learned: 3222,3222 → 3223,3226; moved 3222,3222 → 3223,3226; new: loc:Cooking pot, loc:Willow",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:duck:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "npc",
+      "text": "Duck observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "resource",
+      "text": "Tree observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Fern observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:statue of a king:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Statue of a king observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Daisies observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bookcase:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Bookcase observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:cooking range:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "resource",
+      "text": "Cooking range observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Barrel observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:painting:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Painting observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:small fern:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Small fern observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:throne:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Throne observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Stool observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:signpost:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Signpost observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Table observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:trapdoor:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Trapdoor observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bed:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Bed observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:chair:201:201:0",
+      "at": "2026-08-17T08:12:54.219Z",
+      "kind": "place",
+      "text": "Chair observed near 3223, 3226, level 0.",
+      "location": {
+        "x": 3223,
+        "z": 3226,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3223:3226:3223:3231:0",
+      "at": "2026-08-17T08:13:07.415Z",
+      "kind": "route",
+      "text": "Route learned: 3223,3226 → 3223,3231; moved 3223,3226 → 3223,3231; new: loc:Warehouse shelves, loc:Crate, loc:Counter, loc:Cooking shelves",
+      "location": {
+        "x": 3223,
+        "z": 3231,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T08:09:43.383Z",
-  "activePlan": null
+  "updatedAt": "2026-08-17T08:13:07.416Z",
+  "activePlan": {
+    "objective": "Explore and document key coordinates for safe and efficient travel",
+    "focus": "Identify and record essential locations for safe travel and resource gathering.",
+    "reason": "Coordinates are critical for efficient movement and resource acquisition. Verify each location's utility and adjust plans accordingly.",
+    "risk": "balanced",
+    "plan": [
+      {
+        "id": "step-1",
+        "label": "Identify and record essential locations for safe travel and resource gathering.",
+        "status": "active"
+      },
+      {
+        "id": "step-2",
+        "label": "Use the provided coordinates to navigate and verify the locations' relevance to current goals.",
+        "status": "pending"
+      },
+      {
+        "id": "step-3",
+        "label": "Document findings and adjust strategies based on verified outcomes and new information.",
+        "status": "pending"
+      }
+    ],
+    "successSignals": [
+      "Successfully documented key coordinates for safe and efficient"
+    ],
+    "priorities": [
+      "Identify and record essential locations for safe travel and resource gathering.",
+      "Use the provided coordinates to navigate and verify the locations' relevance to current goals.",
+      "Document findings and adjust strategies based on verified outcomes and new information."
+    ],
+    "avoid": [
+      "Dialog 1: Click here to continue",
+      "Advance stalled economy dialog and re-evaluate",
+      "Explore north about 5 tiles"
+    ],
+    "updatedAt": "2026-08-17T08:12:07.239Z",
+    "sourceModel": "qwen3:1.7b",
+    "failures": 1
+  }
 }
