@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 19028,
+  "stateGeneration": 19040,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3215,
-    "z": 3245,
+    "z": 3250,
     "level": 0
   },
   "currentObligation": {
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Emergency-only fallback: TimeoutError: The operation timed out."
+    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "",
     "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 471
+    "updatedTick": 521
   },
   "milestones": [
     {
@@ -138,5 +138,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-17T21:05:19.055Z"
+  "updatedAt": "2026-08-17T21:05:34.080Z"
 }
