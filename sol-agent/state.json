@@ -6,13 +6,13 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8340,
-    "teacherChoices": 8340,
+    "totalChoices": 8341,
+    "teacherChoices": 8341,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8700,
-    "totalReward": 3800.336,
-    "saves": 966,
+    "completedExperiences": 8701,
+    "totalReward": 3800.766,
+    "saves": 967,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 582,
@@ -23099,6 +23099,18 @@
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I explored southeast about 4 tiles, finding a new location for safe travel and resource gathering. The coordinates are (3103, 3260), and I've identified a new agent, loc:Gate, and "
       }
+    },
+    "area=390:406:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,explore": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.43,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.43,
+        "lastAt": "2026-08-17T00:30:38.170Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Selected Explore north about 5 tiles to satisfy the current objective and verify the resulting world-state change."
+      }
     }
   },
   "relationships": {
@@ -29003,8 +29015,8 @@
     "athena": {
       "name": "Athena",
       "firstSeenAt": "2026-08-16T02:33:31.622Z",
-      "lastSeenAt": "2026-08-17T00:15:06.696Z",
-      "encounters": 130,
+      "lastSeenAt": "2026-08-17T00:29:52.039Z",
+      "encounters": 131,
       "combatLevel": 109,
       "trust": 0,
       "stance": "unknown",
@@ -30018,8 +30030,8 @@
     "gl4qw59tn": {
       "name": "Gl4qw59tn",
       "firstSeenAt": "2026-08-16T03:54:03.419Z",
-      "lastSeenAt": "2026-08-16T03:54:03.419Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-17T00:30:22.227Z",
+      "encounters": 2,
       "combatLevel": 109,
       "trust": 0,
       "stance": "unknown",
@@ -40310,8 +40322,8 @@
     "alanscout": {
       "name": "Alanscout",
       "firstSeenAt": "2026-08-17T00:26:00.718Z",
-      "lastSeenAt": "2026-08-17T00:27:11.016Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-17T00:30:22.227Z",
+      "encounters": 5,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -41952,6 +41964,38 @@
         "Bench",
         "Cauldron",
         "Bed"
+      ]
+    },
+    "195:203:0": {
+      "key": "195:203:0",
+      "x": 3122,
+      "z": 3248,
+      "level": 0,
+      "firstSeenAt": "2026-08-17T00:29:52.039Z",
+      "lastSeenAt": "2026-08-17T00:30:22.227Z",
+      "visits": 2,
+      "npcs": [
+        "Jail guard",
+        "Lady Keli",
+        "Joe",
+        "Prince Ali",
+        "Leela"
+      ],
+      "locs": [
+        "Fern",
+        "Spear wall",
+        "Tree",
+        "Crate",
+        "Oak",
+        "Plant",
+        "Prison Door",
+        "Door",
+        "Bed",
+        "Stool",
+        "Table",
+        "Dead tree",
+        "Nettles",
+        "Mushroom"
       ]
     }
   },
@@ -64583,246 +64627,6 @@
   },
   "discoveries": [
     {
-      "id": "place:oak:192:202:0",
-      "at": "2026-08-16T23:05:30.352Z",
-      "kind": "place",
-      "text": "Oak observed near 3085, 3240, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:bullrushes:192:202:0",
-      "at": "2026-08-16T23:05:30.352Z",
-      "kind": "place",
-      "text": "Bullrushes observed near 3085, 3240, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cooking shelves:192:202:0",
-      "at": "2026-08-16T23:05:30.352Z",
-      "kind": "place",
-      "text": "Cooking shelves observed near 3085, 3240, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:door:192:202:0",
-      "at": "2026-08-16T23:05:30.352Z",
-      "kind": "place",
-      "text": "Door observed near 3085, 3240, level 0.",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3085:3240:3092:3243:0",
-      "at": "2026-08-16T23:05:53.362Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3240 → 3092,3243; moved 3085,3240 → 3092,3243; new: agent:Tinymodel01, agent:Dawgwhat, npc:Aggie, npc:Ned, loc:Wardrobe, loc:Broom",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3088:3247:0",
-      "at": "2026-08-16T23:06:10.700Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3088,3247; moved 3092,3243 → 3088,3247",
-      "location": {
-        "x": 3088,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:aggie:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "npc",
-      "text": "Aggie observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:wardrobe:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Wardrobe observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:broom:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Broom observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mirror:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Mirror observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:barrel:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Barrel observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:standing torch:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Standing torch observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:cauldron:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Cauldron observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:pile of rope:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Pile of rope observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:mystical wall chart:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Mystical wall chart observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:charms:192:202:0",
-      "at": "2026-08-16T23:06:11.236Z",
-      "kind": "place",
-      "text": "Charms observed near 3086, 3246, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3243:3086:3238:0",
-      "at": "2026-08-16T23:07:19.835Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3086,3238; moved 3092,3243 → 3086,3238; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "place:stones:192:202:0",
-      "at": "2026-08-16T23:07:20.291Z",
-      "kind": "place",
-      "text": "Stones observed near 3086, 3238, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3086:3238:3086:3237:0",
-      "at": "2026-08-16T23:07:45.080Z",
-      "kind": "route",
-      "text": "Route learned: 3086,3238 → 3086,3237; moved 3086,3238 → 3086,3237; inventory changed; execution rejected or failed",
-      "location": {
-        "x": 3086,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.35
-    },
-    {
-      "id": "npc:black knight:192:202:0",
-      "at": "2026-08-16T23:07:45.495Z",
-      "kind": "npc",
-      "text": "Black Knight observed near 3086, 3237, level 0.",
-      "location": {
-        "x": 3086,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "route:3086:3237:3092:3243:0",
       "at": "2026-08-16T23:08:10.391Z",
       "kind": "route",
@@ -68193,9 +67997,249 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:fern:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Fern observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:spear wall:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Spear wall observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "resource",
+      "text": "Tree observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Crate observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:oak:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Oak observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Plant observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:prison door:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Prison Door observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:door:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Door observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:bed:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Bed observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Stool observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Table observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:dead tree:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "resource",
+      "text": "Dead tree observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:nettles:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Nettles observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:mushroom:195:203:0",
+      "at": "2026-08-17T00:29:52.039Z",
+      "kind": "place",
+      "text": "Mushroom observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "danger:jail guard:195:203:0",
+      "at": "2026-08-17T00:30:22.227Z",
+      "kind": "danger",
+      "text": "Jail guard observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:lady keli:195:203:0",
+      "at": "2026-08-17T00:30:22.227Z",
+      "kind": "npc",
+      "text": "Lady Keli observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:joe:195:203:0",
+      "at": "2026-08-17T00:30:22.227Z",
+      "kind": "npc",
+      "text": "Joe observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:prince ali:195:203:0",
+      "at": "2026-08-17T00:30:22.227Z",
+      "kind": "npc",
+      "text": "Prince Ali observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:leela:195:203:0",
+      "at": "2026-08-17T00:30:22.227Z",
+      "kind": "npc",
+      "text": "Leela observed near 3122, 3248, level 0.",
+      "location": {
+        "x": 3122,
+        "z": 3248,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3122:3248:3121:3252:0",
+      "at": "2026-08-17T00:30:38.171Z",
+      "kind": "route",
+      "text": "Route learned: 3122,3248 → 3121,3252; moved 3122,3248 → 3121,3252; new: loc:Wheat",
+      "location": {
+        "x": 3121,
+        "z": 3252,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T00:27:28.735Z",
+  "updatedAt": "2026-08-17T00:30:38.171Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots based on coordinates and spot types.",
