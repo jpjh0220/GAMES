@@ -872,7 +872,8 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     const fallbackState=lastState||stateAtStart;
     const fallbackCandidates=fallbackState?.player?capacityGate(fallbackState,lootGate(fallbackState,buildCandidates(fallbackState))):[];
     const fallback=llmUnavailable?chooseTimeoutFallback(fallbackState,fallbackCandidates):null;
-    if(lease===decisionLease&&fallback&&lastState?.player&&lastState.player.lifeId===startedLife){
+    const safePostWatchdogFallback=llmUnavailable&&!decisionInFlight&&!actionAwaitingOutcome&&tick-startedTick<=90;
+    if((lease===decisionLease||safePostWatchdogFallback)&&fallback&&lastState?.player&&lastState.player.lifeId===startedLife){
       currentGoal=fallback.choice.goal;
       currentWhy=fallback.choice.reason;
       void log('LLM_TIMEOUT_EMERGENCY_FALLBACK',{tick,startedTick,error:errorText.slice(0,240),candidate:fallback.candidate.label,actionType:fallback.candidate.action?.type,fingerprint:fallback.candidate.fingerprint});
@@ -884,6 +885,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     currentGoal='Recover reasoning loop';
     currentWhy=`Agent decision failed: ${errorText.slice(0,180)}`;
     void log('AGENT_DECISION_ERROR',errorText);
+    if(llmUnavailable)void log('LLM_TIMEOUT_FALLBACK_NOT_DISPATCHED',{tick,startedTick,decisionInFlight,actionAwaitingOutcome,leaseMatches:lease===decisionLease,hasFallback:!!fallback});
     nextDecisionTick=tick+3;
   });
 };
