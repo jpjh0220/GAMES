@@ -1,35 +1,35 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 1390,
+  "stateGeneration": 1391,
   "committedTick": 5511,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3220,
-    "z": 3218,
+    "x": 3094,
+    "z": 3106,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "survival",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
+    "reason": "Load memory, perception, learned policy, and local teacher model."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Initialize persistent agent",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:841:1|1:1277:1|2:1171:1",
-    "freeSlots": 25,
+    "signature": "",
+    "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 5511
+    "updatedTick": 1
   },
   "milestones": [
     {
@@ -58,5 +58,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-17T07:28:08.931Z"
+  "updatedAt": "2026-08-17T07:29:44.301Z"
 }
