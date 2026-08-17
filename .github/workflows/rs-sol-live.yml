@@ -38,6 +38,7 @@ env:
   CHAIN_DEPTH: ${{ inputs.chain_depth || '0' }}
   PREVIOUS_RUN_ID: ${{ inputs.previous_run_id || '' }}
   PREVIOUS_ARTIFACT_NAME: ${{ inputs.previous_artifact_name || '' }}
+  SOL_RUNTIME_MODE: local
 
 concurrency:
   group: sol-continuous-world
@@ -225,7 +226,7 @@ jobs:
           SOL_USER: ${{ secrets.SOL_USER }}
           SOL_PASS: ${{ secrets.SOL_PASS }}
           SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
-          SOL_GAME_HOST: rs-sdk-demo.fly.dev
+          SOL_GAME_HOST: 127.0.0.1:8080
           SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}
           SOL_LLM_PROVIDER: ollama
           SOL_MOTOR_MODEL: qwen3:0.6b
