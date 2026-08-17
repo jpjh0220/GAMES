@@ -498,7 +498,7 @@ const executeWorldSkill=async(action:any)=>{
   const start=position();if(!start)return{success:false,message:'No live player position.'};
   const skill=String(action.skill||'unknown'),label=skill==='escape-draynor-manor'?'Escape Draynor Manor':`Travel to ${action.destination||'landmark'}`;
   const procedure:ProcedureState={skill,label,status:'running',step:'Starting verified procedure',startedTick:tick,start,primitiveActions:0};
-  procedureInFlight=procedure;let success=false;let message='Procedure failed before completion.';
+  procedureInFlight=procedure;let success=false;let partial=false;let message='Procedure failed before completion.';
   try{
     if(skill==='escape-draynor-manor'){
       success=await descendManorToGround();
@@ -518,16 +518,28 @@ const executeWorldSkill=async(action:any)=>{
         &&await walkToward({x:3125,z:3369},0,false,6);
       const end=position();success=success&&!!end&&(end.x>3124||end.z>3368);message=success?'Reached the Draynor Manor courtyard through the verified four-door route.':'Could not verify escape from the manor boundary.';
     }else if(skill==='travel-waypoints'){
-      const points=(Array.isArray(action.waypoints)?action.waypoints:[]).map((p:any)=>({x:Number(p[0]??p.x),z:Number(p[1]??p.z)})).filter((p:any)=>Number.isFinite(p.x)&&Number.isFinite(p.z));
-      success=points.length>0;
-      for(const point of points){if(!await walkToward(point,4,true)){success=false;break;}}
-      message=success?`Verified arrival at ${action.destination||'the selected landmark'}.`:`Could not verify arrival at ${action.destination||'the selected landmark'}.`;
+      const points:{x:number;z:number}[]=(Array.isArray(action.waypoints)?action.waypoints:[]).map((p:any)=>({x:Number(p[0]??p.x),z:Number(p[1]??p.z)})).filter((p:any)=>Number.isFinite(p.x)&&Number.isFinite(p.z));
+      const beforeLeg=position();
+      // A world-scale route may have many legs. One decision owns one bounded leg so
+      // action verification never outlives its lease; the next decision resumes from
+      // the observed new position.
+      const point=beforeLeg&&points.length?points.filter(p=>tileDistance(beforeLeg,p)>4).sort((a,b)=>tileDistance(beforeLeg,a)-tileDistance(beforeLeg,b))[0]||points[points.length-1]:null;
+      if(!point){success=false;message='No valid waypoint was available for the requested route.';}
+      else {
+        const reachedLeg=await walkToward(point,4,true,10);
+        const afterLeg=position();
+        const moved=!!beforeLeg&&!!afterLeg&&tileDistance(beforeLeg,afterLeg)>=2;
+        const finalPoint=points[points.length-1];
+        const reachedDestination=!!afterLeg&&!!finalPoint&&tileDistance(afterLeg,finalPoint)<=4;
+        if(reachedDestination){success=true;message=`Verified arrival at ${action.destination||'the selected landmark'}.`;}
+        else if(reachedLeg||moved){success=true;partial=true;message=`Verified route-leg progress toward ${action.destination||'the selected landmark'}; replan from the new position.`;}
+        else {success=false;message=`Could not verify progress toward ${action.destination||'the selected landmark'}.`;}
+      }
     }else message=`Unknown world skill ${skill}.`;
   }catch(err){message=String(err);success=false;}
    const end=position(),failedStep=procedure.step;
    const displacement=start&&end?Math.hypot(end.x-start.x,end.z-start.z):0;
    const arrivalVerified=success;
-   let partial=false;
    if(!success&&displacement>=24){partial=true;success=true;message=`Partial route progress verified: moved ${Math.round(displacement)} tiles toward ${action.destination||'the selected landmark'}; arrival is not yet verified. Replan from the new region.`;}
    if(!success){const game=(lastState?.gameMessages||[]).slice(-3).map((m:any)=>String(m.text||'')).filter(Boolean).join(' | ');message=`${message} Last attempted step: ${failedStep}.${game?` Recent game messages: ${game}`:''}`.slice(0,700);}
    procedure.status=success?'completed':'failed';procedure.step=success?(partial?'Partial progress verified':'Outcome verified'):'Verification failed';procedure.finishedTick=tick;procedure.end=end||undefined;procedure.message=message;lastProcedureRun={...procedure};procedureInFlight=null;
