@@ -6,59 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8557,
-    "teacherChoices": 8557,
+    "totalChoices": 8558,
+    "teacherChoices": 8558,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8860,
-    "totalReward": 3916.045,
-    "saves": 992,
+    "completedExperiences": 8861,
+    "totalReward": 3916.475,
+    "saves": 993,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 609,
+    "strategistRefreshes": 610,
     "strategistFailures": 85
   },
   "memories": [
-    {
-      "id": "mswgdcw5-4kqqlc",
-      "createdAt": "2026-08-16T23:45:30.245Z",
-      "tick": 558,
-      "runNumber": 172,
-      "kind": "relationship",
-      "text": "Beggar11 said: \"Lc031 plz give me something\". Current stance cooperative, trust 1.00.",
-      "importance": 1.4,
-      "tags": [
-        "social",
-        "beggar11",
-        "cooperative",
-        "potential help"
-      ],
-      "location": {
-        "x": 3079,
-        "z": 3252,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswgdppy-7gr6n7",
-      "createdAt": "2026-08-16T23:45:46.870Z",
-      "tick": 603,
-      "runNumber": 172,
-      "kind": "episode",
-      "text": "AI motor: Trade Diango (level 0, distance 1). Result: moved 3079,3252 → 3078,3252; execution rejected or failed. Reward -1.212.",
-      "importance": 1.31,
-      "tags": [
-        "economy",
-        "diango",
-        "trade",
-        "level 0"
-      ],
-      "location": {
-        "x": 3078,
-        "z": 3252,
-        "level": 0
-      }
-    },
     {
       "id": "mswgk0z0-fuxpbq",
       "createdAt": "2026-08-16T23:50:41.388Z",
@@ -8063,6 +8023,44 @@
       "location": {
         "x": 3179,
         "z": 3228,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswmo0a1-497mvh",
+      "createdAt": "2026-08-17T02:41:44.809Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record all known coordinates that are relevant to travel, combat, or exploration. Tracking key coordinates helps in planning efficient routes, avoiding traps, and ensuring safe travel between locations. It also aids in identifying potential merchant or shop locations that can be used",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record all known coordinates that are relevant to travel combat or exploration",
+        "ensure that these coordinates are reachable and not too far from your current location",
+        "verify that these coordinates are not blocked by obstacles or hostile npcs"
+      ],
+      "location": {
+        "x": 3179,
+        "z": 3233,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswmoa6c-xdf6rw",
+      "createdAt": "2026-08-17T02:41:57.636Z",
+      "tick": 97,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3179, 3238)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3178,
+        "z": 3237,
         "level": 0
       }
     }
@@ -23974,6 +23972,16 @@
         "lastAt": "2026-08-17T02:37:44.856Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "Exploring the south about 5 tiles, I've found a new NPC: Hobgoblin, located at Standard location. The location is Smashed chair, Tree stump, and Standard location. I've verified th"
+      },
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.43,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.43,
+        "lastAt": "2026-08-17T02:41:57.637Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Selected Explore north about 5 tiles to satisfy the current objective and verify the resulting world-state change."
       }
     },
     "area=397:402:0|hp=healthy|combat=0|agents=1|food=1|dialog=0|bank=0|shop=0|cats=explore": {
@@ -26436,8 +26444,8 @@
     "joebot": {
       "name": "Joebot",
       "firstSeenAt": "2026-08-15T19:51:38.287Z",
-      "lastSeenAt": "2026-08-17T02:38:03.857Z",
-      "encounters": 598,
+      "lastSeenAt": "2026-08-17T02:41:47.479Z",
+      "encounters": 600,
       "combatLevel": 126,
       "trust": 0,
       "stance": "unknown",
@@ -34573,8 +34581,8 @@
     "oralaba1": {
       "name": "Oralaba1",
       "firstSeenAt": "2026-08-16T17:46:56.533Z",
-      "lastSeenAt": "2026-08-17T02:37:45.116Z",
-      "encounters": 57,
+      "lastSeenAt": "2026-08-17T02:41:47.479Z",
+      "encounters": 59,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -34588,8 +34596,8 @@
     "oralabd4": {
       "name": "Oralabd4",
       "firstSeenAt": "2026-08-16T17:46:56.533Z",
-      "lastSeenAt": "2026-08-17T02:38:03.857Z",
-      "encounters": 39,
+      "lastSeenAt": "2026-08-17T02:41:47.479Z",
+      "encounters": 41,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -41777,8 +41785,8 @@
     "bwhelp02": {
       "name": "Bwhelp02",
       "firstSeenAt": "2026-08-17T02:27:03.240Z",
-      "lastSeenAt": "2026-08-17T02:36:57.029Z",
-      "encounters": 3,
+      "lastSeenAt": "2026-08-17T02:41:47.479Z",
+      "encounters": 4,
       "combatLevel": 39,
       "trust": 0,
       "stance": "unknown",
@@ -42601,8 +42609,8 @@
       "z": 3233,
       "level": 0,
       "firstSeenAt": "2026-08-16T17:00:42.577Z",
-      "lastSeenAt": "2026-08-17T02:37:32.213Z",
-      "visits": 3,
+      "lastSeenAt": "2026-08-17T02:41:47.479Z",
+      "visits": 5,
       "npcs": [
         "Goblin",
         "Butterfly",
@@ -67569,18 +67577,6 @@
   },
   "discoveries": [
     {
-      "id": "npc:butterfly:197:202:0",
-      "at": "2026-08-17T00:40:09.779Z",
-      "kind": "npc",
-      "text": "Butterfly observed near 3158, 3238, level 0.",
-      "location": {
-        "x": 3158,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "npc:goblin:197:202:0",
       "at": "2026-08-17T00:40:09.779Z",
       "kind": "npc",
@@ -71179,46 +71175,53 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3179:3233:3178:3237:0",
+      "at": "2026-08-17T02:41:57.637Z",
+      "kind": "route",
+      "text": "Route learned: 3179,3233 → 3178,3237; moved 3179,3233 → 3178,3237; new: loc:Table",
+      "location": {
+        "x": 3178,
+        "z": 3237,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T02:38:21.877Z",
+  "updatedAt": "2026-08-17T02:41:57.637Z",
   "activePlan": {
-    "objective": "Buy and sell runes in the Magic Guild Store",
-    "focus": "Explore the Magic Guild Store to locate the runes.",
-    "reason": "The Fire Rune is a valuable item that can be used for magical purposes.",
+    "objective": "Explore and document key coordinates for safe and efficient travel",
+    "focus": "Identify and record all known coordinates that are relevant to travel, combat, or exploration",
+    "reason": "Tracking key coordinates helps in planning efficient routes, avoiding traps, and ensuring safe travel between locations. It also aids in identifying potential merchant or shop locations that can be used",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Explore the Magic Guild Store to locate the runes.",
-        "status": "done",
-        "evidence": "moved 3179,3223 → 3179,3228; new: agent:Oralaba1, npc:Spider"
-      },
-      {
-        "id": "step-2",
-        "label": "Identify the runes available for purchase and sale.",
+        "label": "Identify and record all known coordinates that are relevant to travel, combat, or exploration",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Ensure that these coordinates are reachable and not too far from your current location",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Buy the Fire Rune at 3000 gold pieces for 2 gp.",
+        "label": "Verify that these coordinates are not blocked by obstacles or hostile NPCs",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Successfully purchased the Fire Rune at the Magic Guild Store."
+      "Observed position, inventory, XP, combat, or dialog change."
     ],
     "priorities": [
-      "Explore the Magic Guild Store to locate the runes.",
-      "Identify the runes available for purchase and sale.",
-      "Buy the Fire Rune at 3000 gold pieces for 2 gp."
+      "Identify and record all known coordinates that are relevant to travel, combat, or exploration",
+      "Ensure that these coordinates are reachable and not too far from your current location",
+      "Verify that these coordinates are not blocked by obstacles or hostile NPCs"
     ],
-    "avoid": [
-      "Close the bank to process item-purpose actions",
-      "Bank at Bank booth (distance 1)",
-      "Close the bank to process item-purpose actions"
-    ],
-    "updatedAt": "2026-08-17T02:38:13.840Z",
+    "avoid": [],
+    "updatedAt": "2026-08-17T02:41:44.809Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
