@@ -6,37 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8899,
-    "teacherChoices": 8899,
+    "totalChoices": 8900,
+    "teacherChoices": 8900,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9200,
-    "totalReward": 3834.634,
-    "saves": 1028,
+    "completedExperiences": 9201,
+    "totalReward": 3835.064,
+    "saves": 1029,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 939,
     "strategistFailures": 85
   },
   "memories": [
-    {
-      "id": "mswpqkqk-vf4fcf",
-      "createdAt": "2026-08-17T04:07:43.484Z",
-      "tick": 1718,
-      "runNumber": 188,
-      "kind": "observation",
-      "text": "SDK feedback (dialogue): The castle is not free. The fee is 15gp. Trade doorcloser1",
-      "importance": 1,
-      "tags": [
-        "sdk feedback",
-        "dialogue"
-      ],
-      "location": {
-        "x": 3177,
-        "z": 3314,
-        "level": 0
-      }
-    },
     {
       "id": "mswpqkqk-ggn5dt",
       "createdAt": "2026-08-17T04:07:43.484Z",
@@ -7516,6 +7498,23 @@
       "location": {
         "x": 3135,
         "z": 3328,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswpxad6-6lobo9",
+      "createdAt": "2026-08-17T04:12:56.634Z",
+      "tick": 1,
+      "runNumber": 190,
+      "kind": "observation",
+      "text": "SDK feedback (sdk_feedback): Welcome to RuneScape.",
+      "importance": 1,
+      "tags": [
+        "sdk feedback"
+      ],
+      "location": {
+        "x": 3135,
+        "z": 3323,
         "level": 0
       }
     }
@@ -24251,6 +24250,18 @@
         "lastAt": "2026-08-17T04:10:40.050Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I will explore north about 5 tiles to locate any visible resources or NPCs."
+      }
+    },
+    "area=391:415:0|hp=healthy|combat=0|agents=1|food=0|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:north": {
+        "n": 1,
+        "avgReward": 0.43,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.43,
+        "lastAt": "2026-08-17T04:13:24.752Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Exploring the north 5 tiles will help me identify key locations for navigation and resource gathering."
       }
     }
   },
@@ -45537,8 +45548,8 @@
     "gflgoblin": {
       "name": "Gflgoblin",
       "firstSeenAt": "2026-08-17T03:22:08.911Z",
-      "lastSeenAt": "2026-08-17T04:09:36.613Z",
-      "encounters": 1,
+      "lastSeenAt": "2026-08-17T04:12:56.634Z",
+      "encounters": 2,
       "trust": -0.6,
       "stance": "distrusted",
       "conversations": 236,
@@ -45676,7 +45687,8 @@
           "direction": "incoming",
           "text": "All hail the disaffected defection"
         }
-      ]
+      ],
+      "combatLevel": 5
     },
     "bramblor": {
       "name": "Bramblor",
@@ -46391,8 +46403,8 @@
     "grukthar": {
       "name": "Grukthar",
       "firstSeenAt": "2026-08-17T03:38:20.797Z",
-      "lastSeenAt": "2026-08-17T04:10:26.800Z",
-      "encounters": 29,
+      "lastSeenAt": "2026-08-17T04:12:56.634Z",
+      "encounters": 30,
       "trust": -0.36,
       "stance": "distrusted",
       "conversations": 78,
@@ -47087,8 +47099,8 @@
     "osricfen": {
       "name": "Osricfen",
       "firstSeenAt": "2026-08-17T03:38:54.683Z",
-      "lastSeenAt": "2026-08-17T04:10:26.800Z",
-      "encounters": 79,
+      "lastSeenAt": "2026-08-17T04:12:56.634Z",
+      "encounters": 80,
       "trust": 0.16,
       "stance": "friendly",
       "conversations": 64,
@@ -49866,8 +49878,8 @@
     "hinah87": {
       "name": "Hinah87",
       "firstSeenAt": "2026-08-17T03:48:53.981Z",
-      "lastSeenAt": "2026-08-17T04:10:26.800Z",
-      "encounters": 32,
+      "lastSeenAt": "2026-08-17T04:12:56.634Z",
+      "encounters": 33,
       "trust": -0.2,
       "stance": "cautious",
       "conversations": 29,
@@ -58016,8 +58028,8 @@
       "z": 3323,
       "level": 0,
       "firstSeenAt": "2026-08-17T04:10:04.241Z",
-      "lastSeenAt": "2026-08-17T04:10:26.800Z",
-      "visits": 3,
+      "lastSeenAt": "2026-08-17T04:12:56.634Z",
+      "visits": 4,
       "npcs": [
         "Giant spider",
         "Tree"
@@ -82388,18 +82400,6 @@
   },
   "discoveries": [
     {
-      "id": "place:bush:198:202:0",
-      "at": "2026-08-17T02:37:32.213Z",
-      "kind": "place",
-      "text": "Bush observed near 3179, 3233, level 0.",
-      "location": {
-        "x": 3179,
-        "z": 3233,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:standard:198:202:0",
       "at": "2026-08-17T02:37:32.213Z",
       "kind": "place",
@@ -86000,7 +86000,7 @@
       "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T04:10:40.051Z",
+  "updatedAt": "2026-08-17T04:13:24.754Z",
   "activePlan": {
     "objective": "Explore and document key coordinates for safe and efficient travel",
     "focus": "Identify and record essential locations for navigation and resource gathering",
