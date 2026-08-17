@@ -305,6 +305,15 @@ const itemDisposition=(item:any,state:BotWorldState):ItemDisposition=>{
 };
 const dispositionLabel=(item:any,state:BotWorldState)=>itemDisposition(item,state);
 const isCapacityPressure=(state:BotWorldState)=>Math.max(0,28-(state.inventory||[]).length)<8;
+// World-scale atlas: these are hypotheses to investigate, not a progression route.
+// Sol chooses among them using novelty, capability, safety, and current evidence.
+const WORLD_ATLAS=[
+  {id:'lumbridge',name:'Lumbridge',x:3222,z:3218,waypoints:[[3130,3260],[3180,3225],[3222,3218]],tags:['town','quest','social','training','bank']},
+  {id:'varrock',name:'Varrock',x:3210,z:3424,waypoints:[[3130,3320],[3170,3370],[3210,3424]],tags:['city','quest','market','combat','social']},
+  {id:'falador',name:'Falador',x:2965,z:3380,waypoints:[[3040,3320],[3000,3360],[2965,3380]],tags:['city','quest','mining','combat','social']},
+  {id:'al-kharid',name:'Al Kharid',x:3293,z:3179,waypoints:[[3180,3220],[3240,3195],[3293,3179]],tags:['desert-edge','trade','combat','quest']},
+  {id:'wilderness-edge',name:'Wilderness edge',x:3080,z:3520,waypoints:[[3090,3360],[3090,3440],[3080,3520]],tags:['danger','combat','risk','discovery']}
+] as const;
 const economyAction=(type:string)=>/^(shopSell|bankDeposit|clickDialogOption|shopBuy|bankWithdraw|closeShop|closeModal)$/.test(type);
 const meaningfulWithdrawal=(c:AgentCandidate)=>c.action?.type!=='bankWithdraw'||/withdraw.*(pickaxe|axe|fishing net|fishing rod|tinderbox|shrimp|anchov|bread|food|cooked|lobster|trout|salmon)/i.test(`${c.label} ${(c.tags||[]).join(' ')}`);
 const position=()=>lastState?.player?{x:lastState.player.worldX,z:lastState.player.worldZ,level:lastState.player.level}:null;
@@ -494,6 +503,15 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
     add({label:'Travel to Draynor Bank at 3092,3243 using verified waypoint navigation',category:'navigation-skill',fingerprint:'skill:travel:draynor-bank',settleTicks:16,action:{type:'worldSkill',skill:'travel-waypoints',destination:'Draynor Bank',waypoints},tags:['travel','bank','draynor','repository-coordinate']});
   }
   if(!insideDraynorManor&&p.level===0&&distance(3087,3230)>6&&distance(3087,3230)<180) add({label:'Travel to the Draynor fishing area at 3087,3230 and verify arrival',category:'navigation-skill',fingerprint:'skill:travel:draynor-fishing',settleTicks:16,action:{type:'worldSkill',skill:'travel-waypoints',destination:'Draynor fishing area',waypoints:[[3087,3230]]},tags:['travel','fishing','resource','repository-coordinate']});
+
+  // Offer distant regions as optional hypotheses. Do not force one: the language
+  // agent must choose whether novelty, a capability, a quest, trade, or danger
+  // justifies the travel cost in the current life context.
+  for(const place of WORLD_ATLAS){
+    if(p.level!==0||distance(place.x,place.z)<=18)continue;
+    const sector=`${Math.floor(p.worldX/32)}:${Math.floor(p.worldZ/32)}`;
+    add({label:`Investigate ${place.name} (${place.tags.join(', ')}) and verify what is there`,category:'navigation-skill',fingerprint:`skill:atlas:${place.id}`,settleTicks:24,action:{type:'worldSkill',skill:'travel-waypoints',destination:place.name,waypoints:place.waypoints,reason:`Test whether ${place.name} offers a useful new region, capability, quest, resource, social contact, or risk from sector ${sector}.`},tags:['world-scale','region','novelty',place.id,...place.tags]});
+  }
 
   // Always leave room for navigation so a crowded scene cannot trap the agent in local interactions.
   const walks=[['north',0,5],['south',0,-5],['east',5,0],['west',-5,0],['northeast',4,4],['northwest',-4,4],['southeast',4,-4],['southwest',-4,-4]] as const;
