@@ -10,13 +10,13 @@
     "teacherChoices": 9190,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9448,
-    "totalReward": 3784.488,
-    "saves": 1073,
+    "completedExperiences": 9450,
+    "totalReward": 3784.988,
+    "saves": 1074,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1149,
-    "strategistFailures": 172
+    "strategistFailures": 174
   },
   "memories": [
     {
@@ -22631,14 +22631,14 @@
         "exampleReason": "Emergency-only fallback: TimeoutError: The operation timed out."
       },
       "inventory:eat:shrimps": {
-        "n": 1,
+        "n": 2,
         "avgReward": -0.08,
         "positive": 0,
         "negative": 0,
         "lastReward": -0.08,
-        "lastAt": "2026-08-17T07:17:37.107Z",
+        "lastAt": "2026-08-17T10:36:14.099Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
-        "exampleReason": "Emergency-only fallback: TimeoutError: The operation timed out."
+        "exampleReason": "Emergency-only fallback: Error: ollama 503"
       },
       "dialog:1:click here to continue": {
         "n": 1,
@@ -22647,6 +22647,16 @@
         "negative": 1,
         "lastReward": -0.6,
         "lastAt": "2026-08-17T10:36:10.181Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
+        "exampleReason": "Emergency-only fallback: Error: ollama 503"
+      },
+      "dialog:recover-stalled-economy": {
+        "n": 1,
+        "avgReward": 0.58,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.58,
+        "lastAt": "2026-08-17T10:36:11.992Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
         "exampleReason": "Emergency-only fallback: Error: ollama 503"
       }
@@ -71159,12 +71169,12 @@
     },
     "201:201:0": {
       "key": "201:201:0",
-      "x": 3223,
-      "z": 3226,
+      "x": 3222,
+      "z": 3222,
       "level": 0,
       "firstSeenAt": "2026-08-16T17:02:33.601Z",
-      "lastSeenAt": "2026-08-17T08:12:54.219Z",
-      "visits": 79,
+      "lastSeenAt": "2026-08-17T10:36:12.310Z",
+      "visits": 80,
       "npcs": [
         "Man",
         "Cook",
@@ -72474,8 +72484,8 @@
       "z": 3106,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T10:36:08.405Z",
-      "visits": 341,
+      "lastSeenAt": "2026-08-17T10:36:10.500Z",
+      "visits": 342,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -97664,45 +97674,35 @@
       "failed": 3,
       "lastAt": "2026-08-17T10:36:10.181Z",
       "example": "Close the blocking interface → Talk-to RuneScape Guide (level 0, distance 2) → Dialog 1: Click here to continue"
+    },
+    "npc:talk to:runescape guide > dialog:1:click here to continue > dialog:recover-stalled-economy": {
+      "sequence": [
+        "npc:talk to:runescape guide",
+        "dialog:1:click here to continue",
+        "dialog:recover-stalled-economy"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-17T10:36:11.992Z",
+      "example": "Talk-to RuneScape Guide (level 0, distance 2) → Dialog 1: Click here to continue → Advance stalled economy dialog and re-evaluate"
+    },
+    "dialog:1:click here to continue > dialog:recover-stalled-economy > inventory:eat:shrimps": {
+      "sequence": [
+        "dialog:1:click here to continue",
+        "dialog:recover-stalled-economy",
+        "inventory:eat:shrimps"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-17T10:36:14.099Z",
+      "example": "Dialog 1: Click here to continue → Advance stalled economy dialog and re-evaluate → Eat Shrimps"
     }
   },
   "discoveries": [
-    {
-      "id": "place:bullrushes:201:201:0",
-      "at": "2026-08-17T07:06:39.240Z",
-      "kind": "place",
-      "text": "Bullrushes observed near 3230, 3227, level 0.",
-      "location": {
-        "x": 3230,
-        "z": 3227,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:dead tree:201:201:0",
-      "at": "2026-08-17T07:06:39.240Z",
-      "kind": "resource",
-      "text": "Dead tree observed near 3230, 3227, level 0.",
-      "location": {
-        "x": 3230,
-        "z": 3227,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:hollow tree:201:201:0",
-      "at": "2026-08-17T07:06:39.240Z",
-      "kind": "resource",
-      "text": "Hollow tree observed near 3230, 3227, level 0.",
-      "location": {
-        "x": 3230,
-        "z": 3227,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "resource:shop assistant:201:201:0",
       "at": "2026-08-17T07:07:25.423Z",
@@ -101266,9 +101266,45 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3094:3106:3222:3222:0",
+      "at": "2026-08-17T10:36:11.992Z",
+      "kind": "route",
+      "text": "Route learned: 3094,3106 → 3222,3222; moved 3094,3106 → 3222,3222; inventory changed",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:hans:201:201:0",
+      "at": "2026-08-17T10:36:12.310Z",
+      "kind": "npc",
+      "text": "Hans observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "npc:cook:201:201:0",
+      "at": "2026-08-17T10:36:12.310Z",
+      "kind": "npc",
+      "text": "Cook observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T10:36:10.181Z",
+  "updatedAt": "2026-08-17T10:36:14.099Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
