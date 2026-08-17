@@ -10,13 +10,13 @@
     "teacherChoices": 9190,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9450,
-    "totalReward": 3784.988,
-    "saves": 1074,
+    "completedExperiences": 9460,
+    "totalReward": 3778.446,
+    "saves": 1075,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1149,
-    "strategistFailures": 174
+    "strategistFailures": 184
   },
   "memories": [
     {
@@ -22659,6 +22659,16 @@
         "lastAt": "2026-08-17T10:36:11.992Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
         "exampleReason": "Emergency-only fallback: Error: ollama 503"
+      },
+      "inventory:eat:bread": {
+        "n": 1,
+        "avgReward": -0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": -0.08,
+        "lastAt": "2026-08-17T10:36:15.900Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
+        "exampleReason": "Emergency-only fallback: Error: ollama 503"
       }
     },
     "area=385:404:0|hp=healthy|combat=1|agents=1|food=0|dialog=0|bank=0|shop=0|cats=combat,explore": {
@@ -25093,6 +25103,114 @@
         "negative": 1,
         "lastReward": -0.79,
         "lastAt": "2026-08-17T08:38:28.125Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15105": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.23,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.23,
+        "lastAt": "2026-08-17T10:36:17.406Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15111": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.376,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.376,
+        "lastAt": "2026-08-17T10:36:19.191Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15117": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.566,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.566,
+        "lastAt": "2026-08-17T10:36:21.008Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15123": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.79,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.79,
+        "lastAt": "2026-08-17T10:36:22.799Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15129": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-17T10:36:24.588Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15135": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-17T10:36:26.404Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15141": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-17T10:36:28.189Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15147": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-17T10:36:29.997Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
+      }
+    },
+    "llm-timeout:15153": {
+      "wait": {
+        "n": 1,
+        "avgReward": -0.9,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.9,
+        "lastAt": "2026-08-17T10:36:31.805Z",
         "exampleGoal": "Maintain safe verified play while the language model reconnects",
         "exampleReason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
       }
@@ -71173,8 +71291,8 @@
       "z": 3222,
       "level": 0,
       "firstSeenAt": "2026-08-16T17:02:33.601Z",
-      "lastSeenAt": "2026-08-17T10:36:12.310Z",
-      "visits": 80,
+      "lastSeenAt": "2026-08-17T10:36:30.293Z",
+      "visits": 90,
       "npcs": [
         "Man",
         "Cook",
@@ -84215,11 +84333,12 @@
         "wait",
         "wait"
       ],
-      "n": 5,
-      "avgReward": -0.45,
+      "n": 12,
+      "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-15T20:30:09.883Z",
-      "example": "Wait and observe for a moment → Wait and observe for a moment → Wait and observe for a moment"
+      "lastAt": "2026-08-17T10:36:31.805Z",
+      "example": "Wait and observe for a moment → Wait and observe for a moment → Wait and observe for a moment",
+      "failed": 21
     },
     "dialog:1:click here to continue > npc:attack:dark wizard > loc:use quickly:bank booth": {
       "sequence": [
@@ -97700,21 +97819,48 @@
       "failed": 1,
       "lastAt": "2026-08-17T10:36:14.099Z",
       "example": "Dialog 1: Click here to continue → Advance stalled economy dialog and re-evaluate → Eat Shrimps"
+    },
+    "dialog:recover-stalled-economy > inventory:eat:shrimps > inventory:eat:bread": {
+      "sequence": [
+        "dialog:recover-stalled-economy",
+        "inventory:eat:shrimps",
+        "inventory:eat:bread"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 0,
+      "lastAt": "2026-08-17T10:36:15.900Z",
+      "example": "Advance stalled economy dialog and re-evaluate → Eat Shrimps → Eat Bread"
+    },
+    "inventory:eat:shrimps > inventory:eat:bread > wait": {
+      "sequence": [
+        "inventory:eat:shrimps",
+        "inventory:eat:bread",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-17T10:36:17.406Z",
+      "example": "Eat Shrimps → Eat Bread → Wait and observe for a moment"
+    },
+    "inventory:eat:bread > wait > wait": {
+      "sequence": [
+        "inventory:eat:bread",
+        "wait",
+        "wait"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 2,
+      "lastAt": "2026-08-17T10:36:19.191Z",
+      "example": "Eat Bread → Wait and observe for a moment → Wait and observe for a moment"
     }
   },
   "discoveries": [
-    {
-      "id": "resource:shop assistant:201:201:0",
-      "at": "2026-08-17T07:07:25.423Z",
-      "kind": "resource",
-      "text": "Shop assistant observed near 3223, 3231, level 0.",
-      "location": {
-        "x": 3223,
-        "z": 3231,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
     {
       "id": "npc:hans:201:202:0",
       "at": "2026-08-17T07:08:48.837Z",
@@ -101302,9 +101448,21 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:giant spider:201:201:0",
+      "at": "2026-08-17T10:36:19.507Z",
+      "kind": "npc",
+      "text": "Giant spider observed near 3222, 3222, level 0.",
+      "location": {
+        "x": 3222,
+        "z": 3222,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T10:36:14.099Z",
+  "updatedAt": "2026-08-17T10:36:31.805Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
