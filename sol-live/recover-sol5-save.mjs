@@ -40,9 +40,9 @@ const p8 = (value) => { const n = BigInt(value); for (let shift = 56n; shift >= 
 // rs-sdk PlayerLoading.SAV_MAGIC and SAV_VERSION.
 p2(0x2004);
 p2(7);
-// Safe, observed local-world spawn vicinity in the starter area.
-p2(3098);
-p2(3106);
+// Verified open Lumbridge spawn from the rs-sdk world atlas; avoids the door-blocked recovery location.
+p2(3222);
+p2(3218);
 p1(0);
 // Default Player appearance/body values from Player.ts.
 for (const value of [0, 10, 18, 26, 33, 36, 42]) p1(value);

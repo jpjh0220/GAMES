@@ -747,7 +747,25 @@ const executeChoice=(candidate:AgentCandidate,choice:AgentChoice,state:BotWorldS
   }
   if(action.type==='worldSkill'){
     candidate.action.executionResult={success:true,pending:true};
-    void executeWorldSkill(action).then(result=>{candidate.action.executionResult=result;refreshSnapshot(lastState);}).catch(err=>{candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};procedureInFlight=null;refreshSnapshot(lastState);});
+    const worldSkillStartedTick=actionStartedTick;
+    void executeWorldSkill(action).then(result=>{
+      candidate.action.executionResult=result;
+      // A bounded navigation procedure can fail legitimately (blocked route, stale map
+      // flag, or no progress). Release its outcome lease immediately so the next
+      // decision sees the measured failure instead of waiting for a generic watchdog.
+      if(!result?.success&&actionAwaitingOutcome&&actionStartedTick===worldSkillStartedTick){
+        const aborted=brain.abortExperience(`world skill failed: ${String(result?.message||'verification failed').slice(0,240)}`);
+        actionAwaitingOutcome=false;actionStartedTick=-1;procedureInFlight=null;nextDecisionTick=tick+1;
+        currentGoal='Replan after verified navigation failure';
+        currentWhy=String(result?.message||'The travel procedure did not verify arrival; choose a fresh local action.').slice(0,280);
+        void log('WORLD_SKILL_LEASE_RELEASED',{tick,startedTick:worldSkillStartedTick,aborted,message:result?.message||null});
+      }
+      refreshSnapshot(lastState);
+    }).catch(err=>{
+      candidate.action.executionResult={success:false,message:String(err),reason:'world_skill_exception'};
+      if(actionAwaitingOutcome&&actionStartedTick===worldSkillStartedTick){brain.abortExperience(`world skill exception: ${String(err).slice(0,240)}`);actionAwaitingOutcome=false;actionStartedTick=-1;nextDecisionTick=tick+1;}
+      procedureInFlight=null;refreshSnapshot(lastState);
+    });
     void log('AGENT_ACTION',{tick,source:choice.source,goal:choice.goal,reason:choice.reason,expected:choice.expectedOutcome,confidence:choice.confidence,action:candidate.label,actionType:action.type,actionPayload:action,fingerprint:candidate.fingerprint,result:'verified-world-skill'});
     return;
   }
@@ -859,8 +877,15 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     decisionStartedTick=-1;
     nextDecisionTick=tick+1;
     currentGoal='Recover stalled cognition';
-    currentWhy='The controller exceeded its body-level lease; discard the stale decision and resume with the deterministic safety path.';
-    void log('AGENT_DECISION_WATCHDOG',{startedTick,lease,tick,timeoutMs:30000});
+    currentWhy='The controller exceeded its body-level lease; discard the stale decision and execute one bounded legal fallback.';
+    const fallbackState=lastState;
+    const fallbackCandidates=fallbackState?.player?capacityGate(fallbackState,lootGate(fallbackState,buildCandidates(fallbackState))):[];
+    const fallback=fallbackState?.player?chooseTimeoutFallback(fallbackState,fallbackCandidates):null;
+    void log('AGENT_DECISION_WATCHDOG',{startedTick,lease,tick,timeoutMs:30000,fallback:fallback?.candidate.label||null});
+    if(fallback&&fallbackState?.player&&!actionAwaitingOutcome){
+      executeChoice(fallback.candidate,fallback.choice,fallbackState);
+      nextDecisionTick=tick+2;
+    }
     refreshSnapshot(lastState);
   },30000);
   refreshSnapshot(stateAtStart);

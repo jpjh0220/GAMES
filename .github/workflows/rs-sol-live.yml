@@ -121,7 +121,7 @@ jobs:
           bun install --frozen-lockfile
           bun run sqlite:migrate
           RECOVERY_DIR="./data/players/main"
-          RECOVERY_MARKER="$RECOVERY_DIR/.sol-verified-recovery-v1"
+          RECOVERY_MARKER="$RECOVERY_DIR/.sol-verified-recovery-v2"
           NORMALIZED_SOL_USER="$(printf '%s' "$SOL_USER" | tr '[:upper:]' '[:lower:]')"
           if [ ! -f "$RECOVERY_MARKER" ]; then
             mkdir -p "$RECOVERY_DIR"
@@ -129,7 +129,7 @@ jobs:
             if [ "$NORMALIZED_SOL_USER" != "$SOL_USER" ]; then
               node ../webclient/recover-sol5-save.mjs "$RECOVERY_DIR/${NORMALIZED_SOL_USER}.sav" --force
             fi
-            printf 'verified remote Sol5 skill recovery v1\n' > "$RECOVERY_MARKER"
+            printf 'verified remote Sol5 skill recovery v2 open-spawn\n' > "$RECOVERY_MARKER"
           else
             echo "Preserving verified recovered player saves from $RECOVERY_DIR"
           fi
