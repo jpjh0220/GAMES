@@ -6,37 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 9083,
-    "teacherChoices": 9083,
+    "totalChoices": 9085,
+    "teacherChoices": 9085,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9381,
-    "totalReward": 3828.475,
-    "saves": 1053,
+    "completedExperiences": 9382,
+    "totalReward": 3827.875,
+    "saves": 1054,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 1104,
+    "strategistRefreshes": 1105,
     "strategistFailures": 94
   },
   "memories": [
-    {
-      "id": "mswrv7a2-7fmm9v",
-      "createdAt": "2026-08-17T05:07:18.554Z",
-      "tick": 5401,
-      "runNumber": 190,
-      "kind": "observation",
-      "text": "SDK feedback (dialogue): Hey trda135 nice mithril kiteshield",
-      "importance": 1,
-      "tags": [
-        "sdk feedback",
-        "dialogue"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3360,
-        "level": 0
-      }
-    },
     {
       "id": "mswrv7a2-2jhuyg",
       "createdAt": "2026-08-17T05:07:18.554Z",
@@ -7486,6 +7468,26 @@
       "location": {
         "x": 3087,
         "z": 3240,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswx4nnt-2cisx6",
+      "createdAt": "2026-08-17T07:34:37.769Z",
+      "tick": 0,
+      "runNumber": 214,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record all known coordinates that are reachable and relevant to current objectives. Exploration is essential for survival and progression, but must be done efficiently to avoid wasting resources or time",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record all known coordinates that are reachable and relevant to current objectives",
+        "prioritize locations that offer utility such as shops banks or safe zones",
+        "avoid repeating the same activity indefinitely and switch to new subgoals when necessary"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3106,
         "level": 0
       }
     }
@@ -24633,12 +24635,12 @@
     },
     "area=386:388:0|hp=healthy|combat=0|agents=0|food=0|dialog=0|bank=0|shop=0|cats=modal": {
       "modal:close-interface": {
-        "n": 2,
+        "n": 3,
         "avgReward": -0.6,
         "positive": 0,
-        "negative": 2,
+        "negative": 3,
         "lastReward": -0.6,
-        "lastAt": "2026-08-17T07:30:28.776Z",
+        "lastAt": "2026-08-17T07:34:50.133Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "Selected Close the blocking interface to satisfy the current objective and verify the resulting world-state change."
       }
@@ -72236,8 +72238,8 @@
       "z": 3106,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T07:30:14.083Z",
-      "visits": 12,
+      "lastSeenAt": "2026-08-17T07:34:39.343Z",
+      "visits": 15,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -97019,18 +97021,6 @@
   },
   "discoveries": [
     {
-      "id": "place:portrait:201:201:0",
-      "at": "2026-08-17T07:03:02.040Z",
-      "kind": "place",
-      "text": "Portrait observed near 3222, 3222, level 0.",
-      "location": {
-        "x": 3222,
-        "z": 3222,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:landscape:201:201:0",
       "at": "2026-08-17T07:03:02.040Z",
       "kind": "place",
@@ -100617,45 +100607,53 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "npc:butterfly:193:194:0",
+      "at": "2026-08-17T07:34:32.727Z",
+      "kind": "npc",
+      "text": "Butterfly observed near 3094, 3106, level 0.",
+      "location": {
+        "x": 3094,
+        "z": 3106,
+        "level": 0
+      },
+      "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T07:30:28.780Z",
+  "updatedAt": "2026-08-17T07:34:50.133Z",
   "activePlan": {
-    "objective": "Safe Fishing Locations",
-    "focus": "Identify and record safe fishing spots",
-    "reason": "Fishing is a key activity for resource gathering and progression. Safe spots ensure efficiency and reduce risk. Use designated areas for lower-level fishing and avoid dangerous zones for higher-level fishing.",
+    "objective": "Explore and document key coordinates for safe and efficient travel",
+    "focus": "Identify and record all known coordinates that are reachable and relevant to current objectives",
+    "reason": "Exploration is essential for survival and progression, but must be done efficiently to avoid wasting resources or time",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Identify and record safe fishing spots",
-        "status": "done",
-        "evidence": "4 damage taken; moved 3092,3243 → 3087,3230; new: loc:Bullrushes, loc:Stones, loc:Thistle"
-      },
-      {
-        "id": "step-2",
-        "label": "Use designated spots for level 1 fishing",
+        "label": "Identify and record all known coordinates that are reachable and relevant to current objectives",
         "status": "active"
       },
       {
+        "id": "step-2",
+        "label": "Prioritize locations that offer utility, such as shops, banks, or safe zones",
+        "status": "pending"
+      },
+      {
         "id": "step-3",
-        "label": "Avoid dangerous areas and use caution",
+        "label": "Avoid repeating the same activity indefinitely and switch to new subgoals when necessary",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Successfully identified and used safe fishing locations, ensuring safe and efficient fishing activity"
+      "Documented key coordinates for safe"
     ],
     "priorities": [
-      "Identify and record safe fishing spots",
-      "Use designated spots for level 1 fishing",
-      "Avoid dangerous areas and use caution"
+      "Identify and record all known coordinates that are reachable and relevant to current objectives",
+      "Prioritize locations that offer utility, such as shops, banks, or safe zones",
+      "Avoid repeating the same activity indefinitely and switch to new subgoals when necessary"
     ],
-    "avoid": [
-      "Wait and observe for a moment",
-      "Dialog 1: Click here to continue"
-    ],
-    "updatedAt": "2026-08-17T07:17:24.551Z",
+    "avoid": [],
+    "updatedAt": "2026-08-17T07:34:37.769Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 1
   }
