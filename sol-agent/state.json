@@ -6,415 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8627,
-    "teacherChoices": 8627,
+    "totalChoices": 8637,
+    "teacherChoices": 8637,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8930,
-    "totalReward": 3894.907,
-    "saves": 1000,
+    "completedExperiences": 8940,
+    "totalReward": 3892.812,
+    "saves": 1001,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
-    "strategistRefreshes": 673,
+    "strategistRefreshes": 681,
     "strategistFailures": 85
   },
   "memories": [
-    {
-      "id": "mswibfbu-e21ck1",
-      "createdAt": "2026-08-17T00:39:59.322Z",
-      "tick": 0,
-      "runNumber": 178,
-      "kind": "strategy",
-      "text": "AI strategist: Identify and record safe fishing spots. Safe fishing locations are essential for progressing in the game. Use designated spots for level 1 fishing to ensure success. Avoid dangerous areas and avoid dark wizards to prevent losing progress.",
-      "importance": 1.1,
-      "tags": [
-        "ai strategy",
-        "identify and record safe fishing spots",
-        "use designated spots for level 1 fishing",
-        "avoid dangerous areas and avoid dark wizards"
-      ],
-      "location": {
-        "x": 3150,
-        "z": 3247,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswibn77-yorctd",
-      "createdAt": "2026-08-17T00:40:09.523Z",
-      "tick": 1550,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Attack Bear (level 21, distance 10). Result: +1465 XP; 11 damage dealt; moved 3150,3247 → 3158,3238. Reward 5.706.",
-      "importance": 3.55,
-      "tags": [
-        "combat",
-        "bear",
-        "attack",
-        "level 21",
-        "loc standard",
-        "loc tree stump",
-        "loc daisies"
-      ],
-      "location": {
-        "x": 3158,
-        "z": 3238,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswicqxn-zfzb2i",
-      "createdAt": "2026-08-17T00:41:01.019Z",
-      "tick": 1687,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Pick up Air rune (distance 11). Result: moved 3157,3236 → 3153,3241. Reward 0.08.",
-      "importance": 0.74,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "air rune",
-        "valuable drop",
-        "agent x7oev4dq0",
-        "loc fern"
-      ],
-      "location": {
-        "x": 3153,
-        "z": 3241,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswidv2p-9ej0zx",
-      "createdAt": "2026-08-17T00:41:53.041Z",
-      "tick": 1810,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Bank at Bank booth (distance 1). Result: moved 3092,3243 → 3092,3242. Reward 0.072.",
-      "importance": 0.74,
-      "tags": [
-        "bank",
-        "open",
-        "bank booth",
-        "use quickly",
-        "agent shadow05",
-        "agent fishmax3",
-        "agent fishmax2",
-        "agent fishmax10",
-        "agent fishmax9",
-        "agent fishmax5",
-        "agent fishmax7",
-        "agent fishmax8"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswidv2p-xpjy9l",
-      "createdAt": "2026-08-17T00:41:53.041Z",
-      "tick": 1810,
-      "runNumber": 178,
-      "kind": "lesson",
-      "text": "Item-purpose lesson: Bank at Bank booth (distance 1) produced moved 3092,3243 → 3092,3242 with reward 0.072. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
-      "importance": 1.07,
-      "tags": [
-        "item purpose",
-        "bank",
-        "open",
-        "bank booth",
-        "use quickly"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswie550-4cl6yi",
-      "createdAt": "2026-08-17T00:42:06.084Z",
-      "tick": 1839,
-      "runNumber": 178,
-      "kind": "lesson",
-      "text": "Item-purpose lesson: Deposit all Air rune because capacity pressure requires temporary storage produced inventory changed with reward -0.32. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
-      "importance": 1.32,
-      "tags": [
-        "item purpose",
-        "bank",
-        "store",
-        "learned item policy",
-        "air rune"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswieppk-jidnc4",
-      "createdAt": "2026-08-17T00:42:32.744Z",
-      "tick": 1898,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 8). Result: +532 XP; 4 damage dealt; moved 3092,3242 → 3085,3241. Reward 4.656.",
-      "importance": 3.03,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent fishmax2"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswieppk-gm98wv",
-      "createdAt": "2026-08-17T00:42:32.744Z",
-      "tick": 1898,
-      "runNumber": 178,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Attack Dark wizard (level 7, distance 8) worked across 31 similar samples with average reward 1.75.",
-      "importance": 2.75,
-      "tags": [
-        "combat",
-        "npc attack dark wizard"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiepvo-2y6z8r",
-      "createdAt": "2026-08-17T00:42:32.964Z",
-      "tick": 1899,
-      "runNumber": 178,
-      "kind": "observation",
-      "text": "SDK feedback (sdk_feedback): You feel weakened.",
-      "importance": 1,
-      "tags": [
-        "sdk feedback"
-      ],
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswif1xb-evw8v6",
-      "createdAt": "2026-08-17T00:42:48.575Z",
-      "tick": 1936,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Attack Dark wizard (level 7, distance 12). Result: moved 3085,3241 → 3090,3229. Reward 0.012.",
-      "importance": 0.71,
-      "tags": [
-        "combat",
-        "dark wizard",
-        "attack",
-        "level 7",
-        "agent fishmax4",
-        "agent fishmax10",
-        "npc black knight",
-        "loc bullrushes",
-        "loc stones",
-        "loc thistle"
-      ],
-      "location": {
-        "x": 3090,
-        "z": 3229,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswifal6-i49gth",
-      "createdAt": "2026-08-17T00:42:59.802Z",
-      "tick": 1964,
-      "runNumber": 178,
-      "kind": "episode",
-      "text": "AI motor: Explore west about 5 tiles. Result: moved 3090,3229 → 3086,3230; new: agent:Goo002, agent:Ndzq5pll9. Reward 0.33.",
-      "importance": 0.86,
-      "tags": [
-        "explore",
-        "west",
-        "agent goo002",
-        "agent ndzq5pll9"
-      ],
-      "location": {
-        "x": 3086,
-        "z": 3230,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswinb4p-wo9yrf",
-      "createdAt": "2026-08-17T00:49:13.753Z",
-      "tick": 118,
-      "runNumber": 179,
-      "kind": "observation",
-      "text": "Action feedback (sdk_feedback): Picking up item 995",
-      "importance": 1.2,
-      "tags": [
-        "sdk feedback",
-        "pickup"
-      ],
-      "location": {
-        "x": 3094,
-        "z": 3247,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswinb4r-cuzbog",
-      "createdAt": "2026-08-17T00:49:13.755Z",
-      "tick": 118,
-      "runNumber": 179,
-      "kind": "episode",
-      "text": "AI motor: Pick up 2410 Coins (distance 5). Result: moved 3092,3242 → 3094,3247; inventory changed; +2410 coins. Reward 2.08.",
-      "importance": 1.74,
-      "tags": [
-        "pickup",
-        "item",
-        "resource",
-        "coins",
-        "valuable drop",
-        "npc aggie",
-        "loc mystical wall chart",
-        "loc charms",
-        "loc chair",
-        "loc cart"
-      ],
-      "location": {
-        "x": 3094,
-        "z": 3247,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswinb4r-etvbqn",
-      "createdAt": "2026-08-17T00:49:13.755Z",
-      "tick": 118,
-      "runNumber": 179,
-      "kind": "strategy",
-      "text": "From AI demonstrations, Pick up 2410 Coins (distance 5) worked across 6 similar samples with average reward 0.91.",
-      "importance": 1.91,
-      "tags": [
-        "pickup",
-        "pickup coins"
-      ],
-      "location": {
-        "x": 3094,
-        "z": 3247,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiucz3-pslybq",
-      "createdAt": "2026-08-17T00:54:42.735Z",
-      "tick": 118,
-      "runNumber": 180,
-      "kind": "observation",
-      "text": "Action feedback (sdk_feedback): Bank interface verified open",
-      "importance": 1.2,
-      "tags": [
-        "sdk feedback",
-        "bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3245,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiumcm-qdqrqa",
-      "createdAt": "2026-08-17T00:54:54.886Z",
-      "tick": 144,
-      "runNumber": 180,
-      "kind": "observation",
-      "text": "Action feedback (sdk_feedback): Depositing from slot 5",
-      "importance": 1.2,
-      "tags": [
-        "sdk feedback",
-        "bank"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3245,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiumcn-13yuj1",
-      "createdAt": "2026-08-17T00:54:54.887Z",
-      "tick": 144,
-      "runNumber": 180,
-      "kind": "lesson",
-      "text": "Item-purpose lesson: Deposit all Bones because capacity pressure requires temporary storage produced inventory changed with reward -0.4. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
-      "importance": 1.4,
-      "tags": [
-        "item purpose",
-        "bank",
-        "store",
-        "learned item policy",
-        "bones"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3245,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiushb-m2odyf",
-      "createdAt": "2026-08-17T00:55:02.831Z",
-      "tick": 165,
-      "runNumber": 180,
-      "kind": "observation",
-      "text": "Action feedback (sdk_feedback): Closed modal",
-      "importance": 1.2,
-      "tags": [
-        "sdk feedback",
-        "modal"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3245,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswiushb-ajaffa",
-      "createdAt": "2026-08-17T00:55:02.831Z",
-      "tick": 165,
-      "runNumber": 180,
-      "kind": "lesson",
-      "text": "Item-purpose lesson: Close the bank produced No measurable change. with reward -0.6. Keep, use, bank, sell, or discard this item only when the next objective supports that disposition, and require the corresponding inventory, XP, coin, or world-state change.",
-      "importance": 1.6,
-      "tags": [
-        "item purpose",
-        "modal",
-        "bank",
-        "transaction abort",
-        "item policy"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3245,
-        "level": 0
-      }
-    },
     {
       "id": "mswivpuc-ewprbk",
       "createdAt": "2026-08-17T00:55:46.068Z",
@@ -7854,6 +7458,363 @@
       "location": {
         "x": 3170,
         "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswncgwy-3wvxns",
+      "createdAt": "2026-08-17T03:00:46.114Z",
+      "tick": 2665,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "SDK feedback (dialogue): The men of lumbridge fear my feet",
+      "importance": 1,
+      "tags": [
+        "sdk feedback",
+        "dialogue"
+      ],
+      "location": {
+        "x": 3165,
+        "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswncgwy-4v354t",
+      "createdAt": "2026-08-17T03:00:46.114Z",
+      "tick": 2665,
+      "runNumber": 187,
+      "kind": "relationship",
+      "text": "Mankicker3 said: \"The men of lumbridge fear my feet\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "mankicker3",
+        "unknown"
+      ],
+      "location": {
+        "x": 3165,
+        "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnd3vq-siucok",
+      "createdAt": "2026-08-17T03:01:15.878Z",
+      "tick": 2757,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "SDK feedback (dialogue): Kick first ask questions never",
+      "importance": 1,
+      "tags": [
+        "sdk feedback",
+        "dialogue"
+      ],
+      "location": {
+        "x": 3170,
+        "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnd3vq-elj7wb",
+      "createdAt": "2026-08-17T03:01:15.878Z",
+      "tick": 2757,
+      "runNumber": 187,
+      "kind": "relationship",
+      "text": "Mankicker8 said: \"Kick first ask questions never\". Current stance unknown, trust 0.00.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "mankicker8",
+        "unknown"
+      ],
+      "location": {
+        "x": 3170,
+        "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswndbfn-yvbr4w",
+      "createdAt": "2026-08-17T03:01:25.667Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record all known coordinates that are reachable and relevant to current travel goals.. Coordinates are essential for navigation, resource management, and efficient movement. Documenting them ensures that you can return",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record all known coordinates that are reachable and relevant to current travel goals",
+        "prioritize locations that offer utility such as shops banks or safe zones and note their coordinates",
+        "avoid revisiting locations that do not contribute to the current objective or are not necessary for survival"
+      ],
+      "location": {
+        "x": 3170,
+        "z": 3312,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnddx9-xyokpa",
+      "createdAt": "2026-08-17T03:01:28.893Z",
+      "tick": 2799,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3170, 3307)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswndle3-0x43fb",
+      "createdAt": "2026-08-17T03:01:38.571Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record essential locations for navigation and resource gathering. This guide provides a structured approach to exploring and documenting key coordinates, ensuring safe travel and efficient resource management in the game.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record essential locations for navigation and resource gathering",
+        "ensure safe passage by avoiding dangerous zones and using proper tools",
+        "utilize banks and shops to manage inventory and currency effectively"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswndpkk-fw3c3j",
+      "createdAt": "2026-08-17T03:01:43.988Z",
+      "tick": 2835,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3171, 3303)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswne1ec-5lvk19",
+      "createdAt": "2026-08-17T03:01:59.316Z",
+      "tick": 2874,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3176, 3304)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3176,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswne8ln-bm7cat",
+      "createdAt": "2026-08-17T03:02:08.651Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Approach the Magic Guild Store. I need to buy a Fire Rune, which costs 3000 coins. I currently have 2000 coins, so I need 1000 more",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "approach the magic guild store",
+        "check the inventory to see if i have enough coins to buy the fire rune",
+        "if i don t have enough coins i need to find a way to get more coins"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnedcl-gmb07x",
+      "createdAt": "2026-08-17T03:02:14.805Z",
+      "tick": 2910,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3171, 3304)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswneqgq-w9on00",
+      "createdAt": "2026-08-17T03:02:31.802Z",
+      "tick": 2953,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3175, 3308)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3308,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnf34w-4hwp8p",
+      "createdAt": "2026-08-17T03:02:48.224Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Explore south about 5 tiles to assess the terrain and identify any hazards or useful features.. This approach allows for a cautious assessment of the southern area, ensuring safety and identifying potential resources that may aid in long-term survival or progression",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "explore south about 5 tiles to assess the terrain and identify any hazards or useful features",
+        "inspect the nearby foliage for signs of wildlife or traps that may affect movement",
+        "note any visible resources or structures that could be useful for future planning or survival strategies"
+      ],
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnf3fr-bfbl81",
+      "createdAt": "2026-08-17T03:02:48.615Z",
+      "tick": 2995,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3175, 3303)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnfb5s-d8xqd9",
+      "createdAt": "2026-08-17T03:02:58.624Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify and record all known coordinates that are reachable and relevant to current travel goals.. Exploration is essential for survival and progression, but it must be done efficiently",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify and record all known coordinates that are reachable and relevant to current travel goals",
+        "prioritize locations that offer utility such as shops banks or safe zones to optimize movement and resource management",
+        "avoid repeating the same activity indefinitely and switch to new subgoals when necessary based on new information or changing circumstances"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnffu9-oen9ov",
+      "createdAt": "2026-08-17T03:03:04.689Z",
+      "tick": 3012,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "SDK feedback (dialogue): Writing as much as i please, save lack of strength. John is away all day, and",
+      "importance": 1,
+      "tags": [
+        "sdk feedback",
+        "dialogue"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnffu9-94jq0i",
+      "createdAt": "2026-08-17T03:03:04.689Z",
+      "tick": 3012,
+      "runNumber": 187,
+      "kind": "relationship",
+      "text": "Fsz6yjrsa said: \"Writing as much as i please, save lack of strength. John is away all day, and\". Current stance cooperative, trust 0.48.",
+      "importance": 0.8,
+      "tags": [
+        "social",
+        "fsz6yjrsa",
+        "cooperative"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnfn8m-58zwuu",
+      "createdAt": "2026-08-17T03:03:14.278Z",
+      "tick": 0,
+      "runNumber": 187,
+      "kind": "strategy",
+      "text": "AI strategist: Identify the toll gate locations and determine the entry point. These steps provide key locations and pricing information for the area, which is essential for survival and progression.",
+      "importance": 1.1,
+      "tags": [
+        "ai strategy",
+        "identify the toll gate locations and determine the entry point",
+        "navigate to the al kharid bank and note its coordinates",
+        "visit the kebab seller shop and observe its location and pricing"
+      ],
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswnfroh-lc8n88",
+      "createdAt": "2026-08-17T03:03:20.033Z",
+      "tick": 3077,
+      "runNumber": 187,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Walking to (3180, 3303)",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "explore"
+      ],
+      "location": {
+        "x": 3179,
+        "z": 3304,
         "level": 0
       }
     }
@@ -24319,26 +24280,26 @@
     },
     "area=395:414:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
       "walk:east": {
-        "n": 1,
-        "avgReward": 0.356,
-        "positive": 1,
+        "n": 2,
+        "avgReward": 0.456,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 0.356,
-        "lastAt": "2026-08-17T03:00:14.611Z",
+        "lastReward": 0.556,
+        "lastAt": "2026-08-17T03:01:00.924Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "Exploring east about 5 tiles, I found a drop of bones. I recorded it and continue exploring."
+        "exampleReason": "I identified and recorded essential locations for navigation and resource gathering, including the coordinates for Lumbridge spawn, the location of the Cow field, and the location "
       }
     },
     "area=396:414:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
       "walk:north": {
-        "n": 1,
-        "avgReward": -2.144,
+        "n": 2,
+        "avgReward": -2.182,
         "positive": 0,
-        "negative": 1,
-        "lastReward": -2.144,
-        "lastAt": "2026-08-17T03:00:30.775Z",
+        "negative": 2,
+        "lastReward": -2.22,
+        "lastAt": "2026-08-17T03:01:15.564Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I identified and recorded all drops from Hobgoblins. The drops include bones, which are a valuable resource. I will continue exploring other locations to gather more useful items a"
+        "exampleReason": "I identified a new location for exploration, which is a useful step in my temporary subgoal of learning about key coordinates in the world."
       },
       "walk:west": {
         "n": 1,
@@ -24349,6 +24310,82 @@
         "lastAt": "2026-08-17T03:00:45.767Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "I identified and recorded essential locations for navigation and resource gathering, including Lumbridge spawn, Lumbridge cows, and Al Kharid coordinates. I also verified the chang"
+      },
+      "walk:south": {
+        "n": 1,
+        "avgReward": 0.126,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.126,
+        "lastAt": "2026-08-17T03:01:28.894Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the south about 5 tiles, discovering a new location for navigation and resource gathering."
+      }
+    },
+    "area=396:413:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:south": {
+        "n": 2,
+        "avgReward": 0.056,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.056,
+        "lastAt": "2026-08-17T03:02:48.615Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the south about 5 tiles, discovering new locations and learning about the world around me."
+      },
+      "walk:east": {
+        "n": 1,
+        "avgReward": 0.256,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.256,
+        "lastAt": "2026-08-17T03:01:59.317Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the east about 5 tiles, but the execution rejected or failed. I recorded the detail: Failed to walk."
+      },
+      "walk:northeast": {
+        "n": 1,
+        "avgReward": 0.493,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.493,
+        "lastAt": "2026-08-17T03:02:31.803Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "Exploring the northeast area, I found a new location: Oak, and a nearby NPC named Farmer."
+      }
+    },
+    "area=397:413:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:west": {
+        "n": 1,
+        "avgReward": 0.446,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.446,
+        "lastAt": "2026-08-17T03:02:14.806Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I am exploring west about 5 tiles, which is a new location and a good opportunity to gather resources. I will continue to explore and learn from this area."
+      }
+    },
+    "area=396:412:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
+      "walk:south": {
+        "n": 1,
+        "avgReward": -2.22,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -2.22,
+        "lastAt": "2026-08-17T03:03:04.231Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I explored the south about 5 tiles, and found a new location: loc:Daisies, loc:Oak. I verified that this change was made."
+      },
+      "walk:east": {
+        "n": 1,
+        "avgReward": 0.356,
+        "positive": 1,
+        "negative": 0,
+        "lastReward": 0.356,
+        "lastAt": "2026-08-17T03:03:20.033Z",
+        "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+        "exampleReason": "I've identified and recorded the coordinates for exploring Al Kharid, which are reachable and relevant to my current travel goals. I've verified that I can move from my current pos"
       }
     }
   },
@@ -33066,15 +33103,14 @@
     "fsz6yjrsa": {
       "name": "Fsz6yjrsa",
       "firstSeenAt": "2026-08-16T09:18:43.219Z",
-      "lastSeenAt": "2026-08-17T02:47:53.036Z",
+      "lastSeenAt": "2026-08-17T03:03:04.689Z",
       "encounters": 1,
       "trust": 0.48,
       "stance": "cooperative",
-      "conversations": 29,
+      "conversations": 30,
       "cooperation": 4,
       "suspicion": 0,
       "facts": [
-        "What can one do? if a physician of high standing, and one's own husband, assures",
         "Friends and relatives that there is really nothing the matter with one but",
         "Temporary nervous depression-a slight hysterical tendency-what is one to do? my",
         "Journeys, and air, and exercise, and am absolutely forbidden to \"work\" until i",
@@ -33093,7 +33129,8 @@
         "Outrageous angles, destroy themselves in unheard-of contradictions. The color is",
         "Myself if i had to live in this room long. There comes john, and i must put this",
         "Away,-he hates to have me write a word. We have been here two weeks, and i",
-        "Window now, up in this atrocious nursery, and there is nothing to hinder my"
+        "Window now, up in this atrocious nursery, and there is nothing to hinder my",
+        "Writing as much as i please, save lack of strength. John is away all day, and"
       ],
       "questions": [
         "It be let so cheaply? and why have stood so long untenanted? john laughs at me,",
@@ -33101,11 +33138,6 @@
         "Temporary nervous depression-a slight hysterical tendency-what is one to do? my"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T12:46:08.061Z",
-          "direction": "incoming",
-          "text": "What can one do? if a physician of high standing, and one's own husband, assures"
-        },
         {
           "at": "2026-08-16T12:53:02.315Z",
           "direction": "incoming",
@@ -33200,6 +33232,11 @@
           "at": "2026-08-17T02:47:53.036Z",
           "direction": "incoming",
           "text": "Window now, up in this atrocious nursery, and there is nothing to hinder my"
+        },
+        {
+          "at": "2026-08-17T03:03:04.689Z",
+          "direction": "incoming",
+          "text": "Writing as much as i please, save lack of strength. John is away all day, and"
         }
       ]
     },
@@ -34834,12 +34871,12 @@
     "mankicker8": {
       "name": "Mankicker8",
       "firstSeenAt": "2026-08-16T17:46:45.734Z",
-      "lastSeenAt": "2026-08-17T02:07:17.593Z",
+      "lastSeenAt": "2026-08-17T03:01:15.878Z",
       "encounters": 44,
       "combatLevel": 40,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 6,
+      "conversations": 7,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -34878,6 +34915,11 @@
           "at": "2026-08-17T02:07:17.593Z",
           "direction": "incoming",
           "text": "The men of lumbridge fear my feet"
+        },
+        {
+          "at": "2026-08-17T03:01:15.878Z",
+          "direction": "incoming",
+          "text": "Kick first ask questions never"
         }
       ]
     },
@@ -35241,12 +35283,12 @@
     "mankicker3": {
       "name": "Mankicker3",
       "firstSeenAt": "2026-08-16T17:47:12.098Z",
-      "lastSeenAt": "2026-08-17T02:07:24.753Z",
+      "lastSeenAt": "2026-08-17T03:00:46.114Z",
       "encounters": 24,
       "combatLevel": 45,
       "trust": 0,
       "stance": "unknown",
-      "conversations": 7,
+      "conversations": 8,
       "cooperation": 0,
       "suspicion": 0,
       "facts": [
@@ -35291,6 +35333,11 @@
           "at": "2026-08-17T02:07:24.753Z",
           "direction": "incoming",
           "text": "No purses for you today"
+        },
+        {
+          "at": "2026-08-17T03:00:46.114Z",
+          "direction": "incoming",
+          "text": "The men of lumbridge fear my feet"
         }
       ]
     },
@@ -38954,11 +39001,11 @@
     "fqqwgnybg": {
       "name": "Fqqwgnybg",
       "firstSeenAt": "2026-08-16T20:57:57.664Z",
-      "lastSeenAt": "2026-08-17T03:00:31.108Z",
+      "lastSeenAt": "2026-08-17T03:02:48.887Z",
       "encounters": 1,
       "trust": 1,
       "stance": "cooperative",
-      "conversations": 33,
+      "conversations": 35,
       "cooperation": 15,
       "suspicion": 0,
       "facts": [
@@ -38979,16 +39026,6 @@
         "Buying a rune axe. What would you trade for one?"
       ],
       "lastMessages": [
-        {
-          "at": "2026-08-16T23:04:28.791Z",
-          "direction": "incoming",
-          "text": "Goo004 skilled smiths: i still need one rune axe donation or no-giv*******, please. Thank you! :D"
-        },
-        {
-          "at": "2026-08-16T23:06:49.894Z",
-          "direction": "incoming",
-          "text": "Goo004 skilled smiths: i still need one rune axe donation or no-giv*******, please. Thank you! :D"
-        },
         {
           "at": "2026-08-16T23:08:59.149Z",
           "direction": "incoming",
@@ -39076,6 +39113,16 @@
         },
         {
           "at": "2026-08-17T03:00:31.108Z",
+          "direction": "incoming",
+          "text": "Buying a rune axe. What would you trade for one?"
+        },
+        {
+          "at": "2026-08-17T03:01:44.320Z",
+          "direction": "incoming",
+          "text": "Buying a rune axe. What would you trade for one?"
+        },
+        {
+          "at": "2026-08-17T03:02:48.887Z",
           "direction": "incoming",
           "text": "Buying a rune axe. What would you trade for one?"
         }
@@ -44281,8 +44328,8 @@
       "z": 3312,
       "level": 0,
       "firstSeenAt": "2026-08-17T02:59:59.073Z",
-      "lastSeenAt": "2026-08-17T02:59:59.073Z",
-      "visits": 1,
+      "lastSeenAt": "2026-08-17T03:00:46.114Z",
+      "visits": 2,
       "npcs": [
         "Cow",
         "Farmer"
@@ -44313,8 +44360,8 @@
       "z": 3312,
       "level": 0,
       "firstSeenAt": "2026-08-17T03:00:15.003Z",
-      "lastSeenAt": "2026-08-17T03:00:31.108Z",
-      "visits": 2,
+      "lastSeenAt": "2026-08-17T03:01:15.878Z",
+      "visits": 4,
       "npcs": [
         "Cow",
         "Farmer"
@@ -44339,6 +44386,41 @@
         "Daisies",
         "Plant",
         "Tree stump"
+      ]
+    },
+    "198:206:0": {
+      "key": "198:206:0",
+      "x": 3175,
+      "z": 3303,
+      "level": 0,
+      "firstSeenAt": "2026-08-17T03:01:29.187Z",
+      "lastSeenAt": "2026-08-17T03:03:04.689Z",
+      "visits": 7,
+      "npcs": [
+        "Cow",
+        "Farmer"
+      ],
+      "locs": [
+        "Crate",
+        "Fern",
+        "Flour bin",
+        "Table",
+        "Large door",
+        "Ladder",
+        "Barrel",
+        "Sacks",
+        "Cart",
+        "Stool",
+        "Gate",
+        "Wheat",
+        "Stones",
+        "Haystack",
+        "Boulder",
+        "Plant",
+        "Tree stump",
+        "Tree",
+        "Daisies",
+        "Oak"
       ]
     }
   },
@@ -49653,12 +49735,12 @@
         "walk:south",
         "walk:south"
       ],
-      "n": 29,
+      "n": 30,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T02:43:41.047Z",
+      "lastAt": "2026-08-17T03:01:43.988Z",
       "example": "Explore north about 5 tiles → Explore south about 5 tiles → Explore south about 5 tiles",
-      "failed": 0
+      "failed": 1
     },
     "walk:south > walk:south > walk:east": {
       "sequence": [
@@ -49666,12 +49748,12 @@
         "walk:south",
         "walk:east"
       ],
-      "n": 26,
+      "n": 28,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T02:53:25.896Z",
+      "lastAt": "2026-08-17T03:03:20.033Z",
       "example": "Explore south about 5 tiles → Explore south about 5 tiles → Explore east about 5 tiles",
-      "failed": 1
+      "failed": 2
     },
     "walk:south > walk:east > walk:south": {
       "sequence": [
@@ -50068,10 +50150,10 @@
         "walk:east",
         "walk:west"
       ],
-      "n": 11,
+      "n": 12,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T02:57:16.730Z",
+      "lastAt": "2026-08-17T03:02:14.806Z",
       "example": "Explore south about 5 tiles → Explore east about 5 tiles → Explore west about 5 tiles",
       "failed": 1
     },
@@ -50165,10 +50247,10 @@
         "walk:west",
         "walk:northeast"
       ],
-      "n": 7,
+      "n": 8,
       "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-17T02:57:32.714Z",
+      "lastAt": "2026-08-17T03:02:31.803Z",
       "example": "Explore east about 5 tiles → Explore west about 5 tiles → Explore northeast about 4 tiles",
       "failed": 2
     },
@@ -50262,11 +50344,12 @@
         "walk:north",
         "walk:south"
       ],
-      "n": 5,
-      "avgReward": -3.35,
+      "n": 6,
+      "avgReward": 0,
       "positive": 0,
-      "lastAt": "2026-08-15T06:58:34.064Z",
-      "example": "Explore east about 5 tiles → Explore north about 5 tiles → Explore south about 5 tiles"
+      "lastAt": "2026-08-17T03:01:28.894Z",
+      "example": "Explore east about 5 tiles → Explore north about 5 tiles → Explore south about 5 tiles",
+      "failed": 1
     },
     "walk:east > walk:south > walk:west": {
       "sequence": [
@@ -68552,11 +68635,11 @@
         "walk:northeast",
         "walk:south"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0,
       "positive": 0,
       "failed": 0,
-      "lastAt": "2026-08-17T02:57:48.821Z",
+      "lastAt": "2026-08-17T03:02:48.615Z",
       "example": "Explore west about 5 tiles → Explore northeast about 4 tiles → Explore south about 5 tiles"
     },
     "walk:northeast > walk:south > walk:south": {
@@ -68565,11 +68648,11 @@
         "walk:south",
         "walk:south"
       ],
-      "n": 1,
+      "n": 2,
       "avgReward": 0,
       "positive": 0,
-      "failed": 1,
-      "lastAt": "2026-08-17T02:58:04.852Z",
+      "failed": 2,
+      "lastAt": "2026-08-17T03:03:04.231Z",
       "example": "Explore northeast about 4 tiles → Explore south about 5 tiles → Explore south about 5 tiles"
     },
     "walk:east > walk:north > walk:north": {
@@ -68584,357 +68667,35 @@
       "failed": 0,
       "lastAt": "2026-08-17T02:59:41.109Z",
       "example": "Explore east about 5 tiles → Explore north about 5 tiles → Explore north about 5 tiles"
+    },
+    "walk:north > walk:west > walk:east": {
+      "sequence": [
+        "walk:north",
+        "walk:west",
+        "walk:east"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-17T03:01:00.924Z",
+      "example": "Explore north about 5 tiles → Explore west about 5 tiles → Explore east about 5 tiles"
+    },
+    "walk:west > walk:east > walk:north": {
+      "sequence": [
+        "walk:west",
+        "walk:east",
+        "walk:north"
+      ],
+      "n": 1,
+      "avgReward": 0,
+      "positive": 0,
+      "failed": 1,
+      "lastAt": "2026-08-17T03:01:15.564Z",
+      "example": "Explore west about 5 tiles → Explore east about 5 tiles → Explore north about 5 tiles"
     }
   },
   "discoveries": [
-    {
-      "id": "route:3092:3242:3092:3247:0",
-      "at": "2026-08-17T02:02:37.585Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3242 → 3092,3247; moved 3092,3242 → 3092,3247; new: npc:Aggie, npc:Ned, loc:Mystical wall chart, loc:Charms, loc:Chair, loc:Cart",
-      "location": {
-        "x": 3092,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "place:mystical wall chart:193:202:0",
-      "at": "2026-08-17T02:02:38.004Z",
-      "kind": "place",
-      "text": "Mystical wall chart observed near 3092, 3247, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:charms:193:202:0",
-      "at": "2026-08-17T02:02:38.004Z",
-      "kind": "place",
-      "text": "Charms observed near 3092, 3247, level 0.",
-      "location": {
-        "x": 3092,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3092:3247:3092:3242:0",
-      "at": "2026-08-17T02:02:57.058Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3247 → 3092,3242; moved 3092,3247 → 3092,3242; new: agent:Xbfr5x1f0, agent:Fishmax3, agent:Fishmax5, agent:Fishmax2, agent:Fishmax6, agent:Fishmax9",
-      "location": {
-        "x": 3092,
-        "z": 3242,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3242:3085:3242:0",
-      "at": "2026-08-17T02:03:18.984Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3242 → 3085,3242; +665 XP; 5 damage dealt; moved 3092,3242 → 3085,3242",
-      "location": {
-        "x": 3085,
-        "z": 3242,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3242:3085:3241:0",
-      "at": "2026-08-17T02:03:42.567Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3242 → 3085,3241; moved 3085,3242 → 3085,3241; inventory changed",
-      "location": {
-        "x": 3085,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3241:3087:3239:0",
-      "at": "2026-08-17T02:04:16.644Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3241 → 3087,3239; +1595 XP; 12 damage dealt; moved 3085,3241 → 3087,3239",
-      "location": {
-        "x": 3087,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3239:3088:3239:0",
-      "at": "2026-08-17T02:04:32.142Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3239 → 3088,3239; moved 3087,3239 → 3088,3239; inventory changed",
-      "location": {
-        "x": 3088,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3088:3239:3087:3240:0",
-      "at": "2026-08-17T02:05:04.180Z",
-      "kind": "route",
-      "text": "Route learned: 3088,3239 → 3087,3240; +1597 XP; 11 damage dealt; moved 3088,3239 → 3087,3240",
-      "location": {
-        "x": 3087,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3240:3087:3241:0",
-      "at": "2026-08-17T02:05:25.051Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3240 → 3087,3241; moved 3087,3240 → 3087,3241; inventory changed",
-      "location": {
-        "x": 3087,
-        "z": 3241,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3087:3241:3092:3247:0",
-      "at": "2026-08-17T02:05:51.427Z",
-      "kind": "route",
-      "text": "Route learned: 3087,3241 → 3092,3247; moved 3087,3241 → 3092,3247",
-      "location": {
-        "x": 3092,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3247:3086:3246:0",
-      "at": "2026-08-17T02:08:58.434Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3247 → 3086,3246; moved 3092,3247 → 3086,3246",
-      "location": {
-        "x": 3086,
-        "z": 3246,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3245:3092:3243:0",
-      "at": "2026-08-17T02:09:26.474Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3245 → 3092,3243; moved 3085,3245 → 3092,3243; new: npc:Fishing spot, npc:Ned",
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3241:3085:3238:0",
-      "at": "2026-08-17T02:11:48.352Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3241 → 3085,3238; +1332 XP; 10 damage dealt; moved 3085,3241 → 3085,3238",
-      "location": {
-        "x": 3085,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3238:3090:3247:0",
-      "at": "2026-08-17T02:12:08.110Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3238 → 3090,3247; moved 3085,3238 → 3090,3247",
-      "location": {
-        "x": 3090,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3243:3090:3247:0",
-      "at": "2026-08-17T02:12:54.039Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3243 → 3090,3247; moved 3092,3243 → 3090,3247",
-      "location": {
-        "x": 3090,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3237:3085:3240:0",
-      "at": "2026-08-17T02:13:05.409Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3237 → 3085,3240; 1 damage taken; moved 3085,3237 → 3085,3240; inventory changed",
-      "location": {
-        "x": 3085,
-        "z": 3240,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3240:3092:3247:0",
-      "at": "2026-08-17T02:13:17.182Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3240 → 3092,3247; moved 3085,3240 → 3092,3247",
-      "location": {
-        "x": 3092,
-        "z": 3247,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3092:3242:3084:3237:0",
-      "at": "2026-08-17T02:14:11.204Z",
-      "kind": "route",
-      "text": "Route learned: 3092,3242 → 3084,3237; moved 3092,3242 → 3084,3237",
-      "location": {
-        "x": 3084,
-        "z": 3237,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3237:3085:3238:0",
-      "at": "2026-08-17T02:14:53.875Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3237 → 3085,3238; moved 3085,3237 → 3085,3238; inventory changed",
-      "location": {
-        "x": 3085,
-        "z": 3238,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3085:3238:3081:3239:0",
-      "at": "2026-08-17T02:15:28.019Z",
-      "kind": "route",
-      "text": "Route learned: 3085,3238 → 3081,3239; moved 3085,3238 → 3081,3239; new: loc:Bench, loc:Shelves",
-      "location": {
-        "x": 3081,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3081:3239:3081:3244:0",
-      "at": "2026-08-17T02:16:01.028Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3239 → 3081,3244; moved 3081,3239 → 3081,3244; new: npc:Aggie, loc:Cooking shelves, loc:Wardrobe, loc:Broom, loc:Mirror",
-      "location": {
-        "x": 3081,
-        "z": 3244,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3081:3244:3081:3249:0",
-      "at": "2026-08-17T02:16:18.373Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3244 → 3081,3249; moved 3081,3244 → 3081,3249; new: npc:Aggie, loc:Chair, loc:Cart",
-      "location": {
-        "x": 3081,
-        "z": 3249,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "resource:bank notice board:192:203:0",
-      "at": "2026-08-17T02:16:18.927Z",
-      "kind": "resource",
-      "text": "Bank notice board observed near 3081, 3249, level 0.",
-      "location": {
-        "x": 3081,
-        "z": 3249,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:willow:192:203:0",
-      "at": "2026-08-17T02:16:18.927Z",
-      "kind": "place",
-      "text": "Willow observed near 3081, 3249, level 0.",
-      "location": {
-        "x": 3081,
-        "z": 3249,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "resource:rock:192:203:0",
-      "at": "2026-08-17T02:16:18.927Z",
-      "kind": "resource",
-      "text": "Rock observed near 3081, 3249, level 0.",
-      "location": {
-        "x": 3081,
-        "z": 3249,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "route:3081:3249:3081:3244:0",
-      "at": "2026-08-17T02:16:41.345Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3249 → 3081,3244; moved 3081,3249 → 3081,3244; new: agent:Xbfr5x1f0, loc:Boulder",
-      "location": {
-        "x": 3081,
-        "z": 3244,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3081:3244:3081:3239:0",
-      "at": "2026-08-17T02:16:58.939Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3244 → 3081,3239; moved 3081,3244 → 3081,3239; new: agent:Fishmax5, agent:Fishmax3, agent:Fishmax9, agent:Fishmax6, agent:Fishmax4, agent:Fishmax2",
-      "location": {
-        "x": 3081,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "route:3081:3239:3086:3239:0",
-      "at": "2026-08-17T02:18:07.662Z",
-      "kind": "route",
-      "text": "Route learned: 3081,3239 → 3086,3239; moved 3081,3239 → 3086,3239; new: agent:Nooblumber, loc:Tree stump, loc:Bush",
-      "location": {
-        "x": 3086,
-        "z": 3239,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
     {
       "id": "route:3086:3239:3081:3239:0",
       "at": "2026-08-17T02:19:15.556Z",
@@ -72198,45 +71959,393 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "route:3170:3312:3171:3308:0",
+      "at": "2026-08-17T03:01:28.894Z",
+      "kind": "route",
+      "text": "Route learned: 3170,3312 → 3171,3308; moved 3170,3312 → 3171,3308",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:cow:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "npc",
+      "text": "Cow observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Crate observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fern:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Fern observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:flour bin:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Flour bin observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:table:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Table observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:large door:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Large door observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:ladder:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Ladder observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Barrel observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:sacks:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Sacks observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:cart:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Cart observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stool:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Stool observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:gate:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Gate observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:wheat:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Wheat observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:stones:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Stones observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:haystack:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Haystack observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:boulder:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Boulder observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:plant:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Plant observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree stump:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "resource",
+      "text": "Tree stump observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "resource:tree:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "resource",
+      "text": "Tree observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:daisies:198:206:0",
+      "at": "2026-08-17T03:01:29.187Z",
+      "kind": "place",
+      "text": "Daisies observed near 3171, 3308, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3171:3308:3171:3304:0",
+      "at": "2026-08-17T03:01:43.988Z",
+      "kind": "route",
+      "text": "Route learned: 3171,3308 → 3171,3304; moved 3171,3308 → 3171,3304",
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3171:3304:3176:3304:0",
+      "at": "2026-08-17T03:01:59.317Z",
+      "kind": "route",
+      "text": "Route learned: 3171,3304 → 3176,3304; moved 3171,3304 → 3176,3304; new: loc:Oak, loc:Daisies",
+      "location": {
+        "x": 3176,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "place:oak:198:206:0",
+      "at": "2026-08-17T03:01:59.874Z",
+      "kind": "place",
+      "text": "Oak observed near 3176, 3304, level 0.",
+      "location": {
+        "x": 3176,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3176:3304:3171:3304:0",
+      "at": "2026-08-17T03:02:14.806Z",
+      "kind": "route",
+      "text": "Route learned: 3176,3304 → 3171,3304; moved 3176,3304 → 3171,3304; new: npc:Farmer",
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "npc:farmer:198:206:0",
+      "at": "2026-08-17T03:02:15.200Z",
+      "kind": "npc",
+      "text": "Farmer observed near 3171, 3304, level 0.",
+      "location": {
+        "x": 3171,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3171:3304:3175:3308:0",
+      "at": "2026-08-17T03:02:31.803Z",
+      "kind": "route",
+      "text": "Route learned: 3171,3304 → 3175,3308; moved 3171,3304 → 3175,3308; new: loc:Daisies, loc:Oak",
+      "location": {
+        "x": 3175,
+        "z": 3308,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3175:3308:3175:3303:0",
+      "at": "2026-08-17T03:02:48.615Z",
+      "kind": "route",
+      "text": "Route learned: 3175,3308 → 3175,3303; moved 3175,3308 → 3175,3303",
+      "location": {
+        "x": 3175,
+        "z": 3303,
+        "level": 0
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "route:3175:3303:3179:3304:0",
+      "at": "2026-08-17T03:03:20.033Z",
+      "kind": "route",
+      "text": "Route learned: 3175,3303 → 3179,3304; moved 3175,3303 → 3179,3304; new: npc:Farmer, loc:cabbage",
+      "location": {
+        "x": 3179,
+        "z": 3304,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T03:00:45.767Z",
+  "updatedAt": "2026-08-17T03:03:20.033Z",
   "activePlan": {
-    "objective": "Explore and document key coordinates for safe and efficient travel",
-    "focus": "Identify and record essential locations for navigation and resource gathering",
-    "reason": "This ensures safe and efficient travel by providing accurate and verified locations for resource gathering, navigation, and exploration.",
+    "objective": "Explore and learn about Al Kharid coordinates, shop, and banking",
+    "focus": "Identify the toll gate locations and determine the entry point",
+    "reason": "These steps provide key locations and pricing information for the area, which is essential for survival and progression.",
     "risk": "balanced",
     "plan": [
       {
         "id": "step-1",
-        "label": "Identify and record essential locations for navigation and resource gathering",
+        "label": "Identify the toll gate locations and determine the entry point",
         "status": "active"
       },
       {
         "id": "step-2",
-        "label": "Verify coordinates through observation and interaction",
+        "label": "Navigate to the Al Kharid bank and note its coordinates",
         "status": "pending"
       },
       {
         "id": "step-3",
-        "label": "Document findings in a structured manner for future reference",
+        "label": "Visit the kebab seller shop and observe its location and pricing",
         "status": "pending"
       }
     ],
     "successSignals": [
-      "Coordinates verified and documented for safe and efficient travel."
+      "Successfully identified and recorded the coordinates and"
     ],
     "priorities": [
-      "Identify and record essential locations for navigation and resource gathering",
-      "Verify coordinates through observation and interaction",
-      "Document findings in a structured manner for future reference"
+      "Identify the toll gate locations and determine the entry point",
+      "Navigate to the Al Kharid bank and note its coordinates",
+      "Visit the kebab seller shop and observe its location and pricing"
     ],
     "avoid": [
-      "Explore south about 5 tiles",
-      "Explore south about 5 tiles",
-      "Explore north about 5 tiles"
+      "Explore north about 5 tiles",
+      "Explore north about 5 tiles",
+      "Explore south about 5 tiles"
     ],
-    "updatedAt": "2026-08-17T03:00:39.804Z",
+    "updatedAt": "2026-08-17T03:03:14.278Z",
     "sourceModel": "qwen3:1.7b",
     "failures": 0
   }
