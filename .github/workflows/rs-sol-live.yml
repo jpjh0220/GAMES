@@ -38,7 +38,6 @@ env:
   CHAIN_DEPTH: ${{ inputs.chain_depth || '0' }}
   PREVIOUS_RUN_ID: ${{ inputs.previous_run_id || '' }}
   PREVIOUS_ARTIFACT_NAME: ${{ inputs.previous_artifact_name || '' }}
-  SOL_RUNTIME_MODE: hosted
 
 concurrency:
   group: sol-continuous-world
@@ -240,12 +239,6 @@ jobs:
           set -euo pipefail
           : "${SOL_USER:?Repository secret SOL_USER is required}"
           : "${SOL_PASS:?Repository secret SOL_PASS is required}"
-          SOL_BROWSER_PATH="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [ "${SOL_RUNTIME_MODE}" = "hosted" ] && [ -z "$SOL_BROWSER_PATH" ]; then
-            echo "Hosted runtime requires a Chromium executable for the official rs-sdk bot client" >&2
-            exit 1
-          fi
-          export SOL_BROWSER_PATH
           bun sol-live.ts > >(tee ../../sol-console.log) 2>&1 &
           AGENT_PID=$!
           READY=''

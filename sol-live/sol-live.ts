@@ -1,6 +1,5 @@
 import { startSession } from './src/lite/session.js';
 import { LoginError } from './src/lite/net/GameConnection.js';
-import { HostedGatewayClient } from './hosted-gateway-session.js';
 import type { BotWorldState } from './src/bot/types.js';
 import { appendFile } from 'fs/promises';
 import { SolAgentBrain, type AgentCandidate, type AgentChoice, type SolRuntimeConfig } from './agent-brain.js';
@@ -337,10 +336,8 @@ const server=Bun.serve({
 });
 await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 
-const gameHost=process.env.SOL_GAME_HOST?.trim()||'rs-sdk-demo.fly.dev';
-const runtimeMode=(process.env.SOL_RUNTIME_MODE||'hosted').trim().toLowerCase();
-const sessionOptions={host:gameHost,username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
-const startLocalSessionWithLoginRetry=async()=>{
+const sessionOptions={host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
+const startSessionWithLoginRetry=async()=>{
   let lastError:unknown;
   for(let attempt=0;attempt<3;attempt++){
     // Hold the in-flight promise. The previous version raced an un-held
@@ -368,7 +365,7 @@ const startLocalSessionWithLoginRetry=async()=>{
         void pending.then(session=>{try{session.stop();console.warn('SDK_LOGIN_ORPHAN_STOPPED',{attempt:attempt+1});}catch(stopErr){console.warn('SDK_LOGIN_ORPHAN_STOP_FAILED',{attempt:attempt+1,message:String(stopErr)});}}).catch(()=>{});
       }
       const code=Number((err as any)?.code);
-      const closedSdkSocket=String((err as any)?.url||'')===`wss://${gameHost}/`&&Number((err as any)?.readyState)===3;
+      const closedSdkSocket=String((err as any)?.url||'')==='wss://rs-sdk-demo.fly.dev/'&&Number((err as any)?.readyState)===3;
       const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||String((err as any)?.code)==='SDK_LOGIN_TIMEOUT';
       if(!retryable)throw err;
       // Give the server time to reap the stale session before re-logging in.
@@ -379,9 +376,7 @@ const startLocalSessionWithLoginRetry=async()=>{
   }
   throw lastError;
 };
-const session=runtimeMode==='hosted'
-  ?await HostedGatewayClient.connect({host:gameHost,username,password,quiet:false})
-  :await startLocalSessionWithLoginRetry();
+const session=await startSessionWithLoginRetry();
 const client=session.client;
 
 const norm=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
