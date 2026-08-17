@@ -341,17 +341,37 @@ const sessionOptions={host:gameHost,username,password,quiet:false,profanityFilte
 const startSessionWithLoginRetry=async()=>{
   let lastError:unknown;
   for(let attempt=0;attempt<3;attempt++){
+    // Hold the in-flight promise. The previous version raced an un-held
+    // startSession() against a sleep, so a timed-out attempt was ABANDONED
+    // while still connected - it kept holding the account, and retries 2 and 3
+    // could never log in. Run 228 died exactly that way: three 25s timeouts,
+    // then exit 1. LiteSession.stop() exists for this; the SDK's own comment
+    // says stop() resolves before `stopped` "so a supervisor can re-login
+    // straight away". So on timeout we now stop the orphan before retrying.
+    const pending=startSession(sessionOptions);
+    // Swallow late rejections so an abandoned attempt cannot raise an
+    // unhandled rejection after we have already moved on.
+    pending.catch(()=>{});
+    let timedOut=false;
+    // The first attempt races cold-cache work: run 228 logged the loc index
+    // being built "first run only" (1.5M entries) inside the login window,
+    // and the second attempt then loaded the same data from cache. Give the
+    // cold attempt materially more room than the warm ones.
+    const attemptTimeoutMs=attempt===0?60000:45000;
     try{
-      const attempt=startSession(sessionOptions);
-      return await Promise.race([attempt,Bun.sleep(25000).then(()=>{const timeout:any=new Error('SDK login attempt timed out');timeout.code='SDK_LOGIN_TIMEOUT';throw timeout;})]);
+      return await Promise.race([pending,Bun.sleep(attemptTimeoutMs).then(()=>{timedOut=true;const timeout:any=new Error('SDK login attempt timed out');timeout.code='SDK_LOGIN_TIMEOUT';throw timeout;})]);
     }catch(err){
       lastError=err;
+      if(timedOut){
+        void pending.then(session=>{try{session.stop();console.warn('SDK_LOGIN_ORPHAN_STOPPED',{attempt:attempt+1});}catch(stopErr){console.warn('SDK_LOGIN_ORPHAN_STOP_FAILED',{attempt:attempt+1,message:String(stopErr)});}}).catch(()=>{});
+      }
       const code=Number((err as any)?.code);
       const closedSdkSocket=String((err as any)?.url||'')===`wss://${gameHost}/`&&Number((err as any)?.readyState)===3;
       const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||String((err as any)?.code)==='SDK_LOGIN_TIMEOUT';
       if(!retryable)throw err;
-      const delayMs=Math.min(15000,5000*(2**attempt));
-      console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:3,code,delayMs,message:String(err)});
+      // Give the server time to reap the stale session before re-logging in.
+      const delayMs=timedOut?Math.min(30000,10000*(attempt+1)):Math.min(15000,5000*(2**attempt));
+      console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:3,code,timedOut,timeoutMs:attemptTimeoutMs,delayMs,message:String(err)});
       await Bun.sleep(delayMs);
     }
   }
