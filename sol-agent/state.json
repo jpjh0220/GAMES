@@ -6,76 +6,19 @@
     "directive": "You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes."
   },
   "lifetime": {
-    "totalChoices": 8391,
-    "teacherChoices": 8391,
+    "totalChoices": 8392,
+    "teacherChoices": 8392,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 8740,
-    "totalReward": 3838.334,
-    "saves": 971,
+    "completedExperiences": 8741,
+    "totalReward": 3840.414,
+    "saves": 972,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 590,
     "strategistFailures": 64
   },
   "memories": [
-    {
-      "id": "mswf1cv4-g0yj1n",
-      "createdAt": "2026-08-16T23:08:10.720Z",
-      "tick": 1083,
-      "runNumber": 167,
-      "kind": "relationship",
-      "text": "Beggar05 said: \"Trade ****\". Current stance cooperative, trust 0.84.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar05",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswf1cv4-s6ha5n",
-      "createdAt": "2026-08-16T23:08:10.720Z",
-      "tick": 1083,
-      "runNumber": 167,
-      "kind": "relationship",
-      "text": "Beggar12 said: \"Can i have ur junk items plz\". Current stance cooperative, trust 0.72.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar12",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
-    {
-      "id": "mswf1cv4-abpwbq",
-      "createdAt": "2026-08-16T23:08:10.720Z",
-      "tick": 1084,
-      "runNumber": 167,
-      "kind": "relationship",
-      "text": "Beggar01 said: \"Can u trade me some stuff\". Current stance cooperative, trust 1.00.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "beggar01",
-        "cooperative"
-      ],
-      "location": {
-        "x": 3092,
-        "z": 3243,
-        "level": 0
-      }
-    },
     {
       "id": "mswf1cv4-5gqgt8",
       "createdAt": "2026-08-16T23:08:10.720Z",
@@ -8048,6 +7991,68 @@
       "location": {
         "x": 3086,
         "z": 3230,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswinb4p-wo9yrf",
+      "createdAt": "2026-08-17T00:49:13.753Z",
+      "tick": 118,
+      "runNumber": 179,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Picking up item 995",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "pickup"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3247,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswinb4r-cuzbog",
+      "createdAt": "2026-08-17T00:49:13.755Z",
+      "tick": 118,
+      "runNumber": 179,
+      "kind": "episode",
+      "text": "AI motor: Pick up 2410 Coins (distance 5). Result: moved 3092,3242 → 3094,3247; inventory changed; +2410 coins. Reward 2.08.",
+      "importance": 1.74,
+      "tags": [
+        "pickup",
+        "item",
+        "resource",
+        "coins",
+        "valuable drop",
+        "npc aggie",
+        "loc mystical wall chart",
+        "loc charms",
+        "loc chair",
+        "loc cart"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3247,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswinb4r-etvbqn",
+      "createdAt": "2026-08-17T00:49:13.755Z",
+      "tick": 118,
+      "runNumber": 179,
+      "kind": "strategy",
+      "text": "From AI demonstrations, Pick up 2410 Coins (distance 5) worked across 6 similar samples with average reward 0.91.",
+      "importance": 1.91,
+      "tags": [
+        "pickup",
+        "pickup coins"
+      ],
+      "location": {
+        "x": 3094,
+        "z": 3247,
         "level": 0
       }
     }
@@ -19755,14 +19760,14 @@
         "exampleReason": "Deterministic progression director: No current milestone action is visible. Explore deliberately until a bank, tool shop, resource node, furnace, trainer, or safe target appears."
       },
       "pickup:coins": {
-        "n": 5,
-        "avgReward": 0.68,
-        "positive": 1,
+        "n": 6,
+        "avgReward": 0.9133,
+        "positive": 2,
         "negative": 0,
-        "lastReward": 0.08,
-        "lastAt": "2026-08-17T00:17:32.538Z",
+        "lastReward": 2.08,
+        "lastAt": "2026-08-17T00:49:13.755Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
-        "exampleReason": "I picked up Coins (distance 7) to support my current exploration and resource gathering."
+        "exampleReason": "I picked up 2410 Coins (distance 5)"
       },
       "pickup:bones": {
         "n": 4,
@@ -24790,8 +24795,8 @@
     "goo002": {
       "name": "Goo002",
       "firstSeenAt": "2026-08-14T23:15:18.001Z",
-      "lastSeenAt": "2026-08-17T00:43:21.209Z",
-      "encounters": 6078,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 6080,
       "combatLevel": 119,
       "trust": 0,
       "stance": "unknown",
@@ -24937,8 +24942,8 @@
     "ndzq5pll9": {
       "name": "Ndzq5pll9",
       "firstSeenAt": "2026-08-14T23:29:40.801Z",
-      "lastSeenAt": "2026-08-17T00:43:00.253Z",
-      "encounters": 682,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 683,
       "combatLevel": 105,
       "trust": 0,
       "stance": "unknown",
@@ -25238,8 +25243,8 @@
     "goo003": {
       "name": "Goo003",
       "firstSeenAt": "2026-08-15T06:11:58.690Z",
-      "lastSeenAt": "2026-08-17T00:32:29.189Z",
-      "encounters": 3134,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 3136,
       "combatLevel": 121,
       "trust": 0,
       "stance": "unknown",
@@ -28628,8 +28633,8 @@
     "xbfr5x1f0": {
       "name": "Xbfr5x1f0",
       "firstSeenAt": "2026-08-16T00:54:41.255Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 1129,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 1131,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -29275,8 +29280,8 @@
     "poseidon": {
       "name": "Poseidon",
       "firstSeenAt": "2026-08-16T02:28:10.988Z",
-      "lastSeenAt": "2026-08-17T00:30:38.752Z",
-      "encounters": 927,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 929,
       "combatLevel": 88,
       "trust": 0,
       "stance": "unknown",
@@ -36729,8 +36734,8 @@
     "fishmax1": {
       "name": "Fishmax1",
       "firstSeenAt": "2026-08-16T19:27:30.321Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 168,
+      "lastSeenAt": "2026-08-17T00:48:28.025Z",
+      "encounters": 169,
       "combatLevel": 9,
       "trust": 0,
       "stance": "unknown",
@@ -36937,8 +36942,8 @@
     "fishmax2": {
       "name": "Fishmax2",
       "firstSeenAt": "2026-08-16T19:29:56.856Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 198,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 200,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -37059,8 +37064,8 @@
     "fishmax3": {
       "name": "Fishmax3",
       "firstSeenAt": "2026-08-16T19:31:01.397Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 136,
+      "lastSeenAt": "2026-08-17T00:48:28.025Z",
+      "encounters": 137,
       "combatLevel": 11,
       "trust": 0,
       "stance": "unknown",
@@ -37496,8 +37501,8 @@
     "fishmax4": {
       "name": "Fishmax4",
       "firstSeenAt": "2026-08-16T19:38:43.584Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 119,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 121,
       "combatLevel": 12,
       "trust": 0,
       "stance": "unknown",
@@ -37556,8 +37561,8 @@
     "fishmax5": {
       "name": "Fishmax5",
       "firstSeenAt": "2026-08-16T19:40:27.115Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 151,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 153,
       "combatLevel": 10,
       "trust": 0,
       "stance": "unknown",
@@ -37945,8 +37950,8 @@
     "rexruthor": {
       "name": "Rexruthor",
       "firstSeenAt": "2026-08-16T20:35:15.254Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 423,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 425,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -38403,9 +38408,9 @@
     "fishmax10": {
       "name": "Fishmax10",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 94,
-      "combatLevel": 7,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 96,
+      "combatLevel": 8,
       "trust": 0,
       "stance": "unknown",
       "conversations": 0,
@@ -38418,8 +38423,8 @@
     "fishmax9": {
       "name": "Fishmax9",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 136,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 138,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -38433,8 +38438,8 @@
     "fishmax8": {
       "name": "Fishmax8",
       "firstSeenAt": "2026-08-16T21:38:52.291Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 132,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 134,
       "combatLevel": 4,
       "trust": 0,
       "stance": "unknown",
@@ -38463,8 +38468,8 @@
     "fishmax7": {
       "name": "Fishmax7",
       "firstSeenAt": "2026-08-16T21:39:14.603Z",
-      "lastSeenAt": "2026-08-17T00:43:32.782Z",
-      "encounters": 110,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "encounters": 112,
       "combatLevel": 5,
       "trust": 0,
       "stance": "unknown",
@@ -38559,8 +38564,8 @@
     "potato69": {
       "name": "Potato69",
       "firstSeenAt": "2026-08-16T22:12:23.354Z",
-      "lastSeenAt": "2026-08-16T23:45:30.245Z",
-      "encounters": 39,
+      "lastSeenAt": "2026-08-17T00:48:28.025Z",
+      "encounters": 40,
       "combatLevel": 3,
       "trust": 0,
       "stance": "unknown",
@@ -40846,6 +40851,21 @@
       "facts": [],
       "questions": [],
       "lastMessages": []
+    },
+    "lobby144": {
+      "name": "Lobby144",
+      "firstSeenAt": "2026-08-17T00:48:28.025Z",
+      "lastSeenAt": "2026-08-17T00:48:28.025Z",
+      "encounters": 1,
+      "combatLevel": 40,
+      "trust": 0,
+      "stance": "unknown",
+      "conversations": 0,
+      "cooperation": 0,
+      "suspicion": 0,
+      "facts": [],
+      "questions": [],
+      "lastMessages": []
     }
   },
   "places": {
@@ -40855,8 +40875,8 @@
       "z": 3242,
       "level": 0,
       "firstSeenAt": "2026-08-14T21:34:52.836Z",
-      "lastSeenAt": "2026-08-17T00:42:18.367Z",
-      "visits": 2367,
+      "lastSeenAt": "2026-08-17T00:48:58.138Z",
+      "visits": 2369,
       "npcs": [
         "Banker",
         "Dark wizard",
@@ -69210,9 +69230,21 @@
         "level": 0
       },
       "confidence": 0.7
+    },
+    {
+      "id": "route:3092:3242:3094:3247:0",
+      "at": "2026-08-17T00:49:13.755Z",
+      "kind": "route",
+      "text": "Route learned: 3092,3242 → 3094,3247; moved 3092,3242 → 3094,3247; inventory changed; +2410 coins",
+      "location": {
+        "x": 3094,
+        "z": 3247,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T00:43:34.314Z",
+  "updatedAt": "2026-08-17T00:49:13.756Z",
   "activePlan": {
     "objective": "Safe Fishing Locations",
     "focus": "Identify and record safe fishing spots",
