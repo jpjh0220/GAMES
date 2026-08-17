@@ -1,0 +1,95 @@
+name: Temporary Unity Phone Authentication
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - ".github/workflows/unity-auth-phone.yml"
+      - "unity-auth/**"
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  authenticate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      XDG_CONFIG_HOME: ${{ runner.temp }}/unity-xdg/config
+      XDG_DATA_HOME: ${{ runner.temp }}/unity-xdg/data
+      XDG_CACHE_HOME: ${{ runner.temp }}/unity-xdg/cache
+      BROWSER: echo
+      UNITY_NO_BANNER: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Unity CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 5 --output "$RUNNER_TEMP/unity" \
+            https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.2/unity-linux-x64
+          chmod +x "$RUNNER_TEMP/unity"
+          "$RUNNER_TEMP/unity" --version
+
+      - name: Start browser sign-in
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/auth-link" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME"
+          nohup "$RUNNER_TEMP/unity" auth login --verbose \
+            >"$RUNNER_TEMP/unity-auth.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/unity-auth.pid"
+          for _ in $(seq 1 45); do
+            cp "$RUNNER_TEMP/unity-auth.log" "$RUNNER_TEMP/auth-link/login-output.txt" 2>/dev/null || true
+            if grep -Eqi 'https?://|sign.?in|browser|authorize' "$RUNNER_TEMP/unity-auth.log" 2>/dev/null; then
+              break
+            fi
+            if ! kill -0 "$(cat "$RUNNER_TEMP/unity-auth.pid")" 2>/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          cp "$RUNNER_TEMP/unity-auth.log" "$RUNNER_TEMP/auth-link/login-output.txt" 2>/dev/null || true
+          cat "$RUNNER_TEMP/auth-link/login-output.txt" || true
+
+      - name: Upload phone sign-in link
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-phone-sign-in
+          path: ${{ runner.temp }}/auth-link/login-output.txt
+          retention-days: 1
+          if-no-files-found: error
+
+      - name: Wait for phone sign-in
+        shell: bash
+        run: |
+          set -euo pipefail
+          PID="$(cat "$RUNNER_TEMP/unity-auth.pid")"
+          for _ in $(seq 1 120); do
+            if ! kill -0 "$PID" 2>/dev/null; then
+              wait "$PID" || true
+              break
+            fi
+            sleep 5
+          done
+          cat "$RUNNER_TEMP/unity-auth.log"
+          "$RUNNER_TEMP/unity" auth status
+
+      - name: Package authenticated session
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/session"
+          tar -C "$RUNNER_TEMP/unity-xdg" -czf "$RUNNER_TEMP/session/unity-auth-session.tar.gz" .
+
+      - name: Upload authenticated session
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unity-authenticated-session
+          path: ${{ runner.temp }}/session/unity-auth-session.tar.gz
+          retention-days: 1
+          if-no-files-found: error
