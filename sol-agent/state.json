@@ -10,9 +10,9 @@
     "teacherChoices": 9131,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9410,
-    "totalReward": 3804.663,
-    "saves": 1062,
+    "completedExperiences": 9411,
+    "totalReward": 3804.063,
+    "saves": 1063,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1126,
@@ -24958,6 +24958,18 @@
         "lastAt": "2026-08-17T08:02:41.401Z",
         "exampleGoal": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
         "exampleReason": "Wait and observe for a moment"
+      }
+    },
+    "llm-timeout:98": {
+      "modal:close-interface": {
+        "n": 1,
+        "avgReward": -0.6,
+        "positive": 0,
+        "negative": 1,
+        "lastReward": -0.6,
+        "lastAt": "2026-08-17T08:05:16.661Z",
+        "exampleGoal": "Maintain safe verified play while the language model reconnects",
+        "exampleReason": "The language model timed out. Use the already-observed safe candidate “Close the blocking interface” once, verify its outcome, then retry language reasoning."
       }
     }
   },
@@ -72343,12 +72355,12 @@
     },
     "193:194:0": {
       "key": "193:194:0",
-      "x": 3097,
-      "z": 3107,
+      "x": 3094,
+      "z": 3106,
       "level": 0,
       "firstSeenAt": "2026-08-17T07:00:35.807Z",
-      "lastSeenAt": "2026-08-17T08:02:28.793Z",
-      "visits": 70,
+      "lastSeenAt": "2026-08-17T08:05:09.744Z",
+      "visits": 72,
       "npcs": [
         "RuneScape Guide",
         "Survival Expert",
@@ -100860,44 +100872,6 @@
       "confidence": 0.7
     }
   ],
-  "updatedAt": "2026-08-17T08:02:41.401Z",
-  "activePlan": {
-    "objective": "Explore and document key coordinates for safe and efficient travel",
-    "focus": "Identify and record essential locations for safe travel and resource gathering.",
-    "reason": "Coordinates are critical for efficient movement and resource acquisition. Verify each location's utility and adjust plans accordingly.",
-    "risk": "balanced",
-    "plan": [
-      {
-        "id": "step-1",
-        "label": "Identify and record essential locations for safe travel and resource gathering.",
-        "status": "active"
-      },
-      {
-        "id": "step-2",
-        "label": "Use the provided coordinates to navigate and verify the locations' relevance to current goals.",
-        "status": "pending"
-      },
-      {
-        "id": "step-3",
-        "label": "Document findings and adjust strategies based on verified outcomes and new information.",
-        "status": "pending"
-      }
-    ],
-    "successSignals": [
-      "Successfully documented key coordinates for safe and efficient"
-    ],
-    "priorities": [
-      "Identify and record essential locations for safe travel and resource gathering.",
-      "Use the provided coordinates to navigate and verify the locations' relevance to current goals.",
-      "Document findings and adjust strategies based on verified outcomes and new information."
-    ],
-    "avoid": [
-      "Advance stalled economy dialog and re-evaluate",
-      "Wait and observe for a moment",
-      "Advance stalled economy dialog and re-evaluate"
-    ],
-    "updatedAt": "2026-08-17T08:02:40.021Z",
-    "sourceModel": "qwen3:1.7b",
-    "failures": 1
-  }
+  "updatedAt": "2026-08-17T08:05:16.662Z",
+  "activePlan": null
 }
