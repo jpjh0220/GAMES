@@ -72,6 +72,7 @@ let lastControlPollAt=0;
 let controlSha:string|null=null;
 let teacherProbeInFlight=false;
 let lastTeacherProbeTick=-9999;
+let lastWiredTeacherAt=0;
 let decisionLease=0;
 let decisionStartedTick=-1;
 let actionStartedTick=-1;
@@ -293,10 +294,14 @@ const server=Bun.serve({
     const fullAccess=viewerAccessToken.length>0&&url.searchParams.get('token')===viewerAccessToken;
     const bearer=req.headers.get('authorization')||'';
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
+    const sameOrigin=!!req.headers.get('origin')&&req.headers.get('origin')===url.origin&&req.headers.get('sec-fetch-site')==='same-origin';
+    const wiredTeacherAccess=controlAccess||sameOrigin;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
     if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const includeState=url.searchParams.get('includeState')==='1';const selected=cognitionLog.filter(e=>e.id>since&&(includeSystem||e.kind!=='system')).slice(-limit);const events=includeState?selected:selected.map(({state,...event}:any)=>event);return Response.json({cursor:cognitionSequence,events,omittedSystem:!includeSystem,omittedState:!includeState},{headers});}
     if(path==='/teacher'&&req.method==='POST'){
-      if(!controlAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
+      if(!wiredTeacherAccess)return Response.json({ok:false,error:'unauthorized'},{status:401,headers});
+      if(!controlAccess&&Date.now()-lastWiredTeacherAt<5000)return Response.json({ok:false,error:'teacher_rate_limited'},{status:429,headers});
+      lastWiredTeacherAt=Date.now();
       let body:any;try{body=await req.json();}catch{return Response.json({ok:false,error:'invalid_json'},{status:400,headers});}
       const text=String(body?.message||body?.text||'').trim().slice(0,1000);
       if(!text)return Response.json({ok:false,error:'message_required'},{status:400,headers});
