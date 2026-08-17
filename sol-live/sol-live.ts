@@ -760,7 +760,10 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     const candidate=modelCandidate;
     const effectiveChoice=choice;
     if(!candidate){
-      void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:'action no longer available'});
+      const staleReason='action no longer available after the world/obligation phase changed';
+      brain.noteStaleDecision(choice.fingerprint,tick,staleReason);
+      void log('AGENT_DECISION_STALE',{startedTick,resolvedTick:tick,fingerprint:choice.fingerprint,reason:staleReason,replan:'transient fingerprint quarantine for 40 ticks'});
+      currentGoal='Re-observe after stale choice';currentWhy=`The selected action ${choice.fingerprint} disappeared before execution; the model must choose from the refreshed legal set.`;
       nextDecisionTick=tick+1;return;
     }
     if(directedCandidate&&directedCandidate.fingerprint!==choice.fingerprint)void log('PROGRESSION_ADVISORY',{tick,stage:latestPlan.stage,id:latestPlan.id,objective:latestPlan.objective,advisoryAction:directedCandidate.label,selectedAction:candidate.label});

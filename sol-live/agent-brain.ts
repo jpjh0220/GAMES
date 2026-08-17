@@ -179,6 +179,7 @@ export class SolAgentBrain {
   private repoKnowledge:{source:string;text:string}[]=[];
   private gameplayCurriculum='';
   private blockedFingerprints:string[]=[];
+  private transientStaleBlocks=new Map<string,number>();
   private prereqs=new PrerequisiteTracker();
   private paidResolutions=new Set<string>();
   private goals=new GoalSystem();
@@ -412,6 +413,7 @@ export class SolAgentBrain {
   private markDirty(){this.dirty=true;this.dirtyRevision++;}
 
   noteReflex(){this.memory.lifetime.reflexActions++;this.markDirty();}
+  noteStaleDecision(fingerprint:string,tick:number,reason='action disappeared before execution'){if(!fingerprint)return;this.transientStaleBlocks.set(fingerprint,tick+40);this.markDirty();console.log('AGENT_STALE_QUARANTINE',JSON.stringify({fingerprint,untilTick:tick+40,reason}));}
 
   private observe(state:BotWorldState){
     const t=now();
@@ -535,7 +537,8 @@ export class SolAgentBrain {
     this.liveObjective=String(liveObjective||'').trim().slice(0,220);
     const decisionStarted=Date.now();
     this.observe(state);this.emitTelemetry(state,state.tick||0);
-    const gated=this.antiLoopCandidates(candidates);let legal=this.balancedCandidates(gated);
+    for(const [fp,until] of this.transientStaleBlocks)if((state.tick||0)>=until)this.transientStaleBlocks.delete(fp);
+    const gated=this.antiLoopCandidates(candidates);const staleFiltered=gated.filter(c=>!(this.transientStaleBlocks.has(c.fingerprint)));const gatedForDecision=staleFiltered.length?staleFiltered:gated;let legal=this.balancedCandidates(gatedForDecision);
     const p=state.player!;const hpRatio=p.maxHp?p.hp/p.maxHp:1;
     const emergency=hpRatio<.45||!!p.combat?.inCombat;
     const goalText=(this.liveObjective||this.externalDirective||`${this.strategy?.focus||''} ${this.strategy?.objective||''} ${(this.strategy?.plan||[]).find(x=>x.status==='active')?.label||''}`).toLowerCase();
