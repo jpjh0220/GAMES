@@ -255,10 +255,10 @@ const refreshSnapshot = (state:BotWorldState|null) => {
     sessionStartedAt,directive,runNumber,player:state?.player?{...state.player,animId:(state.player as any).animId}:null,skills:state?.skills??[],
     inventory:state?.inventory?.map(i=>({id:i.id,name:i.name,count:i.count,slot:i.slot}))??[],
     equipment:state?.equipment?.map(i=>({id:i.id,name:i.name,count:i.count,slot:i.slot}))??[],
-    nearbyNpcs:s?.nearbyNpcs?.map((n:any)=>({id:n.id,index:n.index,name:n.name,combatLevel:n.combatLevel,x:n.x,z:n.z,hp:n.hp,maxHp:n.maxHp,healthPercent:n.healthPercent,inCombat:n.inCombat,targetIndex:n.targetIndex,animId:n.animId,spotanimId:n.spotanimId,lastCombatTick:n.lastCombatTick,distance:n.distance,reachable:n.reachable,options:n.options}))??[],
+    nearbyNpcs:s?.nearbyNpcs?.map((n:any)=>({id:n.id,index:n.index,name:n.name,combatLevel:n.combatLevel,x:n.x,z:n.z,hp:n.hp,maxHp:n.maxHp,healthPercent:n.healthPercent,inCombat:n.inCombat,targetIndex:n.targetIndex,animId:n.animId,spotanimId:n.spotanimId,lastCombatTick:n.lastCombatTick,distance:n.distance,reachable:n.reachable,options:n.options,optionsWithIndex:n.optionsWithIndex}))??[],
     nearbyPlayers:s?.nearbyPlayers?.map((p:any)=>({index:p.index,name:p.name,combatLevel:p.combatLevel,x:p.x,z:p.z,distance:p.distance,reachable:p.reachable,animId:p.animId,spotanimId:p.spotanimId,inCombat:p.inCombat,targetIndex:p.targetIndex}))??[],
     groundItems:s?.groundItems?.map((g:any)=>({id:g.id,name:g.name,count:g.count,x:g.x,z:g.z,distance:g.distance,reachable:g.reachable}))??[],
-    nearbyLocs:s?.nearbyLocs?.slice?.(0,180)?.map((l:any)=>({id:l.id,name:l.name,x:l.x,z:l.z,level:l.level,distance:l.distance,reachable:l.reachable,options:l.options}))??[],
+    nearbyLocs:s?.nearbyLocs?.slice?.(0,180)?.map((l:any)=>({id:l.id,name:l.name,x:l.x,z:l.z,level:l.level,distance:l.distance,reachable:l.reachable,options:l.options,optionsWithIndex:l.optionsWithIndex}))??[],
     combatStyle:s?.combatStyle??null,
     combatEvents:s?.combatEvents?.slice?.(-100)?.map((e:any)=>({tick:e.tick,observationId:e.observationId,type:e.type,damage:e.damage,sourceType:e.sourceType,sourceIndex:e.sourceIndex,targetType:e.targetType,targetIndex:e.targetIndex}))??[],
     gameMessages:s?.gameMessages?.slice?.(-50)?.map((m:any)=>({type:m.type,text:m.text,sender:m.sender,tick:m.tick,observationId:m.observationId,fromSelf:m.fromSelf}))??[],
@@ -313,7 +313,10 @@ type ItemDisposition='use'|'keep'|'bank'|'sell'|'discard';
 const isCurrency=(name:string)=>/^coins?$|^coin pouch$|^gp$/i.test(String(name||'').trim());
 const itemDisposition=(item:any,state:BotWorldState):ItemDisposition=>{
   const name=String(item?.name||'').trim();
-  if(isCurrency(name)||/^(bronze|iron|steel|mithril|adamant|rune) (axe|pickaxe)|tinderbox|fishing (net|rod)|fly fishing rod/i.test(name))return 'keep';
+  const operational=/^(bronze|iron|steel|mithril|adamant|rune) (axe|pickaxe)|tinderbox|fishing (net|rod)|fly fishing rod/i.test(name);
+  const duplicates=(state.inventory||[]).filter((x:any)=>norm(String(x.name||''))===norm(name));
+  if(operational&&duplicates.length>1&&item?.slot!==Math.min(...duplicates.map((x:any)=>Number(x.slot)).filter(Number.isFinite)))return 'bank';
+  if(isCurrency(name)||operational)return 'keep';
   if(/^bones?$/i.test(name)||/^(big )?bones$/i.test(name))return item?.optionsWithIndex?.some((o:any)=>/bury/i.test(String(o.text||'')))?'use':'bank';
   if(/^raw /i.test(name)&&/(shrimp|anchov|fish|sardine|herring|trout|salmon)/i.test(name))return 'bank';
   if(/^(cooked |burnt )?(shrimp|anchov|fish|sardine|herring|trout|salmon|lobster|bread|cake)/i.test(name))return 'keep';
@@ -493,7 +496,7 @@ const buildCandidates=(state:BotWorldState):AgentCandidate[]=>{
 
   if(state.bank?.isOpen){
     const pressure=isCapacityPressure(state);
-    const protectedItem=(item:any)=>isCurrency(item.name)||/^(bronze|iron|steel|mithril|adamant|rune) (axe|pickaxe)|tinderbox|fishing (net|rod)|fly fishing rod/i.test(String(item.name||''));
+    const protectedItem=(item:any)=>isCurrency(item.name)||(itemDisposition(item,state)==='keep'&&/^(bronze|iron|steel|mithril|adamant|rune) (axe|pickaxe)|tinderbox|fishing (net|rod)|fly fishing rod/i.test(String(item.name||'')));
     const purposeful=(state.inventory||[]).filter((item:any)=>!protectedItem(item)&&itemDisposition(item,state)!=='keep');
     const pressureSurplus=(state.inventory||[]).filter((item:any)=>!protectedItem(item)&&itemDisposition(item,state)!=='discard');
     if(economyResolution.noProgress<2)for(const item of [...purposeful,...(pressure?pressureSurplus:[])].filter((item:any,i:number,all:any[])=>all.findIndex((x:any)=>x.slot===item.slot)===i).slice(0,14)) add({label:`Deposit all ${item.name} because capacity pressure requires temporary storage`,category:'bank',fingerprint:`bank:deposit:${norm(item.name)}`,settleTicks:5,action:{type:'bankDeposit',slot:item.slot,amount:-1,reason:pressure&&itemDisposition(item,state)==='keep'?`Capacity pressure temporarily overrides keep preference for surplus ${item.name}; restore it later if useful.`:`Item policy classified ${item.name} as bank: preserve it for a future skill, quest, or resource goal.`},tags:['bank','store','learned-item-policy',item.name]});
