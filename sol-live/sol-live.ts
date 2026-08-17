@@ -11,7 +11,9 @@ import { ProgressionDirector } from './progression-director.js';
 const username = process.env.SOL_USER!;
 const password = process.env.SOL_PASS!;
 const RUN_MS = 19_800_000; // 5h30m, leaving ~30m for setup/persistence/artifacts/handoff.
-const viewerHtml = await Bun.file('./viewer.html').text();
+const viewerHtmlTemplate = await Bun.file('./viewer.html').text();
+const wiredTeacherNonce = crypto.randomUUID();
+const viewerHtml = viewerHtmlTemplate.replaceAll('__SOL_TEACHER_NONCE__', wiredTeacherNonce);
 const sessionStartedAt = new Date().toISOString();
 const viewerAccessToken = process.env.SOL_VIEWER_TOKEN?.trim() || '';
 const directive = 'You are Sol, an autonomous player inside a persistent RuneScape-style MMO. Your permanent mission is open-ended play: explore the world, learn its mechanics from the rs-sdk repository and verified live outcomes, survive, interact with the world and other players, and choose purposeful activities. Do not assume a fixed skill, level, banking, fishing, combat, or progression goal. Select temporary subgoals only when they emerge from what you observe, what you have learned, your capabilities, your resources, and the opportunities around you. Re-plan when evidence changes.';
@@ -295,7 +297,7 @@ const server=Bun.serve({
     const bearer=req.headers.get('authorization')||'';
     const controlAccess=controlToken.length>0&&bearer===`Bearer ${controlToken}`;
     const sameOrigin=!!req.headers.get('origin')&&req.headers.get('origin')===url.origin&&req.headers.get('sec-fetch-site')==='same-origin';
-    const wiredTeacherAccess=controlAccess||sameOrigin;
+    const wiredTeacherAccess=controlAccess||sameOrigin||req.headers.get('x-sol-teacher-nonce')===wiredTeacherNonce;
     if(path==='/state') return Response.json(fullAccess?{...snapshot,control:controlState,viewerAccess:'full'}:publicSnapshot(),{headers});
     if(path==='/log'){const since=Math.max(0,Number(url.searchParams.get('since')||0));const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit')||200)));const includeSystem=url.searchParams.get('includeSystem')==='1';const includeState=url.searchParams.get('includeState')==='1';const selected=cognitionLog.filter(e=>e.id>since&&(includeSystem||e.kind!=='system')).slice(-limit);const events=includeState?selected:selected.map(({state,...event}:any)=>event);return Response.json({cursor:cognitionSequence,events,omittedSystem:!includeSystem,omittedState:!includeState},{headers});}
     if(path==='/teacher'&&req.method==='POST'){
