@@ -38,6 +38,7 @@ env:
   CHAIN_DEPTH: ${{ inputs.chain_depth || '0' }}
   PREVIOUS_RUN_ID: ${{ inputs.previous_run_id || '' }}
   PREVIOUS_ARTIFACT_NAME: ${{ inputs.previous_artifact_name || '' }}
+  SOL_RUNTIME_MODE: hosted
 
 concurrency:
   group: sol-continuous-world
@@ -74,7 +75,7 @@ jobs:
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
 
       - name: Restore previous rs-sdk game database
-        if: env.PREVIOUS_RUN_ID != '' && env.PREVIOUS_ARTIFACT_NAME != ''
+        if: env.SOL_RUNTIME_MODE == 'local' && env.PREVIOUS_RUN_ID != '' && env.PREVIOUS_ARTIFACT_NAME != ''
         working-directory: rs-sdk/server/engine
         shell: bash
         env:
@@ -94,6 +95,7 @@ jobs:
           echo "Restored rs-sdk account database from run $PREVIOUS_RUN_ID."
 
       - name: Start local rs-sdk game and login server
+        if: env.SOL_RUNTIME_MODE == 'local'
         working-directory: rs-sdk/server/engine
         shell: bash
         env:
@@ -224,7 +226,7 @@ jobs:
           SOL_USER: ${{ secrets.SOL_USER }}
           SOL_PASS: ${{ secrets.SOL_PASS }}
           SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
-          SOL_GAME_HOST: 127.0.0.1:8080
+          SOL_GAME_HOST: rs-sdk-demo.fly.dev
           SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}
           SOL_LLM_PROVIDER: ollama
           SOL_MOTOR_MODEL: qwen3:0.6b
@@ -287,7 +289,7 @@ jobs:
           if-no-files-found: warn
 
       - name: Upload game account database for handoff
-        if: success()
+        if: success() && env.SOL_RUNTIME_MODE == 'local'
         uses: actions/upload-artifact@v4
         with:
           name: sol-game-db-${{ github.run_number }}-${{ github.run_attempt }}
@@ -305,6 +307,5 @@ jobs:
           set -euo pipefail
           NEXT_DEPTH=$((CHAIN_DEPTH + 1))
           echo "Rechaining healthy session depth $NEXT_DEPTH of $MAX_CHAIN_DEPTH"
-          PREVIOUS_ARTIFACT="sol-game-db-${GITHUB_RUN_NUMBER}-${GITHUB_RUN_ATTEMPT}"
-          PAYLOAD=$(jq -cn --arg depth "$NEXT_DEPTH" --arg run_id "$GITHUB_RUN_ID" --arg artifact "$PREVIOUS_ARTIFACT" '{ref:"main",inputs:{chain_depth:$depth,previous_run_id:$run_id,previous_artifact_name:$artifact}}')
+          PAYLOAD=$(jq -cn --arg depth "$NEXT_DEPTH" '{ref:"main",inputs:{chain_depth:$depth}}')
           curl --fail-with-body --retry 3 -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GH_TOKEN}" -H "X-GitHub-Api-Version: 2022-11-28" "https://api.github.com/repos/${{ github.repository }}/actions/workflows/rs-sol-live.yml/dispatches" -d "$PAYLOAD"
