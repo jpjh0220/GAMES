@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 7200,
-  "committedTick": 15071,
+  "stateGeneration": 7218,
+  "committedTick": 15121,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3094,
-    "z": 3106,
+    "x": 3222,
+    "z": 3222,
     "level": 0
   },
   "currentObligation": {
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "",
-    "freeSlots": 28,
+    "signature": "0:1351:1|1:590:1|2:303:1|4:1925:1|5:1931:1|7:1265:1|8:1205:1|9:1277:1|10:1171:1|11:841:1|12:882:25|13:556:25|14:558:15|15:555:6|16:557:4|17:559:2",
+    "freeSlots": 12,
     "coins": 0,
-    "updatedTick": 15071
+    "updatedTick": 15121
   },
   "milestones": [
     {
@@ -66,6 +66,24 @@
       "id": "open-ended-play:692",
       "label": "Explore, learn, and play purposefully",
       "tick": 692,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "open-ended-play:15090",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 15090,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "open-ended-play:15097",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 15097,
+      "evidence": "inventory changed"
+    },
+    {
+      "id": "open-ended-play:15103",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 15103,
       "evidence": "inventory changed"
     }
   ],
@@ -120,5 +138,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-17T10:36:06.284Z"
+  "updatedAt": "2026-08-17T10:36:21.300Z"
 }
