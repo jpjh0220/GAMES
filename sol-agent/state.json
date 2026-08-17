@@ -10,34 +10,15 @@
     "teacherChoices": 9051,
     "studentChoices": 0,
     "reflexActions": 0,
-    "completedExperiences": 9350,
-    "totalReward": 3821.594,
-    "saves": 1045,
+    "completedExperiences": 9351,
+    "totalReward": 3821.674,
+    "saves": 1046,
     "shadowPredictions": 4038,
     "shadowMatches": 1980,
     "strategistRefreshes": 1081,
     "strategistFailures": 86
   },
   "memories": [
-    {
-      "id": "mswrurg2-1dajco",
-      "createdAt": "2026-08-17T05:06:58.034Z",
-      "tick": 5360,
-      "runNumber": 190,
-      "kind": "relationship",
-      "text": "Febsetu58 said: \"Oh its hestia, hi\". Current stance cautious, trust -0.28.",
-      "importance": 0.8,
-      "tags": [
-        "social",
-        "febsetu58",
-        "cautious"
-      ],
-      "location": {
-        "x": 3142,
-        "z": 3365,
-        "level": 0
-      }
-    },
     {
       "id": "mswrurg2-3gqrvq",
       "createdAt": "2026-08-17T05:06:58.034Z",
@@ -7458,6 +7439,24 @@
       "location": {
         "x": 3142,
         "z": 3372,
+        "level": 0
+      }
+    },
+    {
+      "id": "mswsbrcq-6c7s9q",
+      "createdAt": "2026-08-17T05:20:11.066Z",
+      "tick": 69,
+      "runNumber": 194,
+      "kind": "observation",
+      "text": "Action feedback (sdk_feedback): Interacting with loc 1286",
+      "importance": 1.2,
+      "tags": [
+        "sdk feedback",
+        "manual diagnostic"
+      ],
+      "location": {
+        "x": 3141,
+        "z": 3374,
         "level": 0
       }
     }
@@ -24523,6 +24522,16 @@
         "lastAt": "2026-08-17T05:14:26.073Z",
         "exampleGoal": "Bounded manual diagnostic",
         "exampleReason": "Bounded manual diagnostic: chop the nearest reachable dead tree once and verify the SDK result."
+      },
+      "manual:interactLoc:64": {
+        "n": 1,
+        "avgReward": 0.08,
+        "positive": 0,
+        "negative": 0,
+        "lastReward": 0.08,
+        "lastAt": "2026-08-17T05:20:11.067Z",
+        "exampleGoal": "Bounded manual diagnostic",
+        "exampleReason": "Bounded manual diagnostic follow-up: the first action moved into range; perform one chop interaction now and verify XP, inventory, or SDK feedback."
       }
     },
     "area=392:420:0|hp=healthy|combat=0|agents=0|food=1|dialog=0|bank=0|shop=0|cats=explore": {
@@ -55517,8 +55526,8 @@
     "matpi": {
       "name": "Matpi",
       "firstSeenAt": "2026-08-17T03:57:26.745Z",
-      "lastSeenAt": "2026-08-17T05:15:30.480Z",
-      "encounters": 13,
+      "lastSeenAt": "2026-08-17T05:19:38.475Z",
+      "encounters": 14,
       "trust": -0.88,
       "stance": "distrusted",
       "conversations": 38,
@@ -71898,12 +71907,12 @@
     },
     "196:210:0": {
       "key": "196:210:0",
-      "x": 3142,
-      "z": 3367,
+      "x": 3140,
+      "z": 3370,
       "level": 0,
       "firstSeenAt": "2026-08-17T04:54:30.567Z",
-      "lastSeenAt": "2026-08-17T05:15:30.480Z",
-      "visits": 32,
+      "lastSeenAt": "2026-08-17T05:19:38.475Z",
+      "visits": 33,
       "npcs": [
         "Tree",
         "Duck",
@@ -71920,7 +71929,11 @@
         "Plant",
         "Fern",
         "Boulder",
-        "Stones"
+        "Stones",
+        "Warehouse shelves",
+        "Barrel",
+        "Fungus",
+        "Crate"
       ]
     },
     "196:211:0": {
@@ -96495,54 +96508,6 @@
   },
   "discoveries": [
     {
-      "id": "route:3155:3295:3151:3298:0",
-      "at": "2026-08-17T02:48:09.951Z",
-      "kind": "route",
-      "text": "Route learned: 3155,3295 → 3151,3298; moved 3155,3295 → 3151,3298",
-      "location": {
-        "x": 3151,
-        "z": 3298,
-        "level": 0
-      },
-      "confidence": 0.75
-    },
-    {
-      "id": "npc:farmer:196:206:0",
-      "at": "2026-08-17T02:48:10.385Z",
-      "kind": "npc",
-      "text": "Farmer observed near 3151, 3298, level 0.",
-      "location": {
-        "x": 3151,
-        "z": 3298,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "npc:goblin:196:206:0",
-      "at": "2026-08-17T02:48:10.385Z",
-      "kind": "npc",
-      "text": "Goblin observed near 3151, 3298, level 0.",
-      "location": {
-        "x": 3151,
-        "z": 3298,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
-      "id": "place:haystack:196:206:0",
-      "at": "2026-08-17T02:48:10.385Z",
-      "kind": "place",
-      "text": "Haystack observed near 3151, 3298, level 0.",
-      "location": {
-        "x": 3151,
-        "z": 3298,
-        "level": 0
-      },
-      "confidence": 0.7
-    },
-    {
       "id": "place:wheat:196:206:0",
       "at": "2026-08-17T02:48:10.385Z",
       "kind": "place",
@@ -100093,9 +100058,69 @@
         "level": 0
       },
       "confidence": 0.75
+    },
+    {
+      "id": "place:warehouse shelves:196:210:0",
+      "at": "2026-08-17T05:19:38.475Z",
+      "kind": "place",
+      "text": "Warehouse shelves observed near 3140, 3370, level 0.",
+      "location": {
+        "x": 3140,
+        "z": 3370,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:barrel:196:210:0",
+      "at": "2026-08-17T05:19:38.475Z",
+      "kind": "place",
+      "text": "Barrel observed near 3140, 3370, level 0.",
+      "location": {
+        "x": 3140,
+        "z": 3370,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:fungus:196:210:0",
+      "at": "2026-08-17T05:19:38.475Z",
+      "kind": "place",
+      "text": "Fungus observed near 3140, 3370, level 0.",
+      "location": {
+        "x": 3140,
+        "z": 3370,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "place:crate:196:210:0",
+      "at": "2026-08-17T05:19:38.475Z",
+      "kind": "place",
+      "text": "Crate observed near 3140, 3370, level 0.",
+      "location": {
+        "x": 3140,
+        "z": 3370,
+        "level": 0
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "route:3140:3370:3141:3374:0",
+      "at": "2026-08-17T05:20:11.068Z",
+      "kind": "route",
+      "text": "Route learned: 3140,3370 → 3141,3374; moved 3140,3370 → 3141,3374",
+      "location": {
+        "x": 3141,
+        "z": 3374,
+        "level": 0
+      },
+      "confidence": 0.75
     }
   ],
-  "updatedAt": "2026-08-17T05:15:55.070Z",
+  "updatedAt": "2026-08-17T05:20:11.069Z",
   "activePlan": {
     "objective": "Explore and learn about Al Kharid coordinates and nearby locations",
     "focus": "Identify the toll gate locations and their coordinates",
