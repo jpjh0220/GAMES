@@ -102,8 +102,10 @@ const restoreRemoteDurableState=async()=>{
     if(r.status===404)return;
     if(!r.ok)throw new Error(`remote durable load ${r.status}`);
     const body:any=await r.json();remoteDurableSha=body.sha||null;
-    const parsed=JSON.parse(Buffer.from(String(body.content||'').replace(/\\n/g,''),'base64').toString('utf8'));
-    if(parsed?.schemaVersion===1&&parsed?.identity?.name===username)await Bun.write(durablePath,JSON.stringify(parsed,null,2)+'\\n');
+    const decoded=Buffer.from(String(body.content||'').replace(/\s/g,''),'base64').toString('utf8');
+    const normalized=decoded.endsWith('\\n')?decoded.slice(0,-2):decoded;
+    const parsed=JSON.parse(normalized);
+    if(parsed?.schemaVersion===1&&parsed?.identity?.name===username)await Bun.write(durablePath,JSON.stringify(parsed,null,2)+'\n');
   }catch(err){console.warn('REMOTE_DURABLE_LOAD_FAILED',String(err).slice(0,180));}
 };
 const persistRemoteDurableState=async(state:PersistentState)=>{
@@ -112,7 +114,7 @@ const persistRemoteDurableState=async(state:PersistentState)=>{
   try{
     const get=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/${durableRemotePath}?ref=sol-memory&t=${Date.now()}`,{headers:githubJsonHeaders,signal:AbortSignal.timeout(5000)});
     if(get.ok){const existing:any=await get.json();remoteDurableSha=existing.sha||remoteDurableSha;}
-    const payload:any={message:`Persist Sol body ledger generation ${state.stateGeneration}`,content:Buffer.from(JSON.stringify(state,null,2)+'\\n').toString('base64'),branch:'sol-memory'};
+    const payload:any={message:`Persist Sol body ledger generation ${state.stateGeneration}`,content:Buffer.from(JSON.stringify(state,null,2)+'\n').toString('base64'),branch:'sol-memory'};
     if(remoteDurableSha)payload.sha=remoteDurableSha;
     const put=await fetch(`https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/contents/${durableRemotePath}`,{method:'PUT',headers:{...githubJsonHeaders,'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(7000)});
     if(put.status===409||put.status===422){remoteDurableSha=null;return;}
