@@ -71,6 +71,7 @@ jobs:
           cd rs-sdk && bun install --frozen-lockfile
           cd server/webclient && bun install --frozen-lockfile
           cp ../../../sol-live/*.ts ./
+          cp ../../../sol-live/recover-sol5-save.mjs ./recover-sol5-save.mjs
           cp ../../../sol-live/viewer.html ./viewer.html
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
 
@@ -92,7 +93,11 @@ jobs:
           fi
           cp "$DB_PATH" ./db.sqlite
           test -s ./db.sqlite
-          echo "Restored rs-sdk account database from run $PREVIOUS_RUN_ID."
+          while IFS= read -r SAVE_PATH; do
+            mkdir -p ./data/players/main
+            cp "$SAVE_PATH" "./data/players/main/$(basename "$SAVE_PATH")"
+          done < <(find "$GITHUB_WORKSPACE/game-db-restore" -type f -name '*.sav' -print)
+          echo "Restored rs-sdk database and any available player-save blobs from run $PREVIOUS_RUN_ID."
 
       - name: Start local rs-sdk game and login server
         if: env.SOL_RUNTIME_MODE == 'local'
@@ -110,10 +115,17 @@ jobs:
           NODE_TICKRATE: '300'
           NODE_XPRATE: '25'
           WEBSITE_REGISTRATION: 'false'
+          SOL_USER: ${{ secrets.SOL_USER }}
         run: |
           set -euo pipefail
           bun install --frozen-lockfile
           bun run sqlite:migrate
+          RECOVERY_SAVE="./data/players/main/${SOL_USER}.sav"
+          if [ ! -f "$RECOVERY_SAVE" ]; then
+            node ../webclient/recover-sol5-save.mjs "$RECOVERY_SAVE"
+          else
+            echo "Preserving restored player save: $RECOVERY_SAVE"
+          fi
           nohup env EASY_STARTUP="$EASY_STARTUP" LOGIN_SERVER="$LOGIN_SERVER" FRIEND_SERVER="$FRIEND_SERVER" LOGGER_SERVER="$LOGGER_SERVER" WEB_PORT="$WEB_PORT" NODE_PORT="$NODE_PORT" NODE_MEMBERS="$NODE_MEMBERS" NODE_RANDOM_EVENTS="$NODE_RANDOM_EVENTS" NODE_TICKRATE="$NODE_TICKRATE" NODE_XPRATE="$NODE_XPRATE" WEBSITE_REGISTRATION="$WEBSITE_REGISTRATION" bun run src/app.ts > "$GITHUB_WORKSPACE/rs-engine.log" 2>&1 &
           ENGINE_PID=$!
           echo "$ENGINE_PID" > "$GITHUB_WORKSPACE/rs-engine.pid"
@@ -293,7 +305,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sol-game-db-${{ github.run_number }}-${{ github.run_attempt }}
-          path: rs-sdk/server/engine/db.sqlite
+          path: |
+            rs-sdk/server/engine/db.sqlite
+            rs-sdk/server/engine/data/players
           retention-days: 14
           if-no-files-found: error
 
