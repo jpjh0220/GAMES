@@ -318,7 +318,7 @@ const startSessionWithLoginRetry=async()=>{
       lastError=err;
       const code=Number((err as any)?.code);
       const closedSdkSocket=String((err as any)?.url||'')==='wss://rs-sdk-demo.fly.dev/'&&Number((err as any)?.readyState)===3;
-      const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||code===0&&/SDK login attempt timed out/i.test(String(err));
+      const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||String((err as any)?.code)==='SDK_LOGIN_TIMEOUT';
       if(!retryable)throw err;
       const delayMs=Math.min(15000,5000*(2**attempt));
       console.warn('SDK_LOGIN_RETRY',{attempt:attempt+1,maxAttempts:3,code,delayMs,message:String(err)});
