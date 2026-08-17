@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 4019,
+  "stateGeneration": 4030,
   "committedTick": 5511,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog discarded a pending action outcome and quarantined the stale action."
+    "reason": "The language model timed out. Use the already-observed safe candidate “Wait and observe for a moment” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled action",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "",
     "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 3941
+    "updatedTick": 3991
   },
   "milestones": [
     {
@@ -120,5 +120,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-17T08:38:26.633Z"
+  "updatedAt": "2026-08-17T08:38:41.662Z"
 }
