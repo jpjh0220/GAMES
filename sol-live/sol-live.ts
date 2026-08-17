@@ -696,6 +696,7 @@ const capacityGate=(state:BotWorldState,candidates:AgentCandidate[])=>{
     if(c.category==='bank'&&c.action?.type==='interactLoc'&&economyResolution.noProgress>=2)return false;
     if(['bank','shop','modal','dialog'].includes(c.category))return true;
     if(c.category==='economy')return true;
+    if(c.category==='navigation-skill'&&c.tags?.includes('world-scale'))return true;
     if(c.action?.type==='worldSkill'&&/travel:draynor-bank/.test(c.fingerprint))return true;
     if(c.action?.type==='interactLoc'&&/bank/i.test(String(c.label)))return true;
     return false;
