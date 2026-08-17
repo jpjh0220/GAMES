@@ -674,8 +674,10 @@ const chooseTimeoutFallback=(state:BotWorldState,candidates:AgentCandidate[]):{c
   const ranked=[
     ...candidates.filter(c=>c.category==='dialog'),
     ...candidates.filter(c=>c.category==='modal'),
-    ...candidates.filter(c=>c.category==='wait'),
-    ...candidates.filter(c=>c.category==='explore'&&c.action?.type==='walkTo')
+    // When cognition is temporarily unavailable, keep the world model fresh with
+    // one short legal step instead of accumulating no-progress waits.
+    ...candidates.filter(c=>c.category==='explore'&&c.action?.type==='walkTo'),
+    ...candidates.filter(c=>c.category==='wait')
   ];
   const candidate=ranked.find(c=>c.action&&typeof c.fingerprint==='string');
   if(!candidate||!state.player)return null;
