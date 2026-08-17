@@ -307,7 +307,8 @@ const server=Bun.serve({
 });
 await log('VIEWER_LOCAL',{url:`http://127.0.0.1:${server.port}`});
 
-const sessionOptions={host:'rs-sdk-demo.fly.dev',username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
+const gameHost=process.env.SOL_GAME_HOST?.trim()||'rs-sdk-demo.fly.dev';
+const sessionOptions={host:gameHost,username,password,quiet:false,profanityFilter:true,onEnd:(end:any)=>{sessionEnd=end;currentGoal='Recover ended game session';currentWhy=`The SDK session ended with reason: ${end.reason}.`;void log('SDK_SESSION_END',end);}};
 const startSessionWithLoginRetry=async()=>{
   let lastError:unknown;
   for(let attempt=0;attempt<3;attempt++){
@@ -317,7 +318,7 @@ const startSessionWithLoginRetry=async()=>{
     }catch(err){
       lastError=err;
       const code=Number((err as any)?.code);
-      const closedSdkSocket=String((err as any)?.url||'')==='wss://rs-sdk-demo.fly.dev/'&&Number((err as any)?.readyState)===3;
+      const closedSdkSocket=String((err as any)?.url||'')===`wss://${gameHost}/`&&Number((err as any)?.readyState)===3;
       const retryable=(err instanceof LoginError&&code===8)||code===8||closedSdkSocket||String((err as any)?.code)==='SDK_LOGIN_TIMEOUT';
       if(!retryable)throw err;
       const delayMs=Math.min(15000,5000*(2**attempt));

@@ -61,6 +61,42 @@ jobs:
           cp ../../../sol-live/viewer.html ./viewer.html
           bun build sol-live.ts --target=bun --outfile=/tmp/sol-live-agent.js
 
+      - name: Start local rs-sdk game and login server
+        working-directory: rs-sdk/server/engine
+        shell: bash
+        env:
+          EASY_STARTUP: 'true'
+          LOGIN_SERVER: 'true'
+          FRIEND_SERVER: 'true'
+          LOGGER_SERVER: 'true'
+          WEB_PORT: '8080'
+          NODE_PORT: '43594'
+          NODE_MEMBERS: 'true'
+          NODE_RANDOM_EVENTS: 'false'
+          NODE_TICKRATE: '300'
+          NODE_XPRATE: '25'
+          WEBSITE_REGISTRATION: 'false'
+        run: |
+          set -euo pipefail
+          bun install --frozen-lockfile
+          bun run sqlite:migrate
+          nohup env EASY_STARTUP="$EASY_STARTUP" LOGIN_SERVER="$LOGIN_SERVER" FRIEND_SERVER="$FRIEND_SERVER" LOGGER_SERVER="$LOGGER_SERVER" WEB_PORT="$WEB_PORT" NODE_PORT="$NODE_PORT" NODE_MEMBERS="$NODE_MEMBERS" NODE_RANDOM_EVENTS="$NODE_RANDOM_EVENTS" NODE_TICKRATE="$NODE_TICKRATE" NODE_XPRATE="$NODE_XPRATE" WEBSITE_REGISTRATION="$WEBSITE_REGISTRATION" bun run src/app.ts > "$GITHUB_WORKSPACE/rs-engine.log" 2>&1 &
+          ENGINE_PID=$!
+          echo "$ENGINE_PID" > "$GITHUB_WORKSPACE/rs-engine.pid"
+          for i in $(seq 1 120); do
+            if grep -q 'World ready:' "$GITHUB_WORKSPACE/rs-engine.log" && curl -fsS --max-time 3 http://127.0.0.1:8080/ >/dev/null; then
+              echo 'Local rs-sdk engine and login server are ready.'
+              exit 0
+            fi
+            if ! kill -0 "$ENGINE_PID" 2>/dev/null; then
+              cat "$GITHUB_WORKSPACE/rs-engine.log"
+              exit 1
+            fi
+            sleep 2
+          done
+          cat "$GITHUB_WORKSPACE/rs-engine.log"
+          exit 1
+
       - name: Install pinned local Ollama runtime
         shell: bash
         run: |
@@ -156,6 +192,7 @@ jobs:
           SOL_USER: ${{ secrets.SOL_USER }}
           SOL_PASS: ${{ secrets.SOL_PASS }}
           SOL_VIEWER_TOKEN: ${{ secrets.SOL_VIEWER_TOKEN }}
+          SOL_GAME_HOST: 127.0.0.1:8080
           SOL_CONTROL_TOKEN: ${{ secrets.SOL_CONTROL_TOKEN }}
           SOL_LLM_PROVIDER: ollama
           SOL_MOTOR_MODEL: qwen3:0.6b
@@ -214,6 +251,7 @@ jobs:
             rs-sdk/sol-console.log
             sol-tunnel.log
             sol-ollama.log
+            rs-engine.log
           if-no-files-found: warn
 
       # Rechain only healthy sessions and cap the retry chain. Failed live runs
