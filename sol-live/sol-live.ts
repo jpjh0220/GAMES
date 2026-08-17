@@ -872,7 +872,7 @@ const launchDecision=(stateAtStart:BotWorldState)=>{
     const fallbackState=lastState||stateAtStart;
     const fallbackCandidates=fallbackState?.player?capacityGate(fallbackState,lootGate(fallbackState,buildCandidates(fallbackState))):[];
     const fallback=llmUnavailable?chooseTimeoutFallback(fallbackState,fallbackCandidates):null;
-    const safePostWatchdogFallback=llmUnavailable&&!decisionInFlight&&!actionAwaitingOutcome&&tick-startedTick<=90;
+    const safePostWatchdogFallback=llmUnavailable&&!decisionInFlight&&!actionAwaitingOutcome;
     if((lease===decisionLease||safePostWatchdogFallback)&&fallback&&lastState?.player&&lastState.player.lifeId===startedLife){
       currentGoal=fallback.choice.goal;
       currentWhy=fallback.choice.reason;
