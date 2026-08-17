@@ -527,7 +527,8 @@ export class SolAgentBrain {
     const order=['dialog','modal','recovery','navigation-skill','combat','economy','pickup','social','world','inventory','combat-style','explore','wait'];
     const out:AgentCandidate[]=[];const seen=new Set<string>();
     const add=(candidate:AgentCandidate)=>{if(out.length>=12||seen.has(candidate.fingerprint))return;seen.add(candidate.fingerprint);out.push(candidate);};
-    for(const category of order)for(const c of productive.filter(x=>x.category===category).slice(0,2))add(c);
+    const priority=(c:AgentCandidate)=>c.tags?.includes('world-scale')?0:c.tags?.includes('region')?1:2;
+    for(const category of order){const group=productive.filter(x=>x.category===category).sort((a,b)=>priority(a)-priority(b));for(const c of group.slice(0,2))add(c);}
     for(const c of productive)add(c);
     if(!out.length&&candidates.length)add(candidates[0]);
     return out;
