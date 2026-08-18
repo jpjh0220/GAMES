@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 38867,
+  "stateGeneration": 38880,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3084,
-    "z": 3240,
+    "z": 3245,
     "level": 0
   },
   "currentObligation": {
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action pickup:chaos rune disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:559:18|2:1379:1|5:561:8|6:556:1|7:995:2|9:555:18|12:562:10",
     "freeSlots": 20,
     "coins": 2,
-    "updatedTick": 6241
+    "updatedTick": 6300
   },
   "milestones": [
     {
@@ -630,5 +630,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T03:26:24.243Z"
+  "updatedAt": "2026-08-18T03:26:41.936Z"
 }
