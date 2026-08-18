@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 56158,
+  "stateGeneration": 56173,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3086,
+    "x": 3085,
     "z": 3240,
     "level": 0
   },
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action walk:north disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "I picked up Bones (distance 1)"
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "1:565:2|3:558:18",
-    "freeSlots": 26,
+    "signature": "0:526:1|1:565:2|3:558:18",
+    "freeSlots": 25,
     "coins": 0,
-    "updatedTick": 4740
+    "updatedTick": 4791
   },
   "milestones": [
     {
@@ -1045,6 +1045,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 4634,
       "evidence": "+1597 XP"
+    },
+    {
+      "id": "open-ended-play:4771",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 4771,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -1098,5 +1104,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T08:50:58.756Z"
+  "updatedAt": "2026-08-18T08:51:14.048Z"
 }
