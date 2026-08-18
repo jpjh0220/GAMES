@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 37368,
+  "stateGeneration": 37379,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -11,15 +11,15 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I attacked the Dark wizard, which resulted in +1598 XP, 10 damage dealt, and moved from (3085,3234,0) to (3086,3234,0)."
+    "reason": "The selected action npc:attack:dark wizard disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:559:18",
     "freeSlots": 26,
     "coins": 0,
-    "updatedTick": 1121
+    "updatedTick": 1171
   },
   "milestones": [
     {
@@ -462,5 +462,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T03:00:48.580Z"
+  "updatedAt": "2026-08-18T03:01:03.585Z"
 }
