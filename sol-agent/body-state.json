@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 58333,
+  "stateGeneration": 58345,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -11,15 +11,15 @@
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Travel to Draynor Bank at 3092,3243 using verified waypoint navigation to satisfy the current objective and verify the resulting world-state change."
+    "reason": "The selected action pickup:coins disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "1:565:2|2:581:1|3:558:18|4:995:29|5:557:28|6:556:2|8:555:10",
     "freeSlots": 21,
     "coins": 29,
-    "updatedTick": 13180
+    "updatedTick": 13231
   },
   "milestones": [
     {
@@ -1254,5 +1254,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T09:33:10.755Z"
+  "updatedAt": "2026-08-18T09:33:26.048Z"
 }
