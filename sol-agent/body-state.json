@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 64618,
+  "stateGeneration": 64634,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3084,
-    "z": 3239,
+    "z": 3244,
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
+    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:565:2|2:581:1|3:526:1|4:995:59|5:557:74|6:556:15|7:563:3|8:555:20|9:526:1|10:581:1|11:526:1|12:559:18|13:526:1|14:554:18|15:288:1",
     "freeSlots": 12,
     "coins": 59,
-    "updatedTick": 36771
+    "updatedTick": 36830
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T11:31:08.072Z"
+  "updatedAt": "2026-08-18T11:31:25.790Z"
 }
