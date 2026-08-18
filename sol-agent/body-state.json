@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 41927,
+  "stateGeneration": 41939,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Trade Diango (level 0, distance 11) to satisfy the current objective and verify the resulting world-state change."
+    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=2,gated=1,legal=1,streak=2)."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Recover legal action space",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:559:18|2:1379:1|3:565:2|4:558:28|5:561:8|6:556:11|7:995:10|8:526:1|9:555:36|10:554:48|11:557:28|12:562:10|13:526:1|14:526:1|15:526:1|16:526:1|17:581:1|18:1379:1|19:526:1",
     "freeSlots": 8,
     "coins": 10,
-    "updatedTick": 16571
+    "updatedTick": 16630
   },
   "milestones": [
     {
@@ -948,5 +948,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T04:18:02.595Z"
+  "updatedAt": "2026-08-18T04:18:20.280Z"
 }
