@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 57329,
+  "stateGeneration": 57342,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action bank:open:3091:3243 disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "Deposit all Bones because capacity pressure requires temporary storage"
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:526:1|1:565:2|2:581:1|3:558:18|4:995:29|5:557:18|6:556:2",
-    "freeSlots": 21,
+    "signature": "1:565:2|2:581:1|3:558:18|4:995:29|5:557:18|6:556:2",
+    "freeSlots": 22,
     "coins": 29,
-    "updatedTick": 9291
+    "updatedTick": 9341
   },
   "milestones": [
     {
@@ -1129,6 +1129,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 9065,
       "evidence": "+1463 XP"
+    },
+    {
+      "id": "open-ended-play:9301",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 9301,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -1182,5 +1188,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T09:13:44.057Z"
+  "updatedAt": "2026-08-18T09:13:59.059Z"
 }
