@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 74726,
+  "stateGeneration": 74738,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action npc:attack:dark wizard disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "Recover reasoning loop",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:1949:1|2:995:3|4:526:1|5:237:1|8:556:3|9:526:1|10:555:10",
     "freeSlots": 20,
     "coins": 3,
-    "updatedTick": 7631
+    "updatedTick": 7690
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:37:48.202Z"
+  "updatedAt": "2026-08-18T14:38:05.912Z"
 }
