@@ -1,43 +1,37 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 74738,
+  "stateGeneration": 74751,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3084,
-    "z": 3234,
+    "z": 3235,
     "level": 0
   },
   "currentObligation": {
-    "kind": "loot-resolution",
+    "kind": "objective",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: TimeoutError: The operation timed out."
+    "reason": "I picked up Bones (distance 1)"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:526:1|1:1949:1|2:995:3|4:526:1|5:237:1|8:556:3|9:526:1|10:555:10",
-    "freeSlots": 20,
+    "signature": "0:526:1|1:1949:1|2:995:3|3:526:1|4:526:1|5:237:1|8:556:3|9:526:1|10:555:10",
+    "freeSlots": 19,
     "coins": 3,
-    "updatedTick": 7690
+    "updatedTick": 7740
   },
   "milestones": [
-    {
-      "id": "open-ended-play:11390",
-      "label": "Explore, learn, and play purposefully",
-      "tick": 11390,
-      "evidence": "+932 XP"
-    },
     {
       "id": "open-ended-play:11464",
       "label": "Explore, learn, and play purposefully",
@@ -1231,6 +1225,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 7502,
       "evidence": "+1465 XP"
+    },
+    {
+      "id": "open-ended-play:7713",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 7713,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:38:05.912Z"
+  "updatedAt": "2026-08-18T14:38:20.931Z"
 }
