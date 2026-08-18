@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 74636,
+  "stateGeneration": 74648,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,7 +15,7 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Bank at Bank booth (distance 2)"
+    "reason": "Selected Deposit all Pot because capacity pressure requires temporary storage to satisfy the current objective and verify the resulting world-state change."
   },
   "objective": {
     "id": "boot",
@@ -26,18 +26,12 @@
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:526:1|1:1949:1|2:995:3|3:1931:1|4:526:1|5:237:1|6:1931:1|7:1931:1|8:556:3|9:526:1|10:555:10",
-    "freeSlots": 17,
+    "signature": "0:526:1|1:1949:1|2:995:3|4:526:1|5:237:1|8:556:3|9:526:1|10:555:10",
+    "freeSlots": 20,
     "coins": 3,
-    "updatedTick": 7270
+    "updatedTick": 7320
   },
   "milestones": [
-    {
-      "id": "open-ended-play:11228",
-      "label": "Explore, learn, and play purposefully",
-      "tick": 11228,
-      "evidence": "inventory changed"
-    },
     {
       "id": "open-ended-play:11260",
       "label": "Explore, learn, and play purposefully",
@@ -1231,6 +1225,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 7054,
       "evidence": "+1598 XP"
+    },
+    {
+      "id": "open-ended-play:7285",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 7285,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:35:59.891Z"
+  "updatedAt": "2026-08-18T14:36:14.900Z"
 }
