@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 56463,
+  "stateGeneration": 56482,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3084,
-    "z": 3236,
+    "z": 3251,
     "level": 0
   },
   "currentObligation": {
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Agent decision failed: Error: LLM unavailable and no emergency action is authorized: Error: AI motor retry delayed until 2026-08-18T08:56:45.248Z"
+    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover reasoning loop",
+    "label": "Maintain safe verified play while the language model reconnects",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:565:2|2:581:1|3:558:18|4:995:29",
     "freeSlots": 23,
     "coins": 29,
-    "updatedTick": 5891
+    "updatedTick": 5941
   },
   "milestones": [
     {
@@ -1128,5 +1128,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T08:56:44.044Z"
+  "updatedAt": "2026-08-18T08:56:59.049Z"
 }
