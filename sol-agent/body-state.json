@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 72666,
+  "stateGeneration": 72677,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
+    "reason": "Tick watchdog released a decision that exceeded the body lease."
   },
   "objective": {
     "id": "boot",
-    "label": "Maintain safe verified play while the language model reconnects",
+    "label": "Recover stalled cognition",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "",
     "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 220
+    "updatedTick": 271
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:00:44.704Z"
+  "updatedAt": "2026-08-18T14:01:00.003Z"
 }
