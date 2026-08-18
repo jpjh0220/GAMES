@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 66591,
+  "stateGeneration": 66606,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3132,
-    "z": 3304,
+    "x": 3124,
+    "z": 3308,
     "level": 0
   },
   "currentObligation": {
-    "kind": "objective",
+    "kind": "loot-resolution",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "I attacked a Goblin at level 5, distance 12, and I got 100 XP. I feel weaker, but I can continue exploring."
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,15 +29,9 @@
     "signature": "0:526:1|1:565:2|2:581:1|4:995:62|6:556:15|7:563:3|8:555:20|10:581:1|12:559:18|14:554:18|15:288:1",
     "freeSlots": 17,
     "coins": 62,
-    "updatedTick": 44650
+    "updatedTick": 44700
   },
   "milestones": [
-    {
-      "id": "open-ended-play:1996",
-      "label": "Explore, learn, and play purposefully",
-      "tick": 1996,
-      "evidence": "inventory changed"
-    },
     {
       "id": "open-ended-play:2027",
       "label": "Explore, learn, and play purposefully",
@@ -1231,6 +1225,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 43545,
       "evidence": "inventory changed, +2 coins"
+    },
+    {
+      "id": "open-ended-play:44670",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 44670,
+      "evidence": "+665 XP"
     }
   ],
   "failures": [],
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T12:10:31.753Z"
+  "updatedAt": "2026-08-18T12:10:46.763Z"
 }
