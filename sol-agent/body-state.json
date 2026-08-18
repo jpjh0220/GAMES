@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 37297,
+  "stateGeneration": 37309,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Travel to the Draynor fishing area at 3087,3230 and verify arrival to satisfy the current objective and verify the resulting world-state change."
+    "reason": "The selected action npc:attack:jail guard disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "",
     "freeSlots": 28,
     "coins": 0,
-    "updatedTick": 850
+    "updatedTick": 901
   },
   "milestones": [
     {
@@ -438,5 +438,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T02:59:27.318Z"
+  "updatedAt": "2026-08-18T02:59:42.622Z"
 }
