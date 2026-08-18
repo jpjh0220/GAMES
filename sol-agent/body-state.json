@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 74703,
+  "stateGeneration": 74715,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "I attacked the Dark wizard, which confirmed my combat effectiveness and provided me with a temporary boost in combat power."
+    "reason": "The selected action npc:attack:dark wizard disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:1949:1|2:995:3|4:526:1|5:237:1|8:556:3|9:526:1|10:555:10",
     "freeSlots": 20,
     "coins": 3,
-    "updatedTick": 7521
+    "updatedTick": 7580
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:37:15.202Z"
+  "updatedAt": "2026-08-18T14:37:32.912Z"
 }
