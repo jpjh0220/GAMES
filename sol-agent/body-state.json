@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 37379,
+  "stateGeneration": 37392,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
     "x": 3084,
-    "z": 3234,
+    "z": 3235,
     "level": 0
   },
   "currentObligation": {
@@ -15,21 +15,21 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action npc:attack:dark wizard disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "Selected Pick up Bones (distance 1); verify the pickup result and any SDK feedback before choosing what to do next."
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "0:526:1|1:559:18",
-    "freeSlots": 26,
+    "signature": "0:526:1|1:559:18|2:526:1",
+    "freeSlots": 25,
     "coins": 0,
-    "updatedTick": 1171
+    "updatedTick": 1230
   },
   "milestones": [
     {
@@ -409,6 +409,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 1116,
       "evidence": "+265 XP"
+    },
+    {
+      "id": "open-ended-play:1214",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 1214,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -462,5 +468,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T03:01:03.585Z"
+  "updatedAt": "2026-08-18T03:01:21.273Z"
 }
