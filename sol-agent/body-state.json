@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 39818,
+  "stateGeneration": 39833,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The selected action pickup:nature rune disappeared before execution; the model must choose from the refreshed legal set."
+    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=40,gated=6,legal=1,streak=2)."
   },
   "objective": {
     "id": "boot",
-    "label": "Re-observe after stale choice",
+    "label": "Recover legal action space",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:559:18|2:1379:1|3:565:2|4:558:10|5:561:8|6:556:11|7:995:5|8:526:1|9:555:18|10:554:18|11:557:10|12:562:10|13:526:1",
     "freeSlots": 14,
     "coins": 5,
-    "updatedTick": 9418
+    "updatedTick": 9470
   },
   "milestones": [
     {
@@ -732,5 +732,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T03:42:17.114Z"
+  "updatedAt": "2026-08-18T03:42:32.704Z"
 }
