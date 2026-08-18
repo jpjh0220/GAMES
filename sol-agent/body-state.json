@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 65631,
+  "stateGeneration": 65642,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Explore northeast about 4 tiles to satisfy the current objective and verify the resulting world-state change."
+    "reason": "The selected action npc:attack:jail guard disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "1:565:2|2:581:1|4:995:60|6:556:15|7:563:3|8:555:20|10:581:1|12:559:18|14:554:18|15:288:1",
     "freeSlots": 18,
     "coins": 60,
-    "updatedTick": 40740
+    "updatedTick": 40790
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T11:50:58.749Z"
+  "updatedAt": "2026-08-18T11:51:13.767Z"
 }
