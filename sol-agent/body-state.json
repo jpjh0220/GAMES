@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 62378,
+  "stateGeneration": 62389,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,29 +15,23 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Tick watchdog released a decision that exceeded the body lease."
+    "reason": "Emergency-only fallback: SyntaxError: JSON Parse error: Expected ':' before value in object property definition"
   },
   "objective": {
     "id": "boot",
-    "label": "Recover stalled cognition",
+    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, social opportunity, and the mechanics it has not yet understood.\",\"success\":\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"contract\":{\"prerequisites\":[\"reachable legal action\"],\"requiredResources\":[\"position and legal action\"],\"terminalEvidence\":[\"A verified discovery, learned mechanic, meaningful interaction, useful state change, or deliberate safe experiment is recorded.\",\"measured state delta compatible with the selected action\"],\"forbiddenWhileActive\":[\"repeated no-progress action\"],\"replanTriggers\":[\"SDK refusal\",\"no measurable change\",\"postcondition failure\",\"stale world state\",\"resource threshold changed\"]},\"stage\":1,\"blocked\":false}",
     "successSignals": [
       "first verified observation"
     ],
     "status": "active"
   },
   "inventoryLedger": {
-    "signature": "1:565:2|2:581:1|3:558:18|4:995:59|5:557:38|6:556:5|7:1967:1|8:555:20|10:581:1|12:559:18|14:554:18",
-    "freeSlots": 17,
+    "signature": "1:565:2|2:581:1|3:558:18|4:995:59|5:557:38|6:556:5|8:555:20|10:581:1|12:559:18|14:554:18",
+    "freeSlots": 18,
     "coins": 59,
-    "updatedTick": 28191
+    "updatedTick": 28241
   },
   "milestones": [
-    {
-      "id": "open-ended-play:4424",
-      "label": "Explore, learn, and play purposefully",
-      "tick": 4424,
-      "evidence": "+1463 XP"
-    },
     {
       "id": "open-ended-play:4615",
       "label": "Explore, learn, and play purposefully",
@@ -1231,6 +1225,12 @@
       "label": "Explore, learn, and play purposefully",
       "tick": 26875,
       "evidence": "inventory changed"
+    },
+    {
+      "id": "open-ended-play:28203",
+      "label": "Explore, learn, and play purposefully",
+      "tick": 28203,
+      "evidence": "inventory changed"
     }
   ],
   "failures": [],
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T10:48:14.050Z"
+  "updatedAt": "2026-08-18T10:48:29.059Z"
 }
