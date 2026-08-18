@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 79766,
+  "stateGeneration": 79781,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
   },
   "position": {
-    "x": 3151,
-    "z": 3297,
+    "x": 3145,
+    "z": 3298,
     "level": 0
   },
   "currentObligation": {
-    "kind": "capacity-resolution",
+    "kind": "transaction",
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
+    "reason": "No legal candidate survived safety/capacity/blocked-action gates (raw=2,gated=0,legal=0,streak=7)."
   },
   "objective": {
     "id": "boot",
-    "label": "Maintain safe verified play while the language model reconnects",
+    "label": "Recover legal action space",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:1949:1|2:995:6|3:526:1|4:526:1|5:526:1|6:526:1|7:526:1|8:556:5|9:526:1|10:555:28|11:1017:1|12:1017:1|13:581:1|14:526:1|15:1511:1|16:1511:1|17:526:1|18:1511:1|19:1511:1|20:1511:1|21:526:1|22:557:36|23:526:1|24:563:3",
     "freeSlots": 3,
     "coins": 6,
-    "updatedTick": 26471
+    "updatedTick": 26530
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T16:12:00.213Z"
+  "updatedAt": "2026-08-18T16:12:17.883Z"
 }
