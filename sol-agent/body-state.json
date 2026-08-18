@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 74168,
+  "stateGeneration": 74178,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "The language model timed out. Use the already-observed safe candidate “Explore north about 5 tiles” once, verify its outcome, then retry language reasoning."
+    "reason": "The selected action npc:attack:goblin disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "Maintain safe verified play while the language model reconnects",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:1949:1|2:995:3|3:1931:1|4:526:1|5:237:1|6:1931:1|7:1931:1|8:556:3|9:526:1|10:555:10",
     "freeSlots": 17,
     "coins": 3,
-    "updatedTick": 5540
+    "updatedTick": 5590
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:27:20.892Z"
+  "updatedAt": "2026-08-18T14:27:35.881Z"
 }
