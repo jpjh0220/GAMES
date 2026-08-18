@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "stateGeneration": 73386,
+  "stateGeneration": 73398,
   "committedTick": 66000,
   "identity": {
     "name": "Sol5"
@@ -15,11 +15,11 @@
     "id": "boot",
     "startedTick": 0,
     "attempt": 0,
-    "reason": "Selected Investigate Al Kharid (desert-edge, trade, combat, quest) and verify what is there to satisfy the current objective and verify the resulting world-state change."
+    "reason": "The selected action walk:northeast disappeared before execution; the model must choose from the refreshed legal set."
   },
   "objective": {
     "id": "boot",
-    "label": "{\"objective\":\"Explore, learn, and play purposefully\",\"reason\":\"No permanent progression milestone is imposed. Let Sol choose a temporary subgoal from novelty, usefulness, safety, s",
+    "label": "Re-observe after stale choice",
     "successSignals": [
       "first verified observation"
     ],
@@ -29,7 +29,7 @@
     "signature": "0:526:1|1:1949:1|2:995:1",
     "freeSlots": 25,
     "coins": 1,
-    "updatedTick": 2790
+    "updatedTick": 2841
   },
   "milestones": [
     {
@@ -1284,5 +1284,5 @@
     "lastSwitchTick": 0
   },
   "lastObservationHash": "",
-  "updatedAt": "2026-08-18T14:13:35.896Z"
+  "updatedAt": "2026-08-18T14:13:51.180Z"
 }
